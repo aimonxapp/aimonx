@@ -23,7 +23,7 @@
 |---|---|---|---|---|
 | W1 | **WD16** | ✅ **`.gitignore` scritto nel giro W1** · ⏳ **resta la licenza, e la sceglie Pier** | P sceglie la licenza | Prima di pubblicarci sopra. ⚠️ **Il repo è pubblico e senza licenza:** per difetto è «tutti i diritti riservati», e va scelto invece che subìto |
 | W2 | **—** | ⛔ **Cowork riallinea `spec-sito.md` a `~/Developer/AIMONX/docs/prodotto.md`** | CW | ⭐ **Non è una voce del registro: è un lavoro fuori dal repo che deve accadere prima.** `spec-sito.md` è ferma a luglio e si fonda su `specifiche-aimonx.md`, che nel frattempo è diventata **archivio**; l'autorità viva su cosa fa l'app è `~/Developer/AIMONX/docs/prodotto.md`. ⛔ **Scrivere pagine contro una spec disallineata significa promettere funzioni che non ci sono** — è la trappola del sito |
-| W3 | **WD19** | ✅ **scelto da Pier il 21/09/2026: Jekyll.** `_config.yml` è sul ramo dal giro W1; ⏳ **resta da provare che l'esclusione tenga** (`WD25`) | P ha scelto, CC costruisce | ⛔ **Il criterio scritto prima qui era sbagliato:** diceva *«quanto costa a Pier cambiare un testo da solo»*, ma **Pier non scrive codice.** ⭐ **I costi si misurano sul lavoro dei giri e sul rischio.** Prima di `WA4`, perché le pagine si scrivono **in** qualcosa |
+| W3 | **WD19** | ✅ **fatta.** Jekyll scelto da Pier il 21/09/2026, `_config.yml` sul ramo dal giro W1, e ⭐ **nel giro W2 il banco è in piedi**: Jekyll 3.10.0 e Ruby 3.3.4 sul Mac, cioè le versioni di Pages, con cui il sito si costruisce e **si guarda** prima del merge (`WD25` ✅) | P ha scelto, CC costruisce | ⛔ **Il criterio scritto prima qui era sbagliato:** diceva *«quanto costa a Pier cambiare un testo da solo»*, ma **Pier non scrive codice.** ⭐ **I costi si misurano sul lavoro dei giri e sul rischio.** Prima di `WA4`, perché le pagine si scrivono **in** qualcosa |
 | W4 | **WA4** | il contenuto del sito — le pagine del set minimo | P + CW scrivono, CC costruisce | ⭐ La catena tecnica è già in piedi: manca il testo, non l'infrastruttura. Dopo W2 e W3, che sono le sue due condizioni |
 | W5 | **WA1 · WA2** | Privacy Policy e Support URL online | P + CW | ⛔ Senza queste due la submission dell'app non parte. Hanno bisogno di W4 per avere dove vivere |
 | W6 | **WA3** | accertare se i ToS sono obbligatori | CW | Due sezioni della fonte dicono cose diverse e nessuna cita Apple. ⚠️ **È una domanda, non una pagina:** se la risposta è sì, la pagina è un lavoro di W4 |
@@ -38,11 +38,12 @@
 | **Il merge su `main` PUBBLICA** (Pages costruisce dalla radice di `main`) | ogni merge è un'autorizzazione di Pier, e va letto come «metto online», non come «salvo» |
 | **Il sito non promette ciò che l'app non fa** | W2 prima di W4, sempre — e la verifica è contro `~/Developer/AIMONX/docs/prodotto.md`, non contro `spec-sito.md` |
 | **Le pagine si scrivono in qualcosa** | W3 prima di W4 |
-| **Una lista di esclusioni fallisce APERTA** | `WD25` prima del merge: `exclude` nega ciò che nomina, e un file nuovo è pubblicato finché qualcuno non se ne accorge |
+| **Una lista di esclusioni fallisce APERTA** | `WD25` ✅ **soddisfatto nel giro W2**, e non da una rilettura: il ramo è stato costruito e nel risultato i file di lavoro sono **zero**. ⚠️ **Il vincolo però resta vivo** — `exclude` nega solo ciò che nomina — e per questo la prova ora la **rifà la controprova a ogni giro**, invece di valere una volta sola |
 | **`WA1` e `WA2` hanno bisogno di un sito che esista** | W4 prima di W5 |
 
 ## Cosa questo piano NON copre, e dichiarato
 
 - ⛔ **Le gemelle restano aperte anche nel registro dell'app:** chiudere `WA1` qui non chiude `RA1` là. Il piano dell'app ha la sua Fase E, e i due si tengono al passo via `bacheca.md`.
 - ⛔ **I social non sono in questo piano.** Decisione di Pier: il sito viene prima, i social si fanno sull'app finita.
-- ⚠️ **`WD18`, `WD20`, `WD21`, `WD23` e `WD24` non hanno un posto in coda**, e non è una dimenticanza: sono debiti di documento che si chiudono quando si tocca il documento, non voci che bloccano qualcos'altro.
+- ⚠️ **`WD18`, `WD20`, `WD21`, `WD24` e `WD28` non hanno un posto in coda**, e non è una dimenticanza: sono debiti di documento che si chiudono quando si tocca il documento, non voci che bloccano qualcos'altro.
+- ⭐ **`WD23`, `WD26` e `WD27` non sono in coda per il motivo opposto: hanno già il loro posto dentro un'altra voce.** `WD23` si chiude **al primo merge**, misurando `curl`, e quel merge lo autorizza Pier. `WD26` (lo script da `cdnjs`) e `WD27` (il sorgente `.md` pubblicato accanto alla pagina) **spariscono dentro W4**, quando `WA4` porta un tema e pagine nostre: ⛔ correggerle prima significherebbe scrivere un tema per buttarlo.

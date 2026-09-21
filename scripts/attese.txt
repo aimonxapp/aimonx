@@ -31,11 +31,46 @@ percorsi_rotti=0
 # Indirizzi marcati ⏳ («nasce dopo») che sul disco ESISTONO già: il marcatore
 # è rimasto e il file vivo annuncia come futuro qualcosa che c'è.
 promesse_scadute=0
-tetto_righe_CLAUDE_md=170
-tetto_righe_docs_aperti_md=50
+# ⛔ Alzato a mano nel giro W2, da 170 a 180, e SOLO dopo aver guardato cosa è
+# entrato: la sezione «Comandi», che prima diceva «nessun comando esiste» e ora
+# ha i comandi veri, e la sezione degli strumenti con i quattro scartati e la
+# loro ragione. ⭐ Nessun verbale: il file cresce perché esiste una toolchain
+# che prima non c'era. ⚠️ Prima di alzarlo è stata tolta l'impalcatura che si
+# poteva togliere (una tabella di quattro voci è diventata un elenco): dei 179
+# di partenza, tre righe erano forma e sono sparite. Qui il tetto è un FRENO,
+# non un muro — ma va speso guardando, non per fare spazio.
+tetto_righe_CLAUDE_md=180
+# ⛔ Alzato a mano nel giro W2, da 50 a 70, dopo aver guardato COSA è entrato:
+# quattro voci di registro (WD25 chiusa, WD26, WD27, WD28), nessun verbale.
+# ⚠️ Il registro è append-only per la sua regola 2 — le voci chiuse restano in
+# tabella — quindi qui il tetto non chiede «stai ingrassando?»: chiede «è
+# entrata una regola o una cronaca?». Era a 50 con 50 righe: un freno che
+# sarebbe scattato al giro dopo senza dire niente di utile.
+tetto_righe_docs_aperti_md=70
 tetto_righe_docs_piano_chiusura_md=60
 
 # ⛔ WD17 — file tracciati che citano un percorso del disco di Pier.
 # Deve restare 0: il repo è pubblico, e un percorso lì dentro è il disco di
 # qualcuno messo online. Il controllo sta in scripts/controprova.sh.
 percorsi_pier=0
+
+# ⛔ WD25, provata nel giro W2 costruendo con Jekyll 3.10.0 e Ruby 3.3.4, cioè
+# le versioni di GitHub Pages. Quanti file nominati in `exclude` finiscono
+# comunque nel sito costruito. Deve restare 0: se sale, `exclude` non tiene e
+# un merge metterebbe i file di lavoro su aimonx.app.
+file_lavoro_pubblicati=0
+
+# ⛔ WD23. Quante volte il sito costruito si dichiara `http://aimonx.app`.
+# Era il difetto: senza `url` in _config.yml Jekyll indovinava lo schema e
+# annunciava la versione in chiaro di sé. ⚠️ Questo misura la BUILD; cosa
+# legga il mondo lo dice `curl -sS https://aimonx.app/ | grep canonical`, e
+# fra le due misure c'è il merge.
+http_nella_build=0
+
+# ⚠️ WD26, APERTA: risorse caricate da un dominio diverso da aimonx.app.
+# ⛔ Il valore è 1 e NON è una soglia di comodo: è lo stato di oggi, misurato
+# — il tema di default di Pages tira anchor.js da cdnjs.cloudflare.com. Sta
+# qui perché il numero non CRESCA mentre la voce aspetta. Quando WD26 si
+# chiude questo scende a 0, la controprova protesta, e l'attesa si sposta a
+# mano: è il verso giusto.
+risorse_esterne_build=1

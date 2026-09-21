@@ -27,6 +27,8 @@
 |---|---|
 | **come si conduce un giro** | skill `/giro` → `.claude/skills/giro/SKILL.md` — ⭐ **è una COPIA di quella dell'app, non un collegamento**, perché il master comune ⏳ `…/10- AIMONX AI Common/skills/giro/` **non esiste**: misurato, `find "…/10- AIMONX AI Common"` elenca due file e nessuna cartella `skills`. ⚠️ **Una copia diverge in silenzio:** chi cambia questa skill o quella dell'app lascia una riga in `bacheca.md` |
 | **la verifica di fine giro** | `scripts/controprova.sh` · valori attesi in `scripts/attese.txt` |
+| **con cosa si costruisce il sito in locale** | `Gemfile` — ⛔ **le versioni NON sono una scelta nostra:** sono quelle che GitHub dichiara in `pages.github.com/versions.json`. Costruire con altre significa provare un sito e pubblicarne un altro. Come si rifà: «Comandi» |
+| **come si guarda l'anteprima con un browser vero** | `scripts/anteprima-playwright.mjs` — due screenshot, gli errori in console, e ⛔ **ogni richiesta verso un dominio esterno**. ⚠️ **Non è un test che passa o fallisce: è una misura**, e il giudizio è di chi legge |
 | **i percorsi di QUESTO Mac** — e perché non stanno in un file tracciato | `scripts/percorsi-locali.sh` e `.claude/settings.local.json`, tenuti fuori da `.gitignore` (WD17). ⚠️ **Non arrivano col clone:** su un Mac nuovo si riscrivono a mano |
 | **cosa Pages pubblica e cosa no** | `_config.yml` — ⛔ **`exclude` è una lista di negazioni, e fallisce APERTA:** chi aggiunge un file alla radice lo pubblica. Chi se ne accorge è la controprova (`pagine_dal_merge`), non la memoria |
 | **il push** | `scripts/push-remoto.sh`, chiamato dall'hook `Stop` — remote misurato: `https://github.com/aimonxapp/aimonx.git`. ⛔ **Nessun hook di pin:** il sito non ha una specifica canonica congelata. ⛔ **Spinge il SOLO ramo corrente e rifiuta `main`**, perché `main` è il sito pubblicato |
@@ -75,15 +77,46 @@ AIMONX sito — il sito pubblico `aimonx.app` dell'app iOS AIMONX, diario tecnic
 
 ## Comandi
 
-⛔ **Nessun comando di build o di anteprima è scritto qui, perché non ne esiste ancora uno:** il repo ha due file e nessuna toolchain. Un comando si scrive quando è stato lanciato. Quelli che oggi ci sono e sono stati lanciati:
+⭐ **La toolchain Jekyll è sul Mac dal giro W2** (WD25, strada A di Pier): il sito si costruisce e **si guarda** prima del merge. ⛔ **Ruby 3.3.4 sta in `~/.rbenv` e NON è nel `PATH`:** il Ruby di sistema non si tocca, quindi ogni comando se lo porta davanti. ⚠️ **Nessuno di questi arriva col clone** (WD28): su un Mac nuovo si rifà la toolchain.
 
 ```bash
-scripts/controprova.sh                    # quadro di fine giro
+scripts/controprova.sh                    # quadro di fine giro — ⭐ costruisce DAVVERO e guarda il risultato
 scripts/controprova.sh --aggiorna-attese  # riscrive i valori attesi misurati ora
+
+# costruire e guardare — la riga in testa serve a ogni comando che segue
+export PATH="$HOME/.rbenv/versions/3.3.4/bin:$PATH"
+bundle exec jekyll build --safe    # come costruisce Pages; il risultato finisce in _site/ (ignorato)
+bundle exec jekyll serve           # anteprima su http://127.0.0.1:4000/ — si spegne con ctrl-c
+node scripts/anteprima-playwright.mjs http://127.0.0.1:4000/ ~/Desktop/aimonx-anteprima
 
 gh api repos/aimonxapp/aimonx/pages       # cosa pubblica Pages, e da dove
 curl -sSI https://aimonx.app/             # cosa risponde il sito vero
+
+# rifare la toolchain su un Mac nuovo (WD28). ⛔ Misurato: `brew install ruby@3.3` NON va
+# bene — aggiorna openssl@3, da cui dipende il python degli script dell'app.
+brew install libyaml                                      # formula nuova, non aggiorna nulla
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3) --with-libyaml-dir=$(brew --prefix libyaml)" \
+  ~/.rbenv/plugins/ruby-build/bin/ruby-build 3.3.4 ~/.rbenv/versions/3.3.4
+bundle config set --local path vendor/bundle && bundle install
+npm --prefix ~/.aimonx-web-tools install playwright && \
+  npx --prefix ~/.aimonx-web-tools playwright install chromium
 ```
+
+## Gli strumenti di Claude Code — e quelli scartati, con la ragione
+
+⭐ **Due soli, decisi da Pier il 21/09/2026 e installati con scope `project`**, cioè per questo repo: non per tutto il Mac e ⛔ **non per le sessioni del repo dell'app**, dove resta solo `swift-lsp`. Stanno in `.claude/settings.json`.
+
+- **`frontend-design`** — il sito deve essere **figo**. La tavolozza dell'app (`…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md`) è la base, **e sul sito si può osare.** ⛔ **Due condizioni, e non sono negoziabili con l'estetica:** ① **nessuna risorsa da server esterni** — font, immagini, script, tutto servito da `aimonx.app` (vedi `WD26`, aperta proprio per questo); ② ⛔ **dove passa il confine col militare lo decide Pier guardando**, non CC censurandosi prima: una scelta vicina al limite **si segnala e si fa vedere.**
+- **`playwright`** — un browser **suo**, separato da quello di Pier: non tocca il suo profilo né le sue schede. ⚠️ **È un server MCP avviato con `npx`**, quindi arriva alla sessione **successiva** alla sua installazione; per una misura subito c'è `scripts/anteprima-playwright.mjs`, che usa lo stesso browser da riga di comando.
+
+⛔ **Gli scartati NON si reinstallano senza chiederlo a Pier** — sono stati valutati, non dimenticati:
+
+- **`typescript-lsp`** — il sito ha JS minimo. Si riprende **se arriva JavaScript vero.**
+- **`Context7`** — dà la documentazione **più recente**, cioè Jekyll 4, ⛔ **mentre Pages costruisce con Jekyll 3.10**: la fonte giusta è la toolchain locale, che ha le versioni vere.
+- **`code-review` + `security-guidance`** — i rischi veri del sito li coprono controprova, Playwright, Cowork e Pier. ⚠️ **Cowork aggiunge che su un repo pubblico le revisioni sarebbero pubbliche: è una sua ipotesi, non verificata qui.** Si riprendono quando ci sarà codice vero.
+- **`GitHub`** — `gh` fa già tutto, e ⛔ **un token in più sarebbe una terza chiave** accanto alla separazione degli account provata nel giro W1.
 
 ## Regole operative
 

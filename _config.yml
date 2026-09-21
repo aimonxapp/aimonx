@@ -11,6 +11,15 @@
 url: https://aimonx.app
 baseurl: ""
 
+# Il nome del repo su GitHub. ⚠️ NON è un duplicato di quello che git già sa:
+# misurato nel giro W2, una build `--safe` — cioè come costruisce Pages — NON
+# legge il remote git, e `jekyll-github-metadata` la fa FALLIRE con
+# «No repo name found» appena una pagina usa un layout. Senza questa riga il
+# comando di costruzione funziona solo se chi lo lancia si ricorda di passare
+# PAGES_REPO_NWO, e un comando che dipende dalla memoria di qualcuno si rompe
+# il giorno in cui quel qualcuno è un altro.
+repository: aimonxapp/aimonx
+
 # ① Cosa NON esce su aimonx.app.
 #
 # ⛔ SI LEGGE AL CONTRARIO DI COME SEMBRA: `exclude` è una lista di ciò che si

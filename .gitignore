@@ -15,3 +15,15 @@ scripts/percorsi-locali.sh
 
 # macOS
 .DS_Store
+
+# ⛔ La toolchain Jekyll locale (WD25, giro W2). Questi NON entrano nel repo:
+# `_site/` è il sito costruito — pubblicarlo significherebbe avere due copie
+# del sito che divergono; `vendor/` sono 98 gem scaricate; `.jekyll-cache/` e
+# `.bundle/` sono stato di lavoro della macchina.
+# ⚠️ Gemfile e Gemfile.lock INVECE sono tracciati, ed è voluto: sono il
+# contratto sulle versioni, e su un Mac nuovo servono per rifare la toolchain.
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/

@@ -169,8 +169,92 @@ echo "     senza aspettare il merge. Vedi WD17 in docs/aperti.md."
 # che suona quando entra un file .md nuovo, ed è l'unica cosa che `exclude`,
 # essendo una lista di negazioni, non può fare da sé.
 if [ -f "$REPO/_config.yml" ] && grep -q '^exclude:' "$REPO/_config.yml"; then
-  echo "  ⚠️ _config.yml dichiara di escluderne una parte (WD19). ⛔ NON È PROVATO:"
-  echo "     nessun Jekyll gira qui, e la prova sta oltre il merge. Vedi WD25."
+  echo "  ⚠️ _config.yml ne esclude una parte (WD19), e ⭐ ORA SI PROVA: vedi qui sotto."
+fi
+
+# --- WD25: l'esclusione si PROVA costruendo --------------------------------
+# ⛔ Fino al giro W2 questo era il buco del repo: `exclude` dichiarava di
+# tenere fuori i file di lavoro, e nessuno l'aveva mai visto fare. ⚠️ Una
+# lista di negazioni FALLISCE APERTA, quindi «dichiarato» e «vero» qui non
+# sono la stessa cosa, e la differenza la legge il mondo.
+#
+# ⭐ Qui Jekyll gira davvero, con le versioni di GitHub Pages (Gemfile), e si
+# guarda il RISULTATO invece della configurazione. Si costruisce in una
+# cartella temporanea: il quadro non deve lasciare artefatti nel repo.
+#
+# ⛔ La lista dei motivi NON è scritta a mano: si legge da `exclude` di
+# _config.yml. Chi aggiunge una voce lì è coperto da sé, e un controllo che
+# ripete a mano una lista diverge dalla lista il giorno dopo.
+#
+# ⚠️ Se la toolchain non c'è (un Mac nuovo, un clone fresco), l'esito è
+# «NON MISURABILE» e lo dice: ⭐ il terzo esito, non una soglia più larga.
+echo
+echo "--- WD25: esclusione PROVATA costruendo (Jekyll, versioni di Pages) ---"
+RUBY_BIN="$HOME/.rbenv/versions/3.3.4/bin"
+if [ ! -x "$RUBY_BIN/bundle" ] || [ ! -d "$REPO/vendor/bundle" ]; then
+  echo "  ⛔ NON MISURABILE: la toolchain Jekyll locale manca su questo Mac."
+  echo "     Si rifà con i comandi in CLAUDE.md, sezione «Comandi». Senza, la"
+  echo "     prova di WD25 non esiste e `exclude` resta una dichiarazione."
+else
+  SITO_TMP=$(mktemp -d)
+  BUILD_ERR=$(mktemp)
+  # ⛔ `--safe` non è un di più: è come costruisce Pages, e in safe mode Jekyll
+  # NON legge il remote git. ⚠️ Niente PAGES_REPO_NWO qui, apposta: il nome del
+  # repo sta in `repository:` dentro _config.yml, e passarlo anche da qui
+  # nasconderebbe il giorno in cui quella riga sparisce.
+  if PATH="$RUBY_BIN:$PATH" JEKYLL_ENV=production \
+     "$RUBY_BIN/bundle" exec jekyll build --safe -d "$SITO_TMP" >/dev/null 2>"$BUILD_ERR"; then
+    # I motivi arrivano da `exclude`. ⚠️ La / finale si toglie: in _site un
+    # `docs/` escluso si cercherebbe come `docs/qualcosa`, non come `docs/`.
+    N_TROVATI=0
+    TROVATI=""
+    while read -r VOCE; do
+      [ -n "$VOCE" ] || continue
+      VOCE="${VOCE%/}"
+      # ⛔ -maxdepth non va bene: un file escluso può ricomparire annidato.
+      TROVA=$(cd "$SITO_TMP" && find . -name "$(basename "$VOCE")" 2>/dev/null)
+      if [ -n "$TROVA" ]; then
+        N_TROVATI=$((N_TROVATI + $(printf '%s' "$TROVA" | grep -c .)))
+        TROVATI="$TROVATI$VOCE -> $TROVA
+"
+      fi
+    done <<VOCI
+$("$RUBY_BIN/ruby" -ryaml -e 'puts(YAML.load_file("_config.yml")["exclude"] || [])' 2>/dev/null)
+VOCI
+    confronta "file di lavoro finiti nel sito costruito" file_lavoro_pubblicati "$N_TROVATI"
+    if [ "$N_TROVATI" != "0" ]; then
+      printf '%s' "$TROVATI" | sed 's/^/     ⛔ /'
+      echo "     ⛔ `exclude` NON TIENE. Un merge li metterebbe su aimonx.app."
+    fi
+
+    # ⛔ WD23 — lo schema che la pagina dichiara di sé. Non è «Enforce HTTPS»,
+    # che è GitHub a fare: questo lo scrive Jekyll, e senza `url` in
+    # _config.yml indovina `http://`. ⚠️ Si misura sulla BUILD; cosa legga il
+    # mondo lo dice `curl`, e fra i due c'è il merge.
+    N_HTTP=$(grep -rohE 'http://[a-z0-9.-]*aimonx\.app' "$SITO_TMP" 2>/dev/null | grep -c . | tr -d ' ')
+    confronta "\"http://aimonx.app\" nel sito costruito" http_nella_build "$N_HTTP"
+
+    # ⛔ Vincolo del sito: nessuna risorsa da server esterni (CLAUDE.md).
+    # Un font o uno script caricato da fuori dice a quel server chi visita
+    # aimonx.app — su un sito che vende privacy è una contraddizione pubblica.
+    # ⚠️ Questo conta i riferimenti SCRITTI nell'HTML. Quel che il browser
+    # chiede DAVVERO lo dice scripts/anteprima-playwright.mjs, ed è un'altra
+    # misura: un `<script>` può aggiungerne altri a pagina aperta.
+    N_EST=$(grep -rohE '(src|href)="https?://[^"]*"' "$SITO_TMP" 2>/dev/null \
+            | grep -vE '//([a-z0-9-]+\.)?aimonx\.app' | sort -u | grep -c . | tr -d ' ')
+    confronta "risorse da domini esterni nel sito costruito" risorse_esterne_build "$N_EST"
+    if [ "$N_EST" != "0" ]; then
+      grep -rohE '(src|href)="https?://[^"]*"' "$SITO_TMP" 2>/dev/null \
+        | grep -vE '//([a-z0-9-]+\.)?aimonx\.app' | sort -u | sed 's/^/     ⚠️ /'
+      echo "     ⚠️ Vedi WD26 in docs/aperti.md."
+    fi
+  else
+    # ⛔ Una build fallita NON è «zero file di lavoro»: è una misura che non
+    # c'è stata. Dirla ✅ sarebbe il via libera che non ha guardato niente.
+    echo "  ⛔ NON MISURABILE: la build Jekyll è fallita. Prime righe di stderr:"
+    head -n 6 "$BUILD_ERR" | sed 's/^/     │ /'
+  fi
+  rm -rf "$SITO_TMP" "$BUILD_ERR"
 fi
 
 # --- WD17: il disco di Pier non entra nei file tracciati ---------------------
@@ -283,7 +367,11 @@ fi
 #     `gh api repos/aimonxapp/aimonx/pages` non è una cartella. Si riconoscono
 #     dalla prima parola, non dalla forma;
 #   · ⛔ fuori i DOMINI: `aimonx.app/docs/aperti.html` è un indirizzo del web,
-#     e questo script guarda il disco;
+#     e questo script guarda il disco. ⚠️ Con i SOTTODOMINI, misurato nel giro
+#     W2: il motivo accettava una sola etichetta prima del dominio di primo
+#     livello, e `pages.github.com/versions.json` — la fonte delle versioni di
+#     Pages, citata in due file vivi — usciva «rotto». Un guardrail che
+#     protesta su una citazione giusta è il primo passo verso lo spegnerlo;
 #   · ⛔ fuori le IDENTITÀ REMOTE (`aimonxapp/aimonx`): somigliano a un percorso
 #     e non lo sono;
 #   · ⚠️ fuori i segnaposto e le intestazioni HTTP.
@@ -342,7 +430,7 @@ estrai() {
       next if $t =~ / -/ || $t =~ m{ / };
       next if $t =~ /^(gh|git|curl|find|rm|ls|bash|sed|awk|grep|xargs|wc|chmod)\s/;
       next if $t =~ m{^HTTP/} || $t =~ m{https?:};
-      next if $t =~ /^[a-z0-9-]+\.(app|com|io|org|net|dev)(\/|$)/;
+      next if $t =~ /^[a-z0-9-]+(\.[a-z0-9-]+)*\.(app|com|io|org|net|dev)(\/|$)/;
       print(($poi ? "POI" : "ORA"), "\t", $t, "\n");
     }' | perl -MUnicode::Normalize -CSD -ne 'print NFC($_)' | sort -u
 }
