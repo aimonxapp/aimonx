@@ -1,0 +1,33 @@
+# _config.yml — la configurazione Jekyll del sito. WD19, deciso da Pier il 21/09/2026.
+#
+# ⛔ QUESTO FILE NON COSTRUISCE PAGINE. Fa due cose sole:
+#   ① tiene i file di lavoro FUORI da ciò che Pages pubblica su aimonx.app;
+#   ② dice al sito come si chiama, così le pagine non si dichiarano più `http://`.
+# Tema, layout e pagine arrivano con WA4, e il testo lo scrive Cowork.
+
+# ② L'indirizzo del sito. ⚠️ Misurato prima di questo file: la home diceva
+# `<link rel="canonical" href="http://aimonx.app/">`, cioè annunciava al mondo
+# la versione in chiaro di sé stessa. Da qui in poi dice https.
+url: https://aimonx.app
+baseurl: ""
+
+# ① Cosa NON esce su aimonx.app.
+#
+# ⛔ SI LEGGE AL CONTRARIO DI COME SEMBRA: `exclude` è una lista di ciò che si
+# nega, e una lista di negazioni FALLISCE APERTA — un file nuovo alla radice è
+# pubblicato finché qualcuno non se ne accorge. ⭐ Per questo la controprova
+# conta i .md tracciati che diventerebbero pagine (`pagine_dal_merge`): il
+# numero sale da sé quando entra un file, e nessuno deve ricordarsene.
+#
+# ⚠️ README.md NON è qui, ed è voluto: oggi è l'unica pagina del sito, ciò che
+# il mondo legge su aimonx.app. Escluderlo spegnerebbe la home. Se ne va quando
+# WA4 porta una home vera.
+exclude:
+  - CLAUDE.md          # il metodo di lavoro
+  - docs/              # registro degli aperti e piano di chiusura
+  - scripts/           # controprova, attese, hook di push
+  - .claude/           # impostazioni e skill di Claude Code
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

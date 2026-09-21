@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # Hook Stop — il push verso aimonxapp/aimonx.
-# Push di rami e tag, MAI --force, mai riscrittura o cancellazione sul remoto.
+# Push del SOLO ramo corrente e dei tag, MAI --force, mai riscrittura o
+# cancellazione sul remoto. ⛔ Mai `main`: vedi il perché più sotto.
 # Se il push fallisce lo RIFERISCE in modo visibile; non blocca mai la sessione.
 #
 # ⚠️ Ricalcato da scripts/push-remoto.sh del repo dell'app, con due differenze:
@@ -18,7 +19,20 @@ set -u
 
 REPO="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 
-ESITO_RAMI=$(git -C "$REPO" push origin --all 2>&1)
+# ⛔ SOLO IL RAMO CORRENTE, mai `--all`. Misurato nel giro W1: `--all` avrebbe
+# pushato anche `main`, e `main` È IL SITO PUBBLICATO — Pages costruisce dalla
+# sua radice. Un hook che parte da sé a ogni Stop non può avere in mano il ramo
+# che pubblica al mondo: la pubblicazione la decide Pier, non un automatismo.
+RAMO=$(git -C "$REPO" rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+if [ "$RAMO" = "main" ] || [ "$RAMO" = "HEAD" ]; then
+  jq -n --arg m "⛔ PUSH NON ESEGUITO: il ramo corrente è \`$RAMO\`.
+Su \`main\` il push è una PUBBLICAZIONE (Pages costruisce dalla radice di main),
+e non la fa un hook: la autorizza Pier, a mano. Vedi «Regole di ramo» in CLAUDE.md." '{systemMessage:$m}'
+  exit 0
+fi
+
+ESITO_RAMI=$(git -C "$REPO" push origin "$RAMO" 2>&1)
 RC_RAMI=$?
 ESITO_TAG=$(git -C "$REPO" push origin --tags 2>&1)
 RC_TAG=$?
@@ -33,7 +47,7 @@ if [ $RC_RAMI -ne 0 ] || [ $RC_TAG -ne 0 ]; then
    ⛔ non si aggira: la sblocca Pier."
       ;;
   esac
-  jq -n --arg m "⛔ PUSH FALLITO verso origin (rami rc=$RC_RAMI, tag rc=$RC_TAG). Il repo locale e il remoto NON sono allineati.
+  jq -n --arg m "⛔ PUSH FALLITO verso origin (ramo $RAMO rc=$RC_RAMI, tag rc=$RC_TAG). Il repo locale e il remoto NON sono allineati.
 --- rami ---
 $ESITO_RAMI
 --- tag ---

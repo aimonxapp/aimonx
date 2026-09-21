@@ -15,6 +15,17 @@ REPO="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 cd "$REPO" || exit 1
 
 ATTESE="$REPO/scripts/attese.txt"
+
+# ⛔ WD17 — i due percorsi fuori dal repo NON stanno qui: questo file è
+# tracciato e il repo è PUBBLICO. Stanno in scripts/percorsi-locali.sh, che
+# .gitignore tiene fuori, e che definisce PIER_DIR e APP_DIR.
+# ⚠️ Senza quel file l'indice esterno non si costruisce: il controllo dei
+# puntatori esce «non misurabile» e lo DICE. ⭐ Il terzo esito, non una resa.
+PIER_DIR=""
+APP_DIR=""
+PERCORSI_LOCALI="$REPO/scripts/percorsi-locali.sh"
+# shellcheck source=/dev/null
+[ -r "$PERCORSI_LOCALI" ] && . "$PERCORSI_LOCALI"
 SITO="https://aimonx.app/"
 
 AGGIORNA=0
@@ -153,6 +164,46 @@ if [ "$N_PAGINE" != "0" ]; then
 fi
 echo "  ⚠️ e il repo è PUBBLICO: questi file sono leggibili su github.com già al PUSH,"
 echo "     senza aspettare il merge. Vedi WD17 in docs/aperti.md."
+# ⛔ Il numero qui sopra conta i CANDIDATI, non le pagine vere: questo script non
+# esegue Jekyll e non applica `exclude`. ⚠️ Tenerlo così è voluto — è l'allarme
+# che suona quando entra un file .md nuovo, ed è l'unica cosa che `exclude`,
+# essendo una lista di negazioni, non può fare da sé.
+if [ -f "$REPO/_config.yml" ] && grep -q '^exclude:' "$REPO/_config.yml"; then
+  echo "  ⚠️ _config.yml dichiara di escluderne una parte (WD19). ⛔ NON È PROVATO:"
+  echo "     nessun Jekyll gira qui, e la prova sta oltre il merge. Vedi WD25."
+fi
+
+# --- WD17: il disco di Pier non entra nei file tracciati ---------------------
+# Deciso da Pier il 21/09/2026: il repo resta pubblico, ma dai file tracciati
+# escono i percorsi delle sue cartelle. Questo controllo è ciò che lo tiene
+# vero DOPO il giro che l'ha fatto — senza, regge finché qualcuno se ne ricorda.
+#
+# ⛔ Il motivo di ricerca si COSTRUISCE, non si scrive: un controllo che
+# contenesse i percorsi vietati li pubblicherebbe lui stesso, e si troverebbe.
+#   · sempre: la radice delle home di macOS seguita da un nome — cioè
+#     qualunque percorso assoluto dentro la cartella di un utente;
+#     ⚠️ scritto con una classe di caratteri APPOSTA, così il motivo non
+#     trova sé stesso e questo file non risulta sporco mentendo;
+#   · in più, se scripts/percorsi-locali.sh c'è: il nome della cartella di Pier,
+#     ricavato da PIER_DIR. ⚠️ Senza quel file il controllo è più LARGO, non
+#     assente, e la riga qui sotto lo dichiara invece di lasciarlo credere.
+VIETATI='/User[s]/'
+LARGHEZZA="solo percorsi assoluti"
+if [ -n "$PIER_DIR" ]; then
+  NOME_CARTELLA=$(basename "$(dirname "$PIER_DIR")")
+  VIETATI="$VIETATI|$NOME_CARTELLA"
+  LARGHEZZA="percorsi assoluti + il nome della cartella di Pier"
+fi
+echo
+echo "--- WD17: percorsi del disco di Pier nei file tracciati ---"
+FILE_SPORCHI=$(git grep -lE "$VIETATI" -- . 2>/dev/null || true)
+N_SPORCHI=$(printf '%s' "$FILE_SPORCHI" | grep -c . | tr -d ' ')
+confronta "file tracciati che citano un percorso del disco" percorsi_pier "$N_SPORCHI"
+echo "  (motivo cercato: $LARGHEZZA)"
+if [ "$N_SPORCHI" != "0" ]; then
+  printf '%s\n' "$FILE_SPORCHI" | sed 's|^|     ⛔ |'
+  echo "     ⛔ Questi file sono leggibili da chiunque al primo push. Vedi WD17."
+fi
 
 # --- guardrail dei file vivi -------------------------------------------------
 # ⛔ È l'unica cosa che impedisce di ricascare nel monolite IN SILENZIO.
@@ -252,15 +303,8 @@ fi
 # sensibile al caso direbbe «rotto» di un indirizzo che il Mac risolve.
 # ⚠️ I nomi si confrontano in NFC: il filesystem di macOS conserva gli accenti
 # in NFD, i file .md li scrivono in NFC.
-# ⛔ I due percorsi NON stanno qui: questo file e tracciato e il repo e
-# PUBBLICO. Stanno in scripts/percorsi-locali.sh, che .gitignore tiene fuori.
-# ⚠️ Senza quel file l'indice esterno non si costruisce, e il controllo dei
-# puntatori esce «non misurabile» invece di mentire.
-PIER_DIR=""
-APP_DIR=""
-PERCORSI_LOCALI="$REPO/scripts/percorsi-locali.sh"
-# shellcheck source=/dev/null
-[ -r "$PERCORSI_LOCALI" ] && . "$PERCORSI_LOCALI"
+# ⚠️ PIER_DIR e APP_DIR sono definiti in cima al file: servono anche al
+# controllo WD17, che viene molto prima di qui.
 # ⚠️ Non sono percorsi: identità remote che assomigliano a un percorso.
 NON_PERCORSI='aimonxapp/aimonx Pier974/AIMONX Pier974/GRDB.swift'
 
@@ -346,8 +390,8 @@ else
   # metà degli indirizzi non ha modo di risolvere, e un numero misurato così
   # direbbe «rotto» di roba sana. ⭐ Il terzo esito, non una soglia più larga.
   echo "  percorsi citati: ⛔ NON MISURABILI — la cartella di Pier o il repo dell'app"
-  echo "     non sono leggibili. ⛔ I due percorsi non si stampano: li definisce"
-  echo "     scripts/percorsi-locali.sh, e senza quel file e questo l'esito."
+  echo "     non sono leggibili. ⛔ I due percorsi non si stampano (WD17): li"
+  echo "     definisce scripts/percorsi-locali.sh, e senza quel file è questo l'esito."
 fi
 echo "  ($N_ORA indirizzi da risolvere ora · $N_POI marcati ⏳; i nomi nudi non si controllano)"
 if [ "$FUORI_LEGGIBILE" = 1 ]; then

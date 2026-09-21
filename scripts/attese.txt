@@ -34,3 +34,8 @@ promesse_scadute=0
 tetto_righe_CLAUDE_md=170
 tetto_righe_docs_aperti_md=50
 tetto_righe_docs_piano_chiusura_md=60
+
+# ⛔ WD17 — file tracciati che citano un percorso del disco di Pier.
+# Deve restare 0: il repo è pubblico, e un percorso lì dentro è il disco di
+# qualcuno messo online. Il controllo sta in scripts/controprova.sh.
+percorsi_pier=0

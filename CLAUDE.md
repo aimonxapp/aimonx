@@ -27,6 +27,8 @@
 |---|---|
 | **come si conduce un giro** | skill `/giro` → `.claude/skills/giro/SKILL.md` — ⭐ **è una COPIA di quella dell'app, non un collegamento**, perché il master comune ⏳ `…/10- AIMONX AI Common/skills/giro/` **non esiste**: misurato, `find "…/10- AIMONX AI Common"` elenca due file e nessuna cartella `skills`. ⚠️ **Una copia diverge in silenzio:** chi cambia questa skill o quella dell'app lascia una riga in `bacheca.md` |
 | **la verifica di fine giro** | `scripts/controprova.sh` · valori attesi in `scripts/attese.txt` |
+| **i percorsi di QUESTO Mac** — e perché non stanno in un file tracciato | `scripts/percorsi-locali.sh` e `.claude/settings.local.json`, tenuti fuori da `.gitignore` (WD17). ⚠️ **Non arrivano col clone:** su un Mac nuovo si riscrivono a mano |
+| **cosa Pages pubblica e cosa no** | `_config.yml` — ⛔ **`exclude` è una lista di negazioni, e fallisce APERTA:** chi aggiunge un file alla radice lo pubblica. Chi se ne accorge è la controprova (`pagine_dal_merge`), non la memoria |
 | **il push** | `scripts/push-remoto.sh`, chiamato dall'hook `Stop` — remote misurato: `https://github.com/aimonxapp/aimonx.git`. ⛔ **Nessun hook di pin:** il sito non ha una specifica canonica congelata. ⛔ **Oggi il push NON passa:** vedi «Trappole», il proprietario del repo è un altro account |
 
 ### Materiale di riferimento — nella cartella di Pier, fuori dal repo
@@ -44,7 +46,7 @@
 
 | Cerchi… | Dove |
 |---|---|
-| **prompt e risposte dei giri chiusi** | ⏳ `…/8- AIMONX web/3- note/_archivio/` — nasce col primo verbale |
+| **prompt e risposte dei giri chiusi** | `…/8- AIMONX web/3- note/_archivio/` — c'è dal verbale del giro W0 |
 | **la bozza di luglio della struttura del sito** (ChatGPT, non autorità) | `…/8- AIMONX web/1- Specifiche/da GPT/` |
 
 ⭐ **Prima si sposta, poi si corregge. Mai nello stesso giro.** **Spostare** è meccanico e si dimostra coi numeri. **Correggere** è giudizio, e il giudizio può perdere pezzi. ⛔ **Mescolarli è il modo in cui si perdono i pezzi**, perché un errore di giudizio si nasconde dentro quella che sembrava una copia, **e nessuna controprova lo vede.**
@@ -57,7 +59,7 @@
 ⛔ **Il verbale non entra mai in un file vivo.**
 ⛔ **Se un giro non ha cambiato nessun file vivo, non ha cambiato lo stato del progetto:** è solo storia.
 ⛔ **Un giro che produce solo documenti non ne apre un altro:** i suoi finding vanno in `docs/aperti.md` e **aspettano** — il registro esiste perché un finding possa aspettare. ⚠️ **Il segnale non è la fatica, è il rendimento per giro che crolla**, e i documenti sui documenti hanno profondità infinita.
-⚠️ **Il verbale è la consegna di fine giro, e la archivia Cowork** in ⏳ `…/8- AIMONX web/3- note/_archivio/`. **Nel repo non serve niente**, e a Claude Code la scrittura lì è negata dai permessi — la lettura no: si legge, non si tocca.
+⚠️ **Il verbale è la consegna di fine giro, e la archivia Cowork** in `…/8- AIMONX web/3- note/_archivio/`. **Nel repo non serve niente**, e a Claude Code la scrittura lì è negata dai permessi — la lettura no: si legge, non si tocca.
 
 ⚠️ **`memory.md` sta nella cartella di Pier, dove la scrittura ti è negata dai permessi.** Si legge, non si tocca. **Quando un file vivo di Cowork va aggiornato, il testo arriva come nota in `…/8- AIMONX web/3- note/` e lo integri tu.** ⛔ **Il recinto qui copre quattro cartelle, non una:** `7- App AIMONX`, `8- AIMONX web`, `9- AIMONX social`, `10- AIMONX AI Common`.
 
@@ -105,7 +107,7 @@ Non sono lo stato attuale del codice: sono impegni presi. Non si derogano senza 
 ## Trappole — sembrano miglioramenti, sono danni pubblici
 
 - ⛔ **Un merge su `main` pubblica, ed è misurato.** Pages costruisce con Jekyll dalla radice di `main`: al merge **`CLAUDE.md` diventa `aimonx.app/CLAUDE.html` e `docs/aperti.md` diventa `aimonx.app/docs/aperti.html`.** Non è «salvare»: è mettere online. Nessun merge senza l'autorizzazione di Pier — e qui chi sbaglia lo vede il mondo, non un test.
-- ⛔ **Il repo è PUBBLICO, e questo vale prima del merge e indipendentemente da lui.** Un `git push` di un ramo qualsiasi rende i file di lavoro leggibili su `github.com/aimonxapp/aimonx` da chiunque, merge o no. ⚠️ **I file vivi citano le cartelle di Pier in forma abbreviata** (`…/8- AIMONX web/…`): il nome della cartella, non il percorso intero. ⛔ **Il percorso intero non entra in nessun file tracciato**, e `.gitignore` tiene fuori i due file che lo contengono. **Nessun dato personale nei messaggi di commit, nessun file di lavoro di Pier nel repo** (`spec-sito.md` §1).
+- ⛔ **Il repo è PUBBLICO, e questo vale prima del merge e indipendentemente da lui.** Un `git push` di un ramo qualsiasi rende i file di lavoro leggibili su `github.com/aimonxapp/aimonx` da chiunque, merge o no. ⚠️ **I file vivi citano le cartelle di Pier in forma abbreviata** (`…/8- AIMONX web/…`): il nome della cartella, non il percorso intero. ⛔ **Il percorso intero non entra in nessun file tracciato** (WD17, deciso da Pier il 21/09/2026): sta in `.claude/settings.local.json` e in `scripts/percorsi-locali.sh`, che `.gitignore` tiene fuori — **e la controprova lo controlla a ogni giro.** **Nessun dato personale nei messaggi di commit, nessun file di lavoro di Pier nel repo** (`spec-sito.md` §1).
 - ⛔ **Il push oggi NON passa, e non è un guasto.** Il repo è di `aimonxapp`; la credenziale sul Mac è di `Pier974`, che su questo repo ha `pull: true, push: false` (`gh api repos/aimonxapp/aimonx --jq .permissions`). **Chi lo risolve è Pier**, scegliendo fra dare a `Pier974` accesso in scrittura o autenticare `aimonxapp`. ⛔ **Non si aggira**, e non si cambia la proprietà del repo.
 - ⛔ **Un testo «migliorato» che dice più di quello che l'app fa** è la trappola del sito: la funzione promessa e non presente. Si verifica contro `~/Developer/AIMONX/docs/prodotto.md`, non contro la memoria.
 
@@ -117,6 +119,7 @@ Non sono lo stato attuale del codice: sono impegni presi. Non si derogano senza 
 - **Cowork vede Pier, le decisioni e il mondo fuori dal repo.** Scrive **l'intento** di ogni giro e le condizioni di stop, i vincoli che nel codice non esistono, e il lavoro di pubblicazione (privacy policy, App Store, DSA).
 - ⛔ **Cowork non ti dice più come si fa una cosa nel repo:** scrive cosa deve essere vero alla fine e come si prova. **Ogni sua ipotesi su qualcosa che sta nel codice arriva etichettata come ipotesi** — verificala e riferisci, non darla per buona.
 - ⛔ **I testi che l'utente legge li scrive Cowork.** Non per gerarchia: **non esiste un test che dica se una frase è chiara, o se il tono è sportivo invece che militare.** È l'unica zona senza controprova meccanica. **Se un giro richiede un testo nuovo per l'utente, fermati e riferisci.** ⚠️ **Qui vale il doppio:** in questo repo *tutto* ciò che si costruisce è testo che l'utente legge.
+- ⛔ **Pier non scrive codice, e nessun criterio di scelta può misurarsi su quanto gli costi modificarlo.** ⚠️ **È stato scritto davvero, in `WD19`:** *«quanto costa a Pier cambiare un testo da solo»* — un costo che non è suo, quindi un criterio che non misura niente. ⭐ **I costi si misurano sul lavoro dei giri e sul rischio:** quante sessioni serve, e cosa succede se va storta.
 - ⭐ **`CLAUDE.md` e i file del repo sono tuoi, questo blocco compreso.** Cowork consegna il testo, tu lo integri dove ha senso. **Aggiungere un puntatore a un file che hai appena creato è tuo diritto, non un'intrusione.**
 - **Cosa è aperto sta in `docs/aperti.md`**, nel repo. ⛔ **Le voci gemelle restano aperte anche nel registro dell'app:** chiuderne una qui non chiude quella là, e il contrario nemmeno. Chi ne chiude una lo dice in `bacheca.md`.
 
