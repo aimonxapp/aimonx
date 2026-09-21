@@ -1,0 +1,17 @@
+# ⛔ WD17 — il repo è PUBBLICO. Qui sotto sta tutto ciò che descrive IL MAC DI
+# PIER e non il progetto: percorsi delle sue cartelle, nomi di account, recinto
+# dei permessi. Non è «rumore da ignorare»: è la riga che separa un repo
+# pubblicabile da uno che pubblica il disco di qualcuno.
+#
+# ⚠️ Un file elencato qui NON arriva sul prossimo Mac che clona il repo: chi
+# ricostruisce l'ambiente li riscrive a mano. Dove si scrive come, lo dice
+# CLAUDE.md, «Gli attrezzi».
+
+# Il recinto dei permessi — cita quattro cartelle del disco di Pier.
+.claude/settings.local.json
+
+# I percorsi fuori dal repo che la controprova indicizza (PIER_DIR, APP_DIR).
+scripts/percorsi-locali.sh
+
+# macOS
+.DS_Store

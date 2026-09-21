@@ -1,0 +1,36 @@
+# Valori attesi della controprova del sito — UNICA FONTE.
+#
+# ⛔ Questo file NON si aggiorna da sé. Una run normale lo legge e basta.
+#    Per cambiarne un valore serve un gesto esplicito:
+#
+#        scripts/controprova.sh --aggiorna-attese
+#
+#    Il comando stampa vecchio → nuovo per ogni riga toccata e lascia la
+#    modifica nel working tree: la si vede in `git diff` e la si committa a
+#    mano. Un baseline che si riallinea da solo non misura più niente.
+#
+# Una chiave assente vale "non stabilita": lo script lo dice e non finge.
+#
+# ⚠️ Provenienza dei valori qui sotto: misurati tutti nel giro di fondazione
+# `fondazione-W0`, sul ramo di quel giro, con `scripts/controprova.sh`.
+# Nessuno è copiato da un documento.
+
+# Quanti .md tracciati diventerebbero pagine pubbliche su aimonx.app al merge
+# su main. ⛔ Non è una soglia di comodo: è la domanda «questi file, il mondo
+# può leggerli?». Se il numero sale, qualcuno ha aggiunto un file di lavoro.
+pagine_dal_merge=4
+
+# Titoli di primo livello con una data dentro, nei tre file vivi.
+# ⛔ Deve restare 0: una data in un ## vuol dire che un verbale è entrato in un
+# file vivo, ed è così che nasce il monolite.
+titoli_datati=0
+
+# Percorsi citati fra backtick nei file vivi che non risolvono sul disco.
+percorsi_rotti=0
+
+# Indirizzi marcati ⏳ («nasce dopo») che sul disco ESISTONO già: il marcatore
+# è rimasto e il file vivo annuncia come futuro qualcosa che c'è.
+promesse_scadute=0
+tetto_righe_CLAUDE_md=170
+tetto_righe_docs_aperti_md=50
+tetto_righe_docs_piano_chiusura_md=60
