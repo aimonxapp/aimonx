@@ -1,7 +1,8 @@
-/* assets/css/b.css — VARIANTE B, «le carte».
+/* assets/css/b.css — LA LANDING, dal giro W5. Una sola, non più una variante.
  *
- * L'IDEA. Chi arriva qui poi apre l'app: questa pagina è fatta con i pezzi
- * dell'app, non con pezzi da sito. Le carte seguono l'anatomia scritta in
+ * L'IDEA, che è quella della variante B del W4 e resta. Chi arriva qui poi apre
+ * l'app: questa pagina è fatta con i pezzi dell'app, non con pezzi da sito. Le
+ * carte seguono l'anatomia scritta in
  * `…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` §4c e §4d, VALORE PER
  * VALORE — filetto 5 px a sinistra nel colore della sezione, fascia in testa
  * nello stesso colore molto tenue, cerchio pieno 44 px col glifo bianco, glifo
@@ -12,6 +13,19 @@
  * d'identità di §4b, quella che nell'app dice «questa è la sezione Armi»,
  * «questa è Manutenzione». Chi ha già visto l'app riconosce la sezione dal
  * colore prima di leggere il titolo.
+ *
+ * ⭐ COSA HA CAMBIATO IL GIRO W5, e SOLO questo: la PARTE ALTA. Pier ha scelto
+ * la B per il corpo della pagina e la A per l'apertura, più il logo grande
+ * dell'app. Quindi dalla riga «--- la parte alta ---» in giù c'è la A: la
+ * domanda enorme in verde salvia, che nella B era media e bianca. ⛔ Il resto
+ * del foglio non è stato toccato — le carte sono quelle che Pier ha guardato.
+ *
+ * ⚠️ IL NOME DEL FILE RESTA `b.css` ANCHE SE LE VARIANTI NON CI SONO PIÙ, e la
+ * ragione non è pigrizia: rinominarlo avrebbe mescolato uno SPOSTAMENTO con
+ * una CORREZIONE nello stesso giro (CLAUDE.md, «Prima si sposta, poi si
+ * corregge»), e il diff che Pier deve poter leggere — «cosa è cambiato della
+ * B che ho scelto» — sarebbe diventato «file nuovo, 160 righe». Si rinomina in
+ * un giro che non cambia altro, o non si rinomina.
  *
  * DOVE SI OSA: il proclama della privacy è una carta SCURA in mezzo alle
  * bianche — nell'app è la «presentazione scura» (§2, verde chiaro sul verde).
@@ -33,29 +47,135 @@ body.v-b {
 .v-b .marchio { width: 48px; height: 48px; border-radius: 12px; }
 .v-b .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
 
-.v-b .eroe { position: relative; padding-block: clamp(1.2rem, 3vw, 2.2rem) clamp(2.6rem, 7vw, 4.6rem); }
+/* --- LA PARTE ALTA: è quella della VARIANTE A, più il logo ---------------
+ *
+ * ⛔ Quello che segue non è la parte alta della B: è quella della A, scelta da
+ * Pier il 22/09/2026. Cosa la fa «A» e non «B»: il titolo enorme invece che
+ * medio, e in verde salvia invece che bianco.
+ *
+ * ⚠️ UNA COSA DELLA A È CAMBIATA, E VA DETTA INVECE CHE NASCOSTA: il tetto del
+ * titolo scende da 5.6rem a 5.2rem. ⛔ NON perché a 5.6 «non ci stia» —
+ * MISURATO col browser: a 5.6rem non sborda niente, a nessuna larghezza. Il
+ * motivo è un altro e si conta in RIGHE. Nella A il titolo aveva tutta la
+ * pagina, perché il mirino gli stava DIETRO; qui accanto c'è il logo, che è
+ * opaco e la riga se la divide. Il tetto morde solo sopra i ~1015 px (sotto
+ * comanda 8.2vw), e lì la domanda si spezza così:
+ *     finestra 1440px → 5.2rem: 3 righe · 5.3rem: 4
+ *     finestra 1200px → 5.2rem: 3 righe · 5.3rem: 3 · 5.4rem: 4
+ *     finestra 1060px → 5.2rem: 3 righe · fino a 5.6rem: 3
+ * ⭐ 5.2rem è il corpo PIÙ GRANDE che tiene la domanda in TRE righe su tutte e
+ * tre — cioè la forma che Pier ha guardato nella A. Da 5.3rem in su la stessa
+ * domanda è di quattro righe su uno schermo e di tre su un altro, e la parte
+ * alta cambia carattere a seconda di chi la apre.
+ * ⛔ Il tetto lo decide quel conto, non il gusto.
+ * ⭐ Il resto del clamp è quello della A, cifra per cifra: 8.2vw e il pavimento
+ * a 2.6rem. Su un telefono, quindi, il titolo è IDENTICO alla A.
+ * ⚠️ Se Pier rivuole i 5.6rem pieni, il logo va sopra o sotto al titolo, non
+ * accanto — ed è una TERZA parte alta, da costruire e da guardare. */
+
+.v-b .eroe {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
+  padding-block: clamp(1.2rem, 3vw, 2.2rem) clamp(2.6rem, 7vw, 4.6rem);
+}
+/* Da 880 px in su — la STESSA soglia a cui le carte si mettono in due colonne,
+   così la pagina cambia forma una volta sola invece che due. */
+@media (min-width: 880px) {
+  /* ⛔ Il tetto della colonna è 16rem, cioè 256 px, e il numero NON è tondo per
+     caso: il file del logo è 512×512, e 256 px su uno schermo Retina (2×) sono
+     esattamente 512 pixel veri. A 17rem servivano 544 pixel e il browser ne
+     aveva 512, cioè il 94% — misurato. Il logo non si ridisegna e non si
+     rifà più grande, quindi è la casella che si adatta al file. */
+  .v-b .eroe { grid-template-columns: minmax(0, 1fr) clamp(12rem, 20vw, 16rem); }
+}
+
 .v-b .eroe h1 {
-  position: relative; z-index: 1;
-  font-size: clamp(2.05rem, 5.6vw, 3.7rem);
-  font-weight: 700; line-height: 1.04; letter-spacing: -.032em;
-  color: var(--bianco); max-width: 19ch;
+  font-size: clamp(2.6rem, 8.2vw, 5.2rem); /* la A, col solo tetto abbassato */
+  font-weight: 700; line-height: .98; letter-spacing: -.035em;
+  color: var(--verde-chiaro);        /* §2 — l'accento sulla presentazione scura */
+  /* ⛔ NIENTE `max-width` QUI, e l'assenza è una decisione. La A ne aveva uno
+     (17ch) perché occupava tutta la pagina e senza freno la domanda sarebbe
+     diventata una riga lunghissima. Qui il freno c'è già ed è la colonna della
+     griglia: misurato, la scatola del titolo è larga ESATTAMENTE quanto la
+     colonna a ogni finestra provata, cioè un `max-width` in ch non arriverebbe
+     mai a mordere. ⚠️ Un limite che non limita è peggio di nessun limite:
+     sembra che qualcuno abbia deciso quella misura, e chi la cambia non vede
+     succedere niente. Un freno solo, e che freni davvero. */
 }
 .v-b .occhiello {
-  position: relative; z-index: 1;
-  margin-top: 1.4rem; max-width: 48ch;
+  margin-top: clamp(1.4rem, 3.4vw, 2.1rem); max-width: 46ch;
   font-size: clamp(1rem, 2vw, 1.18rem); line-height: 1.6; color: #CFE3D8;
 }
 .v-b .presto {
-  position: relative; z-index: 1;
   margin-top: 1.5rem; font-size: 1rem; font-weight: 600; letter-spacing: .03em;
   color: var(--verde-chiaro);
 }
-.v-b .mira {
-  position: absolute; right: -8rem; top: 45%; transform: translateY(-50%);
-  width: 26rem; height: 26rem; z-index: 0; color: rgba(140, 204, 166, .10);
+
+/* --- il logo, e il mirino solo dove c'è ---------------------------------- */
+/* ⚠️ Su schermo stretto `.segno` viene DOPO le parole, ed è voluto: la prima
+   cosa che si legge dev'essere la domanda, non l'icona. Su schermo largo la
+   griglia lo porta a destra senza toccare l'ordine del documento — quindi chi
+   legge con un lettore di schermo o col tasto tab sente sempre lo stesso
+   ordine, a qualsiasi larghezza. */
+/* ⛔ `aspect-ratio: 1` NON è cosmesi: è il contenitore quadrato dentro cui il
+   mirino della versione ② sta SENZA SBORDARE. Prima stava fuori — misurato a
+   880 px di finestra: scrollWidth 893 contro clientWidth 880, cioè 13 px di
+   scorrimento orizzontale che nessuno vuole. ⭐ La cura non è stata nascondere
+   lo sbordo con `overflow`, che avrebbe TAGLIATO il mirino lasciandolo
+   sbordare lo stesso: è stata cambiare chi misura cosa — il quadrato è la
+   colonna, il mirino la riempie, e il logo ci sta dentro. */
+.v-b .segno {
+  position: relative; display: grid; place-items: center;
+  width: clamp(10rem, 42vw, 15rem); aspect-ratio: 1; margin-inline: auto;
+}
+@media (min-width: 880px) { .v-b .segno { width: auto; margin-inline: 0; } }
+
+.v-b .logo {
+  position: relative; z-index: 1;
+  width: 100%; height: auto;
+  /* L'angolo delle icone iOS. ⛔ Il file dell'app è un quadrato pieno, senza
+     angoli: la maschera la mette il sistema sulla Home, e qui la mettiamo noi
+     — altrimenti l'icona si vede come un rettangolo, che sulla Home di
+     nessuno esiste. Non è ridisegnare il logo: i pixel non si toccano. */
+  border-radius: 22.4%;
+  /* ⚠️ E questo filo NON è decorazione. Misurato: l'angolo del file è #0E3726,
+     il fondo della pagina è #0F3625 e in cima al gradiente è #1A4A33 — cioè
+     l'icona ha quasi ESATTAMENTE il fondo su cui sta, e senza un bordo il
+     quadrato si perde nel verde. */
+  border: 1px solid rgba(140, 204, 166, .22);
+  box-shadow: 0 18px 44px rgba(4, 18, 12, .45);
+}
+
+/* ⚠️ DIFFERENZA DA GUARDARE, e non è un dettaglio tecnico: nella versione ②
+   il logo è PIÙ PICCOLO — 66% del quadrato invece del 100% — perché il mirino
+   gli sta intorno e i due insieme occupano lo stesso posto che nella ① occupa
+   il solo logo. ⛔ Non è un ripiego: è la geometria della scelta. «Logo e
+   mirino» vuol dire per forza un logo meno grande, a parità di spazio; l'unica
+   alternativa sarebbe una parte alta più alta, cioè una terza cosa da
+   guardare. Le due pagine restano confrontabili perché l'ingombro totale è lo
+   stesso, e tutto il resto — titolo, testo, carte — non si muove di un pixel. */
+.v-b .con-mira .logo { width: 66%; }
+
+/* Il mirino della A — SOLO nella versione ②, dove l'HTML lo mette (`/mirino/`).
+   ⛔ Qui non c'è nessun `display: none` per l'altra: se non serve, non esiste.
+   Sta DIETRO al logo e più largo di lui, così si legge come un'unica cosa —
+   l'icona al centro del bersaglio — invece che come due segni accostati.
+   Spento come nella A: è sfondo, non un secondo soggetto. */
+.v-b .segno .mira {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  /* ⛔ QUESTA RIGA NON È UN DI PIÙ, ed è costata un giro di misure: senza,
+     `comune.css` impone `svg { max-width: 100% }` a TUTTI gli svg e il 150%
+     qui sopra viene riportato a 100%, cioè esattamente la misura del logo che
+     lo copre. Il mirino c'era nell'HTML, era disegnato, e non si vedeva —
+     le due parti alte uscivano identiche dallo screenshot. ⚠️ Lezione: una
+     regola universale in un foglio comune vince in silenzio su un'intenzione
+     locale, e l'unica cosa che l'ha detta è stato GUARDARE l'immagine. */
+  max-width: none;
+  color: rgba(140, 204, 166, .17);
   pointer-events: none;
 }
-@media (max-width: 940px) { .v-b .mira { display: none; } }
 
 /* --- i blocchi ----------------------------------------------------------- */
 .v-b .blocco { padding-block: clamp(2rem, 5vw, 3.2rem); }

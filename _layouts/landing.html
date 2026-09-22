@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 {%- comment -%}
-  _layouts/landing.html — L'UNICO scheletro della landing. Le tre varianti del
-  giro W4 passano tutte di qui e differiscono SOLO per il foglio di stile.
+  _layouts/landing.html — L'UNICO scheletro della landing.
 
-  ⭐ PERCHÉ UN LAYOUT SOLO E NON TRE. La condizione del giro è «2-3 varianti
-  visive della stessa landing, STESSO TESTO». Con tre layout il testo sarebbe
-  scritto tre volte, e «stesso» sarebbe una cosa da ricontrollare a occhio a
-  ogni correzione. Così il testo sta in `_data/landing.yml` e la struttura sta
-  qui: le tre varianti sono lo stesso HTML con tre CSS diversi, quindi
-  ⛔ una variante NON PUÒ dire una parola diversa dalle altre, per costruzione.
+  ⭐ DAL GIRO W5 LA LANDING È UNA SOLA: la variante B (le carte) con la parte
+  alta della variante A (la domanda enorme in verde salvia) e il logo grande
+  dell'app. Lo ha scelto Pier il 22/09/2026 guardando le tre varianti del W4.
+  ⛔ A e C non sono cancellate, sono USCITE DALLA PAGINA: restano leggibili al
+  tag `varianti-W4` (regola di ramo, «non si cancella nulla»).
+
+  ⚠️ RESTANO DUE PAGINE, e non sono due varianti: sono la STESSA landing con
+  due versioni della SOLA parte alta, che è l'unica cosa su cui Pier deve
+  ancora decidere (giro W5 §1 punto 4).
+    · `/`        → il logo grande AL POSTO del mirino di A;
+    · `/mirino/` → il logo grande E il mirino di A insieme.
+  ⛔ Che `/` sia la prima NON vuol dire che sia la preferita: la home deve
+  esistere, e questo è tutto quello che vuol dire — stessa ragione per cui nel
+  W4 `/` era la variante A. Le due si guardano alla pari.
+
+  ⭐ PERCHÉ UN LAYOUT SOLO E NON DUE. Il testo sta in `_data/landing.yml` e la
+  struttura sta qui: le due versioni sono lo stesso HTML meno un elemento,
+  quindi ⛔ una NON PUÒ dire una parola diversa dall'altra, per costruzione.
   ⚠️ E ne segue una seconda cosa, che conta quanto la prima: la struttura dei
   titoli, l'ordine di lettura e la navigazione da tastiera sono identici nelle
-  tre — l'accessibilità si misura una volta e vale per tutte.
+  due — l'accessibilità si misura una volta e vale per tutt'e due.
 
   ⛔ IL TESTO NON SI SCRIVE QUI. Viene da `_data/landing.yml`, che è la bozza
   approvata da Pier. Chi vuole cambiare una parola cambia quel file, e quel
-  file lo scrive Cowork.
+  file lo scrive Cowork. ⭐ Il giro W5 non ne ha cambiata NESSUNA: la parte
+  alta nuova usa le stesse tre righe dell'hero di prima.
 
   `page.variante` sceglie la classe del <body>; `page.foglio` il foglio di
-  stile (li legge `_includes/testa.html`).
+  stile (li legge `_includes/testa.html`); `page.mirino` accende il mirino.
 {%- endcomment -%}
 <head>
   {%- include testa.html -%}
@@ -39,22 +51,64 @@
       <span class="nome">{{ d.brand }}</span>
     </header>
 
+    {%- comment -%}
+      LA PARTE ALTA — giro W5. ⛔ Non è la parte alta della variante B: è
+      quella della VARIANTE A (la domanda enorme in verde salvia), scelta da
+      Pier il 22/09/2026 sopra il resto della pagina, che resta B.
+
+      ⭐ E la differenza fra le DUE VERSIONI che Pier deve guardare sta tutta
+      qui dentro, in una riga: `page.mirino`. Il logo c'è sempre; il mirino
+      grande e sfumato di A c'è solo dove il front matter lo chiede.
+      ⛔ Il mirino NON si nasconde col CSS: se non serve non entra nell'HTML.
+      Motivo: un elemento nascosto resta nella pagina, pesa e a volte si sente
+      — e le due versioni devono differire per quello che SONO, non per quello
+      che si vede.
+    {%- endcomment -%}
     <div class="eroe">
-      <h1>{{ d.hero.headline }}</h1>
-      <p class="occhiello">{{ d.hero.lead }}</p>
-      <p class="presto">{{ d.hero.note }}</p>
-      {%- comment -%}
-        Il mirino: il segno dell'icona, in grande e quasi spento. ⛔ È l'unico
-        pezzo di decorazione della pagina, ed è il nome del prodotto — AIMONX =
-        AIM ON X, la mira sulla X (spec-sito.md §3). Decorativo per i lettori
-        di schermo, che non devono sentirselo annunciare.
-      {%- endcomment -%}
-      <svg class="mira" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-        <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="2"/>
-        <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
-        <path d="M100 4v34M100 162v34M4 100h34M162 100h34" stroke="currentColor" stroke-width="2"/>
-        <circle cx="100" cy="100" r="6" fill="#EC6F18"/>
-      </svg>
+      <div class="parole">
+        <h1>{{ d.hero.headline }}</h1>
+        <p class="occhiello">{{ d.hero.lead }}</p>
+        <p class="presto">{{ d.hero.note }}</p>
+      </div>
+
+      <div class="segno{% if page.mirino %} con-mira{% endif %}">
+        {%- if page.mirino -%}
+        {%- comment -%}
+          Il mirino della variante A, qui dietro al logo invece che dietro al
+          testo. ⚠️ È il punto su cui Pier deve decidere: il logo contiene GIÀ
+          un mirino (il punto arancio col reticolo), e i due segni si possono
+          ripetere. Sta qui, in grande e quasi spento, proprio perché la
+          ripetizione si veda invece di essere descritta a parole.
+          Decorativo: chi usa un lettore di schermo non deve sentirselo
+          annunciare (spec-sito.md §3 — AIMONX = AIM ON X).
+        {%- endcomment -%}
+        <svg class="mira" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+          <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M100 4v34M100 162v34M4 100h34M162 100h34" stroke="currentColor" stroke-width="2"/>
+          <circle cx="100" cy="100" r="6" fill="#EC6F18"/>
+        </svg>
+        {%- endif %}
+        {%- comment -%}
+          IL LOGO GRANDE — l'icona dell'app così com'è, non ridisegnata: gli
+          stessi pixel del file dell'app, solo rimpiccioliti a 512 e
+          ricompressi senza perdita (giro W5).
+
+          alt="" — DECORATIVA, ed è una scelta di CC da guardare, non un
+          fatto: il nome «AIMONX» è già scritto in lettere nella testata qui
+          sopra e nel motto in fondo, quindi l'icona non porta NESSUNA
+          informazione che manchi a chi non la vede. Chi usa un lettore di
+          schermo sentirebbe «AIMONX» due volte a tre righe di distanza.
+          ⚠️ Se per Cowork il logo è contenuto e non decorazione, qui va un
+          testo alternativo — e lo scrive Cowork, non CC.
+
+          width/height sono i pixel VERI del file: servono al browser per
+          tenere il posto prima che l'immagine arrivi, così la domanda non
+          salta mentre si legge. La misura a schermo la fa il CSS.
+        {%- endcomment -%}
+        <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
+             alt="" width="512" height="512" decoding="async">
+      </div>
     </div>
   </div>
 
