@@ -155,7 +155,13 @@ echo "commit non pushati (tutti i rami): $(conta_righe "$NON_PUSHATI_L")"
 # ⭐ Il numero non è un allarme: è una domanda. «Questi file, il mondo può
 # leggerli?» Se la risposta è no, il merge non si fa — o i file non stanno lì.
 echo
-echo "--- cosa pubblicherebbe un merge su main (Jekyll, radice di main) ---"
+# ⚠️ Dal giro W3 questa sezione ha cambiato TEMPO, non misura: il primo merge
+# è avvenuto, quindi questi .md sono GIÀ sulla radice di main. La domanda non è
+# più «cosa pubblicherebbe un merge» ma «cosa Pages ha sotto mano, e che solo
+# `exclude` tiene fuori» — più «cosa aggiungerebbe il prossimo merge», se il
+# ramo corrente ne ha di nuovi. ⭐ Il numero risponde a tutte e due, e per
+# questo non è cambiato: resta il conto dei CANDIDATI.
+echo "--- cosa Pages ha sotto mano su main, e che solo exclude tiene fuori ---"
 PAGINE=$(git ls-files '*.md' | grep -vE '(^|/)[_.]' | sort)
 N_PAGINE=$(printf '%s' "$PAGINE" | grep -c . | tr -d ' ')
 confronta "file .md che diventerebbero pagine" pagine_dal_merge "$N_PAGINE"
@@ -164,6 +170,8 @@ if [ "$N_PAGINE" != "0" ]; then
 fi
 echo "  ⚠️ e il repo è PUBBLICO: questi file sono leggibili su github.com già al PUSH,"
 echo "     senza aspettare il merge. Vedi WD17 in docs/aperti.md."
+echo "  ⭐ Che exclude li tenga fuori NON è più solo una prova locale: dal giro W3"
+echo "     è misurato sul mondo — aimonx.app/CLAUDE.html risponde 404."
 # ⛔ Il numero qui sopra conta i CANDIDATI, non le pagine vere: questo script non
 # esegue Jekyll e non applica `exclude`. ⚠️ Tenerlo così è voluto — è l'allarme
 # che suona quando entra un file .md nuovo, ed è l'unica cosa che `exclude`,

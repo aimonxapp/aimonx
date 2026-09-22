@@ -15,9 +15,15 @@
 # `fondazione-W0`, sul ramo di quel giro, con `scripts/controprova.sh`.
 # Nessuno è copiato da un documento.
 
-# Quanti .md tracciati diventerebbero pagine pubbliche su aimonx.app al merge
-# su main. ⛔ Non è una soglia di comodo: è la domanda «questi file, il mondo
+# Quanti .md tracciati sono CANDIDATI a diventare pagine pubbliche su
+# aimonx.app. ⛔ Non è una soglia di comodo: è la domanda «questi file, il mondo
 # può leggerli?». Se il numero sale, qualcuno ha aggiunto un file di lavoro.
+#
+# ⚠️ Dal giro W3 la domanda ha cambiato tempo verbale, non contenuto: il primo
+# merge è avvenuto, quindi questi quattro .md sono già sulla radice di main e
+# l'unica cosa che li tiene fuori dal sito è `exclude`. ⭐ Il numero è rimasto 4
+# perché conta i candidati, e i candidati non sono cambiati: nessun .md nuovo è
+# entrato nel repo in quel giro. Non serviva --aggiorna-attese, e non è stato usato.
 pagine_dal_merge=4
 
 # Titoli di primo livello con una data dentro, nei tre file vivi.

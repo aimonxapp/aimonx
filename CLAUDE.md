@@ -30,7 +30,7 @@
 | **con cosa si costruisce il sito in locale** | `Gemfile` — ⛔ **le versioni NON sono una scelta nostra:** sono quelle che GitHub dichiara in `pages.github.com/versions.json`. Costruire con altre significa provare un sito e pubblicarne un altro. Come si rifà: «Comandi» |
 | **come si guarda l'anteprima con un browser vero** | `scripts/anteprima-playwright.mjs` — due screenshot, gli errori in console, e ⛔ **ogni richiesta verso un dominio esterno**. ⚠️ **Non è un test che passa o fallisce: è una misura**, e il giudizio è di chi legge |
 | **i percorsi di QUESTO Mac** — e perché non stanno in un file tracciato | `scripts/percorsi-locali.sh` e `.claude/settings.local.json`, tenuti fuori da `.gitignore` (WD17). ⚠️ **Non arrivano col clone:** su un Mac nuovo si riscrivono a mano |
-| **cosa Pages pubblica e cosa no** | `_config.yml` — ⛔ **`exclude` è una lista di negazioni, e fallisce APERTA:** chi aggiunge un file alla radice lo pubblica. Chi se ne accorge è la controprova (`pagine_dal_merge`), non la memoria |
+| **cosa Pages pubblica e cosa no** | `_config.yml` — ⛔ **`exclude` è una lista di negazioni, e fallisce APERTA in DUE versi.** ① Verso i file nuovi: chi ne aggiunge uno alla radice lo pubblica, e chi se ne accorge è la controprova (`pagine_dal_merge`), non la memoria. ② ⛔ **Verso chi sta sotto:** misurato nel giro W3, GitHub aggiunge `CNAME` alla lista **solo se** la lista è ancora quella di default di Jekyll — riscriverla ha disattivato quell'esclusione senza dirlo (WD29). **Chi tocca questa lista si porta dietro anche i default di chi ci sta sotto** |
 | **il push** | `scripts/push-remoto.sh`, chiamato dall'hook `Stop` — remote misurato: `https://github.com/aimonxapp/aimonx.git`. ⛔ **Nessun hook di pin:** il sito non ha una specifica canonica congelata. ⛔ **Spinge il SOLO ramo corrente e rifiuta `main`**, perché `main` è il sito pubblicato |
 
 ### Materiale di riferimento — nella cartella di Pier, fuori dal repo
@@ -69,11 +69,11 @@
 
 AIMONX sito — il sito pubblico `aimonx.app` dell'app iOS AIMONX, diario tecnico per tiratori sportivi. **Sito statico su GitHub Pages**, con dominio collegato e certificato valido.
 
-- **Repo:** `aimonxapp/aimonx` — ⛔ **pubblico**, ramo di default `main`, due commit, un ramo, zero tag, due file (`CNAME`, `README.md`). Remote: `https://github.com/aimonxapp/aimonx.git`. ⭐ **Il proprietario è l'account `aimonxapp`, NON `Pier974`** che possiede il repo dell'app. *(`gh repo view aimonxapp/aimonx`, `gh api repos/aimonxapp/aimonx`.)*
-- **Pages pubblica dal ramo `main`, cartella radice `/`**, con **Jekyll** (`"build_type": "legacy"`); dominio `aimonx.app`, certificato approvato. **`https_enforced` è `true`** e `http://aimonx.app` risponde `301` verso HTTPS. ⚠️ **Ma la pagina si dichiara ancora `http://` da sé** nel proprio `canonical`: quello lo scrive Jekyll, non GitHub, e il rimedio (`url:` in `_config.yml`) è sul ramo e non ancora online — WD23. *(`gh api repos/aimonxapp/aimonx/pages`, `curl -sSI http://aimonx.app/`.)*
+- **Repo:** `aimonxapp/aimonx` — ⛔ **pubblico**, ramo di default `main`, zero tag. ⛔ **I conteggi (commit, rami, file) NON si scrivono qui: cambiano a ogni giro.** Si leggono con `git ls-remote origin` e `gh api repos/aimonxapp/aimonx/commits?sha=main`. Remote: `https://github.com/aimonxapp/aimonx.git`. ⭐ **Il proprietario è l'account `aimonxapp`, NON `Pier974`** che possiede il repo dell'app. *(`gh repo view aimonxapp/aimonx`, `gh api repos/aimonxapp/aimonx`.)*
+- **Pages pubblica dal ramo `main`, cartella radice `/`**, con **Jekyll** (`"build_type": "legacy"`); dominio `aimonx.app`, certificato approvato. **`https_enforced` è `true`** e `http://aimonx.app` risponde `301` verso HTTPS. ⭐ **E dal giro W3 la pagina si dichiara `https://` anche da sé** nel proprio `canonical`, perché `url:` in `_config.yml` è online — WD23 ✅. ⚠️ **Erano due cose distinte:** il `301` lo fa GitHub, il `canonical` lo scrive Jekyll. *(`gh api repos/aimonxapp/aimonx/pages`, `curl -sSI http://aimonx.app/`.)*
 - **Cosa pubblica oggi:** il README, reso con **Jekyll v3.10.0** — titolo *«aimonx-website»*, corpo *«AIMONX website»*. Nessuna landing, nessuna pagina di contenuto. *(`curl -sS https://aimonx.app/ | grep generator`.)*
 - ⛔ **Con cosa si costruirà — Jekyll, HTML puro, altro — è una decisione di Pier:** CC propone con i costi, non decide. Vincoli da `spec-sito.md` §6: statico, JS minimo, nessun database, nessun CMS, nessun tracker.
-- ⛔ **`main` è il sito pubblicato, ed è misurato, non più un'ipotesi:** un merge su `main` **è una pubblicazione al mondo**, perché Pages costruisce dalla radice di `main`. La regola di ramo qui pesa il doppio.
+- ⛔ **`main` è il sito pubblicato, ed è misurato, non più un'ipotesi:** un merge su `main` **è una pubblicazione al mondo**, perché Pages costruisce dalla radice di `main`. La regola di ramo qui pesa il doppio. ⭐ **Esercitato una volta, nel giro W3**, con l'autorizzazione di Pier: `main` è avanzato in fast-forward e Pages ha ricostruito in 42 s.
 
 ## Comandi
 
@@ -85,7 +85,10 @@ scripts/controprova.sh --aggiorna-attese  # riscrive i valori attesi misurati or
 
 # costruire e guardare — la riga in testa serve a ogni comando che segue
 export PATH="$HOME/.rbenv/versions/3.3.4/bin:$PATH"
-bundle exec jekyll build --safe    # come costruisce Pages; il risultato finisce in _site/ (ignorato)
+JEKYLL_ENV=production bundle exec jekyll build --safe   # il risultato in _site/ (ignorato)
+# ⛔ `JEKYLL_ENV=production` non è un di più (WD30): senza, Jekyll resta in `development`,
+# il gem github-pages salta `sass: style: compressed` e il CSS esce a 136 KB invece dei
+# 76 KB che Pages serve. Con la riga giusta le due build sono identiche AL BYTE.
 bundle exec jekyll serve           # anteprima su http://127.0.0.1:4000/ — si spegne con ctrl-c
 node scripts/anteprima-playwright.mjs http://127.0.0.1:4000/ ~/Desktop/aimonx-anteprima
 
@@ -139,7 +142,7 @@ Non sono lo stato attuale del codice: sono impegni presi. Non si derogano senza 
 
 ## Trappole — sembrano miglioramenti, sono danni pubblici
 
-- ⛔ **Un merge su `main` pubblica, ed è misurato.** Pages costruisce con Jekyll dalla radice di `main`: al merge **`CLAUDE.md` diventa `aimonx.app/CLAUDE.html` e `docs/aperti.md` diventa `aimonx.app/docs/aperti.html`.** Non è «salvare»: è mettere online. Nessun merge senza l'autorizzazione di Pier — e qui chi sbaglia lo vede il mondo, non un test.
+- ⛔ **Un merge su `main` pubblica, ed è misurato.** Pages costruisce con Jekyll dalla radice di `main`, quindi un merge non è «salvare»: è mettere online. ⭐ **Ma la vecchia riga qui diceva che al merge `CLAUDE.md` sarebbe diventato `aimonx.app/CLAUDE.html`, e il giro W3 l'ha MISURATA E SMENTITA:** dopo il merge quell'indirizzo risponde `404`, perché `exclude` tiene (WD19, WD25). ⛔ **Il pericolo non è sparito, si è spostato:** non è più «il merge pubblica tutto», è **«il merge pubblica tutto ciò che `exclude` non nomina»** — e una lista di negazioni non nomina ciò che non esiste ancora. Nessun merge senza l'autorizzazione di Pier — e qui chi sbaglia lo vede il mondo, non un test.
 - ⛔ **Il repo è PUBBLICO, e questo vale prima del merge e indipendentemente da lui.** Un `git push` di un ramo qualsiasi rende i file di lavoro leggibili su `github.com/aimonxapp/aimonx` da chiunque, merge o no. ⚠️ **I file vivi citano le cartelle di Pier in forma abbreviata** (`…/8- AIMONX web/…`): il nome della cartella, non il percorso intero. ⛔ **Il percorso intero non entra in nessun file tracciato** (WD17, deciso da Pier il 21/09/2026): sta in `.claude/settings.local.json` e in `scripts/percorsi-locali.sh`, che `.gitignore` tiene fuori — **e la controprova lo controlla a ogni giro.** **Nessun dato personale nei messaggi di commit, nessun file di lavoro di Pier nel repo** (`spec-sito.md` §1).
 - ⛔ **Due account sul Mac, e confonderli è il modo di fare un casino con l'app.** Questo repo è di `aimonxapp`, quello dell'app di `Pier974`. ⭐ **L'isolamento è un credential helper LOCALE a questo repo** (`git config --local credential.https://github.com.helper`), che prende il token con `gh auth token --user aimonxapp`. ⛔ **Non si usa `gh auth switch`:** l'account attivo di `gh` è `Pier974` e serve all'app — cambiarlo firmerebbe `aimonxapp` anche i push dell'app. ⚠️ **Misurato:** `gh auth git-credential` serve **solo** l'account attivo e rifiuta se il nome chiesto è un altro.
 - ⛔ **Un testo «migliorato» che dice più di quello che l'app fa** è la trappola del sito: la funzione promessa e non presente. Si verifica contro `~/Developer/AIMONX/docs/prodotto.md`, non contro la memoria.
