@@ -10,6 +10,20 @@
 # controprova meccanica: non esiste un test che dica se una frase è chiara o se
 # il tono è sportivo invece che militare.
 #
+# ⭐ QUEL CHE CC PUÒ FARE, E LO HA SCRITTO PIER (22/09/2026, in testa alla
+# bozza): una frase si può DIVIDERE IN PEZZI — liste, span — per
+# l'impaginazione, ⛔ purché le parole restino identiche e il CONTROLLO lo
+# provi. Si dichiara nella consegna, non si chiede ogni volta. È per questo che
+# qui dentro ci sono tre liste dove la bozza ha tre frasi: il titolo della
+# parte alta, il proclama della privacy e il motto a mano.
+#
+# ⭐ E DAL GIRO W8 IL CONTROLLO MORDE DAVVERO: la bozza contiene SOLO il testo
+# in vigore — la storia sta nel suo `_archivio/` — quindi una frase vecchia
+# rimasta qui non trova più dove nascondersi. ⚠️ Prima non era così: fino al W8
+# la bozza teneva dentro la versione superata dell hero e una riga che citava
+# tutte le frasi vecchie, e il controllo le avrebbe accettate. Provato a mano
+# nel W8 rimettendo due frasi vecchie: le becca tutte e due.
+#
 # ⭐ PERCHÉ IL TESTO STA IN UN FILE DI DATI E NON DENTRO LE PAGINE. Nasce nel
 # giro W4, che costruiva tre varianti visive della stessa landing con la
 # condizione «stesso testo»: se il testo fosse stato dentro le pagine, sarebbe
@@ -174,7 +188,7 @@ piani:
       body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, deadlines, statistics, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
       body: "Unlimited firearms, handloads, unlimited maintenance rules and deadlines, matches and match stats, encrypted archives to export, and advanced protection."
-    - lead: "If your Pro subscription ends, nothing is deleted."
+    - lead: "If your Pro subscription ends, nothing gets lost."
       body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
 
 footer:
