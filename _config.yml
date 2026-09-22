@@ -31,7 +31,18 @@ repository: aimonxapp/aimonx
 # ⚠️ README.md NON è qui, ed è voluto: oggi è l'unica pagina del sito, ciò che
 # il mondo legge su aimonx.app. Escluderlo spegnerebbe la home. Se ne va quando
 # WA4 porta una home vera.
+#
+# ⛔ CNAME È QUI PERCHÉ QUESTA LISTA ESISTE, e non è un doppione di GitHub.
+# Misurato nel giro W3 nel gem `github-pages-232` (configuration.rb,
+# `exclude_cname`): GitHub aggiunge CNAME alla lista SOLO SE la lista è ancora
+# quella di default di Jekyll. Da quando WD19 l'ha riscritta, non lo è più, e
+# l'esclusione di GitHub smette di valere in silenzio. Senza questa riga il
+# merge avrebbe acceso `aimonx.app/CNAME` (oggi 404). Il dominio non gli serve
+# lì: sta nelle impostazioni di Pages (`gh api repos/aimonxapp/aimonx/pages`
+# → `cname`). ⚠️ Vale per OGNI default di GitHub che dipenda dalla lista:
+# riscrivere una lista di negazioni disattiva anche quelle di chi ci sta sotto.
 exclude:
+  - CNAME              # il dominio: lo tiene Pages, non il sito costruito
   - CLAUDE.md          # il metodo di lavoro
   - docs/              # registro degli aperti e piano di chiusura
   - scripts/           # controprova, attese, hook di push
