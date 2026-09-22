@@ -26,13 +26,19 @@
 
 meta:
   # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
-  # descrizione. ⭐ Nessuna parola nuova però: `title` è il titolo `#` della
-  # bozza (il giro W9 §1 dice di usare quello finché Cowork non ne porta uno),
-  # e `description` è una FRASE INTERA della bozza, presa alla lettera — per
-  # questo il controllo le trova entrambe e non deve dichiarare nessuna
-  # eccezione. ⚠️ CC ha PROPOSTO di meglio nella consegna del giro W9:
-  # decide Cowork, e finché non decide vale quel che c'è qui.
-  title: "Support"
+  # descrizione, e le due righe qui sotto non stanno sullo stesso piano.
+  #
+  # ⭐ `description` è una FRASE INTERA della bozza, presa alla lettera: il
+  # controllo la trova da sé e non ha bisogno di nessuna eccezione.
+  #
+  # ⛔ `title` NO, ed è un'eccezione DICHIARATA. In Fase A era il titolo `#`
+  # della bozza — «Privacy Policy», «Support», «Terms of Use» — come il giro W9
+  # §1 ordinava di fare finché Cowork non ne portasse uno. ⭐ CC ne ha proposti
+  # tre nella consegna della Fase A e **Pier li ha approvati il 22/09/2026**:
+  # sono questi. ⚠️ Nessuna parola nuova — il titolo della bozza più il nome
+  # dell'app — ma la COMBINAZIONE non sta in nessuna bozza, quindi i due
+  # controlli la nominano invece di lasciarla passare: si vede a ogni run.
+  title: "Support — AIMONX"
   description: "Got a question, found a bug, or have an idea for AIMONX? Email us at support@aimonx.app."
 
 titolo: "Support"

@@ -103,13 +103,17 @@ PAGINE = [
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
+TITOLO_PIER = "titolo di scheda proposto da CC e APPROVATO da Pier il 22/09/2026"
 DICHIARATE = {
   "landing" => {
     ".meta.title"       => "assemblato da CC con parole della bozza",
     ".meta.description" => "assemblato da CC con parole della bozza",
   },
-  "privacy" => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
-  "terms"   => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
+  "privacy" => { ".meta.title" => TITOLO_PIER,
+                 ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
+  "support" => { ".meta.title" => TITOLO_PIER },
+  "terms"   => { ".meta.title" => TITOLO_PIER,
+                 ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
 }
 
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
@@ -227,11 +231,21 @@ else
     pezzi.map! { |x| x.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
 
     consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING
+    # ⛔ LE ECCEZIONI SONO LE STESSE DELLE DUE MISURE, e si leggono dallo stesso
+    # posto: quel che la ① dichiara, la ② lo riconosce. ⚠️ Se fossero due liste
+    # diverse, un giorno una direbbe una cosa e l altra un altra, e non se ne
+    # accorgerebbe nessuno — il `<title>` di queste pagine passa per tutte e
+    # due, perché in pagina è anche un pezzo di testo.
     date = []
+    perdonati = {}
     dati = File.join(repo, p[:dati])
     if File.readable?(dati)
       d = YAML.load_file(dati)
       date << d["data_pubblicazione"] if d["data_pubblicazione"]
+      (DICHIARATE[p[:nome]] || {}).each do |via, motivo|
+        valore = via.split(".").reject(&:empty?).inject(d) { |n, k| n.is_a?(Hash) ? n[k] : nil }
+        perdonati[valore] = motivo if valore.is_a?(String)
+      end
     end
 
     ok = 0; brevi = 0; dich = 0; estranei = []
@@ -253,6 +267,9 @@ else
         brevi += 1
       elsif consentito.include?(x)
         ok += 1
+      elsif perdonati.key?(x)
+        dich += 1
+        puts "     ⚠️ #{p[:nome]}: «#{x}» — #{perdonati[x]}"
       elsif trovata && (senza_data.empty? || consentito.include?(senza_data))
         dich += 1
         puts "     ⚠️ #{p[:nome]}: «#{x}» — la data di pubblicazione e dichiarata (giro W9 §1); il resto sta nella bozza"

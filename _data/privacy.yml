@@ -26,13 +26,19 @@
 
 meta:
   # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
-  # descrizione. ⭐ Nessuna parola nuova però: `title` è il titolo `#` della
-  # bozza (il giro W9 §1 dice di usare quello finché Cowork non ne porta uno),
-  # e `description` è una FRASE INTERA della bozza, presa alla lettera — per
-  # questo il controllo le trova entrambe e non deve dichiarare nessuna
-  # eccezione. ⚠️ CC ha PROPOSTO di meglio nella consegna del giro W9:
-  # decide Cowork, e finché non decide vale quel che c'è qui.
-  title: "Privacy Policy"
+  # descrizione, e le due righe qui sotto non stanno sullo stesso piano.
+  #
+  # ⭐ `description` è una FRASE INTERA della bozza, presa alla lettera: il
+  # controllo la trova da sé e non ha bisogno di nessuna eccezione.
+  #
+  # ⛔ `title` NO, ed è un'eccezione DICHIARATA. In Fase A era il titolo `#`
+  # della bozza — «Privacy Policy», «Support», «Terms of Use» — come il giro W9
+  # §1 ordinava di fare finché Cowork non ne portasse uno. ⭐ CC ne ha proposti
+  # tre nella consegna della Fase A e **Pier li ha approvati il 22/09/2026**:
+  # sono questi. ⚠️ Nessuna parola nuova — il titolo della bozza più il nome
+  # dell'app — ma la COMBINAZIONE non sta in nessuna bozza, quindi i due
+  # controlli la nominano invece di lasciarla passare: si vede a ogni run.
+  title: "Privacy Policy — AIMONX"
   description: "AIMONX has no accounts and no AIMONX servers. We never see your data."
 
 titolo: "Privacy Policy"
@@ -40,12 +46,14 @@ titolo: "Privacy Policy"
 # ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
 # scrive «Last updated: [date of publication]», e il segnaposto diventa la data
 # della PUBBLICAZIONE, in americano per esteso.
-# ⛔ IN FASE A QUESTA DATA È PROVVISORIA e va riportata alla data vera come
-# PRIMO gesto della Fase B. Non si conta sulla memoria di nessuno:
-# `scripts/testo-approvato.sh` la STAMPA a ogni run, dichiarata, accanto al
-# segnaposto che sostituisce.
+# ⭐ QUESTA È LA DATA VERA: il 22/09/2026 è il giorno in cui le tre pagine sono
+# andate online (Fase B del giro W9). In Fase A qui c'era una data provvisoria
+# e dichiarata, ed è stata riportata a questa come PRIMO gesto della Fase B.
+# ⚠️ Se la pagina cambia, questa data cambia con lei: lo dicono le pagine
+# stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
+# dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
-data_pubblicazione: "September 23, 2026"
+data_pubblicazione: "September 22, 2026"
 
 blocchi:
 - tipo: h2
