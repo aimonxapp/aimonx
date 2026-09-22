@@ -282,6 +282,21 @@ body.v-b {
   color: rgba(140, 204, 166, .85);
   transform: rotate(-3deg); transform-origin: left center;
 }
+// Una frase per riga: le due righe le decide il testo, non la larghezza.
+.v-b .scritta-mano .riga { display: block; }
+// ⛔ DA 880 PX IN SU IL CORPO SCENDE, e non è un ripensamento estetico: qui il
+// motto non ha più tutta la pagina, ha la colonna del logo — 13rem a 880 px,
+// 16rem sopra i 1280. MISURATO: la riga più lunga, «Every round counted.»,
+// occupa 7.6 volte il corpo, quindi il corpo non può superare la colonna
+// diviso 7.6. Col tetto di 2rem la riga misura 242 px in una colonna di 256,
+// e nel punto più stretto (1024 px) 194 px in una colonna di 208: ⭐ mai meno
+// del 5% di aria, a nessuna delle quindici larghezze provate.
+// ⭐ E quel 5% basta, dove per la domanda in alto ci voleva il 10: QUESTO font
+// è nostro, servito da noi, quindi ha le stesse misure su ogni macchina. La
+// pila di sistema no.
+@media (min-width: 880px) {
+  .v-b .scritta-mano { font-size: clamp(1.55rem, 2.5vw, 2rem); }
+}
 // Lo svolazzo del riferimento, ridisegnato: decorativo, e spento.
 .v-b .svolazzo { width: 78%; height: .55rem; margin-top: .1rem; opacity: .72; }
 

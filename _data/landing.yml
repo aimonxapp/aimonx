@@ -46,7 +46,7 @@ brand: "AIMONX"
 meta:
   # Assemblati con le parole della bozza: vedi la nota qui sopra.
   title: "AIMONX — the technical logbook for sport shooters"
-  description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
+  description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
 
 # ⛔ LA PARTE ALTA È LA «HERO — versione 2» DELLA BOZZA, non la 1. Pier l'ha
 # decisa il 22/09/2026 guardando `riferimento-hero-chatgpt.png`, e la versione 1
@@ -61,12 +61,12 @@ meta:
 # ⚠️ `punti` e `garanzie` hanno il loro aspetto — il glifo — in
 # `_data/aspetto.yml`, accoppiato per posizione come le sette voci.
 hero:
-  sopratitolo: "TRACK · IMPROVE · SHOOT BETTER"
+  sopratitolo: "TRACK · MAINTAIN · SHOOT BETTER"
   titolo:
     - "Do you really know"
     - "how many rounds"
     - "your gun has fired?"
-  lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
+  lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
   punti:
     - forte: "Organize"
       resto: "your firearms"
@@ -90,11 +90,26 @@ hero:
   garanzie:
     - "No account"
     - "No tracking"
-    - "No AIMONX server"
+    - "No AIMONX servers"
   # ⭐ Il motto va scritto a mano: il font sta in `assets/fonts/`, servito da
   # aimonx.app, ed è la sola parola di questa pagina che non usa la pila di
   # sistema.
-  motto: "Same Passion. More Control."
+  #
+  # ⚠️ DUE PEZZI, COME IL PROCLAMA E COME LA DOMANDA, e per la stessa ragione:
+  # una frase per riga. ⛔ NON è una riscrittura — rimessi in fila danno parola
+  # per parola la riga della bozza, «Same passion. Every round counted.», e
+  # `scripts/testo-approvato.sh` cerca ciascuno dei due ALLA LETTERA là dentro.
+  # ⛔ PERCHÉ NON BASTAVA RIMPICCIOLIRE IL CORPO, ed è un conto, non un gusto:
+  # nella colonna da 256 px il motto nuovo sta su tre righe, e la terza è
+  # «counted.» da sola. Per farci stare «Every round counted.» su una riga
+  # servirebbe un corpo da 27.8 px o meno — ma a quel corpo ci sta anche «Same
+  # passion. Every», che il browser metterebbe sulla prima riga spostando il
+  # taglio a metà della seconda frase. ⭐ Le due condizioni non possono essere
+  # vere insieme: o si dice al testo dove finisce una frase, o il taglio lo
+  # sceglie la larghezza della finestra.
+  motto:
+    - "Same passion."
+    - "Every round counted."
 
 # ⚠️ I titoli di sezione della bozza sono scritti in maiuscolo («WHAT IT KEEPS
 # TRACK OF»), nello stesso stile delle etichette di struttura «HERO» e
@@ -107,13 +122,13 @@ what:
     - lead: "Every firearm, every round."
       body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
     - lead: "Range sessions and matches."
-      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches keep placement, points and division."
+      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
     - lead: "Ammo you can count on."
-      body: "Factory ammo with lots and inventory. Handloads with recipes, component costs and production runs."
+      body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
     - lead: "Maintenance your way."
-      body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — every so many rounds. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
+      body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
     - lead: "Deadlines you won't miss."
-      body: "Licenses, medical certificates, club and federation memberships, insurance — with a notification the days before they expire, as many as you choose."
+      body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
     - lead: "What your shooting really costs."
       body: "Cost per session, per round and per firearm, and how practice compares to competition."
     - lead: "Firearm reports in PDF."
@@ -123,24 +138,24 @@ privacy:
   title: "Privacy"
   # ⚠️ IL PROCLAMA È UNA LISTA DI DUE PEZZI, e ⛔ NON è una frase riscritta:
   # rimessi in fila danno parola per parola la riga della bozza, «No account.
-  # No AIMONX server. We never see your data.», e `scripts/testo-approvato.sh`
+  # No AIMONX servers. We never see your data.», e `scripts/testo-approvato.sh`
   # cerca ciascuno dei due ALLA LETTERA là dentro — è quello a provare che non
   # è cambiato niente, non questa nota.
   # ⛔ PERCHÉ DUE E NON UNA (decisione di Pier, 22/09): la frase deve stare su
   # UNA riga dove c'è spazio e andare a capo SOLO qui, fra i due pezzi, dove
-  # non ce n'è. ⛔ Mai in mezzo a «No AIMONX server», che è il nome di una cosa
+  # non ce n'è. ⛔ Mai in mezzo a «No AIMONX servers», che è il nome di una cosa
   # che NON esiste e spezzato si legge peggio di come si legge intero.
   # ⚠️ Il punto di andata a capo non si può dire al browser da fuori: o glielo
   # si insegna col testo, come qui, o lo sceglie lui e cambia con la finestra.
   # Stessa ragione delle tre righe della domanda in alto.
   claim:
-    - "No account. No AIMONX server."
+    - "No account. No AIMONX servers."
     - "We never see your data."
   items:
     - lead: "Works offline."
       body: "Use it at the range with no signal. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
     - lead: "Your data talks to no one but your own iCloud."
-      body: "No AIMONX server, no third parties, no analytics."
+      body: "No AIMONX servers, no third parties, no analytics."
   note: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
 
 security:
@@ -159,7 +174,7 @@ piani:
       body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, deadlines, statistics, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
       body: "Unlimited firearms, handloads, unlimited maintenance rules and deadlines, matches and match stats, encrypted archives to export, and advanced protection."
-    - lead: "If Pro ends, nothing is deleted."
+    - lead: "If your Pro subscription ends, nothing is deleted."
       body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
 
 footer:

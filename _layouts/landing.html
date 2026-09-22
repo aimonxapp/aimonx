@@ -161,9 +161,21 @@
           lettore di schermo, si seleziona, si ingrandisce. Il font sta in
           `assets/fonts/` ed è servito da aimonx.app — ⛔ mai da un server
           esterno (vincolo del sito, e `WD26`).
+          ⚠️ UNA FRASE PER RIGA, e le righe arrivano dal testo, non dal
+          browser: il perché, col conto che lo dimostra, sta in
+          `_data/landing.yml`.
           ⚠️ Lo svolazzo sotto è decorativo e basta: `aria-hidden`.
         {%- endcomment -%}
-        <p class="scritta-mano">{{ d.hero.motto }}
+        <p class="scritta-mano">
+          {%- comment -%}
+            ⚠️ Gli span sono separati da un a capo VERO, come le tre righe
+            della domanda: sono blocchi, quindi a vedersi non cambia niente,
+            ma chi COPIA il motto si porta via «Same passion. Every round
+            counted.» e non le due frasi attaccate.
+          {%- endcomment -%}
+          {%- for r in d.hero.motto %}
+          <span class="riga">{{ r }}</span>
+          {%- endfor %}
           <svg class="svolazzo" viewBox="0 0 200 18" aria-hidden="true" focusable="false" preserveAspectRatio="none">
             <path d="M3 13c34-7 71-9 104-8 24 .7 49 3 90 8" fill="none"
                   stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>

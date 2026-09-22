@@ -53,7 +53,7 @@ hero_punti:
   - icona: chiave      # Plan your maintenance    → «Manutenzione»
   - icona: monete      # Know your real costs     → «Costi»
 
-# ⚠️ IL TERZO GLIFO È UNA SCELTA DA GUARDARE, non un fatto: «No AIMONX server»
+# ⚠️ IL TERZO GLIFO È UNA SCELTA DA GUARDARE, non un fatto: «No AIMONX servers»
 # è un server BARRATO, non una nuvola barrata. ⛔ La nuvola direbbe il falso —
 # la copia cifrata sta nell'iCloud dell'utente, e quella nuvola c'è
 # (`~/Developer/AIMONX/docs/prodotto.md` §8.1). Quello che non esiste è il
@@ -61,4 +61,4 @@ hero_punti:
 hero_garanzie:
   - icona: scudo       # No account
   - icona: lucchetto   # No tracking
-  - icona: serverno    # No AIMONX server
+  - icona: serverno    # No AIMONX servers
