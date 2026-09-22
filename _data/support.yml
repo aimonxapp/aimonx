@@ -1,0 +1,65 @@
+# _data/support.yml — IL TESTO DELLA PAGINA SUPPORT, UNA VOLTA SOLA.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 22/09/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/support/support-en-bozza.md
+# Non è stato ricopiato a mano: è stato CONVERTITO, e `scripts/testo-approvato.sh`
+# cerca ogni stringa qui dentro ALLA LETTERA in quella bozza. ⭐ Il «parola per
+# parola» del giro W9 non è una promessa: è una misura che gira a ogni giro.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. «I testi che l'utente legge li
+# scrive Cowork» (CLAUDE.md, «Chi decide cosa»). Se qui dentro serve una parola
+# diversa, si cambia la bozza e poi si riporta qui — mai il contrario.
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Dove portano le parole sta in
+# `_data/collegamenti.yml`, che è di CC: nessun `<a>`, nessun indirizzo e
+# nessun markdown in mezzo a una frase, altrimenti quella frase non si
+# troverebbe più nella bozza e il controllo avrebbe dovuto imparare
+# un'eccezione. ⛔ Un'eccezione che nessuno ricorda è il buco da cui rientra il
+# testo riscritto.
+#
+# ⚠️ `blocchi` è una LISTA ORDINATA e l'ordine è quello della bozza: `h2` e
+# `h3` sono i suoi titoli, `p` i suoi paragrafi, `ul` i suoi elenchi puntati.
+# `_layouts/pagina.html` li impagina e basta: non sceglie, non riordina, non
+# salta. Una voce di tipo ignoto non romperebbe la pagina — uscirebbe come
+# paragrafo.
+
+meta:
+  # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
+  # descrizione. ⭐ Nessuna parola nuova però: `title` è il titolo `#` della
+  # bozza (il giro W9 §1 dice di usare quello finché Cowork non ne porta uno),
+  # e `description` è una FRASE INTERA della bozza, presa alla lettera — per
+  # questo il controllo le trova entrambe e non deve dichiarare nessuna
+  # eccezione. ⚠️ CC ha PROPOSTO di meglio nella consegna del giro W9:
+  # decide Cowork, e finché non decide vale quel che c'è qui.
+  title: "Support"
+  description: "Got a question, found a bug, or have an idea for AIMONX? Email us at support@aimonx.app."
+
+titolo: "Support"
+
+blocchi:
+- tipo: p
+  testo: Got a question, found a bug, or have an idea for AIMONX? Email us at support@aimonx.app.
+- tipo: p
+  testo: AIMONX is made by one independent developer, so every email gets read by the person who builds the app.
+- tipo: h2
+  testo: To help us help you
+- tipo: p
+  testo: 'Tell us:'
+- tipo: ul
+  voci:
+  - your iPhone model and iOS version
+  - your AIMONX version (you'll find it in the app's settings)
+  - what you did, what you expected, and what happened instead
+- tipo: p
+  testo: A screenshot helps too.
+- tipo: h2
+  testo: Keep your private stuff private
+- tipo: p
+  testo: We never need your serial numbers, photos of your firearms, or your logbook to help you. Please leave them out of your email, and blur them out if they show up in a screenshot.
+- tipo: h2
+  testo: Privacy and terms
+- tipo: ul
+  voci:
+  - Privacy Policy
+  - Terms of Use

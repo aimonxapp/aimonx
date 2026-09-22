@@ -1,0 +1,48 @@
+{%- comment -%}
+_includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W9.
+
+  ⛔ FA DUE COSE SOLE, ed è tutto quello che sta fra il testo approvato e la
+  pagina:
+    ① mette al sicuro i due caratteri che in HTML vogliono dire altro — `&` e
+       `<`. ⚠️ NON è pignoleria: il testo approvato dice «Settings > Privacy &
+       Security > Analytics & Improvements», e quelle `&` nude sono HTML non
+       valido. ⛔ Si fa PRIMA dei link, non dopo: gli indirizzi che il passo ②
+       inserisce contengono `/` e `:` ma non `&`, quindi non vengono toccati —
+       invertire i due passi rovinerebbe i link appena messi.
+    ② sostituisce ogni frase di `_data/collegamenti.yml` col suo link.
+
+  ⛔ QUI NON SI SCEGLIE NIENTE E NON SI SCRIVE NESSUNA PAROLA: le parole
+  arrivano da `include.testo`, cioè da un file di Cowork, e gli indirizzi da
+  `_data/collegamenti.yml`, che è di CC. In mezzo non c'è testo nuovo.
+
+  ⛔ SI CHIAMA CON `collega=true` SOLO SU PARAGRAFI E VOCI DI ELENCO. I TITOLI
+  NO, e non è una svista: la pagina «Privacy Policy» ha «Privacy Policy» come
+  titolo, e la pagina «Terms of Use» ha «Terms of Use» — linkarli vorrebbe dire
+  mettere in cima a ogni pagina un link a sé stessa. Senza `collega` questo
+  include fa solo il passo ①, che serve comunque.
+
+  ⚠️ L'ORDINE DELLE SOSTITUZIONI È QUELLO DEL FILE, dalla frase più lunga alla
+  più corta. Oggi nessuna è contenuta in un'altra — misurato: «Privacy Policy»
+  non compare dentro «GitHub's Privacy Statement», e «Support» (con la S
+  maiuscola) non compare dentro «support@aimonx.app». ⛔ Domani può succedere,
+  perché le frasi le porta Cowork: dal più lungo al più corto è la regola che
+  tiene, e sta scritta anche in `_data/collegamenti.yml`.
+{%- endcomment -%}
+{%- assign t = include.testo | replace: '&', '&amp;' | replace: '<', '&lt;' -%}
+{%- if include.collega -%}
+  {%- for c in site.data.collegamenti.frasi -%}
+    {%- case c.tipo -%}
+    {%- when 'esterno' -%}
+      {%- comment -%} ⚠️ `noreferrer`: il browser non dice al sito di arrivo da
+      quale pagina di aimonx.app viene il lettore. Scelta di CC, giro W9.
+      {%- endcomment -%}
+      {%- capture ancora -%}<a href="{{ c.href }}" rel="noreferrer">{{ c.frase }}</a>{%- endcapture -%}
+    {%- when 'posta' -%}
+      {%- capture ancora -%}<a href="{{ c.href }}">{{ c.frase }}</a>{%- endcapture -%}
+    {%- else -%}
+      {%- capture ancora -%}<a href="{{ c.href | relative_url }}">{{ c.frase }}</a>{%- endcapture -%}
+    {%- endcase -%}
+    {%- assign t = t | replace: c.frase, ancora -%}
+  {%- endfor -%}
+{%- endif -%}
+{{- t -}}

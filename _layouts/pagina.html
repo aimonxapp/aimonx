@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/pagina.html — LO SCHELETRO DELLE PAGINE DA LEGGERE. Giro W9.
+
+  ⭐ Privacy Policy, Support e Terms of Use non sono la landing e non devono
+  somigliarle: la landing racconta, queste si leggono. Stessa testata, stesso
+  piede, stessi colori e stesso font — ma ⛔ IMPAGINAZIONE DA TESTO LUNGO, e
+  «leggibile» qui viene prima di «figo» (giro W9 §1).
+
+  ⛔ COSA CAMBIA DAVVERO RISPETTO ALLA LANDING, e non è decorazione:
+    · il testo sta su un FOGLIO BIANCO, non sul verde scuro. Un paragrafo lungo
+      in bianco su fondo scuro si legge peggio, e queste pagine sono fatte di
+      paragrafi lunghi. ⭐ Il foglio è la stessa anatomia delle carte della
+      landing — fondo bianco, angoli tondi, filetto di sezione a sinistra —
+      quindi il sito resta uno solo;
+    · la colonna è più STRETTA del contenitore della landing: una riga di testo
+      oltre i 70 caratteri si perde tornando a capo;
+    · la testata PORTA A CASA. Sulla landing non serviva: era l'unica pagina.
+
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA. Le prende
+  tutte da `_data/<page.dati>.yml`, che è di Cowork, e gli indirizzi dei link
+  da `_data/collegamenti.yml`, che è di CC. ⚠️ Se un giorno qui dentro comparisse
+  una frase, `scripts/testo-approvato.sh` NON la vedrebbe — guarda i file di
+  dati, non i layout. È il motivo per cui il testo sta nei dati.
+
+  ⛔ `blocchi` SI IMPAGINA, NON SI INTERPRETA: l'ordine è quello della bozza, e
+  questo file non salta, non riordina e non sceglie. Un `tipo` che non conosce
+  esce come paragrafo — una pagina un po' piatta è meglio di una pagina con un
+  pezzo di testo approvato sparito senza dirlo.
+
+  `page.dati` sceglie il testo, `page.tinta` il colore del filetto, `page.foglio`
+  il foglio di stile (lo legge `_includes/testa.html`).
+{%- endcomment -%}
+{%- assign d = site.data[page.dati] -%}
+<head>
+  {%- include testa.html meta=d.meta -%}
+</head>
+<body class="v-testo tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- comment -%}
+      LA TESTATA. ⭐ Qui è un LINK alla home, e sulla landing no: da una pagina
+      interna il marchio in alto a sinistra è la strada per tornare, e chi legge
+      se lo aspetta lì.
+      ⚠️ alt="" — l'icona resta DECORATIVA come sulla landing: il nome «AIMONX»
+      è scritto in lettere qui accanto, dentro lo stesso link, quindi il link
+      ha già il suo nome e un testo alternativo lo farebbe leggere due volte.
+    {%- endcomment -%}
+    <header class="testata">
+      <a class="acasa" href="{{ '/' | relative_url }}">
+        <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
+             alt="" width="48" height="48">
+        <span class="nome">{{ site.data.landing.brand }}</span>
+      </a>
+    </header>
+
+    <div class="titolone">
+      <h1>{{ d.titolo }}</h1>
+      {%- comment -%}
+        ⛔⛔ LA DATA È L'UNICA DIFFERENZA AMMESSA dal testo approvato (giro W9
+        §1): la bozza scrive «Last updated: [date of publication]». Le due
+        stringhe stanno separate in `_data/…yml` apposta — «Last updated:» è
+        nella bozza alla lettera, la data no — e `scripts/testo-approvato.sh`
+        stampa la data a ogni run invece di lasciarla passare in silenzio.
+        ⚠️ Support non ha questa riga, e la mancanza è della bozza, non un buco.
+      {%- endcomment -%}
+      {%- if d.aggiornato %}
+      <p class="aggiornato">{{ d.aggiornato }} {{ d.data_pubblicazione }}</p>
+      {%- endif %}
+    </div>
+  </div>
+
+  <main id="principale">
+    <article class="foglio">
+      {%- for b in d.blocchi -%}
+      {%- case b.tipo -%}
+      {%- when 'h2' %}
+      <h2>{% include frase.html testo=b.testo %}</h2>
+      {%- when 'h3' %}
+      <h3>{% include frase.html testo=b.testo %}</h3>
+      {%- when 'ul' %}
+      <ul class="elenco">
+        {%- for v in b.voci %}
+        <li>{% include frase.html testo=v collega=true %}</li>
+        {%- endfor %}
+      </ul>
+      {%- else %}
+      <p>{% include frase.html testo=b.testo collega=true %}</p>
+      {%- endcase -%}
+      {%- endfor %}
+    </article>
+  </main>
+
+  {%- include piede.html -%}
+</body>
+</html>

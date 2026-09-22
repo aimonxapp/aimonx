@@ -1,0 +1,68 @@
+# _data/collegamenti.yml — DOVE PORTANO LE PAROLE. Nato nel giro W9.
+#
+# ⛔ QUESTO FILE È DI CLAUDE CODE, come `_data/aspetto.yml`. I file di testo —
+# `landing.yml`, `privacy.yml`, `support.yml`, `terms.yml` — sono di Cowork e
+# contengono SOLO parole: nessun `<a>`, nessun indirizzo, nessun markdown.
+# ⭐ La ragione non è ordine per l'ordine, ed è la stessa del giro W4: così
+# `scripts/testo-approvato.sh` può cercare OGNI stringa di quei file ALLA
+# LETTERA nella bozza approvata, senza eccezioni da ricordarsi. Un `<a href>`
+# infilato in mezzo a una frase renderebbe quella frase introvabile nella
+# bozza, e il controllo si sarebbe dovuto imparare un'eccezione. ⛔ Un'eccezione
+# che nessuno ricorda è il buco da cui rientra il testo riscritto.
+#
+# ⚠️ COME FUNZIONA, ed è meno magico di come sembra: `_includes/frase.html`
+# prende una frase e sostituisce ogni `frase` qui sotto con il suo link.
+# ⛔ SOLO NEI PARAGRAFI E NELLE VOCI DI ELENCO, mai nei titoli — altrimenti la
+# pagina «Privacy Policy» avrebbe il proprio titolo che rimanda a sé stessa, e
+# così la pagina «Terms of Use».
+# ⚠️ L'ordine conta: si sostituisce dalla frase più lunga alla più corta, così
+# «Apple's privacy policy» non viene spezzato da una regola più corta che
+# capitasse prima. Oggi non si sovrappongono, ma l'ordine non costa niente e
+# la sovrapposizione la porta la frase nuova di domani.
+#
+# ⛔ NESSUNA DI QUESTE È UNA RISORSA ESTERNA, e la differenza è tutta: la
+# pagina non SCARICA niente da apple.com o da github.com — ci manda il lettore
+# solo se clicca. Le richieste verso l'esterno restano 0, ed è misurato con il
+# browser vero (`scripts/anteprima-playwright.mjs`).
+#
+# ⚠️ DUE SCELTE DI CC DA GUARDARE, non fatti (giro W9):
+#   ① I link esterni NON aprono una scheda nuova. Aprirla avrebbe voluto dire
+#      avvisare chi non vede lo schermo, e l'avviso è testo pubblico nuovo —
+#      che scrive Cowork, non CC. Chi legge torna indietro col tasto indietro.
+#   ② Sui link esterni c'è `rel="noreferrer"`: il browser non dice ad Apple o a
+#      GitHub da quale pagina di aimonx.app arriva il lettore. È la stessa
+#      linea del resto del sito, applicata a quel che resta da applicarla.
+
+# ⚠️ `tipo` sono TRE, non due, e la differenza non è di etichetta: cambia come
+# si scrive l'indirizzo nella pagina.
+#   · `pagina` → un indirizzo di questo sito, che passa da `relative_url` come
+#     ogni altro (la «regola degli indirizzi» in `_includes/testa.html`);
+#   · `posta`  → un `mailto:`, che ⛔ NON passa da `relative_url`: diventerebbe
+#     `/mailto:support@aimonx.app`, cioè una pagina del sito che non esiste;
+#   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
+
+frasi:
+  - frase: "Garante per la protezione dei dati personali"
+    href: "https://www.garanteprivacy.it/"
+    tipo: esterno
+  - frase: "GitHub's Privacy Statement"
+    href: "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+    tipo: esterno
+  - frase: "Read Apple's Standard EULA"
+    href: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+    tipo: esterno
+  - frase: "Apple's privacy policy"
+    href: "https://www.apple.com/legal/privacy/"
+    tipo: esterno
+  - frase: "support@aimonx.app"
+    href: "mailto:support@aimonx.app"
+    tipo: posta
+  - frase: "Privacy Policy"
+    href: "/privacy-policy/"
+    tipo: pagina
+  - frase: "Terms of Use"
+    href: "/terms/"
+    tipo: pagina
+  - frase: "Support"
+    href: "/support/"
+    tipo: pagina

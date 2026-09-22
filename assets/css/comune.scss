@@ -3,7 +3,13 @@
 // assets/css/comune.scss — quel che tutta la pagina ha in comune: i colori
 // dell'app, le pile di caratteri, il font scritto a mano, l'azzeramento e il
 // pavimento di qualità.
-// ⛔ Nessuna decisione estetica qui dentro: l'estetica sta in `b.scss`.
+// ⛔ Nessuna decisione estetica qui dentro, con UNA eccezione dichiarata in
+// fondo: il PIEDE. Dal giro W9 il sito ha quattro pagine e due fogli di stile
+// (`b.scss` per la landing, `testo.scss` per le pagine da leggere), ma UN piede
+// solo — `_includes/piede.html`. ⛔ Scriverne l'aspetto in tutti e due i fogli
+// vorrebbe dire farlo divergere alla prima correzione, che è esattamente il
+// guaio da cui quell'include è nato. Qui invece sta scritto una volta, e non
+// costa una richiesta in più: `comune.css` lo carica già ogni pagina.
 //
 // ⛔ PERCHÉ `.scss` E NON `.css`, dal giro W6 — e non è una moda.
 // Un `.css` Jekyll lo copia TALE E QUALE: ogni commento di lavoro finiva su
@@ -120,3 +126,38 @@ img, svg { display: block; max-width: 100%; }
     transition-duration: .001ms !important; scroll-behavior: auto !important;
   }
 }
+
+// ============================================================================
+// IL PIEDE — l'eccezione dichiarata in testa a questo file.
+// ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
+// piede è lo stesso su tutte le pagine, e un prefisso vorrebbe dire ripeterle.
+// ⛔ Quel che resta ai due fogli è la LARGHEZZA della colonna — 66rem sulla
+// landing, 52 sulle pagine da leggere — perché quella sì che cambia.
+// ============================================================================
+
+.chiusa {
+  margin-top: 1.5rem;
+  padding-block: clamp(2.2rem, 5vw, 3.2rem) clamp(2.8rem, 6vw, 4rem);
+  border-top: 1px solid rgba(253, 253, 253, .10);
+}
+.motto { font-size: 1rem; font-weight: 600; color: var(--verde-chiaro); }
+
+// I TRE LINK, dal giro W9. ⛔ Sottolineati: il colore da solo non basta a dire
+// «questo si clicca» (WCAG 2.1, «Use of Color»).
+.collegamenti { margin-top: .9rem; font-size: .92rem; line-height: 1.9; }
+.collegamenti a {
+  color: var(--verde-chiaro);
+  text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: .07em;
+}
+.collegamenti a:hover { color: var(--bianco); text-decoration-thickness: .15em; }
+// ⭐ Il link alla pagina che si sta già leggendo: bianco e senza filetto, così
+// si vede a colpo d'occhio dove si è. `aria-current="page"` lo dice a chi
+// ascolta la pagina, questa regola a chi la guarda: la stessa informazione per
+// tutti e due, che è il punto.
+.collegamenti [aria-current="page"] { color: var(--bianco); text-decoration: none; }
+// ⚠️ Il separatore è `aria-hidden` nell'HTML, ma si VEDE: quindi il suo
+// contrasto conta come quello di ogni altro testo, e porta lo stesso grigio
+// verde della riga minuta qui sotto, già misurato nei giri precedenti.
+.collegamenti .sep { display: inline-block; margin-inline: .55rem; color: #9DB6AA; }
+
+.minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }

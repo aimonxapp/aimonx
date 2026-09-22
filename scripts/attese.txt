@@ -117,3 +117,38 @@ file_con_tracker=0
 # c'è niente da riparare — c'è una consegna nuova da portare nel repo.
 # ⛔ In nessuno dei due casi si alza questo numero: si guarda quale dei due è.
 testo_fuori_bozza=0
+
+# ⛔ NATI NEL GIRO W9, quando il sito è passato da una pagina a quattro. Li
+# misura scripts/misure-pagine.rb sul sito COSTRUITO, non sul repo.
+
+# Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
+# che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
+# permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
+pagine_costruite=4
+
+# Link interni che NON risolvono in una pagina costruita. Deve restare 0.
+# ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
+# «le pagine di oggi non hanno nessun link, il controllo direbbe tutto a posto
+# senza aver guardato niente». Da questo giro i link ci sono — sono i tre del
+# piede, su tutte e quattro le pagine — e la dichiarazione è diventata una misura.
+link_rotti=0
+
+# Titoli fuori ordine: più di un h1 in una pagina, o un piano saltato (h2→h4).
+# ⛔ Non è pignoleria tipografica: chi usa un lettore di schermo naviga per
+# titoli, e un piano saltato gli toglie un pezzo dell'indice della pagina.
+titoli_fuori_ordine=0
+
+# ⛔⛔ IL MUST DI PIER, MISURATO INVECE CHE RILETTO: quante cose SOMIGLIANO a un
+# recapito postale o a un numero di telefono nelle pagine costruite. Deve
+# restare 0, e ⛔ questo numero non si alza MAI per far passare qualcosa: se
+# sale, o è un falso allarme che si guarda in trenta secondi, o è il MUST.
+# ⚠️ Il controllo cerca la FORMA, non il valore: non sa quale sia l'indirizzo di
+# Pier e non deve saperlo — un controllo che lo contenesse lo pubblicherebbe.
+indirizzi_o_telefoni=0
+
+# ⛔ Pezzi di testo SERVITO dal sito costruito che non stanno in nessuna bozza
+# approvata. ⚠️ NON è un doppione di testo_fuori_bozza: quello guarda i file di
+# dati, questo guarda quel che esce dalla build. Una frase scritta dentro un
+# LAYOUT non sta in nessun file di dati, e solo questa misura la vede — provato
+# nel giro W9 mettendone una a mano.
+testo_servito_fuori_bozza=0

@@ -1,0 +1,145 @@
+# _data/privacy.yml — IL TESTO DELLA PAGINA PRIVACY POLICY, UNA VOLTA SOLA.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 22/09/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/privacy-policy/privacy-policy-en-bozza.md
+# Non è stato ricopiato a mano: è stato CONVERTITO, e `scripts/testo-approvato.sh`
+# cerca ogni stringa qui dentro ALLA LETTERA in quella bozza. ⭐ Il «parola per
+# parola» del giro W9 non è una promessa: è una misura che gira a ogni giro.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. «I testi che l'utente legge li
+# scrive Cowork» (CLAUDE.md, «Chi decide cosa»). Se qui dentro serve una parola
+# diversa, si cambia la bozza e poi si riporta qui — mai il contrario.
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Dove portano le parole sta in
+# `_data/collegamenti.yml`, che è di CC: nessun `<a>`, nessun indirizzo e
+# nessun markdown in mezzo a una frase, altrimenti quella frase non si
+# troverebbe più nella bozza e il controllo avrebbe dovuto imparare
+# un'eccezione. ⛔ Un'eccezione che nessuno ricorda è il buco da cui rientra il
+# testo riscritto.
+#
+# ⚠️ `blocchi` è una LISTA ORDINATA e l'ordine è quello della bozza: `h2` e
+# `h3` sono i suoi titoli, `p` i suoi paragrafi, `ul` i suoi elenchi puntati.
+# `_layouts/pagina.html` li impagina e basta: non sceglie, non riordina, non
+# salta. Una voce di tipo ignoto non romperebbe la pagina — uscirebbe come
+# paragrafo.
+
+meta:
+  # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
+  # descrizione. ⭐ Nessuna parola nuova però: `title` è il titolo `#` della
+  # bozza (il giro W9 §1 dice di usare quello finché Cowork non ne porta uno),
+  # e `description` è una FRASE INTERA della bozza, presa alla lettera — per
+  # questo il controllo le trova entrambe e non deve dichiarare nessuna
+  # eccezione. ⚠️ CC ha PROPOSTO di meglio nella consegna del giro W9:
+  # decide Cowork, e finché non decide vale quel che c'è qui.
+  title: "Privacy Policy"
+  description: "AIMONX has no accounts and no AIMONX servers. We never see your data."
+
+titolo: "Privacy Policy"
+
+# ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
+# scrive «Last updated: [date of publication]», e il segnaposto diventa la data
+# della PUBBLICAZIONE, in americano per esteso.
+# ⛔ IN FASE A QUESTA DATA È PROVVISORIA e va riportata alla data vera come
+# PRIMO gesto della Fase B. Non si conta sulla memoria di nessuno:
+# `scripts/testo-approvato.sh` la STAMPA a ogni run, dichiarata, accanto al
+# segnaposto che sostituisce.
+aggiornato: "Last updated:"
+data_pubblicazione: "September 23, 2026"
+
+blocchi:
+- tipo: h2
+  testo: The short version
+- tipo: ul
+  voci:
+  - AIMONX has no accounts and no AIMONX servers. We never see your data.
+  - Your logbook is encrypted on your iPhone. By default, an encrypted copy is saved to your own iCloud, so nothing gets lost when you switch phones. You can turn it off.
+  - No ads, no analytics, no tracking. Your logbook never reaches us, so there's nothing to sell or share.
+  - This website uses no cookies and no trackers.
+- tipo: h2
+  testo: Who we are
+- tipo: p
+  testo: AIMONX is made by Piermichele Fassio, an independent developer based in Italy ("we", "us"). Under EU data protection law (the GDPR), we're the data controller for the small amount of personal data covered here.
+- tipo: p
+  testo: Questions about privacy? Email us at support@aimonx.app.
+- tipo: h2
+  testo: The AIMONX app
+- tipo: h3
+  testo: What stays on your iPhone
+- tipo: p
+  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, deadlines, costs, notes and photos.'
+- tipo: p
+  testo: It's stored in an encrypted database on your iPhone, and it only unlocks when you verify it's you. There's no AIMONX server holding a copy, so there's nothing for us to read.
+- tipo: h3
+  testo: Your encrypted copy in iCloud
+- tipo: p
+  testo: By default, AIMONX saves an encrypted copy of your logbook to your own iCloud account, so a new or broken phone doesn't mean starting over.
+- tipo: ul
+  voci:
+  - The copy is encrypted on your iPhone, with the same key as your logbook, before it goes anywhere.
+  - It sits in your personal iCloud storage. We can't access it.
+  - You can turn it off in the app at any time.
+- tipo: p
+  testo: iCloud is run by Apple and covered by Apple's privacy policy.
+- tipo: h3
+  testo: What we don't collect
+- tipo: p
+  testo: 'No account, no email address, no name, no location, no contacts, no usage analytics, no advertising IDs. AIMONX doesn''t include any third-party code that talks to the internet: no analytics, no crash reporters, no ad networks.'
+- tipo: h3
+  testo: Photos
+- tipo: p
+  testo: You can add photos of your firearms from Photos or Files. AIMONX never uses your camera. Before a photo is saved, AIMONX strips out its location and other metadata, then encrypts it like the rest of your logbook.
+- tipo: h3
+  testo: PDF reports and archives
+- tipo: p
+  testo: PDF reports and encrypted archives are created on your iPhone. They go wherever you choose to send them, and nowhere else. Once you share a file, it's up to the app or service you sent it to.
+- tipo: h3
+  testo: Purchases
+- tipo: p
+  testo: AIMONX Pro is sold through the App Store. Apple handles the payment, and we never see your payment details.
+- tipo: h3
+  testo: Crash reports and statistics from Apple
+- tipo: p
+  testo: If you've turned on Share With App Developers on your iPhone, Apple may share with us statistics and diagnostic information about the app, aggregated or in a form that doesn't identify you. That's Apple's feature, not ours, and you can turn it off anytime in Settings > Privacy & Security > Analytics & Improvements.
+- tipo: h3
+  testo: Deleting your data
+- tipo: p
+  testo: Your data is yours. Tap App Reset in the app's settings to delete your logbook from your iPhone. AIMONX also deletes your encrypted iCloud copy (you'll need a connection for that part).
+- tipo: p
+  testo: Deleting the app removes the logbook from your iPhone, but your encrypted iCloud copy stays, so you can pick up where you left off if you reinstall. That's what the copy is for.
+- tipo: h2
+  testo: This website
+- tipo: p
+  testo: 'aimonx.app is a static website. It uses no cookies, no analytics and no forms, and it loads nothing from other servers: even the fonts come from aimonx.app.'
+- tipo: p
+  testo: The site is hosted by GitHub Pages. Like every site hosted there, GitHub logs visitors' IP addresses for security purposes. GitHub is based in the U.S. and says it's certified under the EU-U.S. Data Privacy Framework. See GitHub's Privacy Statement for details.
+- tipo: p
+  testo: We don't track you, so "Do Not Track" signals don't change anything here.
+- tipo: h2
+  testo: Emailing us
+- tipo: p
+  testo: If you email support@aimonx.app, we get your email address and whatever you write. We use it only to reply to you, we keep it only for as long as we need it to help you, and we never share it or add you to a mailing list. Our email is handled by Apple's iCloud Mail.
+- tipo: h2
+  testo: Legal bases (for our EU visitors and users)
+- tipo: ul
+  voci:
+  - 'Answering your emails: our legitimate interest in helping you.'
+  - 'Hosting logs kept by GitHub: a legitimate interest in keeping the site secure.'
+- tipo: h2
+  testo: Your rights
+- tipo: p
+  testo: Under the GDPR, you can ask to access, correct or delete the personal data we hold about you, to restrict or object to its use, and to get a copy of it. In practice, the only personal data we can ever hold is what you send us by email. Your logbook lives on your iPhone and in your own iCloud, where you're in control.
+- tipo: p
+  testo: If you're in the EU, you can also file a complaint with your data protection authority. In Italy, that's the Garante per la protezione dei dati personali.
+- tipo: h2
+  testo: US privacy laws
+- tipo: p
+  testo: We don't sell or share personal information, and we don't collect it for advertising or profiling.
+- tipo: h2
+  testo: Children
+- tipo: p
+  testo: AIMONX isn't intended for children, and we don't knowingly collect personal data from anyone under 13.
+- tipo: h2
+  testo: Changes to this policy
+- tipo: p
+  testo: If this policy changes, we'll update it on this page and change the date at the top.

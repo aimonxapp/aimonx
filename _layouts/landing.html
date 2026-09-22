@@ -34,7 +34,7 @@
   stile (li legge `_includes/testa.html`).
 {%- endcomment -%}
 <head>
-  {%- include testa.html -%}
+  {%- include testa.html meta=site.data.landing.meta -%}
 </head>
 <body class="v-{{ page.variante }}">
   {%- assign d = site.data.landing -%}
@@ -276,13 +276,11 @@
   </main>
 
   {%- comment -%}
-    ⛔ Il footer NON porta i link a Privacy Policy, Support e Terms: quelle
-    pagine non esistono (WA1, WA2, WA3), e il giro W4 §3③ dice che finché non
-    esistono non si mostrano — niente link rotti, niente segnaposto.
+    ⛔ IL PIEDE NON È PIÙ SCRITTO QUI, dal giro W9: sta in `_includes/piede.html`
+    e lo usano tutte e quattro le pagine. ⭐ E adesso porta i tre link, perché
+    la condizione del giro W4 §3③ — «non si mostrano finché le pagine non
+    esistono» — è soddisfatta: esistono.
   {%- endcomment -%}
-  <footer class="chiusa">
-    <p class="motto">{{ d.footer.tagline }}</p>
-    <p class="minuta">{{ d.footer.copyright }}</p>
-  </footer>
+  {%- include piede.html -%}
 </body>
 </html>

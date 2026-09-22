@@ -1,8 +1,15 @@
 {%- comment -%}
-_includes/testa.html — la testa di OGNI variante, scritta una volta sola.
-     ⛔ Le tre varianti differiscono per COME si vede la pagina, non per cosa
-     dichiara di essere: titolo, descrizione, canonical e meta di condivisione
-     sono gli stessi, e stanno qui perché non possano divergere.
+_includes/testa.html — la testa di OGNI pagina, scritta una volta sola.
+     ⛔ Le pagine differiscono per COME si vedono e per cosa dicono, non per
+     COME si dichiarano: canonical, icone, meta di condivisione e foglio di
+     stile si scrivono in un modo solo, e stanno qui perché non divergano.
+
+     ⭐ DAL GIRO W9 IL SITO HA QUATTRO PAGINE, e titolo e descrizione non sono
+     più gli stessi per tutte: arrivano come parametro, `meta=`, dal layout che
+     include questo file. ⚠️ Il parametro NON ha un ripiego su quello della
+     landing, ed è voluto: una pagina nuova che si scordasse di passarlo
+     uscirebbe con un titolo vuoto — cioè si vede — invece che col titolo di
+     un'altra pagina, che non si vede finché non lo nota un motore di ricerca.
 
      ⛔ REGOLA DEGLI INDIRIZZI, e non è pignoleria: tutto ciò che il BROWSER
      scarica (foglio di stile, icone) si scrive con `relative_url`, cioè come
@@ -15,16 +22,16 @@ _includes/testa.html — la testa di OGNI variante, scritta una volta sola.
 {%- endcomment -%}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ site.data.landing.meta.title }}</title>
-<meta name="description" content="{{ site.data.landing.meta.description }}">
+<title>{{ include.meta.title }}</title>
+<meta name="description" content="{{ include.meta.description }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 
 {%- comment -%} Condivisione. ⛔ Nessuna immagine presa da fuori (giro W4 §3③):
 l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcomment -%}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.data.landing.brand }}">
-<meta property="og:title" content="{{ site.data.landing.meta.title }}">
-<meta property="og:description" content="{{ site.data.landing.meta.description }}">
+<meta property="og:title" content="{{ include.meta.title }}">
+<meta property="og:description" content="{{ include.meta.description }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ '/assets/img/aimonx-512.png' | absolute_url }}">
 <meta name="twitter:card" content="summary">

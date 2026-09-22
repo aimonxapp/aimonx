@@ -416,9 +416,8 @@ body.v-b {
 }
 
 // --- chiusa ----------------------------------------------------------------
-.v-b .chiusa {
-  margin-top: 1.5rem; padding-block: clamp(2.2rem, 5vw, 3.2rem) clamp(2.8rem, 6vw, 4rem);
-  border-top: 1px solid rgba(253, 253, 253, .10);
-}
-.v-b .motto { font-size: 1rem; font-weight: 600; color: var(--verde-chiaro); }
-.v-b .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
+// ⛔ L'ASPETTO DEL PIEDE NON È PIÙ QUI, dal giro W9: sta in `comune.scss`, non
+// prefissato, perché il piede è lo stesso su tutte e quattro le pagine e
+// scriverlo in due fogli lo farebbe divergere alla prima correzione. Di suo
+// questo foglio tiene solo la LARGHEZZA della colonna, che è nella regola in
+// testa al file insieme a `.apertura` e a `main`.

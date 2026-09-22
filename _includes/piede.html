@@ -1,0 +1,43 @@
+{%- comment -%}
+_includes/piede.html — IL PIEDE DI OGNI PAGINA, scritto una volta sola.
+Nato nel giro W9, che ha portato il sito da una pagina a quattro.
+
+  ⛔ PRIMA DEL W9 IL PIEDE STAVA DENTRO `_layouts/landing.html`, e andava bene
+  finché la pagina era una. Con quattro pagine un piede scritto in due posti
+  diverge alla prima correzione: la riga dei marchi Apple cambierebbe sulla
+  landing e non sulle altre, e nessuno se ne accorgerebbe.
+
+  ⛔ LA VECCHIA NOTA QUI DICEVA che i tre link NON si mostrano «finché le
+  pagine non esistono (WA1, WA2, WA3)» — giro W4 §3③. ⭐ Da questo giro
+  esistono, e la riga è nella bozza approvata della landing. La condizione è
+  soddisfatta, non aggirata: i link puntano a pagine vere, e che risolvano lo
+  misura `scripts/controprova.sh`.
+
+  ⛔ IL TESTO VIENE DA `_data/landing.yml`, che è di Cowork — anche quando la
+  pagina è Privacy, Support o Terms. ⚠️ Sta lì e non altrove perché è nella
+  BOZZA della landing che Cowork ha scritto il piede: una copia in ogni file di
+  testo sarebbe la stessa divergenza di un attimo fa, travestita da dati.
+
+  ⚠️ IL «·» FRA I TRE LINK LO METTE QUESTO FILE, non i dati. È nella bozza —
+  la riga è «Privacy Policy · Support · Terms of Use» — ma è un SEGNO, non una
+  parola: `aria-hidden` lo toglie a chi ascolta la pagina, che sente tre link e
+  non tre link e due puntini. ⛔ Nei dati ci sono solo le tre etichette, e sono
+  quelle che `scripts/testo-approvato.sh` cerca alla lettera nella bozza.
+
+  ⭐ `aria-current="page"` sul link della pagina che si sta già leggendo: chi
+  usa un lettore di schermo sente che quel link porta dove è già. Non aggiunge
+  nessuna parola — è lo stesso testo, con un'informazione in più.
+{%- endcomment -%}
+{%- assign f = site.data.landing.footer -%}
+<footer class="chiusa">
+  <p class="motto">{{ f.tagline }}</p>
+  <p class="collegamenti">
+    {%- for e in f.links -%}
+    {%- assign c = site.data.collegamenti.frasi | where: "frase", e | first -%}
+    {%- if forloop.index0 > 0 %}<span class="sep" aria-hidden="true">·</span>{% endif -%}
+    {%- assign dove = c.href | relative_url -%}
+    <a href="{{ dove }}"{% if dove == page.url %} aria-current="page"{% endif %}>{{ e }}</a>
+    {%- endfor -%}
+  </p>
+  <p class="minuta">{{ f.copyright }}</p>
+</footer>

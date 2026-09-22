@@ -1,0 +1,175 @@
+---
+---
+// assets/css/testo.scss — L'ASPETTO DELLE PAGINE DA LEGGERE. Giro W9.
+// Privacy Policy, Support, Terms of Use.
+//
+// ⛔ PERCHÉ `.scss` E NON `.css`: un `.css` Jekyll lo copia TALE E QUALE, e
+// ogni commento di lavoro finirebbe su aimonx.app. Un `.scss` con questo front
+// matter viene COMPILATO, e sul sito esce solo il prodotto. ⛔ E i commenti si
+// scrivono con `//`, mai con `/* */`: misurato nel giro W6, `/* */`
+// sopravvive alla build in `development` — cioè all'anteprima — e sparisce
+// solo in `production`. `//` non esce mai, in nessuna delle due.
+// La nota lunga sta in testa a `comune.scss`.
+//
+// ⛔ LA DECISIONE DI FONDO, ed è l'unica che conta qui dentro: IL TESTO STA SU
+// UN FOGLIO BIANCO. La landing è bianco su verde scuro e funziona, perché sono
+// frasi corte guardate una alla volta; queste pagine sono paragrafi lunghi
+// letti di fila, e il chiaro su scuro a quella lunghezza stanca — è il motivo
+// per cui i libri non sono neri. ⭐ Il foglio non è un'invenzione: è la stessa
+// anatomia delle carte della landing (fondo bianco, angoli tondi, filetto di
+// sezione a sinistra, §4c e §4d della tavolozza), cresciuta fino a contenere
+// una pagina intera. Il sito resta uno solo.
+//
+// ⛔ E LA COLONNA È PIÙ STRETTA della landing — 52rem contro 66 — perché una
+// riga di testo lunga si perde tornando a capo. Misura, non gusto: con il
+// corpo di queste pagine la riga sta sotto i 75 caratteri a ogni larghezza.
+
+body.v-testo {
+  background: var(--bosco);
+  // ⚠️ Il gradiente finisce prima che sulla landing (24rem invece di 46): qui
+  // la parte scura in alto è solo testata e titolo, non una scena intera.
+  background-image: linear-gradient(180deg, var(--alto) 0%, var(--bosco) 24rem);
+  background-repeat: no-repeat;
+  color: var(--bianco);
+}
+
+.v-testo .apertura,
+.v-testo main,
+.v-testo .chiusa { max-width: 52rem; margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+
+// ⚠️ Il respiro sotto al foglio: senza, il bordo bianco finisce ADDOSSO al
+// filetto del piede. Si vede sul telefono e non sul computer, dove la pagina
+// è più corta del previsto — è il motivo per cui gli screenshot si guardano
+// a tutte e due le misure e non solo su quella comoda.
+.v-testo main { padding-block-end: clamp(1.6rem, 4vw, 2.4rem); }
+
+// --- la testata, che qui PORTA A CASA ---------------------------------------
+// ⭐ Sulla landing il marchio non è un link: era l'unica pagina e non c'era
+// dove tornare. Da una pagina interna il marchio in alto a sinistra è la
+// strada per la home, e chi legge se lo aspetta lì.
+// ⛔ Il link non si annuncia con un sottolineato: contiene un'immagine e un
+// nome in maiuscole spaziate, e un filetto sotto li spezzerebbe. Si vede al
+// passaggio del mouse e — quel che conta — col focus da tastiera, che il
+// pavimento di `comune.scss` disegna su ogni cosa attivabile.
+.v-testo .testata { padding-block: clamp(1.4rem, 4vw, 2.4rem); }
+.v-testo .acasa {
+  display: inline-flex; align-items: center; gap: .8rem;
+  color: inherit; text-decoration: none;
+  border-radius: 14px;
+}
+.v-testo .acasa:hover .nome { color: var(--verde-chiaro); }
+.v-testo .marchio { width: 48px; height: 48px; border-radius: 12px; }
+.v-testo .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
+
+// --- il titolo della pagina, sul verde scuro --------------------------------
+.v-testo .titolone { padding-block: clamp(.6rem, 2.5vw, 1.4rem) clamp(1.4rem, 4vw, 2.2rem); }
+.v-testo .titolone h1 {
+  font-size: clamp(2rem, 6.4vw, 3.4rem);
+  font-weight: 700; line-height: 1.04; letter-spacing: -.035em;
+  color: var(--bianco);
+}
+.v-testo .aggiornato {
+  margin-top: clamp(.7rem, 2vw, 1rem);
+  font-size: clamp(.72rem, 1.6vw, .84rem);
+  font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: #9DB6AA;
+}
+
+// --- il foglio bianco -------------------------------------------------------
+// ⚠️ Il filetto di sezione è un `::before` assoluto e non un `border-left`: con
+// angoli da 18px un bordo si incurva e si legge come una mezzaluna, mentre la
+// carta della landing ha un filetto DIRITTO da cima a fondo (§4c punto 6).
+// `overflow: hidden` è quello che lo tiene dentro agli angoli.
+.v-testo .foglio {
+  position: relative; overflow: hidden;
+  background: var(--bianco);
+  color: var(--inchiostro);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(6, 24, 16, .28);
+  padding: clamp(1.4rem, 4.5vw, 2.6rem);
+  padding-left: clamp(1.6rem, 5vw, 2.9rem);
+}
+.v-testo .foglio::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: var(--sez);
+}
+
+// ⭐ Il ritmo verticale in una riga sola: ogni blocco prende aria da quello
+// prima. I titoli se ne prendono di più, qui sotto.
+.v-testo .foglio > * + * { margin-top: .95rem; }
+
+.v-testo .foglio p {
+  font-size: clamp(1rem, 1.5vw, 1.05rem);
+  line-height: 1.72;
+  // ⚠️ Non `--inchiostro-2`, che sulla landing è il corpo delle carte: lì sono
+  // tre righe, qui è una pagina. L'inchiostro pieno è l'unico che regge la
+  // lettura lunga, ed è comunque un verde scurissimo, non nero.
+  color: var(--inchiostro);
+}
+
+.v-testo .foglio h2 {
+  margin-top: clamp(1.9rem, 4.5vw, 2.6rem);
+  font-size: clamp(1.18rem, 2.8vw, 1.45rem);
+  font-weight: 700; letter-spacing: -.024em; line-height: 1.25;
+  color: var(--titolo);
+}
+// ⚠️ Il trattino colorato sopra ogni `h2` è l'eco del filetto di sezione: la
+// stessa tinta, la stessa idea, in piccolo. ⛔ È decorativo e basta — non porta
+// nessuna informazione che il titolo non dica già.
+.v-testo .foglio h2::before {
+  content: ""; display: block;
+  width: 2.2rem; height: 4px; border-radius: 2px;
+  background: var(--sez);
+  margin-bottom: .85rem;
+}
+.v-testo .foglio > h2:first-child { margin-top: 0; }
+
+.v-testo .foglio h3 {
+  margin-top: clamp(1.4rem, 3.2vw, 1.8rem);
+  font-size: 1.04rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.35;
+  color: var(--inchiostro);
+}
+
+// --- gli elenchi puntati ----------------------------------------------------
+// ⚠️ Il pallino lo disegna il CSS: `comune.scss` toglie i segni di lista a
+// tutte le `ul` del sito (la landing ne è piena e non ne vuole nessuno), e qui
+// servono davvero. `top: .68em` lo allinea alla prima riga qualunque sia il
+// corpo, perché è legato alla dimensione del testo e non a un numero di pixel.
+.v-testo .foglio .elenco { margin-top: .85rem; }
+.v-testo .foglio .elenco li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: clamp(1rem, 1.5vw, 1.05rem);
+  line-height: 1.68;
+  color: var(--inchiostro);
+}
+.v-testo .foglio .elenco li + li { margin-top: .6rem; }
+.v-testo .foglio .elenco li::before {
+  content: ""; position: absolute; left: .28rem; top: .68em;
+  width: .42rem; height: .42rem; border-radius: 50%;
+  background: var(--sez);
+}
+
+// --- i link dentro al foglio ------------------------------------------------
+// ⛔ Sottolineati, e non è un dettaglio di gusto: il colore da solo non basta
+// (WCAG 2.1, «Use of Color»), e chi non distingue il verde dal nero deve
+// vedere lo stesso dove si clicca. `--titolo` è la tinta scura della sezione,
+// scelta perché il contrasto sul bianco regga anche a corpo normale.
+.v-testo .foglio a {
+  color: var(--titolo);
+  text-decoration: underline;
+  text-underline-offset: .16em;
+  text-decoration-thickness: .075em;
+}
+.v-testo .foglio a:hover { text-decoration-thickness: .16em; }
+
+// --- le tre tinte -----------------------------------------------------------
+// ⛔ NON SONO SCELTE A GUSTO, e sono le stesse dei blocchi della landing: la
+// privacy è salvia anche lì, i termini portano l'ardesia della sicurezza, e il
+// supporto il verde d'identità. Chi arriva dalla landing ritrova il colore del
+// discorso che stava leggendo (tavolozza §4b).
+// ⚠️ Le variabili arrivano da `comune.scss`; qui si sceglie solo quale terna.
+.v-testo { --sez: var(--sez-verde); --titolo: var(--titolo-verde); }
+.v-testo.tinta-verde   { --sez: var(--sez-verde);   --titolo: var(--titolo-verde); }
+.v-testo.tinta-salvia  { --sez: var(--sez-salvia);  --titolo: var(--titolo-salvia); }
+.v-testo.tinta-ardesia { --sez: var(--sez-ardesia); --titolo: var(--titolo-ardesia); }

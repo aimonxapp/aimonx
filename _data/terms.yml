@@ -1,0 +1,85 @@
+# _data/terms.yml — IL TESTO DELLA PAGINA TERMS OF USE, UNA VOLTA SOLA.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 22/09/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/terms/terms-en-bozza.md
+# Non è stato ricopiato a mano: è stato CONVERTITO, e `scripts/testo-approvato.sh`
+# cerca ogni stringa qui dentro ALLA LETTERA in quella bozza. ⭐ Il «parola per
+# parola» del giro W9 non è una promessa: è una misura che gira a ogni giro.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. «I testi che l'utente legge li
+# scrive Cowork» (CLAUDE.md, «Chi decide cosa»). Se qui dentro serve una parola
+# diversa, si cambia la bozza e poi si riporta qui — mai il contrario.
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Dove portano le parole sta in
+# `_data/collegamenti.yml`, che è di CC: nessun `<a>`, nessun indirizzo e
+# nessun markdown in mezzo a una frase, altrimenti quella frase non si
+# troverebbe più nella bozza e il controllo avrebbe dovuto imparare
+# un'eccezione. ⛔ Un'eccezione che nessuno ricorda è il buco da cui rientra il
+# testo riscritto.
+#
+# ⚠️ `blocchi` è una LISTA ORDINATA e l'ordine è quello della bozza: `h2` e
+# `h3` sono i suoi titoli, `p` i suoi paragrafi, `ul` i suoi elenchi puntati.
+# `_layouts/pagina.html` li impagina e basta: non sceglie, non riordina, non
+# salta. Una voce di tipo ignoto non romperebbe la pagina — uscirebbe come
+# paragrafo.
+
+meta:
+  # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
+  # descrizione. ⭐ Nessuna parola nuova però: `title` è il titolo `#` della
+  # bozza (il giro W9 §1 dice di usare quello finché Cowork non ne porta uno),
+  # e `description` è una FRASE INTERA della bozza, presa alla lettera — per
+  # questo il controllo le trova entrambe e non deve dichiarare nessuna
+  # eccezione. ⚠️ CC ha PROPOSTO di meglio nella consegna del giro W9:
+  # decide Cowork, e finché non decide vale quel che c'è qui.
+  title: "Terms of Use"
+  description: "AIMONX is a logbook for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice."
+
+titolo: "Terms of Use"
+
+# ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
+# scrive «Last updated: [date of publication]», e il segnaposto diventa la data
+# della PUBBLICAZIONE, in americano per esteso.
+# ⛔ IN FASE A QUESTA DATA È PROVVISORIA e va riportata alla data vera come
+# PRIMO gesto della Fase B. Non si conta sulla memoria di nessuno:
+# `scripts/testo-approvato.sh` la STAMPA a ogni run, dichiarata, accanto al
+# segnaposto che sostituisce.
+aggiornato: "Last updated:"
+data_pubblicazione: "September 23, 2026"
+
+blocchi:
+- tipo: h2
+  testo: Using the AIMONX app
+- tipo: p
+  testo: AIMONX is licensed to you under Apple's standard Licensed Application End User License Agreement (the "Standard EULA"). We don't add a license of our own on top of it.
+- tipo: p
+  testo: Read Apple's Standard EULA
+- tipo: h2
+  testo: AIMONX Pro
+- tipo: p
+  testo: AIMONX is free to use. AIMONX Pro is an optional subscription that unlocks more features.
+- tipo: ul
+  voci:
+  - Pro is an auto-renewing subscription, sold and billed by Apple through the App Store. It keeps renewing until you cancel.
+  - 'You can manage or cancel it anytime in your iPhone''s Settings: tap your name, then Subscriptions.'
+  - Apple handles refunds, under its own policies.
+- tipo: p
+  testo: If your Pro subscription ends, nothing gets lost. Everything beyond the Free limits stays readable, just frozen, until you come back.
+- tipo: h2
+  testo: What AIMONX is, and what it isn't
+- tipo: p
+  testo: AIMONX is a logbook for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice. Following the laws where you live is up to you.
+- tipo: h2
+  testo: This website
+- tipo: p
+  testo: © 2026 Piermichele Fassio. Unless noted otherwise, all content on aimonx.app is ours. We work hard to keep it accurate, but it's provided "as is."
+- tipo: p
+  testo: iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+- tipo: h2
+  testo: Contact
+- tipo: p
+  testo: Questions about these terms? Email us at support@aimonx.app.
+- tipo: h2
+  testo: Changes
+- tipo: p
+  testo: If these terms change, we'll update this page and change the date at the top.

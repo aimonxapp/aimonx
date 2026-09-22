@@ -50,10 +50,11 @@
 # bozza, senza eccezioni da ricordarsi — e un'eccezione che nessuno ricorda è
 # il buco da cui rientra il testo riscritto.
 #
-# ⛔ COSA È STATO TOLTO, E PERCHÉ. La riga del footer «Privacy Policy · Support
-# · Terms» NON è qui: il giro W4 §3③ dice che quei link non si mostrano finché
-# le pagine non esistono (WA1, WA2, WA3) — niente link rotti, niente
-# segnaposto. È un'omissione ORDINATA dal giro, non una riscrittura.
+# ⭐ COSA È RIENTRATO, E PERCHÉ. Fino al giro W8 la riga del footer «Privacy
+# Policy · Support · Terms of Use» NON era qui: il giro W4 §3③ diceva che quei
+# link non si mostrano finché le pagine non esistono (WA1, WA2, WA3) — niente
+# link rotti, niente segnaposto. ⭐ Dal giro W9 le tre pagine esistono e la riga
+# è nella bozza approvata: la condizione è soddisfatta, non aggirata.
 
 brand: "AIMONX"
 
@@ -193,4 +194,14 @@ piani:
 
 footer:
   tagline: "AIMONX — the technical logbook for sport shooters."
+  # ⚠️ TRE ETICHETTE, NON UNA RIGA, ed è la regola di Pier del 22/09: una frase
+  # si può dividere in pezzi per l'impaginazione purché le parole restino
+  # identiche e il controllo lo provi. Qui i pezzi devono essere tre perché
+  # ciascuno è un LINK diverso, e un link è un pezzo per forza.
+  # ⛔ Il «·» che li separa non è qui: è un segno, non una parola, e lo mette
+  # `_includes/piede.html`. Dove portano sta in `_data/collegamenti.yml`.
+  links:
+    - "Privacy Policy"
+    - "Support"
+    - "Terms of Use"
   copyright: "© 2026 Piermichele Fassio. iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."

@@ -1,0 +1,21 @@
+---
+# ⛔ IL FRONT MATTER NON È DECORAZIONE, è WD27: un file senza queste righe
+# Jekyll lo copia TALE E QUALE accanto alla pagina, e il sito pubblica anche il
+# sorgente, commenti di lavoro compresi. Misurato nel giro W2.
+#
+# ⭐ E QUESTO FILE È .html, NON .md, e non è indifferente: un .md tracciato è un
+# CANDIDATO a diventare pagina, e `scripts/controprova.sh` li conta
+# (`pagine_dal_merge`) proprio per accorgersi di un file di lavoro entrato per
+# sbaglio. Tre .md in più avrebbero alzato quel numero da 4 a 7 e reso il
+# controllo più sordo — la stessa quantità di allarme per tre pagine volute e
+# per un file dimenticato. In .html il numero resta 4 e continua a dire
+# quello che dice.
+layout: pagina
+permalink: /terms/
+dati: terms
+tinta: ardesia
+foglio: /assets/css/testo.css
+# ⚠️ `foglio:` punta a un .css che NON esiste sul disco: lo costruisce Jekyll da
+# `assets/css/testo.scss`. È voluto, ed è il modo in cui i commenti di lavoro
+# restano fuori dal sito — vedi la nota in testa a quel file.
+---

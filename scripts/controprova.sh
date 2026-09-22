@@ -245,17 +245,73 @@ VOCI
     # ⛔ Vincolo del sito: nessuna risorsa da server esterni (CLAUDE.md).
     # Un font o uno script caricato da fuori dice a quel server chi visita
     # aimonx.app — su un sito che vende privacy è una contraddizione pubblica.
+    #
+    # ⛔⛔ CORRETTO NEL GIRO W9, e la vecchia riga era SBAGLIATA: contava ogni
+    # `href="https://…"`, quindi anche gli `<a>`. ⚠️ Un LINK VERSO FUORI NON È
+    # UNA RISORSA ESTERNA — la pagina non scarica niente da quel dominio, ci
+    # manda il lettore solo se clicca, e finché non clicca quel server non sa
+    # che esiste. Confonderli avrebbe fatto due danni in un colpo: la Privacy
+    # Policy, che DEVE poter citare l'informativa di GitHub e quella di Apple,
+    # avrebbe fatto protestare il controllo; e per farlo tacere qualcuno
+    # avrebbe alzato l'attesa da 0 a 4 — cioè avrebbe spento, per far passare
+    # quattro link, il controllo che tiene fuori i font e gli script altrui.
+    # ⭐ Così invece i link si CONTANO A PARTE, e si guardano.
+    #
     # ⚠️ Questo conta i riferimenti SCRITTI nell'HTML. Quel che il browser
     # chiede DAVVERO lo dice scripts/anteprima-playwright.mjs, ed è un'altra
     # misura: un `<script>` può aggiungerne altri a pagina aperta.
-    N_EST=$(grep -rohE '(src|href)="https?://[^"]*"' "$SITO_TMP" 2>/dev/null \
-            | grep -vE '//([a-z0-9-]+\.)?aimonx\.app' | sort -u | grep -c . | tr -d ' ')
+    RISORSE=$("$RUBY_BIN/ruby" -e '
+      fuori = []
+      Dir.glob(File.join(ARGV[0], "**", "*.{html,css,js}")).sort.each do |f|
+        t = File.read(f, encoding: "UTF-8").gsub(/<!--.*?-->/m, " ")
+        # ⛔ Si saltano i tag <a>: sono link, non risorse. Tutto il resto che
+        # porta un src= o un href= (link rel, img, script, iframe...) carica.
+        t.gsub(/<a\b[^>]*>/i, " ").scan(/\b(?:src|href)="(https?:\/\/[^"]+)"/) { |(u)| fuori << u }
+        # E il CSS, che carica con url(...) e non con un attributo.
+        t.scan(/url\(\s*["\x27]?(https?:\/\/[^)"\x27]+)/) { |(u)| fuori << u }
+      end
+      fuori.reject! { |u| u =~ %r{\A https?://([a-z0-9-]+\.)? aimonx\.app}x }
+      puts fuori.uniq
+    ' "$SITO_TMP" 2>/dev/null)
+    N_EST=$(printf '%s' "$RISORSE" | grep -c . | tr -d ' ')
     confronta "risorse da domini esterni nel sito costruito" risorse_esterne_build "$N_EST"
     if [ "$N_EST" != "0" ]; then
-      grep -rohE '(src|href)="https?://[^"]*"' "$SITO_TMP" 2>/dev/null \
-        | grep -vE '//([a-z0-9-]+\.)?aimonx\.app' | sort -u | sed 's/^/     ⚠️ /'
+      printf '%s\n' "$RISORSE" | sed 's/^/     ⚠️ /'
       echo "     ⚠️ Vedi WD26 in docs/aperti.md."
     fi
+
+    # --- le misure sulle PAGINE costruite (giro W9) ---------------------------
+    # ⛔ Quattro numeri, e uno è il MUST di Pier misurato invece che riletto.
+    # Il programma sta in scripts/misure-pagine.rb, con le sue ragioni.
+    echo
+    echo "--- le quattro pagine, guardate una per una (giro W9) ---"
+    # ⛔ La variabile NON si chiama MISURE, e non è un vezzo: `MISURE` è la
+    # variabile globale in cui `confronta` accumula le coppie chiave=valore che
+    # `--aggiorna-attese` poi riscrive. Chiamarla così qui la sovrascriveva, e
+    # il baseline si sarebbe riallineato su quattro righe invece che su tutte.
+    # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
+    # appiccicata, non perché qualcuno l'avesse previsto.
+    PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
+    for CHIAVE in pagine_costruite link_rotti titoli_fuori_ordine indirizzi_o_telefoni; do
+      VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
+      [ -n "$VALORE" ] && confronta "$CHIAVE" "$CHIAVE" "$VALORE"
+    done
+    printf '%s\n' "$PAGINE_OUT" | grep -E '^  ' | sed 's/^/   /'
+    N_FUORI_LINK=$(printf '%s\n' "$PAGINE_OUT" | sed -n 's/^link_verso_fuori=\([0-9]*\)$/\1/p' | head -1)
+    echo "  ⚠️ link verso l'esterno: $N_FUORI_LINK — NON sono risorse esterne (vedi sopra),"
+    echo "     e non hanno un'attesa: cambiano quando il testo approvato cita un altro sito."
+
+    # --- ② il testo SERVITO, non solo quello nei file di dati -----------------
+    # ⛔ Non è un doppione del controllo più in basso: quello guarda i file di
+    # dati, questo guarda quel che esce. Una frase scritta in un LAYOUT non sta
+    # in nessun file di dati, e solo questa misura la vede. Provato nel W9
+    # mettendone una a mano: la misura sui dati non si accorge di niente.
+    echo
+    echo "--- il testo SERVITO viene tutto da una bozza approvata? ---"
+    USCITA_SERVITO=$("$REPO/scripts/testo-approvato.sh" --servito "$SITO_TMP" 2>&1)
+    printf '%s\n' "$USCITA_SERVITO"
+    N_SERV=$(printf '%s' "$USCITA_SERVITO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)
+    [ -n "$N_SERV" ] && confronta "pezzi di testo servito non approvati" testo_servito_fuori_bozza "$N_SERV"
   else
     # ⛔ Una build fallita NON è «zero file di lavoro»: è una misura che non
     # c'è stata. Dirla ✅ sarebbe il via libera che non ha guardato niente.
@@ -520,9 +576,9 @@ fi
 # meccanica» (CLAUDE.md). Dice se è QUELLO — cioè se qualcuno ha riscritto nel
 # repo una frase che l'utente legge, che è un lavoro di Cowork.
 # ⚠️ Scatta anche quando cambia la BOZZA: lì non c'è un errore da riparare, c'è
-# una consegna nuova da portare in _data/landing.yml.
+# una consegna nuova da portare nei file di _data/.
 echo
-echo "--- il testo della landing è quello approvato da Pier? ---"
+echo "--- il testo delle quattro pagine è quello approvato da Pier? ---"
 USCITA_TESTO=$("$REPO/scripts/testo-approvato.sh" 2>&1)
 printf '%s\n' "$USCITA_TESTO"
 N_FUORI=$(printf '%s' "$USCITA_TESTO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)
@@ -554,9 +610,8 @@ echo "· se una pagina promette una funzione che l'app non ha: si verifica a man
 echo "  contro ~/Developer/AIMONX/docs/prodotto.md, non contro spec-sito.md"
 echo "· il CONTRASTO del testo e le richieste verso l'esterno col browser vero:"
 echo "  si misurano, ma servono le pagine ACCESE — 'bundle exec jekyll serve' e poi"
-echo "  scripts/contrasto.mjs e scripts/anteprima-playwright.mjs. ⛔ Non si"
-echo "  agganciano qui: un controllo che quasi sempre dice 'non misurabile'"
+echo "  scripts/contrasto.mjs, scripts/sbordi.mjs e scripts/anteprima-playwright.mjs."
+echo "  ⛔ Non si agganciano qui: un controllo che quasi sempre dice 'non misurabile'"
 echo "  smette di essere letto, ed è così che muoiono i guardrail"
-echo "· i link interni che risolvono: le pagine di oggi non hanno NESSUN link"
-echo "  (Privacy, Support e Terms non esistono ancora: WA1-WA3), quindi il"
-echo "  controllo direbbe 'tutto a posto' senza aver guardato niente"
+echo "· il confronto AL BYTE fra questa build e quella di Pages: si fa dopo il"
+echo "  merge, con il sito vero in mano (WD31), e non da qui"
