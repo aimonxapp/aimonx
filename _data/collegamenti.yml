@@ -87,6 +87,12 @@ frasi:
 # ⛔ Privacy Policy e Terms NON sono nella barra: stanno nel piede (giro W10
 # §2⑤). Una barra con dentro tutto non è una barra, è un indice.
 menu:
+  # ⚠️ «Home» porta alla radice, non a un `#`: è l'unica voce della barra che
+  # non salta dentro la landing ma ci VA. ⛔ Sulla landing stessa diventa
+  # quindi la voce «dove sei già», e `aria-current="page"` lo dice — il logo
+  # accanto porta allo stesso posto, ed è voluto: uno è il marchio, l'altra è
+  # una voce di menu, e chi usa un lettore di schermo cerca la seconda.
+  "Home":         "/"
   "Features":     "/#features"
   "Privacy":      "/#privacy"
   "Security":     "/#security"
