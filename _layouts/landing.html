@@ -49,14 +49,13 @@
       <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
            alt="" width="48" height="48">
       <span class="nome">{{ d.brand }}</span>
-
       {%- comment -%}
-        L'etichetta piccola in alto a destra. ⛔ È un <p>, non un <a> e non un
-        <button>: non porta da nessuna parte perché non c'è ancora niente dove
-        andare (`spec-sito.md` §9 — nessun pulsante di download nel primo
-        tempo). Il pallino arancio è l'unico accento: è un segno, non un fondo.
+        ⛔ NIENTE ETICHETTA IN ALTO A DESTRA, dal giro W7: Pier ha guardato il
+        W6 in Safari e l'ha tolta. «Coming soon for iPhone» si dice UNA volta
+        sola, nella parte alta, e detta due volte perdeva forza.
+        ⚠️ Il testo resta in `_data/landing.yml` — è la stessa stringa che usa
+        l'etichetta grande, e non si tocca: quel file è di Cowork.
       {%- endcomment -%}
-      <p class="presto-minuta"><span class="pallino" aria-hidden="true"></span>{{ d.hero.etichetta }}</p>
     </header>
 
     <div class="eroe">
@@ -102,12 +101,18 @@
         </ul>
 
         {%- comment -%}
-          L'ETICHETTA GRANDE. ⛔ <p>, non <a>: vedi il blocco in testa. Il
-          filetto arancio a sinistra è quello che la fa «etichetta» invece che
-          «pulsante» — l'arancio segna, non riempie (`assets/css/comune.scss`,
-          la nota su `--arancio`).
+          L'ETICHETTA GRANDE, dal giro W7 dentro una PILLOLA ARANCIO con la
+          scritta bianca. ⚠️ SCELTA DI PIER, presa guardando il W6 e SAPENDO
+          che una pillola piena somiglia a un pulsante: nel W6 avevo scelto il
+          filetto proprio per quello, e lui ha deciso altrimenti. La decisione
+          è sua; quel che resta mio è che non si COMPORTI da pulsante.
+          ⛔ Quindi: <p>, non <a> e non <button> — niente freccia, nessun link,
+          nessun `role`, nessun cambio al passaggio del mouse, nessun cursore a
+          manina. Un lettore di schermo legge una frase, non un comando.
+          ⚠️ Il contrasto è misurato e sta al limite: vedi la nota in
+          `assets/css/b.scss`.
         {%- endcomment -%}
-        <p class="etichetta"><span class="filetto" aria-hidden="true"></span>{{ d.hero.etichetta }}</p>
+        <p class="etichetta">{{ d.hero.etichetta }}</p>
 
         <p class="riga-minuta">{{ d.hero.riga }}</p>
       </div>

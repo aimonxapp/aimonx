@@ -76,10 +76,15 @@ hero:
       resto: "your maintenance"
     - forte: "Know"
       resto: "your real costs"
-  # ⛔ ETICHETTA, NON PULSANTE (decisione di Pier del 22/09): niente freccia,
-  # niente link, niente fondo arancio da bottone. ⚠️ E senza il punto finale:
-  # la versione 1 scriveva «Coming soon for iPhone.», la 2 la dà come etichetta
-  # e il punto non c'è. Il testo qui è quello della 2.
+  # ⛔ ETICHETTA, NON PULSANTE: niente freccia, niente link, e niente che si
+  # comporti da comando. ⚠️ NEL GIRO W7 PIER HA VOLUTO LA PILLOLA ARANCIO PIENA
+  # con la scritta bianca, sapendo che somiglia a un pulsante: l'aspetto è una
+  # sua decisione, il comportamento resta quello di una frase. Il come e il
+  # contrasto misurato stanno in `assets/css/b.scss`.
+  # ⚠️ E senza il punto finale: la versione 1 della bozza scriveva «Coming soon
+  # for iPhone.», la 2 la dà come etichetta e il punto non c'è. Qui c'è la 2.
+  # ⭐ Dal W7 questa stringa è detta UNA volta sola: l'etichetta piccola in alto
+  # a destra è uscita.
   etichetta: "Coming soon for iPhone"
   riga: "YOUR SHOOTING DATA. ALWAYS WITH YOU."
   garanzie:

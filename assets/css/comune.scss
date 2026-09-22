@@ -57,12 +57,18 @@
   --verde-chiaro:   #8CCCA6;  // accento sulla presentazione scura
 
   // §1 — riservato. ⚠️ Nell'app l'arancio vuol dire «avviso» o «azione
-  // irreversibile», e per questo non entra in un grafico qualsiasi. Sul sito
-  // non ci sono avvisi: resta un accento di precisione — un filetto, un
-  // pallino, le lettere di un'etichetta — e ⛔ NON diventa il fondo di un
-  // bottone. ⭐ Dal giro W6 la regola ha un secondo motivo, deciso da Pier:
-  // «Coming soon for iPhone» è un'ETICHETTA, e un fondo arancio pieno la
-  // farebbe sembrare un pulsante che non porta da nessuna parte.
+  // irreversibile», e per questo non entra in un grafico qualsiasi.
+  // ⚠️ SUL SITO LA REGOLA È CAMBIATA NEL GIRO W7, e va detto invece di
+  // lasciarla scritta com'era: fino al W6 l'arancio «segnava e non riempiva»,
+  // e l'etichetta «Coming soon for iPhone» era un filetto più delle lettere.
+  // Pier l'ha guardata e ha voluto la PILLOLA ARANCIO PIENA con la scritta
+  // bianca, sapendo che somiglia a un pulsante. ⛔ Quindi oggi l'arancio È un
+  // fondo, in un punto solo della pagina, e il vincolo si è spostato dove
+  // conta: quella pillola non si comporta da pulsante — nessun link, nessun
+  // `role`, nessun `:hover`, nessun cursore a manina.
+  // ⛔⛔ E si è portata dietro un numero da non perdere di vista: bianco su
+  // questo arancio fa 3.01:1, cioè passa WCAG AA SOLO come testo grande, e per
+  // 0.01. Il conto sta in `b.scss`, alla regola `.etichetta`.
   --arancio:        #EC6F18;
 
   // §4b — la rampa d'identità delle sezioni, e §4d i titoli e le fasce.
