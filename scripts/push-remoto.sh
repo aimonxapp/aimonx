@@ -11,9 +11,16 @@
 #     leggibili da chiunque su github.com, senza aspettare il merge.
 #     Vedi WD17 in docs/aperti.md.
 #
-# ⛔ Oggi il push NON passa: la credenziale sul Mac è di `Pier974`, che su
-# questo repo ha push: false (WA15). Il messaggio qui sotto lo dice invece di
-# lasciare un errore di git che si legge come un guasto.
+# ⭐ Il push PASSA, dal giro W1: `WA15` è chiusa. L'isolamento è un credential
+# helper LOCALE a questo repo (`git config --local
+# credential.https://github.com.helper`) che prende il token con
+# `gh auth token --user aimonxapp` — quindi ⛔ l'account attivo di `gh` resta
+# `Pier974` e i push del repo dell'app continuano a firmarsi con lui.
+# ⚠️ Queste righe dicevano il contrario fino al giro W4 (WD32): annunciavano
+# un guasto che non c'era più da tre giri, e un commento così fa perdere tempo
+# a chi legge lo script per capire perché qualcosa non funziona.
+# Misura: `gh api repos/aimonxapp/aimonx/pages/builds/latest --jq .pusher.login`
+# → `aimonxapp`.
 #
 set -u
 
@@ -41,10 +48,18 @@ if [ $RC_RAMI -ne 0 ] || [ $RC_TAG -ne 0 ]; then
   NOTA=""
   case "$ESITO_RAMI" in
     *403*|*"Permission"*|*"denied"*|*"Authentication"*)
+      # ⚠️ WA15 è chiusa dal giro W1 e questo errore non è più «lo stato di
+      # oggi»: se torna, è il credential helper LOCALE a questo repo che non
+      # sta più dando il token di `aimonxapp`. ⛔ Non si aggira cambiando
+      # l'account attivo di `gh`: quello è di `Pier974` e serve al repo
+      # dell'app — cambiarlo firmerebbe `aimonxapp` anche i push dell'app.
       NOTA="
-⚠️ Somiglia a WA15 (docs/aperti.md): il repo è di \`aimonxapp\`, la credenziale
-   sul Mac è di \`Pier974\`, che qui ha push: false. Non è un guasto di git, e
-   ⛔ non si aggira: la sblocca Pier."
+⚠️ Il repo è di \`aimonxapp\`, e il token lo dà un credential helper LOCALE a
+   questo repo. Cosa guardare, in quest'ordine:
+     git config --local --get-all credential.https://github.com.helper
+     gh auth token --user aimonxapp >/dev/null && echo 'token ok'
+   ⛔ NON si usa \`gh auth switch\`: l'account attivo è \`Pier974\` e serve al
+   repo dell'app. Vedi WA15 in docs/aperti.md."
       ;;
   esac
   jq -n --arg m "⛔ PUSH FALLITO verso origin (ramo $RAMO rc=$RC_RAMI, tag rc=$RC_TAG). Il repo locale e il remoto NON sono allineati.

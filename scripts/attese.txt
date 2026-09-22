@@ -45,7 +45,18 @@ promesse_scadute=0
 # poteva togliere (una tabella di quattro voci è diventata un elenco): dei 179
 # di partenza, tre righe erano forma e sono sparite. Qui il tetto è un FRENO,
 # non un muro — ma va speso guardando, non per fare spazio.
-tetto_righe_CLAUDE_md=180
+# ⛔ Alzato a mano nel giro W4, da 180 a 190, e SOLO dopo aver guardato cosa è
+# entrato — quattro righe di REGOLE e due di indice, nessuna cronaca:
+#   · i tre vincoli che ha dettato Pier (il MUST su indirizzo e telefono;
+#     «AIMONX non vende armi, vende un'app per registrarle»; la conformità
+#     Italia/UE/USA col puntatore a conformita-sito.md);
+#   · nell'indice, la riga di conformita-sito.md e quella dei due controlli
+#     nuovi (scripts/contrasto.mjs, scripts/testo-approvato.sh).
+# ⚠️ Prima di alzarlo si è provato a non alzarlo: i due controlli nuovi sono
+# entrati DENTRO la riga dell'anteprima invece di prendersene una a testa.
+# ⛔ Qui il tetto resta un FRENO, non un muro: questo file deve restare stabile,
+# e 190 è uno spazio da spendere guardando, non da riempire.
+tetto_righe_CLAUDE_md=190
 # ⛔ Alzato a mano nel giro W2, da 50 a 70, dopo aver guardato COSA è entrato:
 # quattro voci di registro (WD25 chiusa, WD26, WD27, WD28), nessun verbale.
 # ⚠️ Il registro è append-only per la sua regola 2 — le voci chiuse restano in
@@ -73,10 +84,36 @@ file_lavoro_pubblicati=0
 # fra le due misure c'è il merge.
 http_nella_build=0
 
-# ⚠️ WD26, APERTA: risorse caricate da un dominio diverso da aimonx.app.
-# ⛔ Il valore è 1 e NON è una soglia di comodo: è lo stato di oggi, misurato
-# — il tema di default di Pages tira anchor.js da cdnjs.cloudflare.com. Sta
-# qui perché il numero non CRESCA mentre la voce aspetta. Quando WD26 si
-# chiude questo scende a 0, la controprova protesta, e l'attesa si sposta a
-# mano: è il verso giusto.
-risorse_esterne_build=1
+# ⛔ WD26. Risorse caricate da un dominio diverso da aimonx.app: ora ZERO, e
+# deve restare zero.
+#
+# ⭐ È SUCCESSO ESATTAMENTE COME ERA SCRITTO QUI, ed è il motivo per cui la
+# riga vale la pena di rileggersi: il valore era 1 (il tema di default di Pages
+# tirava anchor.js da cdnjs), la controprova ha protestato appena il giro W4 ha
+# messo `theme: null`, e l'attesa si è spostata A MANO, dopo aver guardato
+# perché. Un baseline che si fosse riallineato da solo non avrebbe detto niente.
+#
+# ⛔ Da qui in avanti la direzione del controllo è cambiata: prima teneva fermo
+# un difetto noto perché non crescesse, ora tiene un vincolo. Se questo numero
+# risale, qualcuno ha messo un font, uno script o un'immagine su un server di
+# qualcun altro — che è il vincolo del sito, e anche la sua difesa GDPR.
+# ⚠️ Conta i riferimenti SCRITTI nell'HTML costruito. Quello che il browser
+# chiede DAVVERO è un'altra misura, e la fa scripts/anteprima-playwright.mjs.
+risorse_esterne_build=0
+
+# ⛔ Nato nel giro W4. Il sito ha finalmente pagine .html tracciate, quindi il
+# controllo dei tracker smette di dire «non misurabile» e diventa una misura
+# vera: quanti file contengono un dominio di analytics o di tracciamento.
+# Deve restare 0 — è un vincolo non negoziabile (CLAUDE.md), non una soglia.
+file_con_tracker=0
+
+# ⛔ Nato nel giro W4, e copre la zona che finora NON aveva controprova: le
+# parole che l'utente legge. Quante stringhe di _data/landing.yml non si
+# trovano ALLA LETTERA nella bozza approvata da Pier.
+#
+# ⚠️ Deve restare 0, ma NON è sempre un errore quando sale, e la differenza
+# conta: se sale perché qualcuno ha riscritto una frase nel repo, è un lavoro
+# di Cowork fatto da chi non doveva. Se sale perché è cambiata la BOZZA, non
+# c'è niente da riparare — c'è una consegna nuova da portare nel repo.
+# ⛔ In nessuno dei due casi si alza questo numero: si guarda quale dei due è.
+testo_fuori_bozza=0

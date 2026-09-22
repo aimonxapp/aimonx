@@ -20,6 +20,22 @@ baseurl: ""
 # il giorno in cui quel qualcuno è un altro.
 repository: aimonxapp/aimonx
 
+# ⛔ NIENTE TEMA: è così che si chiude WD26. Fino a ieri il sito usava
+# `jekyll-theme-primer`, il tema che Pages mette per difetto, e quel tema
+# caricava `anchor.min.js` da `cdnjs.cloudflare.com`: ogni visita ad
+# aimonx.app diceva a un server terzo chi era passato. Su un sito che vende
+# privacy locale è una contraddizione che il pubblico può leggere — e per il
+# GDPR è l'IP del visitatore mandato a un terzo senza motivo
+# (`conformita-sito.md` §1, precedente LG München 20/01/2022).
+#
+# ⭐ `theme: null` NON è un trucco: il gem `github-pages` 232 lo prevede
+# apposta — `lib/github-pages/configuration.rb` riga 100, commento
+# «Allow theme to be explicitly disabled via "theme: null"», e la riga dopo
+# copia il valore dell'utente sopra il difetto. Misurato lì, non ipotizzato.
+# ⚠️ Con il tema se ne va anche il suo `assets/css/style.css`: da oggi il
+# foglio di stile del sito è il nostro, in `assets/css/`.
+theme: null
+
 # ① Cosa NON esce su aimonx.app.
 #
 # ⛔ SI LEGGE AL CONTRARIO DI COME SEMBRA: `exclude` è una lista di ciò che si
@@ -28,9 +44,19 @@ repository: aimonxapp/aimonx
 # conta i .md tracciati che diventerebbero pagine (`pagine_dal_merge`): il
 # numero sale da sé quando entra un file, e nessuno deve ricordarsene.
 #
-# ⚠️ README.md NON è qui, ed è voluto: oggi è l'unica pagina del sito, ciò che
-# il mondo legge su aimonx.app. Escluderlo spegnerebbe la home. Se ne va quando
-# WA4 porta una home vera.
+# ⭐ README.md ORA È QUI, e il giro W4 è il motivo: fino a ieri era l'unica
+# pagina del sito — escluderlo avrebbe spento la home. Da oggi la home è la
+# landing (`index.html`), e il README torna a essere quello che è, cioè il
+# cartello del repo su github.com. ⚠️ Con lui esce di scena anche il suo
+# sorgente: `aimonx.app/README.md` era servito accanto alla pagina, perché un
+# .md senza front matter Jekyll lo pubblica DUE volte (WD27). Le pagine nuove
+# il front matter ce l'hanno tutte.
+#
+# ⛔ LICENSE NON È UN FILE DI TESTO QUALUNQUE: senza questa riga Jekyll lo
+# copia tale e quale e diventa `aimonx.app/LICENSE`, cioè una pagina del sito
+# che nessuno ha deciso di pubblicare. Stessa famiglia di CNAME qui sotto, e
+# stessa lezione (WD29): una lista di negazioni non nomina ciò che non c'era
+# quando è stata scritta.
 #
 # ⛔ CNAME È QUI PERCHÉ QUESTA LISTA ESISTE, e non è un doppione di GitHub.
 # Misurato nel giro W3 nel gem `github-pages-232` (configuration.rb,
@@ -43,6 +69,8 @@ repository: aimonxapp/aimonx
 # riscrivere una lista di negazioni disattiva anche quelle di chi ci sta sotto.
 exclude:
   - CNAME              # il dominio: lo tiene Pages, non il sito costruito
+  - README.md          # il cartello del repo, non una pagina del sito
+  - LICENSE            # la licenza del repo, non una pagina del sito
   - CLAUDE.md          # il metodo di lavoro
   - docs/              # registro degli aperti e piano di chiusura
   - scripts/           # controprova, attese, hook di push

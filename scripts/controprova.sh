@@ -515,6 +515,21 @@ else
   [ "$N_TRACKER" != "0" ] && git ls-files '*.html' '*.js' -z | xargs -0 grep -lEi "$DOMINI" | sed 's/^/     ⛔ /'
 fi
 
+# --- il testo in pagina è quello approvato? --------------------------------
+# ⛔ NON dice se un testo è buono: quello resta «l'unica zona senza controprova
+# meccanica» (CLAUDE.md). Dice se è QUELLO — cioè se qualcuno ha riscritto nel
+# repo una frase che l'utente legge, che è un lavoro di Cowork.
+# ⚠️ Scatta anche quando cambia la BOZZA: lì non c'è un errore da riparare, c'è
+# una consegna nuova da portare in _data/landing.yml.
+echo
+echo "--- il testo della landing è quello approvato da Pier? ---"
+USCITA_TESTO=$("$REPO/scripts/testo-approvato.sh" 2>&1)
+printf '%s\n' "$USCITA_TESTO"
+N_FUORI=$(printf '%s' "$USCITA_TESTO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)
+if [ -n "$N_FUORI" ]; then
+  confronta "stringhe in pagina che NON stanno nella bozza" testo_fuori_bozza "$N_FUORI"
+fi
+
 echo
 echo "--- esito dei confronti ---"
 if [ ! -r "$ATTESE" ]; then
@@ -537,5 +552,11 @@ echo "  Fra il repo e il sito c'è la build di Pages, che qui non gira"
 echo "· se un testo è chiaro, e se il tono è sportivo invece che militare"
 echo "· se una pagina promette una funzione che l'app non ha: si verifica a mano"
 echo "  contro ~/Developer/AIMONX/docs/prodotto.md, non contro spec-sito.md"
-echo "· i link interni che risolvono: oggi non c'è HTML, e con 0 pagine il"
+echo "· il CONTRASTO del testo e le richieste verso l'esterno col browser vero:"
+echo "  si misurano, ma servono le pagine ACCESE — 'bundle exec jekyll serve' e poi"
+echo "  scripts/contrasto.mjs e scripts/anteprima-playwright.mjs. ⛔ Non si"
+echo "  agganciano qui: un controllo che quasi sempre dice 'non misurabile'"
+echo "  smette di essere letto, ed è così che muoiono i guardrail"
+echo "· i link interni che risolvono: le pagine di oggi non hanno NESSUN link"
+echo "  (Privacy, Support e Terms non esistono ancora: WA1-WA3), quindi il"
 echo "  controllo direbbe 'tutto a posto' senza aver guardato niente"

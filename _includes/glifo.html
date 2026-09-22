@@ -1,0 +1,44 @@
+{%- comment -%}
+  _includes/glifo.html — i glifi della variante B, disegnati qui dentro.
+
+  ⛔ NESSUNA LIBRERIA DI ICONE, e non è una preferenza: il vincolo del sito è
+  «nessuna risorsa da server esterni» (CLAUDE.md), e le raccolte di icone si
+  servono da un CDN o si installano come dipendenza. Questi sono sette path SVG
+  scritti a mano, dentro l'HTML: zero richieste, zero dipendenze, zero licenze
+  da tenere dietro.
+
+  ⚠️ SCELTA DA GUARDARE, non da dare per buona (giro W4 §4): per la voce
+  «Every firearm, every round» il glifo è un MIRINO, non la sagoma di un'arma.
+  Il mirino è già il segno dell'icona AIMONX ed è sportivo; la sagoma sarebbe
+  più letterale e non è vietata da niente. ⛔ Il confine col militare lo decide
+  Pier guardando: se preferisce la sagoma, si cambia qui e cambia in tutte e
+  tre le varianti.
+
+  Tratto 1,9 come le icone dell'app (tavolozza-aimonx.md §4d).
+{%- endcomment -%}
+<svg class="glifo {{ include.classe }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- case include.nome -%}
+{%- when 'mirino' -%}
+  <circle cx="12" cy="12" r="7"/><path d="M12 1.6V5M12 19v3.4M1.6 12H5M19 12h3.4"/>
+  <circle cx="12" cy="12" r="1.9" fill="currentColor" stroke="none"/>
+{%- when 'bandiera' -%}
+  <path d="M6 22V3"/><path d="M6 4.6h11l-2.6 4 2.6 4H6"/>
+{%- when 'cartuccia' -%}
+  <path d="M9 21.2h6a1 1 0 0 0 1-1V11c0-2.2-1.2-3.4-2.4-5.2L12 3l-1.6 2.8C9.2 7.6 8 8.8 8 11v9.2a1 1 0 0 0 1 1z"/>
+  <path d="M8 12.6h8"/>
+{%- when 'chiave' -%}
+  <path d="M20.3 5.2l-3 3-2.5-2.5 3-3a5 5 0 0 0-6.4 6.4l-6.7 6.7a2.1 2.1 0 0 0 3 3l6.7-6.7a5 5 0 0 0 5.9-6.9z"/>
+{%- when 'calendario' -%}
+  <rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 2.6V6M16 2.6V6"/>
+  <circle cx="12" cy="15.2" r="1.7" fill="currentColor" stroke="none"/>
+{%- when 'grafico' -%}
+  <path d="M3.4 20.8h17.2"/>
+  <rect x="5" y="12" width="3.6" height="6.4" rx="1.2"/>
+  <rect x="10.2" y="6.8" width="3.6" height="11.6" rx="1.2"/>
+  <rect x="15.4" y="14.4" width="3.6" height="4" rx="1.2"/>
+{%- when 'documento' -%}
+  <path d="M14 2.8H7.5A2.2 2.2 0 0 0 5.3 5v14a2.2 2.2 0 0 0 2.2 2.2h9a2.2 2.2 0 0 0 2.2-2.2V7.6z"/>
+  <path d="M14 2.8v4.8h4.7M8.6 13h6.8M8.6 16.6h4.8"/>
+{%- endcase -%}
+</svg>

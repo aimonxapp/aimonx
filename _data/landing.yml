@@ -1,0 +1,107 @@
+# _data/landing.yml — IL TESTO DELLA LANDING, UNA VOLTA SOLA.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 22/09/2026, che
+# sta in `…/8- AIMONX web/2- Contenuti/landing/landing-en-bozza.md`. Copiato
+# PAROLA PER PAROLA. Le note fra quadre della bozza sono per Cowork e non sono
+# qui, perché non vanno in pagina.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. «I testi che l'utente legge li
+# scrive Cowork» (CLAUDE.md, «Chi decide cosa») — è l'unica zona del repo senza
+# controprova meccanica: non esiste un test che dica se una frase è chiara o se
+# il tono è sportivo invece che militare.
+#
+# ⭐ PERCHÉ IL TESTO STA IN UN FILE DI DATI E NON DENTRO LE PAGINE. Il giro W4
+# costruisce TRE varianti visive della stessa landing, e la condizione è «stesso
+# testo». Se il testo stesse dentro le tre pagine, sarebbe scritto tre volte e
+# divergerebbe alla prima correzione — e la differenza si vedrebbe solo
+# rileggendo tre file a occhio. Così il testo esiste una volta: le tre varianti
+# leggono di qui, e «stesso testo» è vero per costruzione, non per attenzione.
+#
+# ⚠️ DUE COSE QUI DENTRO NON VENGONO DALLA BOZZA, e vanno guardate da Cowork:
+#   · `meta.title` e `meta.description` — la bozza non li dà. Sono ASSEMBLATI
+#     con parole sue: il titolo è la riga del footer, la descrizione è il
+#     paragrafo dell'hero. Nessuna parola nuova, ma la scelta è di CC.
+#   · l'icona in testa alla pagina porta `alt=""`, cioè è dichiarata
+#     DECORATIVA: accanto c'è già il nome «AIMONX» scritto in lettere, e un
+#     testo alternativo lo farebbe leggere due volte a chi usa un lettore di
+#     schermo. È una scelta di CC, non della bozza.
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Il glifo e il colore di
+# ciascuna voce — che sono grafica, non parole — stanno in `_data/aspetto.yml`,
+# che è di Claude Code. ⭐ La separazione non è ordine per l'ordine: fa sì che
+# `scripts/testo-approvato.sh` possa cercare OGNI stringa di questo file nella
+# bozza, senza eccezioni da ricordarsi — e un'eccezione che nessuno ricorda è
+# il buco da cui rientra il testo riscritto.
+#
+# ⛔ COSA È STATO TOLTO, E PERCHÉ. La riga del footer «Privacy Policy · Support
+# · Terms» NON è qui: il giro W4 §3③ dice che quei link non si mostrano finché
+# le pagine non esistono (WA1, WA2, WA3) — niente link rotti, niente
+# segnaposto. È un'omissione ORDINATA dal giro, non una riscrittura.
+
+brand: "AIMONX"
+
+meta:
+  # Assemblati con le parole della bozza: vedi la nota qui sopra.
+  title: "AIMONX — the technical logbook for sport shooters"
+  description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
+
+hero:
+  headline: "Do you really know how many rounds your gun has fired?"
+  lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
+  note: "Coming soon for iPhone."
+
+# ⚠️ I titoli di sezione della bozza sono scritti in maiuscolo («WHAT IT KEEPS
+# TRACK OF»), nello stesso stile delle etichette di struttura «HERO» e
+# «FOOTER», che in pagina non vanno. Qui sono resi come TITOLI VERI, con le
+# stesse parole e la maiuscola solo all'inizio. ⛔ Se per Cowork erano etichette
+# e non titoli, si toglie da qui e le tre varianti si adeguano da sé.
+what:
+  title: "What it keeps track of"
+  items:
+    - lead: "Every firearm, every round."
+      body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
+    - lead: "Range sessions and matches."
+      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches keep placement, points and division."
+    - lead: "Ammo you can count on."
+      body: "Factory ammo with lots and inventory. Handloads with recipes, component costs and production runs."
+    - lead: "Maintenance your way."
+      body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — every so many rounds. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
+    - lead: "Deadlines you won't miss."
+      body: "Licenses, medical certificates, club and federation memberships, insurance — with a notification the days before they expire, as many as you choose."
+    - lead: "What your shooting really costs."
+      body: "Cost per session, per round and per firearm, and how practice compares to competition."
+    - lead: "Firearm reports in PDF."
+      body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
+
+privacy:
+  title: "Privacy"
+  claim: "No account. No servers of ours. We never see your data."
+  items:
+    - lead: "Works offline."
+      body: "Use it at the range with no signal. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
+    - lead: "Your data talks to no one but your own iCloud."
+      body: "No servers of ours, no third parties, no analytics."
+  note: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
+
+security:
+  title: "Security"
+  items:
+    - lead: "Locked with Face ID."
+      body: "AIMONX locks itself when you leave it and hides its content in the app switcher."
+    - lead: "Advanced protection, if you want it."
+      body: "Add a passphrase only you know — then not even Face ID opens your logbook at launch. Forget it, and your data can't be recovered by anyone."
+      tag: "(Pro)"
+
+piani:
+  title: "Free and Pro"
+  items:
+    - lead: "Free is a real logbook, not a demo."
+      body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, deadlines, statistics, PDF reports and your encrypted iCloud copy."
+    - lead: "Pro removes the limits."
+      body: "Unlimited firearms, handloads, unlimited maintenance rules and deadlines, matches and match stats, encrypted archives to export, and advanced protection."
+    - lead: "If Pro ends, nothing is deleted."
+      body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
+
+footer:
+  tagline: "AIMONX — the technical logbook for sport shooters."
+  copyright: "© 2026 Piermichele Fassio. iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."

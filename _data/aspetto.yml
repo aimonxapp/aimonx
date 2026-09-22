@@ -1,0 +1,35 @@
+# _data/aspetto.yml — l'ASPETTO delle sette voci: un glifo e un colore ciascuna.
+#
+# ⛔ QUESTO FILE È DI CLAUDE CODE, `_data/landing.yml` è di Cowork. La riga fra
+# i due è quella fra «cosa dice il sito» e «come si vede», ed è la stessa riga
+# di CLAUDE.md, «Chi decide cosa».
+#
+# ⛔ I COLORI NON SONO SCELTI A GUSTO. Sono la rampa d'identità delle sezioni
+# dell'app (`…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` §4b): nell'app
+# «Armi» è verde, «Manutenzione» è ardesia, «Munizioni» è ciano. Chi ha già
+# visto l'app riconosce la sezione dal colore prima di leggere il titolo, e
+# ⭐ la regola di §4b — due voci vicine non portano mai la stessa tinta né due
+# tinte della stessa coppia (verde/lime, teal/ciano, salvia/ardesia,
+# oro/arancio tenue) — è rispettata nell'ordine qui sotto.
+#
+# ⚠️ L'ACCOPPIAMENTO È PER POSIZIONE: la prima riga qui vale per la prima voce
+# di `what.items` in `_data/landing.yml`. Se Cowork aggiunge o toglie una voce
+# senza toccare questo file, l'accoppiamento scivola. ⛔ Non resta una
+# supposizione: `scripts/testo-approvato.sh` confronta le due lunghezze e
+# protesta. Il layout, per parte sua, cade su verde invece di rompersi.
+
+what:
+  - icona: mirino      # Every firearm, every round  → «Armi» nell'app
+    tinta: verde
+  - icona: bandiera    # Range sessions and matches  → «Gare/Luoghi»
+    tinta: lime
+  - icona: cartuccia   # Ammo you can count on       → «Munizioni»
+    tinta: ciano
+  - icona: chiave      # Maintenance your way        → «Manutenzione»
+    tinta: ardesia
+  - icona: calendario  # Deadlines you won't miss    → «Scadenze»
+    tinta: salvia
+  - icona: grafico     # What your shooting costs    → «Costi»
+    tinta: arancioTenue
+  - icona: documento   # Firearm reports in PDF      → «Statistiche/report»
+    tinta: blu

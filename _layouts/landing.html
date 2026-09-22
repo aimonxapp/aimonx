@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/landing.html — L'UNICO scheletro della landing. Le tre varianti del
+  giro W4 passano tutte di qui e differiscono SOLO per il foglio di stile.
+
+  ⭐ PERCHÉ UN LAYOUT SOLO E NON TRE. La condizione del giro è «2-3 varianti
+  visive della stessa landing, STESSO TESTO». Con tre layout il testo sarebbe
+  scritto tre volte, e «stesso» sarebbe una cosa da ricontrollare a occhio a
+  ogni correzione. Così il testo sta in `_data/landing.yml` e la struttura sta
+  qui: le tre varianti sono lo stesso HTML con tre CSS diversi, quindi
+  ⛔ una variante NON PUÒ dire una parola diversa dalle altre, per costruzione.
+  ⚠️ E ne segue una seconda cosa, che conta quanto la prima: la struttura dei
+  titoli, l'ordine di lettura e la navigazione da tastiera sono identici nelle
+  tre — l'accessibilità si misura una volta e vale per tutte.
+
+  ⛔ IL TESTO NON SI SCRIVE QUI. Viene da `_data/landing.yml`, che è la bozza
+  approvata da Pier. Chi vuole cambiare una parola cambia quel file, e quel
+  file lo scrive Cowork.
+
+  `page.variante` sceglie la classe del <body>; `page.foglio` il foglio di
+  stile (li legge `_includes/testa.html`).
+{%- endcomment -%}
+<head>
+  {%- include testa.html -%}
+</head>
+<body class="v-{{ page.variante }}">
+  {%- assign d = site.data.landing -%}
+
+  <div class="apertura">
+    <header class="testata">
+      {%- comment -%}
+        alt="" — l'icona è DECORATIVA: il nome è scritto qui accanto in
+        lettere, e un testo alternativo lo farebbe leggere due volte.
+        width/height sono dichiarati perché la riga non salti mentre carica.
+      {%- endcomment -%}
+      <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
+           alt="" width="48" height="48">
+      <span class="nome">{{ d.brand }}</span>
+    </header>
+
+    <div class="eroe">
+      <h1>{{ d.hero.headline }}</h1>
+      <p class="occhiello">{{ d.hero.lead }}</p>
+      <p class="presto">{{ d.hero.note }}</p>
+      {%- comment -%}
+        Il mirino: il segno dell'icona, in grande e quasi spento. ⛔ È l'unico
+        pezzo di decorazione della pagina, ed è il nome del prodotto — AIMONX =
+        AIM ON X, la mira sulla X (spec-sito.md §3). Decorativo per i lettori
+        di schermo, che non devono sentirselo annunciare.
+      {%- endcomment -%}
+      <svg class="mira" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M100 4v34M100 162v34M4 100h34M162 100h34" stroke="currentColor" stroke-width="2"/>
+        <circle cx="100" cy="100" r="6" fill="#EC6F18"/>
+      </svg>
+    </div>
+  </div>
+
+  <main id="principale">
+    {%- comment -%} ① Cosa tiene in ordine — le sette voci con il glifo. {%- endcomment -%}
+    <section class="blocco blocco-cose" aria-labelledby="t-cose">
+      <h2 id="t-cose">{{ d.what.title }}</h2>
+      <ul class="voci voci-glifo">
+        {%- for v in d.what.items -%}
+          {%- comment -%}
+            L'aspetto viene da `_data/aspetto.yml`, accoppiato PER POSIZIONE.
+            ⛔ Se lì manca la riga corrispondente la pagina non si rompe: cade
+            sul verde e su nessun glifo. Che le due liste siano lunghe uguale
+            lo controlla `scripts/testo-approvato.sh`.
+          {%- endcomment -%}
+          {%- assign a = site.data.aspetto.what[forloop.index0] -%}
+          {%- assign tinta = a.tinta | default: 'verde' -%}
+        <li class="voce tinta-{{ tinta }}">
+          <div class="testa">
+            {%- if a.icona %}
+            <span class="cerchio">{% include glifo.html nome=a.icona %}</span>
+            {%- endif %}
+            <h3>{{ v.lead }}</h3>
+            {%- if a.icona %}
+            {% include glifo.html nome=a.icona classe='filigrana' %}
+            {%- endif %}
+          </div>
+          <p>{{ v.body }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    {%- comment -%} ② Privacy — il proclama è la seconda voce più forte della pagina. {%- endcomment -%}
+    <section class="blocco blocco-privacy" aria-labelledby="t-privacy">
+      <h2 id="t-privacy">{{ d.privacy.title }}</h2>
+      <p class="proclama">{{ d.privacy.claim }}</p>
+      <ul class="voci">
+        {%- for v in d.privacy.items %}
+        <li class="voce">
+          <div class="testa"><h3>{{ v.lead }}</h3></div>
+          <p>{{ v.body }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+      <p class="chiosa">{{ d.privacy.note }}</p>
+    </section>
+
+    {%- comment -%} ③ Sicurezza. Il segno «(Pro)» è della bozza, e resta com'è. {%- endcomment -%}
+    <section class="blocco blocco-sicurezza" aria-labelledby="t-sicurezza">
+      <h2 id="t-sicurezza">{{ d.security.title }}</h2>
+      <ul class="voci">
+        {%- for v in d.security.items %}
+        <li class="voce">
+          <div class="testa"><h3>{{ v.lead }}</h3></div>
+          <p>{{ v.body }}{% if v.tag %} <span class="pro">{{ v.tag }}</span>{% endif %}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    {%- comment -%} ④ Free e Pro. ⛔ Nessun prezzo: spec-sito.md §4. {%- endcomment -%}
+    <section class="blocco blocco-piani" aria-labelledby="t-piani">
+      <h2 id="t-piani">{{ d.piani.title }}</h2>
+      <ul class="voci">
+        {%- for v in d.piani.items %}
+        <li class="voce">
+          <div class="testa"><h3>{{ v.lead }}</h3></div>
+          <p>{{ v.body }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+  </main>
+
+  {%- comment -%}
+    ⛔ Il footer NON porta i link a Privacy Policy, Support e Terms: quelle
+    pagine non esistono (WA1, WA2, WA3), e il giro W4 §3③ dice che finché non
+    esistono non si mostrano — niente link rotti, niente segnaposto.
+  {%- endcomment -%}
+  <footer class="chiusa">
+    <p class="motto">{{ d.footer.tagline }}</p>
+    <p class="minuta">{{ d.footer.copyright }}</p>
+  </footer>
+</body>
+</html>

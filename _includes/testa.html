@@ -1,0 +1,38 @@
+{%- comment -%}
+_includes/testa.html — la testa di OGNI variante, scritta una volta sola.
+     ⛔ Le tre varianti differiscono per COME si vede la pagina, non per cosa
+     dichiara di essere: titolo, descrizione, canonical e meta di condivisione
+     sono gli stessi, e stanno qui perché non possano divergere.
+
+     ⛔ REGOLA DEGLI INDIRIZZI, e non è pignoleria: tutto ciò che il BROWSER
+     scarica (foglio di stile, icone) si scrive con `relative_url`, cioè come
+     indirizzo del sito che lo serve. Con `absolute_url` diventerebbe
+     `https://aimonx.app/...` e l'anteprima locale andrebbe a chiedere i file
+     AL SITO VERO: una risorsa esterna, misurata come tale, su un sito che ha
+     come vincolo di non averne. Solo `canonical` e `og:image`, che il browser
+     NON scarica, portano l'indirizzo assoluto — perché servono a chi legge la
+     pagina da fuori.
+{%- endcomment -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.data.landing.meta.title }}</title>
+<meta name="description" content="{{ site.data.landing.meta.description }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+{%- comment -%} Condivisione. ⛔ Nessuna immagine presa da fuori (giro W4 §3③):
+l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcomment -%}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.data.landing.brand }}">
+<meta property="og:title" content="{{ site.data.landing.meta.title }}">
+<meta property="og:description" content="{{ site.data.landing.meta.description }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/img/aimonx-512.png' | absolute_url }}">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/aimonx-32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/aimonx-16.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/aimonx-180.png' | relative_url }}">
+<meta name="theme-color" content="#0F3625">
+
+<link rel="stylesheet" href="{{ '/assets/css/comune.css' | relative_url }}">
+<link rel="stylesheet" href="{{ page.foglio | relative_url }}">
