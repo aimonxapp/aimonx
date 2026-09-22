@@ -16,6 +16,9 @@
 # ⚠️ FUNZIONA NEI DUE VERSI, ed è il motivo per cui vale la pena: scatta anche
 # quando è la BOZZA a cambiare. Allora non c'è nessun errore da riparare —
 # c'è una consegna nuova di Cowork da portare in `_data/landing.yml`.
+# ⭐ È SUCCESSO NEL GIRO W6, esattamente così: la bozza ha cambiato «No servers
+# of ours» in «No AIMONX server» in due frasi, questo controllo ha protestato
+# all'apertura del giro, e la cura è stata portare la bozza nuova nel repo.
 #
 # ⛔ Le uniche due stringhe che NON stanno nella bozza sono dichiarate nel file
 # di dati e ripetute qui: `meta.title` e `meta.description`, assemblati da CC
@@ -96,12 +99,23 @@ fi
   # Il testo e laspetto si accoppiano PER POSIZIONE. Se Cowork aggiunge o
   # toglie una voce e nessuno tocca _data/aspetto.yml, le tinte e i glifi
   # scivolano di una riga, e a occhio non si vede: la pagina resta intera.
+  # ⛔ Dal giro W6 le liste accoppiate sono TRE, non una: alle sette carte si
+  # sono aggiunte le quattro voci e le tre garanzie della parte alta. Ognuna
+  # porta lo stesso rischio, quindi ognuna ha il suo confronto.
   scarto = 0
   if aspetto && File.readable?(aspetto)
-    n_testo = (YAML.load_file(dati)["what"]["items"] || []).size
-    n_asp   = (YAML.load_file(aspetto)["what"] || []).size
-    scarto = (n_testo - n_asp).abs
-    puts "  voci di testo: #{n_testo} - righe di aspetto: #{n_asp}" + (scarto.zero? ? "" : "  NON COINCIDONO")
+    t = YAML.load_file(dati); a = YAML.load_file(aspetto)
+    eroe = t["hero"] || {}
+    coppie = [
+      ["carte",    (t["what"]["items"] || []).size,  (a["what"] || []).size],
+      ["punti",    (eroe["punti"] || []).size,       (a["hero_punti"] || []).size],
+      ["garanzie", (eroe["garanzie"] || []).size,    (a["hero_garanzie"] || []).size],
+    ]
+    coppie.each do |nome, n_testo, n_asp|
+      d = (n_testo - n_asp).abs
+      scarto += d
+      puts "  #{nome}: voci di testo #{n_testo} - righe di aspetto #{n_asp}" + (d.zero? ? "" : "  NON COINCIDONO")
+    end
   end
   puts "  fuori_bozza=#{mancanti.size + scarto}"
   mancanti.each { |via, t| puts "     ⛔ #{via}: NON sta nella bozza → «#{t[0, 120]}»" }

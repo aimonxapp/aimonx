@@ -3,35 +3,35 @@
 {%- comment -%}
   _layouts/landing.html — L'UNICO scheletro della landing.
 
-  ⭐ DAL GIRO W5 LA LANDING È UNA SOLA: la variante B (le carte) con la parte
-  alta della variante A (la domanda enorme in verde salvia) e il logo grande
-  dell'app. Lo ha scelto Pier il 22/09/2026 guardando le tre varianti del W4.
-  ⛔ A e C non sono cancellate, sono USCITE DALLA PAGINA: restano leggibili al
-  tag `varianti-W4` (regola di ramo, «non si cancella nulla»).
+  ⭐ DAL GIRO W6 LA PAGINA È UNA SOLA, e anche la parte alta è una sola. Il
+  corpo è quello che Pier ha scelto nel W5 (le carte della variante B); la
+  PARTE ALTA è nuova, costruita dal riferimento visivo che Pier ha portato il
+  22/09/2026 (`riferimento-hero-chatgpt.png`, nella sua cartella dei contenuti)
+  con le correzioni che ha deciso lui.
 
-  ⚠️ RESTANO DUE PAGINE, e non sono due varianti: sono la STESSA landing con
-  due versioni della SOLA parte alta, che è l'unica cosa su cui Pier deve
-  ancora decidere (giro W5 §1 punto 4).
-    · `/`        → il logo grande AL POSTO del mirino di A;
-    · `/mirino/` → il logo grande E il mirino di A insieme.
-  ⛔ Che `/` sia la prima NON vuol dire che sia la preferita: la home deve
-  esistere, e questo è tutto quello che vuol dire — stessa ragione per cui nel
-  W4 `/` era la variante A. Le due si guardano alla pari.
+  ⛔ LE CORREZIONI SONO VINCOLI, non preferenze, e stanno scritte qui perché
+  chi tocca questo file non le riscopra a proprie spese:
+    · ⛔ NESSUN LOGO APPLE, da nessuna parte — le regole dei marchi Apple lo
+      vietano (`…/8- AIMONX web/1- Specifiche/conformita-sito.md` §1);
+    · ⛔ «Coming soon for iPhone» è un'ETICHETTA, non un pulsante: niente
+      freccia, niente link, niente <a>, niente fondo pieno. Vale per quella
+      grande e per quella piccola in alto a destra;
+    · ⛔ niente sagoma del tiratore, niente schermata finta dell'app: al posto
+      del telefono inclinato del riferimento c'è il LOGO GRANDE dell'app;
+    · ⭐ il riferimento è una DIREZIONE DI STILE, non un file da ricalcare al
+      pixel — e ⛔ da lui non si prende nessuna immagine: è uno screenshot.
 
-  ⭐ PERCHÉ UN LAYOUT SOLO E NON DUE. Il testo sta in `_data/landing.yml` e la
-  struttura sta qui: le due versioni sono lo stesso HTML meno un elemento,
-  quindi ⛔ una NON PUÒ dire una parola diversa dall'altra, per costruzione.
-  ⚠️ E ne segue una seconda cosa, che conta quanto la prima: la struttura dei
-  titoli, l'ordine di lettura e la navigazione da tastiera sono identici nelle
-  due — l'accessibilità si misura una volta e vale per tutt'e due.
+  ⛔ USCITA NEL GIRO W6: la pagina `/mirino/` e il mirino grande dietro al
+  logo. Era la seconda delle due versioni del W5, Pier ha scelto questa strada
+  e quella esce. ⭐ Non è cancellata: resta leggibile al commit `e9a1aa3`
+  (`giro W5: la landing scelta`), come vuole la regola di ramo.
 
   ⛔ IL TESTO NON SI SCRIVE QUI. Viene da `_data/landing.yml`, che è la bozza
-  approvata da Pier. Chi vuole cambiare una parola cambia quel file, e quel
-  file lo scrive Cowork. ⭐ Il giro W5 non ne ha cambiata NESSUNA: la parte
-  alta nuova usa le stesse tre righe dell'hero di prima.
+  approvata da Pier — sezione «HERO — versione 2» per la parte alta. Chi vuole
+  cambiare una parola cambia quel file, e quel file lo scrive Cowork.
 
   `page.variante` sceglie la classe del <body>; `page.foglio` il foglio di
-  stile (li legge `_includes/testa.html`); `page.mirino` accende il mirino.
+  stile (li legge `_includes/testa.html`).
 {%- endcomment -%}
 <head>
   {%- include testa.html -%}
@@ -49,65 +49,121 @@
       <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
            alt="" width="48" height="48">
       <span class="nome">{{ d.brand }}</span>
+
+      {%- comment -%}
+        L'etichetta piccola in alto a destra. ⛔ È un <p>, non un <a> e non un
+        <button>: non porta da nessuna parte perché non c'è ancora niente dove
+        andare (`spec-sito.md` §9 — nessun pulsante di download nel primo
+        tempo). Il pallino arancio è l'unico accento: è un segno, non un fondo.
+      {%- endcomment -%}
+      <p class="presto-minuta"><span class="pallino" aria-hidden="true"></span>{{ d.hero.etichetta }}</p>
     </header>
 
-    {%- comment -%}
-      LA PARTE ALTA — giro W5. ⛔ Non è la parte alta della variante B: è
-      quella della VARIANTE A (la domanda enorme in verde salvia), scelta da
-      Pier il 22/09/2026 sopra il resto della pagina, che resta B.
-
-      ⭐ E la differenza fra le DUE VERSIONI che Pier deve guardare sta tutta
-      qui dentro, in una riga: `page.mirino`. Il logo c'è sempre; il mirino
-      grande e sfumato di A c'è solo dove il front matter lo chiede.
-      ⛔ Il mirino NON si nasconde col CSS: se non serve non entra nell'HTML.
-      Motivo: un elemento nascosto resta nella pagina, pesa e a volte si sente
-      — e le due versioni devono differire per quello che SONO, non per quello
-      che si vede.
-    {%- endcomment -%}
     <div class="eroe">
       <div class="parole">
-        <h1>{{ d.hero.headline }}</h1>
-        <p class="occhiello">{{ d.hero.lead }}</p>
-        <p class="presto">{{ d.hero.note }}</p>
+        <p class="sopratitolo">{{ d.hero.sopratitolo }}</p>
+
+        {%- comment -%}
+          LA DOMANDA, sulle tre righe della bozza, con la CENTRALE in verde.
+          ⛔ Le righe non le spezza il browser: le spezza il testo, perché
+          `_data/landing.yml` le scrive separate. Motivo misurato nel W5 su una
+          frase sola: il punto in cui la riga va a capo cambia con la larghezza
+          della finestra, e con lui cambierebbe quale parte è verde.
+          ⚠️ Quale sia la «centrale» si calcola, non si scrive a mano: con tre
+          righe è la seconda. Se la bozza ne portasse due, sarebbe la seconda
+          lo stesso; con cinque, la terza.
+        {%- endcomment -%}
+        {%- assign mezzo = d.hero.titolo.size | divided_by: 2 -%}
+        <h1>
+          {%- for r in d.hero.titolo %}
+          <span class="riga{% if forloop.index0 == mezzo %} spicca{% endif %}">{{ r }}</span>
+          {%- endfor %}
+        </h1>
+
+        <p class="sommario">{{ d.hero.lead }}</p>
+
+        {%- comment -%}
+          Le quattro voci con il glifo. ⚠️ Il glifo viene da `_data/aspetto.yml`
+          accoppiato PER POSIZIONE, come le sette carte più in basso: se lì
+          manca la riga, la voce esce senza segno invece di rompere la pagina.
+          Che le due liste siano lunghe uguale lo controlla
+          `scripts/testo-approvato.sh`.
+        {%- endcomment -%}
+        <ul class="punti">
+          {%- for v in d.hero.punti -%}
+          {%- assign a = site.data.aspetto.hero_punti[forloop.index0] %}
+          <li>
+            {%- if a.icona %}
+            <span class="casella">{% include glifo.html nome=a.icona %}</span>
+            {%- endif %}
+            <span class="dice"><b>{{ v.forte }}</b> {{ v.resto }}</span>
+          </li>
+          {%- endfor %}
+        </ul>
+
+        {%- comment -%}
+          L'ETICHETTA GRANDE. ⛔ <p>, non <a>: vedi il blocco in testa. Il
+          filetto arancio a sinistra è quello che la fa «etichetta» invece che
+          «pulsante» — l'arancio segna, non riempie (`assets/css/comune.scss`,
+          la nota su `--arancio`).
+        {%- endcomment -%}
+        <p class="etichetta"><span class="filetto" aria-hidden="true"></span>{{ d.hero.etichetta }}</p>
+
+        <p class="riga-minuta">{{ d.hero.riga }}</p>
       </div>
 
-      <div class="segno{% if page.mirino %} con-mira{% endif %}">
-        {%- if page.mirino -%}
-        {%- comment -%}
-          Il mirino della variante A, qui dietro al logo invece che dietro al
-          testo. ⚠️ È il punto su cui Pier deve decidere: il logo contiene GIÀ
-          un mirino (il punto arancio col reticolo), e i due segni si possono
-          ripetere. Sta qui, in grande e quasi spento, proprio perché la
-          ripetizione si veda invece di essere descritta a parole.
-          Decorativo: chi usa un lettore di schermo non deve sentirselo
-          annunciare (spec-sito.md §3 — AIMONX = AIM ON X).
-        {%- endcomment -%}
-        <svg class="mira" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-          <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
-          <path d="M100 4v34M100 162v34M4 100h34M162 100h34" stroke="currentColor" stroke-width="2"/>
-          <circle cx="100" cy="100" r="6" fill="#EC6F18"/>
-        </svg>
-        {%- endif %}
-        {%- comment -%}
-          IL LOGO GRANDE — l'icona dell'app così com'è, non ridisegnata: gli
-          stessi pixel del file dell'app, solo rimpiccioliti a 512 e
-          ricompressi senza perdita (giro W5).
+      {%- comment -%}
+        LA COLONNA DI DESTRA — il logo grande, le tre garanzie, il motto.
+        ⚠️ Nel riferimento le garanzie sono una TERZA colonna a fianco del
+        telefono; qui stanno sotto il logo, e il perché (misurato) sta in
+        `assets/css/b.scss`, alla nota sulla composizione.
 
-          alt="" — DECORATIVA, ed è una scelta di CC da guardare, non un
-          fatto: il nome «AIMONX» è già scritto in lettere nella testata qui
-          sopra e nel motto in fondo, quindi l'icona non porta NESSUNA
-          informazione che manchi a chi non la vede. Chi usa un lettore di
-          schermo sentirebbe «AIMONX» due volte a tre righe di distanza.
-          ⚠️ Se per Cowork il logo è contenuto e non decorazione, qui va un
-          testo alternativo — e lo scrive Cowork, non CC.
+        IL LOGO GRANDE — l'icona dell'app così com'è, non ridisegnata: gli
+        stessi pixel del file dell'app, solo rimpiccioliti a 512 e ricompressi
+        senza perdita (giro W5). ⛔ Sta QUI perché nel riferimento c'era un
+        telefono inclinato con una schermata finta, e Pier ha deciso che al suo
+        posto va il logo.
 
-          width/height sono i pixel VERI del file: servono al browser per
-          tenere il posto prima che l'immagine arrivi, così la domanda non
-          salta mentre si legge. La misura a schermo la fa il CSS.
+        alt="" — DECORATIVA, ed è una scelta di CC da guardare, non un fatto:
+        il nome «AIMONX» è già scritto in lettere nella testata qui sopra,
+        quindi l'icona non porta NESSUNA informazione che manchi a chi non la
+        vede. ⚠️ Se per Cowork il logo è contenuto e non decorazione, qui va un
+        testo alternativo — e lo scrive Cowork, non CC.
+
+        width/height sono i pixel VERI del file: servono al browser per tenere
+        il posto prima che l'immagine arrivi. La misura a schermo la fa il CSS.
+      {%- endcomment -%}
+      <div class="destra">
+        <div class="segno">
+          <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
+               alt="" width="512" height="512" decoding="async">
+        </div>
+
+        <ul class="garanzie">
+          {%- for g in d.hero.garanzie -%}
+          {%- assign a = site.data.aspetto.hero_garanzie[forloop.index0] %}
+          <li>
+            {%- if a.icona %}
+            <span class="casella">{% include glifo.html nome=a.icona %}</span>
+            {%- endif %}
+            <span>{{ g }}</span>
+          </li>
+          {%- endfor %}
+        </ul>
+
+        {%- comment -%}
+          IL MOTTO SCRITTO A MANO. ⛔ È TESTO, non un'immagine: si legge con un
+          lettore di schermo, si seleziona, si ingrandisce. Il font sta in
+          `assets/fonts/` ed è servito da aimonx.app — ⛔ mai da un server
+          esterno (vincolo del sito, e `WD26`).
+          ⚠️ Lo svolazzo sotto è decorativo e basta: `aria-hidden`.
         {%- endcomment -%}
-        <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
-             alt="" width="512" height="512" decoding="async">
+        <p class="scritta-mano">{{ d.hero.motto }}
+          <svg class="svolazzo" viewBox="0 0 200 18" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+            <path d="M3 13c34-7 71-9 104-8 24 .7 49 3 90 8" fill="none"
+                  stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </p>
       </div>
     </div>
   </div>

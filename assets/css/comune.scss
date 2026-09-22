@@ -1,0 +1,116 @@
+---
+---
+// assets/css/comune.scss — quel che tutta la pagina ha in comune: i colori
+// dell'app, le pile di caratteri, il font scritto a mano, l'azzeramento e il
+// pavimento di qualità.
+// ⛔ Nessuna decisione estetica qui dentro: l'estetica sta in `b.scss`.
+//
+// ⛔ PERCHÉ `.scss` E NON `.css`, dal giro W6 — e non è una moda.
+// Un `.css` Jekyll lo copia TALE E QUALE: ogni commento di lavoro finiva su
+// aimonx.app, leggibile da chiunque aprisse il foglio di stile. Misurato nel
+// W5: il 60% di `b.css` era commento servito al pubblico.
+// ⭐ Un `.scss` con questo front matter NON viene copiato: Jekyll lo COMPILA,
+// e sul sito esce solo il `.css` prodotto. Il sorgente resta nel repo (che è
+// pubblico, ma è un'altra cosa: chi apre il repo cerca il metodo, chi apre il
+// sito no).
+// ⛔ E i commenti si scrivono con `//`, NON con `/* */`. La differenza è
+// misurata: `/* */` sopravvive quando Jekyll costruisce in `development` —
+// cioè quando si lancia `jekyll serve` per guardare l'anteprima — e sparisce
+// solo in `production`. `//` non esce MAI, in nessuno dei due. Un controllo
+// che dipende da una variabile d'ambiente è un controllo che un giorno non
+// c'è.
+//
+// ⛔ I COLORI NON SI INVENTANO E NON SI PRENDONO A OCCHIO dal mockup di
+// luglio: sono i valori di `…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md`,
+// con la sezione accanto a ciascuno. Il mockup dà la DIREZIONE (verde scuro
+// profondo, verde salvia, arancio d'accento); la tavolozza dà i numeri.
+
+// IL FONT SCRITTO A MANO — e le due condizioni che lo rendono lecito.
+// ① ⛔ SERVITO DA NOI: il file sta in `assets/fonts/`, cioè su aimonx.app.
+//    Preso da Google Fonts NON si potrebbe: ogni visita direbbe a un server
+//    terzo chi è passato, che è esattamente `WD26` e, per il GDPR, l'IP del
+//    visitatore mandato a un terzo senza motivo (`conformita-sito.md` §1).
+// ② ⛔ LICENZA CHE LO PERMETTE: Shadows Into Light, di Kimberly Geswein, SIL
+//    Open Font License 1.1 — la licenza sta accanto al font, in
+//    `assets/fonts/OFL.txt`, come l'OFL richiede. Nessun «Reserved Font Name»
+//    nella riga di copyright, quindi il nome resta quello.
+// ⚠️ Il file è il sottoinsieme LATINO in woff2 (15 988 byte) distribuito da
+//    Google per questo font; il motto è ASCII, e le altre lingue sarebbero
+//    peso servito a vuoto.
+// ⚠️ `font-display: swap` non è cosmesi: senza, il motto resta INVISIBILE
+//    finché il font non arriva. Con `swap` si legge subito nella pila di
+//    sistema e poi cambia forma.
+@font-face {
+  font-family: "Shadows Into Light";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/shadows-into-light-latin.woff2") format("woff2");
+}
+
+:root {
+  // §2 — i colori base dell'app
+  --bosco:          #0F3625;  // sfondo dell'app
+  --alto:           #1A4A33;  // estremo alto del gradiente
+  --bianco:         #FDFDFD;  // le card piene
+  --verde-positivo: #549E75;
+  --verde-chiaro:   #8CCCA6;  // accento sulla presentazione scura
+
+  // §1 — riservato. ⚠️ Nell'app l'arancio vuol dire «avviso» o «azione
+  // irreversibile», e per questo non entra in un grafico qualsiasi. Sul sito
+  // non ci sono avvisi: resta un accento di precisione — un filetto, un
+  // pallino, le lettere di un'etichetta — e ⛔ NON diventa il fondo di un
+  // bottone. ⭐ Dal giro W6 la regola ha un secondo motivo, deciso da Pier:
+  // «Coming soon for iPhone» è un'ETICHETTA, e un fondo arancio pieno la
+  // farebbe sembrare un pulsante che non porta da nessuna parte.
+  --arancio:        #EC6F18;
+
+  // §4b — la rampa d'identità delle sezioni, e §4d i titoli e le fasce.
+  // Le usano le carte, che portano sul web l'anatomia delle card dell'app.
+  --sez-verde:  #0E9152;  --fascia-verde:  #D8F0E3;  --titolo-verde:  #0A6B3D;
+  --sez-lime:   #6C9A18;  --fascia-lime:   #EFF4DF;  --titolo-lime:   #4F7011;
+  --sez-ciano:  #0E8FBF;  --fascia-ciano:  #DDF0F8;  --titolo-ciano:  #0B6D91;
+  --sez-ardesia:#4E6472;  --fascia-ardesia:#E4EAEE;  --titolo-ardesia:#3B4E5A;
+  --sez-salvia: #4F7A63;  --fascia-salvia: #E4EEE8;  --titolo-salvia: #3B5D4B;
+  --sez-arancioTenue:#CE7433; --fascia-arancioTenue:#FAEADD; --titolo-arancioTenue:#9C5624;
+  --sez-blu:    #2456CE;  --fascia-blu:    #E0E7FA;  --titolo-blu:    #1B41A0;
+
+  // §4d — gli inchiostri sulla card bianca
+  --inchiostro:   #12261D;
+  --inchiostro-2: #4A6355;
+  --inchiostro-3: #83968C;
+
+  // ⛔ SF Pro NON si ospita: la licenza Apple lo limita ai bozzetti di
+  // interfacce (spec-sito.md §10). ⭐ La pila di sistema non è un ripiego —
+  // su iPhone e su Mac mostra ESATTAMENTE quel font, senza scaricare né
+  // ospitare un byte, e altrove il migliore equivalente locale.
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  // ⚠️ La pila con le grazie non la usa nessuno oggi: era della variante C,
+  // uscita nel giro W5. Resta perché è locale e non costa niente, e perché
+  // toglierla sarebbe una correzione dentro un giro che ne fa un'altra.
+  --grazie: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  // ⚠️ La coda della pila a mano è la pila di sistema: se il woff2 non arriva
+  // — rete lenta, file mancante — il motto si legge lo stesso, in tondo.
+  --mano: "Shadows Into Light", var(--sans);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--sans); text-rendering: optimizeLegibility;
+       -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, li { margin: 0; }
+ul { padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+
+// Il pavimento di qualità, e non si annuncia: si tiene.
+// ⛔ Il focus da tastiera deve VEDERSI: senza, la pagina è navigabile solo da
+// chi la guarda (WCAG 2.1 AA, obiettivo di conformita-sito.md).
+:focus-visible { outline: 3px solid var(--arancio); outline-offset: 3px; border-radius: 2px; }
+
+// ⚠️ Chi ha chiesto meno movimento al sistema lo ha chiesto davvero.
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}

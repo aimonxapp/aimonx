@@ -10,12 +10,15 @@
 # controprova meccanica: non esiste un test che dica se una frase è chiara o se
 # il tono è sportivo invece che militare.
 #
-# ⭐ PERCHÉ IL TESTO STA IN UN FILE DI DATI E NON DENTRO LE PAGINE. Il giro W4
-# costruisce TRE varianti visive della stessa landing, e la condizione è «stesso
-# testo». Se il testo stesse dentro le tre pagine, sarebbe scritto tre volte e
-# divergerebbe alla prima correzione — e la differenza si vedrebbe solo
-# rileggendo tre file a occhio. Così il testo esiste una volta: le tre varianti
-# leggono di qui, e «stesso testo» è vero per costruzione, non per attenzione.
+# ⭐ PERCHÉ IL TESTO STA IN UN FILE DI DATI E NON DENTRO LE PAGINE. Nasce nel
+# giro W4, che costruiva tre varianti visive della stessa landing con la
+# condizione «stesso testo»: se il testo fosse stato dentro le pagine, sarebbe
+# stato scritto tre volte e sarebbe divergìto alla prima correzione.
+# ⭐ LE VARIANTI NON CI SONO PIÙ — dal giro W5 la landing è una sola — ma la
+# ragione è diventata più forte, non più debole: il testo che il pubblico legge
+# ha UN posto solo, e `scripts/testo-approvato.sh` può cercarlo tutto nella
+# bozza. Se stesse sparso nel layout e nel foglio di stile, quel controllo non
+# saprebbe dove guardare.
 #
 # ⚠️ DUE COSE QUI DENTRO NON VENGONO DALLA BOZZA, e vanno guardate da Cowork:
 #   · `meta.title` e `meta.description` — la bozza non li dà. Sono ASSEMBLATI
@@ -45,10 +48,48 @@ meta:
   title: "AIMONX — the technical logbook for sport shooters"
   description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
 
+# ⛔ LA PARTE ALTA È LA «HERO — versione 2» DELLA BOZZA, non la 1. Pier l'ha
+# decisa il 22/09/2026 guardando `riferimento-hero-chatgpt.png`, e la versione 1
+# resta nella bozza marcata «superata». Qui c'è solo la 2.
+#
+# ⚠️ IL TITOLO È UNA LISTA DI TRE RIGHE, e non è impaginazione travestita da
+# testo: la bozza lo scrive su tre righe («Do you really know / how many rounds
+# / your gun has fired?») e dice che la CENTRALE va in verde. Una frase sola
+# non potrebbe dire quale sia la centrale, e il verde finirebbe dove capita a
+# seconda della larghezza della finestra.
+#
+# ⚠️ `punti` e `garanzie` hanno il loro aspetto — il glifo — in
+# `_data/aspetto.yml`, accoppiato per posizione come le sette voci.
 hero:
-  headline: "Do you really know how many rounds your gun has fired?"
+  sopratitolo: "TRACK · IMPROVE · SHOOT BETTER"
+  titolo:
+    - "Do you really know"
+    - "how many rounds"
+    - "your gun has fired?"
   lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in order, on your iPhone."
-  note: "Coming soon for iPhone."
+  punti:
+    - forte: "Organize"
+      resto: "your firearms"
+    - forte: "Track"
+      resto: "your progress"
+    - forte: "Plan"
+      resto: "your maintenance"
+    - forte: "Know"
+      resto: "your real costs"
+  # ⛔ ETICHETTA, NON PULSANTE (decisione di Pier del 22/09): niente freccia,
+  # niente link, niente fondo arancio da bottone. ⚠️ E senza il punto finale:
+  # la versione 1 scriveva «Coming soon for iPhone.», la 2 la dà come etichetta
+  # e il punto non c'è. Il testo qui è quello della 2.
+  etichetta: "Coming soon for iPhone"
+  riga: "YOUR SHOOTING DATA. ALWAYS WITH YOU."
+  garanzie:
+    - "No account"
+    - "No tracking"
+    - "No AIMONX server"
+  # ⭐ Il motto va scritto a mano: il font sta in `assets/fonts/`, servito da
+  # aimonx.app, ed è la sola parola di questa pagina che non usa la pila di
+  # sistema.
+  motto: "Same Passion. More Control."
 
 # ⚠️ I titoli di sezione della bozza sono scritti in maiuscolo («WHAT IT KEEPS
 # TRACK OF»), nello stesso stile delle etichette di struttura «HERO» e
@@ -75,12 +116,12 @@ what:
 
 privacy:
   title: "Privacy"
-  claim: "No account. No servers of ours. We never see your data."
+  claim: "No account. No AIMONX server. We never see your data."
   items:
     - lead: "Works offline."
       body: "Use it at the range with no signal. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
     - lead: "Your data talks to no one but your own iCloud."
-      body: "No servers of ours, no third parties, no analytics."
+      body: "No AIMONX server, no third parties, no analytics."
   note: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
 
 security:

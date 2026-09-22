@@ -33,3 +33,32 @@ what:
     tinta: arancioTenue
   - icona: documento   # Firearm reports in PDF      → «Statistiche/report»
     tinta: blu
+
+# --- la parte alta, dal giro W6 -------------------------------------------
+#
+# ⚠️ STESSO ACCOPPIAMENTO PER POSIZIONE delle sette voci qui sopra, con la
+# stessa fragilità e lo stesso controllo: `scripts/testo-approvato.sh` confronta
+# le lunghezze delle tre coppie e protesta se una scivola.
+#
+# ⛔ I QUATTRO GLIFI NON SONO SCELTI A CASO: sono gli stessi che l'app usa per
+# quelle sezioni, e tre su quattro sono già in pagina più in basso — il mirino
+# è «Armi», il grafico «Statistiche», la chiave «Manutenzione». ⭐ Chi scorre
+# ritrova in alto i segni che rivede nelle carte.
+# ⚠️ `monete` è NUOVO e serve qui: nelle carte i costi portano il grafico, ma
+# qui il grafico è già preso da «Track your progress», e due voci vicine con lo
+# stesso segno si leggono come la stessa cosa detta due volte.
+hero_punti:
+  - icona: mirino      # Organize your firearms   → «Armi» nell'app
+  - icona: grafico     # Track your progress      → «Statistiche»
+  - icona: chiave      # Plan your maintenance    → «Manutenzione»
+  - icona: monete      # Know your real costs     → «Costi»
+
+# ⚠️ IL TERZO GLIFO È UNA SCELTA DA GUARDARE, non un fatto: «No AIMONX server»
+# è un server BARRATO, non una nuvola barrata. ⛔ La nuvola direbbe il falso —
+# la copia cifrata sta nell'iCloud dell'utente, e quella nuvola c'è
+# (`~/Developer/AIMONX/docs/prodotto.md` §8.1). Quello che non esiste è il
+# server NOSTRO, ed è quello che il segno deve dire.
+hero_garanzie:
+  - icona: scudo       # No account
+  - icona: lucchetto   # No tracking
+  - icona: serverno    # No AIMONX server

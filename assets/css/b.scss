@@ -1,0 +1,360 @@
+---
+---
+// assets/css/b.scss — LA LANDING. Una sola pagina, un solo foglio.
+//
+// ⛔ PERCHÉ `.scss` E NON `.css`, dal giro W6: perché questi commenti NON
+// devono finire su aimonx.app. Un `.css` Jekyll lo copia tale e quale, e il
+// foglio di stile del sito è scaricabile da chiunque: nel W5 il 60% di questo
+// file era commento di lavoro servito al pubblico. Un `.scss` con il front
+// matter qui sopra viene COMPILATO, e sul sito esce solo il `.css` prodotto.
+// ⛔ E i commenti si scrivono con `//`: `/* */` sopravvive alla build in
+// `development`, cioè a `jekyll serve`, e sparirebbe solo in `production`.
+// La spiegazione lunga sta in `comune.scss`.
+//
+// L'IDEA DEL CORPO — quella della variante B del W4, scelta da Pier, e resta.
+// Chi arriva qui poi apre l'app: questa pagina è fatta con i pezzi dell'app,
+// non con pezzi da sito. Le carte seguono l'anatomia scritta in
+// `…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` §4c e §4d, VALORE PER
+// VALORE — filetto 5 px a sinistra nel colore della sezione, fascia in testa
+// nello stesso colore molto tenue, cerchio pieno 44 px col glifo bianco, glifo
+// in filigrana nell'angolo, angoli 18 px, ombra bassa e larga, corpo bianco e
+// testo scuro. Non somigliano alle card dell'app: sono le sue.
+//
+// ⛔ E i colori delle sette voci non sono scelti a gusto: vengono dalla rampa
+// d'identità di §4b, quella che nell'app dice «questa è la sezione Armi»,
+// «questa è Manutenzione».
+//
+// ⭐ COSA HA CAMBIATO IL GIRO W6, e SOLO questo: la PARTE ALTA, rifatta dal
+// riferimento visivo di Pier. ⛔ Dalla riga «--- LA PARTE ALTA ---» in giù fino
+// a «--- i blocchi ---» è tutto nuovo; da lì in poi non è stato toccato nulla,
+// perché sotto la pagina resta quella che Pier ha guardato nel W5.
+//
+// ⛔ USCITO NEL W6: il mirino grande dietro al logo, con la sua pagina
+// `/mirino/`. La scelta fra le due versioni del W5 è fatta. Resta leggibile al
+// commit `e9a1aa3`.
+//
+// ⚠️ IL NOME DEL FILE RESTA `b`, ANCHE SE LE VARIANTI NON CI SONO PIÙ, e la
+// ragione non è pigrizia: rinominarlo mescolerebbe uno SPOSTAMENTO con una
+// CORREZIONE nello stesso giro (CLAUDE.md, «Prima si sposta, poi si corregge»),
+// e il diff che Pier deve poter leggere diventerebbe «file nuovo». Si rinomina
+// in un giro che non cambia altro, o non si rinomina.
+//
+// DOVE SI OSA: il proclama della privacy è una carta SCURA in mezzo alle
+// bianche — nell'app è la «presentazione scura» (§2, verde chiaro sul verde).
+// È l'unico punto in cui il ritmo si rompe, ed è il punto che deve restare.
+
+body.v-b {
+  background: var(--bosco);
+  background-image: linear-gradient(180deg, var(--alto) 0%, var(--bosco) 46rem);
+  background-repeat: no-repeat;
+  color: var(--bianco);
+}
+
+// ⛔ LA LARGHEZZA NON È CAMBIATA NEL W6, ed è una decisione, non una svista:
+// 66rem è la misura su cui Pier ha guardato le carte. La parte alta nuova ha
+// una colonna in più — le tre garanzie e il motto — e la tentazione era
+// allargare tutto per farcela stare. ⭐ Non è servito: misurato, a 1440 px la
+// colonna del testo resta di 678 px e la domanda ci sta a 76.8 px di corpo.
+// Allargare avrebbe cambiato anche le carte, che questo giro non tocca.
+.v-b .apertura,
+.v-b main,
+.v-b .chiusa { max-width: 66rem; margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+
+// --- testata ---------------------------------------------------------------
+.v-b .testata {
+  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+  padding-block: clamp(1.4rem, 4vw, 2.4rem);
+}
+.v-b .marchio { width: 48px; height: 48px; border-radius: 12px; }
+.v-b .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
+
+// L'etichetta piccola in alto a destra.
+// ⛔ NON È UN PULSANTE: niente fondo pieno, niente bordo, niente freccia. Solo
+// lettere arancio e un pallino.
+// ⚠️ LA MISURA CHE DECIDE IL CORPO È IL CONTRASTO, non il gusto: l'arancio
+// #EC6F18 sul verde #0F3625 fa 4.36:1. Per WCAG 2.1 AA il testo normale ne
+// vuole 4.5 — quindi a corpo piccolo NON passerebbe — mentre il testo GRANDE
+// ne vuole 3, e «grande» comincia a 18.66 px se è in grassetto. 1.2rem = 19.2
+// px in grassetto: di là dalla riga, e con margine.
+// ⛔ Per questo il corpo NON scala con la finestra: un `clamp` che lo
+// rimpicciolisse su un telefono lo farebbe ricadere sotto la soglia dove
+// nessuno guarda più.
+.v-b .presto-minuta {
+  margin-left: auto; display: inline-flex; align-items: center; gap: .55rem;
+  font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em; color: var(--arancio);
+}
+.v-b .pallino { flex: none; width: .55rem; height: .55rem; border-radius: 50%; background: var(--arancio); }
+
+// --- LA PARTE ALTA — giro W6, dal riferimento di Pier ----------------------
+//
+// La composizione: a sinistra le parole, a destra il logo grande con sotto le
+// tre garanzie e il motto scritto a mano.
+// ⚠️ NEL RIFERIMENTO LE GARANZIE STANNO IN UNA TERZA COLONNA, a fianco del
+// telefono. Qui stanno SOTTO il logo, ed è una differenza voluta: con tre
+// colonne dentro 66rem la colonna del testo scendeva a ~570 px e la domanda
+// perdeva un terzo del corpo. Due colonne, e la domanda resta grande.
+.v-b .eroe {
+  display: grid;
+  gap: clamp(1.8rem, 4vw, 2.6rem);
+  padding-block: clamp(1rem, 3vw, 2rem) clamp(2.6rem, 7vw, 4.6rem);
+}
+// ⚠️ Su schermo stretto la colonna di destra viene DOPO le parole, ed è
+// voluto: la prima cosa che si legge dev'essere la domanda, non l'icona. Su
+// schermo largo la griglia la porta a fianco senza toccare l'ordine del
+// documento — quindi chi legge con un lettore di schermo o col tasto tab sente
+// sempre lo stesso ordine, a qualsiasi larghezza.
+//
+// ⛔ 16rem non è un numero tondo per caso: il file del logo è 512×512, e 256 px
+// su uno schermo Retina (2×) sono esattamente 512 pixel veri. Più larga, e il
+// browser ingrandirebbe un'immagine che non ha altri pixel da dare.
+@media (min-width: 880px) {
+  .v-b .eroe { grid-template-columns: minmax(0, 1fr) clamp(13rem, 20vw, 16rem); align-items: center; }
+}
+
+.v-b .sopratitolo {
+  font-size: clamp(.72rem, 1.5vw, .88rem); font-weight: 600; letter-spacing: .28em;
+  color: #CFE3D8; margin-bottom: clamp(.9rem, 2.4vw, 1.3rem);
+}
+
+// LA DOMANDA. ⭐ Le tre righe arrivano dal testo, non dal browser: sono tre
+// `<span>` separati, perché la bozza le scrive separate e dice che la CENTRALE
+// va in verde. ⛔ Con una frase sola il punto di andata a capo cambierebbe con
+// la larghezza della finestra, e con lui cambierebbe quale parte è verde.
+// ⚠️ IL CORPO È MISURATO, non scelto, e la misura è questa: la riga più lunga
+// («your gun has fired?») deve stare su UNA riga a ogni larghezza, altrimenti
+// le tre righe diventano quattro su uno schermo e tre su un altro, e la parte
+// alta cambia carattere a seconda di chi la apre.
+// ⛔ Il punto che morde NON è il monitor grande, è 880 px — la larghezza a cui
+// la colonna del testo è più STRETTA di quanto sarà a 1024, perché lì la
+// colonna del logo è appena comparsa e si prende 13rem su 810 disponibili.
+// Misurato con questi valori (larghezza della riga più lunga / colonna):
+//     390px   263 / 355   ·   880px   510 / 566   ·   1440px   614 / 678
+// cioè un margine del 10% dove è più stretto. ⚠️ Il margine non è prudenza
+// generica: la pila di sistema NON è lo stesso font su ogni macchina — su Mac
+// e iPhone è SF Pro, altrove Segoe UI o Roboto, che sono più larghi.
+.v-b .eroe h1 {
+  font-size: clamp(2rem, 7.2vw, 4.8rem);
+  font-weight: 700; line-height: 1; letter-spacing: -.035em;
+  color: var(--bianco);
+}
+.v-b .eroe h1 .riga { display: block; }
+// §2 — l'accento sulla presentazione scura.
+.v-b .eroe h1 .spicca { color: var(--verde-chiaro); }
+
+.v-b .sommario {
+  margin-top: clamp(1.1rem, 2.6vw, 1.6rem); max-width: 46ch;
+  font-size: clamp(1rem, 1.7vw, 1.12rem); line-height: 1.6; color: #CFE3D8;
+}
+
+// LE QUATTRO VOCI CON IL GLIFO.
+// ⚠️ NEL RIFERIMENTO SONO IN FILA PER QUATTRO, qui sono due per due, ed è una
+// differenza MISURATA: nella colonna del testo, quattro in fila lasciano ~98 px
+// di parole a testa, e «your maintenance» ne chiede ~113. Sarebbero andate a
+// capo in tre righe l'una, cioè una fila di quattro colonnine alte e strette.
+// ⛔ Due per due non è un ripiego dell'ultimo momento: è la stessa forma delle
+// carte qui sotto, che a 880 px si mettono in due colonne.
+// ⚠️ `minmax(0, 15rem)` e non `1fr`: con `1fr` le due colonne si prendevano
+// metà della colonna del testo a testa — 339 px l'una per ~150 px di parole —
+// e la coppia di destra finiva a mezzo schermo di distanza dall'altra. Con un
+// tetto le due colonne stanno vicine; `minmax` da zero le lascia comunque
+// stringersi su un telefono, dove 15rem in due non ci starebbero.
+.v-b .punti {
+  margin-top: clamp(1.5rem, 3.2vw, 2.1rem);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 15rem));
+  justify-content: start;
+  gap: 1rem clamp(.8rem, 2vw, 1.6rem);
+}
+.v-b .punti li { display: flex; align-items: center; gap: .7rem; }
+.v-b .dice { font-size: .88rem; line-height: 1.35; color: #B7CEC2; }
+// ⚠️ La parola forte va a capo da sola: «Organize» sopra, «your firearms»
+// sotto, come nel riferimento. È un `display: block`, non un `<br>` nel testo —
+// il testo è di Cowork e non porta impaginazione.
+.v-b .dice b { display: block; font-weight: 700; font-size: .98rem; color: var(--bianco); }
+
+// La casella del glifo: quadrata con gli angoli tondi, vuota dentro.
+// ⛔ NON è il cerchio pieno delle carte, ed è apposta: là il glifo marca una
+// SEZIONE dell'app e porta il suo colore; qui marca una promessa, e un secondo
+// colore pieno in cima alla pagina si sarebbe messo a litigare con l'arancio
+// dell'etichetta.
+.v-b .casella {
+  flex: none; width: 44px; height: 44px; border-radius: 13px;
+  border: 1px solid rgba(140, 204, 166, .28);
+  background: rgba(140, 204, 166, .07);
+  color: var(--verde-chiaro);
+  display: grid; place-items: center;
+}
+.v-b .casella .glifo { width: 21px; height: 21px; }
+
+// L'ETICHETTA GRANDE.
+// ⛔ ETICHETTA, NON PULSANTE — deciso da Pier il 22/09/2026. Nel riferimento è
+// una pillola arancio piena con dentro il logo Apple e una freccia: qui il
+// logo Apple non c'è (marchi Apple, `conformita-sito.md` §1), la freccia non
+// c'è e il fondo pieno non c'è. ⭐ Resta arancio e grande, cioè «ben visibile»
+// come Pier ha chiesto, ma quello che la fa vedere è il CORPO, non un fondo da
+// premere.
+// ⚠️ Il pavimento di 1.55rem è la stessa misura di contrasto dell'etichetta
+// piccola, dall'altra parte: 1.55rem = 24.8 px, e da 24 px in su WCAG chiede 3
+// invece di 4.5. L'arancio sul verde fa 4.36.
+.v-b .etichetta {
+  margin-top: clamp(1.6rem, 3.4vw, 2.2rem);
+  display: inline-flex; align-items: center; gap: .85rem;
+  font-size: clamp(1.55rem, 3.2vw, 1.95rem);
+  font-weight: 700; letter-spacing: -.018em; color: var(--arancio);
+}
+.v-b .filetto { flex: none; width: clamp(1.6rem, 3vw, 2.4rem); height: 3px; border-radius: 2px; background: var(--arancio); }
+
+// ⚠️ Il corpo scende sui telefoni per una ragione misurata: con la spaziatura
+// larga questa riga è 371 px, e dentro un telefono da 390 px ne restano 355.
+// A corpo fisso andava a capo su «YOU.» da sola.
+.v-b .riga-minuta {
+  margin-top: 1rem; font-size: clamp(.68rem, 1.6vw, .8rem);
+  font-weight: 600; letter-spacing: .2em; color: #9DB6AA;
+}
+
+// --- la colonna di destra: il logo, le garanzie, il motto ------------------
+.v-b .destra { display: grid; gap: clamp(1.5rem, 3.4vw, 2.2rem); justify-items: center; }
+@media (min-width: 880px) { .v-b .destra { justify-items: stretch; } }
+
+.v-b .segno { width: clamp(9rem, 40vw, 14rem); margin-inline: auto; }
+@media (min-width: 880px) { .v-b .segno { width: 100%; } }
+
+.v-b .logo {
+  width: 100%; height: auto;
+  // L'angolo delle icone iOS. ⛔ Il file dell'app è un quadrato pieno, senza
+  // angoli: la maschera la mette il sistema sulla Home, e qui la mettiamo noi —
+  // altrimenti l'icona si vede come un rettangolo, che sulla Home di nessuno
+  // esiste. Non è ridisegnare il logo: i pixel non si toccano.
+  border-radius: 22.4%;
+  // ⚠️ E questo filo NON è decorazione. Misurato: l'angolo del file è #0E3726,
+  // il fondo della pagina è #0F3625 e in cima al gradiente è #1A4A33 — cioè
+  // l'icona ha quasi ESATTAMENTE il fondo su cui sta, e senza un bordo il
+  // quadrato si perde nel verde.
+  border: 1px solid rgba(140, 204, 166, .22);
+  box-shadow: 0 18px 44px rgba(4, 18, 12, .45);
+}
+
+// LE TRE GARANZIE. In fila su schermo stretto, in colonna quando c'è la
+// colonna. ⚠️ Il glifo del terzo è un server BARRATO e non una nuvola barrata:
+// la nuvola dell'utente c'è davvero (la copia cifrata sta nel suo iCloud), e
+// barrarla direbbe il falso. Il motivo per esteso sta in `_data/aspetto.yml`.
+.v-b .garanzie { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem 1.4rem; }
+.v-b .garanzie li { display: flex; align-items: center; gap: .6rem; font-size: .95rem; font-weight: 600; color: #CFE3D8; }
+.v-b .garanzie .casella { width: 38px; height: 38px; border-radius: 11px; }
+.v-b .garanzie .casella .glifo { width: 19px; height: 19px; }
+@media (min-width: 880px) {
+  .v-b .garanzie { flex-direction: column; align-items: flex-start; gap: .85rem; }
+}
+
+// IL MOTTO SCRITTO A MANO.
+// ⛔ È TESTO, non un'immagine: si legge con un lettore di schermo, si
+// seleziona, si ingrandisce, e non ha bisogno di un testo alternativo scritto
+// da qualcuno. Il font è in `assets/fonts/`, servito da aimonx.app.
+// ⚠️ L'inclinazione è piccola apposta: una rotazione più forte allargherebbe
+// la scatola e, in fondo alla colonna di destra, spingerebbe la pagina a
+// scorrere di lato. Misurato dopo, a 390, 880 e 1440 px: nessuno sbordo.
+.v-b .scritta-mano {
+  font-family: var(--mano);
+  font-size: clamp(1.7rem, 4.4vw, 2.2rem); line-height: 1.1;
+  color: rgba(140, 204, 166, .85);
+  transform: rotate(-3deg); transform-origin: left center;
+}
+// Lo svolazzo del riferimento, ridisegnato: decorativo, e spento.
+.v-b .svolazzo { width: 78%; height: .55rem; margin-top: .1rem; opacity: .72; }
+
+// --- i blocchi -------------------------------------------------------------
+.v-b .blocco { padding-block: clamp(2rem, 5vw, 3.2rem); }
+.v-b .blocco h2 {
+  font-size: clamp(1.3rem, 2.8vw, 1.7rem); font-weight: 700; letter-spacing: -.024em;
+  color: var(--verde-chiaro); margin-bottom: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+// --- LA CARTA, come nell'app (tavolozza §4c) -------------------------------
+.v-b .voci { display: grid; gap: 1.05rem; }
+@media (min-width: 880px) { .v-b .voci-glifo { grid-template-columns: 1fr 1fr; } }
+
+.v-b .voce {
+  position: relative; overflow: hidden;
+  background: var(--bianco);
+  border-radius: 18px;                          // §4c punto 6
+  box-shadow: 0 2px 12px rgba(6, 24, 16, .28);  // §4d, superfici
+  // tinta di difetto: verde. Ogni voce la sovrascrive con la sua.
+  --sez: var(--sez-verde); --fascia: var(--fascia-verde); --titolo: var(--titolo-verde);
+}
+// ① il filetto a sinistra, 5 px, tutta l'altezza
+.v-b .voce::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: var(--sez);
+}
+// ② la fascia in testa, tinta molto tenue — mai bianca
+.v-b .testa {
+  position: relative; overflow: hidden;
+  background: var(--fascia);
+  display: flex; align-items: center; gap: .9rem;
+  padding: 1rem 1.3rem 1rem 1.6rem;
+}
+// ③ il cerchio pieno da 44 px, glifo bianco
+.v-b .cerchio {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--sez); color: var(--bianco);
+  display: grid; place-items: center;
+}
+.v-b .cerchio .glifo { width: 23px; height: 23px; }
+// ④ il glifo in filigrana nell'angolo, fuori dal bordo
+.v-b .filigrana {
+  position: absolute; top: -22px; right: -18px; width: 104px; height: 104px;
+  color: var(--sez); opacity: .12; pointer-events: none;
+}
+.v-b .testa h3 {
+  font-size: 1.06rem; font-weight: 700; letter-spacing: -.022em; line-height: 1.3;
+  color: var(--titolo);                         // §4d — mai bianco
+}
+// ⑤ il corpo resta bianco e il testo scuro
+.v-b .voce p {
+  padding: 1.05rem 1.3rem 1.25rem 1.6rem;
+  font-size: .98rem; line-height: 1.6; color: var(--inchiostro-2);
+}
+.v-b .pro { color: var(--titolo); font-style: italic; font-weight: 600; }
+
+// le tinte delle sette voci — rampa d'identità §4b
+.v-b .tinta-verde        { --sez: var(--sez-verde);        --fascia: var(--fascia-verde);        --titolo: var(--titolo-verde); }
+.v-b .tinta-lime         { --sez: var(--sez-lime);         --fascia: var(--fascia-lime);         --titolo: var(--titolo-lime); }
+.v-b .tinta-ciano        { --sez: var(--sez-ciano);        --fascia: var(--fascia-ciano);        --titolo: var(--titolo-ciano); }
+.v-b .tinta-ardesia      { --sez: var(--sez-ardesia);      --fascia: var(--fascia-ardesia);      --titolo: var(--titolo-ardesia); }
+.v-b .tinta-salvia       { --sez: var(--sez-salvia);       --fascia: var(--fascia-salvia);       --titolo: var(--titolo-salvia); }
+.v-b .tinta-arancioTenue { --sez: var(--sez-arancioTenue); --fascia: var(--fascia-arancioTenue); --titolo: var(--titolo-arancioTenue); }
+.v-b .tinta-blu          { --sez: var(--sez-blu);          --fascia: var(--fascia-blu);          --titolo: var(--titolo-blu); }
+
+// le tinte dei tre blocchi senza glifo — identità di sezione, non decorazione
+.v-b .blocco-privacy   .voce { --sez: var(--sez-salvia);  --fascia: var(--fascia-salvia);  --titolo: var(--titolo-salvia); }
+.v-b .blocco-sicurezza .voce { --sez: var(--sez-ardesia); --fascia: var(--fascia-ardesia); --titolo: var(--titolo-ardesia); }
+.v-b .blocco-piani     .voce { --sez: var(--sez-ciano);   --fascia: var(--fascia-ciano);   --titolo: var(--titolo-ciano); }
+
+// ⚠️ Nei tre blocchi senza glifo la fascia non deve fare spazio a un cerchio
+// da 44 px che non c'è: senza questa riga resta mezza vuota.
+.v-b .blocco-privacy .testa,
+.v-b .blocco-sicurezza .testa,
+.v-b .blocco-piani .testa { padding-block: .75rem; }
+
+// --- il proclama: la carta scura, l'unica rottura del ritmo ----------------
+.v-b .proclama {
+  margin-bottom: 1.05rem;
+  padding: clamp(1.6rem, 4vw, 2.4rem) clamp(1.4rem, 4vw, 2.2rem);
+  border-radius: 18px;
+  background: #0B2E1F;
+  border: 1px solid rgba(140, 204, 166, .22);
+  font-size: clamp(1.3rem, 3.4vw, 1.95rem);
+  font-weight: 700; line-height: 1.2; letter-spacing: -.026em;
+  color: var(--verde-chiaro); max-width: 24ch;
+}
+.v-b .chiosa {
+  margin-top: 1.3rem; max-width: 62ch;
+  font-size: .98rem; line-height: 1.65; color: #B7CEC2;
+}
+
+// --- chiusa ----------------------------------------------------------------
+.v-b .chiusa {
+  margin-top: 1.5rem; padding-block: clamp(2.2rem, 5vw, 3.2rem) clamp(2.8rem, 6vw, 4rem);
+  border-top: 1px solid rgba(253, 253, 253, .10);
+}
+.v-b .motto { font-size: 1rem; font-weight: 600; color: var(--verde-chiaro); }
+.v-b .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
