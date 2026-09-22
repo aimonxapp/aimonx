@@ -284,7 +284,7 @@ VOCI
     # ⛔ Quattro numeri, e uno è il MUST di Pier misurato invece che riletto.
     # Il programma sta in scripts/misure-pagine.rb, con le sue ragioni.
     echo
-    echo "--- le quattro pagine, guardate una per una (giro W9) ---"
+    echo "--- le quattro pagine, guardate una per una (giri W9 e W10) ---"
     # ⛔ La variabile NON si chiama MISURE, e non è un vezzo: `MISURE` è la
     # variabile globale in cui `confronta` accumula le coppie chiave=valore che
     # `--aggiorna-attese` poi riscrive. Chiamarla così qui la sovrascriveva, e
@@ -292,7 +292,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti titoli_fuori_ordine indirizzi_o_telefoni; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       [ -n "$VALORE" ] && confronta "$CHIAVE" "$CHIAVE" "$VALORE"
     done

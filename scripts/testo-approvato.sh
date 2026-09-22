@@ -19,6 +19,12 @@
 #      bozza. ⛔ NON È LO STESSO CONTROLLO: la misura ① guarda i file di dati, e
 #      un layout può scrivere di suo una frase che in nessun file di dati
 #      compare. Il giro W9 chiede «ogni stringa SERVITA», e questa è quella.
+#      ⭐ DAL GIRO W10 ENTRA ANCHE NEI DATI STRUTTURATI (JSON-LD). ⛔ Era il
+#      buco rimasto: il testo servito si legge fra un tag e l altro, e il
+#      JSON-LD sta DENTRO un `<script>`, che questa misura buttava via insieme
+#      agli script veri. Cioè l unico posto del sito dove si poteva scrivere
+#      una frase nuova senza che nessuno se ne accorgesse era proprio quello
+#      che i motori di ricerca leggono per primo.
 #      ⚠️ Serve un sito costruito: si chiama `--servito <cartella>`, e senza
 #      quella cartella la misura non c'è — ⭐ terzo esito, non soglia più larga.
 #
@@ -85,7 +91,7 @@ fi
 # dentro NON si usano apostrofi, uno chiuderebbe la stringa a metà». Un
 # programma che ha una trappola da ricordarsi è un programma che un giorno
 # qualcuno fa saltare. Con <<'PROGRAMMA' nessun carattere è speciale.
-"$RUBY" -ryaml - "$MODO" "$CONTENUTI" "$REPO" "$COSTRUITO" <<'PROGRAMMA'
+"$RUBY" -ryaml -rjson - "$MODO" "$CONTENUTI" "$REPO" "$COSTRUITO" <<'PROGRAMMA'
 modo, contenuti, repo, costruito = ARGV
 
 # Le quattro pagine del sito: nome, file di dati, bozza, e dove esce nel
@@ -223,6 +229,32 @@ else
     end
     html = File.read(percorso, encoding: "UTF-8")
     html = html.gsub(/<!--.*?-->/m, " ")
+
+    # ⛔ IL JSON-LD SI RACCOGLIE PRIMA CHE GLI SCRIPT VENGANO BUTTATI VIA.
+    # ⚠️ Non tutte le chiavi portano parole: `@type`, `@id`, `url`, `image`,
+    # `@context` e `inLanguage` sono indirizzi e nomi tecnici, non testo che
+    # qualcuno legge. ⛔ La lista è CORTA e fatta di NOMI DI CHIAVE apposta:
+    # perdonare un VALORE («AIMONX va bene ovunque») lo perdonerebbe anche in
+    # mezzo a una frase inventata.
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage"]
+    parole_jsonld = []
+    html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
+      begin
+        dato = JSON.parse(blocco)
+      rescue JSON::ParserError => e
+        parole_jsonld << [:rotto, e.message[0, 90]]
+        next
+      end
+      raccogli = lambda do |n, chiave|
+        case n
+        when String then parole_jsonld << [:parola, n] unless tecniche.include?(chiave)
+        when Hash   then n.each { |k, v| raccogli.call(v, k) }
+        when Array  then n.each { |v| raccogli.call(v, chiave) }
+        end
+      end
+      raccogli.call(dato, nil)
+    end
+
     html = html.gsub(/<(script|style)\b.*?<\/\1>/mi, " ")
     pezzi = html.split(/<[^>]*>/).map { |x| x.gsub(/[[:space:]]+/, " ").strip }
     pezzi.reject!(&:empty?)
@@ -231,6 +263,13 @@ else
     pezzi.map! { |x| x.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
 
     consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING
+    # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
+    # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
+    # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,
+    # per esempio, Pier lo ha approvato nella bozza di Support, non in quella
+    # della landing. ⭐ Quel che il controllo deve impedire resta impedito: una
+    # frase INVENTATA non sta in nessuna delle quattro.
+    consentito_jsonld = PAGINE.map { |q| q[:testo_bozza] }.join("\n")
     # ⛔ LE ECCEZIONI SONO LE STESSE DELLE DUE MISURE, e si leggono dallo stesso
     # posto: quel che la ① dichiara, la ② lo riconosce. ⚠️ Se fossero due liste
     # diverse, un giorno una direbbe una cosa e l altra un altra, e non se ne
@@ -277,9 +316,21 @@ else
         estranei << x
       end
     end
-    fuori += estranei.size
-    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei"
+    jl_ok = 0; jl_fuori = []
+    parole_jsonld.each do |tipo, x|
+      if tipo == :rotto
+        jl_fuori << "JSON-LD NON SI LEGGE: #{x}"
+      elsif consentito_jsonld.include?(x) || perdonati.key?(x)
+        jl_ok += 1
+      else
+        jl_fuori << "nei dati strutturati, NON approvato -> «#{x[0, 120]}»"
+      end
+    end
+
+    fuori += estranei.size + jl_fuori.size
+    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei · JSON-LD: #{jl_ok} parole approvate, #{jl_fuori.size} fuori"
     estranei.each { |x| puts "     ⛔ #{p[:nome]}: SERVITO ma NON approvato -> «#{x[0, 120]}»" }
+    jl_fuori.each { |x| puts "     ⛔ #{p[:nome]}: #{x}" }
   end
 end
 

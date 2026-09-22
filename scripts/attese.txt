@@ -152,3 +152,33 @@ indirizzi_o_telefoni=0
 # LAYOUT non sta in nessun file di dati, e solo questa misura la vede — provato
 # nel giro W9 mettendone una a mano.
 testo_servito_fuori_bozza=0
+
+# ⛔ NATI NEL GIRO W10, quando il sito ha smesso di essere solo leggibile ed è
+# diventato anche trovabile. Li misura scripts/misure-pagine.rb sul COSTRUITO.
+
+# Link interni con un `#` che cade su un id inesistente nella pagina di arrivo.
+# ⛔ Deve restare 0, e questo controllo esiste perché un `#` rotto NON è un
+# errore per il browser: porta in cima alla pagina e basta. È il tipo di
+# rottura che nessuno segnala mai — le cinque voci della barra sono quattro `#`.
+ancore_rotte=0
+
+# Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
+# pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
+# nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
+sitemap_indirizzi=4
+
+# Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
+# dire ai motori e alle AI che cos'è.
+blocchi_jsonld=4
+
+# ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
+# numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
+# mappa), robots.txt (permette tutto a tutti, indica la mappa, ⛔ non VIETA
+# niente — decisione di Pier del 22/09 sui crawler delle AI), dati strutturati
+# che si leggono e dichiarano schema.org, immagine di condivisione 1200×630
+# presente e dichiarata da ogni pagina con la scheda grande.
+# ⚠️ UN NUMERO SOLO PER COSE DIVERSE, ed è una scelta: sarebbero state cinque
+# chiavi che stanno sempre a zero insieme, e cinque righe di attesa che nessuno
+# rilegge. ⭐ La diagnosi non si perde: ogni guasto si stampa per esteso, con
+# il suo nome e la pagina.
+seo_guasti=0

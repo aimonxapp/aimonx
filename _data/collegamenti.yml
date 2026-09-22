@@ -66,3 +66,29 @@ frasi:
   - frase: "Support"
     href: "/support/"
     tipo: pagina
+
+# --- LA BARRA IN ALTO, dal giro W10 ----------------------------------------
+#
+# ⚠️ È UNA MAPPA A PARTE da `frasi` qui sopra, e la ragione è che le due cose
+# sono diverse: `frasi` trasforma una parola IN MEZZO A UNA FRASE in un link,
+# `menu` dice dove porta una VOCE della barra. Mischiarle vorrebbe dire che
+# scrivere «Privacy» dentro un paragrafo lo trasformerebbe in un salto a una
+# sezione della landing, che non è mai quello che si vuole.
+#
+# ⛔ LE PRIME QUATTRO PORTANO A SEZIONI DELLA LANDING, con l'indirizzo INTERO
+# e non il solo `#features`: così funzionano anche da `/privacy-policy/`, da
+# `/support/` e da `/terms/`, dove un `#features` nudo non troverebbe niente.
+#
+# ⚠️ «Support» compare anche in `frasi`, e i due indirizzi DEVONO coincidere.
+# ⛔ Non è lasciato alla memoria: se uno dei due sbagliasse, il controllo
+# `link_rotti` di `scripts/misure-pagine.rb` lo troverebbe — ogni indirizzo
+# interno di ogni pagina costruita deve risolvere in una pagina che esiste.
+#
+# ⛔ Privacy Policy e Terms NON sono nella barra: stanno nel piede (giro W10
+# §2⑤). Una barra con dentro tutto non è una barra, è un indice.
+menu:
+  "Features":     "/#features"
+  "Privacy":      "/#privacy"
+  "Security":     "/#security"
+  "Free and Pro": "/#free-and-pro"
+  "Support":      "/support/"

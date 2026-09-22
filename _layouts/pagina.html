@@ -39,20 +39,11 @@
 <body class="v-testo tinta-{{ page.tinta | default: 'verde' }}">
   <div class="apertura">
     {%- comment -%}
-      LA TESTATA. ⭐ Qui è un LINK alla home, e sulla landing no: da una pagina
-      interna il marchio in alto a sinistra è la strada per tornare, e chi legge
-      se lo aspetta lì.
-      ⚠️ alt="" — l'icona resta DECORATIVA come sulla landing: il nome «AIMONX»
-      è scritto in lettere qui accanto, dentro lo stesso link, quindi il link
-      ha già il suo nome e un testo alternativo lo farebbe leggere due volte.
+      ⛔ LA TESTATA NON È PIÙ SCRITTA QUI, dal giro W10: è la stessa barra
+      della landing, in `_includes/barra.html`. Era già scritta due volte e
+      già divergeva — qui il marchio era un link, là no.
     {%- endcomment -%}
-    <header class="testata">
-      <a class="acasa" href="{{ '/' | relative_url }}">
-        <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
-             alt="" width="48" height="48">
-        <span class="nome">{{ site.data.landing.brand }}</span>
-      </a>
-    </header>
+    {%- include barra.html -%}
 
     <div class="titolone">
       <h1>{{ d.titolo }}</h1>

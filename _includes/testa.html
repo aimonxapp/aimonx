@@ -33,8 +33,25 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 <meta property="og:title" content="{{ include.meta.title }}">
 <meta property="og:description" content="{{ include.meta.description }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:image" content="{{ '/assets/img/aimonx-512.png' | absolute_url }}">
-<meta name="twitter:card" content="summary">
+{%- comment -%}
+  ⭐ DAL GIRO W10 L'IMMAGINE DI CONDIVISIONE È SUA, 1200×630, e non più l'icona
+  quadrata da 512. ⚠️ La differenza non è estetica: con un'icona quadrata i
+  messaggi mostrano una miniatura piccola di fianco al titolo; con 1200×630
+  mostrano la scheda GRANDE, ed è `twitter:card` a dirlo — per questo qui sotto
+  è passato da `summary` a `summary_large_image`, e le due righe vanno insieme.
+  ⛔ La fa `scripts/immagine-condivisione.mjs`, non una mano: le parole dentro
+  sono quelle approvate del piede, e i colori quelli di `comune.scss`.
+  ⚠️ `og:image:alt` porta la riga del piede, che è testo già approvato: è quel
+  che sente chi riceve il messaggio e non vede l'immagine.
+{%- endcomment -%}
+<meta property="og:image" content="{{ '/assets/img/condivisione-1200x630.png' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.data.landing.footer.tagline }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="{{ site.data.landing.footer.tagline }}">
+
+{%- include dati-strutturati.html -%}
 
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/aimonx-32.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/aimonx-16.png' | relative_url }}">

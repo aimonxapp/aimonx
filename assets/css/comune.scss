@@ -128,6 +128,96 @@ img, svg { display: block; max-width: 100%; }
 }
 
 // ============================================================================
+// LA BARRA IN ALTO — l'altra eccezione, e per la stessa ragione del piede.
+// Giro W10. ⚠️ Non prefissata: la barra è la stessa su tutte e quattro le
+// pagine, e scriverla nei due fogli la farebbe divergere. ⛔ Quel che resta ai
+// due fogli è la LARGHEZZA della colonna, perché la barra sta dentro
+// `.apertura` e ne segue il contenitore: 66rem sulla landing, 52 sulle pagine
+// da leggere. È voluto — la barra è incolonnata col testo della sua pagina.
+// ============================================================================
+
+.barra {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 1rem;
+  padding-block: clamp(1.1rem, 3.2vw, 1.8rem);
+}
+// `margin-right: auto` spinge tutto il resto a destra: è quel che tiene il
+// marchio a sinistra e le voci dall'altra parte, senza un contenitore in più.
+.barra .acasa {
+  display: inline-flex; align-items: center; gap: .8rem; margin-right: auto;
+  color: inherit; text-decoration: none; border-radius: 14px;
+}
+.barra .acasa:hover .nome { color: var(--verde-chiaro); }
+.barra .marchio { width: 48px; height: 48px; border-radius: 12px; }
+.barra .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
+
+// IL PULSANTE «Menu» — è un <summary>, cioè un pulsante di apertura NATIVO.
+// ⛔ `list-style: none` più la riga `::-webkit-details-marker` tolgono il
+// triangolino di difetto: servono tutte e due, perché i browser non sono
+// d'accordo su quale dei due ascoltare. Al suo posto c'è un chevron disegnato
+// col bordo, che GIRA quando il menu è aperto — ⚠️ è l'unico segno che dice
+// «aperto» a chi guarda; a chi ascolta lo dice già `<details>` da sé.
+.barra .apri > summary {
+  list-style: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .52rem .95rem; border-radius: 999px;
+  border: 1px solid rgba(140, 204, 166, .30);
+  background: rgba(140, 204, 166, .07);
+  color: #CFE3D8; font-size: .92rem; font-weight: 600;
+}
+.barra .apri > summary::-webkit-details-marker { display: none; }
+.barra .apri > summary::after {
+  content: ""; width: .46rem; height: .46rem; margin-top: -.18rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.barra .apri[open] > summary::after { transform: rotate(-135deg); margin-top: .1rem; }
+.barra .apri > summary:hover { color: var(--bianco); border-color: rgba(140, 204, 166, .5); }
+
+// LE VOCI. ⛔ La classe è `voci-barra` e NON `voci`: `.voci` è già delle carte
+// della landing, con la stessa specificità, e `b.scss` si carica dopo — il
+// perché per esteso sta in `_includes/barra.html`.
+// ⛔ Sul telefono partono nascoste e le mostra `details[open] ~ .voci-barra`,
+// cioè il FRATELLO aperto: il perché di questa forma sta in
+// `_includes/barra.html`, ed è che sul computer le voci devono esserci sempre.
+// ⚠️ `display: none` non è solo «non si vede»: toglie anche dal giro del
+// tasto Tab, che è quello che serve — un link invisibile ma raggiungibile da
+// tastiera è peggio di nessun link.
+.barra .voci-barra { display: none; }
+.barra .apri[open] ~ .voci-barra {
+  display: flex; flex-direction: column; width: 100%;
+  padding: .35rem 0 .2rem;
+  border-top: 1px solid rgba(253, 253, 253, .10);
+}
+.barra .voci-barra a {
+  display: block; padding: .6rem .1rem;
+  color: #CFE3D8; text-decoration: none; font-weight: 600; font-size: .98rem;
+}
+.barra .voci-barra a:hover { color: var(--bianco); }
+// ⭐ La voce della pagina che si sta già leggendo: bianca E sottolineata. ⛔ Il
+// colore da solo non basterebbe (WCAG 2.1, «Use of Color»), e qui le voci non
+// sono sottolineate, quindi il filetto è il segno che resta a chi non
+// distingue il bianco dal verde chiaro.
+.barra .voci-barra [aria-current="page"] {
+  color: var(--bianco); text-decoration: underline; text-underline-offset: .25em;
+}
+
+// ⚠️ 760px non è a caso: sotto, le cinque voci più il marchio non ci stanno su
+// una riga e andrebbero a capo in mezzo a una voce. Sopra, ci stanno.
+@media (min-width: 760px) {
+  .barra .apri { display: none; }
+  .barra .voci-barra {
+    display: flex; flex-direction: row; align-items: center; width: auto;
+    gap: clamp(.9rem, 2.2vw, 1.7rem);
+    padding: 0; border-top: 0;
+  }
+  .barra .voci-barra a { padding: .3rem 0; font-size: .92rem; }
+}
+
+// ⚠️ Le voci saltano a una sezione della landing: senza questo, il titolo
+// finirebbe incollato al bordo alto della finestra.
+#features, #privacy, #security, #free-and-pro { scroll-margin-top: 1.2rem; }
+
+// ============================================================================
 // IL PIEDE — l'eccezione dichiarata in testa a questo file.
 // ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
 // piede è lo stesso su tutte le pagine, e un prefisso vorrebbe dire ripeterle.

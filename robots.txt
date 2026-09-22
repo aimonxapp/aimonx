@@ -1,0 +1,34 @@
+---
+---
+{%- comment -%}
+robots.txt — cosa possono fare i robot su aimonx.app. Giro W10.
+
+  ⛔ QUESTO COMMENTO NON ESCE NEL FILE SERVITO, ed è voluto: `robots.txt` è
+  pubblico, e una riga di spiegazione lì dentro sarebbe testo nuovo che il
+  pubblico legge — che in questo progetto lo scrive Cowork, non CC. Un
+  commento Liquid sparisce nella build; un `#` di robots.txt no.
+  ⚠️ Il front matter vuoto qui sopra serve a questo: senza, Jekyll copierebbe
+  il file TALE E QUALE (WD27) e il commento finirebbe online.
+
+  ⭐ PERMETTE TUTTO A TUTTI, e la riga che conta è una sola: `User-agent: *`
+  con `Allow: /`. ⛔ Decisione di Pier (22/09/2026): i crawler delle AI NON si
+  escludono — vuole che AIMONX sia trovato e consigliato anche da loro.
+  ⚠️ Quei crawler funzionano a OPT-OUT: si fanno fuori scrivendo `Disallow`
+  con il loro nome. Qui non c'è nessun `Disallow`, quindi sono ammessi tutti,
+  oggi e anche quelli che nasceranno domani.
+
+  ⛔ PERCHÉ NON SI ELENCANO PER NOME (GPTBot, ClaudeBot, Google-Extended...),
+  benché elencarli sembri più esplicito: una lista di nomi non cambia NIENTE
+  per il permesso — `*` li copre già — e invece invecchia, perché i nomi
+  cambiano. ⚠️ E soprattutto sarebbe una lista che chi la rilegge fra sei mesi
+  potrebbe leggere al contrario, come se i non elencati fossero esclusi.
+
+  ⛔ NON SI NOMINANO I FILE DI LAVORO. Scrivere `Disallow: /CLAUDE.md` li
+  ANNUNCEREBBE — robots.txt è la prima cosa che un curioso apre — e per di più
+  sarebbe falso: quei file su aimonx.app non esistono, rispondono 404 perché
+  `exclude` non li costruisce. Non c'è niente da vietare.
+{%- endcomment -%}
+User-agent: *
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

@@ -28,7 +28,8 @@ _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W
   perché le frasi le porta Cowork: dal più lungo al più corto è la regola che
   tiene, e sta scritta anche in `_data/collegamenti.yml`.
 {%- endcomment -%}
-{%- assign t = include.testo | replace: '&', '&amp;' | replace: '<', '&lt;' -%}
+{%- comment -%} ⛔ `frase_t`/`frase_a`, non `t`/`a`: vedi la nota in `_includes/barra.html`. Questo include gira DENTRO i cicli dei layout, quindi qui il rischio è il più alto di tutti. {%- endcomment -%}
+{%- assign frase_t = include.testo | replace: '&', '&amp;' | replace: '<', '&lt;' -%}
 {%- if include.collega -%}
   {%- for c in site.data.collegamenti.frasi -%}
     {%- case c.tipo -%}
@@ -36,13 +37,13 @@ _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W
       {%- comment -%} ⚠️ `noreferrer`: il browser non dice al sito di arrivo da
       quale pagina di aimonx.app viene il lettore. Scelta di CC, giro W9.
       {%- endcomment -%}
-      {%- capture ancora -%}<a href="{{ c.href }}" rel="noreferrer">{{ c.frase }}</a>{%- endcapture -%}
+      {%- capture frase_a -%}<a href="{{ c.href }}" rel="noreferrer">{{ c.frase }}</a>{%- endcapture -%}
     {%- when 'posta' -%}
-      {%- capture ancora -%}<a href="{{ c.href }}">{{ c.frase }}</a>{%- endcapture -%}
+      {%- capture frase_a -%}<a href="{{ c.href }}">{{ c.frase }}</a>{%- endcapture -%}
     {%- else -%}
-      {%- capture ancora -%}<a href="{{ c.href | relative_url }}">{{ c.frase }}</a>{%- endcapture -%}
+      {%- capture frase_a -%}<a href="{{ c.href | relative_url }}">{{ c.frase }}</a>{%- endcapture -%}
     {%- endcase -%}
-    {%- assign t = t | replace: c.frase, ancora -%}
+    {%- assign frase_t = frase_t | replace: c.frase, frase_a -%}
   {%- endfor -%}
 {%- endif -%}
-{{- t -}}
+{{- frase_t -}}

@@ -1,0 +1,72 @@
+{%- comment -%}
+_includes/barra.html — LA BARRA IN ALTO, su tutte e quattro le pagine.
+Giro W10, decisa e approvata da Pier il 22/09/2026.
+
+  ⛔ PRIMA DEL W10 LA TESTATA ERA SCRITTA DUE VOLTE — una in
+  `_layouts/landing.html`, una in `_layouts/pagina.html` — e già divergevano:
+  sulla landing il marchio NON era un link, sulle altre sì. Con una barra che
+  porta cinque voci, due copie sarebbero diventate due barre diverse alla
+  prima correzione. È la stessa lezione di `_includes/piede.html`, arrivata al
+  capo opposto della pagina.
+
+  ⛔⛔ IL PULSANTE DEL TELEFONO NON USA JAVASCRIPT, e non è un vezzo: senza JS
+  il menu funziona anche se uno script non arriva, e soprattutto funziona da
+  tastiera e con VoiceOver senza che sia CC a doverlo implementare — il
+  browser lo fa già, perché `<summary>` È un pulsante di apertura, nativo, con
+  il suo stato «aperto/chiuso» già annunciato.
+
+  ⚠️ LA COSA DA GUARDARE, ed è una scelta di CC, non un fatto: il `<details>`
+  è VUOTO, e le voci stanno nella `<ul>` SUBITO DOPO, fuori da lui. Il CSS le
+  mostra con `details[open] ~ .voci`. ⛔ Perché non dentro, che sarebbe la
+  forma ovvia: perché sul computer il menu deve essere SEMPRE aperto, e un
+  `<details>` chiuso non si può forzare ad aprirsi da CSS in modo che regga
+  anche sui Safari di qualche versione fa (`::details-content` è recente).
+  Tenendo le voci fuori, il computer le mostra e basta e il `<details>`
+  sparisce. ⭐ L'ordine di lettura resta giusto: si sente «Menu, chiuso» e
+  subito dopo vengono le voci, che è esattamente quello che dice.
+  ⚠️ Se a Cowork questa forma non va, l'alternativa è JS: si dica, e si fa.
+
+  ⛔ QUI NON C'È NESSUNA PAROLA: le sei etichette vengono da
+  `_data/landing.yml` (di Cowork, dalla bozza), gli indirizzi da
+  `_data/collegamenti.yml` (di CC).
+{%- endcomment -%}
+{%- comment -%}
+  ⛔ `barra_m`, non `m`: un include condivide la scatola delle variabili col
+  layout che lo chiama, quindi un nome corto qui può cancellare un nome corto
+  là. Misurato nel W10 su `d`, e costato il corpo di tre pagine.
+{%- endcomment -%}
+{%- assign barra_m = site.data.landing.menu -%}
+<nav class="barra">
+  {%- comment -%}
+    ⚠️ alt="" — l'icona è DECORATIVA anche qui: «AIMONX» è scritto in lettere
+    dentro lo stesso link, quindi il link ha già il suo nome e un testo
+    alternativo lo farebbe leggere due volte.
+  {%- endcomment -%}
+  <a class="acasa" href="{{ '/' | relative_url }}">
+    <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
+         alt="" width="48" height="48">
+    <span class="nome">{{ site.data.landing.brand }}</span>
+  </a>
+
+  <details class="apri">
+    <summary>{{ barra_m.apri }}</summary>
+  </details>
+
+  {%- comment -%}
+    ⛔ `voci-barra` E NON `voci`, e non è pignoleria di nomi: `.voci` è già la
+    classe delle CARTE della landing in `assets/css/b.scss`, con la stessa
+    specificità di questa. ⚠️ Vinceva `b.scss` perché il browser lo carica
+    dopo, e il risultato era che sul telefono, con il menu CHIUSO, le cinque
+    voci restavano raggiungibili col tasto Tab: invisibili e tabbabili, cioè
+    il fuoco che sparisce in un punto che non si vede. ⛔ Sulla landing e solo
+    lì — le altre tre pagine non caricano `b.scss` e si comportavano bene, che
+    è il modo in cui un guaio del genere passa inosservato.
+    ⭐ Trovato da `scripts/tastiera.mjs`, non a occhio.
+  {%- endcomment -%}
+  <ul class="voci-barra">
+    {%- for v in barra_m.voci -%}
+    {%- assign dove = site.data.collegamenti.menu[v] | relative_url %}
+    <li><a href="{{ dove }}"{% if dove == page.url %} aria-current="page"{% endif %}>{{ v }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>

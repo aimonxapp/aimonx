@@ -40,23 +40,18 @@
   {%- assign d = site.data.landing -%}
 
   <div class="apertura">
-    <header class="testata">
-      {%- comment -%}
-        alt="" — l'icona è DECORATIVA: il nome è scritto qui accanto in
-        lettere, e un testo alternativo lo farebbe leggere due volte.
-        width/height sono dichiarati perché la riga non salti mentre carica.
-      {%- endcomment -%}
-      <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
-           alt="" width="48" height="48">
-      <span class="nome">{{ d.brand }}</span>
-      {%- comment -%}
-        ⛔ NIENTE ETICHETTA IN ALTO A DESTRA, dal giro W7: Pier ha guardato il
-        W6 in Safari e l'ha tolta. «Coming soon for iPhone» si dice UNA volta
-        sola, nella parte alta, e detta due volte perdeva forza.
-        ⚠️ Il testo resta in `_data/landing.yml` — è la stessa stringa che usa
-        l'etichetta grande, e non si tocca: quel file è di Cowork.
-      {%- endcomment -%}
-    </header>
+    {%- comment -%}
+      ⛔ LA TESTATA NON È PIÙ SCRITTA QUI, dal giro W10: sta in
+      `_includes/barra.html` e la usano tutte e quattro le pagine.
+      ⚠️ Da qui in poi il marchio È un link alla home, anche sulla landing:
+      prima non lo era, e la differenza fra le due testate era già una
+      divergenza in corso.
+      ⛔ NIENTE ETICHETTA IN ALTO A DESTRA, dal giro W7 e ancora: Pier ha
+      guardato il W6 in Safari e l'ha tolta. «Coming soon for iPhone» si dice
+      UNA volta sola, nella parte alta. ⚠️ Il testo resta in
+      `_data/landing.yml` — è la stessa stringa dell'etichetta grande.
+    {%- endcomment -%}
+    {%- include barra.html -%}
 
     <div class="eroe">
       <div class="parole">
@@ -187,7 +182,7 @@
 
   <main id="principale">
     {%- comment -%} ① Cosa tiene in ordine — le sette voci con il glifo. {%- endcomment -%}
-    <section class="blocco blocco-cose" aria-labelledby="t-cose">
+    <section id="features" class="blocco blocco-cose" aria-labelledby="t-cose">
       <h2 id="t-cose">{{ d.what.title }}</h2>
       <ul class="voci voci-glifo">
         {%- for v in d.what.items -%}
@@ -216,7 +211,7 @@
     </section>
 
     {%- comment -%} ② Privacy — il proclama è la seconda voce più forte della pagina. {%- endcomment -%}
-    <section class="blocco blocco-privacy" aria-labelledby="t-privacy">
+    <section id="privacy" class="blocco blocco-privacy" aria-labelledby="t-privacy">
       <h2 id="t-privacy">{{ d.privacy.title }}</h2>
       {%- comment -%}
         IL PROCLAMA, in due pezzi INDIVISIBILI. ⛔ Ogni pezzo sta dentro uno
@@ -249,7 +244,7 @@
     </section>
 
     {%- comment -%} ③ Sicurezza. Il segno «(Pro)» è della bozza, e resta com'è. {%- endcomment -%}
-    <section class="blocco blocco-sicurezza" aria-labelledby="t-sicurezza">
+    <section id="security" class="blocco blocco-sicurezza" aria-labelledby="t-sicurezza">
       <h2 id="t-sicurezza">{{ d.security.title }}</h2>
       <ul class="voci">
         {%- for v in d.security.items %}
@@ -262,7 +257,7 @@
     </section>
 
     {%- comment -%} ④ Free e Pro. ⛔ Nessun prezzo: spec-sito.md §4. {%- endcomment -%}
-    <section class="blocco blocco-piani" aria-labelledby="t-piani">
+    <section id="free-and-pro" class="blocco blocco-piani" aria-labelledby="t-piani">
       <h2 id="t-piani">{{ d.piani.title }}</h2>
       <ul class="voci">
         {%- for v in d.piani.items %}

@@ -43,23 +43,10 @@ body.v-testo {
 // a tutte e due le misure e non solo su quella comoda.
 .v-testo main { padding-block-end: clamp(1.6rem, 4vw, 2.4rem); }
 
-// --- la testata, che qui PORTA A CASA ---------------------------------------
-// ⭐ Sulla landing il marchio non è un link: era l'unica pagina e non c'era
-// dove tornare. Da una pagina interna il marchio in alto a sinistra è la
-// strada per la home, e chi legge se lo aspetta lì.
-// ⛔ Il link non si annuncia con un sottolineato: contiene un'immagine e un
-// nome in maiuscole spaziate, e un filetto sotto li spezzerebbe. Si vede al
-// passaggio del mouse e — quel che conta — col focus da tastiera, che il
-// pavimento di `comune.scss` disegna su ogni cosa attivabile.
-.v-testo .testata { padding-block: clamp(1.4rem, 4vw, 2.4rem); }
-.v-testo .acasa {
-  display: inline-flex; align-items: center; gap: .8rem;
-  color: inherit; text-decoration: none;
-  border-radius: 14px;
-}
-.v-testo .acasa:hover .nome { color: var(--verde-chiaro); }
-.v-testo .marchio { width: 48px; height: 48px; border-radius: 12px; }
-.v-testo .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
+// ⛔ LA TESTATA NON È PIÙ QUI, dal giro W10: è la barra di `comune.scss`, la
+// stessa di tutte e quattro le pagine. ⭐ Il marchio che porta a casa era nato
+// qui nel W9 e sulla landing non c'era: adesso c'è dappertutto, che è il modo
+// giusto di chiudere una divergenza — tenendo la versione migliore.
 
 // --- il titolo della pagina, sul verde scuro --------------------------------
 .v-testo .titolone { padding-block: clamp(.6rem, 2.5vw, 1.4rem) clamp(1.4rem, 4vw, 2.2rem); }

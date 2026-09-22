@@ -28,16 +28,17 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
   usa un lettore di schermo sente che quel link porta dove è già. Non aggiunge
   nessuna parola — è lo stesso testo, con un'informazione in più.
 {%- endcomment -%}
-{%- assign f = site.data.landing.footer -%}
+{%- comment -%} ⛔ `piede_f`, non `f`: vedi la nota in `_includes/barra.html`. {%- endcomment -%}
+{%- assign piede_f = site.data.landing.footer -%}
 <footer class="chiusa">
-  <p class="motto">{{ f.tagline }}</p>
+  <p class="motto">{{ piede_f.tagline }}</p>
   <p class="collegamenti">
-    {%- for e in f.links -%}
+    {%- for e in piede_f.links -%}
     {%- assign c = site.data.collegamenti.frasi | where: "frase", e | first -%}
     {%- if forloop.index0 > 0 %}<span class="sep" aria-hidden="true">·</span>{% endif -%}
     {%- assign dove = c.href | relative_url -%}
     <a href="{{ dove }}"{% if dove == page.url %} aria-current="page"{% endif %}>{{ e }}</a>
     {%- endfor -%}
   </p>
-  <p class="minuta">{{ f.copyright }}</p>
+  <p class="minuta">{{ piede_f.copyright }}</p>
 </footer>

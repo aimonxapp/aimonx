@@ -61,12 +61,9 @@ body.v-b {
 .v-b .chiusa { max-width: 66rem; margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
 
 // --- testata ---------------------------------------------------------------
-.v-b .testata {
-  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
-  padding-block: clamp(1.4rem, 4vw, 2.4rem);
-}
-.v-b .marchio { width: 48px; height: 48px; border-radius: 12px; }
-.v-b .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
+// ⛔ LA TESTATA NON È PIÙ QUI, dal giro W10: è diventata la barra di
+// `comune.scss`, non prefissata, perché è la stessa su tutte e quattro le
+// pagine. Era scritta due volte — qui e in `testo.scss` — e già divergeva.
 
 // ⛔ L'ETICHETTA PICCOLA IN ALTO A DESTRA È USCITA NEL GIRO W7 — Pier l'ha
 // tolta guardando il W6. Con lei se ne vanno le sue regole e il pallino: se

@@ -1,0 +1,84 @@
+{%- comment -%}
+_includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
+
+  ⭐ A COSA SERVE: dire a un motore di ricerca e a una AI che cos'è questa
+  pagina, in una forma che non deve indovinare leggendo il testo. Pier ha
+  chiesto di essere trovato e capito anche dalle AI, e questo è il pezzo che
+  si fa capire.
+
+  ⛔⛔ LA REGOLA QUI È PIÙ STRETTA CHE IN PAGINA, NON PIÙ LARGA: dentro non va
+  NIENTE che non sia già vero e già approvato. Un JSON-LD non si legge a
+  occhio quando si apre il sito — sta nel sorgente — quindi una bugia lì
+  dentro può restarci per mesi senza che nessuno la veda, e intanto la
+  raccontano i motori al posto nostro.
+  ⛔ NIENTE PREZZO, NIENTE OFFERTE, NIENTE VOTI, NIENTE RECENSIONI, NIENTE
+  LINK ALLO STORE, NIENTE DATA DI USCITA, NIENTE CATEGORIA: non esistono
+  ancora o non sono decisi (giro W10 §2③). ⛔ E nessun indirizzo, nessun
+  telefono, nessuna email — il MUST vale qui come ovunque.
+
+  ⚠️ CONSEGUENZA DA SAPERE, VERIFICATA SULLA DOCUMENTAZIONE DI GOOGLE e non a
+  memoria: per il risultato «ricco» delle app Google chiede `offers.price` e
+  un voto, e dice che servono «per essere IDONEI a comparire come rich
+  result». ⭐ Mancanti, il blocco NON è invalido — schema.org non ha proprietà
+  obbligatorie — ma il Rich Results Test di Google segnalerà in ROSSO due
+  campi mancanti. ⛔ Quel rosso è ATTESO, non un guasto: è il prezzo di non
+  inventare un prezzo. Chi lo vede e «ripara» aggiungendo un valore mette
+  online una cosa falsa.
+
+  ⚠️ LE STRINGHE SONO CONTROLLATE, come quelle in pagina: `scripts/testo-
+  approvato.sh --servito` entra anche qui dentro e cerca ogni valore di testo
+  nelle bozze approvate. ⛔ Senza quell'estensione questo file sarebbe l'unico
+  posto del sito dove si poteva scrivere una frase nuova senza che nessuno se
+  ne accorgesse — il `<script>` era proprio quello che il controllo saltava.
+
+  `page.scheda_app` accende il blocco dell'applicazione: sta SOLO sulla
+  landing, perché è la landing a parlare dell'app.
+
+  ⛔⛔ QUI DENTRO NON SI USA `assign`, E NON È UNO STILE. In Liquid un include
+  NON ha uno spazio suo: `assign` scrive nella stessa scatola del layout che
+  lo ha incluso. ⚠️ Questo file assegnava `d` per comodità — e `d` è la
+  variabile con cui `_layouts/pagina.html` tiene il TESTO DELLA PAGINA. Il
+  risultato, misurato nel giro W10: Privacy, Support e Terms sono uscite dalla
+  build **vuote**, titolo compreso, e la pagina sembrava intera perché barra e
+  piede c'erano. ⛔ Nessuna misura di aspetto se ne sarebbe accorta: l'ha
+  trovato `scripts/testo-approvato.sh --servito`, che ha visto i pezzi di
+  testo servito crollare da 63 a 12. ⭐ Da qui in poi gli include che devono
+  per forza assegnare qualcosa usano un nome col loro prefisso.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ '/#sito' | absolute_url | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "name": {{ site.data.landing.brand | jsonify }},
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Person",
+      "@id": {{ '/#autore' | absolute_url | jsonify }},
+      "name": "Piermichele Fassio"
+    }{% if page.scheda_app %},
+    {
+      "@type": "MobileApplication",
+      "@id": {{ '/#app' | absolute_url | jsonify }},
+      "name": {{ site.data.landing.brand | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      {%- comment -%}
+        ⛔ La descrizione è il paragrafo della parte alta, ALLA LETTERA e dal
+        file di testo di Cowork: non una riscrittura «per il motore». È la
+        stessa frase che il visitatore legge, ed è giusto così — se al motore
+        servisse dire altro, vorrebbe dire che la pagina dice la cosa
+        sbagliata a lui o al lettore.
+      {%- endcomment -%}
+      "description": {{ site.data.landing.hero.lead | jsonify }},
+      {%- comment -%} ⚠️ «iOS» sta nella bozza approvata di Support. {%- endcomment -%}
+      "operatingSystem": "iOS",
+      "image": {{ '/assets/img/aimonx-512.png' | absolute_url | jsonify }},
+      "author": { "@id": {{ '/#autore' | absolute_url | jsonify }} }
+    }{% endif %}
+  ]
+}
+</script>

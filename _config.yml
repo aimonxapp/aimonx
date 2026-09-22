@@ -36,6 +36,29 @@ repository: aimonxapp/aimonx
 # foglio di stile del sito è il nostro, in `assets/css/`.
 theme: null
 
+# ⭐ LA MAPPA DEL SITO, dal giro W10. `jekyll-sitemap` costruisce `sitemap.xml`
+# da ciò che il sito PUBBLICA DAVVERO, e questa è la ragione per cui si
+# preferisce a un file scritto a mano: una mappa scritta a mano è un elenco
+# copiato, e un elenco copiato invecchia senza dirlo — la pagina nuova non ci
+# finisce, e la pagina tolta ci resta a puntare un 404.
+#
+# ⛔ NON È UNA DIPENDENZA NUOVA, e la differenza conta: `jekyll-sitemap 1.4.0`
+# è già dentro `github-pages` 232 (Gemfile.lock), cioè è già installato e già
+# eseguito da Pages. Qui si ACCENDE, non si aggiunge. ⚠️ Non è fra quelli che
+# Pages accende da sé: `aimonx.app/sitemap.xml` rispondeva 404 fino a oggi.
+#
+# ⛔ E QUESTA LISTA NON È COME `exclude` QUI SOTTO — misurato, non supposto,
+# nel gem `github-pages-232` (`lib/github-pages/configuration.rb`):
+#   · riga 168, `configure_plugins`: `config["plugins"] = Array(config["plugins"]) | DEFAULT_PLUGINS`
+#     → UNIONE. Scrivere `plugins:` NON spegne i plugin di difetto di GitHub.
+#   · riga 160, `configure_exclude`: `return unless config["exclude"].eql? Jekyll::Configuration::DEFAULTS["exclude"]`
+#     → SOSTITUZIONE. Scrivere `exclude:` spegne le esclusioni di difetto, ed è
+#     esattamente `WD29`.
+# ⚠️ Due liste nello stesso file che si comportano al contrario l'una
+# dell'altra: è il motivo per cui il gem si legge invece di ricordarselo.
+plugins:
+  - jekyll-sitemap
+
 # ① Cosa NON esce su aimonx.app.
 #
 # ⛔ SI LEGGE AL CONTRARIO DI COME SEMBRA: `exclude` è una lista di ciò che si

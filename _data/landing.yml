@@ -58,6 +58,24 @@
 
 brand: "AIMONX"
 
+# ⭐ LA BARRA IN ALTO, dal giro W10 — decisa e approvata da Pier il 22/09/2026.
+# Le sei stringhe stanno nella bozza, sezione `## Menu`: le cinque voci sono
+# una riga sola là dentro («Features · Privacy · Security · Free and Pro ·
+# Support»), spezzata qui in cinque perché ciascuna è un LINK diverso — la
+# stessa ragione dei tre link del piede, e la stessa regola di Pier.
+# ⛔ Il «·» che le separa in pagina non è qui: è un segno, non una parola.
+# ⛔ E `apri` è l'etichetta del pulsante che sul telefono apre le voci: anche
+# quella è nella bozza, da sola, su una riga sua.
+# ⚠️ Dove portano sta in `_data/collegamenti.yml`, che è di CC.
+menu:
+  voci:
+    - "Features"
+    - "Privacy"
+    - "Security"
+    - "Free and Pro"
+    - "Support"
+  apri: "Menu"
+
 meta:
   # Assemblati con le parole della bozza: vedi la nota qui sopra.
   title: "AIMONX — the technical logbook for sport shooters"
