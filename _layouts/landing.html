@@ -206,7 +206,25 @@
     {%- comment -%} ② Privacy — il proclama è la seconda voce più forte della pagina. {%- endcomment -%}
     <section class="blocco blocco-privacy" aria-labelledby="t-privacy">
       <h2 id="t-privacy">{{ d.privacy.title }}</h2>
-      <p class="proclama">{{ d.privacy.claim }}</p>
+      {%- comment -%}
+        IL PROCLAMA, in due pezzi INDIVISIBILI. ⛔ Ogni pezzo sta dentro uno
+        span che non si spezza, e fra i due c'è uno spazio vero: così il
+        browser ha UN SOLO punto dove andare a capo, e o li tiene su una riga
+        o li mette su due.
+        ⛔ LO SPAZIO ARRIVA DA UNA VARIABILE, e non è un vezzo: misurato, uno
+        spazio scritto fra due tag Liquid viene MANGIATO dal `-` di controllo
+        degli spazi del ciclo, e le due frasi uscivano attaccate. Una variabile
+        è un VALORE, e i valori non si potano.
+        ⛔ I due pezzi vengono da `_data/landing.yml`: qui non c'è nessuna
+        parola, e non deve entrarcene nessuna.
+      {%- endcomment -%}
+      {%- assign spazio = " " -%}
+      <p class="proclama">
+        {%- for r in d.privacy.claim -%}
+        {%- if forloop.index0 > 0 -%}{{ spazio }}{%- endif -%}
+        <span class="intero">{{ r }}</span>
+        {%- endfor -%}
+      </p>
       <ul class="voci">
         {%- for v in d.privacy.items %}
         <li class="voce">

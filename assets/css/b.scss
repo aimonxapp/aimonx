@@ -198,11 +198,24 @@ body.v-b {
 //   · passa SOLO perché è testo grande, e passa per 0.01;
 //   · ⛔ il pavimento di 1.55rem (= 24.8 px) NON è estetica: è la soglia. Chi
 //     lo abbassa fa cadere l'etichetta nella soglia 4.5, dove 3.01 è bocciato.
-// ⚠️ E resta un caso non coperto: chi ha rimpicciolito il carattere di base
-// del browser. Sotto i 12 px di radice, 1.55rem scende sotto i 18.66 px e il
-// grassetto non basta più. ⛔ Le alternative (corpo più grande, arancio più
-// scuro di un tono) sono state messe davanti a Pier nel giro W7: la scelta è
-// sua, e il colore NON si cambia da qui.
+// ⭐ IL CASO SCOPERTO È CHIUSO, e la cura è il `max(24px, …)` qui sotto.
+// Il problema era questo: `rem` si misura sul carattere di base del browser,
+// e chi lo rimpicciolisce rimpicciolisce anche questa scritta — sotto i 12 px
+// di radice, 1.55rem finiva a 18.6 px, cioè SOTTO i 18.66 px oltre i quali il
+// grassetto vale come testo grande. Da lì in giù la soglia torna 4.5 e 3.01 è
+// bocciato, senza che nessuno se ne accorga.
+// ⛔ Il pavimento è 24 px e non 18.66 apposta: 24 px è la soglia del testo
+// grande che NON dipende dal peso, quindi regge anche se un giorno qualcuno
+// toglie il grassetto. Con la radice di difetto (16 px) il `clamp` dà già
+// 24.8 px, cioè il massimo vince e ⭐ NON si vede nessuna differenza: il
+// pavimento esiste solo per il caso che prima era scoperto.
+// ⚠️ Un pavimento in px NON impedisce alla scritta di INGRANDIRSI con le
+// preferenze dell utente — `max` prende il più grande dei due — le impedisce
+// solo di scendere sotto la soglia del contrasto.
+// ⛔ `#{...}` non è un vezzo: Sass ha una PROPRIA funzione `max()`, e senza
+// l interpolazione la build fallisce con «incompatible units». Misurato.
+// ⛔ Pier ha scelto l alternativa A il 22/09: arancio AIMONX vero e scritta
+// bianca. Il colore NON si cambia da qui.
 .v-b .etichetta {
   margin-top: clamp(1.6rem, 3.4vw, 2.2rem);
   display: inline-flex; align-items: center;
@@ -210,7 +223,7 @@ body.v-b {
   border-radius: 999px;
   background: var(--arancio);
   color: var(--bianco);
-  font-size: clamp(1.55rem, 3.2vw, 1.95rem);
+  font-size: #{"max(24px, clamp(1.55rem, 3.2vw, 1.95rem))"};
   font-weight: 700; letter-spacing: -.018em;
 }
 
@@ -358,8 +371,30 @@ body.v-b {
   border: 1px solid rgba(140, 204, 166, .22);
   font-size: clamp(1.3rem, 3.4vw, 1.95rem);
   font-weight: 700; line-height: 1.2; letter-spacing: -.026em;
-  color: var(--verde-chiaro); max-width: 24ch;
+  color: var(--verde-chiaro);
+  // ⛔ LA CASELLA È STATA ALLARGATA NEL GIRO W7, su richiesta di Pier.
+  // Misurato a 1440 px: la frase intera occupa 764 px e ne chiede 834 con i
+  // suoi margini interni; il vecchio tetto di `24ch` dava 374 px, cioè meno
+  // della metà — a quella misura la frase non poteva stare su una riga
+  // NEMMENO su un monitor grande.
+  // ⚠️ Il tetto resta, e 44ch non è un numero a caso: sono 900 px a corpo
+  // pieno, cioè 66 px di aria oltre gli 834 che servono, e ⛔ 76 px MENO della
+  // colonna (976 px) — quindi è un tetto che TIENE davvero. Un primo tentativo
+  // a 56ch dava 1146 px, più largo della colonna: un limite che non limita,
+  // che è peggio di nessun limite perché sembra che qualcuno abbia deciso
+  // quella misura.
+  // ⚠️ Fra i 700 e gli 880 px la frase ci sta per pochi pixel (misurato: 583
+  // su 586 a 700 px). Se il font di sistema fosse più largo — Segoe UI,
+  // Roboto — lì passerebbe a due righe: ⭐ NON è un guasto, è esattamente la
+  // regola di Pier, «dove non c'è spazio, due righe».
+  max-width: 44ch;
 }
+// ⛔ I DUE PEZZI DEL PROCLAMA NON SI SPEZZANO, ed è tutto il meccanismo: il
+// browser ha un solo spazio su cui andare a capo — quello FRA i due span — e
+// quindi o la frase sta su una riga, o si divide esattamente dove Pier ha
+// detto. ⚠️ Senza questa riga tornerebbe a spezzarsi dove capita, e «No AIMONX
+// server» finirebbe a cavallo di due righe.
+.v-b .proclama .intero { white-space: nowrap; }
 .v-b .chiosa {
   margin-top: 1.3rem; max-width: 62ch;
   font-size: .98rem; line-height: 1.65; color: #B7CEC2;

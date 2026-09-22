@@ -121,7 +121,21 @@ what:
 
 privacy:
   title: "Privacy"
-  claim: "No account. No AIMONX server. We never see your data."
+  # ⚠️ IL PROCLAMA È UNA LISTA DI DUE PEZZI, e ⛔ NON è una frase riscritta:
+  # rimessi in fila danno parola per parola la riga della bozza, «No account.
+  # No AIMONX server. We never see your data.», e `scripts/testo-approvato.sh`
+  # cerca ciascuno dei due ALLA LETTERA là dentro — è quello a provare che non
+  # è cambiato niente, non questa nota.
+  # ⛔ PERCHÉ DUE E NON UNA (decisione di Pier, 22/09): la frase deve stare su
+  # UNA riga dove c'è spazio e andare a capo SOLO qui, fra i due pezzi, dove
+  # non ce n'è. ⛔ Mai in mezzo a «No AIMONX server», che è il nome di una cosa
+  # che NON esiste e spezzato si legge peggio di come si legge intero.
+  # ⚠️ Il punto di andata a capo non si può dire al browser da fuori: o glielo
+  # si insegna col testo, come qui, o lo sceglie lui e cambia con la finestra.
+  # Stessa ragione delle tre righe della domanda in alto.
+  claim:
+    - "No account. No AIMONX server."
+    - "We never see your data."
   items:
     - lead: "Works offline."
       body: "Use it at the range with no signal. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
