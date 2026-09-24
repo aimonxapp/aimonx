@@ -46,14 +46,14 @@ titolo: "Privacy Policy"
 # ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
 # scrive «Last updated: [date of publication]», e il segnaposto diventa la data
 # della PUBBLICAZIONE, in americano per esteso.
-# ⛔ QUESTA DATA È PROVVISORIA, e lo è apposta (giro W11). Il giro W11 cambia
-# UNA frase di questa pagina — «Tap App Reset» diventa «Tap Reset App», perché
-# cita un tasto dell'app e il tasto si chiama così — e Pier ha deciso il
-# 24/09/2026 che «Last updated» sia il giorno in cui QUESTO testo va online.
-# In Fase A quel giorno non esiste ancora: qui c'è il giorno della Fase A, e il
-# PRIMO gesto della Fase B è riportarla a quella vera, come nel giro W9.
-# ⚠️ La data online fino al W11 era September 22, 2026. ⭐ I Terms restano a
-# quella: il loro testo non cambia, e la data lo dice.
+# ⭐ QUESTA È LA DATA VERA: il 24/09/2026 è il giorno in cui il testo di oggi è
+# andato online (Fase B del giro W11). Il giro W11 ha cambiato UNA frase di
+# questa pagina — «Tap App Reset» è diventato «Tap Reset App», perché cita un
+# tasto dell'app e il tasto si chiama così — e Pier ha deciso che «Last
+# updated» sia il giorno in cui il testo va online. ⚠️ In Fase A la data era
+# provvisoria e dichiarata; per caso coincideva già con quella vera.
+# ⚠️ Prima del W11 era September 22, 2026. ⭐ I Terms restano a quella: il loro
+# testo non è cambiato, e la data lo dice.
 # ⚠️ Se la pagina cambia, questa data cambia con lei: lo dicono le pagine
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
