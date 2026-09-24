@@ -82,8 +82,8 @@ menu:
 
 meta:
   # Assemblati con le parole della bozza: vedi la nota qui sopra.
-  title: "AIMONX — the technical log for sport shooters"
-  description: "AIMONX is the technical log for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
+  title: "AIMONX — the technical logbook for sport shooters"
+  description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
 
 # ⛔ LA PARTE ALTA È LA «HERO — versione 2» DELLA BOZZA, non la 1. Pier l'ha
 # decisa il 22/09/2026 guardando `riferimento-hero-chatgpt.png`, e la versione 1
@@ -103,7 +103,7 @@ hero:
     - "Do you really know"
     - "how many rounds"
     - "your gun has fired?"
-  lead: "AIMONX is the technical log for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
+  lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
   punti:
     - forte: "Organize"
       resto: "your firearms"
@@ -159,12 +159,12 @@ what:
     - lead: "Every firearm, every round."
       body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
     - lead: "Range sessions and matches."
-      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your finish, points and division."
+      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
     - lead: "Ammo you can count on."
-      body: "Factory ammo with lot numbers and inventory. Reloaded ammo with recipes, component costs and batches."
+      body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
     - lead: "Maintenance your way."
       body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
-    - lead: "Never miss a renewal."
+    - lead: "Deadlines you won't miss."
       body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
     - lead: "What your shooting really costs."
       body: "Cost per session, per round and per firearm, and how practice compares to competition."
@@ -193,29 +193,29 @@ privacy:
       body: "Use it at the range with no signal. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
     - lead: "Your data talks to no one but your own iCloud."
       body: "No AIMONX servers, no third parties, no analytics."
-  note: "Your log lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
+  note: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
 
 security:
   title: "Security"
   items:
     - lead: "Locked with Face ID."
       body: "AIMONX locks itself when you leave it and hides its content in the app switcher."
-    - lead: "Advanced Protection, if you want it."
-      body: "Add a passphrase only you know — then not even Face ID opens your log at launch. Forget it, and your data can't be recovered by anyone."
+    - lead: "Advanced protection, if you want it."
+      body: "Add a passphrase only you know — then not even Face ID opens your logbook at launch. Forget it, and your data can't be recovered by anyone."
       tag: "(Pro)"
 
 piani:
   title: "Free and Pro"
   items:
-    - lead: "Free is a real log, not a demo."
-      body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, renewals, stats, PDF reports and your encrypted iCloud copy."
+    - lead: "Free is a real logbook, not a demo."
+      body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, deadlines, statistics, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
-      body: "Unlimited firearms, reloaded ammo, unlimited maintenance rules and renewals, matches and match stats, encrypted archives to export, and Advanced Protection."
+      body: "Unlimited firearms, handloads, unlimited maintenance rules and deadlines, matches and match stats, encrypted archives to export, and advanced protection."
     - lead: "If your Pro subscription ends, nothing gets lost."
       body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
 
 footer:
-  tagline: "AIMONX — the technical log for sport shooters."
+  tagline: "AIMONX — the technical logbook for sport shooters."
   # ⚠️ TRE ETICHETTE, NON UNA RIGA, ed è la regola di Pier del 22/09: una frase
   # si può dividere in pezzi per l'impaginazione purché le parole restino
   # identiche e il controllo lo provi. Qui i pezzi devono essere tre perché

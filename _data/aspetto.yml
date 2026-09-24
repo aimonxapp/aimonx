@@ -27,7 +27,7 @@ what:
     tinta: ciano
   - icona: chiave      # Maintenance your way        → «Manutenzione»
     tinta: ardesia
-  - icona: calendario  # Never miss a renewal        → «Scadenze»
+  - icona: calendario  # Deadlines you won't miss    → «Scadenze»
     tinta: salvia
   - icona: grafico     # What your shooting costs    → «Costi»
     tinta: arancioTenue

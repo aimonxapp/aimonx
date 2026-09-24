@@ -46,12 +46,14 @@ titolo: "Privacy Policy"
 # ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
 # scrive «Last updated: [date of publication]», e il segnaposto diventa la data
 # della PUBBLICAZIONE, in americano per esteso.
-# ⛔ QUESTA DATA È PROVVISORIA, e lo è apposta (giro W11 §2③). Il testo della
-# pagina è cambiato col giro W11 — le parole dell'app, «comanda la app» — e
-# Pier ha deciso il 24/09/2026 che «Last updated» sia il giorno in cui QUESTO
-# testo va online. In Fase A quel giorno non esiste ancora: qui c'è la data
-# del giorno della Fase A, e il PRIMO gesto della Fase B è riportarla a quella
-# vera, come nel giro W9. ⚠️ La data online fino al W11 era September 22, 2026.
+# ⛔ QUESTA DATA È PROVVISORIA, e lo è apposta (giro W11). Il giro W11 cambia
+# UNA frase di questa pagina — «Tap App Reset» diventa «Tap Reset App», perché
+# cita un tasto dell'app e il tasto si chiama così — e Pier ha deciso il
+# 24/09/2026 che «Last updated» sia il giorno in cui QUESTO testo va online.
+# In Fase A quel giorno non esiste ancora: qui c'è il giorno della Fase A, e il
+# PRIMO gesto della Fase B è riportarla a quella vera, come nel giro W9.
+# ⚠️ La data online fino al W11 era September 22, 2026. ⭐ I Terms restano a
+# quella: il loro testo non cambia, e la data lo dice.
 # ⚠️ Se la pagina cambia, questa data cambia con lei: lo dicono le pagine
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
@@ -64,8 +66,8 @@ blocchi:
 - tipo: ul
   voci:
   - AIMONX has no accounts and no AIMONX servers. We never see your data.
-  - Your log is encrypted on your iPhone. By default, an encrypted copy is saved to your own iCloud, so nothing gets lost when you switch phones. You can turn it off.
-  - No ads, no analytics, no tracking. Your log never reaches us, so there's nothing to sell or share.
+  - Your logbook is encrypted on your iPhone. By default, an encrypted copy is saved to your own iCloud, so nothing gets lost when you switch phones. You can turn it off.
+  - No ads, no analytics, no tracking. Your logbook never reaches us, so there's nothing to sell or share.
   - This website uses no cookies and no trackers.
 - tipo: h2
   testo: Who we are
@@ -78,16 +80,16 @@ blocchi:
 - tipo: h3
   testo: What stays on your iPhone
 - tipo: p
-  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, factory and reloaded ammo, maintenance, renewals, costs, notes and photos.'
+  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, deadlines, costs, notes and photos.'
 - tipo: p
   testo: It's stored in an encrypted database on your iPhone, and it only unlocks when you verify it's you. There's no AIMONX server holding a copy, so there's nothing for us to read.
 - tipo: h3
   testo: Your encrypted copy in iCloud
 - tipo: p
-  testo: By default, AIMONX saves an encrypted copy of your log to your own iCloud account, so a new or broken phone doesn't mean starting over.
+  testo: By default, AIMONX saves an encrypted copy of your logbook to your own iCloud account, so a new or broken phone doesn't mean starting over.
 - tipo: ul
   voci:
-  - The copy is encrypted on your iPhone, with the same key as your log, before it goes anywhere.
+  - The copy is encrypted on your iPhone, with the same key as your logbook, before it goes anywhere.
   - It sits in your personal iCloud storage. We can't access it.
   - You can turn it off in the app at any time.
 - tipo: p
@@ -99,7 +101,7 @@ blocchi:
 - tipo: h3
   testo: Photos
 - tipo: p
-  testo: You can add photos of your firearms from Photos or Files. AIMONX never uses your camera. Before a photo is saved, AIMONX strips out its location and other metadata, then encrypts it like the rest of your log.
+  testo: You can add photos of your firearms from Photos or Files. AIMONX never uses your camera. Before a photo is saved, AIMONX strips out its location and other metadata, then encrypts it like the rest of your logbook.
 - tipo: h3
   testo: PDF reports and archives
 - tipo: p
@@ -115,9 +117,9 @@ blocchi:
 - tipo: h3
   testo: Deleting your data
 - tipo: p
-  testo: Your data is yours. Tap Reset App in the app's settings to delete your log from your iPhone. AIMONX also deletes your encrypted iCloud copy (you'll need a connection for that part).
+  testo: Your data is yours. Tap Reset App in the app's settings to delete your logbook from your iPhone. AIMONX also deletes your encrypted iCloud copy (you'll need a connection for that part).
 - tipo: p
-  testo: Deleting the app removes the log from your iPhone, but your encrypted iCloud copy stays, so you can pick up where you left off if you reinstall. That's what the copy is for.
+  testo: Deleting the app removes the logbook from your iPhone, but your encrypted iCloud copy stays, so you can pick up where you left off if you reinstall. That's what the copy is for.
 - tipo: h2
   testo: This website
 - tipo: p
@@ -139,7 +141,7 @@ blocchi:
 - tipo: h2
   testo: Your rights
 - tipo: p
-  testo: Under the GDPR, you can ask to access, correct or delete the personal data we hold about you, to restrict or object to its use, and to get a copy of it. In practice, the only personal data we can ever hold is what you send us by email. Your log lives on your iPhone and in your own iCloud, where you're in control.
+  testo: Under the GDPR, you can ask to access, correct or delete the personal data we hold about you, to restrict or object to its use, and to get a copy of it. In practice, the only personal data we can ever hold is what you send us by email. Your logbook lives on your iPhone and in your own iCloud, where you're in control.
 - tipo: p
   testo: If you're in the EU, you can also file a complaint with your data protection authority. In Italy, that's the Garante per la protezione dei dati personali.
 - tipo: h2
