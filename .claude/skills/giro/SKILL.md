@@ -6,9 +6,11 @@ disable-model-invocation: true
 
 # Giro AIMONX sito — l'impalcatura
 
-⭐ **COPIA della skill `/giro` del repo dell'app** (`~/Developer/AIMONX/.claude/skills/giro/SKILL.md`),
-con il Passo 0 del sito al posto di quello dell'app. ⚠️ **Una copia diverge in
-silenzio:** chi cambia questa o quella lascia una riga in `bacheca.md`.
+⭐ **COPIA del master comune** (`…/10- AIMONX AI Common/skills/giro/SKILL.md`),
+con il Passo 0 del sito al posto di quello dell'app: ogni repo usa la sua copia,
+non un collegamento (Pier, 23/09/2026). ⚠️ **Una copia diverge in silenzio:**
+per questo lo scarto dal master lo misura `scripts/controprova.sh`, e chi cambia
+questa o il master lascia una riga in `bacheca.md`.
 
 Il testo del giro (cosa fare, con i numeri attesi) è in `$ARGUMENTS` — come testo
 incollato o come percorso di un file da leggere. Se manca, chiedilo e fermati.

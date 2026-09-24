@@ -586,6 +586,32 @@ if [ -n "$N_FUORI" ]; then
   confronta "stringhe in pagina che NON stanno nella bozza" testo_fuori_bozza "$N_FUORI"
 fi
 
+# --- la skill /giro rispetto al master comune --------------------------------
+# ⭐ Nato nel giro W11, e chiude WD20. Il master comune esiste dal 23/09/2026
+# e Pier ha deciso che ogni repo usa la SUA copia, non un collegamento. ⚠️ Una
+# copia diverge in silenzio, e qui le differenze sono VOLUTE (il Passo 0 del
+# sito, i divieti di Pages): non si può chiedere che siano zero.
+# ⭐ Quindi si misura l'IMPRONTA del diff, non il numero delle righe diverse:
+# se cambia il master o la copia, cambia l'impronta. ⛔ Un conteggio non
+# basterebbe — una parola cambiata dentro una zona già adattata sostituisce
+# una riga diversa con un'altra riga diversa, e il conto resta uguale.
+# ⛔ Quando protesta non si rifà l'attesa a occhi chiusi: si legge il diff, si
+# porta qui quel che è cambiato nel master, e solo dopo --aggiorna-attese.
+echo
+echo "--- la skill /giro rispetto al master comune ---"
+MASTER_GIRO="$PIER_DIR/10- AIMONX AI Common/skills/giro/SKILL.md"
+COPIA_GIRO="$REPO/.claude/skills/giro/SKILL.md"
+if [ -z "$PIER_DIR" ] || [ ! -r "$MASTER_GIRO" ]; then
+  echo "  ⛔ NON MISURABILE: il master comune non è leggibile da questo Mac."
+  echo "     ⛔ Il percorso non si stampa (WD17): lo definisce scripts/percorsi-locali.sh."
+else
+  DIFF_GIRO=$(diff "$MASTER_GIRO" "$COPIA_GIRO")
+  N_DIFF_GIRO=$(printf '%s\n' "$DIFF_GIRO" | grep -c '^[<>]' | tr -d ' ')
+  echo "  righe diverse fra master e copia: $N_DIFF_GIRO (adattamenti del sito, attesi)"
+  confronta "impronta del diff master → copia" skill_giro_scarto_dal_master \
+    "$(printf '%s\n' "$DIFF_GIRO" | shasum | cut -c1-12)"
+fi
+
 echo
 echo "--- esito dei confronti ---"
 if [ ! -r "$ATTESE" ]; then

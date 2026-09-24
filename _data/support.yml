@@ -62,7 +62,7 @@ blocchi:
 - tipo: h2
   testo: Keep your private stuff private
 - tipo: p
-  testo: We never need your serial numbers, photos of your firearms, or your logbook to help you. Please leave them out of your email, and blur them out if they show up in a screenshot.
+  testo: We never need your serial numbers, photos of your firearms, or your log to help you. Please leave them out of your email, and blur them out if they show up in a screenshot.
 - tipo: h2
   testo: Privacy and terms
 - tipo: ul

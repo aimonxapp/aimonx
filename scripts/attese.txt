@@ -182,3 +182,11 @@ blocchi_jsonld=4
 # rilegge. ⭐ La diagnosi non si perde: ogni guasto si stampa per esteso, con
 # il suo nome e la pagina.
 seo_guasti=0
+
+# ⛔ NATO NEL GIRO W11, e chiude WD20. L'IMPRONTA (12 caratteri di sha1) del
+# diff fra il master comune della skill /giro e la copia di questo repo.
+# ⚠️ Non è un numero da tenere a zero: le differenze sono gli adattamenti del
+# sito, e sono volute. È un sigillo: se cambia il master o la copia, cambia.
+# ⛔ Quando protesta, prima si LEGGE il diff e si porta qui quel che il master
+# ha cambiato, poi si rifà l'attesa — mai il contrario.
+skill_giro_scarto_dal_master=38e7890efd12

@@ -39,21 +39,24 @@ meta:
   # dell'app — ma la COMBINAZIONE non sta in nessuna bozza, quindi i due
   # controlli la nominano invece di lasciarla passare: si vede a ogni run.
   title: "Terms of Use — AIMONX"
-  description: "AIMONX is a logbook for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice."
+  description: "AIMONX is a log for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice."
 
 titolo: "Terms of Use"
 
 # ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
 # scrive «Last updated: [date of publication]», e il segnaposto diventa la data
 # della PUBBLICAZIONE, in americano per esteso.
-# ⭐ QUESTA È LA DATA VERA: il 22/09/2026 è il giorno in cui le tre pagine sono
-# andate online (Fase B del giro W9). In Fase A qui c'era una data provvisoria
-# e dichiarata, ed è stata riportata a questa come PRIMO gesto della Fase B.
+# ⛔ QUESTA DATA È PROVVISORIA, e lo è apposta (giro W11 §2③). Il testo della
+# pagina è cambiato col giro W11 — le parole dell'app, «comanda la app» — e
+# Pier ha deciso il 24/09/2026 che «Last updated» sia il giorno in cui QUESTO
+# testo va online. In Fase A quel giorno non esiste ancora: qui c'è la data
+# del giorno della Fase A, e il PRIMO gesto della Fase B è riportarla a quella
+# vera, come nel giro W9. ⚠️ La data online fino al W11 era September 22, 2026.
 # ⚠️ Se la pagina cambia, questa data cambia con lei: lo dicono le pagine
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
-data_pubblicazione: "September 22, 2026"
+data_pubblicazione: "September 24, 2026"
 
 blocchi:
 - tipo: h2
@@ -76,7 +79,7 @@ blocchi:
 - tipo: h2
   testo: What AIMONX is, and what it isn't
 - tipo: p
-  testo: AIMONX is a logbook for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice. Following the laws where you live is up to you.
+  testo: AIMONX is a log for sport shooters. It doesn't sell firearms or ammunition, and nothing in the app or on this website is legal advice. Following the laws where you live is up to you.
 - tipo: h2
   testo: This website
 - tipo: p

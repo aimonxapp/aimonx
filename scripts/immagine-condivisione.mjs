@@ -8,7 +8,7 @@
 // i colori sono gli stessi nomi di `assets/css/comune.scss`.
 //
 // ⛔ LE PAROLE SONO SOLO QUELLE APPROVATE, e sono la riga del piede della
-// bozza della landing spezzata in due: «AIMONX» e «the technical logbook for
+// bozza della landing spezzata in due: «AIMONX» e «the technical log for
 // sport shooters». ⚠️ Spezzare una frase per impaginarla è la regola che Pier
 // ha scritto il 22/09/2026, e vale qui come nella pagina.
 // ⚠️ MA QUI IL CONTROLLO NON ARRIVA: `scripts/testo-approvato.sh` legge testo,
@@ -72,7 +72,10 @@ const pagina = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
   <div>
     <p class="nome">AIMONX</p>
     <div class="filetto"></div>
-    <p class="riga">the technical logbook for sport shooters</p>
+    <!-- ⚠️ «sport&nbsp;shooters» insieme, dal giro W11: con «log» al posto di
+         «logbook» la riga andava a capo fra le due parole, e «shooters»
+         restava sola sotto. Stesse parole: cambia solo dove si va a capo. -->
+    <p class="riga">the technical log for sport&nbsp;shooters</p>
   </div>
 </body></html>`;
 
