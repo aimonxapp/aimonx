@@ -29,6 +29,7 @@ $verso_fuori = Set.new
 $badge = []
 $link_store = []
 $img_badge = 0
+$app_jsonld = 0
 
 # ---------------------------------------------------------------------------
 # ⛔⛔ IL MUST DI PIER, MISURATO: il suo indirizzo e il suo telefono non vanno
@@ -72,6 +73,33 @@ pagine.each do |percorso|
         d = JSON.parse(b)
         $jsonld += 1
         $seo << "#{nome}: dati strutturati senza @context schema.org" unless d["@context"].to_s.include?("schema.org")
+        # ⛔ Giro W13: nei dati strutturati sono entrati il link allo Store e
+        # la categoria, e SOLO quelli. Qui si tiene fermo il resto, guardando
+        # i NOMI delle caselle a ogni profondita: un prezzo, un offerta, un
+        # voto o una recensione non sono decisi per il sito, e chi li aggiunge
+        # «per far tornare verde il test di Google» mette online una cosa
+        # che nessuno ha approvato.
+        chiavi = []
+        cammina = lambda { |n| case n
+          when Hash  then n.each { |k, v| chiavi << k; cammina.call(v) }
+          when Array then n.each { |v| cammina.call(v) }
+          end }
+        cammina.call(d)
+        (chiavi & %w[offers price priceCurrency aggregateRating review ratingValue datePublished]).each do |k|
+          $seo << "#{nome}: nei dati strutturati c e «#{k}», che non e deciso per il sito"
+        end
+        (d["@graph"] || [d]).each do |voce|
+          next unless voce.is_a?(Hash) && voce["@type"].to_s.end_with?("Application")
+          $app_jsonld += 1
+          # ⛔ FORMA, non valore — come per il badge: un indirizzo dello Store
+          # nudo, e una parola sola che finisce per «Application».
+          unless voce["installUrl"].to_s =~ %r{\Ahttps://apps\.apple\.com/app/[a-z0-9-]+/id\d+\z}
+            $seo << "#{nome}: installUrl manca o non e un link nudo allo Store -> #{voce["installUrl"].to_s[0, 80]}"
+          end
+          unless voce["applicationCategory"].to_s =~ /\A[A-Z][A-Za-z]+Application\z/
+            $seo << "#{nome}: applicationCategory manca o non e una categoria -> #{voce["applicationCategory"].to_s[0, 60]}"
+          end
+        end
       rescue JSON::ParserError => e
         $seo << "#{nome}: dati strutturati che non si leggono — #{e.message[0, 70]}"
       end
@@ -236,6 +264,10 @@ end
 # zero link sono anche zero link sbagliati.
 $badge << "i link allo Store sono #{$link_store.size}, non 1" unless $link_store.size == 1
 $badge << "i badge nel sito sono #{$img_badge}, non 1" unless $img_badge == 1
+
+# ⚠️ Senza questa riga i due controlli qui sopra passerebbero a vuoto il
+# giorno in cui il blocco dell applicazione sparisse dalla landing.
+$seo << "i blocchi «applicazione» nei dati strutturati sono #{$app_jsonld}, non 1" unless $app_jsonld == 1
 
 puts "pagine_costruite=#{pagine.size}"
 puts "link_rotti=#{$link_rotti.size}"

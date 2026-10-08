@@ -12,9 +12,27 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
   dentro può restarci per mesi senza che nessuno la veda, e intanto la
   raccontano i motori al posto nostro.
   ⛔ NIENTE PREZZO, NIENTE OFFERTE, NIENTE VOTI, NIENTE RECENSIONI, NIENTE
-  LINK ALLO STORE, NIENTE DATA DI USCITA, NIENTE CATEGORIA: non esistono
-  ancora o non sono decisi (giro W10 §2③). ⛔ E nessun indirizzo, nessun
-  telefono, nessuna email — il MUST vale qui come ovunque.
+  DATA DI USCITA: non esistono o non sono decisi per il sito (giro W10 §2③,
+  confermato nel W13 — i prezzi cambiano il 09/10/2026 e Pier non li ha
+  approvati per il sito). ⛔ E nessun indirizzo, nessun telefono, nessuna
+  email — il MUST vale qui come ovunque.
+
+  ⭐ DAL GIRO W13 DUE FATTI SONO DIVENTATI VERI, E SONO ENTRATI — solo quelli:
+  l'app è in vendita dall'08/10/2026, quindi c'è un LINK ALLO STORE e c'è una
+  CATEGORIA. Le due proprietà sono state scelte leggendo le fonti, non a
+  memoria (08/10/2026):
+    · `installUrl` — schema.org la definisce «URL at which the app may be
+      installed, if different from the URL of the item»: è esattamente il
+      caso, perché `url` qui è aimonx.app. ⛔ NON `downloadUrl`, che è
+      l'indirizzo del FILE binario, e dallo Store non si scarica un file;
+      ⛔ non `sameAs`, che dichiara un'identità e non dove si installa.
+      ⚠️ Google non la nomina fra le sue: è per chi legge schema.org, IA
+      comprese. Il valore viene da `_data/collegamenti.yml`, lo stesso del
+      badge — nudo, senza parametri di campagna.
+    · `applicationCategory: "SportsApplication"` — in App Store Connect Pier
+      ha scelto «Sport». ⚠️ Per schema.org è testo libero; la PAROLA è quella
+      della lista che Google pubblica per questa proprietà («SportsApplication»
+      è uno dei suoi ventidue valori), e ⛔ non è una classe di schema.org.
 
   ⚠️ CONSEGUENZA DA SAPERE, VERIFICATA SULLA DOCUMENTAZIONE DI GOOGLE e non a
   memoria: per il risultato «ricco» delle app Google chiede `offers.price` e
@@ -76,6 +94,8 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "description": {{ site.data.landing.hero.lead | jsonify }},
       {%- comment -%} ⚠️ «iOS» sta nella bozza approvata di Support. {%- endcomment -%}
       "operatingSystem": "iOS",
+      "applicationCategory": "SportsApplication",
+      "installUrl": {{ site.data.collegamenti.store | jsonify }},
       "image": {{ '/assets/img/aimonx-512.png' | absolute_url | jsonify }},
       "author": { "@id": {{ '/#autore' | absolute_url | jsonify }} }
     }{% endif %}

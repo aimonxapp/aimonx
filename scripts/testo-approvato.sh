@@ -258,7 +258,11 @@ else
     # qualcuno legge. ⛔ La lista è CORTA e fatta di NOMI DI CHIAVE apposta:
     # perdonare un VALORE («AIMONX va bene ovunque») lo perdonerebbe anche in
     # mezzo a una frase inventata.
-    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage"]
+    # ⭐ Dal giro W13 anche `installUrl` (un indirizzo, come `url`) e
+    # `applicationCategory` (una parola della lista di Google, non una frase).
+    # ⛔ Che quelle due caselle contengano DAVVERO un indirizzo nudo e una
+    # categoria, e non una frase infilata lì, lo misura `misure-pagine.rb`.
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory"]
     parole_jsonld = []
     html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
       begin

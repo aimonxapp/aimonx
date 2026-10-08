@@ -86,8 +86,8 @@ menu:
 
 meta:
   # Due righe della bozza, alla lettera: vedi la nota qui sopra.
-  title: "AIMONX — the technical logbook for sport shooters"
-  description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
+  title: "AIMONX — the technical logbook app for sport shooters"
+  description: "AIMONX is the technical logbook app for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
 
 # ⛔ LA PARTE ALTA È LA «HERO — versione 2» DELLA BOZZA, non la 1. Pier l'ha
 # decisa il 22/09/2026 guardando `riferimento-hero-chatgpt.png`, e la versione 1
@@ -107,7 +107,7 @@ hero:
     - "Do you really know"
     - "how many rounds"
     - "your gun has fired?"
-  lead: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
+  lead: "AIMONX is the technical logbook app for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
   punti:
     - forte: "Organize"
       resto: "your firearms"
@@ -220,7 +220,10 @@ piani:
       body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
 
 footer:
-  tagline: "AIMONX — the technical logbook for sport shooters."
+  # ⭐ Dal giro W13 la riga dice «app», e con lei il titolo di scheda e la
+  # prima frase dell'hero: è la parola che un motore o una IA cercano per
+  # capire COSA è AIMONX (Pier, 08/10/2026). Le quattro stringhe vanno insieme.
+  tagline: "AIMONX — the technical logbook app for sport shooters."
   # ⚠️ TRE ETICHETTE, NON UNA RIGA, ed è la regola di Pier del 22/09: una frase
   # si può dividere in pezzi per l'impaginazione purché le parole restino
   # identiche e il controllo lo provi. Qui i pezzi devono essere tre perché

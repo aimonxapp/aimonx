@@ -189,7 +189,13 @@ seo_guasti=0
 # sito, e sono volute. È un sigillo: se cambia il master o la copia, cambia.
 # ⛔ Quando protesta, prima si LEGGE il diff e si porta qui quel che il master
 # ha cambiato, poi si rifà l'attesa — mai il contrario.
-skill_giro_scarto_dal_master=38e7890efd12
+# ⛔ Spostata a mano nel giro W13, da 38e7890efd12, e SOLO dopo aver letto il
+# diff: il 02/10/2026 il master ha cambiato il divieto di merge per nominare
+# le due linee dell'app (`sviluppo` e `main`). Pier ha deciso l'08/10/2026 che
+# la copia del sito tiene la sua riga — «al sito il ramo di sviluppo non
+# interessa» — quindi quella differenza è un adattamento del sito in più
+# (`WD39`). Né la copia né il master sono cambiati: è cambiato cosa ci si aspetta.
+skill_giro_scarto_dal_master=cd4ea71c6578
 
 # --- giro W12: l'app è uscita, e in pagina c'è il badge di Apple -------------
 #

@@ -8,8 +8,8 @@
 // i colori sono gli stessi nomi di `assets/css/comune.scss`.
 //
 // ⛔ LE PAROLE SONO SOLO QUELLE APPROVATE, e sono la riga del piede della
-// bozza della landing spezzata in due: «AIMONX» e «the technical logbook for
-// sport shooters». ⚠️ Spezzare una frase per impaginarla è la regola che Pier
+// bozza della landing spezzata in due: «AIMONX» e «the technical logbook app
+// for sport shooters» (con «app» dal giro W13). ⚠️ Spezzare una frase per impaginarla è la regola che Pier
 // ha scritto il 22/09/2026, e vale qui come nella pagina.
 // ⚠️ MA QUI IL CONTROLLO NON ARRIVA: `scripts/testo-approvato.sh` legge testo,
 // non pixel. ⛔ Quindi chi cambia queste due stringhe non ha nessuna rete
@@ -64,7 +64,9 @@ const pagina = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
   }
   .nome { font-size: 122px; font-weight: 700; letter-spacing: .095em; line-height: 1; }
   /* Il filetto arancio è l'unico segno che non è una parola: è l'arancio
-     AIMONX di `comune.scss`, ridotto a una riga. ⚠️ Fino al W11 richiamava la
+     AIMONX di comune.scss, ridotto a una riga. (Niente apici inversi qui
+     dentro: questo commento sta in una stringa di JavaScript, e nel W12 due
+     apici l'hanno chiusa a metà — lo script non partiva più.) ⚠️ Fino al W11 richiamava la
      pillola della landing, uscita nel W12: l'immagine NON è stata rifatta. */
   .filetto { width: 132px; height: 8px; border-radius: 4px; background: #EC6F18; margin: 34px 0 30px; }
   .riga { font-size: 44px; font-weight: 600; line-height: 1.22; color: #8CCCA6; max-width: 21ch; }
@@ -73,7 +75,7 @@ const pagina = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
   <div>
     <p class="nome">AIMONX</p>
     <div class="filetto"></div>
-    <p class="riga">the technical logbook for sport shooters</p>
+    <p class="riga">the technical logbook app for sport shooters</p>
   </div>
 </body></html>`;
 
