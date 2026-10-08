@@ -76,7 +76,21 @@
           {%- endfor %}
         </h1>
 
-        <p class="sommario">{{ d.hero.lead }}</p>
+        {%- comment -%}
+          ⛔ LA LINEETTA NON APRE MAI UNA RIGA (Pier, 08/10/2026, giro W13). Lo
+          spazio PRIMA di ogni «—» diventa uno spazio che non va a capo, così
+          la lineetta resta attaccata alla parola che la precede. ⚠️ Con «app»
+          la frase si è allungata di una parola e da 1024 px in su l'ultima
+          riga cominciava con «— all in one place».
+          ⛔ LE PAROLE NON CAMBIANO: è uno spazio al posto di uno spazio, messo
+          QUI e non nel testo, che è di Cowork e non porta impaginazione — è
+          la stessa regola del `display: block` sulle voci qui sotto.
+          ⚠️ Solo in questo paragrafo: descrizione, Open Graph e dati
+          strutturati portano la frase con lo spazio normale. E la regola
+          guarda il SEGNO, non le parole: vale per qualunque frase arrivi.
+          `scripts/testo-approvato.sh` legge `&nbsp;` come lo spazio che è.
+        {%- endcomment -%}
+        <p class="sommario">{{ d.hero.lead | replace: " —", "&nbsp;—" }}</p>
 
         {%- comment -%}
           Le quattro voci con il glifo. ⚠️ Il glifo viene da `_data/aspetto.yml`

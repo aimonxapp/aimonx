@@ -293,7 +293,10 @@ else
     pezzi.reject!(&:empty?)
     # I due caratteri rimessi come li ha scritti Cowork: in pagina sono
     # entita HTML (vedi _includes/frase.html), nella bozza sono se stessi.
-    pezzi.map! { |x| x.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
+    # ⭐ Dal giro W13 anche `&nbsp;`: è uno SPAZIO, che l impaginazione mette
+    # davanti a una lineetta perché non apra una riga. Non è una parola, e
+    # nella bozza al suo posto c è uno spazio normale.
+    pezzi.map! { |x| x.gsub("&nbsp;", " ").gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
 
     consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
