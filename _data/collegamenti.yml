@@ -67,6 +67,19 @@ frasi:
     href: "/support/"
     tipo: pagina
 
+# --- LO STORE, dal giro W12 --------------------------------------------------
+#
+# ⭐ L'indirizzo dell'app sull'App Store, in vendita dall'08/10/2026. Lo usa il
+# badge della landing (`_layouts/landing.html`), ed è scritto UNA volta qui.
+# ⛔ NUDO, E DEVE RESTARLO: il generatore di badge di Apple ci attacca i
+# parametri di campagna (`itsct`, `itscg`, `mt`, `ct`…), che servono a contare
+# chi arriva da dove — cioè tracciamento, e il vincolo del sito dice di no.
+# ⚠️ Anche senza il paese (`/us/`): così è Apple a portare ciascuno al proprio
+# Store. ⛔ Che resti senza `?` lo misura `scripts/misure-pagine.rb`
+# (`badge_guasti`), sulla FORMA dell'indirizzo e non su questo valore.
+# ⚠️ È un link, non una risorsa: la pagina non scarica niente da apple.com.
+store: "https://apps.apple.com/app/aimonx/id6794895643"
+
 # --- LA BARRA IN ALTO, dal giro W10 ----------------------------------------
 #
 # ⚠️ È UNA MAPPA A PARTE da `frasi` qui sopra, e la ragione è che le due cose

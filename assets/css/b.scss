@@ -167,8 +167,8 @@ body.v-b {
 // La casella del glifo: quadrata con gli angoli tondi, vuota dentro.
 // ⛔ NON è il cerchio pieno delle carte, ed è apposta: là il glifo marca una
 // SEZIONE dell'app e porta il suo colore; qui marca una promessa, e un secondo
-// colore pieno in cima alla pagina si sarebbe messo a litigare con l'arancio
-// dell'etichetta.
+// colore pieno in cima alla pagina si sarebbe messo a litigare con quel che
+// sta sotto — fino al W11 l'arancio dell'etichetta, dal W12 il badge di Apple.
 .v-b .casella {
   flex: none; width: 44px; height: 44px; border-radius: 13px;
   border: 1px solid rgba(140, 204, 166, .28);
@@ -178,51 +178,53 @@ body.v-b {
 }
 .v-b .casella .glifo { width: 21px; height: 21px; }
 
-// L'ETICHETTA GRANDE — dal giro W7 una PILLOLA ARANCIO con la scritta bianca.
+// IL BADGE DELL'APP STORE — dal giro W12, al posto della pillola arancio.
 //
-// ⚠️ È UNA SCELTA DI PIER, e va letta per intero perché contraddice quella del
-// W6: là avevo messo un filetto arancio proprio perché «una pillola piena è un
-// pulsante». Pier l'ha guardata e vuole la pillola, sapendo come somiglia.
-// ⛔ Quel che resta non negoziabile non è l'aspetto, è il COMPORTAMENTO: non è
-// un link, non ha un `role`, non cambia al passaggio del mouse, non mostra il
-// cursore a manina. Sembra un pulsante e non finge di esserlo: non c'è niente
-// da premere, perché l'app non è ancora uscita (`spec-sito.md` §9).
+// ⭐ L'app è in vendita dall'08/10/2026: l'etichetta «Coming soon for iPhone»
+// è uscita e nello stesso punto c'è il badge ufficiale di Apple, che è un link.
+// ⚠️ La pillola arancio del W7 era una scelta estetica di Pier; il badge la
+// SOSTITUISCE e ⛔ non ne eredita niente: né l'arancio, né la forma, né il
+// corpo. Le sue regole restano leggibili al commit `a1fb1d3`.
 //
-// ⛔⛔ IL CONTRASTO STA SULLA RIGA, ed è il numero da tenere d'occhio quando si
-// tocca questa regola. Bianco #FDFDFD su arancio AIMONX #EC6F18 fa **3.01:1**.
-// WCAG 2.1 AA chiede 4.5 per il testo normale e 3 per il testo GRANDE — cioè
-// da 24 px, o da 18.66 px se in grassetto. Quindi:
-//   · passa SOLO perché è testo grande, e passa per 0.01;
-//   · ⛔ il pavimento di 1.55rem (= 24.8 px) NON è estetica: è la soglia. Chi
-//     lo abbassa fa cadere l'etichetta nella soglia 4.5, dove 3.01 è bocciato.
-// ⭐ IL CASO SCOPERTO È CHIUSO, e la cura è il `max(24px, …)` qui sotto.
-// Il problema era questo: `rem` si misura sul carattere di base del browser,
-// e chi lo rimpicciolisce rimpicciolisce anche questa scritta — sotto i 12 px
-// di radice, 1.55rem finiva a 18.6 px, cioè SOTTO i 18.66 px oltre i quali il
-// grassetto vale come testo grande. Da lì in giù la soglia torna 4.5 e 3.01 è
-// bocciato, senza che nessuno se ne accorga.
-// ⛔ Il pavimento è 24 px e non 18.66 apposta: 24 px è la soglia del testo
-// grande che NON dipende dal peso, quindi regge anche se un giorno qualcuno
-// toglie il grassetto. Con la radice di difetto (16 px) il `clamp` dà già
-// 24.8 px, cioè il massimo vince e ⭐ NON si vede nessuna differenza: il
-// pavimento esiste solo per il caso che prima era scoperto.
-// ⚠️ Un pavimento in px NON impedisce alla scritta di INGRANDIRSI con le
-// preferenze dell utente — `max` prende il più grande dei due — le impedisce
-// solo di scendere sotto la soglia del contrasto.
+// ⛔⛔ QUI VALGONO LE REGOLE DI APPLE, non il gusto (App Store Marketing
+// Guidelines), e ognuna ha la sua riga qui sotto:
+//   · ⛔ NON SI MODIFICA: nessun filtro, ombra, bordo, raggio, rotazione,
+//     opacità, transizione, `:hover`. Il file è quello di Apple e il CSS gli
+//     dà SOLO una misura. Il bordo grigio del nero è parte del badge;
+//   · ⛔ ALTEZZA MINIMA 40 PX. `--badge` va da 48 a 56 px con la radice di
+//     difetto, e il `max(40px, …)` è il pavimento per chi rimpicciolisce il
+//     carattere di base: `rem` scenderebbe con lui, i px no;
+//   · ⛔ SPAZIO LIBERO INTORNO ≥ ¼ DELL'ALTEZZA, senza testi né grafica: sopra
+//     e sotto lo danno i due margini, scritti come `max(…, altezza / 4)` così
+//     reggono a qualunque misura del badge; a destra non c'è niente;
+//   · ⛔ SUBORDINATO AL MESSAGGIO PRINCIPALE. Misurato: su telefono la
+//     domanda è 355×96 px e il badge 144×48; su computer 678×230 contro
+//     168×56. E la pillola che sostituisce era più grande di lui — 322×58 su
+//     telefono, 405×73 su computer, misurata sul sito vero l'08/10/2026;
+//   · ⛔ UNO SOLO PER PAGINA.
+// ⭐ Tutto questo non resta scritto e basta: `scripts/badge.mjs` misura
+// altezza e spazio libero col browser vero a otto larghezze.
+//
+// ⚠️ UNA SCELTA AL LIMITE, DA GUARDARE: il contorno di fuoco da tastiera
+// (`:focus-visible` in `comune.scss`, 3 px a 3 px di distanza) cade DENTRO lo
+// spazio libero del badge. Si vede solo mentre il badge ha il fuoco, non
+// tocca il file, e senza di lui chi usa la tastiera non saprebbe dov'è
+// (WCAG 2.1 AA). L'ho tenuto. ⛔ Se va tolto o spostato lo decide Pier.
+//
 // ⛔ `#{...}` non è un vezzo: Sass ha una PROPRIA funzione `max()`, e senza
-// l interpolazione la build fallisce con «incompatible units». Misurato.
-// ⛔ Pier ha scelto l alternativa A il 22/09: arancio AIMONX vero e scritta
-// bianca. Il colore NON si cambia da qui.
-.v-b .etichetta {
-  margin-top: clamp(1.6rem, 3.4vw, 2.2rem);
-  display: inline-flex; align-items: center;
-  padding: .58em 1.15em;
-  border-radius: 999px;
-  background: var(--arancio);
-  color: var(--bianco);
-  font-size: #{"max(24px, clamp(1.55rem, 3.2vw, 1.95rem))"};
-  font-weight: 700; letter-spacing: -.018em;
+// l interpolazione la build fallisce con «incompatible units». Misurato nel W7.
+// ⚠️ `--badge` sta su `.parole` e non su `.scarica` perché la usa anche la
+// riga piccola qui sotto, che è una sorella e non una figlia.
+.v-b .parole { --badge: #{"max(40px, clamp(3rem, 5vw, 3.5rem))"}; }
+.v-b .scarica {
+  margin-top: #{"max(clamp(1.6rem, 3.4vw, 2.2rem), calc(var(--badge) / 4))"};
+  // ⚠️ Senza, il <p> è alto una riga di testo e il link sta sulla sua linea
+  // di base: sotto il badge resterebbero alcuni pixel che nessuno ha deciso.
+  line-height: 0;
 }
+.v-b .scarica a { display: inline-block; }
+.v-b .scarica img { height: var(--badge); width: auto; }
+.v-b .scarica + .riga-minuta { margin-top: #{"max(1rem, calc(var(--badge) / 4))"}; }
 
 // ⚠️ Il corpo scende sui telefoni per una ragione misurata: con la spaziatura
 // larga questa riga è 371 px, e dentro un telefono da 390 px ne restano 355.

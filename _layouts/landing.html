@@ -11,11 +11,14 @@
 
   ⛔ LE CORREZIONI SONO VINCOLI, non preferenze, e stanno scritte qui perché
   chi tocca questo file non le riscopra a proprie spese:
-    · ⛔ NESSUN LOGO APPLE, da nessuna parte — le regole dei marchi Apple lo
-      vietano (`…/8- AIMONX web/1- Specifiche/conformita-sito.md` §1);
-    · ⛔ «Coming soon for iPhone» è un'ETICHETTA, non un pulsante: niente
-      freccia, niente link, niente <a>, niente fondo pieno. Vale per quella
-      grande e per quella piccola in alto a destra;
+    · ⛔ NESSUN LOGO APPLE DISEGNATO O MESSO DA NOI — le regole dei marchi
+      Apple lo vietano (`…/8- AIMONX web/1- Specifiche/conformita-sito.md` §1).
+      ⭐ DAL GIRO W12 UN LOGO APPLE IN PAGINA C'È, ed è l'unico ammesso: quello
+      DENTRO il badge ufficiale «Download on the App Store», nel file di Apple
+      non modificato. La regola non è caduta: si è precisata;
+    · ⭐ L'ETICHETTA «Coming soon for iPhone» È USCITA NEL GIRO W12: l'app è
+      in vendita dall'08/10/2026 e al suo posto c'è il badge, che È un link.
+      La pillola arancio del W7 resta leggibile al commit `a1fb1d3`;
     · ⛔ niente sagoma del tiratore, niente schermata finta dell'app: al posto
       del telefono inclinato del riferimento c'è il LOGO GRANDE dell'app;
     · ⭐ il riferimento è una DIREZIONE DI STILE, non un file da ricalcare al
@@ -46,10 +49,9 @@
       ⚠️ Da qui in poi il marchio È un link alla home, anche sulla landing:
       prima non lo era, e la differenza fra le due testate era già una
       divergenza in corso.
-      ⛔ NIENTE ETICHETTA IN ALTO A DESTRA, dal giro W7 e ancora: Pier ha
-      guardato il W6 in Safari e l'ha tolta. «Coming soon for iPhone» si dice
-      UNA volta sola, nella parte alta. ⚠️ Il testo resta in
-      `_data/landing.yml` — è la stessa stringa dell'etichetta grande.
+      ⛔ NIENTE IN ALTO A DESTRA, dal giro W7 e ancora: Pier ha guardato il
+      W6 in Safari e ha tolto l'etichetta piccola. ⭐ Dal W12 la regola ha una
+      ragione in più, e non è nostra: Apple vuole UN SOLO badge per pagina.
     {%- endcomment -%}
     {%- include barra.html -%}
 
@@ -96,18 +98,43 @@
         </ul>
 
         {%- comment -%}
-          L'ETICHETTA GRANDE, dal giro W7 dentro una PILLOLA ARANCIO con la
-          scritta bianca. ⚠️ SCELTA DI PIER, presa guardando il W6 e SAPENDO
-          che una pillola piena somiglia a un pulsante: nel W6 avevo scelto il
-          filetto proprio per quello, e lui ha deciso altrimenti. La decisione
-          è sua; quel che resta mio è che non si COMPORTI da pulsante.
-          ⛔ Quindi: <p>, non <a> e non <button> — niente freccia, nessun link,
-          nessun `role`, nessun cambio al passaggio del mouse, nessun cursore a
-          manina. Un lettore di schermo legge una frase, non un comando.
-          ⚠️ Il contrasto è misurato e sta al limite: vedi la nota in
-          `assets/css/b.scss`.
+          IL BADGE DELL'APP STORE, dal giro W12 — al posto dell'etichetta
+          arancio, nello stesso punto. ⭐ È il primo link della pagina che
+          porta FUORI per scaricare l'app, ed è quel che `spec-sito.md` §9
+          chiama «si accende Download on the App Store».
+
+          ⛔⛔ IL FILE È QUELLO DI APPLE, NON MODIFICATO, e non è una
+          promessa: `scripts/controprova.sh` ne confronta l'impronta a ogni
+          giro (`badge_apple_impronta`), e fonte e impronta intera stanno in
+          `scripts/attese.txt`. ⛔ NON SI RIDISEGNA, non si ricolora, non si
+          ruota, non si anima, non gli si aggiunge niente: sono le regole di
+          Apple (Marketing Guidelines), e il bordo grigio del nero è PARTE del
+          badge. ⛔ E per questo è un <img> e NON un SVG incollato qui dentro:
+          incollarlo vorrebbe dire riscriverlo — e il suo <title> interno, che
+          è un nome di file, diventerebbe quel che legge un lettore di schermo.
+
+          ⛔ SERVITO DA NOI, mai dal server di Apple: il generatore di Apple dà
+          un pezzo di HTML che prende l'immagine da `toolbox.marketingtools.
+          apple.com`, cioè una richiesta esterna a ogni visita. Qui no.
+
+          ⛔ IL LINK È NUDO: nessun parametro di campagna, e sta in
+          `_data/collegamenti.yml`. ⚠️ Come gli altri link verso fuori: stessa
+          scheda, e `rel="noreferrer"` — Apple non sa da quale pagina si arriva.
+
+          ⚠️ `alt` È L'UNICO TESTO DEL LINK, quindi è il suo nome accessibile:
+          viene da `_data/landing.yml`, che è di Cowork. Qui non c'è nessuna
+          parola. ⚠️ `width`/`height` sono le misure del file arrotondate
+          (119.66×40): tengono il posto prima che arrivi; la misura a schermo
+          e lo spazio libero intorno li fa il CSS, e li misura
+          `scripts/badge.mjs`.
+          ⛔ NESSUN EFFETTO AL PASSAGGIO DEL MOUSE: sarebbe modificarlo.
         {%- endcomment -%}
-        <p class="etichetta">{{ d.hero.etichetta }}</p>
+        <p class="scarica">
+          <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
+            <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+                 alt="{{ d.hero.badge }}" width="120" height="40">
+          </a>
+        </p>
 
         <p class="riga-minuta">{{ d.hero.riga }}</p>
       </div>

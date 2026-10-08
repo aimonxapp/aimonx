@@ -73,6 +73,19 @@ esegui SONDA git rev-parse --git-dir
 MISURE=""
 SCOSTAMENTI=0
 NON_STABILITE=0
+# ⛔ IL TERZO ESITO SI CONTA, dal giro W12. ⚠️ Fino al W11 una misura che non
+# si poteva fare stampava «NON MISURABILE» nel suo riquadro e basta: il
+# verdetto in fondo guardava solo gli scostamenti, e diceva ✅ «tutti i valori
+# combaciano» anche con mezza controprova cieca. ⭐ È successo davvero nel W11:
+# il terminale non leggeva la cartella Documenti, il controllo del testo non ha
+# guardato niente, e in fondo c'era scritto che andava tutto bene.
+# ⛔ Un controllo che non riesce a guardare NON vale zero: toglie il ✅.
+NON_MISURABILI=0
+non_misurabile() {
+  NON_MISURABILI=$((NON_MISURABILI + 1))
+  NON_MISURATE="${NON_MISURATE:-}     · $1
+"
+}
 
 atteso() {
   [ -r "$ATTESE" ] || return 1
@@ -203,6 +216,7 @@ if [ ! -x "$RUBY_BIN/bundle" ] || [ ! -d "$REPO/vendor/bundle" ]; then
   echo "  ⛔ NON MISURABILE: la toolchain Jekyll locale manca su questo Mac."
   echo "     Si rifà con i comandi in CLAUDE.md, sezione «Comandi». Senza, la"
   echo "     prova di WD25 non esiste e `exclude` resta una dichiarazione."
+  non_misurabile "tutto ciò che si misura sul sito COSTRUITO (manca la toolchain)"
 else
   SITO_TMP=$(mktemp -d)
   BUILD_ERR=$(mktemp)
@@ -292,10 +306,23 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti badge_guasti; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
-      [ -n "$VALORE" ] && confronta "$CHIAVE" "$CHIAVE" "$VALORE"
+      if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done
+
+    # ⛔ IL BADGE È IL FILE DI APPLE, NON MODIFICATO (giro W12) — e si prova
+    # sul file che ESCE dalla build, non su quello nel repo: è quello che il
+    # mondo scarica. ⚠️ Le regole di Apple vietano di ritoccarlo, e un SVG si
+    # ritocca con un editor di testo senza che a occhio si veda.
+    # Fonte e impronta intera stanno in scripts/attese.txt, accanto all'attesa.
+    BADGE_COSTRUITO="$SITO_TMP/assets/img/download-on-the-app-store-black-en-us.svg"
+    if [ -r "$BADGE_COSTRUITO" ]; then
+      confronta "impronta del badge di Apple nella build" badge_apple_impronta \
+        "$(shasum -a 256 "$BADGE_COSTRUITO" | cut -c1-16)"
+    else
+      confronta "impronta del badge di Apple nella build" badge_apple_impronta "assente"
+    fi
     printf '%s\n' "$PAGINE_OUT" | grep -E '^  ' | sed 's/^/   /'
     N_FUORI_LINK=$(printf '%s\n' "$PAGINE_OUT" | sed -n 's/^link_verso_fuori=\([0-9]*\)$/\1/p' | head -1)
     echo "  ⚠️ link verso l'esterno: $N_FUORI_LINK — NON sono risorse esterne (vedi sopra),"
@@ -311,12 +338,17 @@ VOCI
     USCITA_SERVITO=$("$REPO/scripts/testo-approvato.sh" --servito "$SITO_TMP" 2>&1)
     printf '%s\n' "$USCITA_SERVITO"
     N_SERV=$(printf '%s' "$USCITA_SERVITO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)
-    [ -n "$N_SERV" ] && confronta "pezzi di testo servito non approvati" testo_servito_fuori_bozza "$N_SERV"
+    if [ -n "$N_SERV" ]; then
+      confronta "pezzi di testo servito non approvati" testo_servito_fuori_bozza "$N_SERV"
+    else
+      non_misurabile "il testo SERVITO contro le bozze approvate"
+    fi
   else
     # ⛔ Una build fallita NON è «zero file di lavoro»: è una misura che non
     # c'è stata. Dirla ✅ sarebbe il via libera che non ha guardato niente.
     echo "  ⛔ NON MISURABILE: la build Jekyll è fallita. Prime righe di stderr:"
     head -n 6 "$BUILD_ERR" | sed 's/^/     │ /'
+    non_misurabile "tutto ciò che si misura sul sito COSTRUITO (la build è fallita)"
   fi
   rm -rf "$SITO_TMP" "$BUILD_ERR"
 fi
@@ -466,12 +498,17 @@ IDX_REPO=$(mktemp)
 IDX_FUORI=$(mktemp)
 find "$REPO" -path '*/.git' -prune -o -print 2>/dev/null >"$IDX_REPO"
 FUORI_LEGGIBILE=1
+# ⛔ «Leggibile» si prova ELENCANDO, non con `-r` (giro W12): senza il permesso
+# di macOS sulla cartella Documenti, `-r` può dire sì e `find` non elencare
+# niente — e un indice vuoto fa uscire «rotti» tutti gli indirizzi sani.
 for D in "$PIER_DIR" "$APP_DIR"; do
-  if [ -r "$D" ]; then
+  PRIMA=$(wc -l <"$IDX_FUORI" | tr -d ' ')
+  if [ -n "$D" ] && [ -r "$D" ]; then
     find "$D" -path '*/.git' -prune -o -print 2>/dev/null >>"$IDX_FUORI"
-  else
-    FUORI_LEGGIBILE=0
   fi
+  # ⚠️ Più di una riga: la cartella stessa `find` la stampa anche se dentro
+  # non riesce a guardare.
+  [ $(( $(wc -l <"$IDX_FUORI" | tr -d ' ') - PRIMA )) -gt 1 ] || FUORI_LEGGIBILE=0
 done
 # ⚠️ ~/Developer si indicizza a UN livello e non di più: i due repo di terze
 # parti che ci stanno accanto sono decine di migliaia di file, e nessun file
@@ -544,6 +581,7 @@ else
   echo "  percorsi citati: ⛔ NON MISURABILI — la cartella di Pier o il repo dell'app"
   echo "     non sono leggibili. ⛔ I due percorsi non si stampano (WD17): li"
   echo "     definisce scripts/percorsi-locali.sh, e senza quel file è questo l'esito."
+  non_misurabile "i percorsi citati nei file vivi"
 fi
 echo "  ($N_ORA indirizzi da risolvere ora · $N_POI marcati ⏳; i nomi nudi non si controllano)"
 if [ "$FUORI_LEGGIBILE" = 1 ]; then
@@ -584,6 +622,8 @@ printf '%s\n' "$USCITA_TESTO"
 N_FUORI=$(printf '%s' "$USCITA_TESTO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)
 if [ -n "$N_FUORI" ]; then
   confronta "stringhe in pagina che NON stanno nella bozza" testo_fuori_bozza "$N_FUORI"
+else
+  non_misurabile "il testo dei file di dati contro le bozze approvate"
 fi
 
 # --- la skill /giro rispetto al master comune --------------------------------
@@ -604,6 +644,7 @@ COPIA_GIRO="$REPO/.claude/skills/giro/SKILL.md"
 if [ -z "$PIER_DIR" ] || [ ! -r "$MASTER_GIRO" ]; then
   echo "  ⛔ NON MISURABILE: il master comune non è leggibile da questo Mac."
   echo "     ⛔ Il percorso non si stampa (WD17): lo definisce scripts/percorsi-locali.sh."
+  non_misurabile "lo scarto della skill /giro dal master comune"
 else
   DIFF_GIRO=$(diff "$MASTER_GIRO" "$COPIA_GIRO")
   N_DIFF_GIRO=$(printf '%s\n' "$DIFF_GIRO" | grep -c '^[<>]' | tr -d ' ')
@@ -621,8 +662,16 @@ elif [ "$SCOSTAMENTI" -gt 0 ]; then
   echo "   Se lo scostamento è voluto, il baseline si sposta a mano: --aggiorna-attese."
 elif [ "$NON_STABILITE" -gt 0 ]; then
   echo "⚠️  tutto ciò che era stabilito combacia, ma $NON_STABILITE valore/i non è mai stato stabilito."
+elif [ "$NON_MISURABILI" -gt 0 ]; then
+  echo "⚠️  quel che si è potuto misurare combacia — ⛔ MA NON È UN VIA LIBERA: vedi qui sotto."
 else
   echo "✅ tutti i valori misurati in questa run combaciano con scripts/attese.txt."
+fi
+
+# ⛔ Si dice SEMPRE, anche accanto a uno scostamento: sono due notizie diverse.
+if [ "$NON_MISURABILI" -gt 0 ]; then
+  echo "⛔ $NON_MISURABILI misura/e NON MISURABILE/I in questa run — non valgono zero, valgono «non guardato»:"
+  printf '%s' "$NON_MISURATE"
 fi
 
 [ "$AGGIORNA" = 1 ] && aggiorna_attese
@@ -636,7 +685,8 @@ echo "· se una pagina promette una funzione che l'app non ha: si verifica a man
 echo "  contro ~/Developer/AIMONX/docs/prodotto.md, non contro spec-sito.md"
 echo "· il CONTRASTO del testo e le richieste verso l'esterno col browser vero:"
 echo "  si misurano, ma servono le pagine ACCESE — 'bundle exec jekyll serve' e poi"
-echo "  scripts/contrasto.mjs, scripts/sbordi.mjs e scripts/anteprima-playwright.mjs."
+echo "  scripts/contrasto.mjs, scripts/sbordi.mjs, scripts/tastiera.mjs, scripts/badge.mjs"
+echo "  e scripts/anteprima-playwright.mjs."
 echo "  ⛔ Non si agganciano qui: un controllo che quasi sempre dice 'non misurabile'"
 echo "  smette di essere letto, ed è così che muoiono i guardrail"
 echo "· il confronto AL BYTE fra questa build e quella di Pages: si fa dopo il"

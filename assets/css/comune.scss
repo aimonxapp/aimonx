@@ -64,17 +64,14 @@
 
   // §1 — riservato. ⚠️ Nell'app l'arancio vuol dire «avviso» o «azione
   // irreversibile», e per questo non entra in un grafico qualsiasi.
-  // ⚠️ SUL SITO LA REGOLA È CAMBIATA NEL GIRO W7, e va detto invece di
-  // lasciarla scritta com'era: fino al W6 l'arancio «segnava e non riempiva»,
-  // e l'etichetta «Coming soon for iPhone» era un filetto più delle lettere.
-  // Pier l'ha guardata e ha voluto la PILLOLA ARANCIO PIENA con la scritta
-  // bianca, sapendo che somiglia a un pulsante. ⛔ Quindi oggi l'arancio È un
-  // fondo, in un punto solo della pagina, e il vincolo si è spostato dove
-  // conta: quella pillola non si comporta da pulsante — nessun link, nessun
-  // `role`, nessun `:hover`, nessun cursore a manina.
-  // ⛔⛔ E si è portata dietro un numero da non perdere di vista: bianco su
-  // questo arancio fa 3.01:1, cioè passa WCAG AA SOLO come testo grande, e per
-  // 0.01. Il conto sta in `b.scss`, alla regola `.etichetta`.
+  // ⚠️ SUL SITO HA AVUTO UNA STORIA, e va detta invece di lasciarla intuire:
+  // fino al W6 «segnava e non riempiva»; dal W7 al W11 è stato il FONDO della
+  // pillola «Coming soon for iPhone», voluta da Pier. ⭐ DAL GIRO W12 LA
+  // PILLOLA NON C'È PIÙ — al suo posto sta il badge dell'App Store, che ⛔ non
+  // si colora — e l'arancio è tornato a segnare: oggi è il contorno del fuoco
+  // da tastiera, qui sotto, e nient'altro.
+  // ⚠️ Chi lo riusa come fondo di una scritta bianca si riporta dietro il
+  // numero del W7: 3.01:1, che passa WCAG AA SOLO come testo grande.
   --arancio:        #EC6F18;
 
   // §4b — la rampa d'identità delle sezioni, e §4d i titoli e le fasce.

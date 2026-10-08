@@ -37,8 +37,11 @@
 #
 # ⛔ LE ECCEZIONI SONO TRE, TUTTE DICHIARATE E TUTTE STAMPATE a ogni run. Una
 # eccezione che non si vede è il buco da cui rientra il testo riscritto.
-#   · `.meta.title` e `.meta.description` della landing, assemblati da CC con
-#     parole della bozza (dichiarato in `_data/landing.yml`);
+#   · `.meta.title` di Privacy, Support e Terms: il titolo di scheda proposto
+#     da CC e approvato da Pier il 22/09/2026, che in nessuna bozza compare.
+#     ⭐ DAL GIRO W12 NON CI SONO PIÙ `.meta.title` e `.meta.description`
+#     DELLA LANDING: stanno alla lettera nella bozza, e un'eccezione che non
+#     serve è un controllo spento per niente (`WD38`);
 #   · `.data_pubblicazione` di Privacy e Terms, che sostituisce il segnaposto
 #     «[date of publication]» della bozza — ⛔ l'unica differenza ammessa dal
 #     testo approvato (giro W9 §1);
@@ -75,10 +78,28 @@ RUBY="$HOME/.rbenv/versions/3.3.4/bin/ruby"
 if [ ! -x "$RUBY" ]; then
   echo "  ⛔ NON MISURABILE: la toolchain Ruby locale manca (CLAUDE.md, «Comandi»)."; exit 0
 fi
-if [ -z "$PIER_DIR" ] || [ ! -d "$CONTENUTI" ]; then
+# ⛔ SI PROVA A LEGGERE DAVVERO, non a chiedere se la cartella esiste (giro
+# W12). ⚠️ Nel W11 il terminale non aveva il permesso di macOS sulla cartella
+# Documenti: una cartella così può ancora «esistere» per `-d` e non lasciarsi
+# leggere, e la misura finiva senza un numero — che chi legge in fretta prende
+# per uno zero. ⭐ Qui si apre ogni bozza, un byte, e se una sola non si apre
+# l'esito è il terzo. ⛔ Esce con 4, non con 0: «non ho potuto guardare» non è
+# «ho guardato e va bene», e `scripts/controprova.sh` lo conta a parte.
+ILLEGGIBILI=0
+if [ -z "$PIER_DIR" ]; then
+  ILLEGGIBILI=1
+else
+  for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
+               support/support-en-bozza.md terms/terms-en-bozza.md; do
+    head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
+  done
+fi
+if [ "$ILLEGGIBILI" != 0 ]; then
   echo "  ⛔ NON MISURABILE: le bozze approvate non sono leggibili da questo Mac."
   echo "     ⛔ Il percorso non si stampa (WD17): lo definisce scripts/percorsi-locali.sh."
-  exit 0
+  echo "     ⚠️ Se il file c'è, è il permesso di macOS sulla cartella Documenti per"
+  echo "        questo terminale (Impostazioni › Privacy e sicurezza › File e cartelle)."
+  exit 4
 fi
 if [ "$MODO" = "servito" ] && { [ -z "$COSTRUITO" ] || [ ! -d "$COSTRUITO" ]; }; then
   echo "  ⛔ NON MISURABILE: nessun sito costruito da guardare."
@@ -110,11 +131,12 @@ PAGINE = [
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
 TITOLO_PIER = "titolo di scheda proposto da CC e APPROVATO da Pier il 22/09/2026"
+# ⭐ La landing non ne ha più, dal giro W12: il suo titolo di scheda e la sua
+# descrizione stanno ALLA LETTERA nella bozza (la riga del piede e il paragrafo
+# della parte alta), quindi si cercano come tutto il resto. ⛔ Era `WD38`: da
+# eccezioni, una descrizione rimasta vecchia non la guardava nessuno.
 DICHIARATE = {
-  "landing" => {
-    ".meta.title"       => "assemblato da CC con parole della bozza",
-    ".meta.description" => "assemblato da CC con parole della bozza",
-  },
+  "landing" => {},
   "privacy" => { ".meta.title" => TITOLO_PIER,
                  ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
   "support" => { ".meta.title" => TITOLO_PIER },
@@ -256,6 +278,13 @@ else
     end
 
     html = html.gsub(/<(script|style)\b.*?<\/\1>/mi, " ")
+    # ⛔ IL <title> SI STACCA PRIMA, e si giudica da solo (giro W12, `WD38`).
+    # ⚠️ Fino al W11 un'eccezione dichiarata si perdonava per VALORE: qualunque
+    # pezzo di pagina uguale al titolo di scheda passava, ovunque fosse. Ora
+    # il titolo di scheda è perdonato in UN posto solo — il <title> — e lo
+    # stesso testo scritto in un paragrafo deve stare nella bozza come gli altri.
+    titolo_scheda = nil
+    html = html.sub(/<title\b[^>]*>(.*?)<\/title>/mi) { titolo_scheda = $1.gsub(/[[:space:]]+/, " ").strip; " " }
     pezzi = html.split(/<[^>]*>/).map { |x| x.gsub(/[[:space:]]+/, " ").strip }
     pezzi.reject!(&:empty?)
     # I due caratteri rimessi come li ha scritti Cowork: in pagina sono
@@ -273,21 +302,31 @@ else
     # ⛔ LE ECCEZIONI SONO LE STESSE DELLE DUE MISURE, e si leggono dallo stesso
     # posto: quel che la ① dichiara, la ② lo riconosce. ⚠️ Se fossero due liste
     # diverse, un giorno una direbbe una cosa e l altra un altra, e non se ne
-    # accorgerebbe nessuno — il `<title>` di queste pagine passa per tutte e
-    # due, perché in pagina è anche un pezzo di testo.
+    # accorgerebbe nessuno. ⛔ Ma si riconoscono PER POSTO, non per valore: il
+    # titolo di scheda nel <title>, la data dentro il suo pezzo (`WD38`).
     date = []
-    perdonati = {}
+    titolo_dichiarato = nil
     dati = File.join(repo, p[:dati])
     if File.readable?(dati)
       d = YAML.load_file(dati)
       date << d["data_pubblicazione"] if d["data_pubblicazione"]
-      (DICHIARATE[p[:nome]] || {}).each do |via, motivo|
-        valore = via.split(".").reject(&:empty?).inject(d) { |n, k| n.is_a?(Hash) ? n[k] : nil }
-        perdonati[valore] = motivo if valore.is_a?(String)
+      if (DICHIARATE[p[:nome]] || {}).key?(".meta.title")
+        titolo_dichiarato = d.dig("meta", "title")
       end
     end
 
     ok = 0; brevi = 0; dich = 0; estranei = []
+    if titolo_scheda
+      titolo_scheda = titolo_scheda.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"")
+      if consentito.include?(titolo_scheda)
+        ok += 1
+      elsif titolo_dichiarato && titolo_scheda == titolo_dichiarato
+        dich += 1
+        puts "     ⚠️ #{p[:nome]}: <title> «#{titolo_scheda}» — #{DICHIARATE[p[:nome]][".meta.title"]}"
+      else
+        estranei << "<title> #{titolo_scheda}"
+      end
+    end
     pezzi.each do |x|
       # ⚠️ LA DATA SI TOGLIE DAL PEZZO, non si confronta col pezzo intero: in
       # pagina «Last updated:» e la data stanno nello stesso pezzo di testo, e
@@ -306,9 +345,6 @@ else
         brevi += 1
       elsif consentito.include?(x)
         ok += 1
-      elsif perdonati.key?(x)
-        dich += 1
-        puts "     ⚠️ #{p[:nome]}: «#{x}» — #{perdonati[x]}"
       elsif trovata && (senza_data.empty? || consentito.include?(senza_data))
         dich += 1
         puts "     ⚠️ #{p[:nome]}: «#{x}» — la data di pubblicazione e dichiarata (giro W9 §1); il resto sta nella bozza"
@@ -320,7 +356,9 @@ else
     parole_jsonld.each do |tipo, x|
       if tipo == :rotto
         jl_fuori << "JSON-LD NON SI LEGGE: #{x}"
-      elsif consentito_jsonld.include?(x) || perdonati.key?(x)
+      # ⛔ Nessun perdono qui dentro, dal giro W12: ogni parola dei dati
+      # strutturati sta in una bozza, e nessuna ha bisogno di un'eccezione.
+      elsif consentito_jsonld.include?(x)
         jl_ok += 1
       else
         jl_fuori << "nei dati strutturati, NON approvato -> «#{x[0, 120]}»"

@@ -63,8 +63,9 @@ const pagina = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
     box-shadow: 0 26px 64px rgba(4, 18, 12, .5);
   }
   .nome { font-size: 122px; font-weight: 700; letter-spacing: .095em; line-height: 1; }
-  /* Il filetto arancio è l'unico segno che non è una parola: è lo stesso
-     accento della pillola della landing, ridotto a una riga. */
+  /* Il filetto arancio è l'unico segno che non è una parola: è l'arancio
+     AIMONX di `comune.scss`, ridotto a una riga. ⚠️ Fino al W11 richiamava la
+     pillola della landing, uscita nel W12: l'immagine NON è stata rifatta. */
   .filetto { width: 132px; height: 8px; border-radius: 4px; background: #EC6F18; margin: 34px 0 30px; }
   .riga { font-size: 44px; font-weight: 600; line-height: 1.22; color: #8CCCA6; max-width: 21ch; }
 </style></head><body>

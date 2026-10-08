@@ -46,14 +46,18 @@ titolo: "Terms of Use"
 # ⛔⛔ L'UNICA DIFFERENZA AMMESSA DAL TESTO APPROVATO (giro W9 §1). La bozza
 # scrive «Last updated: [date of publication]», e il segnaposto diventa la data
 # della PUBBLICAZIONE, in americano per esteso.
-# ⭐ QUESTA È LA DATA VERA: il 22/09/2026 è il giorno in cui le tre pagine sono
-# andate online (Fase B del giro W9). In Fase A qui c'era una data provvisoria
-# e dichiarata, ed è stata riportata a questa come PRIMO gesto della Fase B.
 # ⚠️ Se la pagina cambia, questa data cambia con lei: lo dicono le pagine
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
+# ⭐ NEL GIRO W12 LA PAGINA È CAMBIATA — la riga dei marchi cita anche «Apple»
+# e «the Apple logo» — quindi la data cambia. Prima era September 22, 2026, il
+# giorno in cui le tre pagine sono andate online (Fase B del giro W9).
+# ⛔⛔ QUESTA È UNA DATA PROVVISORIA, DICHIARATA: è il giorno della Fase A
+# (08/10/2026). La data vera è quella del giorno in cui Pier scrive
+# «pubblica», e si riscrive come PRIMO gesto della Fase B — come nel W9 e nel
+# W11. Se la Fase B cade lo stesso giorno, resta questa e questa nota si toglie.
 aggiornato: "Last updated:"
-data_pubblicazione: "September 22, 2026"
+data_pubblicazione: "October 8, 2026"
 
 blocchi:
 - tipo: h2
@@ -82,7 +86,7 @@ blocchi:
 - tipo: p
   testo: © 2026 Piermichele Fassio. Unless noted otherwise, all content on aimonx.app is ours. We work hard to keep it accurate, but it's provided "as is."
 - tipo: p
-  testo: iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+  testo: Apple, the Apple logo, iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
 - tipo: h2
   testo: Contact
 - tipo: p

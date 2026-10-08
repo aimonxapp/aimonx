@@ -26,6 +26,9 @@ $da_controllare = []
 $titoli_fuori = []
 $sospetti = []
 $verso_fuori = Set.new
+$badge = []
+$link_store = []
+$img_badge = 0
 
 # ---------------------------------------------------------------------------
 # ⛔⛔ IL MUST DI PIER, MISURATO: il suo indirizzo e il suo telefono non vanno
@@ -111,6 +114,35 @@ pagine.each do |percorso|
     end
   end
 
+  # --- ①-bis il badge dell App Store e il link allo Store (giro W12) --------
+  # ⛔ SI GUARDA LA FORMA, NON IL VALORE, come per il MUST qui sotto: questo
+  # file non sa quale sia l indirizzo dell app, e non gli serve. Sa come deve
+  # essere fatto un link allo Store PULITO — `apps.apple.com/app/<nome>/id<numero>`
+  # e basta. ⛔ Un `?` in coda sono i parametri di campagna che il generatore di
+  # Apple attacca (`itsct`, `itscg`, `mt`, `ct`): tracciamento, e il sito non
+  # ne fa. ⚠️ Vale per OGNI link verso apps.apple.com, non solo per il badge:
+  # un link incollato domani da una mail di Apple li porterebbe con sé.
+  nudo.scan(/<a\b[^>]*\bhref="(https?:\/\/apps\.apple\.com[^"]*)"/i) do |(dove)|
+    $link_store << dove
+    unless dove =~ %r{\Ahttps://apps\.apple\.com/app/[a-z0-9-]+/id\d+\z}
+      $badge << "#{nome}: il link allo Store non e nudo -> #{dove[0, 90]}"
+    end
+  end
+  # ⛔ Apple: UN SOLO badge per pagina, nel suo file, servito da noi.
+  badge_qui = nudo.scan(/<img\b[^>]*\bsrc="([^"]*download-on-the-app-store[^"]*)"[^>]*>/i)
+  $img_badge += badge_qui.size
+  $badge << "#{nome}: #{badge_qui.size} badge (Apple: uno per pagina)" if badge_qui.size > 1
+  badge_qui.each do |(src)|
+    $badge << "#{nome}: il badge NON e servito da noi -> #{src[0, 90]}" if src =~ %r{\A(?:https?:)?//}
+    $badge << "#{nome}: il file del badge non e nella build -> #{src}" unless File.file?(File.join(radice, src.sub(/[?#].*\z/, "")))
+  end
+  nudo.scan(/<img\b[^>]*download-on-the-app-store[^>]*>/i) do |tag|
+    $badge << "#{nome}: il badge non ha un testo alternativo" unless tag =~ /\balt="[^"]+"/
+  end
+  # ⛔ Il banner di Safari (`apple-itunes-app`) e un ALTRA decisione, che il
+  # giro W12 non ha preso: se compare, qualcuno l ha presa da solo.
+  $badge << "#{nome}: c e il banner di Safari (apple-itunes-app)" if nudo =~ /name=["\x27]apple-itunes-app/i
+
   # --- ② l'ordine dei titoli ------------------------------------------------
   # ⛔ Un lettore di schermo naviga per titoli: saltare da h1 a h3 gli toglie un
   # piano dell'indice, e due h1 gli dicono che la pagina è due pagine.
@@ -188,6 +220,23 @@ else
   end
 end
 
+# --- ④ l app e uscita (giro W12) ---------------------------------------------
+# ⛔ «Coming soon» non deve restare da NESSUNA parte del sito costruito: non
+# solo nelle pagine, anche in un foglio di stile, nella mappa, in un SVG. Dal
+# 08/10/2026 e una frase falsa, e una frase falsa su un sito che vende
+# fiducia pesa piu di un link rotto.
+Dir.glob(File.join(radice, "**", "*.{html,css,js,xml,txt,svg,json}")).sort.each do |f|
+  testo = File.read(f, encoding: "UTF-8").scrub
+  if testo =~ /coming\s+soon/i
+    $badge << "#{f.sub(radice.chomp("/") + "/", "")}: dice ancora «Coming soon»"
+  end
+end
+# ⛔ E il link allo Store c e UNA volta, col suo badge. ⚠️ Senza queste due
+# righe il controllo passerebbe a vuoto il giorno in cui il badge sparisce:
+# zero link sono anche zero link sbagliati.
+$badge << "i link allo Store sono #{$link_store.size}, non 1" unless $link_store.size == 1
+$badge << "i badge nel sito sono #{$img_badge}, non 1" unless $img_badge == 1
+
 puts "pagine_costruite=#{pagine.size}"
 puts "link_rotti=#{$link_rotti.size}"
 puts "titoli_fuori_ordine=#{$titoli_fuori.size}"
@@ -197,5 +246,6 @@ puts "sitemap_indirizzi=#{indirizzi.size}"
 puts "seo_guasti=#{$seo.size}"
 puts "link_verso_fuori=#{$verso_fuori.size}"
 puts "blocchi_jsonld=#{$jsonld}"
-($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo).each { |r| puts "  ⛔ #{r}" }
+puts "badge_guasti=#{$badge.size}"
+($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge).each { |r| puts "  ⛔ #{r}" }
 $verso_fuori.sort.each { |u| puts "  · #{u}" }

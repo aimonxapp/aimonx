@@ -35,7 +35,7 @@ if (urls.length === 0) { console.error('Uso: node scripts/tastiera.mjs <url> [ur
 
 const attivo = () => document.activeElement && {
   tag: document.activeElement.tagName.toLowerCase(),
-  testo: (document.activeElement.innerText || document.activeElement.getAttribute('aria-label') || '').trim().split('\n')[0].slice(0, 34),
+  testo: (document.activeElement.innerText || document.activeElement.getAttribute('aria-label') || document.activeElement.querySelector('img')?.alt || '').trim().split('\n')[0].slice(0, 34),
   dove: document.activeElement.getAttribute('href') || '',
   corrente: document.activeElement.getAttribute('aria-current') || '',
   contorno: getComputedStyle(document.activeElement, ':focus-visible').outlineStyle,

@@ -190,3 +190,35 @@ seo_guasti=0
 # ⛔ Quando protesta, prima si LEGGE il diff e si porta qui quel che il master
 # ha cambiato, poi si rifà l'attesa — mai il contrario.
 skill_giro_scarto_dal_master=38e7890efd12
+
+# --- giro W12: l'app è uscita, e in pagina c'è il badge di Apple -------------
+#
+# Scostamenti dalle regole del badge e dello Store, misurati sul sito COSTRUITO
+# da scripts/misure-pagine.rb: il link allo Store c'è UNA volta e senza
+# parametri di campagna, il badge è UNO, servito da noi, col testo alternativo;
+# nessun banner di Safari; «Coming soon» da nessuna parte. ⛔ Deve restare 0.
+badge_guasti=0
+
+# ⛔⛔ IL BADGE È IL FILE DI APPLE, NON MODIFICATO: questa è la prova, e la
+# FONTE sta scritta qui perché un'impronta senza la fonte dice solo «è uguale
+# a sé stesso».
+#   file:     assets/img/download-on-the-app-store-black-en-us.svg
+#             (il nero, inglese US — il preferito di Apple; 10 804 byte)
+#   scaricato l'08/10/2026 da TRE indirizzi di Apple, e i tre file sono
+#   identici al byte:
+#     · toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us
+#       — il generatore «App Store Marketing Tools», senza nessun parametro;
+#     · developer.apple.com/assets/elements/badges/download-on-the-app-store.svg
+#       — il file che la pagina delle Marketing Guidelines mostra;
+#     · developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg
+#   sha256 intera:
+#     a26fc5b38380272c92e9019a2eb8b45542a66814b3e2b203772db8904b9fb99f
+#   il suo <title> interno: Download_on_the_App_Store_Badge_US-UK_RGB_blk_4SVG_092917
+# ⚠️ Si rifà così: `curl -sS <uno dei tre indirizzi> | shasum -a 256`.
+# ⛔ Se Apple cambia il disegno, l'impronta di là cambia e la nostra no: non è
+# un guasto, è una domanda per Pier — si aggiorna il file, non lo si ritocca.
+# ⚠️ L'ALTERNATIVO BIANCO non è nel repo: Pier sceglie guardando, e resta solo
+# quello scelto. Stessa fonte, `…/white/en-us`, sha256
+#     056de2f81ff61b778a0c192dbb098f9b0416e7e8f79b119e43d11248155e597f
+# La controprova confronta i primi 16 caratteri, sul file che ESCE dalla build.
+badge_apple_impronta=a26fc5b38380272c

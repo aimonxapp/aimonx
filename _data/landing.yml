@@ -34,10 +34,14 @@
 # bozza. Se stesse sparso nel layout e nel foglio di stile, quel controllo non
 # saprebbe dove guardare.
 #
-# ⚠️ DUE COSE QUI DENTRO NON VENGONO DALLA BOZZA, e vanno guardate da Cowork:
-#   · `meta.title` e `meta.description` — la bozza non li dà. Sono ASSEMBLATI
-#     con parole sue: il titolo è la riga del footer, la descrizione è il
-#     paragrafo dell'hero. Nessuna parola nuova, ma la scelta è di CC.
+# ⚠️ DUE COSE QUI DENTRO SONO SCELTE DI CC, e vanno guardate da Cowork:
+#   · `meta.title` e `meta.description` — la bozza non dice quali righe usare
+#     come titolo e descrizione della scheda. Il titolo è la riga del footer
+#     senza il punto, la descrizione è il paragrafo dell'hero.
+#     ⭐ DAL GIRO W12 NON SONO PIÙ ECCEZIONI DICHIARATE: tutte e due stanno
+#     ALLA LETTERA nella bozza, quindi `scripts/testo-approvato.sh` le cerca
+#     come ogni altra stringa. ⛔ Prima le perdonava senza guardarle, e una
+#     descrizione rimasta vecchia non l'avrebbe vista nessuno (`WD38`).
 #   · l'icona in testa alla pagina porta `alt=""`, cioè è dichiarata
 #     DECORATIVA: accanto c'è già il nome «AIMONX» scritto in lettere, e un
 #     testo alternativo lo farebbe leggere due volte a chi usa un lettore di
@@ -81,7 +85,7 @@ menu:
   apri: "Menu"
 
 meta:
-  # Assemblati con le parole della bozza: vedi la nota qui sopra.
+  # Due righe della bozza, alla lettera: vedi la nota qui sopra.
   title: "AIMONX — the technical logbook for sport shooters"
   description: "AIMONX is the technical logbook for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
 
@@ -113,16 +117,17 @@ hero:
       resto: "your maintenance"
     - forte: "Know"
       resto: "your real costs"
-  # ⛔ ETICHETTA, NON PULSANTE: niente freccia, niente link, e niente che si
-  # comporti da comando. ⚠️ NEL GIRO W7 PIER HA VOLUTO LA PILLOLA ARANCIO PIENA
-  # con la scritta bianca, sapendo che somiglia a un pulsante: l'aspetto è una
-  # sua decisione, il comportamento resta quello di una frase. Il come e il
-  # contrasto misurato stanno in `assets/css/b.scss`.
-  # ⚠️ E senza il punto finale: la versione 1 della bozza scriveva «Coming soon
-  # for iPhone.», la 2 la dà come etichetta e il punto non c'è. Qui c'è la 2.
-  # ⭐ Dal W7 questa stringa è detta UNA volta sola: l'etichetta piccola in alto
-  # a destra è uscita.
-  etichetta: "Coming soon for iPhone"
+  # ⭐ DAL GIRO W12 L'APP È SULLO STORE (08/10/2026), e al posto dell'etichetta
+  # arancio «Coming soon for iPhone» c'è il BADGE UFFICIALE di Apple, che porta
+  # allo Store. ⛔ QUESTA STRINGA NON SI SCRIVE IN PAGINA: è il TESTO
+  # ALTERNATIVO dell'immagine del badge, cioè quel che sente chi non la vede —
+  # ed essendo l'unico contenuto del link, è anche il suo nome accessibile.
+  # Lo dice la bozza, che la tiene nell'Hero al posto dell'etichetta.
+  # ⚠️ Le parole coincidono con quelle disegnate nel badge, e non è un caso: un
+  # testo alternativo che dicesse altro racconterebbe un'altra immagine.
+  # ⛔ Dove porta sta in `_data/collegamenti.yml` (`store`), il file del badge
+  # e le regole di Apple in `_layouts/landing.html` e `assets/css/b.scss`.
+  badge: "Download on the App Store"
   riga: "YOUR SHOOTING DATA. ALWAYS WITH YOU."
   garanzie:
     - "No account"
@@ -226,4 +231,6 @@ footer:
     - "Privacy Policy"
     - "Support"
     - "Terms of Use"
-  copyright: "© 2026 Piermichele Fassio. iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
+  # ⭐ Dal giro W12 la riga dei marchi cita anche «Apple» e «the Apple logo»:
+  # lo chiede Apple a chi usa il badge, che il suo logo lo porta dentro.
+  copyright: "© 2026 Piermichele Fassio. Apple, the Apple logo, iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
