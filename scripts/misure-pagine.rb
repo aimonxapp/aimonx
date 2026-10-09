@@ -304,10 +304,14 @@ Dir.glob(File.join(radice, "**", "*.{html,css,js,xml,txt,svg,json}")).sort.each 
     $badge << "#{f.sub(radice.chomp("/") + "/", "")}: dice ancora «Coming soon»"
   end
 end
-# ⛔ E il link allo Store c e UNA volta, col suo badge. ⚠️ Senza queste due
+# ⛔ E il badge c e UNA volta, col suo link. ⚠️ Senza queste due
 # righe il controllo passerebbe a vuoto il giorno in cui il badge sparisce:
 # zero link sono anche zero link sbagliati.
-$badge << "i link allo Store sono #{$link_store.size}, non 1" unless $link_store.size == 1
+# ⭐ Dal giro W14 i link allo Store sono DUE e il badge resta UNO: in fondo
+# alla landing c e un link di TESTO, perche Apple vuole un solo badge per
+# layout (Pier, 09/10/2026). ⛔ Tutti e due nudi — lo controlla il ciclo piu
+# in alto, che guarda OGNI link verso apps.apple.com.
+$badge << "i link allo Store sono #{$link_store.size}, non 2" unless $link_store.size == 2
 $badge << "i badge nel sito sono #{$img_badge}, non 1" unless $img_badge == 1
 
 # ⚠️ Senza questa riga i due controlli qui sopra passerebbero a vuoto il

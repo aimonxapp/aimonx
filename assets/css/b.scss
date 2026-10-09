@@ -521,6 +521,14 @@ body.v-b {
 // non serve, e questa regola lo scavalca a ogni larghezza.
 .v-b .firma .scritta-mano { font-size: clamp(1.9rem, 4.6vw, 2.5rem); }
 @media (min-width: 880px) { .v-b .firma .logo { width: 11rem; } }
+// IL LINK ALLO STORE, sotto il motto. ⛔ È TESTO E DEVE RESTARE TESTO: Apple
+// vuole un solo badge per layout, e questo non è il secondo — quindi niente
+// fondo, niente bordo, niente pillola, niente che gli somigli. Una riga
+// sottolineata nel verde chiaro dei link, come quelli del piede.
+// ⚠️ Il margine sopra è largo apposta: il motto è ruotato di tre gradi e la
+// sua coda scende sotto la propria scatola.
+.v-b .allo-store { margin-top: 1.5rem; font-size: 1rem; font-weight: 600; }
+.v-b .allo-store a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .22em; }
 
 // --- chiusa ----------------------------------------------------------------
 // ⛔ L'ASPETTO DEL PIEDE NON È PIÙ QUI, dal giro W9: sta in `comune.scss`, non

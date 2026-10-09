@@ -321,20 +321,28 @@
     AIMONX è scritto in lettere nella barra e nel piede subito sotto.
     ⚠️ `lazy`: sta in fondo alla pagina, e il file grande pesa 183 KB.
 
-    ⛔⛔ IL SECONDO BADGE CHE PIER HA CHIESTO QUI NON C'È, ED È UNA FERMATA,
-    NON UNA DIMENTICANZA. Le App Store Marketing Guidelines di Apple, rilette
-    il 09/10/2026 alla voce «Badge Use», dicono: «Use one App Store badge per
-    layout or video». È la regola che questo file e `scripts/misure-pagine.rb`
-    applicano dal giro W12 («UNO SOLO PER PAGINA»). Se una pagina lunga valga
-    come un solo «layout» non sta scritto, e ⛔ deciderlo non è di CC: è la
-    zona dei marchi Apple. Lo decide Pier, sapendolo.
+    ⛔⛔ QUI NON C'È UN SECONDO BADGE, E NON DEVE NASCERNE UNO. Le App Store
+    Marketing Guidelines di Apple, voce «Badge Use» (rilette il 09/10/2026):
+    «Use one App Store badge per layout or video». Pier ha deciso lo stesso
+    giorno: il badge resta UNO, in alto.
+    ⭐ AL SUO POSTO C'È UN LINK DI TESTO, «Download on the App Store», verso lo
+    stesso indirizzo nudo dello Store. ⛔ Le parole NON sono nuove: sono
+    `hero.badge` di `_data/landing.yml`, cioè il testo alternativo del badge,
+    già nella bozza — qui scritte invece che sentite.
+    ⛔ NON DEVE SEMBRARE UN BADGE NÉ IMITARLO: niente logo Apple, niente forma
+    nera, niente pillola, niente bordo. È una riga sottolineata nel verde dei
+    link del sito, e basta. ⚠️ `rel="noreferrer"` come sul badge: Apple non sa
+    da quale pagina si arriva.
+    ⚠️ Che i link allo Store siano due, tutti e due nudi, e il badge uno solo,
+    lo misura `scripts/misure-pagine.rb` (`badge_guasti`).
   {%- endcomment -%}
   <div class="firma">
     <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
          srcset="{{ '/assets/img/aimonx-256.png' | relative_url }} 256w, {{ '/assets/img/aimonx-512.png' | relative_url }} 512w"
          sizes="(min-width: 880px) 176px, 128px"
          alt="" width="512" height="512" loading="lazy" decoding="async">
-        {%- comment -%}
+        <div class="saluto">
+    {%- comment -%}
       IL MOTTO SCRITTO A MANO. ⛔ È TESTO, non un'immagine: si legge con un
       lettore di schermo, si seleziona, si ingrandisce. Il font sta in
       `assets/fonts/` ed è servito da aimonx.app — ⛔ mai da un server
@@ -359,6 +367,8 @@
               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
       </svg>
     </p>
+    <p class="allo-store"><a href="{{ site.data.collegamenti.store }}" rel="noreferrer">{{ d.hero.badge }}</a></p>
+    </div>
   </div>
 
   {%- comment -%}
