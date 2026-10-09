@@ -1,4 +1,5 @@
-# _data/aspetto.yml — l'ASPETTO delle sette voci: un glifo e un colore ciascuna.
+# _data/aspetto.yml — l'ASPETTO delle sette voci: un glifo, un colore e, dal
+# giro W14, una schermata dell'app ciascuna.
 #
 # ⛔ QUESTO FILE È DI CLAUDE CODE, `_data/landing.yml` è di Cowork. La riga fra
 # i due è quella fra «cosa dice il sito» e «come si vede», ed è la stessa riga
@@ -21,18 +22,46 @@
 what:
   - icona: mirino      # Every firearm, every round  → «Armi» nell'app
     tinta: verde
+    schermata: aimonx-firearms-round-count
   - icona: bandiera    # Range sessions and matches  → «Gare/Luoghi»
     tinta: lime
+    schermata: aimonx-range-sessions
   - icona: cartuccia   # Ammo you can count on       → «Munizioni»
     tinta: ciano
+    schermata: aimonx-ammo-inventory
   - icona: chiave      # Maintenance your way        → «Manutenzione»
     tinta: ardesia
+    schermata: aimonx-maintenance-rules
   - icona: calendario  # Deadlines you won't miss    → «Scadenze»
     tinta: salvia
+    schermata: aimonx-renewals
   - icona: grafico     # What your shooting costs    → «Costi»
     tinta: arancioTenue
+    schermata: aimonx-shooting-costs
   - icona: documento   # Firearm reports in PDF      → «Statistiche/report»
     tinta: blu
+    schermata: aimonx-firearm-inventory-pdf
+    forma: foglio      # ⚠️ non è una schermata: è la pagina di un PDF, distesa
+
+# --- le schermate dell'app, dal giro W14 ----------------------------------
+#
+# ⭐ `schermata:` qui sopra è il NOME del file senza la larghezza e senza
+# l'estensione: i file veri stanno in `assets/img/screenshots/`, tre per
+# immagine, e li rifà `scripts/schermate.mjs` dalle sorgenti di Pier — la
+# stessa lista di nomi sta là. ⛔ Il testo alternativo NON è qui: è una frase
+# che qualcuno sente, quindi è di Cowork e sta in `_data/landing.yml` (`alt`).
+#
+# ⚠️ LE MISURE SONO UNA PER FORMA, non una per immagine, perché le sette
+# schermate sono tutte 1290×2796 e ridotte allo stesso modo. `larga`/`alta`
+# sono i pixel del file di mezzo e servono al browser per TENERE IL POSTO prima
+# che l'immagine arrivi: senza, la pagina salterebbe a ogni schermata caricata.
+# ⛔ Chi cambia le larghezze in `scripts/schermate.mjs` le cambia anche qui.
+schermate:
+  telefono: { larghezze: [430, 645, 860],  larga: 645, alta: 1398 }
+  foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 637 }
+
+# La schermata della parte alta: la Home dell'app, accanto alla domanda.
+hero_schermata: aimonx-home-screen
 
 # --- la parte alta, dal giro W6 -------------------------------------------
 #

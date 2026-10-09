@@ -19,8 +19,11 @@
     · ⭐ L'ETICHETTA «Coming soon for iPhone» È USCITA NEL GIRO W12: l'app è
       in vendita dall'08/10/2026 e al suo posto c'è il badge, che È un link.
       La pillola arancio del W7 resta leggibile al commit `a1fb1d3`;
-    · ⛔ niente sagoma del tiratore, niente schermata finta dell'app: al posto
-      del telefono inclinato del riferimento c'è il LOGO GRANDE dell'app;
+    · ⛔ niente sagoma del tiratore, niente schermata FINTA dell'app. ⭐ DAL
+      GIRO W14 LE SCHERMATE CI SONO, E SONO VERE: l'app è in vendita, Pier ha
+      scelto (09/10/2026) di farla vedere, e le immagini sono le sue schermate
+      con dati di prova — otto, in `assets/img/screenshots/`. ⛔ La regola non
+      è caduta: una schermata disegnata da noi resta vietata come prima;
     · ⭐ il riferimento è una DIREZIONE DI STILE, non un file da ricalcare al
       pixel — e ⛔ da lui non si prende nessuna immagine: è uno screenshot.
 
@@ -154,31 +157,29 @@
       </div>
 
       {%- comment -%}
-        LA COLONNA DI DESTRA — il logo grande, le tre garanzie, il motto.
+        LA COLONNA DI DESTRA — la schermata Home, le tre garanzie, il motto.
         ⚠️ Nel riferimento le garanzie sono una TERZA colonna a fianco del
-        telefono; qui stanno sotto il logo, e il perché (misurato) sta in
+        telefono; qui stanno sotto, e il perché (misurato) sta in
         `assets/css/b.scss`, alla nota sulla composizione.
 
-        IL LOGO GRANDE — l'icona dell'app così com'è, non ridisegnata: gli
-        stessi pixel del file dell'app, solo rimpiccioliti a 512 e ricompressi
-        senza perdita (giro W5). ⛔ Sta QUI perché nel riferimento c'era un
-        telefono inclinato con una schermata finta, e Pier ha deciso che al suo
-        posto va il logo.
+        ⭐ LA HOME DELL'APP, dal giro W14, «accanto alla domanda sui colpi».
+        ⛔ STA AL POSTO DEL LOGO GRANDE, ed è una scelta di CC DA GUARDARE, non
+        un fatto: il giro chiede la Home accanto alla domanda, e accanto alla
+        domanda c'era il logo. Tenerli tutti e due voleva dire una terza
+        colonna, che nel W6 è stata misurata e scartata (la domanda perdeva un
+        terzo del corpo). ⚠️ Il logo non sparisce dalla pagina: è nella barra,
+        e il nome AIMONX si legge in cima alla schermata stessa. Il logo
+        grande resta leggibile al commit `cf00ff1`.
 
-        alt="" — DECORATIVA, ed è una scelta di CC da guardare, non un fatto:
-        il nome «AIMONX» è già scritto in lettere nella testata qui sopra,
-        quindi l'icona non porta NESSUNA informazione che manchi a chi non la
-        vede. ⚠️ Se per Cowork il logo è contenuto e non decorazione, qui va un
-        testo alternativo — e lo scrive Cowork, non CC.
-
-        width/height sono i pixel VERI del file: servono al browser per tenere
-        il posto prima che l'immagine arrivi. La misura a schermo la fa il CSS.
+        ⚠️ Su telefono questa colonna viene DOPO le parole, quindi la
+        schermata è sotto la prima schermata di scorrimento; su computer è la
+        cosa più grande che si vede aprendo. Per questo si carica subito e non
+        `lazy` — vedi `_includes/schermata.html`.
       {%- endcomment -%}
       <div class="destra">
-        <div class="segno">
-          <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
-               alt="" width="512" height="512" decoding="async">
-        </div>
+        {%- include schermata.html nome=site.data.aspetto.hero_schermata alt=d.hero.schermata
+                    forma='telefono' subito=true
+                    sizes='(min-width: 880px) min(20vw, 256px), min(54vw, 240px)' -%}
 
         <ul class="garanzie">
           {%- for g in d.hero.garanzie -%}
@@ -222,7 +223,7 @@
   </div>
 
   <main id="principale">
-    {%- comment -%} ① Cosa tiene in ordine — le sette voci con il glifo. {%- endcomment -%}
+    {%- comment -%} ① Cosa tiene in ordine — le sette voci, col glifo e con la schermata. {%- endcomment -%}
     <section id="features" class="blocco blocco-cose" aria-labelledby="t-cose">
       <h2 id="t-cose">{{ d.what.title }}</h2>
       <ul class="voci voci-glifo">
@@ -235,7 +236,8 @@
           {%- endcomment -%}
           {%- assign a = site.data.aspetto.what[forloop.index0] -%}
           {%- assign tinta = a.tinta | default: 'verde' -%}
-        <li class="voce tinta-{{ tinta }}">
+          {%- assign forma = a.forma | default: 'telefono' -%}
+        <li class="voce tinta-{{ tinta }}{% if a.schermata and v.alt %} mostra-{{ forma }}{% endif %}">
           <div class="testa">
             {%- if a.icona %}
             <span class="cerchio">{% include glifo.html nome=a.icona %}</span>
@@ -245,7 +247,25 @@
             {% include glifo.html nome=a.icona classe='filigrana' %}
             {%- endif %}
           </div>
-          <p>{{ v.body }}</p>
+          {%- comment -%}
+            ⭐ LA SCHERMATA DELLA VOCE, dal giro W14. Sta DENTRO la carta e
+            DOPO il paragrafo: chi legge con un lettore di schermo sente prima
+            cosa fa l'app e poi cosa mostra l'immagine, a ogni larghezza —
+            che stiano una sotto l'altro o fianco a fianco lo decide il CSS.
+            ⛔ Se in `_data/aspetto.yml` manca la schermata o in
+            `_data/landing.yml` manca il suo `alt`, la carta esce senza
+            immagine invece che con un'immagine muta.
+          {%- endcomment -%}
+          <div class="corpo">
+            <p>{{ v.body }}</p>
+            {%- if a.schermata and v.alt %}
+            {%- if forma == 'foglio' %}
+            {% include schermata.html nome=a.schermata alt=v.alt forma='foglio' sizes='(min-width: 880px) 540px, 86vw' %}
+            {%- else %}
+            {% include schermata.html nome=a.schermata alt=v.alt forma='telefono' sizes='208px' %}
+            {%- endif %}
+            {%- endif %}
+          </div>
         </li>
         {%- endfor %}
       </ul>

@@ -128,6 +128,14 @@ hero:
   # ⛔ Dove porta sta in `_data/collegamenti.yml` (`store`), il file del badge
   # e le regole di Apple in `_layouts/landing.html` e `assets/css/b.scss`.
   badge: "Download on the App Store"
+  # ⭐ DAL GIRO W14 LA PARTE ALTA MOSTRA L'APP: accanto alla domanda c'è la
+  # schermata Home, al posto del logo grande. ⛔ COME `badge` QUI SOPRA, QUESTA
+  # STRINGA NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO dell'immagine, cioè
+  # quel che sente chi non la vede. Sta nella bozza, sezione «Screenshots — alt
+  # text», prima riga. ⛔ Sotto l'immagine non c'è nessuna didascalia, e non
+  # deve nascerne una qui: sarebbe una parola nuova (giro W14 §2②).
+  # ⚠️ Quale file sia l'immagine sta in `_data/aspetto.yml`, che è di CC.
+  schermata: "The Home screen in AIMONX: each firearm with its round count, your last 30 days at a glance, and upcoming renewals."
   riga: "YOUR SHOOTING DATA. ALWAYS WITH YOU."
   garanzie:
     - "No account"
@@ -158,23 +166,39 @@ hero:
 # «FOOTER», che in pagina non vanno. Qui sono resi come TITOLI VERI, con le
 # stesse parole e la maiuscola solo all'inizio. ⛔ Se per Cowork erano etichette
 # e non titoli, si toglie da qui e le tre varianti si adeguano da sé.
+#
+# ⭐ DAL GIRO W14 OGNI VOCE HA LA SUA SCHERMATA, e `alt` è il suo TESTO
+# ALTERNATIVO: non si scrive in pagina, si sente. Le sette righe vengono dalla
+# sezione «Screenshots — alt text» della bozza, alla lettera.
+# ⛔ SONO ACCOPPIATE PER QUEL CHE L'IMMAGINE MOSTRA, NON PER L'ORDINE DELLE
+# RIGHE NELLA BOZZA, e la differenza c'è: là la riga della manutenzione («A
+# firearm's page…») viene TERZA, qui la voce «Maintenance your way.» è la
+# QUARTA. Presa per posizione, la schermata delle sessioni avrebbe detto di
+# essere la pagina di un'arma. ⚠️ Chi aggiunge una voce guarda l'immagine.
 what:
   title: "What it keeps track of"
   items:
     - lead: "Every firearm, every round."
       body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
+      alt: "The Firearms list in AIMONX, with each firearm's round count and a color dot for maintenance status."
     - lead: "Range sessions and matches."
       body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
+      alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
     - lead: "Ammo you can count on."
       body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
+      alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
     - lead: "Maintenance your way."
       body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
+      alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
     - lead: "Deadlines you won't miss."
       body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
+      alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
     - lead: "What your shooting really costs."
       body: "Cost per session, per round and per firearm, and how practice compares to competition."
+      alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
     - lead: "Firearm reports in PDF."
       body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
+      alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."
 
 privacy:
   title: "Privacy"

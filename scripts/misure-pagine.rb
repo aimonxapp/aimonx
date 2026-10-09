@@ -30,6 +30,9 @@ $badge = []
 $link_store = []
 $img_badge = 0
 $app_jsonld = 0
+$immagini = []
+$schermate = 0
+$schermate_jsonld = 0
 
 # ---------------------------------------------------------------------------
 # ⛔⛔ IL MUST DI PIER, MISURATO: il suo indirizzo e il suo telefono non vanno
@@ -95,6 +98,17 @@ pagine.each do |percorso|
           # nudo, e una parola sola che finisce per «Application».
           unless voce["installUrl"].to_s =~ %r{\Ahttps://apps\.apple\.com/app/[a-z0-9-]+/id\d+\z}
             $seo << "#{nome}: installUrl manca o non e un link nudo allo Store -> #{voce["installUrl"].to_s[0, 80]}"
+          end
+          # ⛔ Giro W14: `screenshot` porta le schermate vere, e SOLO indirizzi
+          # di file nostri che la build contiene. Forma, non valore.
+          Array(voce["screenshot"]).each do |u|
+            $schermate_jsonld += 1
+            via = u.to_s[%r{\Ahttps://aimonx\.app(/assets/img/screenshots/[a-z0-9-]+\.webp)\z}, 1]
+            if via.nil?
+              $immagini << "#{nome}: screenshot nei dati strutturati non e un file nostro -> #{u.to_s[0, 90]}"
+            elsif !File.file?(File.join(radice, via))
+              $immagini << "#{nome}: screenshot nei dati strutturati che la build non contiene -> #{via}"
+            end
           end
           unless voce["applicationCategory"].to_s =~ /\A[A-Z][A-Za-z]+Application\z/
             $seo << "#{nome}: applicationCategory manca o non e una categoria -> #{voce["applicationCategory"].to_s[0, 60]}"
@@ -170,6 +184,37 @@ pagine.each do |percorso|
   # ⛔ Il banner di Safari (`apple-itunes-app`) e un ALTRA decisione, che il
   # giro W12 non ha preso: se compare, qualcuno l ha presa da solo.
   $badge << "#{nome}: c e il banner di Safari (apple-itunes-app)" if nudo =~ /name=["\x27]apple-itunes-app/i
+
+  # --- ①-ter le immagini (giro W14) -----------------------------------------
+  # ⭐ Nata quando sulla landing sono entrate le schermate dell app. Ogni <img>
+  # di ogni pagina, non solo le schermate: una regola che vale per otto
+  # immagini e non per la nona è una regola che un giorno si dimentica.
+  nudo.scan(/<img\b[^>]*>/mi) do |tag|
+    src = tag[/\bsrc="([^"]*)"/, 1].to_s
+    corto = src.split("/").last.to_s
+    # ⛔ `alt` deve ESSERCI: vuoto va bene (immagine decorativa, dichiarata),
+    # assente no — un lettore di schermo leggerebbe il nome del file.
+    $immagini << "#{nome}: immagine senza attributo alt -> #{corto}" unless tag =~ /\balt="/
+    # ⛔ Senza misure il browser non tiene il posto, e la pagina salta.
+    $immagini << "#{nome}: immagine senza width e height -> #{corto}" unless tag =~ /\bwidth="\d+"/ && tag =~ /\bheight="\d+"/
+    # ⛔ Servita da noi, e il file c e — anche ogni candidato di `srcset`.
+    candidati = [src] + tag[/\bsrcset="([^"]*)"/, 1].to_s.split(",").map { |c| c.strip.split(/\s+/).first.to_s }
+    candidati.reject(&:empty?).uniq.each do |c|
+      if c =~ %r{\A(?:https?:)?//}
+        $immagini << "#{nome}: immagine NON servita da noi -> #{c[0, 90]}"
+      elsif !File.file?(File.join(radice, c.sub(/[?#].*\z/, "")))
+        $immagini << "#{nome}: il file dell immagine non e nella build -> #{c}"
+      end
+    end
+    next unless src.include?("/assets/img/screenshots/")
+    $schermate += 1
+    # ⛔ Una schermata è CONTENUTO: il suo testo alternativo non può essere vuoto.
+    $immagini << "#{nome}: schermata con il testo alternativo vuoto -> #{corto}" unless tag =~ /\balt="[^"]+"/
+    # ⚠️ Solo quella della parte alta si carica subito; le altre aspettano.
+    unless tag =~ /\bloading="lazy"/ || tag =~ /\bfetchpriority="high"/
+      $immagini << "#{nome}: schermata che non e ne lazy ne quella della parte alta -> #{corto}"
+    end
+  end
 
   # --- ② l'ordine dei titoli ------------------------------------------------
   # ⛔ Un lettore di schermo naviga per titoli: saltare da h1 a h3 gli toglie un
@@ -279,5 +324,11 @@ puts "seo_guasti=#{$seo.size}"
 puts "link_verso_fuori=#{$verso_fuori.size}"
 puts "blocchi_jsonld=#{$jsonld}"
 puts "badge_guasti=#{$badge.size}"
-($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge).each { |r| puts "  ⛔ #{r}" }
+# ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il
+# giorno in cui le schermate sparissero dalla pagina — zero immagini sono anche
+# zero immagini sbagliate. I due conti dicono che ci sono ancora.
+puts "immagini_guasti=#{$immagini.size}"
+puts "schermate_in_pagina=#{$schermate}"
+puts "schermate_nei_dati_strutturati=#{$schermate_jsonld}"
+($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge + $immagini).each { |r| puts "  ⛔ #{r}" }
 $verso_fuori.sort.each { |u| puts "  · #{u}" }

@@ -262,7 +262,10 @@ else
     # `applicationCategory` (una parola della lista di Google, non una frase).
     # ⛔ Che quelle due caselle contengano DAVVERO un indirizzo nudo e una
     # categoria, e non una frase infilata lì, lo misura `misure-pagine.rb`.
-    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory"]
+    # ⭐ Dal giro W14 anche `screenshot`: sono gli indirizzi delle schermate,
+    # come `image`. ⛔ Che siano DAVVERO indirizzi di file nostri, e non una
+    # frase infilata lì, lo misura `misure-pagine.rb` (`immagini_guasti`).
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot"]
     parole_jsonld = []
     html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
       begin
@@ -282,6 +285,17 @@ else
     end
 
     html = html.gsub(/<(script|style)\b.*?<\/\1>/mi, " ")
+    # ⛔ I TESTI ALTERNATIVI SI RACCOLGONO PRIMA CHE I TAG VENGANO BUTTATI VIA
+    # (giro W14). ⚠️ Fino al W13 questa misura non guardava nessun attributo, e
+    # la nota in testa al blocco lo dichiarava: bastava, perché l unico `alt`
+    # con parole era quello del badge e veniva dai file di dati. ⭐ Ora le
+    # immagini con un testo alternativo sono nove, e un `alt` è una frase che
+    # qualcuno SENTE: scritta a mano in un layout non starebbe in nessun file
+    # di dati, e la misura ① non la vedrebbe — la stessa ragione per cui
+    # esiste questa. ⚠️ `alt=""` non si conta: dichiara un immagine decorativa
+    # e non porta parole.
+    alt_serviti = html.scan(/<img\b[^>]*?\balt="([^"]*)"/mi).flatten.map { |x| x.gsub(/[[:space:]]+/, " ").strip }.reject(&:empty?)
+    alt_serviti.map! { |x| x.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
     # ⛔ IL <title> SI STACCA PRIMA, e si giudica da solo (giro W12, `WD38`).
     # ⚠️ Fino al W11 un'eccezione dichiarata si perdonava per VALORE: qualunque
     # pezzo di pagina uguale al titolo di scheda passava, ovunque fosse. Ora
@@ -359,6 +373,16 @@ else
         estranei << x
       end
     end
+    # ⛔ Un testo alternativo deve stare nella bozza INTERO, come riga a sé:
+    # non basta che le sue parole compaiano da qualche parte.
+    alt_ok = 0
+    alt_serviti.each do |x|
+      if consentito.split("\n").map(&:strip).include?(x)
+        alt_ok += 1
+      else
+        estranei << "testo alternativo di un immagine: #{x}"
+      end
+    end
     jl_ok = 0; jl_fuori = []
     parole_jsonld.each do |tipo, x|
       if tipo == :rotto
@@ -373,7 +397,7 @@ else
     end
 
     fuori += estranei.size + jl_fuori.size
-    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei · JSON-LD: #{jl_ok} parole approvate, #{jl_fuori.size} fuori"
+    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei · testi alternativi: #{alt_ok} su #{alt_serviti.size} alla lettera · JSON-LD: #{jl_ok} parole approvate, #{jl_fuori.size} fuori"
     estranei.each { |x| puts "     ⛔ #{p[:nome]}: SERVITO ma NON approvato -> «#{x[0, 120]}»" }
     jl_fuori.each { |x| puts "     ⛔ #{p[:nome]}: #{x}" }
   end

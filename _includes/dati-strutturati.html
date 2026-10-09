@@ -34,6 +34,10 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       della lista che Google pubblica per questa proprietà («SportsApplication»
       è uno dei suoi ventidue valori), e ⛔ non è una classe di schema.org.
 
+  ⭐ DAL GIRO W14 C'È UN TERZO FATTO VERO: la landing mostra le schermate
+  dell'app, e il blocco le dichiara con `screenshot` — la nota sta accanto
+  alla riga, più in basso.
+
   ⚠️ CONSEGUENZA DA SAPERE, VERIFICATA SULLA DOCUMENTAZIONE DI GOOGLE e non a
   memoria: per il risultato «ricco» delle app Google chiede `offers.price` e
   un voto, e dice che servono «per essere IDONEI a comparire come rich
@@ -97,6 +101,29 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "applicationCategory": "SportsApplication",
       "installUrl": {{ site.data.collegamenti.store | jsonify }},
       "image": {{ '/assets/img/aimonx-512.png' | absolute_url | jsonify }},
+      {%- comment -%}
+        ⭐ LE SCHERMATE, dal giro W14 — e nient'altro. Verificato su schema.org
+        il 09/10/2026 (V30.1), non a memoria: `screenshot` è «A link to a
+        screenshot image of the app», si usa su `SoftwareApplication` — di cui
+        `MobileApplication` è una sottoclasse — e vuole un indirizzo o un
+        `ImageObject`. ⛔ Qui è l'INDIRIZZO NUDO: un `ImageObject` chiederebbe
+        una didascalia, cioè parole nuove dentro il blocco che nessuno legge a
+        occhio.
+        ⛔ SOLO LE SCHERMATE VERE DELL'APP: la Home e le sei delle voci. La
+        pagina del PDF NON c'è — è un documento che l'app produce, non una
+        schermata dell'app, e dichiararla tale sarebbe dire il falso a un
+        motore. ⚠️ Il file è il più grande dei tre: chi legge questo blocco
+        non sceglie con `srcset`.
+      {%- endcomment -%}
+      "screenshot": [
+        {{ '/assets/img/screenshots/' | append: site.data.aspetto.hero_schermata | append: '-' | append: site.data.aspetto.schermate.telefono.larghezze.last | append: '.webp' | absolute_url | jsonify }}
+        {%- for dsa in site.data.aspetto.what -%}
+        {%- if dsa.schermata and dsa.forma != 'foglio' -%}
+        ,
+        {{ '/assets/img/screenshots/' | append: dsa.schermata | append: '-' | append: site.data.aspetto.schermate.telefono.larghezze.last | append: '.webp' | absolute_url | jsonify }}
+        {%- endif -%}
+        {%- endfor %}
+      ],
       "author": { "@id": {{ '/#autore' | absolute_url | jsonify }} }
     }{% endif %}
   ]

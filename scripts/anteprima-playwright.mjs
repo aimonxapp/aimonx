@@ -79,6 +79,23 @@ for (const f of formati) {
   });
 
   await page.goto(url, { waitUntil: 'networkidle' });
+  // ⭐ PRIMA DELLA FOTO SI SCORRE LA PAGINA FINO IN FONDO, dal giro W14. Le
+  // schermate dell'app sotto la parte alta sono `loading="lazy"`: il browser
+  // le chiede solo quando ci si avvicina, e una foto della pagina intera
+  // scattata senza scorrere le mostrerebbe VUOTE — cioè una prova di «com'è
+  // venuto» che mostra una pagina che nessuno vedrà mai. ⚠️ A passi di mezzo
+  // schermo: un salto solo in fondo lascerebbe mai «vicine» quelle di mezzo.
+  // ⚠️ Conseguenza sul conto ③ qui sotto: ora dice TUTTO quel che la pagina
+  // può chiedere, non quel che chiede all'apertura. I due momenti separati li
+  // misura scripts/peso.mjs.
+  const alta = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y <= alta; y += Math.round(f.height / 2)) {
+    await page.evaluate((v) => window.scrollTo(0, v), y);
+    await page.waitForTimeout(100);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {}))));
   const file = join(outDir, `anteprima-${f.nome}.png`);
   await page.screenshot({ path: file, fullPage: true });
   console.log(`① screenshot ${f.nome} (${f.width}×${f.height}) → ${file}`);

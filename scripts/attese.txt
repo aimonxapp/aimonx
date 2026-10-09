@@ -228,3 +228,32 @@ badge_guasti=0
 #     056de2f81ff61b778a0c192dbb098f9b0416e7e8f79b119e43d11248155e597f
 # La controprova confronta i primi 16 caratteri, sul file che ESCE dalla build.
 badge_apple_impronta=a26fc5b38380272c
+
+# --- giro W14: la landing fa vedere l'app -----------------------------------
+#
+# Scostamenti dalle regole delle IMMAGINI, misurati sul sito COSTRUITO da
+# scripts/misure-pagine.rb, su ogni <img> di ogni pagina: l'attributo `alt`
+# c'è (vuoto solo se decorativa), `width` e `height` ci sono — senza, la pagina
+# salta mentre l'immagine arriva — ogni file, anche ogni candidato di `srcset`,
+# è servito da noi ed è nella build; ogni schermata ha un testo alternativo non
+# vuoto ed è `lazy`, tranne quella della parte alta; e nei dati strutturati
+# `screenshot` porta solo indirizzi di file nostri che esistono. ⛔ Deve restare 0.
+immagini_guasti=0
+
+# Quante schermate dell'app mostra la landing: la Home nella parte alta e una
+# per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
+# una sparisce — zero immagini sono anche zero immagini sbagliate.
+schermate_in_pagina=8
+
+# Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
+# apposta: la pagina del PDF è un documento che l'app produce, non una
+# schermata dell'app, e a un motore non si dice che lo è.
+schermate_nei_dati_strutturati=7
+
+# ⛔ DAL DISCO DI PIER NEL REPO ENTRANO OTTO IMMAGINI, NON UNA CARTELLA (giro
+# W14 §2①): sette schermate e la pagina del PDF di prova, ciascuna in tre
+# larghezze. Il repo è pubblico. Se il primo numero sale è entrata un'immagine
+# in più; se sale solo il secondo, un file che non è una delle tre larghezze.
+# ⛔ Nessuno dei due si alza per far passare qualcosa: prima si guarda cos'è.
+schermate_immagini=8
+schermate_file=24

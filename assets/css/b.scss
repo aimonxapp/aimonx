@@ -71,8 +71,8 @@ body.v-b {
 
 // --- LA PARTE ALTA — giro W6, dal riferimento di Pier ----------------------
 //
-// La composizione: a sinistra le parole, a destra il logo grande con sotto le
-// tre garanzie e il motto scritto a mano.
+// La composizione: a sinistra le parole, a destra la schermata Home dell'app
+// (fino al W13 il logo grande) con sotto le tre garanzie e il motto a mano.
 // ⚠️ NEL RIFERIMENTO LE GARANZIE STANNO IN UNA TERZA COLONNA, a fianco del
 // telefono. Qui stanno SOTTO il logo, ed è una differenza voluta: con tre
 // colonne dentro 66rem la colonna del testo scendeva a ~570 px e la domanda
@@ -97,9 +97,11 @@ body.v-b {
 // documento — quindi chi legge con un lettore di schermo o col tasto tab sente
 // sempre lo stesso ordine, a qualsiasi larghezza.
 //
-// ⛔ 16rem non è un numero tondo per caso: il file del logo è 512×512, e 256 px
-// su uno schermo Retina (2×) sono esattamente 512 pixel veri. Più larga, e il
-// browser ingrandirebbe un'immagine che non ha altri pixel da dare.
+// ⚠️ 16rem viene dal W6, quando qui c'era il logo (512 px veri, cioè 256 px su
+// un Retina). ⛔ NON È STATO TOCCATO NEL W14, e non per dimenticanza: su quella
+// colonna sono misurati il corpo della domanda e quello del motto, e allargarla
+// per la schermata li avrebbe rimessi in discussione tutti e due. La schermata
+// ha file fino a 860 px: a 256 px di larghezza ne avanza anche a 3×.
 @media (min-width: 880px) {
   .v-b .eroe { grid-template-columns: minmax(0, 1fr) clamp(13rem, 20vw, 16rem); align-items: center; }
 }
@@ -234,27 +236,62 @@ body.v-b {
   font-weight: 600; letter-spacing: .2em; color: #9DB6AA;
 }
 
-// --- la colonna di destra: il logo, le garanzie, il motto ------------------
+// --- la colonna di destra: la schermata, le garanzie, il motto -------------
 .v-b .destra { display: grid; gap: clamp(1.5rem, 3.4vw, 2.2rem); justify-items: center; }
 @media (min-width: 880px) { .v-b .destra { justify-items: stretch; } }
 
-.v-b .segno { width: clamp(9rem, 40vw, 14rem); margin-inline: auto; }
-@media (min-width: 880px) { .v-b .segno { width: 100%; } }
-
-.v-b .logo {
-  width: 100%; height: auto;
-  // L'angolo delle icone iOS. ⛔ Il file dell'app è un quadrato pieno, senza
-  // angoli: la maschera la mette il sistema sulla Home, e qui la mettiamo noi —
-  // altrimenti l'icona si vede come un rettangolo, che sulla Home di nessuno
-  // esiste. Non è ridisegnare il logo: i pixel non si toccano.
-  border-radius: 22.4%;
-  // ⚠️ E questo filo NON è decorazione. Misurato: l'angolo del file è #0E3726,
-  // il fondo della pagina è #0F3625 e in cima al gradiente è #1A4A33 — cioè
-  // l'icona ha quasi ESATTAMENTE il fondo su cui sta, e senza un bordo il
-  // quadrato si perde nel verde.
-  border: 1px solid rgba(140, 204, 166, .22);
-  box-shadow: 0 18px 44px rgba(4, 18, 12, .45);
+// --- LE SCHERMATE DELL'APP — giro W14 ---------------------------------------
+//
+// ⭐ La landing fa vedere l'app: la Home nella parte alta, una schermata per
+// ciascuna delle sette voci. Sono le schermate VERE, con dati di prova, rifatte
+// da `scripts/schermate.mjs`; il markup è uno solo, `_includes/schermata.html`.
+//
+// ⛔ LA CORNICE È UN RETTANGOLO SCURO CON GLI ANGOLI TONDI, E BASTA. Non è un
+// iPhone e non deve diventarlo: niente tacca, niente isola, niente tasti,
+// niente riflessi. ⚠️ Non è prudenza generica: le regole di Apple sull'uso
+// delle immagini dei suoi prodotti non sono state lette per questo uso (giro
+// W14 §2①), quindi qui non c'è niente che sia SUO — c'è un bordo.
+// ⚠️ Il colore del bordo è il verde più scuro della pagina (quello della carta
+// del proclama, annerito): un nero puro accanto ai verdi dell'app sembrava un
+// pezzo di un altro sito.
+// ⚠️ GLI ANGOLI SONO IN PERCENTUALE, e la coppia non è a caso: la schermata è
+// alta 2,17 volte la sua larghezza, quindi «14% della larghezza» e «6,5%
+// dell'altezza» sono la stessa misura, e l'angolo esce TONDO a ogni larghezza.
+// Con un valore in px sarebbe giusto a una misura e sbagliato alle altre.
+// ⚠️ Gli angoli tagliano i quattro spigoli della schermata: lì c'è solo il
+// fondo verde dell'app, nessuna scritta e nessun numero. Guardato su tutte e
+// sette.
+.v-b .schermata { margin: 0; }
+.v-b .schermata img { width: 100%; height: auto; }
+.v-b .telefono {
+  border: 5px solid #07160F;
+  border-radius: #{"14% / 6.5%"};
+  background: #07160F;
+  overflow: hidden;
 }
+.v-b .telefono img { border-radius: #{"11.5% / 5.3%"}; }
+// IL FOGLIO — la pagina del PDF, distesa. È carta, non uno schermo: un filo
+// grigio e un'ombra corta, perché su una carta bianca un foglio bianco senza
+// bordo non si vede. ⛔ L'immagine è la pagina INTERA, non ritagliata: le foto
+// dentro sono miniature e miniature restano (giro W14 §2①).
+.v-b .foglio {
+  border: 1px solid #CBD5CF;
+  border-radius: 3px;
+  box-shadow: 0 8px 22px rgba(6, 24, 16, .16);
+  overflow: hidden;
+}
+
+// LA HOME NELLA PARTE ALTA — al posto del logo grande (vedi la nota nel
+// layout: è una scelta da guardare). ⚠️ Su schermo stretto è larga poco più
+// di metà pagina: intera si deve poter vedere senza che occupi due schermate.
+// ⚠️ Il filo chiaro intorno NON è decorazione, ed è la stessa ragione che
+// valeva per il logo: la schermata ha in alto lo stesso verde della pagina, e
+// senza un bordo che stacchi il rettangolo si perde nel fondo.
+.v-b .destra > .telefono {
+  width: clamp(11rem, 54vw, 15rem); margin-inline: auto;
+  box-shadow: 0 0 0 1px rgba(140, 204, 166, .3), 0 18px 44px rgba(4, 18, 12, .45);
+}
+@media (min-width: 880px) { .v-b .destra > .telefono { width: 100%; } }
 
 // LE TRE GARANZIE. In fila su schermo stretto, in colonna quando c'è la
 // colonna. ⚠️ Il glifo del terzo è un server BARRATO e non una nuvola barrata:
@@ -355,6 +392,48 @@ body.v-b {
   font-size: .98rem; line-height: 1.6; color: var(--inchiostro-2);
 }
 .v-b .pro { color: var(--titolo); font-style: italic; font-weight: 600; }
+
+// ⑥ LA SCHERMATA DENTRO LA CARTA — giro W14. Solo le sette voci la portano.
+//
+// ⭐ DUE DISPOSIZIONI, E LE SCEGLIE LA LARGHEZZA DELLA CARTA, non quella della
+// finestra: stretta, la schermata sta SOTTO il testo, al centro; larga, sta A
+// FIANCO, a destra. ⚠️ È una `@container` e non una `@media` per una ragione
+// misurata: la carta è larga 355 px su un telefono, 396 a 880 px (dove le
+// colonne diventano due e ogni carta si STRINGE), 480 a 1440. Con la finestra
+// come metro servirebbero quattro soglie, e a 880 px — finestra più larga,
+// carta più stretta — una regola «da qui in su a fianco» lascerebbe al testo
+// 150 px. La carta sa quanto è larga; la finestra no.
+// ⚠️ 27rem è la soglia: sotto, a fianco della schermata il testo avrebbe meno
+// di 190 px, cioè righe da quattro parole.
+// ⚠️ Un browser senza `@container` (prima del 2023) vede la prima
+// disposizione, quella impilata: è una pagina intera, solo più lunga.
+.v-b .voci-glifo .voce { container-type: inline-size; }
+.v-b .corpo .schermata { margin: .15rem auto 1.5rem; }
+.v-b .corpo .telefono {
+  width: #{"min(13rem, 62%)"};
+  box-shadow: 0 10px 26px rgba(6, 24, 16, .24);
+}
+.v-b .corpo .foglio { width: calc(100% - 2.9rem); margin-inline: 1.6rem 1.3rem; }
+@container (min-width: 27rem) {
+  .v-b .mostra-telefono .corpo {
+    display: grid; grid-template-columns: minmax(0, 1fr) 12.3rem;
+    column-gap: .4rem; align-items: start;
+  }
+  .v-b .mostra-telefono .corpo p { padding-right: .6rem; }
+  .v-b .mostra-telefono .corpo .telefono { width: auto; margin: 1.15rem 1.3rem 1.4rem 0; }
+}
+// IL FOGLIO È LARGO, quindi la sua carta prende tutte e due le colonne — ed è
+// la settima di sette: senza, sarebbe rimasta da sola a sinistra con mezza
+// riga vuota accanto. Quando la carta è larga abbastanza, testo e foglio
+// stanno fianco a fianco come nelle altre.
+@media (min-width: 880px) { .v-b .voci-glifo .mostra-foglio { grid-column: #{"1 / -1"}; } }
+@container (min-width: 46rem) {
+  .v-b .mostra-foglio .corpo {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
+    column-gap: .6rem; align-items: center;
+  }
+  .v-b .mostra-foglio .corpo .foglio { width: auto; margin: 1.4rem 1.4rem 1.5rem 0; }
+}
 
 // le tinte delle sette voci — rampa d'identità §4b
 .v-b .tinta-verde        { --sez: var(--sez-verde);        --fascia: var(--fascia-verde);        --titolo: var(--titolo-verde); }

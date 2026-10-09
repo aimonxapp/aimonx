@@ -306,7 +306,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti badge_guasti; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti badge_guasti immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done
@@ -384,6 +384,20 @@ if [ "$N_SPORCHI" != "0" ]; then
   printf '%s\n' "$FILE_SPORCHI" | sed 's|^|     ⛔ |'
   echo "     ⛔ Questi file sono leggibili da chiunque al primo push. Vedi WD17."
 fi
+
+# --- giro W14: dal disco di Pier nel repo entrano OTTO immagini, non una cartella
+# ⛔ Le schermate dell'app vengono dalle cartelle di Pier, e il repo è
+# PUBBLICO: ne entrano otto — sette schermate e la pagina del PDF di prova —
+# ciascuna in tre larghezze, e nient'altro. ⚠️ Si contano i file TRACCIATI:
+# quel che git non ha non arriva su GitHub. ⭐ Due numeri, perché rispondono a
+# due domande: «è entrata un'immagine in più?» (i nomi) e «è entrato un file
+# che non è una delle tre larghezze?» (i file).
+echo
+echo "--- le immagini dell'app nel repo (giro W14) ---"
+SCHERMATE_L=$(git ls-files 'assets/img/screenshots/')
+confronta "file tracciati in assets/img/screenshots" schermate_file "$(conta_righe "$SCHERMATE_L")"
+confronta "immagini diverse fra quei file" schermate_immagini \
+  "$(printf '%s\n' "$SCHERMATE_L" | sed -E 's|.*/||; s|-[0-9]+\.[a-z]+$||' | sort -u | grep -c . | tr -d ' ')"
 
 # --- guardrail dei file vivi -------------------------------------------------
 # ⛔ È l'unica cosa che impedisce di ricascare nel monolite IN SILENZIO.
