@@ -18,9 +18,18 @@
 //   · le RIMPICCIOLISCE a tre larghezze e le salva in WebP — nient'altro;
 //   · ⛔ non le ritaglia, non le ritocca, non ci scrive sopra, non le incornicia:
 //     la cornice in pagina è CSS (`assets/css/b.scss`), il file è la schermata;
-//   · ⛔ la pagina del PDF resta INTERA: le foto delle armi lì dentro sono
-//     miniature prese da Pixabay (Pier, 09/10/2026) e miniature restano — non
-//     si ritagliano e non si ingrandiscono.
+//   · ⭐ ALLA PAGINA DEL PDF TOGLIE IL BIANCO, e solo quello (Pier,
+//     09/10/2026): fra i totali e la riga in fondo c'è un terzo di foglio
+//     vuoto, che in pagina era un rettangolo bianco. Lo script cerca la fascia
+//     di righe TUTTE BIANCHE più alta e la accorcia; ⛔ tabella, totali e la
+//     riga «AIMONX · Generated locally from the data stored on this device»
+//     restano, pixel per pixel — quella riga è una prova di privacy.
+//     ⚠️ Quindi l'immagine NON è più la pagina com'è uscita dall'app: è la
+//     pagina con meno vuoto in mezzo. Niente è spostato di lato, niente è
+//     ridisegnato, e la fascia tolta non conteneva un solo pixel scritto;
+//   · ⛔ le foto delle armi dentro il PDF sono miniature prese da Pixabay
+//     (Pier, 09/10/2026) e miniature restano: non si ritagliano e non si
+//     ingrandiscono.
 //
 // ⚠️ LE TRE LARGHEZZE NON SONO A GUSTO. Le schermate sono 1290×2796, cioè un
 // iPhone da 430×932 punti a 3×: 430, 645 e 860 sono ×1, ×1,5 e ×2 di quella
@@ -95,25 +104,52 @@ for (const voce of LISTA) {
   }
   const dati = `data:image/png;base64,${(await readFile(png)).toString('base64')}`;
   for (const l of voce.larghezze) {
-    const esito = await page.evaluate(async ({ dati, l, q }) => {
+    const esito = await page.evaluate(async ({ dati, l, q, accorcia }) => {
       const img = new Image();
       img.src = dati;
       await img.decode();
-      const a = Math.round(img.naturalHeight * l / img.naturalWidth);
-      const piccola = await createImageBitmap(img, { resizeWidth: l, resizeHeight: a, resizeQuality: 'high' });
+      let fonte = img, larga = img.naturalWidth, alta = img.naturalHeight, tolte = 0;
+      if (accorcia) {
+        // La fascia bianca più alta: una riga è «bianca» se ogni suo pixel lo
+        // è. ⚠️ Se ne lascia un pezzo, alto il 5% del foglio: senza, la riga
+        // in fondo finirebbe attaccata ai totali come se ne facesse parte.
+        const intera = new OffscreenCanvas(larga, alta);
+        const c = intera.getContext('2d', { willReadFrequently: true });
+        c.drawImage(img, 0, 0);
+        const px = c.getImageData(0, 0, larga, alta).data;
+        const bianca = (y) => { for (let i = y * larga * 4, f = i + larga * 4; i < f; i += 4) if (px[i] < 250 || px[i + 1] < 250 || px[i + 2] < 250) return false; return true; };
+        let meglio = [0, 0], da = -1;
+        for (let y = 0; y <= alta; y++) {
+          const b = y < alta && bianca(y);
+          if (b && da < 0) da = y;
+          if (!b && da >= 0) { if (da > 0 && y < alta && y - da > meglio[1] - meglio[0]) meglio = [da, y]; da = -1; }
+        }
+        const resta = Math.round(alta * 0.05);
+        tolte = Math.max(0, meglio[1] - meglio[0] - resta);
+        if (tolte > 0) {
+          const corta = new OffscreenCanvas(larga, alta - tolte);
+          const k = corta.getContext('2d');
+          const taglio = meglio[0] + Math.round(resta / 2);
+          k.drawImage(intera, 0, 0, larga, taglio, 0, 0, larga, taglio);
+          k.drawImage(intera, 0, taglio + tolte, larga, alta - taglio - tolte, 0, taglio, larga, alta - taglio - tolte);
+          fonte = corta; alta -= tolte;
+        }
+      }
+      const a = Math.round(alta * l / larga);
+      const piccola = await createImageBitmap(fonte, { resizeWidth: l, resizeHeight: a, resizeQuality: 'high' });
       const tela = new OffscreenCanvas(l, a);
       tela.getContext('2d').drawImage(piccola, 0, 0);
       const blob = await tela.convertToBlob({ type: 'image/webp', quality: q });
       const byte = new Uint8Array(await blob.arrayBuffer());
       let s = '';
       for (let i = 0; i < byte.length; i += 0x8000) s += String.fromCharCode(...byte.subarray(i, i + 0x8000));
-      return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight] };
-    }, { dati, l, q: QUALITA });
+      return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte };
+    }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf') });
     const file = join(USCITA, `${voce.a}-${l}.webp`);
     const corpo = Buffer.from(esito.base64, 'base64');
     await writeFile(file, corpo);
     totale += corpo.length;
-    console.log(`${voce.da} (${esito.da[0]}×${esito.da[1]}) → ${voce.a}-${l}.webp  ${esito.l}×${esito.a}  ${(corpo.length / 1024).toFixed(1)} KB`);
+    console.log(`${voce.da} (${esito.da[0]}×${esito.da[1]}) → ${voce.a}-${l}.webp  ${esito.l}×${esito.a}  ${(corpo.length / 1024).toFixed(1)} KB${esito.tolte ? ` · tolte ${esito.tolte} righe bianche` : ''}`);
   }
 }
 

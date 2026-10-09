@@ -41,4 +41,8 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
     {%- endfor -%}
   </p>
   <p class="minuta">{{ piede_f.copyright }}</p>
+  {%- comment -%} Giro W14: la riga sui marchi degli altri, un paragrafo suo come nella bozza. {%- endcomment -%}
+  {%- if piede_f.altri_marchi %}
+  <p class="minuta">{{ piede_f.altri_marchi }}</p>
+  {%- endif %}
 </footer>

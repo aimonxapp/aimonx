@@ -43,7 +43,15 @@ Giro W10, decisa e approvata da Pier il 22/09/2026.
     alternativo lo farebbe leggere due volte.
   {%- endcomment -%}
   <a class="acasa" href="{{ '/' | relative_url }}">
+    {%- comment -%}
+      ⭐ TRE FILE, UNO PER DENSITÀ, dal giro W14. Il marchio è largo 48 px: con
+      il solo file da 96 un telefono a 3× doveva riempirne 144 e lo
+      ingrandiva — sgranato, su tutte e quattro le pagine (misurato da
+      `scripts/peso.mjs`). Sono file che c'erano già, gli stessi pixel
+      dell'icona dell'app: non è stato disegnato niente.
+    {%- endcomment -%}
     <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
+         srcset="{{ '/assets/img/aimonx-48.png' | relative_url }} 1x, {{ '/assets/img/aimonx-96.png' | relative_url }} 2x, {{ '/assets/img/aimonx-192.png' | relative_url }} 3x"
          alt="" width="48" height="48">
     <span class="nome">{{ site.data.landing.brand }}</span>
   </a>

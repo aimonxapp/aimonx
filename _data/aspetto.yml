@@ -58,7 +58,7 @@ what:
 # ⛔ Chi cambia le larghezze in `scripts/schermate.mjs` le cambia anche qui.
 schermate:
   telefono: { larghezze: [430, 645, 860],  larga: 645, alta: 1398 }
-  foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 637 }
+  foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 482 }  # ⚠️ 482 e non 637: senza il bianco (W14)
 
 # La schermata della parte alta: la Home dell'app, accanto alla domanda.
 hero_schermata: aimonx-home-screen

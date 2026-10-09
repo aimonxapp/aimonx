@@ -72,7 +72,8 @@ body.v-b {
 // --- LA PARTE ALTA — giro W6, dal riferimento di Pier ----------------------
 //
 // La composizione: a sinistra le parole, a destra la schermata Home dell'app
-// (fino al W13 il logo grande) con sotto le tre garanzie e il motto a mano.
+// (fino al W13 il logo grande) con sotto le tre garanzie. ⚠️ Logo e motto a
+// mano sono scesi nella fascia di chiusura, in fondo.
 // ⚠️ NEL RIFERIMENTO LE GARANZIE STANNO IN UNA TERZA COLONNA, a fianco del
 // telefono. Qui stanno SOTTO il logo, ed è una differenza voluta: con tre
 // colonne dentro 66rem la colonna del testo scendeva a ~570 px e la domanda
@@ -236,7 +237,9 @@ body.v-b {
   font-weight: 600; letter-spacing: .2em; color: #9DB6AA;
 }
 
-// --- la colonna di destra: la schermata, le garanzie, il motto -------------
+// --- la colonna di destra: la schermata e le garanzie ----------------------
+// ⚠️ Il motto a mano dal W14 sta nella fascia di chiusura; le sue regole, più
+// in basso, valgono là.
 .v-b .destra { display: grid; gap: clamp(1.5rem, 3.4vw, 2.2rem); justify-items: center; }
 @media (min-width: 880px) { .v-b .destra { justify-items: stretch; } }
 
@@ -492,6 +495,32 @@ body.v-b {
   margin-top: 1.3rem; max-width: 62ch;
   font-size: .98rem; line-height: 1.65; color: #B7CEC2;
 }
+
+// --- LA FASCIA DI CHIUSURA — giro W14 --------------------------------------
+// La firma della pagina, prima del piede: il logo grande e il motto a mano,
+// fianco a fianco dove c'è spazio e uno sopra l'altro dove non c'è (lo decide
+// `flex-wrap`, non una soglia). ⚠️ Stessa colonna di 66rem del resto.
+// ⚠️ Le tre righe del logo — angolo, filo, ombra — sono quelle che aveva nella
+// parte alta fino al W13, con le stesse ragioni: il file è un quadrato pieno e
+// l'angolo delle icone iOS lo mettiamo noi; il suo verde è quasi quello del
+// fondo, e senza il filo il quadrato si perde.
+.v-b .firma {
+  max-width: 66rem; margin: 0 auto;
+  padding: clamp(1.4rem, 4vw, 2.4rem) clamp(1.1rem, 4vw, 2.5rem) clamp(2.4rem, 6vw, 3.6rem);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: clamp(1.6rem, 5vw, 3.2rem);
+}
+.v-b .firma .logo {
+  width: 8rem; height: auto; flex: none;
+  border-radius: 22.4%;
+  border: 1px solid rgba(140, 204, 166, .22);
+  box-shadow: 0 18px 44px rgba(4, 18, 12, .45);
+}
+// ⚠️ Qui il motto ha tutta la pagina, non la colonna stretta della parte
+// alta: il tetto di 2rem che valeva là (misurato sulla colonna da 13rem) qui
+// non serve, e questa regola lo scavalca a ogni larghezza.
+.v-b .firma .scritta-mano { font-size: clamp(1.9rem, 4.6vw, 2.5rem); }
+@media (min-width: 880px) { .v-b .firma .logo { width: 11rem; } }
 
 // --- chiusa ----------------------------------------------------------------
 // ⛔ L'ASPETTO DEL PIEDE NON È PIÙ QUI, dal giro W9: sta in `comune.scss`, non

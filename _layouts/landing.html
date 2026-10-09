@@ -194,30 +194,11 @@
         </ul>
 
         {%- comment -%}
-          IL MOTTO SCRITTO A MANO. ⛔ È TESTO, non un'immagine: si legge con un
-          lettore di schermo, si seleziona, si ingrandisce. Il font sta in
-          `assets/fonts/` ed è servito da aimonx.app — ⛔ mai da un server
-          esterno (vincolo del sito, e `WD26`).
-          ⚠️ UNA FRASE PER RIGA, e le righe arrivano dal testo, non dal
-          browser: il perché, col conto che lo dimostra, sta in
-          `_data/landing.yml`.
-          ⚠️ Lo svolazzo sotto è decorativo e basta: `aria-hidden`.
+          ⛔ IL MOTTO A MANO NON È PIÙ QUI, dal giro W14: è sceso nella fascia
+          di chiusura in fondo alla pagina, col logo grande. Spostato e NON
+          ripetuto — scelta di CC da guardare: una frase scritta a mano due
+          volte nella stessa pagina smette di sembrare scritta a mano.
         {%- endcomment -%}
-        <p class="scritta-mano">
-          {%- comment -%}
-            ⚠️ Gli span sono separati da un a capo VERO, come le tre righe
-            della domanda: sono blocchi, quindi a vedersi non cambia niente,
-            ma chi COPIA il motto si porta via «Same passion. Every round
-            counted.» e non le due frasi attaccate.
-          {%- endcomment -%}
-          {%- for r in d.hero.motto %}
-          <span class="riga">{{ r }}</span>
-          {%- endfor %}
-          <svg class="svolazzo" viewBox="0 0 200 18" aria-hidden="true" focusable="false" preserveAspectRatio="none">
-            <path d="M3 13c34-7 71-9 104-8 24 .7 49 3 90 8" fill="none"
-                  stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </p>
       </div>
     </div>
   </div>
@@ -330,6 +311,55 @@
       </ul>
     </section>
   </main>
+
+  {%- comment -%}
+    LA FASCIA DI CHIUSURA — giro W14, scelta di Pier del 09/10/2026: la firma
+    della pagina. Il LOGO GRANDE, uscito dalla parte alta quando lì è entrata
+    la schermata Home, e il MOTTO scritto a mano.
+    ⛔ NESSUNA PAROLA NUOVA: il motto è quello della bozza, lo stesso di prima.
+    ⚠️ Il logo porta `alt=""` come ha sempre fatto: è decorativo, il nome
+    AIMONX è scritto in lettere nella barra e nel piede subito sotto.
+    ⚠️ `lazy`: sta in fondo alla pagina, e il file grande pesa 183 KB.
+
+    ⛔⛔ IL SECONDO BADGE CHE PIER HA CHIESTO QUI NON C'È, ED È UNA FERMATA,
+    NON UNA DIMENTICANZA. Le App Store Marketing Guidelines di Apple, rilette
+    il 09/10/2026 alla voce «Badge Use», dicono: «Use one App Store badge per
+    layout or video». È la regola che questo file e `scripts/misure-pagine.rb`
+    applicano dal giro W12 («UNO SOLO PER PAGINA»). Se una pagina lunga valga
+    come un solo «layout» non sta scritto, e ⛔ deciderlo non è di CC: è la
+    zona dei marchi Apple. Lo decide Pier, sapendolo.
+  {%- endcomment -%}
+  <div class="firma">
+    <img class="logo" src="{{ '/assets/img/aimonx-512.png' | relative_url }}"
+         srcset="{{ '/assets/img/aimonx-256.png' | relative_url }} 256w, {{ '/assets/img/aimonx-512.png' | relative_url }} 512w"
+         sizes="(min-width: 880px) 176px, 128px"
+         alt="" width="512" height="512" loading="lazy" decoding="async">
+        {%- comment -%}
+      IL MOTTO SCRITTO A MANO. ⛔ È TESTO, non un'immagine: si legge con un
+      lettore di schermo, si seleziona, si ingrandisce. Il font sta in
+      `assets/fonts/` ed è servito da aimonx.app — ⛔ mai da un server
+      esterno (vincolo del sito, e `WD26`).
+      ⚠️ UNA FRASE PER RIGA, e le righe arrivano dal testo, non dal
+      browser: il perché, col conto che lo dimostra, sta in
+      `_data/landing.yml`.
+      ⚠️ Lo svolazzo sotto è decorativo e basta: `aria-hidden`.
+    {%- endcomment -%}
+    <p class="scritta-mano">
+      {%- comment -%}
+        ⚠️ Gli span sono separati da un a capo VERO, come le tre righe
+        della domanda: sono blocchi, quindi a vedersi non cambia niente,
+        ma chi COPIA il motto si porta via «Same passion. Every round
+        counted.» e non le due frasi attaccate.
+      {%- endcomment -%}
+      {%- for r in d.hero.motto %}
+      <span class="riga">{{ r }}</span>
+      {%- endfor %}
+      <svg class="svolazzo" viewBox="0 0 200 18" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+        <path d="M3 13c34-7 71-9 104-8 24 .7 49 3 90 8" fill="none"
+              stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+    </p>
+  </div>
 
   {%- comment -%}
     ⛔ IL PIEDE NON È PIÙ SCRITTO QUI, dal giro W9: sta in `_includes/piede.html`

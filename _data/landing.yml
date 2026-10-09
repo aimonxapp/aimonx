@@ -170,17 +170,17 @@ hero:
 # ⭐ DAL GIRO W14 OGNI VOCE HA LA SUA SCHERMATA, e `alt` è il suo TESTO
 # ALTERNATIVO: non si scrive in pagina, si sente. Le sette righe vengono dalla
 # sezione «Screenshots — alt text» della bozza, alla lettera.
-# ⛔ SONO ACCOPPIATE PER QUEL CHE L'IMMAGINE MOSTRA, NON PER L'ORDINE DELLE
-# RIGHE NELLA BOZZA, e la differenza c'è: là la riga della manutenzione («A
-# firearm's page…») viene TERZA, qui la voce «Maintenance your way.» è la
-# QUARTA. Presa per posizione, la schermata delle sessioni avrebbe detto di
-# essere la pagina di un'arma. ⚠️ Chi aggiunge una voce guarda l'immagine.
+# ⚠️ Nella bozza le otto righe sono nell'ordine delle immagini — la Home, poi
+# le sette voci come stanno qui sotto. ⛔ Ma l'accoppiamento si fa GUARDANDO
+# l'immagine, non contando le righe: nella prima consegna la riga della
+# manutenzione era terza e la voce quarta, e presa per posizione la schermata
+# delle sessioni avrebbe detto di essere la pagina di un'arma.
 what:
   title: "What it keeps track of"
   items:
     - lead: "Every firearm, every round."
       body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
-      alt: "The Firearms list in AIMONX, with each firearm's round count and a color dot for maintenance status."
+      alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
     - lead: "Range sessions and matches."
       body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
       alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
@@ -261,3 +261,7 @@ footer:
   # ⭐ Dal giro W12 la riga dei marchi cita anche «Apple» e «the Apple logo»:
   # lo chiede Apple a chi usa il badge, che il suo logo lo porta dentro.
   copyright: "© 2026 Piermichele Fassio. Apple, the Apple logo, iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
+  # ⭐ Dal giro W14, dopo la riga dei marchi Apple: nelle schermate dell'app si
+  # leggono nomi di marche che non sono nostre (i dati di prova), e questa è
+  # la riga che lo dice. Sta nel piede, quindi su tutte e quattro le pagine.
+  altri_marchi: "All other trademarks are the property of their respective owners."
