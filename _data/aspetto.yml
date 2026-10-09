@@ -70,7 +70,7 @@ schermate:
 # solo, due pagine.
 funzioni:
   round-count:
-    - aimonx-firearm-sessions
+    - aimonx-session-rounds
     - aimonx-maintenance-rules
     - aimonx-rounds-by-firearm
     - aimonx-firearm-stats

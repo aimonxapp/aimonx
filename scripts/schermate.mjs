@@ -84,7 +84,9 @@ const LISTA = [
   { da: 'stats_4.png',         a: 'aimonx-shooting-costs',       larghezze: TELEFONO },
   { da: 'inventario-demo.pdf', a: 'aimonx-firearm-inventory-pdf', larghezze: FOGLIO },
   // --- giro W15, la pagina «Round count» ---
-  { da: 'sessions_2.png',      a: 'aimonx-firearm-sessions',     larghezze: TELEFONO },
+  // ⚠️ `sessions_3`, non `sessions_2` (Pier, 09/10/2026): il testo alternativo
+  // descrive UNA sessione coi suoi 150 colpi, e la 2 era la lista.
+  { da: 'sessions_3.png',      a: 'aimonx-session-rounds',       larghezze: TELEFONO },
   { da: 'stats_2.png',         a: 'aimonx-rounds-by-firearm',    larghezze: TELEFONO },
   // ⚠️ Questa contiene tre FOTO VERE di un'arma di Pier, in miniatura: uso
   // autorizzato da lui il 09/10/2026, matricola non leggibile. ⛔ Restano
