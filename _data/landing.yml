@@ -181,6 +181,10 @@ what:
     - lead: "Every firearm, every round."
       body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
       alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
+      # ⭐ Dal giro W15: il link alla pagina che racconta questa voce per
+      # esteso. Nella bozza è la riga sotto il paragrafo. Dove porta sta in
+      # `_data/collegamenti.yml` (`frasi`), come ogni altro link.
+      link: "See how round count works"
     - lead: "Range sessions and matches."
       body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
       alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/funzione.html — LO SCHELETRO DELLE PAGINE-FUNZIONE. Giro W15.
+
+  ⭐ «Round count» è la prima, e questo file è il MODELLO delle prossime
+  (Maintenance, Privacy & security…): nasce riusabile apposta. Una pagina nuova
+  è un file di testo in `_data/`, una riga per le sue schermate in
+  `_data/aspetto.yml` (`funzioni`) e un front matter — qui non si tocca niente.
+
+  ⭐ È UNA PAGINA DA LEGGERE CHE FA ANCHE VEDERE: stesso foglio bianco e stessa
+  colonna stretta di `_layouts/pagina.html` (ne usa il foglio di stile,
+  `testo.scss`), più tre cose che quelle non hanno — il paragrafo d'apertura
+  sotto il titolo, le SCHERMATE dell'app in mezzo al testo, e il BADGE dello
+  Store in fondo. Le tre cose in più stanno in `assets/css/funzione.scss`.
+  ⚠️ Non è un `pagina.html` con tre `if` in più, ed è voluto: Privacy, Support
+  e Terms devono poter restare ferme mentre queste pagine cambiano.
+
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: vengono
+  tutte da `_data/<page.dati>.yml`, che è di Cowork.
+
+  ⛔ `blocchi` SI IMPAGINA, NON SI INTERPRETA, come in `pagina.html`: ordine
+  della bozza, e un `tipo` sconosciuto esce come paragrafo invece di sparire.
+
+  ⚠️ LE SCHERMATE SI ACCOPPIANO AI LORO FILE PER ORDINE DI COMPARSA: la prima
+  riga `alt` della pagina prende il primo nome di
+  `site.data.aspetto.funzioni[page.dati]`, la seconda il secondo. ⛔ Se i nomi
+  finiscono prima dei testi, l'immagine NON esce — meglio un vuoto che una
+  schermata col testo alternativo di un'altra. Che i due conti siano uguali lo
+  controlla `scripts/testo-approvato.sh`.
+
+  `page.dati` sceglie il testo, `page.tinta` il colore, `page.foglio` e
+  `page.foglio_funzione` i fogli di stile.
+{%- endcomment -%}
+{%- assign d = site.data[page.dati] -%}
+{%- assign nomi = site.data.aspetto.funzioni[page.dati] -%}
+{%- assign quale = 0 -%}
+<head>
+  {%- include testa.html meta=d.meta -%}
+</head>
+<body class="v-testo v-funzione tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- include barra.html -%}
+
+    <div class="titolone">
+      <h1>{{ d.titolo }}</h1>
+      {%- if d.sommario %}
+      <p class="sommario">{% include frase.html testo=d.sommario %}</p>
+      {%- endif %}
+    </div>
+  </div>
+
+  <main id="principale">
+    <article class="foglio">
+      {%- for b in d.blocchi -%}
+      {%- case b.tipo -%}
+      {%- when 'h2' %}
+      <h2>{% include frase.html testo=b.testo %}</h2>
+      {%- when 'schermate' %}
+      {%- comment -%}
+        ⚠️ Una o più schermate sulla stessa riga. `sizes` dice 208 px: è la
+        larghezza massima che il CSS dà a una schermata in questa pagina.
+      {%- endcomment -%}
+      <div class="mostra{% if b.alt.size > 1 %} mostra-coppia{% endif %}">
+        {%- for testo_alt in b.alt -%}
+        {%- comment -%} ⚠️ Un include non accetta `nomi[quale]` come parametro: si passa per un nome. {%- endcomment -%}
+        {%- assign nome_ora = nomi[quale] -%}
+        {%- if nome_ora %}
+        {% include schermata.html nome=nome_ora alt=testo_alt forma='telefono' sizes='208px' %}
+        {%- endif -%}
+        {%- assign quale = quale | plus: 1 -%}
+        {%- endfor %}
+      </div>
+      {%- else %}
+      <p>{% if b.forte %}<strong>{% include frase.html testo=b.forte %}</strong> {% endif %}{% include frase.html testo=b.testo collega=true %}</p>
+      {%- endcase -%}
+      {%- endfor %}
+    </article>
+
+    {%- comment -%}
+      IL BADGE DELL'APP STORE, in fondo. ⛔ UNO SOLO SULLA PAGINA — Apple, «Use
+      one App Store badge per layout» — nel SUO file non modificato, servito da
+      noi, col link NUDO di `_data/collegamenti.yml`: le stesse regole, e le
+      stesse ragioni, scritte per esteso in `_layouts/landing.html`.
+      ⚠️ `alt` è l'unico testo del link, e viene dal file di Cowork.
+      ⛔ Sta FUORI dal foglio bianco, sul verde: il badge nero col suo bordo
+      grigio è disegnato per stare su un fondo, e lo spazio libero che Apple
+      gli vuole intorno lì non lo contende a nessun testo.
+    {%- endcomment -%}
+    {%- if d.badge %}
+    <p class="scarica">
+      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
+        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+             alt="{{ d.badge }}" width="120" height="40">
+      </a>
+    </p>
+    {%- endif %}
+  </main>
+
+  {%- include piede.html -%}
+</body>
+</html>

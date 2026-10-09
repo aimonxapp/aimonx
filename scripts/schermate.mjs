@@ -6,8 +6,9 @@
 // quale sorgente viene, a che misura, con quale qualità — e il giorno che Pier
 // rifà una schermata nessuno sa come rifarne la copia per il sito.
 //
-// ⛔⛔ LE SORGENTI SONO OTTO E SOLO OTTO, nominate qui sotto una per una: sette
-// schermate dell'app e la prima (e unica) pagina del PDF di prova. ⛔ Lo script
+// ⛔⛔ LE SORGENTI SONO QUELLE NOMINATE QUI SOTTO, UNA PER UNA, E SOLO QUELLE:
+// otto dal giro W14 (sette schermate dell'app e la prima e unica pagina del PDF
+// di prova) e tre dal W15, per la pagina «Round count». ⛔ Lo script
 // NON prende «quel che trova nella cartella»: nella cartella di Pier ci sono
 // decine di altre schermate, e nel repo — che è PUBBLICO — entrano solo queste
 // (giro W14 §2①). Chi ne vuole una in più la aggiunge alla lista, e si vede.
@@ -82,6 +83,13 @@ const LISTA = [
   { da: 'renewals_1.png',      a: 'aimonx-renewals',             larghezze: TELEFONO },
   { da: 'stats_4.png',         a: 'aimonx-shooting-costs',       larghezze: TELEFONO },
   { da: 'inventario-demo.pdf', a: 'aimonx-firearm-inventory-pdf', larghezze: FOGLIO },
+  // --- giro W15, la pagina «Round count» ---
+  { da: 'sessions_2.png',      a: 'aimonx-firearm-sessions',     larghezze: TELEFONO },
+  { da: 'stats_2.png',         a: 'aimonx-rounds-by-firearm',    larghezze: TELEFONO },
+  // ⚠️ Questa contiene tre FOTO VERE di un'arma di Pier, in miniatura: uso
+  // autorizzato da lui il 09/10/2026, matricola non leggibile. ⛔ Restano
+  // miniature dentro la schermata: non si ritagliano e non si ingrandiscono.
+  { da: 'firearms_5.png',      a: 'aimonx-firearm-stats',        larghezze: TELEFONO },
 ];
 // ⚠️ 0,82: sotto, il testo piccolo delle schermate comincia a sporcarsi
 // intorno alle lettere; sopra, il peso sale e a occhio non cambia niente.

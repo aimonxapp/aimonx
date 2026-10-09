@@ -1,0 +1,65 @@
+---
+---
+// assets/css/funzione.scss — QUEL CHE LE PAGINE-FUNZIONE HANNO IN PIÙ delle
+// pagine da leggere. Giro W15, pagina «Round count».
+//
+// ⛔ È UN FOGLIO IN PIÙ, NON UN FOGLIO AL POSTO DI: queste pagine caricano
+// `testo.css` (foglio bianco, colonna stretta, titoli, link) e POI questo.
+// ⚠️ Sta a parte perché Privacy, Support e Terms non lo scarichino: dentro
+// `testo.scss` lo avrebbero pagato tre pagine che non mostrano una schermata.
+// ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
+
+// --- il paragrafo d'apertura, sotto il titolo, sul verde ---------------------
+// È il primo paragrafo della bozza: dice in tre frasi cosa fa la funzione, e
+// sta in alto col titolo come il sommario della landing — stesso colore.
+// ⚠️ 46rem è già la colonna del foglio: `max-width` in `ch` tiene la riga sotto
+// i 70 caratteri anche a corpo più grande.
+.v-funzione .titolone h1 { max-width: 20ch; }
+.v-funzione .sommario {
+  margin-top: clamp(.9rem, 2.4vw, 1.3rem); max-width: 60ch;
+  font-size: clamp(1.02rem, 1.8vw, 1.16rem); line-height: 1.62; color: #CFE3D8;
+}
+
+// --- le schermate in mezzo al testo -----------------------------------------
+// ⛔ LA CORNICE È LA STESSA DELLA LANDING — un rettangolo scuro con gli angoli
+// tondi, NON un iPhone — e i suoi numeri sono copiati da `assets/css/b.scss`,
+// dove stanno le ragioni di ciascuno. ⚠️ È una copia, e una copia diverge: se
+// là cambia la cornice, cambia anche qui. Portarla in `comune.scss` è uno
+// SPOSTAMENTO, e si fa in un giro che non costruisce altro (CLAUDE.md).
+.v-funzione .mostra {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  margin-block: clamp(1.5rem, 4vw, 2.1rem) clamp(.4rem, 1.5vw, .8rem);
+}
+.v-funzione .schermata { margin: 0; flex: none; }
+.v-funzione .schermata img { width: 100%; height: auto; }
+.v-funzione .telefono {
+  width: #{"min(13rem, 70%)"};
+  border: 5px solid #07160F;
+  border-radius: #{"14% / 6.5%"};
+  background: #07160F;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(6, 24, 16, .24);
+}
+.v-funzione .telefono img { border-radius: #{"11.5% / 5.3%"}; }
+// ⚠️ Due schermate vicine: ciascuna può prendere al più metà riga meno lo
+// spazio fra le due, così su un telefono stanno ancora fianco a fianco invece
+// di impilarsi in due schermate di scorrimento.
+.v-funzione .mostra-coppia .telefono { width: #{"min(13rem, calc(50% - .6rem))"}; }
+
+// --- il badge dell'App Store, in fondo ---------------------------------------
+// ⛔⛔ QUI VALGONO LE REGOLE DI APPLE, le stesse della landing (`b.scss`):
+// il file non si modifica — nessun filtro, ombra, raggio, `:hover` — e il CSS
+// gli dà SOLO una misura; ALTEZZA ≥ 40 px, anche per chi rimpicciolisce il
+// carattere di base; SPAZIO LIBERO ≥ ¼ dell'altezza su ogni lato; UNO SOLO.
+// Sopra ha il margine qui sotto, sotto il respiro del `main` più quello del
+// piede: tutti e due molto più di un quarto. Lo misura `scripts/badge.mjs`.
+// ⛔ `#{...}`: Sass ha una PROPRIA `max()`, e senza l'interpolazione la build
+// fallisce — misurato nel W7.
+.v-funzione main { --badge: #{"max(40px, clamp(3rem, 5vw, 3.5rem))"}; }
+.v-funzione .scarica {
+  margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
+  text-align: center; line-height: 0;
+}
+.v-funzione .scarica a { display: inline-block; }
+.v-funzione .scarica img { height: var(--badge); width: auto; }

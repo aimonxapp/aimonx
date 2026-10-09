@@ -298,7 +298,7 @@ VOCI
     # ⛔ Quattro numeri, e uno è il MUST di Pier misurato invece che riletto.
     # Il programma sta in scripts/misure-pagine.rb, con le sue ragioni.
     echo
-    echo "--- le quattro pagine, guardate una per una (giri W9 e W10) ---"
+    echo "--- le pagine costruite, guardate una per una (dal giro W9) ---"
     # ⛔ La variabile NON si chiama MISURE, e non è un vezzo: `MISURE` è la
     # variabile globale in cui `confronta` accumula le coppie chiave=valore che
     # `--aggiorna-attese` poi riscrive. Chiamarla così qui la sovrascriveva, e
@@ -306,7 +306,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti badge_guasti immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld seo_guasti badge_guasti badge_nel_sito link_allo_store immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done
@@ -630,7 +630,7 @@ fi
 # ⚠️ Scatta anche quando cambia la BOZZA: lì non c'è un errore da riparare, c'è
 # una consegna nuova da portare nei file di _data/.
 echo
-echo "--- il testo delle quattro pagine è quello approvato da Pier? ---"
+echo "--- il testo delle pagine è quello approvato da Pier? ---"
 USCITA_TESTO=$("$REPO/scripts/testo-approvato.sh" 2>&1)
 printf '%s\n' "$USCITA_TESTO"
 N_FUORI=$(printf '%s' "$USCITA_TESTO" | sed -n 's/.*fuori_bozza=\([0-9]*\).*/\1/p' | head -1)

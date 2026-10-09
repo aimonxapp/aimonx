@@ -60,3 +60,7 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 
 <link rel="stylesheet" href="{{ '/assets/css/comune.css' | relative_url }}">
 <link rel="stylesheet" href="{{ page.foglio | relative_url }}">
+{%- if page.foglio_funzione %}
+{%- comment -%} Giro W15: il foglio in più delle pagine-funzione. ⛔ Chi non lo chiede non riceve nemmeno uno spazio: le altre pagine escono identiche al byte a prima, ed è misurato. {%- endcomment %}
+<link rel="stylesheet" href="{{ page.foglio_funzione | relative_url }}">
+{%- endif %}

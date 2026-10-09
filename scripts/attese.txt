@@ -124,7 +124,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=4
+pagine_costruite=5
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -165,11 +165,11 @@ ancore_rotte=0
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
 # nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
-sitemap_indirizzi=4
+sitemap_indirizzi=5
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=4
+blocchi_jsonld=5
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -243,7 +243,7 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=8
+schermate_in_pagina=12
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
@@ -255,5 +255,24 @@ schermate_nei_dati_strutturati=7
 # larghezze. Il repo è pubblico. Se il primo numero sale è entrata un'immagine
 # in più; se sale solo il secondo, un file che non è una delle tre larghezze.
 # ⛔ Nessuno dei due si alza per far passare qualcosa: prima si guarda cos'è.
-schermate_immagini=8
-schermate_file=24
+schermate_immagini=11
+schermate_file=33
+
+# --- giro W15: la prima pagina-funzione, «Round count» ------------------------
+#
+# Quanti badge di Apple ci sono in tutto il sito, e quanti link allo Store.
+# ⚠️ Non sono soglie: salgono di uno a ogni pagina-funzione, che porta il suo
+# badge in fondo. ⛔ La REGOLA non è qui — al più UN badge per pagina (Apple,
+# «one badge per layout»), ogni link nudo — ed è `badge_guasti`, che resta 0.
+# Oggi: un badge sulla landing e uno su Round count; tre link, perché la
+# landing ha anche il link di testo nella fascia di chiusura.
+badge_nel_sito=2
+link_allo_store=3
+
+# ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
+# pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
+#   pagine_costruite, sitemap_indirizzi, blocchi_jsonld   4 → 5
+#   schermate_in_pagina   8 → 12   (quattro sulla pagina nuova; una è la stessa
+#                                   della landing, quindi i file nuovi sono tre)
+#   schermate_immagini    8 → 11   ·   schermate_file   24 → 33
+# ⚠️ `schermate_nei_dati_strutturati` resta 7: quel conto è della landing.

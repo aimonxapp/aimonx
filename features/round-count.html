@@ -1,0 +1,22 @@
+---
+# ⛔ IL FRONT MATTER NON È DECORAZIONE, è WD27: senza, Jekyll copierebbe questo
+# file tale e quale e il sito pubblicherebbe il sorgente.
+#
+# ⭐ LA PRIMA PAGINA DEL SECONDO TEMPO (giro W15), e il modello delle prossime:
+# una pagina-funzione è QUESTE RIGHE più un file di testo in `_data/` e i nomi
+# delle sue schermate in `_data/aspetto.yml`. Il resto lo fa
+# `_layouts/funzione.html`.
+# ⚠️ `permalink` è scritto e non lasciato al nome del file: l'indirizzo è una
+# promessa pubblica, e non deve cambiare se un giorno il file si sposta.
+layout: funzione
+permalink: /features/round-count/
+dati: round-count
+tinta: verde
+foglio: /assets/css/testo.css
+# ⚠️ Un SECONDO foglio, solo per le pagine-funzione: quel che hanno in più delle
+# pagine da leggere (schermate, badge). Sta a parte perché Privacy, Support e
+# Terms non lo scarichino e restino, al byte, quelle di prima.
+foglio_funzione: /assets/css/funzione.css
+# Accende, nei dati strutturati, il blocco che descrive QUESTA pagina.
+scheda_pagina: true
+---

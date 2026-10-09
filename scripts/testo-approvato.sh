@@ -49,7 +49,7 @@
 #     parola (`_includes/piede.html`). ⚠️ Sta comunque nella bozza della
 #     landing, quindi non ha bisogno di essere perdonato: lo trova da sé.
 #
-# ⚠️ IL PIEDE È LO STESSO SU TUTTE E QUATTRO LE PAGINE, e il suo testo è
+# ⚠️ IL PIEDE È LO STESSO SU TUTTE LE PAGINE, e il suo testo è
 # approvato nella bozza della LANDING. Quindi nel controllo ② ogni pagina è
 # confrontata con la propria bozza PIÙ quella della landing. Non è una maglia
 # larga: è dove Cowork ha scritto quelle parole.
@@ -90,7 +90,8 @@ if [ -z "$PIER_DIR" ]; then
   ILLEGGIBILI=1
 else
   for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
-               support/support-en-bozza.md terms/terms-en-bozza.md; do
+               support/support-en-bozza.md terms/terms-en-bozza.md \
+               round-count/round-count-en-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
   done
 fi
@@ -127,6 +128,13 @@ PAGINE = [
     uscita: "support/index.html" },
   { nome: "terms",   dati: "_data/terms.yml",   bozza: "terms/terms-en-bozza.md",
     uscita: "terms/index.html" },
+  # ⭐ Giro W15, la prima pagina-funzione. ⛔ `sezioni`: della sua bozza valgono
+  # SOLO «Meta» e «Page». Il resto di quel file — il link per la landing, la
+  # tabella «Controllo», le note — non va in pagina, e se il controllo lo
+  # accettasse, una riga della tabella copiata nel sito passerebbe per
+  # approvata. ⚠️ Le pagine-funzione che verranno si aggiungono qui, uguali.
+  { nome: "round-count", dati: "_data/round-count.yml", bozza: "round-count/round-count-en-bozza.md",
+    uscita: "features/round-count/index.html", sezioni: ["Meta", "Page"] },
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
@@ -159,8 +167,16 @@ STRUTTURA = ["tipo"]
 # che sono formattazione e non parole. ⭐ Dal giro W9 si scioglie anche il link
 # markdown [etichetta](indirizzo): in pagina si legge solo l etichetta, e
 # l indirizzo sta in _data/collegamenti.yml.
-def piano(percorso)
+# ⭐ Dal giro W15 `sezioni` restringe la bozza ai soli titoli `## ` nominati, e
+# toglie le righe che sono una NOTA FRA QUADRE da sole («[schermata: …]»): sono
+# istruzioni per chi costruisce, non testo.
+def piano(percorso, sezioni = nil)
   t = File.read(percorso, encoding: "UTF-8")
+  if sezioni
+    pezzi = t.split(/^## /).drop(1).select { |s| sezioni.include?(s.lines.first.to_s.strip) }
+    t = pezzi.map { |s| s.lines.drop(1).reject { |r| r.strip.start_with?("[") && r.strip.end_with?("]") }.join }.join("\n")
+    t = t.gsub(/^\#{2,}\s*/, "")
+  end
   t = t.gsub(/\*\[[^\]]*\]\*/m, "")
   t = t.gsub(/\[([^\]]+)\]\(\S+\)/) { $1 }
   t = t.gsub("**", "").gsub("*", "")
@@ -176,7 +192,7 @@ def stringhe(n, via = "", &b)
 end
 
 PAGINE.each do |p|
-  p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]))
+  p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni])
 end
 BOZZA_LANDING = PAGINE.first[:testo_bozza]
 
@@ -222,11 +238,21 @@ if modo == "sorgente"
   if File.readable?(aspetto)
     t = YAML.load_file(File.join(repo, "_data/landing.yml")); a = YAML.load_file(aspetto)
     eroe = t["hero"] || {}
-    [
+    # ⭐ Giro W15: le schermate delle pagine-funzione si accoppiano ai loro
+    # file per ORDINE DI COMPARSA. Per ogni pagina che ne ha, i testi
+    # alternativi nel file di Cowork e i nomi in `funzioni` devono essere
+    # tanti uguali — se no l ultima schermata non esce, o esce quella sbagliata.
+    coppie = []
+    (a["funzioni"] || {}).each do |pagina, nomi|
+      f = File.join(repo, "_data/#{pagina}.yml")
+      n_alt = File.readable?(f) ? (YAML.load_file(f)["blocchi"] || []).sum { |b| b["tipo"] == "schermate" ? (b["alt"] || []).size : 0 } : 0
+      coppie << ["schermate di #{pagina}", n_alt, (nomi || []).size]
+    end
+    ([
       ["carte",    (t["what"]["items"] || []).size, (a["what"] || []).size],
       ["punti",    (eroe["punti"] || []).size,      (a["hero_punti"] || []).size],
       ["garanzie", (eroe["garanzie"] || []).size,   (a["hero_garanzie"] || []).size],
-    ].each do |nome, n_testo, n_asp|
+    ] + coppie).each do |nome, n_testo, n_asp|
       d = (n_testo - n_asp).abs
       fuori += d
       puts "  #{nome}: voci di testo #{n_testo} - righe di aspetto #{n_asp}" + (d.zero? ? "" : "  NON COINCIDONO")

@@ -425,6 +425,19 @@ body.v-b {
   .v-b .mostra-telefono .corpo p { padding-right: .6rem; }
   .v-b .mostra-telefono .corpo .telefono { width: auto; margin: 1.15rem 1.3rem 1.4rem 0; }
 }
+// IL LINK ALLA PAGINA DELLA VOCE — giro W15. Sta sotto il paragrafo, nella
+// tinta scura della sezione, sottolineato (il colore da solo non basta: WCAG,
+// «Use of Color»). ⚠️ Quando la schermata è a fianco, il testo è su due righe
+// della griglia e la schermata le attraversa tutte e due: la seconda riga è
+// `1fr` apposta, così l'altezza che avanza finisce SOTTO il link e non fra il
+// paragrafo e il link.
+.v-b .voce .oltre { padding-top: 0; margin-top: -.55rem; font-weight: 600; }
+.v-b .voce .oltre a { color: var(--titolo); text-decoration: underline; text-underline-offset: .18em; }
+@container (min-width: 27rem) {
+  .v-b .mostra-telefono .corpo { grid-template-rows: #{"auto 1fr"}; }
+  .v-b .mostra-telefono .corpo .telefono { grid-column: 2; grid-row: #{"1 / span 2"}; }
+}
+
 // IL FOGLIO È LARGO, quindi la sua carta prende tutte e due le colonne — ed è
 // la settima di sette: senza, sarebbe rimasta da sola a sinistra con mezza
 // riga vuota accanto. Quando la carta è larga abbastanza, testo e foglio
@@ -521,6 +534,17 @@ body.v-b {
 // non serve, e questa regola lo scavalca a ogni larghezza.
 .v-b .firma .scritta-mano { font-size: clamp(1.9rem, 4.6vw, 2.5rem); }
 @media (min-width: 880px) { .v-b .firma .logo { width: 11rem; } }
+// ⭐ SU TELEFONO TUTTO AL CENTRO, dal giro W15 (Cowork, guardando il W14): lì
+// logo, motto e link stanno uno sotto l'altro, e col logo al centro e le
+// parole a sinistra sembravano due pezzi di due pagine. ⚠️ 480 px e non «dove
+// va a capo»: sotto, la fila è una colonna DECISA, non un a capo capitato.
+// ⚠️ Il motto ruota intorno al proprio centro, non più al bordo sinistro:
+// ruotando da sinistra la riga finiva più a destra di dove sembra centrata.
+@media (max-width: 479px) {
+  .v-b .firma { flex-direction: column; text-align: center; }
+  .v-b .firma .scritta-mano { transform-origin: center; }
+  .v-b .firma .svolazzo { margin-inline: auto; }
+}
 // IL LINK ALLO STORE, sotto il motto. ⛔ È TESTO E DEVE RESTARE TESTO: Apple
 // vuole un solo badge per layout, e questo non è il secondo — quindi niente
 // fondo, niente bordo, niente pillola, niente che gli somigli. Una riga

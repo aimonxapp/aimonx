@@ -82,7 +82,28 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "@type": "Person",
       "@id": {{ '/#autore' | absolute_url | jsonify }},
       "name": "Piermichele Fassio"
-    }{% if page.scheda_app %},
+    }{% if page.scheda_pagina %},
+    {%- comment -%}
+      ⭐ LA PAGINA, dal giro W15 — solo dove `page.scheda_pagina` lo accende,
+      cioè sulle pagine-funzione. Verificato su schema.org (V30.1, 09/10/2026):
+      `WebPage` è un `CreativeWork`, e `isPartOf` lega un `CreativeWork` a
+      quello di cui fa parte — qui il sito, per `@id`.
+      ⛔ SOLO FATTI VERI E SOLO PAROLE APPROVATE: nome e descrizione sono il
+      titolo di scheda e la descrizione della pagina, alla lettera.
+      ⛔ NIENTE `BreadcrumbList` (ipotesi del giro, scartata): «Home › Features
+      › Round count» dichiarerebbe una pagina Features che NON ESISTE —
+      `/#features` è un punto della landing — e in pagina quella fila di link
+      non c'è. Si riprende il giorno in cui la pagina Features esiste.
+    {%- endcomment -%}
+    {
+      "@type": "WebPage",
+      "@id": {{ page.url | append: '#pagina' | absolute_url | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "name": {{ site.data[page.dati].meta.title | jsonify }},
+      "description": {{ site.data[page.dati].meta.description | jsonify }},
+      "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
+      "inLanguage": "en-US"
+    }{% endif %}{% if page.scheda_app %},
     {
       "@type": "MobileApplication",
       "@id": {{ '/#app' | absolute_url | jsonify }},

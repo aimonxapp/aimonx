@@ -42,6 +42,11 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W15, la prima pagina-funzione. È la frase più lunga, quindi sta in
+  # testa (vedi la regola dell'ordine qui sopra).
+  - frase: "See how round count works"
+    href: "/features/round-count/"
+    tipo: pagina
   - frase: "Garante per la protezione dei dati personali"
     href: "https://www.garanteprivacy.it/"
     tipo: esterno

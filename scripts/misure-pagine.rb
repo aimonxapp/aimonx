@@ -307,13 +307,11 @@ end
 # ⛔ E il badge c e UNA volta, col suo link. ⚠️ Senza queste due
 # righe il controllo passerebbe a vuoto il giorno in cui il badge sparisce:
 # zero link sono anche zero link sbagliati.
-# ⭐ Dal giro W14 i link allo Store sono DUE e il badge resta UNO: in fondo
-# alla landing c e un link di TESTO, perche Apple vuole un solo badge per
-# layout (Pier, 09/10/2026). ⛔ Tutti e due nudi — lo controlla il ciclo piu
-# in alto, che guarda OGNI link verso apps.apple.com.
-$badge << "i link allo Store sono #{$link_store.size}, non 2" unless $link_store.size == 2
-$badge << "i badge nel sito sono #{$img_badge}, non 1" unless $img_badge == 1
-
+# ⭐ DAL GIRO W15 I DUE CONTI NON SONO PIU SCRITTI QUI: con le pagine-funzione
+# ogni pagina nuova porta il suo badge, e un «devono essere 2» da correggere a
+# mano a ogni pagina e un numero copiato. Si STAMPANO, e l attesa sta in
+# scripts/attese.txt come le altre. ⛔ Le REGOLE restano qui sopra e valgono
+# pagina per pagina: al piu un badge per pagina (Apple), ogni link nudo.
 # ⚠️ Senza questa riga i due controlli qui sopra passerebbero a vuoto il
 # giorno in cui il blocco dell applicazione sparisse dalla landing.
 $seo << "i blocchi «applicazione» nei dati strutturati sono #{$app_jsonld}, non 1" unless $app_jsonld == 1
@@ -331,6 +329,8 @@ puts "badge_guasti=#{$badge.size}"
 # ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il
 # giorno in cui le schermate sparissero dalla pagina — zero immagini sono anche
 # zero immagini sbagliate. I due conti dicono che ci sono ancora.
+puts "badge_nel_sito=#{$img_badge}"
+puts "link_allo_store=#{$link_store.size}"
 puts "immagini_guasti=#{$immagini.size}"
 puts "schermate_in_pagina=#{$schermate}"
 puts "schermate_nei_dati_strutturati=#{$schermate_jsonld}"

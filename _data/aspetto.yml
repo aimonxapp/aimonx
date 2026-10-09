@@ -60,6 +60,21 @@ schermate:
   telefono: { larghezze: [430, 645, 860],  larga: 645, alta: 1398 }
   foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 482 }  # ⚠️ 482 e non 637: senza il bianco (W14)
 
+# --- le pagine-funzione, dal giro W15 ---------------------------------------
+#
+# Per ogni pagina (la chiave è il suo `dati:`), i nomi delle sue schermate
+# NELL'ORDINE IN CUI COMPAIONO nel testo: `_layouts/funzione.html` li accoppia
+# alle righe `alt` del file di Cowork per posizione. ⛔ Stessa fragilità delle
+# sette carte, stesso controllo: `scripts/testo-approvato.sh` confronta i conti.
+# ⚠️ `aimonx-maintenance-rules` è la stessa schermata della landing: un file
+# solo, due pagine.
+funzioni:
+  round-count:
+    - aimonx-firearm-sessions
+    - aimonx-maintenance-rules
+    - aimonx-rounds-by-firearm
+    - aimonx-firearm-stats
+
 # La schermata della parte alta: la Home dell'app, accanto alla domanda.
 hero_schermata: aimonx-home-screen
 

@@ -1,0 +1,96 @@
+# _data/round-count.yml — IL TESTO DELLA PAGINA «ROUND COUNT», UNA VOLTA SOLA.
+# Giro W15: la prima pagina del secondo tempo, e il modello delle prossime.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 09/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/round-count/round-count-en-bozza.md
+# sezioni `## Meta` e `## Page`. `scripts/testo-approvato.sh` cerca ogni stringa
+# qui dentro ALLA LETTERA in quelle due sezioni — e SOLO in quelle: le note fra
+# quadre, il link per la landing e la tabella «Controllo» della stessa bozza
+# non vanno in pagina, e il controllo non le accetta.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Quale file sia ogni schermata
+# sta in `_data/aspetto.yml` (`funzioni`), accoppiato PER ORDINE DI COMPARSA;
+# dove porta il badge sta in `_data/collegamenti.yml`.
+#
+# ⚠️ `blocchi` è una LISTA ORDINATA, nell'ordine della bozza, e la impagina
+# `_layouts/funzione.html`:
+#   · `h2`        un titolo di sezione (nella bozza sono `###` sotto `## Page`);
+#   · `p`         un paragrafo. Con `forte:` la prima frase esce in neretto:
+#                 nella bozza è `**così.**` seguita dal resto — due stringhe
+#                 qui, una riga là, parole identiche (regola di Pier, 22/09);
+#   · `schermate` una o più immagini dell'app. ⛔ `alt` NON si scrive in
+#                 pagina: è quel che sente chi non la vede. Viene dalla sezione
+#                 «Screenshots — alt text» della bozza, nello stesso ordine.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "Round Count Tracker for Every Firearm | AIMONX"
+  description: "Log a range session and AIMONX adds the rounds to that firearm on its own, then shows you when cleaning or a spring swap is due."
+
+titolo: "The round count tracker that does the math for you"
+sommario: "Most shooters lose track somewhere between the range bag and the notebook. With AIMONX, you log the session and every firearm's round count updates on its own. No mental math, no spreadsheet."
+
+blocchi:
+- tipo: h2
+  testo: How it works
+- tipo: p
+  forte: Log the session.
+  testo: Pick the firearm, pick the ammo, enter how many rounds you fired. That's it.
+- tipo: p
+  forte: The total updates itself.
+  testo: The firearm's round count goes up. If you track that ammo, what you have on hand goes down. Your maintenance counters move with it.
+- tipo: p
+  forte: Made a mistake? Just fix it.
+  testo: "Edit a session or delete it, and the totals follow. AIMONX doesn't keep a running number that can drift: it adds up your sessions every time."
+- tipo: schermate
+  alt:
+  - "A range session in AIMONX: the firearm, the date, the range, the ammo and the 150 rounds fired."
+- tipo: h2
+  testo: Start where your firearm is today
+- tipo: p
+  testo: Bought it used, or already put a few thousand rounds through it? Enter the round count it came with, and choose whether those rounds count toward its total and its maintenance.
+- tipo: h2
+  testo: Shot more than one kind of ammo?
+- tipo: p
+  testo: Add a line for each. A box of practice ammo and a few rounds of your match load end up in the same session, each counted on its own.
+- tipo: h2
+  testo: Dry fire doesn't add rounds
+- tipo: p
+  testo: Log your dry fire practice as its own session with your reps. It never touches your round count or your ammo.
+- tipo: h2
+  testo: Rentals count too
+- tipo: p
+  testo: Shot a rental at the range? Log it like any other firearm. Its rounds count, and there's no maintenance for you to track.
+- tipo: h2
+  testo: Round count drives your maintenance
+- tipo: p
+  testo: "Set your own rules for each firearm, like cleaning every 500 rounds or a new recoil spring at 5,000, and choose how early you want the heads-up. Each firearm shows a color-coded status: green when it's good, yellow when maintenance is coming up, orange when it's due."
+- tipo: schermate
+  alt:
+  - "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
+- tipo: h2
+  testo: See where your rounds go
+- tipo: p
+  testo: Rounds by firearm, rounds over time, and what each round really costs you.
+# ⚠️ DUE SCHERMATE QUI, E NON È LA FORMA FINALE: la bozza dice «e/o», e Pier
+# sceglie guardando l'anteprima (giro W15 §2①). Chi ne toglie una toglie la sua
+# riga qui e il suo nome in `_data/aspetto.yml`.
+- tipo: schermate
+  alt:
+  - "Rounds fired by firearm in AIMONX, with each firearm's share, sessions and cost per round."
+  - "A firearm's photos and its last 30 days in AIMONX: rounds, sessions, money spent and cost per round."
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: Free tracks the round count of one active firearm, with unlimited range sessions. Pro tracks every firearm you own.
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: Your round counts live encrypted on your iPhone. No account. No AIMONX servers. We never see your data.
+
+# ⛔ Come sulla landing: NON si scrive in pagina, è il TESTO ALTERNATIVO del
+# badge di Apple in fondo — ed essendo l'unico contenuto del link, il suo nome.
+badge: "Download on the App Store"

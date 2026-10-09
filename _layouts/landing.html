@@ -239,6 +239,18 @@
           {%- endcomment -%}
           <div class="corpo">
             <p>{{ v.body }}</p>
+            {%- comment -%}
+              ⭐ IL LINK ALLA PAGINA DELLA VOCE, dal giro W15 — solo dove il
+              testo di Cowork ne porta uno (`link`). L'indirizzo si cerca in
+              `_data/collegamenti.yml` con la stessa frase, come fa il piede:
+              ⛔ se lì manca, il link non esce invece di uscire rotto.
+            {%- endcomment -%}
+            {%- if v.link -%}
+            {%- assign c = site.data.collegamenti.frasi | where: "frase", v.link | first -%}
+            {%- if c %}
+            <p class="oltre"><a href="{{ c.href | relative_url }}">{{ v.link }}</a></p>
+            {%- endif -%}
+            {%- endif -%}
             {%- if a.schermata and v.alt %}
             {%- if forma == 'foglio' %}
             {% include schermata.html nome=a.schermata alt=v.alt forma='foglio' sizes='(min-width: 880px) 540px, 86vw' %}
