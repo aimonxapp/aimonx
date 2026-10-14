@@ -249,30 +249,9 @@ body.v-b {
 // ciascuna delle sette voci. Sono le schermate VERE, con dati di prova, rifatte
 // da `scripts/schermate.mjs`; il markup è uno solo, `_includes/schermata.html`.
 //
-// ⛔ LA CORNICE È UN RETTANGOLO SCURO CON GLI ANGOLI TONDI, E BASTA. Non è un
-// iPhone e non deve diventarlo: niente tacca, niente isola, niente tasti,
-// niente riflessi. ⚠️ Non è prudenza generica: le regole di Apple sull'uso
-// delle immagini dei suoi prodotti non sono state lette per questo uso (giro
-// W14 §2①), quindi qui non c'è niente che sia SUO — c'è un bordo.
-// ⚠️ Il colore del bordo è il verde più scuro della pagina (quello della carta
-// del proclama, annerito): un nero puro accanto ai verdi dell'app sembrava un
-// pezzo di un altro sito.
-// ⚠️ GLI ANGOLI SONO IN PERCENTUALE, e la coppia non è a caso: la schermata è
-// alta 2,17 volte la sua larghezza, quindi «14% della larghezza» e «6,5%
-// dell'altezza» sono la stessa misura, e l'angolo esce TONDO a ogni larghezza.
-// Con un valore in px sarebbe giusto a una misura e sbagliato alle altre.
-// ⚠️ Gli angoli tagliano i quattro spigoli della schermata: lì c'è solo il
-// fondo verde dell'app, nessuna scritta e nessun numero. Guardato su tutte e
-// sette.
-.v-b .schermata { margin: 0; }
-.v-b .schermata img { width: 100%; height: auto; }
-.v-b .telefono {
-  border: 5px solid #07160F;
-  border-radius: #{"14% / 6.5%"};
-  background: #07160F;
-  overflow: hidden;
-}
-.v-b .telefono img { border-radius: #{"11.5% / 5.3%"}; }
+// ⭐ LA CORNICE DEL TELEFONO NON È PIÙ QUI, dal giro W16: sta in `comune.scss`,
+// una volta sola per la landing e per le pagine-funzione, con le sue ragioni.
+// Qui restano solo le MISURE della landing (larghezze, ombre, posti).
 // IL FOGLIO — la pagina del PDF, distesa. È carta, non uno schermo: un filo
 // grigio e un'ombra corta, perché su una carta bianca un foglio bianco senza
 // bordo non si vede. ⛔ L'immagine è la pagina INTERA, non ritagliata: le foto
@@ -508,6 +487,12 @@ body.v-b {
   margin-top: 1.3rem; max-width: 62ch;
   font-size: .98rem; line-height: 1.65; color: #B7CEC2;
 }
+// IL LINK ALLA PAGINA «YOUR DATA», sotto il paragrafo — giro W16. Sta sul
+// verde scuro e non su una carta, quindi NON prende il colore delle carte
+// (`.voce .oltre`): prende il verde chiaro dei link sul fondo scuro, come il
+// link allo Store in fondo alla pagina. Il contrasto lo misura `contrasto.mjs`.
+.v-b .blocco-privacy > .oltre { margin-top: .9rem; font-size: .98rem; font-weight: 600; }
+.v-b .blocco-privacy > .oltre a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .22em; }
 
 // --- LA FASCIA DI CHIUSURA — giro W14 --------------------------------------
 // La firma della pagina, prima del piede: il logo grande e il motto a mano,

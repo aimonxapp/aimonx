@@ -1,0 +1,121 @@
+# _data/your-data.yml — IL TESTO DELLA PAGINA «YOUR DATA», UNA VOLTA SOLA.
+# Giro W16: la seconda pagina-funzione, sul modello di `_data/round-count.yml`.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 14/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/your-data/your-data-en-bozza.md
+# sezioni `## Meta` e `## Page`. `scripts/testo-approvato.sh` cerca ogni stringa
+# qui dentro ALLA LETTERA in quelle due sezioni — e SOLO in quelle: le note fra
+# quadre, il link per la landing, i «Punti aperti» e la tabella «Controllo»
+# della stessa bozza non vanno in pagina, e il controllo non le accetta.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Quale file sia ogni schermata
+# sta in `_data/aspetto.yml` (`funzioni`), accoppiato PER ORDINE DI COMPARSA;
+# dove porta «Privacy Policy» sta in `_data/collegamenti.yml`.
+#
+# ⚠️ `blocchi` si legge come in `_data/round-count.yml`, più UN tipo:
+#   · `ul`  un elenco puntato, come nelle pagine da leggere. Una voce è una
+#           frase sola, oppure `forte:` + `testo:` quando la bozza comincia la
+#           voce in neretto («**PDF reports** of your firearms…»): due stringhe
+#           qui, una riga là, parole identiche. ⚠️ Se `testo` comincia con una
+#           virgola, il layout non ci mette lo spazio davanti — è la bozza:
+#           «**Restoring an archive is always free**, even without Pro.»
+#
+# ⚠️ I TESTI ALTERNATIVI sono ⏳ DA APPROVARE guardando l'anteprima (giro W16
+# §2①): stanno nella bozza, ma Pier li approva dopo averli visti in pagina.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "Private Firearm Log App: Encrypted, No Account | AIMONX"
+  description: "AIMONX keeps your firearm log encrypted on your iPhone and in your own iCloud. No account, no AIMONX servers, no tracking. Here's how it works."
+
+titolo: "Your data stays yours"
+sommario: "What you own and how you shoot is nobody's business but yours. So we built AIMONX so that even we can't see your logbook. Here's how it works, in plain English, and how you can check it yourself."
+
+blocchi:
+- tipo: h2
+  testo: No account. Nothing to sign up for.
+- tipo: p
+  testo: "Download AIMONX and start logging. No email, no password to create, no name. There's no login, because there's no AIMONX account at all."
+- tipo: h2
+  testo: No AIMONX servers
+- tipo: p
+  testo: "Your logbook isn't stored on an AIMONX server, because there isn't one. We never see your firearms, your serial numbers or your round counts."
+- tipo: h2
+  testo: Encrypted on your iPhone
+- tipo: p
+  testo: "Your whole logbook lives in an encrypted database on your iPhone. It unlocks only when you verify it's you, with Face ID, Touch ID or your passcode, and by default it locks again when you leave the app. Even in the app switcher, AIMONX shows only its logo."
+# ⚠️ Due schermate vicine: nella bozza sono due righe `[schermata: …]` una
+# sotto l'altra, e il blocco e lo schermo bloccato si capiscono insieme.
+- tipo: schermate
+  alt:
+  - 'The AIMONX lock screen: "AIMONX Is Locked. Unlock to see your data."'
+  - "AIMONX in the iPhone app switcher, showing only its logo and a lock instead of your data."
+- tipo: h2
+  testo: An encrypted copy in your own iCloud
+- tipo: p
+  testo: "Phones break, get lost, get replaced. So by default, AIMONX keeps an encrypted copy of your logbook in your own iCloud. It backs up your changes when you open or close the app, or whenever you tap Back Up Now."
+- tipo: ul
+  voci:
+  - "It's encrypted on your iPhone, with the same key as your logbook, before it goes anywhere."
+  - "It sits in your personal iCloud storage. We can't access it."
+  - "It's separate from your iPhone's iCloud Backup, which can only bring back your whole phone at once."
+  - "New iPhone, or reinstalled the app? Your firearms, sessions and ammo come right back."
+  - "Don't want it? You can turn it off."
+- tipo: schermate
+  alt:
+  - "The AIMONX Backup page: backup on, the time of the last backup, and a Back Up Now button."
+- tipo: h2
+  testo: Works offline
+- tipo: p
+  testo: "No signal at the range? Log as usual. Your encrypted copy is saved to your own iCloud the next time you use the app with a connection."
+- tipo: h2
+  testo: Advanced protection, if you want it
+- tipo: p
+  testo: "Face ID has you covered if your phone is lost or stolen. But by default, the key to your logbook is kept in your Apple Keychain, so anyone who can get into your Apple Account could reach it. Want it out of reach for everyone but you? Add a passphrase only you know. AIMONX will ask for it every time it starts up, and Face ID alone won't open your logbook. Make it long, like a few words strung together. Advanced protection comes with Pro."
+- tipo: p
+  testo: "One honest warning: forget it, and nobody can recover your data. Not us, not anyone."
+- tipo: schermate
+  alt:
+  - "AIMONX Advanced Protection settings: auto-lock when you leave, Face ID on, and the option to add a password only you know."
+- tipo: h2
+  testo: Serial numbers are optional
+- tipo: p
+  testo: 'Add one only if you want to, or use a private name like "Match pistol 1." Photos you add are stripped of their location and other hidden details before they''re saved.'
+- tipo: h2
+  testo: No ads. No analytics. No tracking.
+- tipo: p
+  testo: "AIMONX doesn't include any third-party code that talks to the internet: no analytics, no crash reporters, no ad networks. Your data talks to no one but your own iCloud."
+- tipo: h2
+  testo: Your data, on your terms
+- tipo: ul
+  voci:
+  - forte: PDF reports
+    testo: of your firearms are created right on your iPhone, with an optional password.
+  - forte: "Encrypted archives (Pro):"
+    testo: "export your whole logbook with a password of its own, and keep it wherever you like: a drive, another cloud, a USB stick."
+  - forte: Restoring an archive is always free
+    testo: ", even without Pro."
+  - forte: Want a clean slate?
+    testo: Reset App deletes your logbook from your iPhone, and your encrypted iCloud copy too.
+- tipo: h2
+  testo: Check it yourself
+- tipo: ul
+  voci:
+  - "Download AIMONX. There's no sign-up screen."
+  - "Turn on Airplane Mode and log a session. It just works."
+  - "Look at App Privacy on our App Store page: Data Not Collected."
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: "Free gets you everything on this page, including your encrypted iCloud copy, with two exceptions that come with Pro: advanced protection and exporting encrypted archives."
+# ⚠️ «Privacy Policy» diventa un link verso `/privacy-policy/` da sé: è una
+# frase di `_data/collegamenti.yml`, e qui non c'è nessun `<a>`.
+- tipo: p
+  testo: Want the legal details? Read our Privacy Policy.
+
+# ⛔ Come su Round count: NON si scrive in pagina, è il TESTO ALTERNATIVO del
+# badge di Apple in fondo — ed essendo l'unico contenuto del link, il suo nome.
+badge: "Download on the App Store"

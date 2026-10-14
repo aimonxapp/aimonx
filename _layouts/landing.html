@@ -295,6 +295,19 @@
         {%- endfor %}
       </ul>
       <p class="chiosa">{{ d.privacy.note }}</p>
+      {%- comment -%}
+        ⭐ Giro W16: il link alla pagina «Your data», sotto il paragrafo, come
+        «See how round count works» sotto la sua voce — stessa ricerca in
+        `_data/collegamenti.yml`, e ⛔ se lì manca la frase il link non esce
+        invece di uscire rotto. ⛔ La barra NON cambia (Pier, 14/10): «Privacy»
+        e «Security» restano salti a questa sezione e alla prossima.
+      {%- endcomment -%}
+      {%- if d.privacy.link -%}
+      {%- assign c = site.data.collegamenti.frasi | where: "frase", d.privacy.link | first -%}
+      {%- if c %}
+      <p class="oltre"><a href="{{ c.href | relative_url }}">{{ d.privacy.link }}</a></p>
+      {%- endif -%}
+      {%- endif %}
     </section>
 
     {%- comment -%} ③ Sicurezza. Il segno «(Pro)» è della bozza, e resta com'è. {%- endcomment -%}

@@ -4,7 +4,8 @@
   _layouts/funzione.html — LO SCHELETRO DELLE PAGINE-FUNZIONE. Giro W15.
 
   ⭐ «Round count» è la prima, e questo file è il MODELLO delle prossime
-  (Maintenance, Privacy & security…): nasce riusabile apposta. Una pagina nuova
+  (dal W16 anche «Your data», che gli ha aggiunto l'elenco puntato, `ul`):
+  nasce riusabile apposta. Una pagina nuova
   è un file di testo in `_data/`, una riga per le sue schermate in
   `_data/aspetto.yml` (`funzioni`) e un front matter — qui non si tocca niente.
 
@@ -71,6 +72,27 @@
         {%- assign quale = quale | plus: 1 -%}
         {%- endfor %}
       </div>
+      {%- when 'ul' %}
+      {%- comment -%}
+        ⭐ Giro W16: un elenco puntato, con la stessa classe — quindi lo stesso
+        pallino — delle pagine da leggere (`testo.scss`). Una voce è una frase
+        sola o una coppia `forte` + `testo`, come i paragrafi qui sotto.
+        ⚠️ Lo spazio fra il neretto e il resto NON c'è se il resto comincia
+        con una virgola: la bozza dice «…always free**, even without Pro.».
+        ⛔ Lo spazio è una VARIABILE, come nel proclama della landing: scritto
+        nudo davanti all'include veniva mangiato — misurato, «</strong>of».
+      {%- endcomment -%}
+      {%- assign spazio = " " -%}
+      <ul class="elenco">
+        {%- for v in b.voci %}
+        {%- if v.testo %}
+        {%- assign inizio = v.testo | slice: 0 %}
+        <li>{% if v.forte %}<strong>{% include frase.html testo=v.forte %}</strong>{% unless inizio == ',' %}{{ spazio }}{% endunless %}{% endif %}{% include frase.html testo=v.testo collega=true %}</li>
+        {%- else %}
+        <li>{% include frase.html testo=v collega=true %}</li>
+        {%- endif %}
+        {%- endfor %}
+      </ul>
       {%- else %}
       <p>{% if b.forte %}<strong>{% include frase.html testo=b.forte %}</strong> {% endif %}{% include frase.html testo=b.testo collega=true %}</p>
       {%- endcase -%}

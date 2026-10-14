@@ -74,6 +74,13 @@ funzioni:
     - aimonx-maintenance-rules
     - aimonx-rounds-by-firearm
     - aimonx-firearm-stats
+  # ⭐ Giro W16. ⚠️ `aimonx-app-switcher` è il RITAGLIO della sola scheda di
+  # AIMONX: l'originale non è nel repo (vedi `scripts/schermate.mjs`).
+  your-data:
+    - aimonx-app-locked
+    - aimonx-app-switcher
+    - aimonx-icloud-backup
+    - aimonx-advanced-protection
 
 # La schermata della parte alta: la Home dell'app, accanto alla domanda.
 hero_schermata: aimonx-home-screen

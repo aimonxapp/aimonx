@@ -227,6 +227,10 @@ privacy:
     - lead: "Your data talks to no one but your own iCloud."
       body: "No AIMONX servers, no third parties, no analytics."
   note: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
+  # ⭐ Dal giro W16: il link alla pagina che racconta la privacy per esteso.
+  # Nella bozza è la riga sotto il paragrafo. Dove porta sta in
+  # `_data/collegamenti.yml` (`frasi`), come per «See how round count works».
+  link: "See how AIMONX keeps your data private"
 
 security:
   title: "Security"

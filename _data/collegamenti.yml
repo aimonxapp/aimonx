@@ -42,6 +42,10 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W16, la seconda pagina-funzione: la frase più lunga, in testa.
+  - frase: "See how AIMONX keeps your data private"
+    href: "/features/privacy-and-security/"
+    tipo: pagina
   # ⭐ Giro W15, la prima pagina-funzione. È la frase più lunga, quindi sta in
   # testa (vedi la regola dell'ordine qui sopra).
   - frase: "See how round count works"

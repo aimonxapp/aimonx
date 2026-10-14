@@ -91,7 +91,7 @@ if [ -z "$PIER_DIR" ]; then
 else
   for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
                support/support-en-bozza.md terms/terms-en-bozza.md \
-               round-count/round-count-en-bozza.md; do
+               round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
   done
 fi
@@ -135,6 +135,12 @@ PAGINE = [
   # approvata. ⚠️ Le pagine-funzione che verranno si aggiungono qui, uguali.
   { nome: "round-count", dati: "_data/round-count.yml", bozza: "round-count/round-count-en-bozza.md",
     uscita: "features/round-count/index.html", sezioni: ["Meta", "Page"] },
+  # ⭐ Giro W16, la seconda: stesse regole. ⚠️ Nella sua bozza i «Punti
+  # aperti» e la tabella «Controllo» stanno in sezioni `## ` proprie, e
+  # `sezioni` li lascia fuori; la nota «[⏳ da approvare…]» sotto gli alt è
+  # una riga fra quadre da sola, e cade come le «[schermata: …]».
+  { nome: "your-data", dati: "_data/your-data.yml", bozza: "your-data/your-data-en-bozza.md",
+    uscita: "features/privacy-and-security/index.html", sezioni: ["Meta", "Page"] },
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.

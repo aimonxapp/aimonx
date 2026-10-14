@@ -8,7 +8,8 @@
 //
 // ⛔⛔ LE SORGENTI SONO QUELLE NOMINATE QUI SOTTO, UNA PER UNA, E SOLO QUELLE:
 // otto dal giro W14 (sette schermate dell'app e la prima e unica pagina del PDF
-// di prova) e tre dal W15, per la pagina «Round count». ⛔ Lo script
+// di prova), tre dal W15, per la pagina «Round count», e quattro dal W16, per
+// la pagina «Your data» — da un'ALTRA cartella (`gruppo`, qui sotto). ⛔ Lo script
 // NON prende «quel che trova nella cartella»: nella cartella di Pier ci sono
 // decine di altre schermate, e nel repo — che è PUBBLICO — entrano solo queste
 // (giro W14 §2①). Chi ne vuole una in più la aggiunge alla lista, e si vede.
@@ -17,8 +18,19 @@
 //
 // ⚠️ COSA FA ALLE IMMAGINI, e cosa no:
 //   · le RIMPICCIOLISCE a tre larghezze e le salva in WebP — nient'altro;
-//   · ⛔ non le ritaglia, non le ritocca, non ci scrive sopra, non le incornicia:
-//     la cornice in pagina è CSS (`assets/css/b.scss`), il file è la schermata;
+//   · ⛔ non le ritocca, non ci scrive sopra, non le incornicia: la cornice in
+//     pagina è CSS (`assets/css/b.scss`), il file è la schermata;
+//   · ⛔⛔ UNA SOLA ECCEZIONE, IL RITAGLIO DEL MULTITASKING (giro W16 §2①):
+//     `privacy_2` è il selettore delle app, e intorno alla scheda di AIMONX si
+//     vedono il widget meteo con la CITTÀ di Pier, le sue app e l'icona di
+//     «AIMONX Dev». ⛔ Nel repo entra solo la scheda: lo script la RITAGLIA al
+//     rettangolo scritto in `ritaglio` (misurato sui pixel verdi, 903×1957 —
+//     stesso rapporto di una schermata intera, al decimillesimo) e ⛔ DIPINGE
+//     del colore della cornice (#07160F) quel che resta fuori dagli angoli
+//     tondi della scheda: lì dietro c'è ancora un pezzo dello sfondo, e gli
+//     angoli della cornice CSS sono più piccoli di quelli della scheda.
+//     ⚠️ L'originale NON entra nel repo, in nessuna forma: lo legge lo script
+//     dalla cartella di Pier, e nel repo arrivano solo i tre WebP ritagliati;
 //   · ⭐ ALLA PAGINA DEL PDF TOGLIE IL BIANCO, e solo quello (Pier,
 //     09/10/2026): fra i totali e la riga in fondo c'è un terzo di foglio
 //     vuoto, che in pagina era un rettangolo bianco. Lo script cerca la fascia
@@ -47,7 +59,11 @@
 // uguale A VEDERSI, non per forza uguale al byte.
 // La pagina del PDF la disegna `pdftoppm` (poppler), che sul Mac c'è già.
 //
-// Uso:  node scripts/schermate.mjs "<cartella delle sorgenti>"
+// Uso:  node scripts/schermate.mjs "<cartella delle sorgenti>" [gruppo]
+//   · senza gruppo: le sorgenti di «ScreenShot APP v1.0.0» (W14, W15);
+//   · `privacy`: le quattro di «ScreenShot APP v1.0.1 privacy» (W16).
+//   ⚠️ Il gruppo c'è perché le cartelle sono due, e ⛔ perché rifare una
+//   schermata non deve rifare le altre: un altro Chromium dà byte diversi.
 // Esce: assets/img/screenshots/<nome>-<larghezza>.webp
 
 import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
@@ -64,6 +80,7 @@ const chromium = pw.chromium ?? pw.default?.chromium;
 const REPO = resolve(dirname(new URL(import.meta.url).pathname), '..');
 const USCITA = join(REPO, 'assets/img/screenshots');
 const sorgenti = process.argv[2];
+const gruppo = process.argv[3] ?? null;
 if (!sorgenti) {
   console.error('⛔ manca la cartella delle sorgenti: node scripts/schermate.mjs "<cartella>"');
   process.exit(2);
@@ -92,7 +109,15 @@ const LISTA = [
   // autorizzato da lui il 09/10/2026, matricola non leggibile. ⛔ Restano
   // miniature dentro la schermata: non si ritagliano e non si ingrandiscono.
   { da: 'firearms_5.png',      a: 'aimonx-firearm-stats',        larghezze: TELEFONO },
-];
+  // --- giro W16, la pagina «Your data» — schermate della 1.0.1 (Pier, 14/10) ---
+  // ⛔ `privacy_riserva_attivazione.png` NON entra: è di riserva (giro W16 §2①).
+  { da: 'privacy_1_blocco.png',               a: 'aimonx-app-locked',          larghezze: TELEFONO, gruppo: 'privacy' },
+  { da: 'privacy_2_multitasking-DA-RITAGLIARE.png', a: 'aimonx-app-switcher', larghezze: TELEFONO, gruppo: 'privacy',
+    ritaglio: { x: 193, y: 391, larga: 903, alta: 1957, angolo: 136 } },
+  { da: 'privacy_3_backup.png',               a: 'aimonx-icloud-backup',       larghezze: TELEFONO, gruppo: 'privacy' },
+  { da: 'privacy_4_protezione-avanzata.png',  a: 'aimonx-advanced-protection', larghezze: TELEFONO, gruppo: 'privacy' },
+].filter((v) => (v.gruppo ?? null) === gruppo);
+if (!LISTA.length) { console.error(`⛔ nessuna sorgente nel gruppo «${gruppo}»`); process.exit(2); }
 // ⚠️ 0,82: sotto, il testo piccolo delle schermate comincia a sporcarsi
 // intorno alle lettere; sopra, il peso sale e a occhio non cambia niente.
 const QUALITA = 0.82;
@@ -114,11 +139,26 @@ for (const voce of LISTA) {
   }
   const dati = `data:image/png;base64,${(await readFile(png)).toString('base64')}`;
   for (const l of voce.larghezze) {
-    const esito = await page.evaluate(async ({ dati, l, q, accorcia }) => {
+    const esito = await page.evaluate(async ({ dati, l, q, accorcia, ritaglio }) => {
       const img = new Image();
       img.src = dati;
       await img.decode();
       let fonte = img, larga = img.naturalWidth, alta = img.naturalHeight, tolte = 0;
+      if (ritaglio) {
+        // ⛔ Prima si riempie TUTTO del colore della cornice, poi si disegna la
+        // scheda dentro un rettangolo dagli angoli tondi: fuori dagli angoli
+        // resta solo il colore pieno, e dello sfondo non arriva un pixel.
+        const { x, y, larga: rl, alta: ra, angolo } = ritaglio;
+        const tela = new OffscreenCanvas(rl, ra);
+        const c = tela.getContext('2d');
+        c.fillStyle = '#07160F';
+        c.fillRect(0, 0, rl, ra);
+        c.beginPath();
+        c.roundRect(0, 0, rl, ra, angolo);
+        c.clip();
+        c.drawImage(img, x, y, rl, ra, 0, 0, rl, ra);
+        fonte = tela; larga = rl; alta = ra;
+      }
       if (accorcia) {
         // La fascia bianca più alta: una riga è «bianca» se ogni suo pixel lo
         // è. ⚠️ Se ne lascia un pezzo, alto il 5% del foglio: senza, la riga
@@ -153,13 +193,13 @@ for (const voce of LISTA) {
       const byte = new Uint8Array(await blob.arrayBuffer());
       let s = '';
       for (let i = 0; i < byte.length; i += 0x8000) s += String.fromCharCode(...byte.subarray(i, i + 0x8000));
-      return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte };
-    }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf') });
+      return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte, ritagliata: ritaglio ? [larga, alta] : null };
+    }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf'), ritaglio: voce.ritaglio ?? null });
     const file = join(USCITA, `${voce.a}-${l}.webp`);
     const corpo = Buffer.from(esito.base64, 'base64');
     await writeFile(file, corpo);
     totale += corpo.length;
-    console.log(`${voce.da} (${esito.da[0]}×${esito.da[1]}) → ${voce.a}-${l}.webp  ${esito.l}×${esito.a}  ${(corpo.length / 1024).toFixed(1)} KB${esito.tolte ? ` · tolte ${esito.tolte} righe bianche` : ''}`);
+    console.log(`${voce.da} (${esito.da[0]}×${esito.da[1]}) → ${voce.a}-${l}.webp  ${esito.l}×${esito.a}  ${(corpo.length / 1024).toFixed(1)} KB${esito.tolte ? ` · tolte ${esito.tolte} righe bianche` : ''}${esito.ritagliata ? ` · RITAGLIATA a ${esito.ritagliata.join('×')}` : ''}`);
   }
 }
 

@@ -43,7 +43,7 @@
 |---|---|
 | **i contenuti scritti e approvati** | `…/8- AIMONX web/2- Contenuti/` |
 | **le risorse grafiche del sito** | `…/8- AIMONX web/4- risorse/` — ⭐ **dal 28/09/2026 non è più vuota:** dentro c'è `ScreenShot APP v1.0.0/`, le schermate dell'app in due giri (`WD21` ✅). ⛔ **Nel repo ne entrano solo OTTO**, rimpicciolite da `scripts/schermate.mjs` in `assets/img/screenshots/` — e la controprova le conta (`schermate_immagini`). I colori e le misure decise per l'app: `…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` |
-| **il materiale marketing** (di luglio, da verificare contro `prodotto.md`) | `…/7- App AIMONX/1- Specifiche/marketing-aimonx.md` · `marketing-strategia-aimonx-budget-50.md` |
+| **il materiale marketing** (di luglio, da verificare contro `prodotto.md`) | `…/7- App AIMONX/3- note/_archivio/v1.0.0/marketing-aimonx.md` · `marketing-strategia-aimonx-budget-50.md` — ⚠️ **archivio della 1.0 dell'app dal 12/10/2026** (bacheca): materiale di allora, non autorità |
 | **la misura dell'infrastruttura** — Pages, dominio, certificato, posta | `…/7- App AIMONX/3- note/_archivio/nota-infrastruttura-sito-mail-10-08.md` |
 | **le lezioni dell'app** — si aprono quando si scrive un giro | `…/7- App AIMONX/1- Specifiche/lezioni-aimonx.md` |
 | **i social** | `…/9- AIMONX social/` — ⏳ vuota |

@@ -248,3 +248,43 @@ img, svg { display: block; max-width: 100%; }
 .collegamenti .sep { display: inline-block; margin-inline: .55rem; color: #9DB6AA; }
 
 .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
+
+// ============================================================================
+// LA CORNICE DELLE SCHERMATE — la terza eccezione, e per la stessa ragione del
+// piede e della barra. Giro W16: SPOSTATA qui da `b.scss`, dove nasce nel W14,
+// e TOLTA la copia che ne teneva `funzione.scss` dal W15 (obiezione 2 di CC
+// nel W15). ⛔ Spostata, non corretta: le regole sono le stesse, numero per
+// numero, e la landing e Round count escono IDENTICHE AL PIXEL a otto
+// larghezze — misurato prima e dopo. ⚠️ Non prefissata: la classe `telefono`
+// la scrive solo `_includes/schermata.html`. ⛔ Quel che resta ai fogli sono
+// le LARGHEZZE e le OMBRE, che cambiano da una pagina all'altra.
+// ⚠️ Lo stesso #07160F lo usa `scripts/schermate.mjs` per gli angoli del
+// ritaglio del multitasking: chi cambia questo colore cambia anche quello.
+// ⚠️ Pagano qualche riga in più anche Privacy, Support e Terms, che di
+// schermate non ne hanno: è il prezzo di una regola scritta una volta.
+// ============================================================================
+
+// ⛔ LA CORNICE È UN RETTANGOLO SCURO CON GLI ANGOLI TONDI, E BASTA. Non è un
+// iPhone e non deve diventarlo: niente tacca, niente isola, niente tasti,
+// niente riflessi. ⚠️ Non è prudenza generica: le regole di Apple sull'uso
+// delle immagini dei suoi prodotti non sono state lette per questo uso (giro
+// W14 §2①), quindi qui non c'è niente che sia SUO — c'è un bordo.
+// ⚠️ Il colore del bordo è il verde più scuro della pagina (quello della carta
+// del proclama, annerito): un nero puro accanto ai verdi dell'app sembrava un
+// pezzo di un altro sito.
+// ⚠️ GLI ANGOLI SONO IN PERCENTUALE, e la coppia non è a caso: la schermata è
+// alta 2,17 volte la sua larghezza, quindi «14% della larghezza» e «6,5%
+// dell'altezza» sono la stessa misura, e l'angolo esce TONDO a ogni larghezza.
+// Con un valore in px sarebbe giusto a una misura e sbagliato alle altre.
+// ⚠️ Gli angoli tagliano i quattro spigoli della schermata: lì c'è solo il
+// fondo verde dell'app, nessuna scritta e nessun numero. Guardato su tutte e
+// sette.
+.schermata { margin: 0; }
+.schermata img { width: 100%; height: auto; }
+.telefono {
+  border: 5px solid #07160F;
+  border-radius: #{"14% / 6.5%"};
+  background: #07160F;
+  overflow: hidden;
+}
+.telefono img { border-radius: #{"11.5% / 5.3%"}; }
