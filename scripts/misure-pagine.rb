@@ -22,6 +22,9 @@ $ancore_rotte = []
 $seo = []
 $ancore_per_pagina = {}
 $jsonld = 0
+$deadline = []
+$faqpage = 0
+$piedi = {}
 $marchi = {}
 $offerte_a_zero = 0
 $da_controllare = []
@@ -75,6 +78,10 @@ pagine.each do |percorso|
   # sotto (`marchi_varianti`, atteso 1), insieme a quante pagine la portano.
   piede = nudo[%r{<footer class="chiusa">(.*?)</footer>}m, 1]
   if piede
+    # ⭐ Giro W18: il PIEDE INTERO, non solo la riga dei marchi — tolto
+    # `aria-current`, che giustamente cambia da pagina a pagina. Quante
+    # versioni ne escono si stampa (`piedi_varianti`, atteso 1).
+    ($piedi[piede.gsub(/ aria-current="page"/, "").gsub(/[[:space:]]+/, " ").strip] ||= []) << nome
     riga = piede[%r{<p class="minuta">(.*?)</p>}m, 1].to_s.gsub(/[[:space:]]+/, " ").strip
     ($marchi[riga] ||= []) << nome
   end
@@ -339,6 +346,13 @@ Dir.glob(File.join(radice, "**", "*.{html,css,js,xml,txt,svg,json}")).sort.each 
   if testo =~ /coming\s+soon/i
     $badge << "#{f.sub(radice.chomp("/") + "/", "")}: dice ancora «Coming soon»"
   end
+  # ⭐ Giro W18: «deadline» non deve restare da nessuna parte del sito servito
+  # — pagine, testi alternativi, dati strutturati, mappa, fogli di stile. La
+  # parola dell'app è «renewals» (Pier, 15/10/2026). ⚠️ Si conta, non si
+  # segnala come guasto: l'attesa (0) sta in scripts/attese.txt.
+  testo.scan(/deadline/i) { $deadline << f.sub(radice.chomp("/") + "/", "") }
+  # ⛔ E niente `FAQPage` (Pier, 15/10/2026): la pagina FAQ è un `WebPage`.
+  testo.scan(/"FAQPage"/) { $faqpage += 1 }
 end
 # ⛔ E il badge c e UNA volta, col suo link. ⚠️ Senza queste due
 # righe il controllo passerebbe a vuoto il giorno in cui il badge sparisce:
@@ -364,6 +378,10 @@ puts "blocchi_jsonld=#{$jsonld}"
 puts "offerte_a_zero=#{$offerte_a_zero}"
 puts "marchi_pagine=#{$marchi.values.flatten.size}"
 puts "marchi_varianti=#{$marchi.size}"
+puts "piedi_varianti=#{$piedi.size}"
+puts "deadline_nel_sito=#{$deadline.size}"
+puts "faqpage_nel_sito=#{$faqpage}"
+$deadline.tally.each { |f, n| puts "  · «deadline» #{n} volte in #{f}" }
 $marchi.each { |r, n| puts "  · marchi (#{n.size} pagine): #{r[0, 110]}" } if $marchi.size > 1
 puts "badge_guasti=#{$badge.size}"
 # ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il

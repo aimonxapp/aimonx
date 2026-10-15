@@ -1,0 +1,139 @@
+# _data/faq.yml — IL TESTO DELLA PAGINA «FAQ», UNA VOLTA SOLA. Giro W18.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 15/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/faq/faq-en-bozza.md
+# sezioni `## Meta` e `## Page`, cercate ALLA LETTERA da
+# `scripts/testo-approvato.sh` — e SOLO quelle: le note fra quadre, i punti
+# aperti e la tabella «Controllo» non vanno in pagina.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+#
+# ⚠️ LA FORMA: le cinque sezioni sono `h2`, ogni domanda è `h3` con la sua
+# risposta sotto. I due «See how…» sono paragrafi da soli, e diventano link da
+# sé perché stanno in `_data/collegamenti.yml`.
+#
+# ⚠️ LA SCHERMATA È PRESA IN PRESTITO da «Your data»: lo stesso file
+# (`_data/aspetto.yml`, `funzioni.faq`) e il suo testo alternativo GIÀ
+# APPROVATO, alla lettera. Nella bozza delle FAQ quel testo non c'è — c'è la
+# nota che lo rimanda — quindi `scripts/testo-approvato.sh` lo cerca nella
+# bozza di «Your data», e SOLO per i testi alternativi (`alt_da`).
+#
+# ⛔ Niente `FAQPage` nei dati strutturati (Pier, 15/10/2026): la pagina ha il
+# `WebPage` delle pagine-funzione, e basta.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "FAQ: Your Data, New iPhone, Passwords, Free vs Pro | AIMONX"
+  description: "Where your data lives, moving to a new iPhone, forgotten passwords, what happens when Pro ends, and what Free includes. Straight answers about AIMONX."
+
+titolo: "AIMONX FAQ"
+sommario: "Straight answers to the questions people ask most."
+
+blocchi:
+- tipo: h2
+  testo: Your data
+- tipo: h3
+  testo: Do I need an account to use AIMONX?
+- tipo: p
+  testo: No. There's nothing to sign up for and no login. Download AIMONX and start logging.
+- tipo: h3
+  testo: Where is my AIMONX data stored?
+- tipo: p
+  testo: "On your iPhone, encrypted. AIMONX also keeps an encrypted copy in your own iCloud, so your log survives a lost or broken phone. There are no AIMONX servers, and we can't see your data."
+- tipo: p
+  testo: See how AIMONX protects your data
+- tipo: h3
+  testo: Does AIMONX collect or sell my data?
+- tipo: p
+  testo: "No. Your data never reaches us: there are no AIMONX servers, no ad tracking, and nothing to sell. You can even use AIMONX without ever entering a serial number."
+- tipo: h3
+  testo: Can I export my data from AIMONX?
+- tipo: p
+  testo: "Yes. On Free, you can create PDF reports: a record for each firearm and an inventory of all of them, with photos and serial numbers if you want them. With Pro, you can also create an encrypted archive of your whole log, keep it wherever you like, and import it back anytime."
+- tipo: h3
+  testo: How do I delete all my AIMONX data?
+- tipo: p
+  testo: In AIMONX Settings, tap Reset App. It deletes all your data on the iPhone, along with the key that unlocks it, so the AIMONX copy in iCloud can't be used anymore either. AIMONX starts over like a new install. This can't be undone.
+
+- tipo: h2
+  testo: Moving to a new iPhone
+- tipo: h3
+  testo: How do I move AIMONX to a new iPhone?
+- tipo: p
+  testo: "Sign in to your new iPhone with the same Apple Account, then install AIMONX and open it. Your firearms, sessions and ammo come back on their own. That's the AIMONX iCloud copy at work: it's on by default, and there's nothing to set up."
+- tipo: p
+  testo: "One thing to check: AIMONX brings over the key that unlocks your log through iCloud Passwords & Keychain, the same feature that keeps your saved passwords in sync. On your new iPhone, go to Settings > [your name] > iCloud > Passwords and make sure Sync this iPhone is on."
+- tipo: p
+  testo: Before you switch, open AIMONX Backup on your old iPhone and tap Back Up Now, so the copy has your latest changes.
+- tipo: schermate
+  alt:
+  - "The AIMONX Backup page: backup on, the time of the last backup, and a Back Up Now button."
+- tipo: h3
+  testo: How do I move AIMONX to a new iPhone with Advanced Protection on?
+- tipo: p
+  testo: Same Apple Account, and Sync this iPhone on under Settings > [your name] > iCloud > Passwords. Then install AIMONX and open it. AIMONX asks for your Advanced Protection password. Enter it, and your log is back.
+- tipo: h3
+  testo: My AIMONX data didn't come back on my new iPhone. What now?
+- tipo: p
+  testo: "First, check that Sync this iPhone is on under Settings > [your name] > iCloud > Passwords: that's how the key that unlocks your log gets to your new iPhone, and it can take a few minutes to arrive. Then fully close AIMONX and open it again."
+- tipo: h3
+  testo: Doesn't my iPhone's iCloud Backup already cover AIMONX?
+- tipo: p
+  testo: "Don't count on it. The iPhone's iCloud Backup saves the whole device and can only be restored as a whole. The AIMONX iCloud copy is separate: it's what brings your log back if you delete the app or move to a new iPhone."
+- tipo: h3
+  testo: What if I don't use iCloud?
+- tipo: p
+  testo: Then AIMONX has nowhere to keep a copy off your iPhone. There are no AIMONX servers, so if you lose the iPhone, your log goes with it. With Pro, you can create an encrypted archive and keep it wherever you like, such as a drive or another cloud service, then import it on your new iPhone. Importing works on Free too. Keep in mind that importing replaces everything on that iPhone.
+
+- tipo: h2
+  testo: Passwords
+- tipo: h3
+  testo: I forgot my AIMONX password. Can you reset it?
+- tipo: p
+  testo: "No. No one can, not even us, and that's the point. By default, AIMONX doesn't use a password at all: it opens with Face ID, Touch ID or your passcode. A password only exists if you turned on Advanced Protection, a Pro feature that locks the key to your log with a password only you know."
+- tipo: p
+  testo: You can try as many times as you like. There's no lockout. If you can't remember it, the only way forward is Reset App, which deletes your log and starts AIMONX over from scratch.
+- tipo: p
+  testo: See how Advanced Protection works
+- tipo: h3
+  testo: What if I forget an AIMONX archive's password?
+- tipo: p
+  testo: Each archive has its own password, chosen when you create it. Forget it and that archive can't be opened by anyone. The log on your iPhone isn't affected.
+
+- tipo: h2
+  testo: When Pro ends
+- tipo: h3
+  testo: What happens to my data if my AIMONX Pro subscription ends?
+- tipo: p
+  testo: Nothing gets lost. Everything beyond the Free limits stays readable, just frozen, until you come back.
+- tipo: ul
+  voci:
+  - "Of your active firearms, the one you added first stays fully usable. The others turn read-only: you can open them and see their history, rounds, costs and maintenance, but you can't edit them or log new sessions with them."
+  - "The same goes for anything else past the Free limits: extra maintenance rules, any renewals past the first two, and handloads."
+  - You can still sell, deactivate or delete any firearm.
+  - Your iCloud copy keeps running, and you can still import an archive.
+- tipo: p
+  testo: Resubscribe and everything unlocks right away.
+- tipo: h3
+  testo: What happens to Advanced Protection when Pro ends?
+- tipo: p
+  testo: It switches back to the standard setup, but only the next time you open AIMONX and enter your password, and the app tells you when it happens. Your data stays encrypted. The only change is that the key is once again kept by your Apple Account. Resubscribe whenever you want to set a password again.
+
+- tipo: h2
+  testo: Free and Pro
+- tipo: h3
+  testo: Is AIMONX free?
+- tipo: p
+  testo: "Yes. AIMONX is free to download, and Free is a real logbook, not a trial. Pro is an optional subscription: $1.99 a month or $14.99 a year. Prices vary by country: the App Store shows yours. Family Sharing is included, so your family gets Pro too."
+- tipo: h3
+  testo: What's included in AIMONX Free?
+- tipo: p
+  testo: One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count for each firearm, two renewals, all your statistics, PDF reports, up to five photos per firearm, and your encrypted iCloud copy.
+- tipo: h3
+  testo: What does AIMONX Pro add?
+- tipo: p
+  testo: Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited renewals, matches and match stats, encrypted archives to export, and Advanced Protection.
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO del badge di Apple in fondo.
+badge: "Download on the App Store"

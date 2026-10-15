@@ -37,7 +37,7 @@ blocchi:
 - tipo: h2
   testo: Version 1.0.0 — October 8, 2026
 - tipo: p
-  testo: The first release. Log your firearms, range sessions and matches. Track rounds, ammo, maintenance, deadlines and costs. Create PDF reports of your firearms. Your logbook is encrypted on your iPhone, with an encrypted copy in your own iCloud.
+  testo: The first release. Log your firearms, range sessions and matches. Track rounds, ammo, maintenance, renewals and costs. Create PDF reports of your firearms. Your logbook is encrypted on your iPhone, with an encrypted copy in your own iCloud.
 
 # ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO del badge di Apple in fondo.
 badge: "Download on the App Store"

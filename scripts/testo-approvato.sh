@@ -149,6 +149,14 @@ PAGINE = [
     uscita: "features/maintenance/index.html", sezioni: ["Meta", "Page"] },
   { nome: "whats-new", dati: "_data/whats-new.yml", bozza: "whats-new/whats-new-en-bozza.md",
     uscita: "updates/index.html", sezioni: ["Meta", "Page"] },
+  # ⭐ Giro W18, le FAQ. ⚠️ `alt_da`: la sua schermata è quella di «Your data»,
+  # col testo alternativo GIÀ APPROVATO là — nella bozza delle FAQ c'è solo la
+  # nota che lo rimanda. ⛔ Il prestito vale SOLO per i testi alternativi, e
+  # solo come RIGA INTERA della sezione «Page» di quella bozza: una frase di
+  # «Your data» copiata in un paragrafo delle FAQ resta fuori bozza.
+  { nome: "faq", dati: "_data/faq.yml", bozza: "faq/faq-en-bozza.md",
+    uscita: "faq/index.html", sezioni: ["Meta", "Page"],
+    alt_da: "your-data/your-data-en-bozza.md" },
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
@@ -207,6 +215,9 @@ end
 
 PAGINE.each do |p|
   p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni])
+  # Le righe intere della bozza da cui una pagina prende in prestito i testi
+  # alternativi (giro W18, `alt_da`). Vuoto per tutte le altre.
+  p[:alt_prestati] = p[:alt_da] ? piano(File.join(contenuti, p[:alt_da]), ["Page"]).split("\n").map(&:strip) : []
 end
 BOZZA_LANDING = PAGINE.first[:testo_bozza]
 
@@ -231,6 +242,9 @@ if modo == "sorgente"
       end
       if p[:testo_bozza].include?(t)
         ok += 1
+      elsif via =~ /\.alt\[\d+\]\z/ && p[:alt_prestati].include?(t)
+        dich += 1
+        puts "     ⚠️ #{p[:nome]}#{via}: testo alternativo preso ALLA LETTERA da #{p[:alt_da]}"
       elsif TITOLI.include?(via) && p[:testo_bozza].include?(t.upcase)
         ok += 1
         puts "     ⚠️ #{p[:nome]}#{via}: nella bozza e etichetta in maiuscolo, in pagina e un titolo"
@@ -422,6 +436,9 @@ else
     alt_serviti.each do |x|
       if consentito.split("\n").map(&:strip).include?(x)
         alt_ok += 1
+      elsif p[:alt_prestati].include?(x)
+        alt_ok += 1
+        puts "     ⚠️ #{p[:nome]}: testo alternativo preso ALLA LETTERA da #{p[:alt_da]}"
       else
         estranei << "testo alternativo di un immagine: #{x}"
       end

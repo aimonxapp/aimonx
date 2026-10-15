@@ -124,7 +124,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=8
+pagine_costruite=9
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -165,11 +165,11 @@ ancore_rotte=0
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
 # nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
-sitemap_indirizzi=8
+sitemap_indirizzi=9
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=8
+blocchi_jsonld=9
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -247,7 +247,7 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=21
+schermate_in_pagina=22
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
@@ -270,8 +270,8 @@ schermate_file=54
 # «one badge per layout»), ogni link nudo — ed è `badge_guasti`, che resta 0.
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
-badge_nel_sito=5
-link_allo_store=6
+badge_nel_sito=6
+link_allo_store=7
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -311,5 +311,27 @@ offerte_a_zero=1
 # VERSIONI diverse. ⛔ `marchi_varianti` deve restare 1: il piede è scritto una
 # volta sola, e questa è la prova che lo è ancora. `marchi_pagine` sale con le
 # pagine, come `pagine_costruite`.
-marchi_pagine=8
+marchi_pagine=9
 marchi_varianti=1
+
+# ⛔ Spostate a mano nel giro W18, e SOLO dopo aver guardato cosa è entrato — la
+# pagina `/faq/`, con UNA schermata che è già un file del repo («Your data»):
+#   pagine_costruite, sitemap_indirizzi, blocchi_jsonld, marchi_pagine   8 → 9
+#   badge_nel_sito  5 → 6  ·  link_allo_store  6 → 7  ·  schermate_in_pagina  21 → 22
+# ⚠️ `schermate_immagini` e `schermate_file` NON si muovono: nessun file nuovo.
+
+# --- giro W18: le FAQ, e «renewals» ------------------------------------------
+#
+# ⭐ Il piede INTERO, tolto `aria-current`: quante versioni ne escono. Deve
+# restare 1 — è scritto una volta sola, e questa è la prova.
+piedi_varianti=1
+
+# ⛔ «deadline», in qualunque maiuscola, in tutto il sito costruito: pagine,
+# testi alternativi, dati strutturati, mappa, fogli di stile. La parola
+# dell'app è «renewals» (Pier, 15/10/2026). Sul sito online prima del W18 ne
+# trovava 5 — provato: la misura morde.
+deadline_nel_sito=0
+
+# ⛔ Niente `FAQPage` nei dati strutturati (Pier, 15/10/2026): la pagina FAQ è
+# un `WebPage`, come le pagine-funzione.
+faqpage_nel_sito=0

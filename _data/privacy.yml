@@ -58,7 +58,11 @@ titolo: "Privacy Policy"
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
-data_pubblicazione: "September 24, 2026"
+# ⭐ NEL GIRO W18 IL TESTO CAMBIA — «deadlines» diventa «renewals», la parola
+# dell'app — quindi la data cambia. ⚠️ In Fase A è PROVVISORIA e dichiarata: il
+# giorno dell'anteprima. Diventa quella vera il giorno in cui Pier scrive
+# «pubblica», nella Fase B.
+data_pubblicazione: "October 15, 2026"
 
 blocchi:
 - tipo: h2
@@ -80,7 +84,7 @@ blocchi:
 - tipo: h3
   testo: What stays on your iPhone
 - tipo: p
-  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, deadlines, costs, notes and photos.'
+  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, renewals, costs, notes and photos.'
 - tipo: p
   testo: It's stored in an encrypted database on your iPhone, and it only unlocks when you verify it's you. There's no AIMONX server holding a copy, so there's nothing for us to read.
 - tipo: h3

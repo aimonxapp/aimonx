@@ -32,7 +32,7 @@ what:
   - icona: chiave      # Maintenance your way        → «Manutenzione»
     tinta: ardesia
     schermata: aimonx-maintenance-rules
-  - icona: calendario  # Deadlines you won't miss    → «Scadenze»
+  - icona: calendario  # Renewals you won't miss     → «Scadenze»
     tinta: salvia
     schermata: aimonx-renewals
   - icona: grafico     # What your shooting costs    → «Costi»
@@ -83,6 +83,9 @@ funzioni:
     - aimonx-advanced-protection
   # ⭐ Giro W17, la terza. ⚠️ Le prime due sono schermate già nel sito (la
   # landing le usa): un file solo, due pagine. Le ultime tre sono nuove.
+  # ⭐ Giro W18: le FAQ hanno UNA schermata, la stessa di «Your data».
+  faq:
+    - aimonx-icloud-backup
   maintenance:
     - aimonx-maintenance-rules
     - aimonx-firearms-round-count

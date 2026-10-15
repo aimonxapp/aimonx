@@ -46,6 +46,10 @@ titolo: "Support"
 blocchi:
 - tipo: p
   testo: Got a question, found a bug, or have an idea for AIMONX? Email us at support@aimonx.app.
+# ⭐ Giro W18: la riga verso le FAQ. «FAQ» diventa un link da sé, perché sta in
+# `_data/collegamenti.yml` — qui c'è solo la frase.
+- tipo: p
+  testo: Check the FAQ for quick answers about new iPhones, passwords, and Free vs. Pro.
 - tipo: p
   testo: AIMONX is made by one independent developer, so every email gets read by the person who builds the app.
 - tipo: h2

@@ -46,6 +46,13 @@ frasi:
   - frase: "See how AIMONX keeps your data private"
     href: "/features/privacy-and-security/"
     tipo: pagina
+  # ⭐ Giro W18: i due link delle FAQ verso «Your data», per lunghezza.
+  - frase: "See how Advanced Protection works"
+    href: "/features/privacy-and-security/"
+    tipo: pagina
+  - frase: "See how AIMONX protects your data"
+    href: "/features/privacy-and-security/"
+    tipo: pagina
   # ⭐ Giro W15, la prima pagina-funzione. È la frase più lunga, quindi sta in
   # testa (vedi la regola dell'ordine qui sopra).
   - frase: "See how round count works"
@@ -83,6 +90,12 @@ frasi:
     tipo: pagina
   - frase: "Support"
     href: "/support/"
+    tipo: pagina
+  # ⭐ Giro W18: la più corta, quindi in fondo. ⚠️ Diventa un link OVUNQUE
+  # compaia in un paragrafo — oggi solo nella riga nuova di Support — e mai
+  # in un titolo: il `h1` «AIMONX FAQ» resta testo.
+  - frase: "FAQ"
+    href: "/faq/"
     tipo: pagina
 
 # --- LO STORE, dal giro W12 --------------------------------------------------

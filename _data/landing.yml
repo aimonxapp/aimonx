@@ -196,7 +196,9 @@ what:
       alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
       # ⭐ Dal giro W17: il link alla pagina «Maintenance», come per Round count.
       link: "See how maintenance works"
-    - lead: "Deadlines you won't miss."
+    # ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026: «renewals
+    # come su app, stiamo allineati»), su tutto il sito.
+    - lead: "Renewals you won't miss."
       body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
       alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
     - lead: "What your shooting really costs."
@@ -251,9 +253,9 @@ piani:
       # e nel Pro le regole «of every type with an early heads-up» — nel codice
       # della 1.0.1 il Free ha una sola regola di pulizia per arma, senza
       # preavviso (Pier, 14/10/2026).
-      body: "One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count, deadlines, statistics, PDF reports and your encrypted iCloud copy."
+      body: "One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count, renewals, statistics, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
-      body: "Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited deadlines, matches and match stats, encrypted archives to export, and advanced protection."
+      body: "Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited renewals, matches and match stats, encrypted archives to export, and advanced protection."
     # ⭐ Giro W17: i prezzi, approvati da Pier il 14/10/2026. ⛔ Solo dollari, e
     # SOLO qui in pagina: nei dati strutturati non c'è nessun prezzo di Pro
     # (cambia da paese a paese) — vedi `_includes/dati-strutturati.html`.
@@ -277,9 +279,11 @@ footer:
   # ⛔ Il «·» che li separa non è qui: è un segno, non una parola, e lo mette
   # `_includes/piede.html`. Dove portano sta in `_data/collegamenti.yml`.
   # ⭐ Dal giro W17 sono QUATTRO: «What's new» porta alla pagina `/updates/`.
+  # ⭐ Dal giro W18 CINQUE: «FAQ», dopo «Support», porta a `/faq/`.
   links:
     - "Privacy Policy"
     - "Support"
+    - "FAQ"
     - "Terms of Use"
     - "What's new"
   # ⭐ Dal giro W12 la riga dei marchi cita anche «Apple» e «the Apple logo»:
