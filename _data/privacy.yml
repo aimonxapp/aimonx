@@ -59,9 +59,8 @@ titolo: "Privacy Policy"
 # dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
 # ⭐ NEL GIRO W18 IL TESTO CAMBIA — «deadlines» diventa «renewals», la parola
-# dell'app — quindi la data cambia. ⚠️ In Fase A è PROVVISORIA e dichiarata: il
-# giorno dell'anteprima. Diventa quella vera il giorno in cui Pier scrive
-# «pubblica», nella Fase B.
+# dell'app — quindi la data cambia. ⭐ È LA DATA VERA: il 15/10/2026 Pier ha
+# scritto «pubblica» (Fase B del giro W18), lo stesso giorno dell'anteprima.
 data_pubblicazione: "October 15, 2026"
 
 blocchi:
