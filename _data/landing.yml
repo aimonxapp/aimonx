@@ -194,6 +194,8 @@ what:
     - lead: "Maintenance your way."
       body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
       alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
+      # ⭐ Dal giro W17: il link alla pagina «Maintenance», come per Round count.
+      link: "See how maintenance works"
     - lead: "Deadlines you won't miss."
       body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
       alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
@@ -245,11 +247,23 @@ piani:
   title: "Free and Pro"
   items:
     - lead: "Free is a real logbook, not a demo."
-      body: "One active firearm, unlimited range sessions, factory ammo with inventory, maintenance, deadlines, statistics, PDF reports and your encrypted iCloud copy."
+      # ⭐ Giro W17: «a cleaning rule by round count» al posto di «maintenance»,
+      # e nel Pro le regole «of every type with an early heads-up» — nel codice
+      # della 1.0.1 il Free ha una sola regola di pulizia per arma, senza
+      # preavviso (Pier, 14/10/2026).
+      body: "One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count, deadlines, statistics, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
-      body: "Unlimited firearms, handloads, unlimited maintenance rules and deadlines, matches and match stats, encrypted archives to export, and advanced protection."
+      body: "Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited deadlines, matches and match stats, encrypted archives to export, and advanced protection."
+    # ⭐ Giro W17: i prezzi, approvati da Pier il 14/10/2026. ⛔ Solo dollari, e
+    # SOLO qui in pagina: nei dati strutturati non c'è nessun prezzo di Pro
+    # (cambia da paese a paese) — vedi `_includes/dati-strutturati.html`.
+    - lead: "Pro is $1.99 a month or $14.99 a year."
+      body: "Family Sharing is included, so your family gets Pro too. Cancel anytime. Prices vary by country: the App Store shows yours."
     - lead: "If your Pro subscription ends, nothing gets lost."
       body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
+    # ⭐ Giro W17, in fondo alla sezione come nella bozza.
+    - lead: "More is on the way."
+      body: "Lots of new features are coming in future updates, built around how sport shooters actually train."
 
 footer:
   # ⭐ Dal giro W13 la riga dice «app», e con lei il titolo di scheda e la
@@ -262,13 +276,19 @@ footer:
   # ciascuno è un LINK diverso, e un link è un pezzo per forza.
   # ⛔ Il «·» che li separa non è qui: è un segno, non una parola, e lo mette
   # `_includes/piede.html`. Dove portano sta in `_data/collegamenti.yml`.
+  # ⭐ Dal giro W17 sono QUATTRO: «What's new» porta alla pagina `/updates/`.
   links:
     - "Privacy Policy"
     - "Support"
     - "Terms of Use"
+    - "What's new"
   # ⭐ Dal giro W12 la riga dei marchi cita anche «Apple» e «the Apple logo»:
   # lo chiede Apple a chi usa il badge, che il suo logo lo porta dentro.
-  copyright: "© 2026 Piermichele Fassio. Apple, the Apple logo, iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
+  # ⭐ Dal giro W17 anche «Face ID», «Keychain» e «Touch ID»: sono marchi
+  # registrati di Apple (la sua lista ufficiale), e il sito li nomina. ⚠️ La
+  # stessa riga sta nei Terms (`_data/terms.yml`), identica: lo misura la
+  # controprova.
+  copyright: "© 2026 Piermichele Fassio. Apple, the Apple logo, Face ID, iCloud, iPhone, Keychain, Touch ID and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
   # ⭐ Dal giro W14, dopo la riga dei marchi Apple: nelle schermate dell'app si
   # leggono nomi di marche che non sono nostre (i dati di prova), e questa è
   # la riga che lo dice. Sta nel piede, quindi su tutte e quattro le pagine.

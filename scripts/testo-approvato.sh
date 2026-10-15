@@ -116,7 +116,7 @@ fi
 "$RUBY" -ryaml -rjson - "$MODO" "$CONTENUTI" "$REPO" "$COSTRUITO" <<'PROGRAMMA'
 modo, contenuti, repo, costruito = ARGV
 
-# Le quattro pagine del sito: nome, file di dati, bozza, e dove esce nel
+# Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
 # una pagina, manca in entrambe, e non in una sola di nascosto.
 PAGINE = [
@@ -141,6 +141,14 @@ PAGINE = [
   # una riga fra quadre da sola, e cade come le «[schermata: …]».
   { nome: "your-data", dati: "_data/your-data.yml", bozza: "your-data/your-data-en-bozza.md",
     uscita: "features/privacy-and-security/index.html", sezioni: ["Meta", "Page"] },
+  # ⭐ Giro W17: la terza pagina-funzione e la pagina delle novità, con le
+  # stesse regole. ⚠️ In «What's new» le righe «Chi la tiene aggiornata» e la
+  # tabella «Controllo» stanno in sezioni `## ` proprie, e `sezioni` le lascia
+  # fuori come i «Punti aperti».
+  { nome: "maintenance", dati: "_data/maintenance.yml", bozza: "maintenance/maintenance-en-bozza.md",
+    uscita: "features/maintenance/index.html", sezioni: ["Meta", "Page"] },
+  { nome: "whats-new", dati: "_data/whats-new.yml", bozza: "whats-new/whats-new-en-bozza.md",
+    uscita: "updates/index.html", sezioni: ["Meta", "Page"] },
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
@@ -297,7 +305,10 @@ else
     # ⭐ Dal giro W14 anche `screenshot`: sono gli indirizzi delle schermate,
     # come `image`. ⛔ Che siano DAVVERO indirizzi di file nostri, e non una
     # frase infilata lì, lo misura `misure-pagine.rb` (`immagini_guasti`).
-    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot"]
+    # ⭐ Dal giro W17 anche `priceCurrency`: un codice di tre lettere («USD»),
+    # non una frase. ⛔ Che l offerta sia UNA, a zero, con quel codice e
+    # nient altro, lo misura `misure-pagine.rb` (`offerte_a_zero`).
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot", "priceCurrency"]
     parole_jsonld = []
     html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
       begin

@@ -229,10 +229,14 @@ img, svg { display: block; max-width: 100%; }
 }
 .motto { font-size: 1rem; font-weight: 600; color: var(--verde-chiaro); }
 
-// I TRE LINK, dal giro W9. ⛔ Sottolineati: il colore da solo non basta a dire
-// «questo si clicca» (WCAG 2.1, «Use of Color»).
+// I LINK, dal giro W9 (quattro dal W17). ⛔ Sottolineati: il colore da solo non
+// basta a dire «questo si clicca» (WCAG 2.1, «Use of Color»).
+// ⚠️ `nowrap` dal giro W17: col quarto link, «What's new», a 390 px la riga
+// andava a capo DENTRO il link — «What's» su una riga, «new» sotto. Un link
+// va a capo intero, fra un link e l'altro.
 .collegamenti { margin-top: .9rem; font-size: .92rem; line-height: 1.9; }
 .collegamenti a {
+  white-space: nowrap;
   color: var(--verde-chiaro);
   text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: .07em;
 }

@@ -4,7 +4,7 @@
 
 **Una coda sola, una cosa alla volta.** ⛔ **Questo file dice l'ORDINE, non il merito:** cosa sia ciascuna voce sta nel registro, e lì si legge prima di toccarla.
 
-⭐ **Ricalca la Fase E del piano dell'app** (`~/Developer/AIMONX/docs/piano-chiusura.md`): stesso ordine — `RD16` → `RA4` → `RA1 · RA2` → `RA3` → `RA11` — sulle gemelle del sito. ⚠️ **Con due vincoli che nel piano dell'app non ci sono** (W2 e W3 qui sotto), e ⛔ **con una Fase 0 che il piano dell'app non poteva prevedere**, perché nasce da ciò che il giro W0 ha misurato nel repo.
+⭐ **Ricalca la Fase E del piano dell'app** (`~/Developer/AIMONX/docs/_archivio/v1.0.0/piano-1.0.0.md`, archivio della 1.0 dell'app; il piano vivo dell'app è `~/Developer/AIMONX/docs/piano.md`): stesso ordine — `RD16` → `RA4` → `RA1 · RA2` → `RA3` → `RA11` — sulle gemelle del sito. ⚠️ **Con due vincoli che nel piano dell'app non ci sono** (W2 e W3 qui sotto), e ⛔ **con una Fase 0 che il piano dell'app non poteva prevedere**, perché nasce da ciò che il giro W0 ha misurato nel repo.
 
 ## Fase 0 — prima di ogni altra cosa, e il resto non parte senza
 

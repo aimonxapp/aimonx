@@ -51,6 +51,10 @@ frasi:
   - frase: "See how round count works"
     href: "/features/round-count/"
     tipo: pagina
+  # ⭐ Giro W17, la terza pagina-funzione.
+  - frase: "See how maintenance works"
+    href: "/features/maintenance/"
+    tipo: pagina
   - frase: "Garante per la protezione dei dati personali"
     href: "https://www.garanteprivacy.it/"
     tipo: esterno
@@ -71,6 +75,11 @@ frasi:
     tipo: pagina
   - frase: "Terms of Use"
     href: "/terms/"
+    tipo: pagina
+  # ⭐ Giro W17: il link del piede alla pagina delle novità. L'indirizzo è
+  # quello di `spec-sito.md` §7, il nome quello deciso da Pier (14/10/2026).
+  - frase: "What's new"
+    href: "/updates/"
     tipo: pagina
   - frase: "Support"
     href: "/support/"

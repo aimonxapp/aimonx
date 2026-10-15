@@ -22,6 +22,8 @@ $ancore_rotte = []
 $seo = []
 $ancore_per_pagina = {}
 $jsonld = 0
+$marchi = {}
+$offerte_a_zero = 0
 $da_controllare = []
 $titoli_fuori = []
 $sospetti = []
@@ -66,6 +68,17 @@ pagine.each do |percorso|
   $ancore_per_pagina["/" + nome.sub(%r{index\.html\z}, "")] =
     nudo.scan(/\bid="([^"]+)"/).flatten.to_set
 
+  # ⭐ Giro W17: LA RIGA DEI MARCHI, pagina per pagina. Sta nel piede, scritto
+  # una volta sola, quindi dovrebbe essere la stessa ovunque — ma «dovrebbe» è
+  # quel che si misura. ⚠️ Si raccoglie il primo paragrafo `minuta` del piede
+  # di ogni pagina che ne ha uno; quante VARIANTI ne escono si stampa qui
+  # sotto (`marchi_varianti`, atteso 1), insieme a quante pagine la portano.
+  piede = nudo[%r{<footer class="chiusa">(.*?)</footer>}m, 1]
+  if piede
+    riga = piede[%r{<p class="minuta">(.*?)</p>}m, 1].to_s.gsub(/[[:space:]]+/, " ").strip
+    ($marchi[riga] ||= []) << nome
+  end
+
   # --- ⓪ i dati strutturati e l immagine di condivisione (giro W10) ---------
   blocchi = nudo.scan(/<script[^>]*application\/ld\+json[^>]*>(.*?)<\/script>/mi).flatten
   if blocchi.empty?
@@ -88,8 +101,31 @@ pagine.each do |percorso|
           when Array then n.each { |v| cammina.call(v) }
           end }
         cammina.call(d)
-        (chiavi & %w[offers price priceCurrency aggregateRating review ratingValue datePublished]).each do |k|
+        (chiavi & %w[aggregateRating review ratingValue datePublished]).each do |k|
           $seo << "#{nome}: nei dati strutturati c e «#{k}», che non e deciso per il sito"
+        end
+        # ⭐ Giro W17: UN'offerta sola, ed e «gratis da scaricare» — prezzo 0,
+        # una valuta di tre lettere, nient'altro dentro. ⛔ Il prezzo di Pro
+        # NON va nei dati strutturati (Pier, 14/10/2026): un `price` che non
+        # sia 0, o un'offerta in piu, e un guasto. Le offerte giuste si
+        # contano nel blocco dell'applicazione, qui sotto; tutte le altre no.
+        offerte_giuste = 0
+        (d["@graph"] || [d]).each do |voce|
+          next unless voce.is_a?(Hash) && voce["@type"].to_s.end_with?("Application")
+          o = voce["offers"]
+          next if o.nil?
+          if o.is_a?(Hash) && o.keys.sort == %w[@type price priceCurrency] && o["@type"] == "Offer" &&
+             o["price"].to_s =~ /\A0(\.0+)?\z/ && o["priceCurrency"].to_s =~ /\A[A-Z]{3}\z/
+            offerte_giuste += 1
+            $offerte_a_zero += 1
+          else
+            $seo << "#{nome}: l offerta nei dati strutturati non e «gratis» -> #{o.to_json[0, 90]}"
+          end
+        end
+        %w[offers price priceCurrency].each do |k|
+          if chiavi.count(k) > offerte_giuste
+            $seo << "#{nome}: nei dati strutturati c e «#{k}» fuori dall offerta a zero dell app"
+          end
         end
         (d["@graph"] || [d]).each do |voce|
           next unless voce.is_a?(Hash) && voce["@type"].to_s.end_with?("Application")
@@ -325,6 +361,10 @@ puts "sitemap_indirizzi=#{indirizzi.size}"
 puts "seo_guasti=#{$seo.size}"
 puts "link_verso_fuori=#{$verso_fuori.size}"
 puts "blocchi_jsonld=#{$jsonld}"
+puts "offerte_a_zero=#{$offerte_a_zero}"
+puts "marchi_pagine=#{$marchi.values.flatten.size}"
+puts "marchi_varianti=#{$marchi.size}"
+$marchi.each { |r, n| puts "  · marchi (#{n.size} pagine): #{r[0, 110]}" } if $marchi.size > 1
 puts "badge_guasti=#{$badge.size}"
 # ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il
 # giorno in cui le schermate sparissero dalla pagina — zero immagini sono anche

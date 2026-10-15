@@ -1,0 +1,80 @@
+# _data/maintenance.yml — IL TESTO DELLA PAGINA «MAINTENANCE», UNA VOLTA SOLA.
+# Giro W17: la terza pagina-funzione, sul modello di `_data/round-count.yml`.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 14/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/maintenance/maintenance-en-bozza.md
+# sezioni `## Meta` e `## Page`. `scripts/testo-approvato.sh` cerca ogni stringa
+# qui dentro ALLA LETTERA in quelle due sezioni — e SOLO in quelle: le note fra
+# quadre, il link per la landing, i «Punti aperti» e la tabella «Controllo»
+# della stessa bozza non vanno in pagina, e il controllo non le accetta.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Quale file sia ogni schermata
+# sta in `_data/aspetto.yml` (`funzioni`), accoppiato PER ORDINE DI COMPARSA.
+# ⚠️ Le prime due sono schermate già nel sito, e i loro testi alternativi sono
+# quelli già approvati per la landing, alla lettera; le ultime tre sono nuove.
+# La terza e la quarta stanno in COPPIA, come le due del blocco nella pagina
+# «Your data» (giro W17 §1④-ter).
+#
+# ⚠️ I TESTI ALTERNATIVI sono ⏳ DA APPROVARE guardando l'anteprima.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "Gun Cleaning & Maintenance Tracker by Round Count | AIMONX"
+  description: "Set cleaning and maintenance rules by round count for each firearm. AIMONX shows you in the app what's coming up or due, and keeps a log of every job."
+
+titolo: "Firearm maintenance, by round count"
+sommario: "Cleaning every 500 rounds, a new recoil spring at 5,000: you know your rules. Keeping track is the hard part. AIMONX counts the rounds from your range sessions and shows you when something is due."
+
+blocchi:
+- tipo: h2
+  testo: Your rules, your round counts
+- tipo: p
+  testo: "For each firearm, choose what needs doing and how often, in rounds: cleaning, lubrication, a spring change, a check, or anything on your own list. Give each rule a title and, if you like, a few lines on how you do it. AIMONX doesn't tell you how often to clean. You set the rules, from your manual or your own experience."
+- tipo: schermate
+  alt:
+  - "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
+- tipo: h2
+  testo: What's due, at a glance
+- tipo: p
+  testo: "Each firearm shows a color-coded status: green when it's good, yellow when maintenance is coming up, orange when it's due. You'll see it on the firearm, on Home, and right after you save a range session."
+- tipo: schermate
+  alt:
+  - "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
+- tipo: h2
+  testo: Get the heads-up early
+- tipo: p
+  testo: Choose how many rounds ahead you want to know, so you can plan the cleaning instead of getting caught off guard. The early heads-up comes with Pro.
+- tipo: h2
+  testo: Mark it done, and the count starts over
+- tipo: p
+  testo: "Open a rule and tap Mark as Done. AIMONX fills in the date, the firearm's round count and the rule's details. Fix anything that's off, like the date if you did it two days ago, then save. That rule's counter starts again from there."
+- tipo: schermate
+  alt:
+  - "Editing a maintenance rule in AIMONX: a Mark as Done button on top, then the type, title, procedure, interval in rounds and early warning."
+  - "A new maintenance entry in AIMONX, already filled in from the rule: title, procedure, cost and the firearm's current round count."
+- tipo: h2
+  testo: Every job in the firearm's log
+- tipo: p
+  testo: "The Maintenance & Firearm Log keeps the story of each firearm: cleanings, lubrications, checks, repairs. Write down what you did, the products you used and what it cost."
+- tipo: schermate
+  alt:
+  - "The Maintenance & Firearm Log in AIMONX: two full cleanings of the same pistol, each with its date, round count and procedure."
+- tipo: h2
+  testo: No notifications, on purpose
+- tipo: p
+  testo: "AIMONX never sends you a notification about maintenance. Rounds only go up when you log a session, so that's when AIMONX checks, and it tells you right there in the app."
+- tipo: h2
+  testo: Bought it used?
+- tipo: p
+  testo: Enter the round count it came with, and choose whether those rounds count toward its maintenance.
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: Free gives each firearm one cleaning rule, at the round count you choose. Pro adds unlimited rules of every type and the early heads-up.
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO dell'immagine del
+# badge di Apple in fondo — ed essendo l'unico contenuto del link, il suo nome.
+badge: "Download on the App Store"

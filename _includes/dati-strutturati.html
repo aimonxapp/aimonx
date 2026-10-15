@@ -11,11 +11,13 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
   occhio quando si apre il sito — sta nel sorgente — quindi una bugia lì
   dentro può restarci per mesi senza che nessuno la veda, e intanto la
   raccontano i motori al posto nostro.
-  ⛔ NIENTE PREZZO, NIENTE OFFERTE, NIENTE VOTI, NIENTE RECENSIONI, NIENTE
-  DATA DI USCITA: non esistono o non sono decisi per il sito (giro W10 §2③,
-  confermato nel W13 — i prezzi cambiano il 09/10/2026 e Pier non li ha
-  approvati per il sito). ⛔ E nessun indirizzo, nessun telefono, nessuna
-  email — il MUST vale qui come ovunque.
+  ⛔ NIENTE PREZZO DI PRO, NIENTE VOTI, NIENTE RECENSIONI, NIENTE DATA DI
+  USCITA: non esistono o non sono decisi per il sito (giro W10 §2③, confermato
+  nel W13). ⭐ DAL GIRO W17 UN'OFFERTA SOLA, ed è un fatto vero: l'app è
+  GRATIS DA SCARICARE — `offers` con `price: 0` (vedi la nota accanto).
+  ⛔ Il prezzo di Pro sta in pagina, non qui: cambia da paese a paese (Pier,
+  14/10/2026). ⛔ E nessun indirizzo, nessun telefono, nessuna email — il MUST
+  vale qui come ovunque.
 
   ⭐ DAL GIRO W13 DUE FATTI SONO DIVENTATI VERI, E SONO ENTRATI — solo quelli:
   l'app è in vendita dall'08/10/2026, quindi c'è un LINK ALLO STORE e c'è una
@@ -41,11 +43,11 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
   ⚠️ CONSEGUENZA DA SAPERE, VERIFICATA SULLA DOCUMENTAZIONE DI GOOGLE e non a
   memoria: per il risultato «ricco» delle app Google chiede `offers.price` e
   un voto, e dice che servono «per essere IDONEI a comparire come rich
-  result». ⭐ Mancanti, il blocco NON è invalido — schema.org non ha proprietà
-  obbligatorie — ma il Rich Results Test di Google segnalerà in ROSSO due
-  campi mancanti. ⛔ Quel rosso è ATTESO, non un guasto: è il prezzo di non
-  inventare un prezzo. Chi lo vede e «ripara» aggiungendo un valore mette
-  online una cosa falsa.
+  result». ⭐ Dal giro W17 il prezzo c'è — 0, l'app si scarica gratis — e il
+  Rich Results Test segnalerà in rosso UN campo mancante, il voto. ⛔ Quel
+  rosso è ATTESO, non un guasto: sullo Store non ci sono abbastanza
+  valutazioni. Chi lo vede e «ripara» aggiungendo un voto mette online una
+  cosa falsa.
 
   ⚠️ LE STRINGHE SONO CONTROLLATE, come quelle in pagina: `scripts/testo-
   approvato.sh --servito` entra anche qui dentro e cerca ogni valore di testo
@@ -121,6 +123,15 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "operatingSystem": "iOS",
       "applicationCategory": "SportsApplication",
       "installUrl": {{ site.data.collegamenti.store | jsonify }},
+      {%- comment -%}
+        ⭐ GRATIS DA SCARICARE, dal giro W17 — come Google chiede per le app
+        gratuite: «If the app is free, set `offers.price` to 0». ⚠️ La valuta
+        è il dollaro perché il sito parla in dollari (Pier, 14/10/2026); un
+        prezzo 0 vale uguale in ogni valuta. ⛔ UN'OFFERTA SOLA E A ZERO: che
+        non ce ne sia un'altra, né un prezzo diverso da 0, lo misura
+        `scripts/misure-pagine.rb`.
+      {%- endcomment %}
+      "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD" },
       "image": {{ '/assets/img/aimonx-512.png' | absolute_url | jsonify }},
       {%- comment -%}
         ⭐ LE SCHERMATE, dal giro W14 — e nient'altro. Verificato su schema.org

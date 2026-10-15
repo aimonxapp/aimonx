@@ -1,0 +1,43 @@
+# _data/whats-new.yml — IL TESTO DELLA PAGINA «WHAT'S NEW», UNA VOLTA SOLA.
+# Giro W17. L'indirizzo è `/updates/` (`spec-sito.md` §7), il nome è quello
+# della bozza: così chi cerca l'uno trova l'altro.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 14/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/whats-new/whats-new-en-bozza.md
+# sezioni `## Meta` e `## Page`, cercate ALLA LETTERA da
+# `scripts/testo-approvato.sh` — e SOLO quelle: i punti aperti, «Chi la tiene
+# aggiornata» e la tabella «Controllo» non vanno in pagina.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+# ⛔ Una versione entra qui solo quando è DAVVERO sullo Store, con la data in
+# cui ci è arrivata, scritta in americano. Le righe di una versione sono quelle
+# inviate ad Apple per la scheda dello Store, alla lettera.
+#
+# ⚠️ Non ha schermate: usa `_layouts/funzione.html` per il titolo grande,
+# l'elenco e il badge in fondo, non perché sia una pagina-funzione.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "What's New in AIMONX: Release Notes | AIMONX"
+  description: "What changed in each version of AIMONX, the firearm logbook app for iPhone, newest first."
+
+titolo: "What's new in AIMONX"
+sommario: "Every update to the app, newest first."
+
+blocchi:
+- tipo: h2
+  testo: Version 1.0.1 — October 14, 2026
+- tipo: ul
+  voci:
+  - New Back Up Now button on the AIMONX Backup page, so you can back up to iCloud whenever you want.
+  - Your iCloud backup now also catches up when you open the app, not only when you leave it.
+  - Fixed a crash when deleting a firearm.
+  - Large logs now use much less memory while backing up.
+- tipo: h2
+  testo: Version 1.0.0 — October 8, 2026
+- tipo: p
+  testo: The first release. Log your firearms, range sessions and matches. Track rounds, ammo, maintenance, deadlines and costs. Create PDF reports of your firearms. Your logbook is encrypted on your iPhone, with an encrypted copy in your own iCloud.
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO del badge di Apple in fondo.
+badge: "Download on the App Store"

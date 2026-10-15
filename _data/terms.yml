@@ -55,8 +55,12 @@ titolo: "Terms of Use"
 # ⭐ QUESTA È LA DATA VERA: l'08/10/2026 è il giorno in cui Pier ha scritto
 # «pubblica» (Fase B del giro W12). In Fase A era provvisoria e dichiarata; la
 # Fase B è caduta lo stesso giorno, quindi il valore non è cambiato.
+# ⭐ NEL GIRO W17 LA PAGINA CAMBIA ANCORA — la riga dei marchi cita anche Face
+# ID, Keychain e Touch ID — quindi la data cambia di nuovo. ⚠️ In Fase A è
+# PROVVISORIA e dichiarata: il giorno dell'anteprima. Diventa quella vera il
+# giorno in cui Pier scrive «pubblica», nella Fase B.
 aggiornato: "Last updated:"
-data_pubblicazione: "October 8, 2026"
+data_pubblicazione: "October 15, 2026"
 
 blocchi:
 - tipo: h2
@@ -85,7 +89,7 @@ blocchi:
 - tipo: p
   testo: © 2026 Piermichele Fassio. Unless noted otherwise, all content on aimonx.app is ours. We work hard to keep it accurate, but it's provided "as is."
 - tipo: p
-  testo: Apple, the Apple logo, iPhone, iCloud and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+  testo: Apple, the Apple logo, Face ID, iCloud, iPhone, Keychain, Touch ID and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
 - tipo: h2
   testo: Contact
 - tipo: p

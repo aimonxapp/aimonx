@@ -61,8 +61,9 @@
 //
 // Uso:  node scripts/schermate.mjs "<cartella delle sorgenti>" [gruppo]
 //   · senza gruppo: le sorgenti di «ScreenShot APP v1.0.0» (W14, W15);
-//   · `privacy`: le quattro di «ScreenShot APP v1.0.1 privacy» (W16).
-//   ⚠️ Il gruppo c'è perché le cartelle sono due, e ⛔ perché rifare una
+//   · `privacy`: le quattro di «ScreenShot APP v1.0.1 privacy» (W16);
+//   · `manutenzione`: le tre di «ScreenShot APP v1.0.1 maintenance» (W17).
+//   ⚠️ Il gruppo c'è perché le cartelle sono più d'una, e ⛔ perché rifare una
 //   schermata non deve rifare le altre: un altro Chromium dà byte diversi.
 // Esce: assets/img/screenshots/<nome>-<larghezza>.webp
 
@@ -116,6 +117,9 @@ const LISTA = [
     ritaglio: { x: 193, y: 391, larga: 903, alta: 1957, angolo: 136 } },
   { da: 'privacy_3_backup.png',               a: 'aimonx-icloud-backup',       larghezze: TELEFONO, gruppo: 'privacy' },
   { da: 'privacy_4_protezione-avanzata.png',  a: 'aimonx-advanced-protection', larghezze: TELEFONO, gruppo: 'privacy' },
+  { da: 'maintenance_1_edit-rule-mark-as-done.png', a: 'aimonx-maintenance-mark-as-done', larghezze: TELEFONO, gruppo: 'manutenzione' },
+  { da: 'maintenance_2_new-entry-prefilled.png',    a: 'aimonx-maintenance-new-entry',    larghezze: TELEFONO, gruppo: 'manutenzione' },
+  { da: 'maintenance_3_firearm-log.png',            a: 'aimonx-maintenance-log',          larghezze: TELEFONO, gruppo: 'manutenzione' },
 ].filter((v) => (v.gruppo ?? null) === gruppo);
 if (!LISTA.length) { console.error(`⛔ nessuna sorgente nel gruppo «${gruppo}»`); process.exit(2); }
 // ⚠️ 0,82: sotto, il testo piccolo delle schermate comincia a sporcarsi

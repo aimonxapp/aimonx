@@ -124,7 +124,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=6
+pagine_costruite=8
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -165,11 +165,11 @@ ancore_rotte=0
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
 # nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
-sitemap_indirizzi=6
+sitemap_indirizzi=8
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=6
+blocchi_jsonld=8
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -195,7 +195,11 @@ seo_guasti=0
 # la copia del sito tiene la sua riga — «al sito il ramo di sviluppo non
 # interessa» — quindi quella differenza è un adattamento del sito in più
 # (`WD39`). Né la copia né il master sono cambiati: è cambiato cosa ci si aspetta.
-skill_giro_scarto_dal_master=cd4ea71c6578
+# ⛔ Spostata di nuovo nel giro W17, da cd4ea71c6578, e SOLO dopo aver letto il
+# diff: il 12/10/2026 il master ha preso la regola dei rami dell'app, e Pier ha
+# deciso che la copia del sito NON la prende — si adotta alla prima pulizia del
+# sito, dopo la 1.1.0 (bacheca, 14/10/2026, punto ④). La copia non è toccata.
+skill_giro_scarto_dal_master=1538321d6bd3
 
 # --- giro W12: l'app è uscita, e in pagina c'è il badge di Apple -------------
 #
@@ -243,7 +247,7 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=16
+schermate_in_pagina=21
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
@@ -255,8 +259,8 @@ schermate_nei_dati_strutturati=7
 # larghezze. Il repo è pubblico. Se il primo numero sale è entrata un'immagine
 # in più; se sale solo il secondo, un file che non è una delle tre larghezze.
 # ⛔ Nessuno dei due si alza per far passare qualcosa: prima si guarda cos'è.
-schermate_immagini=15
-schermate_file=45
+schermate_immagini=18
+schermate_file=54
 
 # --- giro W15: la prima pagina-funzione, «Round count» ------------------------
 #
@@ -266,8 +270,8 @@ schermate_file=45
 # «one badge per layout»), ogni link nudo — ed è `badge_guasti`, che resta 0.
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
-badge_nel_sito=3
-link_allo_store=4
+badge_nel_sito=5
+link_allo_store=6
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -285,3 +289,27 @@ link_allo_store=4
 # ⛔ NON spostate, e apposta: `percorsi_rotti` (resta 0: i puntatori rotti nati
 # fuori dal repo il 12/10 si riparano, non si accettano) e
 # `skill_giro_scarto_dal_master` (la copia la decide Pier, giro W16 §2⑥).
+
+# ⛔ Spostate a mano nel giro W17, e SOLO dopo aver guardato cosa è entrato — la
+# terza pagina-funzione, `/features/maintenance/`, e `/updates/` («What's new»):
+#   pagine_costruite, sitemap_indirizzi, blocchi_jsonld   6 → 8
+#   schermate_in_pagina   16 → 21  (cinque sulla pagina nuova; due sono già della
+#                                   landing, quindi i file nuovi sono tre)
+#   schermate_immagini  15 → 18  ·  schermate_file  45 → 54
+#   badge_nel_sito  3 → 5  ·  link_allo_store  4 → 6
+# E `skill_giro_scarto_dal_master`, con la sua ragione accanto.
+
+# --- giro W17: il prezzo, e la riga dei marchi --------------------------------
+#
+# ⭐ Le offerte nei dati strutturati: UNA, «gratis da scaricare», a zero, nel
+# blocco dell'applicazione. ⛔ Un prezzo diverso da 0 o un'offerta in più sono
+# un guasto (`seo_guasti`): il prezzo di Pro sta in pagina, non qui (Pier,
+# 14/10/2026). Questo conto è l'allarme opposto — se l'offerta sparisce.
+offerte_a_zero=1
+
+# ⭐ La riga dei marchi Apple, nel piede: su quante pagine c'è, e in quante
+# VERSIONI diverse. ⛔ `marchi_varianti` deve restare 1: il piede è scritto una
+# volta sola, e questa è la prova che lo è ancora. `marchi_pagine` sale con le
+# pagine, come `pagine_costruite`.
+marchi_pagine=8
+marchi_varianti=1
