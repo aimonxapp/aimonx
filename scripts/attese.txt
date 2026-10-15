@@ -77,6 +77,14 @@ percorsi_pier=0
 # un merge metterebbe i file di lavoro su aimonx.app.
 file_lavoro_pubblicati=0
 
+# ⭐ WD37, dal giro W19 — la rete sotto `exclude`: i file della build che non
+# corrispondono a nessuna forma di `scripts/pubblicati.txt`. Deve restare 0.
+# ⛔ Quando sale, prima si guarda COSA è uscito — un file di lavoro si toglie
+# o si aggiunge a `exclude`; un tipo nuovo voluto si dichiara in quella lista,
+# una volta — e mai si alza questo numero. Provato nel W19 piantando un .txt,
+# un .json e un .xml alla radice: li ha nominati tutti e tre.
+file_non_dichiarati=0
+
 # ⛔ WD23. Quante volte il sito costruito si dichiara `http://aimonx.app`.
 # Era il difetto: senza `url` in _config.yml Jekyll indovinava lo schema e
 # annunciava la versione in chiaro di sé. ⚠️ Questo misura la BUILD; cosa

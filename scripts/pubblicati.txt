@@ -1,0 +1,43 @@
+# scripts/pubblicati.txt — COSA IL SITO PUBBLICA APPOSTA. Nato nel giro W19 (WD37).
+#
+# ⛔ È LA RETE SOTTO `exclude`. `exclude` in `_config.yml` è una lista di
+# NEGAZIONI, e fallisce APERTA (WD29): un file di lavoro nuovo alla radice — un
+# `.txt`, un `.json`, un `.xml` — esce nel sito senza che nessuno lo nomini.
+# ⭐ Questa lista è il contrario: dice cosa DEVE uscire. `scripts/controprova.sh`
+# costruisce il sito e conta ogni file della build che NON corrisponde a
+# nessuna riga qui sotto (`file_non_dichiarati`, atteso 0) — e li nomina uno
+# per uno.
+#
+# ⚠️ PERCHÉ PER FORMA E NON FILE PER FILE: un controllo che protesta per ogni
+# schermata nuova viene disattivato (CLAUDE.md, «Verifica di fine giro»). Le
+# immagini, i font e i fogli di stile stanno nelle LORO cartelle, coi LORO
+# tipi: un `.webp` in `assets/img/screenshots/` è voluto, un `.txt` alla radice
+# no. ⛔ Le pagine sono `index.html` in una cartella: QUANTE siano lo misura già
+# `pagine_costruite`, quindi una pagina in più non passa in silenzio neanche qui.
+#
+# ⚠️ Una riga per forma, confrontata col percorso dentro la build con
+# `File.fnmatch` e FNM_PATHNAME: `*` non attraversa una `/`. Chi aggiunge un tipo
+# di file che il sito deve pubblicare lo aggiunge QUI, una volta, e lo dice.
+
+# le pagine: la landing, e ogni pagina come cartella con il suo index.html
+index.html
+*/index.html
+features/*/index.html
+
+# i due file per i motori: la mappa (jekyll-sitemap) e robots.txt (giro W10)
+sitemap.xml
+robots.txt
+
+# i fogli di stile, costruiti da Jekyll dai .scss
+assets/css/*.css
+
+# il font scritto a mano e la sua licenza (la OFL chiede che viaggi col font)
+assets/fonts/*.woff2
+assets/fonts/OFL.txt
+
+# le icone, l'immagine di condivisione, il badge di Apple
+assets/img/*.png
+assets/img/*.svg
+
+# le schermate dell'app
+assets/img/screenshots/*.webp

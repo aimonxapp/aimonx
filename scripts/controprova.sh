@@ -249,6 +249,33 @@ VOCI
       echo "     ⛔ `exclude` NON TIENE. Un merge li metterebbe su aimonx.app."
     fi
 
+    # ⭐ WD37, dal giro W19 — LA RETE SOTTO `exclude`. Il controllo qui sopra
+    # cerca nella build solo i file che `exclude` NOMINA: un file di lavoro
+    # nuovo, che nessuno ha nominato, gli passa sotto. ⚠️ Fino al W18 lo
+    # copriva solo `pagine_dal_merge`, che conta i `.md` e nient'altro.
+    # ⭐ Qui si guarda TUTTO quel che esce dalla build e lo si confronta con
+    # quel che il sito pubblica APPOSTA, dichiarato una volta in
+    # `scripts/pubblicati.txt`. Ogni file che non corrisponde si conta e si
+    # nomina. ⛔ Senza la lista l'esito è «non misurabile», non zero.
+    if [ -r "$REPO/scripts/pubblicati.txt" ]; then
+      NON_DICH=$("$RUBY_BIN/ruby" -e '
+        forme = File.readlines(ARGV[0]).map(&:strip).reject { |r| r.empty? || r.start_with?("#") }
+        Dir.chdir(ARGV[1]) do
+          Dir.glob("**/*", File::FNM_DOTMATCH).select { |f| File.file?(f) }.sort.each do |f|
+            puts f unless forme.any? { |m| File.fnmatch(m, f, File::FNM_PATHNAME) }
+          end
+        end' "$REPO/scripts/pubblicati.txt" "$SITO_TMP")
+      N_NON_DICH=$(printf '%s' "$NON_DICH" | grep -c . | tr -d ' ')
+      confronta "file nel sito costruito che il sito non dichiara di pubblicare" file_non_dichiarati "$N_NON_DICH"
+      if [ "$N_NON_DICH" != "0" ]; then
+        printf '%s\n' "$NON_DICH" | sed 's|^|     ⛔ aimonx.app/|'
+        echo "     ⛔ Un file di lavoro, o un tipo nuovo da dichiarare in scripts/pubblicati.txt:"
+        echo "        si guarda cos'è PRIMA di toccare la lista."
+      fi
+    else
+      non_misurabile "file_non_dichiarati (manca scripts/pubblicati.txt)"
+    fi
+
     # ⛔ WD23 — lo schema che la pagina dichiara di sé. Non è «Enforce HTTPS»,
     # che è GitHub a fare: questo lo scrive Jekyll, e senza `url` in
     # _config.yml indovina `http://`. ⚠️ Si misura sulla BUILD; cosa legga il
