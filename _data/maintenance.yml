@@ -18,7 +18,7 @@
 # La terza e la quarta stanno in COPPIA, come le due del blocco nella pagina
 # «Your data» (giro W17 §1④-ter).
 #
-# ⚠️ I TESTI ALTERNATIVI sono ⏳ DA APPROVARE guardando l'anteprima.
+# ⭐ I TESTI ALTERNATIVI sono APPROVATI da Pier in anteprima (giro W17, 15/10/2026).
 
 meta:
   # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
@@ -54,7 +54,7 @@ blocchi:
 - tipo: schermate
   alt:
   - "Editing a maintenance rule in AIMONX: a Mark as Done button on top, then the type, title, procedure, interval in rounds and early warning."
-  - "A new maintenance entry in AIMONX, already filled in from the rule: title, procedure, cost and the firearm's current round count."
+  - "A new maintenance entry in AIMONX, already filled in from the rule: title, procedure and the firearm's current round count."
 - tipo: h2
   testo: Every job in the firearm's log
 - tipo: p
