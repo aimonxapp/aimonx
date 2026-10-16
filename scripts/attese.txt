@@ -214,7 +214,8 @@ skill_giro_scarto_dal_master=1538321d6bd3
 # Scostamenti dalle regole del badge e dello Store, misurati sul sito COSTRUITO
 # da scripts/misure-pagine.rb: il link allo Store c'è UNA volta e senza
 # parametri di campagna, il badge è UNO, servito da noi, col testo alternativo;
-# nessun banner di Safari; «Coming soon» da nessuna parte. ⛔ Deve restare 0.
+# dal giro W21 il banner di Safari UNO per pagina, solo `app-id`, e lo stesso
+# numero del link allo Store; «Coming soon» da nessuna parte. ⛔ Deve restare 0.
 badge_guasti=0
 
 # ⛔⛔ IL BADGE È IL FILE DI APPLE, NON MODIFICATO: questa è la prova, e la
@@ -343,3 +344,11 @@ deadline_nel_sito=0
 # ⛔ Niente `FAQPage` nei dati strutturati (Pier, 15/10/2026): la pagina FAQ è
 # un `WebPage`, come le pagine-funzione.
 faqpage_nel_sito=0
+
+# --- giro W21: il banner di Safari (Smart App Banner) -------------------------
+#
+# Su quante pagine c'è il tag `apple-itunes-app`, una volta sola. ⚠️ Non è una
+# soglia: deve essere uguale a `pagine_costruite`, e sale con lei. ⛔ La regola
+# — uno per pagina, solo `app-id`, lo stesso numero del link allo Store — è in
+# `badge_guasti`, che resta 0.
+banner_pagine=9

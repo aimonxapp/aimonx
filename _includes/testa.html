@@ -57,6 +57,8 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/aimonx-16.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/aimonx-180.png' | relative_url }}">
 <meta name="theme-color" content="#0F3625">
+{%- comment -%} Giro W21: il banner di Safari (Smart App Banner), come lo descrive Apple — developer.apple.com/documentation/webkit/promoting-apps-with-smart-app-banners: il tag nel `head` di OGNI pagina, perché da Google si atterra anche su una pagina interna. ⛔ L'`app-id` non è ricopiato: è il numero in coda al link allo Store di `_data/collegamenti.yml`, una fonte sola. ⛔ Senza `app-argument`: il sito non promette di portare a una schermata dell'app. ⚠️ Non è un secondo badge: lo disegna Safari, coi dati dello Store, e la pagina non scarica niente. {%- endcomment %}
+<meta name="apple-itunes-app" content="app-id={{ site.data.collegamenti.store | split: '/id' | last }}">
 
 <link rel="stylesheet" href="{{ '/assets/css/comune.css' | relative_url }}">
 <link rel="stylesheet" href="{{ page.foglio | relative_url }}">

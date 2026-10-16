@@ -34,6 +34,8 @@ $verso_fuori = Set.new
 $badge = []
 $link_store = []
 $img_badge = 0
+$banner_pagine = 0
+$banner_id = []
 $app_jsonld = 0
 $immagini = []
 $schermate = 0
@@ -224,9 +226,24 @@ pagine.each do |percorso|
   nudo.scan(/<img\b[^>]*download-on-the-app-store[^>]*>/i) do |tag|
     $badge << "#{nome}: il badge non ha un testo alternativo" unless tag =~ /\balt="[^"]+"/
   end
-  # ⛔ Il banner di Safari (`apple-itunes-app`) e un ALTRA decisione, che il
-  # giro W12 non ha preso: se compare, qualcuno l ha presa da solo.
-  $badge << "#{nome}: c e il banner di Safari (apple-itunes-app)" if nudo =~ /name=["\x27]apple-itunes-app/i
+  # ⭐ Il banner di Safari (`apple-itunes-app`), dal giro W21 (Pier, 16/10/2026).
+  # ⛔ Fino al W20 la regola era l opposta — «se compare, qualcuno l ha deciso
+  # da solo» — e l ha decisa Pier. Ora: UNO per pagina, su ogni pagina, e il
+  # contenuto e SOLO `app-id=<numero>` — niente `app-argument` (il sito non
+  # promette una schermata dell app), niente `affiliate-data` (tracciamento).
+  # ⚠️ Si guarda la FORMA; che il numero sia quello del link allo Store lo
+  # dice il confronto in fondo, sul sito intero, non un valore scritto qui.
+  banner_qui = nudo.scan(/<meta\b[^>]*\bname=["\x27]apple-itunes-app["\x27][^>]*>/i)
+  $banner_pagine += 1 if banner_qui.size == 1
+  $badge << "#{nome}: #{banner_qui.size} banner di Safari, non 1" unless banner_qui.size == 1
+  banner_qui.each do |tag|
+    contenuto = tag[/\bcontent="([^"]*)"/, 1].to_s
+    if contenuto =~ /\Aapp-id=(\d+)\z/
+      $banner_id << $1
+    else
+      $badge << "#{nome}: il banner di Safari non e solo app-id -> #{contenuto[0, 90]}"
+    end
+  end
 
   # --- ①-ter le immagini (giro W14) -----------------------------------------
   # ⭐ Nata quando sulla landing sono entrate le schermate dell app. Ogni <img>
@@ -365,6 +382,13 @@ end
 # ⚠️ Senza questa riga i due controlli qui sopra passerebbero a vuoto il
 # giorno in cui il blocco dell applicazione sparisse dalla landing.
 $seo << "i blocchi «applicazione» nei dati strutturati sono #{$app_jsonld}, non 1" unless $app_jsonld == 1
+# ⛔ Giro W21: il banner e il link allo Store parlano della STESSA app. Si
+# confrontano i numeri che escono dalla build, non un numero scritto qui.
+id_store = $link_store.map { |d| d[/\/id(\d+)\z/, 1] }.compact.uniq
+id_banner = $banner_id.uniq
+unless id_banner.size == 1 && id_store == id_banner
+  $badge << "il banner di Safari dice app-id #{id_banner.join(",")}, il link allo Store id #{id_store.join(",")}"
+end
 
 puts "pagine_costruite=#{pagine.size}"
 puts "link_rotti=#{$link_rotti.size}"
@@ -389,6 +413,7 @@ puts "badge_guasti=#{$badge.size}"
 # zero immagini sbagliate. I due conti dicono che ci sono ancora.
 puts "badge_nel_sito=#{$img_badge}"
 puts "link_allo_store=#{$link_store.size}"
+puts "banner_pagine=#{$banner_pagine}"
 puts "immagini_guasti=#{$immagini.size}"
 puts "schermate_in_pagina=#{$schermate}"
 puts "schermate_nei_dati_strutturati=#{$schermate_jsonld}"

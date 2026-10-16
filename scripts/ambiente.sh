@@ -25,7 +25,7 @@
 #   · git con --no-optional-locks: `git status` altrimenti riscrive l'indice;
 #   · l'account attivo di gh si legge da hosts.yml: nessuna chiamata di rete;
 #   · ⛔ niente `git push --dry-run` sul repo dell'app (lo faceva il giro W2):
-#     parla col remote, che dal 12/10/2026 è il QNAP. Qui si confrontano solo
+#     parla col remote, che dal 12/10/2026 sta fuori da GitHub. Qui si confrontano solo
 #     i riferimenti già sul disco.
 #
 # ⚠️ Due esecuzioni di seguito devono dare due fotografie IDENTICHE: è la prova
