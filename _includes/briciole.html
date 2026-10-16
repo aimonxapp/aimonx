@@ -7,12 +7,12 @@ _includes/briciole.html — LE BRICIOLE DI PANE delle pagine di sezione. Giro W2
   ⚠️ Il «›» è un SEGNO, non una parola: `aria-hidden`, e chi ascolta sente le
   voci di un elenco ordinato. L'ultima è la pagina stessa: testo con
   `aria-current`, non un link a sé.
-  ⚠️ Il `<nav>` NON ha un'etichetta: «Breadcrumb» sarebbe una parola nuova, e
-  le parole le scrive Cowork. È nelle obiezioni del W24.
+  ⭐ L'etichetta del `<nav>`, «Breadcrumb», è invisibile e viene dalla bozza
+  della navigazione (Cowork, 16/10/2026 21:37), via `_data/navigazione.yml`.
   ⛔ Variabili col prefisso `bri_` (la nota in `_includes/barra.html`).
 {%- endcomment -%}
 {%- assign bri_n = site.data.navigazione -%}
-<nav class="briciole">
+<nav class="briciole" aria-label="{{ bri_n.etichette.briciole }}">
   <ol>
     <li><a href="{{ '/' | relative_url }}">{{ bri_n.briciole.casa }}</a></li>
     {%- if include.nome %}

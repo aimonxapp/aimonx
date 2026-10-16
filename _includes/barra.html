@@ -11,9 +11,9 @@ Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
       ragione scritta qui sotto. ⛔ Chiusa, le sue voci sono `display: none`:
       NON si raggiungono col Tab. Si apre e si chiude col clic, con Invio e con
       lo spazio, perché `<summary>` è un pulsante nativo.
-      ⚠️ SENZA JAVASCRIPT, quindi un clic FUORI non la richiude: la richiude
-      il suo pulsante, o il cambio di pagina. È il prezzo di zero script, ed è
-      una scelta di CC da far vedere a Pier, non un fatto.
+      ⭐ Dalla fase A del W24 (Pier, 16/10/2026) un clic FUORI la richiude, ed
+      Esc richiude lei e il pannello del telefono: lo fa `assets/js/menu.js`,
+      poche righe. ⛔ Senza lo script tutto il resto funziona come prima.
     · sul TELEFONO il pulsante «Menu» apre un PANNELLO A TUTTO SCHERMO, e
       dentro «Features» non è una tendina: è un titolo con le sue pagine già
       in elenco (niente da toccare due volte). Il pulsante, aperto, dice
@@ -23,7 +23,8 @@ Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
     · «Download» è un PULSANTE DI TESTO verso lo Store, ⛔ non un badge: il
       badge di Apple resta uno per pagina.
     · il logo porta alla landing, e «Home» non c'è più.
-  ⛔ SENZA JAVASCRIPT IL MENU È INTERO: non c'è JavaScript da togliere.
+  ⛔ SENZA JAVASCRIPT IL MENU È INTERO: lo script aggiunge solo Esc e il clic
+  fuori, e se non arriva si perde quello e basta.
 
   ⛔ PRIMA DEL W10 LA TESTATA ERA SCRITTA DUE VOLTE — una in
   `_layouts/landing.html`, una in `_layouts/pagina.html` — e già divergevano:
@@ -60,7 +61,7 @@ Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
 {%- endcomment -%}
 {%- assign barra_m = site.data.navigazione.menu -%}
 {%- assign barra_pagine = site.data.funzioni | where_exp: "f", "f.aspetto.pagina" -%}
-<nav class="barra">
+<nav class="barra" aria-label="{{ site.data.navigazione.etichette.menu }}">
   {%- comment -%}
     ⚠️ alt="" — l'icona è DECORATIVA anche qui: «AIMONX» è scritto in lettere
     dentro lo stesso link, quindi il link ha già il suo nome e un testo

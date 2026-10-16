@@ -38,6 +38,14 @@ menu:
 briciole:
   casa: "Home"
 
+# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo: il nome delle
+# due regioni di navigazione (sezione «Etichette per i lettori di schermo»
+# della bozza, 16/10/2026 21:37). ⚠️ Le colonne del piede non ne hanno una
+# loro: si etichettano coi titoli già in pagina (`piede`, qui sotto).
+etichette:
+  menu: "Main menu"
+  briciole: "Breadcrumb"
+
 # Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
 sorelle: "More features"
 

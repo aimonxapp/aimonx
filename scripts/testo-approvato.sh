@@ -119,6 +119,7 @@ modo, contenuti, repo, costruito = ARGV
 
 # Le sezioni della bozza della navigazione che vanno in pagina (giro W24).
 SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
+  "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/features/`",
   "Piede, i titoli delle colonne"]
 
@@ -399,6 +400,10 @@ else
     # e non porta parole.
     alt_serviti = html.scan(/<img\b[^>]*?\balt="([^"]*)"/mi).flatten.map { |x| x.gsub(/[[:space:]]+/, " ").strip }.reject(&:empty?)
     alt_serviti.map! { |x| x.gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
+    # ⭐ Giro W24: anche le ETICHETTE `aria-label`, per la stessa ragione degli
+    # `alt` — non si vedono, ma qualcuno le SENTE, e scritte a mano in un
+    # layout sfuggirebbero alla misura ①. Si giudicano come loro: riga intera.
+    etichette_servite = html.scan(/\baria-label="([^"]*)"/mi).flatten.map { |x| x.gsub(/[[:space:]]+/, " ").strip }.reject(&:empty?)
     # ⛔ IL <title> SI STACCA PRIMA, e si giudica da solo (giro W12, `WD38`).
     # ⚠️ Fino al W11 un'eccezione dichiarata si perdonava per VALORE: qualunque
     # pezzo di pagina uguale al titolo di scheda passava, ovunque fosse. Ora
@@ -489,6 +494,13 @@ else
         estranei << "testo alternativo di un immagine: #{x}"
       end
     end
+    righe_consentite = consentito.split("\n").map(&:strip)
+    eti_ok = 0
+    etichette_servite.each do |x|
+      if righe_consentite.include?(x) then eti_ok += 1
+      else estranei << "etichetta per i lettori di schermo: #{x}"
+      end
+    end
     jl_ok = 0; jl_fuori = []
     parole_jsonld.each do |tipo, x|
       if tipo == :rotto
@@ -503,7 +515,7 @@ else
     end
 
     fuori += estranei.size + jl_fuori.size
-    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei · testi alternativi: #{alt_ok} su #{alt_serviti.size} alla lettera · JSON-LD: #{jl_ok} parole approvate, #{jl_fuori.size} fuori"
+    puts "  #{p[:nome]}: #{ok} pezzi di testo servito trovati nella bozza, #{brevi} segni brevi, #{dich} dichiarati, #{estranei.size} estranei · testi alternativi: #{alt_ok} su #{alt_serviti.size} alla lettera · etichette: #{eti_ok} su #{etichette_servite.size} · JSON-LD: #{jl_ok} parole approvate, #{jl_fuori.size} fuori"
     estranei.each { |x| puts "     ⛔ #{p[:nome]}: SERVITO ma NON approvato -> «#{x[0, 120]}»" }
     jl_fuori.each { |x| puts "     ⛔ #{p[:nome]}: #{x}" }
   end

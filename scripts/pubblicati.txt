@@ -31,6 +31,8 @@ robots.txt
 # i fogli di stile, costruiti da Jekyll dai .scss
 assets/css/*.css
 
+assets/js/*.js
+
 # il font scritto a mano e la sua licenza (la OFL chiede che viaggi col font)
 assets/fonts/*.woff2
 assets/fonts/OFL.txt

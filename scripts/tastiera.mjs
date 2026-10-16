@@ -15,7 +15,12 @@
 //  ② che il fuoco si VEDA: nessun elemento raggiungibile può avere
 //     `outline-style: none` senza metterci qualcos altro al posto;
 //  ③ sul telefono: il pulsante «Menu» apre con Invio e chiude con Esc, e le
-//     voci entrano nel giro del Tab solo da aperte.
+//     voci entrano nel giro del Tab solo da aperte;
+//  ④ dal giro W24, con `assets/js/menu.js`: Esc chiude la tendina e il
+//     pannello e il fuoco TORNA sul loro pulsante; un clic fuori chiude la
+//     tendina. ⛔ E tutto si rifà CON JAVASCRIPT SPENTO: lì Esc e il clic fuori
+//     non ci sono (atteso, si stampa), ma aprire, chiudere e il Tab devono
+//     restare intatti — se no lo script è diventato una stampella.
 //
 // Uso:  node scripts/tastiera.mjs <url> [url...]
 
@@ -47,8 +52,11 @@ let guasti = 0;
 
 for (const url of urls) {
   console.log(`\n=== ${url} ===`);
-  for (const [nome, larghezza] of [['telefono', 390], ['computer', 1280]]) {
-    const page = await browser.newPage({ viewport: { width: larghezza, height: 900 } });
+  for (const script of [true, false])
+  for (const [nomeBase, larghezza] of [['telefono', 390], ['computer', 1280]]) {
+    const nome = script ? nomeBase : `${nomeBase} SENZA JS`;
+    const ctx = await browser.newContext({ viewport: { width: larghezza, height: 900 }, javaScriptEnabled: script });
+    const page = await ctx.newPage();
     await page.goto(url, { waitUntil: 'networkidle' });
 
     // ③ Il pulsante c è solo sul telefono: sopra i 760px il CSS lo toglie.
@@ -97,15 +105,17 @@ for (const url of urls) {
     }
 
     console.log(`  --- ${nome} (${larghezza}px) · pulsante «Menu» visibile: ${pulsante ?? 'no'}`);
+    // Il giro intero si stampa una volta sola, con lo script: senza, si
+    // stampano solo i guasti — le righe sarebbero le stesse.
     giro.forEach((a, i) => {
       const segni = [a.dove && `→ ${a.dove}`, a.corrente && `(${a.corrente})`].filter(Boolean).join(' ');
       const cieco = a.contorno === 'none' ? '  ⛔ SENZA CONTORNO DI FUOCO' : '';
       const invisibile = !a.visibile ? '  ⛔ RAGGIUNGIBILE MA INVISIBILE' : '';
       if (cieco || invisibile) guasti++;
-      console.log(`   ${String(i + 1).padStart(2)}. <${a.tag}> ${a.testo} ${segni}${cieco}${invisibile}`);
+      if (script || cieco || invisibile) console.log(`   ${String(i + 1).padStart(2)}. <${a.tag}> ${a.testo} ${segni}${cieco}${invisibile}`);
     });
 
-    // Esc richiude, che è quel che ci si aspetta da un pannello aperto.
+    // Il pulsante aperto si richiude da sé, col suo Invio.
     // ⭐ Giro W24: e si RICHIUDE da tastiera — fuoco sul pulsante, Invio.
     const richiusi = await page.evaluate(() =>
       [...document.querySelectorAll('.barra details[open] > summary')].filter((s) => s.getBoundingClientRect().width > 0).length);
@@ -117,18 +127,51 @@ for (const url of urls) {
     console.log(`   Invio sul pulsante aperto → ${ancoraAperti === 0 ? `richiuso (${richiusi})  ✅` : `⛔ ancora aperti: ${ancoraAperti}`}`);
     if (ancoraAperti !== 0) guasti++;
 
-    if (pulsante) {
-      await page.evaluate(() => { document.querySelector('.barra .apri').open = true; });
+    // ④ Esc, su ogni pulsante che si vede: si apre con Invio, poi Esc.
+    const pulsanti = await page.evaluate(() =>
+      [...document.querySelectorAll('.barra details > summary')].filter((s) => s.getClientRects().length).map((s) => s.parentElement.className));
+    for (const classe of pulsanti) {
+      await page.focus(`.barra details.${classe} > summary`);
+      await page.keyboard.press('Enter');
+      // Un Tab DENTRO, sulla prima voce: Esc si preme da lì, ed è da lì che il
+      // fuoco deve tornare al pulsante.
+      await page.keyboard.press('Tab');
+      const dentro = await page.evaluate(() => document.activeElement.closest('.voci-barra, .sotto') ? document.activeElement.innerText.trim() : null);
       await page.keyboard.press('Escape');
-      const ancora = await page.evaluate(() => document.querySelector('.barra .apri').open);
-      // ⚠️ `<details>` NON si chiude con Esc, e non è un guasto: non è una
-      // finestra modale, è un pannello che si apre. Lo si richiude col suo
-      // stesso pulsante, che è dove il fuoco è già. ⛔ Farlo chiudere con Esc
-      // vorrebbe dire JavaScript, e qui non ce n è. Si MISURA e si dichiara,
-      // invece di lasciar credere che faccia una cosa che non fa.
-      console.log(`   Esc → il menu è ${ancora ? 'ancora aperto (atteso: <details> non è una modale)' : 'richiuso'}`);
+      const dopo = await page.evaluate((c) => {
+        const d = document.querySelector(`.barra details.${c}`);
+        return { aperto: d.open, fuoco: document.activeElement === d.querySelector('summary') };
+      }, classe);
+      if (!script) {
+        console.log(`   Esc sul pulsante «${classe}» → ${dopo.aperto ? 'resta aperto (atteso: senza script Esc non c è)' : 'richiuso'}`);
+        await page.evaluate((c) => { document.querySelector(`.barra details.${c}`).open = false; }, classe);
+        continue;
+      }
+      const bene = !dopo.aperto && dopo.fuoco && dentro !== null;
+      console.log(`   Esc da «${dentro ?? '⛔ fuori dal menu'}», dentro «${classe}» → ${dopo.aperto ? '⛔ resta aperto' : 'richiuso'}, fuoco ${dopo.fuoco ? 'sul suo pulsante' : '⛔ PERSO'}${bene ? '  ✅' : ''}`);
+      if (!bene) guasti++;
     }
-    await page.close();
+
+    // ④ Il clic fuori, sulla tendina del computer: aperta, poi un clic in
+    // mezzo alla pagina, lontano dalla barra.
+    // ⚠️ Si parte da chiusa: se Esc ha appena fallito, la tendina è ancora
+    // aperta, Invio la CHIUDEREBBE e il clic fuori passerebbe senza merito —
+    // successo davvero, alla prima controprova di questa misura.
+    if (!pulsante) {
+      await page.evaluate(() => { document.querySelector('.barra details.tendina').open = false; });
+      await page.focus('.barra details.tendina > summary');
+      await page.keyboard.press('Enter');
+      if (!await page.evaluate(() => document.querySelector('.barra details.tendina').open)) { console.log('   ⛔ la tendina non si è aperta'); guasti++; }
+      await page.mouse.click(larghezza / 2, 600);
+      const aperta = await page.evaluate(() => document.querySelector('.barra details.tendina').open);
+      if (script) {
+        console.log(`   clic fuori dalla tendina aperta → ${aperta ? '⛔ resta aperta' : 'richiusa  ✅'}`);
+        if (aperta) guasti++;
+      } else {
+        console.log(`   clic fuori dalla tendina aperta → ${aperta ? 'resta aperta (atteso: senza script)' : 'richiusa'}`);
+      }
+    }
+    await ctx.close();
   }
 }
 
