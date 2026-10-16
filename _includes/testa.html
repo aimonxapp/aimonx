@@ -61,11 +61,13 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 {%- comment -%} Giro W21: il banner di Safari (Smart App Banner), come lo descrive Apple — developer.apple.com/documentation/webkit/promoting-apps-with-smart-app-banners: il tag nel `head` di OGNI pagina, perché da Google si atterra anche su una pagina interna. ⛔ L'`app-id` non è ricopiato: è il numero in coda al link allo Store di `_data/collegamenti.yml`, una fonte sola. ⛔ Senza `app-argument`: il sito non promette di portare a una schermata dell'app. ⚠️ Non è un secondo badge: lo disegna Safari, coi dati dello Store, e la pagina non scarica niente. {%- endcomment %}
 <meta name="apple-itunes-app" content="app-id={{ site.data.collegamenti.store | split: '/id' | last }}">
 
-<link rel="stylesheet" href="{{ '/assets/css/comune.css' | relative_url }}">
-<link rel="stylesheet" href="{{ page.foglio | relative_url }}">
+{%- comment -%} ⭐ Giro W26: ogni foglio e script porta la sua IMPRONTA, `?v=…`, da `_data/impronte.yml` (lo scrive `scripts/impronte.sh`): l'indirizzo cambia quando cambia il file, e il browser non mescola più il vecchio col nuovo. {%- endcomment %}
+{%- assign testa_v = site.data.impronte %}
+<link rel="stylesheet" href="{{ '/assets/css/comune.css' | relative_url }}?v={{ testa_v['/assets/css/comune.css'] }}">
+<link rel="stylesheet" href="{{ page.foglio | relative_url }}?v={{ testa_v[page.foglio] }}">
 {%- comment -%} Giro W24: le poche righe che chiudono il menu con Esc e la tendina col clic fuori. ⛔ Nessuna libreria, servite da noi; `defer`, quindi non fermano la pagina, e senza di loro il menu funziona lo stesso. {%- endcomment %}
-<script src="{{ '/assets/js/menu.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/menu.js' | relative_url }}?v={{ testa_v['/assets/js/menu.js'] }}" defer></script>
 {%- if page.foglio_funzione %}
 {%- comment -%} Giro W15: il foglio in più delle pagine-funzione. ⛔ Chi non lo chiede non riceve nemmeno uno spazio: le altre pagine escono identiche al byte a prima, ed è misurato. {%- endcomment %}
-<link rel="stylesheet" href="{{ page.foglio_funzione | relative_url }}">
+<link rel="stylesheet" href="{{ page.foglio_funzione | relative_url }}?v={{ testa_v[page.foglio_funzione] }}">
 {%- endif %}

@@ -366,3 +366,4 @@ banner_pagine=12
 #   schermate_in_pagina  26 → 29  ·  schermate_nei_dati_strutturati  7 → 9
 #   (le due schermate nuove della landing: sono dell'app, quindi ci vanno)
 #   schermate_immagini  22 → 24  ·  schermate_file  66 → 72
+impronte_scadute=0

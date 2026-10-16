@@ -16,9 +16,12 @@
   sta nella cella d'angolo, come nell'app, e dà il nome alla tabella.
   ⛔ Sul telefono NESSUNO SCORRIMENTO DI LATO: tre colonne di larghezza fissa
   che vanno a capo dentro di sé (`assets/css/prezzi.scss`), misurato a 360.
-  ⚠️ LE ICONE DI RIGA DELL'APP NON CI SONO, ed è una scelta: sono simboli di
-  Apple (SF Symbols), che sul web non si possono usare, e i glifi del sito ne
-  coprono solo una parte — mezze icone sarebbero peggio di nessuna.
+  ⭐ LE ICONE, dal giro W26 (Pier, 16/10/2026: «nella app sono più belli»):
+  quelle dell'app sono simboli di Apple (SF Symbols), che sul web non si
+  possono usare, e al loro posto ci sono le più vicine di LUCIDE, scritte
+  dentro la pagina (`_includes/icona.html`) — più l'arma e la cartuccia, che
+  Lucide non ha, dai glifi del sito. Sono decorative: la parola accanto dice
+  già la cosa.
 
   ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: vengono da
   `_data/pricing.yml`, di Cowork. ⛔ UN SOLO BADGE in fondo, con le regole di
@@ -44,15 +47,18 @@
       <table aria-labelledby="t-confronto">
         <thead>
           <tr>
-            <td class="angolo"><h2 id="t-confronto">{{ c.titolo }}</h2></td>
-            <th scope="col" class="free">{{ c.piani[0] }}</th>
-            <th scope="col" class="pro">{{ c.piani[1] }}</th>
+            <td class="angolo"><h2 id="t-confronto">{{ c.titolo }}</h2><p>{{ c.sottotitolo }}</p></td>
+            {%- comment -%} ⚠️ La testata della colonna si ripete a chi ascolta a ogni cella, e col motto dentro sarebbe «Pro, No limits. Everything unlocked.» dodici volte: `abbr` è il nome breve che l'HTML prevede per questo, il solo nome del piano. ⚠️ Quanto i lettori di schermo lo rispettino non è misurato qui. {%- endcomment %}
+            {%- for prezzi_p in c.piani %}
+            {%- assign prezzi_k = prezzi_p.nome | downcase %}
+            <th scope="col" class="{{ prezzi_k }}" abbr="{{ prezzi_p.nome }}">{% include icona.html nome=prezzi_p.aspetto.icona classe='piano' %}<span class="nome-piano">{{ prezzi_p.nome }}</span><span class="motto-piano">{{ prezzi_p.motto }}</span></th>
+            {%- endfor %}
           </tr>
         </thead>
         <tbody>
           {%- for r in c.righe %}
           <tr>
-            <th scope="row">{{ r.voce }}</th>
+            <th scope="row"><span class="voce">{%- if r.aspetto %}<span class="riquadro">{% include icona.html nome=r.aspetto.icona glifo=r.aspetto.glifo %}</span>{% endif %}<span>{{ r.voce }}</span></span></th>
             {%- for prezzi_v in (0..1) %}
             {%- if prezzi_v == 0 %}{% assign prezzi_x = r.free %}{% assign prezzi_k = 'free' %}{% else %}{% assign prezzi_x = r.pro %}{% assign prezzi_k = 'pro' %}{% endif %}
             {%- if prezzi_x == true %}
@@ -71,9 +77,10 @@
 
     <section class="vantaggi" aria-labelledby="t-vantaggi">
       <h2 id="t-vantaggi">{{ d.vantaggi.titolo }}</h2>
+      <p class="sotto-titolo">{{ d.vantaggi.sottotitolo }}</p>
       <ul>
         {%- for v in d.vantaggi.voci %}
-        <li><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
+        <li class="tinta-{{ v.aspetto.tinta | default: 'oro' }}"><span class="cerchio">{% include icona.html nome=v.aspetto.icona glifo=v.aspetto.glifo %}</span><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
         {%- endfor %}
       </ul>
     </section>

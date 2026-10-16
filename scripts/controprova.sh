@@ -276,6 +276,26 @@ VOCI
       non_misurabile "file_non_dichiarati (manca scripts/pubblicati.txt)"
     fi
 
+    # ⭐ Giro W26 — LE IMPRONTE DEI FOGLI E DEGLI SCRIPT (`scripts/impronte.sh`).
+    # Ogni indirizzo di un foglio o di uno script nel sito costruito deve
+    # portare `?v=` e, come valore, l'impronta del file a cui punta: se no, chi
+    # ha già visitato il sito può tenere in memoria il file vecchio. ⛔ Si conta
+    # ogni indirizzo senza impronta o con un'impronta che non è quella del file
+    # — cioè un foglio cambiato senza rifare `scripts/impronte.sh`.
+    N_IMPR=$("$RUBY_BIN/ruby" -rdigest -e '
+      sito = ARGV[0]; male = 0
+      Dir.glob(File.join(sito, "**/*.html")).each do |h|
+        File.read(h).scan(%r{(?:href|src)="(/assets/(?:css|js)/[^"?]+)(?:\?v=([0-9a-f]*))?"}) do |via, v|
+          f = File.join(sito, via)
+          giusta = File.file?(f) ? Digest::SHA256.file(f).hexdigest[0, 10] : nil
+          next if giusta && v == giusta
+          male += 1
+          warn "     ⛔ #{h.sub(sito, "")}: #{via}?v=#{v.inspect} — atteso #{giusta.inspect}"
+        end
+      end
+      puts male' "$SITO_TMP")
+    confronta "fogli e script con un'impronta che non è quella del file (scripts/impronte.sh)" impronte_scadute "$N_IMPR"
+
     # ⛔ WD23 — lo schema che la pagina dichiara di sé. Non è «Enforce HTTPS»,
     # che è GitHub a fare: questo lo scrive Jekyll, e senza `url` in
     # _config.yml indovina `http://`. ⚠️ Si misura sulla BUILD; cosa legga il

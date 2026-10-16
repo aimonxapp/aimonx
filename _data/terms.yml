@@ -59,8 +59,11 @@ titolo: "Terms of Use"
 # ID, Keychain e Touch ID — quindi la data cambia di nuovo. ⭐ È LA DATA VERA:
 # il 15/10/2026 Pier ha scritto «pubblica» (Fase B del giro W17), lo stesso
 # giorno dell'anteprima, quindi il valore non è cambiato.
+# ⭐ GIRO W26: la riga delle icone di Lucide, e la data cambia ancora.
+# ⚠️ PROVVISORIA, e dichiarata: è il giorno della Fase A (16/10/2026). Se
+# «pubblica» arriva un altro giorno, in Fase B diventa quel giorno.
 aggiornato: "Last updated:"
-data_pubblicazione: "October 15, 2026"
+data_pubblicazione: "October 16, 2026"
 
 blocchi:
 - tipo: h2
@@ -90,6 +93,9 @@ blocchi:
   testo: © 2026 Piermichele Fassio. Unless noted otherwise, all content on aimonx.app is ours. We work hard to keep it accurate, but it's provided "as is."
 - tipo: p
   testo: Apple, the Apple logo, Face ID, iCloud, iPhone, Keychain, Touch ID and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+# ⭐ Giro W26: la licenza delle icone (`_includes/icona.html`, `_includes/lucide/LICENSE`).
+- tipo: p
+  testo: Icons by Lucide (lucide.dev), used under the ISC License. Some are based on Feather icons, used under the MIT License.
 - tipo: h2
   testo: Contact
 - tipo: p

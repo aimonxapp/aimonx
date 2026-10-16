@@ -411,6 +411,10 @@ else
     # `alt` — non si vedono, ma qualcuno le SENTE, e scritte a mano in un
     # layout sfuggirebbero alla misura ①. Si giudicano come loro: riga intera.
     etichette_servite = html.scan(/\baria-label="([^"]*)"/mi).flatten.map { |x| x.gsub(/[[:space:]]+/, " ").strip }.reject(&:empty?)
+    # ⭐ Giro W26: `abbr` sulle testate della tabella di «Free and Pro» è il
+    # nome breve che chi ascolta sente a ogni cella. Non è una riga a sé della
+    # bozza — è una parola della riga — e si giudica come il testo in pagina.
+    abbr_serviti = html.scan(/<th\b[^>]*?\babbr="([^"]*)"/mi).flatten.map { |x| x.gsub(/[[:space:]]+/, " ").strip }.reject(&:empty?)
     # ⛔ IL <title> SI STACCA PRIMA, e si giudica da solo (giro W12, `WD38`).
     # ⚠️ Fino al W11 un'eccezione dichiarata si perdonava per VALORE: qualunque
     # pezzo di pagina uguale al titolo di scheda passava, ovunque fosse. Ora
@@ -420,6 +424,7 @@ else
     html = html.sub(/<title\b[^>]*>(.*?)<\/title>/mi) { titolo_scheda = $1.gsub(/[[:space:]]+/, " ").strip; " " }
     pezzi = html.split(/<[^>]*>/).map { |x| x.gsub(/[[:space:]]+/, " ").strip }
     pezzi.reject!(&:empty?)
+    pezzi.concat(abbr_serviti)
     # I due caratteri rimessi come li ha scritti Cowork: in pagina sono
     # entita HTML (vedi _includes/frase.html), nella bozza sono se stessi.
     # ⭐ Dal giro W13 anche `&nbsp;`: è uno SPAZIO, che l impaginazione mette

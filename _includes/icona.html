@@ -1,0 +1,24 @@
+{%- comment -%}
+_includes/icona.html — UN'ICONA, scritta DENTRO la pagina. Giro W26.
+  Due famiglie, dello stesso disegno (griglia 24, tratto tondo):
+  · `include.nome` — un'icona di LUCIDE (lucide.dev, versione 1.49.0), dal
+    file in `_includes/lucide/`, copiato com'è dal rilascio ufficiale. ⛔ Nel
+    repo entrano SOLO le icone che una pagina usa, e con loro la licenza
+    (`_includes/lucide/LICENSE`: ISC, e MIT per quelle che vengono da Feather);
+    sul sito la riga dei Terms (`_data/terms.yml`).
+  · `include.glifo` — un glifo del SITO (`_includes/glifo.html`, giro W14):
+    l'arma e la cartuccia, che Lucide non ha.
+  ⛔ NESSUNA RICHIESTA: l'SVG sta nell'HTML, niente file da scaricare, niente
+  JavaScript di Lucide, niente font di icone.
+  ⛔ DECORATIVA: `aria-hidden`, perché la parola accanto dice già la cosa. Se
+  un giorno un'icona dicesse qualcosa che il testo non dice, servirebbe una
+  parola di Cowork, non un'icona più parlante.
+  ⛔ Variabili col prefisso `icona_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- if include.glifo -%}
+{%- include glifo.html nome=include.glifo classe=include.classe -%}
+{%- else -%}
+{%- capture icona_svg -%}{% include lucide/{{ include.nome }}.svg %}{%- endcapture -%}
+{%- capture icona_apri -%}<svg class="icona {{ include.classe }}" aria-hidden="true" focusable="false"{%- endcapture -%}
+{{- icona_svg | strip_newlines | replace: '<svg', icona_apri | replace: '  ', ' ' | replace: '  ', ' ' -}}
+{%- endif -%}

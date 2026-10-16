@@ -13,6 +13,13 @@
 # ⛔ NESSUN PREZZO NEI DATI STRUTTURATI (Pier, 14/10/2026): i prezzi stanno
 # qui, in pagina, e `_includes/dati-strutturati.html` non li legge.
 #
+# ⭐ Giro W26 (Pier, 16/10/2026 23:03): le frasi dell'app che mancavano — il
+# sottotitolo della tabella, i motti delle due colonne, il sottotitolo dei
+# vantaggi — e LE ICONE. ⛔ Le icone stanno dentro `aspetto`, come in
+# `_data/funzioni.yml`: sono di Claude Code, non testo, e il controllo del
+# testo le salta per nome di chiave. `icona` è un'icona di Lucide, `glifo` un
+# glifo del sito (`_includes/icona.html`).
+#
 # ⚠️ LA TABELLA: ogni riga ha la voce e i due valori, Free e Pro. Un valore è
 # una parola (una quantità, «1 active») oppure `true` / `false` — la spunta e
 # la croce della bozza (✓, ✗), che in pagina si disegnano e a chi ascolta
@@ -28,30 +35,35 @@ sommario: "Start with a real logbook, not a demo. Go Pro when you need more."
 
 confronto:
   titolo: "Compare Plans"
-  piani: ["Free", "Pro"]
+  sottotitolo: "All the features at a glance."
+  piani:
+    - { nome: "Free", motto: "Great for getting started", aspetto: { icona: leaf } }
+    - { nome: "Pro", motto: "No limits. Everything unlocked.", aspetto: { icona: crown } }
   incluso: "Included"
   escluso: "Not included"
   righe:
-    - { voce: "Firearms", free: "1 active", pro: "Unlimited" }
-    - { voce: "Factory ammo", free: "Everything, no limits", pro: "Everything, no limits" }
-    - { voce: "Reloaded ammo", free: false, pro: "Recipe, costs, batches, inventory" }
-    - { voce: "Maintenance rules", free: "1 cleaning rule per firearm", pro: "Unlimited" }
-    - { voce: "Renewals to track", free: "Up to 2", pro: "Unlimited" }
-    - { voce: "Matches", free: false, pro: "Finishes, scores, divisions, results" }
-    - { voce: "Stats", free: true, pro: true }
-    - { voce: "AIMONX Backup", free: true, pro: true }
-    - { voce: "Create an archive to export", free: false, pro: true }
-    - { voce: "Import an archive", free: "Always available", pro: "Always available" }
-    - { voce: "Reactivate a firearm beyond the limit", free: false, pro: true }
-    - { voce: "Advanced protection (passphrase)", free: false, pro: true }
+    - { voce: "Firearms", free: "1 active", pro: "Unlimited", aspetto: { glifo: mirino } }
+    - { voce: "Factory ammo", free: "Everything, no limits", pro: "Everything, no limits", aspetto: { glifo: cartuccia } }
+    - { voce: "Reloaded ammo", free: false, pro: "Recipe, costs, batches, inventory", aspetto: { glifo: cartuccia } }
+    - { voce: "Maintenance rules", free: "1 cleaning rule per firearm", pro: "Unlimited", aspetto: { icona: wrench } }
+    - { voce: "Renewals to track", free: "Up to 2", pro: "Unlimited", aspetto: { icona: calendar-clock } }
+    - { voce: "Matches", free: false, pro: "Finishes, scores, divisions, results", aspetto: { icona: trophy } }
+    - { voce: "Stats", free: true, pro: true, aspetto: { icona: chart-no-axes-column } }
+    - { voce: "AIMONX Backup", free: true, pro: true, aspetto: { icona: cloud } }
+    - { voce: "Create an archive to export", free: false, pro: true, aspetto: { icona: share } }
+    - { voce: "Import an archive", free: "Always available", pro: "Always available", aspetto: { icona: import } }
+    - { voce: "Reactivate a firearm beyond the limit", free: false, pro: true, aspetto: { icona: rotate-ccw } }
+    - { voce: "Advanced protection (passphrase)", free: false, pro: true, aspetto: { icona: shield-lock } }
 
 vantaggi:
   titolo: "Pro Benefits"
+  sottotitolo: "Everything you need, no compromises."
+  # ⚠️ `tinta` è quella dell'app: oro, e verde per la manutenzione.
   voci:
-    - { titolo: "Unlimited Firearms", testo: "Your collection grows with you." }
-    - { titolo: "Reloaded ammo", testo: "Recipes, costs, batches, inventory." }
-    - { titolo: "Unlimited maintenance", testo: "More rules for each firearm, as many as you need." }
-    - { titolo: "Matches", testo: "Finishes, scores and results." }
+    - { titolo: "Unlimited Firearms", testo: "Your collection grows with you.", aspetto: { icona: infinity, tinta: oro } }
+    - { titolo: "Reloaded ammo", testo: "Recipes, costs, batches, inventory.", aspetto: { glifo: cartuccia, tinta: oro } }
+    - { titolo: "Unlimited maintenance", testo: "More rules for each firearm, as many as you need.", aspetto: { icona: shield-half, tinta: verde } }
+    - { titolo: "Matches", testo: "Finishes, scores and results.", aspetto: { icona: trophy, tinta: oro } }
 
 # I tre blocchi in fondo: un titolo, la riga in neretto, il resto.
 blocchi:
