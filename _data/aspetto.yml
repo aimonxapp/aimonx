@@ -32,6 +32,13 @@ what:
   - icona: chiave      # Maintenance your way        → «Manutenzione»
     tinta: ardesia
     schermata: aimonx-maintenance-rules
+  # ⭐ Giro W23: «Your lists, your way». Il ciano e l'elenco puntato sono quelli
+  # di «Gestione Liste» nell'app (`HomeView.swift`: `.ciano`, `list.bullet`).
+  # ⚠️ Il ciano c'è già, sulle munizioni: due voci più su, non accanto — la
+  # regola di §4b guarda solo le vicine. ⛔ NESSUNA SCHERMATA, apposta (giro
+  # W23 §1②): la carta esce senza immagine, come il layout prevede.
+  - icona: lista       # Your lists, your way        → «Gestione Liste»
+    tinta: ciano
   - icona: calendario  # Renewals you won't miss     → «Scadenze»
     tinta: salvia
     schermata: aimonx-renewals
@@ -92,6 +99,13 @@ funzioni:
     - aimonx-maintenance-mark-as-done
     - aimonx-maintenance-new-entry
     - aimonx-maintenance-log
+  # ⭐ Giro W23, la quarta: quattro schermate nuove. ⚠️ La quinta della bozza
+  # (`liste_7`) aspetta Pier — vedi `_data/custom-lists.yml`.
+  custom-lists:
+    - aimonx-manage-lists
+    - aimonx-bullet-types-custom
+    - aimonx-malfunctions
+    - aimonx-caliber-picker
 
 # La schermata della parte alta: la Home dell'app, accanto alla domanda.
 hero_schermata: aimonx-home-screen

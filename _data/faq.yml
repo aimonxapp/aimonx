@@ -9,8 +9,8 @@
 #
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
 #
-# ⚠️ LA FORMA: le cinque sezioni sono `h2`, ogni domanda è `h3` con la sua
-# risposta sotto. I due «See how…» sono paragrafi da soli, e diventano link da
+# ⚠️ LA FORMA: le sezioni sono `h2`, ogni domanda è `h3` con la sua
+# risposta sotto. I «See how…» sono paragrafi da soli, e diventano link da
 # sé perché stanno in `_data/collegamenti.yml`.
 #
 # ⚠️ LA SCHERMATA È PRESA IN PRESTITO da «Your data»: lo stesso file
@@ -55,6 +55,24 @@ blocchi:
   testo: How do I delete all my AIMONX data?
 - tipo: p
   testo: In AIMONX Settings, tap Reset App. It deletes all your data on the iPhone, along with the key that unlocks it, so the AIMONX copy in iCloud can't be used anymore either. AIMONX starts over like a new install. This can't be undone.
+
+# ⭐ Giro W23 (Pier, 16/10/2026): la sezione delle liste, dopo «Your data».
+- tipo: h2
+  testo: Making AIMONX yours
+- tipo: h3
+  testo: Can I add my own calibers to AIMONX?
+- tipo: p
+  testo: "Yes. In AIMONX, go to the Home tab, open Manage Lists, then Calibers, and tap + to add yours. It shows up every time you pick a caliber for a firearm or for ammo. It's free."
+- tipo: h3
+  testo: Can I customize the other lists in AIMONX?
+- tipo: p
+  testo: "Yes, all nine: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Add your own items, remove the defaults you never use, and bring them back anytime."
+- tipo: p
+  testo: See how custom lists work
+- tipo: h3
+  testo: If I remove an item from a list, what happens to my old records?
+- tipo: p
+  testo: Nothing. Removing an item only takes it out of your choices for new entries. Everything you already logged with it stays as it was.
 
 - tipo: h2
   testo: Moving to a new iPhone

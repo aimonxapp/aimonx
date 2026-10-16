@@ -62,6 +62,10 @@ frasi:
   - frase: "See how maintenance works"
     href: "/features/maintenance/"
     tipo: pagina
+  # ⭐ Giro W23, la quarta: dalla landing e dalle FAQ.
+  - frase: "See how custom lists work"
+    href: "/features/custom-lists/"
+    tipo: pagina
   - frase: "Garante per la protezione dei dati personali"
     href: "https://www.garanteprivacy.it/"
     tipo: esterno

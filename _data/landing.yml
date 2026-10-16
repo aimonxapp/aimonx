@@ -200,6 +200,11 @@ what:
       alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
       # ⭐ Dal giro W17: il link alla pagina «Maintenance», come per Round count.
       link: "See how maintenance works"
+    # ⭐ Giro W23 (Pier, 16/10/2026): la voce delle liste, dopo la manutenzione.
+    # ⛔ Senza `alt`, apposta: questa carta non ha una schermata.
+    - lead: "Your lists, your way."
+      body: "Can't find your caliber or firearm type? Add it. Swipe away what you never use. Every list you pick from is yours to shape."
+      link: "See how custom lists work"
     # ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026: «renewals
     # come su app, stiamo allineati»), su tutto il sito.
     - lead: "Renewals you won't miss."

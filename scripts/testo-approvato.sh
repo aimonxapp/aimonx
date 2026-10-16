@@ -147,6 +147,12 @@ PAGINE = [
   # fuori come i «Punti aperti».
   { nome: "maintenance", dati: "_data/maintenance.yml", bozza: "maintenance/maintenance-en-bozza.md",
     uscita: "features/maintenance/index.html", sezioni: ["Meta", "Page"] },
+  # ⭐ Giro W23: la quarta pagina-funzione, con le stesse regole. ⚠️ Nella
+  # bozza ci sono anche la voce per la landing e la sezione per le FAQ, in
+  # sezioni `## ` proprie: `sezioni` le lascia fuori, e le loro parole si
+  # cercano nelle bozze della landing e delle FAQ, che restano l'originale.
+  { nome: "custom-lists", dati: "_data/custom-lists.yml", bozza: "custom-lists/custom-lists-en-bozza.md",
+    uscita: "features/custom-lists/index.html", sezioni: ["Meta", "Page"] },
   { nome: "whats-new", dati: "_data/whats-new.yml", bozza: "whats-new/whats-new-en-bozza.md",
     uscita: "updates/index.html", sezioni: ["Meta", "Page"] },
   # ⭐ Giro W18, le FAQ. ⚠️ `alt_da`: la sua schermata è quella di «Your data»,

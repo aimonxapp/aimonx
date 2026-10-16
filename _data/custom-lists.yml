@@ -1,0 +1,78 @@
+# _data/custom-lists.yml — IL TESTO DELLA PAGINA «CUSTOM LISTS», UNA VOLTA SOLA.
+# Giro W23: la quarta pagina-funzione, sul modello di `_data/round-count.yml`.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 16/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/custom-lists/custom-lists-en-bozza.md
+# sezioni `## Meta` e `## Page`. `scripts/testo-approvato.sh` cerca ogni stringa
+# qui dentro ALLA LETTERA in quelle due sezioni — e SOLO in quelle: le note fra
+# quadre, la voce per la landing, la sezione per le FAQ, i «Punti aperti» e la
+# tabella «Controllo» della stessa bozza non vanno in pagina.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+#
+# ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Quale file sia ogni schermata
+# sta in `_data/aspetto.yml` (`funzioni`), accoppiato PER ORDINE DI COMPARSA.
+#
+# ⚠️ LA QUINTA SCHERMATA NON C'È, e aspetta Pier (giro W23, fase A): sotto
+# «Icons where they help» la bozza mette `liste_7_maintenance-types-icons.png`,
+# col testo alternativo «…each with its own icon: cleaning, lubrication…». Nel
+# file, sei voci su sette hanno la STESSA icona: il testo direbbe il falso.
+
+meta:
+  # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
+  title: "Custom Lists: Add Your Own Calibers and Firearm Types | AIMONX"
+  description: "Can't find your caliber or firearm type? Add it. Every list you pick from in AIMONX is yours to shape, so the app fits the way you shoot."
+
+titolo: "Make AIMONX fit the way you shoot"
+sommario: "Can't find your caliber? Your firearm type? Your match discipline? Add it. Every list you pick from in AIMONX is yours to shape. The app adapts to you, not the other way around."
+
+blocchi:
+- tipo: h2
+  testo: Nine lists, all yours
+- tipo: p
+  testo: "Calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Find them under Manage Lists, on the Home tab, and make each one your own."
+- tipo: schermate
+  alt:
+  - "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
+- tipo: h2
+  testo: Add what's missing
+- tipo: p
+  testo: "Shoot a wildcat caliber? Compete in a discipline we haven't heard of? Add it once, and it's there every time you need it: when you add a firearm, log a box of ammo or record a match."
+- tipo: schermate
+  alt:
+  - "Bullet types in AIMONX, with LRN added by the user and marked custom, above defaults like FMJ, TMJ and HP."
+- tipo: h2
+  testo: Swipe away what you never use
+- tipo: p
+  testo: "Don't own a revolver? Never shoot muzzleloaders? Swipe them out of your lists, and your menus only show what's yours. Everything you already logged stays exactly as it was."
+- tipo: schermate
+  alt:
+  - "Malfunctions in AIMONX, from failure to feed to squib load, with a Restore Defaults button below the list."
+- tipo: h2
+  testo: Change your mind anytime
+- tipo: p
+  testo: Tap Restore Defaults and the originals come back. Everything you added stays put.
+- tipo: h2
+  testo: Cleaner stats, no typos
+- tipo: p
+  testo: "Picking from a list instead of typing keeps your stats clean: no \"9mm\" in one place and \"9x19\" in another."
+- tipo: schermate
+  alt:
+  - "Picking a caliber for a new firearm in AIMONX, from a list that starts with 9mm Luger, 9x21 and .45 ACP."
+- tipo: h2
+  testo: Icons where they help
+- tipo: p
+  testo: "Pick your own icon for each maintenance type, session type and renewal type. That's the icon you see on your firearms, your sessions and your renewals."
+- tipo: h2
+  testo: Free
+- tipo: p
+  testo: Managing your lists is part of AIMONX Free. Using maintenance types other than cleaning in your maintenance rules takes Pro.
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: Your lists live encrypted on your iPhone, with the rest of your logbook. No account. No AIMONX servers. We never see your data.
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO dell'immagine del
+# badge di Apple in fondo — ed essendo l'unico contenuto del link, il suo nome.
+badge: "Download on the App Store"
