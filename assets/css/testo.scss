@@ -34,13 +34,15 @@ body.v-testo {
 }
 
 // ⭐ DAL GIRO W25 LA COLONNA È QUELLA DEL SITO (`comune.scss`, `--sito`), e
-// i 52rem di prima restano dove servono: al foglio e al titolo, cioè alla
-// riga da leggere — 52rem meno i due margini, 47rem. ⚠️ Partono dal bordo
-// sinistro del logo, non dal centro: così barra, titolo e foglio stanno
-// sulla stessa griglia, e cambiando pagina niente salta.
-.v-testo { --lettura: 47rem; }
-.v-testo .titolone,
-.v-testo .foglio { max-width: var(--lettura); }
+// il FOGLIO BIANCO è largo quanto lei: il bordo sinistro sotto il logo, il
+// destro sotto «Download» (Pier, 16/10/2026 22:39, la strada B — niente verde
+// vuoto a destra). ⛔ LA RIGA DA LEGGERE NON SI ALLUNGA: dentro il foglio
+// titoli, paragrafi ed elenchi restano larghi quanto prima — il foglio di
+// 47rem meno i suoi due margini interni, 41,5rem — e partono dal bordo
+// sinistro interno. Il titolo della pagina, sul verde, resta a 47rem.
+.v-testo { --lettura: 47rem; --riga: 41.5rem; }
+.v-testo .titolone { max-width: var(--lettura); }
+.v-testo .foglio > * { max-width: var(--riga); }
 
 // ⚠️ Il respiro sotto al foglio: senza, il bordo bianco finisce ADDOSSO al
 // filetto del piede. Si vede sul telefono e non sul computer, dove la pagina

@@ -53,10 +53,8 @@
   margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
   text-align: center; line-height: 0;
 }
-// ⭐ Giro W25: il badge si centra sotto il FOGLIO, non sulla larghezza del
-// sito — il foglio parte da sinistra, e al centro della pagina il badge
-// starebbe fuori asse rispetto a lui.
-.v-funzione .scarica { max-width: var(--lettura); }
+// ⭐ Giro W25: il badge si centra sotto il FOGLIO, che è largo quanto il sito;
+// nelle pagine a due colonne, sotto la colonna del foglio (più giù).
 .v-funzione .scarica a { display: inline-block; }
 .v-funzione .scarica img { height: var(--badge); width: auto; }
 
@@ -65,8 +63,8 @@
 // scheletro e restano a una colonna.
 // ⚠️ DAL GIRO W25 LA PAGINA NON SI ALLARGA PIÙ per far posto alla colonna di
 // lato (fino al W24 andava a 69,5rem, e la barra saltava): sta nella
-// larghezza del sito, e il foglio prende quel che resta — 43,5rem contro i 47
-// delle pagine a una colonna, una riga appena più corta. ⚠️ Da 1040 px: sotto, la
+// larghezza del sito, e il foglio prende quel che resta: arriva fino alla
+// colonna di lato, che finisce sotto «Download» (giro W25, strada B). ⚠️ Da 1040 px: sotto, la
 // colonna di lato ruberebbe al testo, e l'elenco scende in fondo come sul
 // telefono.
 // ⚠️ `sticky`: l'elenco resta in vista mentre si scorre una pagina lunga.
