@@ -92,19 +92,42 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       quello di cui fa parte — qui il sito, per `@id`.
       ⛔ SOLO FATTI VERI E SOLO PAROLE APPROVATE: nome e descrizione sono il
       titolo di scheda e la descrizione della pagina, alla lettera.
-      ⛔ NIENTE `BreadcrumbList` (ipotesi del giro, scartata): «Home › Features
-      › Round count» dichiarerebbe una pagina Features che NON ESISTE —
-      `/#features` è un punto della landing — e in pagina quella fila di link
-      non c'è. Si riprende il giorno in cui la pagina Features esiste.
+      ⭐ `BreadcrumbList` DAL GIRO W24. Fino al W23 era scartato, e a ragione:
+      «Home › Features › Round count» avrebbe dichiarato una pagina Features
+      che non esisteva, e in pagina quella fila di link non c'era. ⭐ Adesso
+      ci sono tutte e due — `/features/` e le briciole in cima alle pagine
+      della sezione — e il blocco dice ESATTAMENTE quello che la pagina mostra:
+      stesse parole, stessi indirizzi, stesso ordine (`page.sezione`).
+      ⚠️ Nome e descrizione arrivano da `include.meta`, cioè dallo stesso
+      parametro che dà `<title>` e `description` alla pagina (giro W24): prima
+      si leggevano da `_data/<page.dati>.yml`, e l'indice non ha un file suo.
     {%- endcomment -%}
     {
       "@type": "WebPage",
       "@id": {{ page.url | append: '#pagina' | absolute_url | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
-      "name": {{ site.data[page.dati].meta.title | jsonify }},
-      "description": {{ site.data[page.dati].meta.description | jsonify }},
+      "name": {{ include.meta.title | jsonify }},
+      "description": {{ include.meta.description | jsonify }},
       "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
       "inLanguage": "en-US"
+    }{% endif %}{% if page.sezione == 'features' %},
+    {%- comment -%}
+      LE BRICIOLE. ⚠️ Google: l'ultima voce può non avere `item` quando è la
+      pagina stessa; qui ce l'ha, ed è l'indirizzo della pagina. Sull'indice
+      le voci sono due, sulle pagine-funzione tre — il nome breve viene da
+      `_data/funzioni.yml`, cercato per indirizzo.
+    {%- endcomment -%}
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {{ site.data.navigazione.briciole.casa | jsonify }}, "item": {{ '/' | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 2, "name": {{ site.data.navigazione.menu.voci.first | jsonify }}, "item": {{ '/features/' | absolute_url | jsonify }} }
+        {%- for dsa_f in site.data.funzioni -%}
+        {%- if dsa_f.aspetto.pagina and dsa_f.aspetto.pagina == page.url %},
+        { "@type": "ListItem", "position": 3, "name": {{ dsa_f.nome | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+        {%- endif -%}
+        {%- endfor %}
+      ]
     }{% endif %}{% if page.scheda_app %},
     {
       "@type": "MobileApplication",
@@ -149,8 +172,9 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       {%- endcomment -%}
       "screenshot": [
         {{ '/assets/img/screenshots/' | append: site.data.aspetto.hero_schermata | append: '-' | append: site.data.aspetto.schermate.telefono.larghezze.last | append: '.webp' | absolute_url | jsonify }}
-        {%- for dsa in site.data.aspetto.what -%}
-        {%- if dsa.schermata and dsa.forma != 'foglio' -%}
+        {%- for dsa_f in site.data.funzioni -%}
+        {%- assign dsa = dsa_f.aspetto -%}
+        {%- if dsa.schermata and dsa.forma != 'foglio' and dsa.vetrina != false -%}
         ,
         {{ '/assets/img/screenshots/' | append: dsa.schermata | append: '-' | append: site.data.aspetto.schermate.telefono.larghezze.last | append: '.webp' | absolute_url | jsonify }}
         {%- endif -%}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/indice.html — IL MODELLO «HUB»: la pagina-indice di una sezione.
+  Giro W24 (architettura del 16/10/2026, §5). Oggi la usa `/features/`.
+
+  ⭐ COSA FA: titolo e riga della sezione, poi l'elenco di TUTTE le sue voci —
+  per ciascuna il nome breve dove c'è, la riga della carta della landing alla
+  lettera, la schermata, e il link alla pagina dove la pagina esiste. Le
+  funzioni senza pagina compaiono senza link: l'indice dice tutto ciò che
+  l'app fa, non solo ciò che ha una pagina (bozza della navigazione).
+  ⭐ COSTRUITO PER CRESCERE (giro W24 ⑦): l'elenco è `site.data[page.fonte]`,
+  e i testi della pagina `site.data[page.dati][page.chiave]`. Una sezione
+  nuova — guide, range system — è una seconda fonte dello stesso tipo e un
+  front matter che la nomina: questo file non si tocca.
+  ⚠️ OGGI DUE COSE SONO ANCORA DI «FEATURES», e lo si dice invece di
+  nasconderlo: le briciole (`_includes/briciole.html`) e il `BreadcrumbList`
+  scrivono «Features» e `/features/`. Si generalizzano col giro che porta la
+  seconda sezione: farlo ora sarebbe costruire per una sezione che non c'è.
+
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: i testi
+  vengono da `_data/navigazione.yml` e da `_data/funzioni.yml`, di Cowork.
+  ⛔ UN SOLO BADGE in fondo, con le regole di `_layouts/funzione.html`.
+{%- endcomment -%}
+{%- assign ind = site.data[page.dati][page.chiave] -%}
+<head>
+  {%- include testa.html meta=ind.meta -%}
+</head>
+<body class="v-testo v-indice tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- include barra.html -%}
+    <div class="titolone">
+      {% include briciole.html %}
+      <h1>{{ ind.titolo }}</h1>
+      {%- if ind.sommario %}
+      <p class="sommario">{{ ind.sommario }}</p>
+      {%- endif %}
+    </div>
+  </div>
+
+  <main id="principale">
+    <ul class="indice">
+      {%- for f in site.data[page.fonte] -%}
+      {%- assign a = f.aspetto -%}
+      {%- assign forma = a.forma | default: 'telefono' %}
+      <li class="sez-{{ a.tinta | default: 'verde' }} forma-{{ forma }}">
+        <div class="parole">
+          <div class="testa">
+            {%- if a.icona %}
+            <span class="cerchietto">{% include glifo.html nome=a.icona %}</span>
+            {%- endif %}
+            {%- if f.nome %}
+            <p class="nome-breve">{{ f.nome }}</p>
+            {%- endif %}
+          </div>
+          <h2>{{ f.lead }}</h2>
+          <p>{{ f.body }}</p>
+          {%- comment -%}
+            ⚠️ Il link ha le parole del link della carta («See how round count
+            works»), che sono già approvate; dove la carta non ne ha uno, il
+            link non c'è. L'indirizzo è quello della fonte unica.
+          {%- endcomment -%}
+          {%- if a.pagina and f.link %}
+          <p class="oltre"><a href="{{ a.pagina | relative_url }}">{{ f.link }}</a></p>
+          {%- endif %}
+        </div>
+        {%- if a.schermata and f.alt %}
+        {%- if forma == 'foglio' %}
+        {% include schermata.html nome=a.schermata alt=f.alt forma='foglio' sizes='(min-width: 880px) 400px, 80vw' %}
+        {%- else %}
+        {% include schermata.html nome=a.schermata alt=f.alt forma='telefono' sizes='(min-width: 880px) 150px, 112px' %}
+        {%- endif %}
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+
+    {%- if ind.badge %}
+    <p class="scarica">
+      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
+        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+             alt="{{ ind.badge }}" width="120" height="40">
+      </a>
+    </p>
+    {%- endif %}
+  </main>
+
+  {%- include piede.html -%}
+</body>
+</html>

@@ -54,34 +54,44 @@ for (const url of urls) {
     // ③ Il pulsante c è solo sul telefono: sopra i 760px il CSS lo toglie.
     const pulsante = await page.evaluate(() => {
       const s = document.querySelector('.barra .apri > summary');
-      return s && s.getBoundingClientRect().width > 0 ? s.textContent.trim() : null;
+      return s && s.getBoundingClientRect().width > 0 ? s.innerText.trim() : null;
     });
 
     // ⛔ LA MISURA CHE CONTA DI PIÙ, e si fa PRIMA di aprire: con il menu
     // chiuso, le voci non devono essere raggiungibili col Tab. ⚠️ Un link
     // invisibile ma tabbabile fa sparire il fuoco in un punto che non si vede,
     // ed è peggio di non avere il link.
-    if (pulsante) {
-      const fantasmi = await page.evaluate(() =>
-        [...document.querySelectorAll('.barra .voci a')].filter((a) => a.offsetParent !== null).length);
-      console.log(`  --- ${nome}: menu CHIUSO, voci raggiungibili col Tab: ${fantasmi}` +
-                  (fantasmi === 0 ? '  ✅' : '  ⛔ dovrebbero essere 0'));
-      if (fantasmi !== 0) guasti++;
-    }
+    // ⛔ FINO AL GIRO W24 QUI SI CERCAVA `.barra .voci a`, e dal W10 la classe
+    // è `voci-barra`: il selettore non trovava niente e la misura contava 0
+    // QUALUNQUE COSA SUCCEDESSE. Un controllo che non può fallire non è un
+    // controllo. ⭐ Ora si contano le voci della barra (telefono, menu chiuso) e
+    // quelle della tendina «Features» (computer, tendina chiusa) — e il conto
+    // si stampa accanto a quante voci ci sono, così uno 0 su 0 si vede.
+    const chiuse = await page.evaluate((telefono) => {
+      const sel = telefono ? '.barra .voci-barra a' : '.barra .sotto a';
+      const tutte = [...document.querySelectorAll(sel)];
+      return { tutte: tutte.length, visibili: tutte.filter((a) => a.offsetParent !== null).length };
+    }, Boolean(pulsante));
+    const cosa = pulsante ? 'menu CHIUSO, voci della barra' : 'tendina CHIUSA, voci della tendina';
+    console.log(`  --- ${nome}: ${cosa} raggiungibili col Tab: ${chiuse.visibili} su ${chiuse.tutte}` +
+                (chiuse.visibili === 0 && chiuse.tutte > 0 ? '  ✅' : '  ⛔ dovrebbero essere 0 su più di 0'));
+    if (chiuse.visibili !== 0 || chiuse.tutte === 0) guasti++;
 
     const giro = [];
     await page.evaluate(() => document.body.focus());
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 22; i++) {
       await page.keyboard.press('Tab');
       const a = await page.evaluate(attivo);
       if (!a || a.tag === 'body') break;
       giro.push(a);
       // Arrivati sul pulsante «Menu», lo si apre con Invio e si prosegue:
       // è esattamente quello che farebbe chi non ha il mouse.
+      // ⭐ Dal giro W24 i pulsanti sono due — «Menu» e la tendina «Features»:
+      // si apre quello su cui si è.
       if (a.tag === 'summary') {
         await page.keyboard.press('Enter');
-        const aperto = await page.evaluate(() => document.querySelector('.barra .apri').open);
-        giro.push({ tag: '⏎', testo: aperto ? 'il menu si è APERTO' : '⛔ il menu NON si è aperto', dove: '', corrente: '', contorno: 'solid', visibile: true });
+        const aperto = await page.evaluate(() => document.activeElement.parentElement.open);
+        giro.push({ tag: '⏎', testo: aperto ? `«${a.testo}» si è APERTO` : `⛔ «${a.testo}» NON si è aperto`, dove: '', corrente: '', contorno: 'solid', visibile: true });
         if (!aperto) guasti++;
       }
     }
@@ -96,7 +106,19 @@ for (const url of urls) {
     });
 
     // Esc richiude, che è quel che ci si aspetta da un pannello aperto.
+    // ⭐ Giro W24: e si RICHIUDE da tastiera — fuoco sul pulsante, Invio.
+    const richiusi = await page.evaluate(() =>
+      [...document.querySelectorAll('.barra details[open] > summary')].filter((s) => s.getBoundingClientRect().width > 0).length);
+    for (let k = 0; k < richiusi; k++) {
+      await page.evaluate(() => [...document.querySelectorAll('.barra details[open] > summary')].find((s) => s.getBoundingClientRect().width > 0).focus());
+      await page.keyboard.press('Enter');
+    }
+    const ancoraAperti = await page.evaluate(() => document.querySelectorAll('.barra details[open]').length);
+    console.log(`   Invio sul pulsante aperto → ${ancoraAperti === 0 ? `richiuso (${richiusi})  ✅` : `⛔ ancora aperti: ${ancoraAperti}`}`);
+    if (ancoraAperti !== 0) guasti++;
+
     if (pulsante) {
+      await page.evaluate(() => { document.querySelector('.barra .apri').open = true; });
       await page.keyboard.press('Escape');
       const ancora = await page.evaluate(() => document.querySelector('.barra .apri').open);
       // ⚠️ `<details>` NON si chiude con Esc, e non è un guasto: non è una

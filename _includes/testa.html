@@ -51,7 +51,8 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:alt" content="{{ site.data.landing.footer.tagline }}">
 
-{%- include dati-strutturati.html -%}
+{%- comment -%} ⭐ Giro W24: `meta` passa anche ai dati strutturati, che ne prendono nome e descrizione della pagina — da qualunque file di testo vengano. {%- endcomment -%}
+{%- include dati-strutturati.html meta=include.meta -%}
 
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/aimonx-32.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/aimonx-16.png' | relative_url }}">

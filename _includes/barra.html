@@ -1,6 +1,29 @@
 {%- comment -%}
-_includes/barra.html — LA BARRA IN ALTO, su tutte e quattro le pagine.
-Giro W10, decisa e approvata da Pier il 22/09/2026.
+_includes/barra.html — LA BARRA IN ALTO, su tutte le pagine.
+Giro W10, decisa e approvata da Pier il 22/09/2026. ⭐ RIFATTA NEL GIRO W24
+(Pier, 16/10/2026: il sito diventa un sito a sezioni): quattro voci —
+Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
+
+  ⭐ COSA C'È ADESSO, e perché è fatto così:
+    · sul COMPUTER «Features» è una tendina: un `<details>` il cui `<summary>`
+      è il pulsante, e le voci stanno nella `<ul class="sotto">` SUBITO DOPO,
+      fuori da lui — la stessa forma del «Menu» del telefono, per la stessa
+      ragione scritta qui sotto. ⛔ Chiusa, le sue voci sono `display: none`:
+      NON si raggiungono col Tab. Si apre e si chiude col clic, con Invio e con
+      lo spazio, perché `<summary>` è un pulsante nativo.
+      ⚠️ SENZA JAVASCRIPT, quindi un clic FUORI non la richiude: la richiude
+      il suo pulsante, o il cambio di pagina. È il prezzo di zero script, ed è
+      una scelta di CC da far vedere a Pier, non un fatto.
+    · sul TELEFONO il pulsante «Menu» apre un PANNELLO A TUTTO SCHERMO, e
+      dentro «Features» non è una tendina: è un titolo con le sue pagine già
+      in elenco (niente da toccare due volte). Il pulsante, aperto, dice
+      «Close». ⭐ Mentre il pannello è aperto il resto della pagina è
+      `visibility: hidden` (`comune.scss`, con `:has`): non si vede e non si
+      raggiunge col Tab, che è quel che fa una finestra modale — senza script.
+    · «Download» è un PULSANTE DI TESTO verso lo Store, ⛔ non un badge: il
+      badge di Apple resta uno per pagina.
+    · il logo porta alla landing, e «Home» non c'è più.
+  ⛔ SENZA JAVASCRIPT IL MENU È INTERO: non c'è JavaScript da togliere.
 
   ⛔ PRIMA DEL W10 LA TESTATA ERA SCRITTA DUE VOLTE — una in
   `_layouts/landing.html`, una in `_layouts/pagina.html` — e già divergevano:
@@ -27,15 +50,16 @@ Giro W10, decisa e approvata da Pier il 22/09/2026.
   ⚠️ Se a Cowork questa forma non va, l'alternativa è JS: si dica, e si fa.
 
   ⛔ QUI NON C'È NESSUNA PAROLA: le etichette vengono da
-  `_data/landing.yml` (di Cowork, dalla bozza), gli indirizzi da
-  `_data/collegamenti.yml` (di CC).
+  `_data/navigazione.yml` (di Cowork, dalla bozza), le funzioni della tendina
+  da `_data/funzioni.yml`, gli indirizzi da `_data/collegamenti.yml` (di CC).
 {%- endcomment -%}
 {%- comment -%}
   ⛔ `barra_m`, non `m`: un include condivide la scatola delle variabili col
   layout che lo chiama, quindi un nome corto qui può cancellare un nome corto
   là. Misurato nel W10 su `d`, e costato il corpo di tre pagine.
 {%- endcomment -%}
-{%- assign barra_m = site.data.landing.menu -%}
+{%- assign barra_m = site.data.navigazione.menu -%}
+{%- assign barra_pagine = site.data.funzioni | where_exp: "f", "f.aspetto.pagina" -%}
 <nav class="barra">
   {%- comment -%}
     ⚠️ alt="" — l'icona è DECORATIVA anche qui: «AIMONX» è scritto in lettere
@@ -46,7 +70,7 @@ Giro W10, decisa e approvata da Pier il 22/09/2026.
     {%- comment -%}
       ⭐ TRE FILE, UNO PER DENSITÀ, dal giro W14. Il marchio è largo 48 px: con
       il solo file da 96 un telefono a 3× doveva riempirne 144 e lo
-      ingrandiva — sgranato, su tutte e quattro le pagine (misurato da
+      ingrandiva — sgranato, su tutte le pagine (misurato da
       `scripts/peso.mjs`). Sono file che c'erano già, gli stessi pixel
       dell'icona dell'app: non è stato disegnato niente.
     {%- endcomment -%}
@@ -56,25 +80,48 @@ Giro W10, decisa e approvata da Pier il 22/09/2026.
     <span class="nome">{{ site.data.landing.brand }}</span>
   </a>
 
+  {%- comment -%}
+    ⚠️ Le due parole del pulsante sono tutte e due nell'HTML, e il CSS ne
+    mostra UNA: `display: none` toglie l'altra anche a chi ascolta, che sente
+    «Menu» o «Close» — mai tutte e due. ⛔ Non con `content:` nel CSS: una
+    parola scritta nel foglio di stile non la vedrebbe nessun controllo.
+  {%- endcomment -%}
   <details class="apri">
-    <summary>{{ barra_m.apri }}</summary>
+    <summary><span class="se-chiuso">{{ barra_m.apri }}</span><span class="se-aperto">{{ barra_m.chiudi }}</span></summary>
   </details>
 
   {%- comment -%}
-    ⛔ `voci-barra` E NON `voci`, e non è pignoleria di nomi: `.voci` è già la
-    classe delle CARTE della landing in `assets/css/b.scss`, con la stessa
-    specificità di questa. ⚠️ Vinceva `b.scss` perché il browser lo carica
-    dopo, e il risultato era che sul telefono, con il menu CHIUSO, le cinque
-    voci restavano raggiungibili col tasto Tab: invisibili e tabbabili, cioè
-    il fuoco che sparisce in un punto che non si vede. ⛔ Sulla landing e solo
-    lì — le altre tre pagine non caricano `b.scss` e si comportavano bene, che
-    è il modo in cui un guaio del genere passa inosservato.
-    ⭐ Trovato da `scripts/tastiera.mjs`, non a occhio.
+    ⛔ `voci-barra` E NON `voci`: `.voci` è la classe delle CARTE della landing
+    in `assets/css/b.scss`, e nel W10 la collisione lasciava le voci del menu
+    chiuso raggiungibili col Tab sulla landing. Trovato da
+    `scripts/tastiera.mjs`, non a occhio.
   {%- endcomment -%}
   <ul class="voci-barra">
     {%- for v in barra_m.voci -%}
-    {%- assign dove = site.data.collegamenti.menu[v] | relative_url %}
-    <li><a href="{{ dove }}"{% if dove == page.url %} aria-current="page"{% endif %}>{{ v }}</a></li>
+    {%- if forloop.first %}
+    {%- comment -%}
+      LA VOCE CHE SI APRE. Sul computer la tendina (`details.tendina`), sul
+      telefono il titolo `gruppo` con l'elenco già aperto: il CSS mostra l'uno
+      o l'altro, e quello nascosto è `display: none` — fuori dalla vista, dal
+      Tab e dal lettore di schermo, quindi la voce non si sente due volte.
+    {%- endcomment %}
+    <li class="con-tendina">
+      <details class="tendina">
+        <summary>{{ v }}</summary>
+      </details>
+      <span class="gruppo">{{ v }}</span>
+      <ul class="sotto">
+        {%- for f in barra_pagine %}
+        <li>{% include voce.html v=f.nome dove=f.aspetto.pagina %}</li>
+        {%- endfor %}
+        <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
+      </ul>
+    </li>
+    {%- elsif forloop.last %}
+    <li class="scarica-voce">{% include voce.html v=v classe='pulsante' %}</li>
+    {%- else %}
+    <li>{% include voce.html v=v %}</li>
+    {%- endif -%}
     {%- endfor %}
   </ul>
 </nav>

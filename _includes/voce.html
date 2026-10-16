@@ -1,0 +1,19 @@
+{%- comment -%}
+_includes/voce.html — UNA VOCE DI NAVIGAZIONE, scritta in un modo solo. Giro W24.
+  La usano la barra, la tendina e il piede: `include.v` è l'etichetta,
+  `include.dove` (facoltativo) l'indirizzo quando non sta in
+  `_data/collegamenti.yml` (`menu`) — le funzioni della tendina, che portano il
+  proprio. `include.classe` aggiunge una classe al link.
+  ⛔ «store» non è un indirizzo: è il link allo Store, nudo, e come ogni link
+  verso fuori porta `rel="noreferrer"` (la nota in `_data/collegamenti.yml`).
+  ⭐ `aria-current="page"` sulla voce della pagina che si sta già leggendo.
+  ⛔ Variabili col prefisso `voce_`: un include scrive nella scatola del layout
+  che lo chiama (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- assign voce_dove = include.dove | default: site.data.collegamenti.menu[include.v] -%}
+{%- if voce_dove == 'store' -%}
+<a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ site.data.collegamenti.store }}" rel="noreferrer">{{ include.v }}</a>
+{%- else -%}
+{%- assign voce_dove = voce_dove | relative_url -%}
+<a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ voce_dove }}"{% if voce_dove == page.url %} aria-current="page"{% endif %}>{{ include.v }}</a>
+{%- endif -%}

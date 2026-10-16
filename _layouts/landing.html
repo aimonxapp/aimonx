@@ -207,15 +207,19 @@
     {%- comment -%} ① Cosa tiene in ordine — le voci, col glifo e con la schermata. {%- endcomment -%}
     <section id="features" class="blocco blocco-cose" aria-labelledby="t-cose">
       <h2 id="t-cose">{{ d.what.title }}</h2>
+      {%- comment -%}
+        ⭐ LE CARTE NASCONO DALLA FONTE UNICA, dal giro W24: `_data/funzioni.yml`,
+        tutte le funzioni tranne quelle con `vetrina: no` (oggi «Your data», che
+        sulla landing è la sezione «Privacy» più in basso). Quali restino in
+        vetrina lo decide Pier (architettura del 16/10/2026, §10.2).
+        ⚠️ Testo e aspetto stanno nella stessa voce: non c'è più un
+        accoppiamento per posizione da tenere allineato. Se manca la tinta la
+        carta cade sul verde, se manca il glifo esce senza segno.
+      {%- endcomment -%}
+      {%- assign carte = site.data.funzioni | where_exp: "f", "f.aspetto.vetrina != false" -%}
       <ul class="voci voci-glifo">
-        {%- for v in d.what.items -%}
-          {%- comment -%}
-            L'aspetto viene da `_data/aspetto.yml`, accoppiato PER POSIZIONE.
-            ⛔ Se lì manca la riga corrispondente la pagina non si rompe: cade
-            sul verde e su nessun glifo. Che le due liste siano lunghe uguale
-            lo controlla `scripts/testo-approvato.sh`.
-          {%- endcomment -%}
-          {%- assign a = site.data.aspetto.what[forloop.index0] -%}
+        {%- for v in carte -%}
+          {%- assign a = v.aspetto -%}
           {%- assign tinta = a.tinta | default: 'verde' -%}
           {%- assign forma = a.forma | default: 'telefono' -%}
         <li class="voce tinta-{{ tinta }}{% if a.schermata and v.alt %} mostra-{{ forma }}{% endif %}">
@@ -262,6 +266,12 @@
         </li>
         {%- endfor %}
       </ul>
+      {%- comment -%}
+        ⭐ Giro W24: sotto la griglia, il link all'indice di TUTTE le funzioni.
+        Le parole sono quelle della tendina, dalla bozza della navigazione; lo
+        stile è quello dei link sotto le carte (`oltre`).
+      {%- endcomment %}
+      <p class="oltre tutte-le-funzioni">{% include voce.html v=site.data.navigazione.menu.tutte %}</p>
     </section>
 
     {%- comment -%} ② Privacy — il proclama è la seconda voce più forte della pagina. {%- endcomment -%}
@@ -299,8 +309,9 @@
         ⭐ Giro W16: il link alla pagina «Your data», sotto il paragrafo, come
         «See how round count works» sotto la sua voce — stessa ricerca in
         `_data/collegamenti.yml`, e ⛔ se lì manca la frase il link non esce
-        invece di uscire rotto. ⛔ La barra NON cambia (Pier, 14/10): «Privacy»
-        e «Security» restano salti a questa sezione e alla prossima.
+        invece di uscire rotto. ⭐ Dal giro W24 «Privacy» e «Security» non sono
+        più nella barra: la loro pagina è «Your data», nella tendina, e questa
+        sezione resta qui, raggiungibile scorrendo.
       {%- endcomment -%}
       {%- if d.privacy.link -%}
       {%- assign c = site.data.collegamenti.frasi | where: "frase", d.privacy.link | first -%}

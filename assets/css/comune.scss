@@ -126,11 +126,14 @@ img, svg { display: block; max-width: 100%; }
 
 // ============================================================================
 // LA BARRA IN ALTO — l'altra eccezione, e per la stessa ragione del piede.
-// Giro W10. ⚠️ Non prefissata: la barra è la stessa su tutte e quattro le
-// pagine, e scriverla nei due fogli la farebbe divergere. ⛔ Quel che resta ai
-// due fogli è la LARGHEZZA della colonna, perché la barra sta dentro
-// `.apertura` e ne segue il contenitore: 66rem sulla landing, 52 sulle pagine
-// da leggere. È voluto — la barra è incolonnata col testo della sua pagina.
+// Giro W10, RIFATTA NEL GIRO W24: quattro voci, «Features» che si apre, il
+// pulsante «Download», e sul telefono un pannello a tutto schermo. Il perché
+// di ogni forma sta in `_includes/barra.html`.
+// ⚠️ Non prefissata: la barra è la stessa su tutte le pagine. ⛔ Quel che
+// resta ai fogli è la LARGHEZZA della colonna, perché la barra sta dentro
+// `.apertura` e ne segue il contenitore.
+// ⛔ ZERO JAVASCRIPT: aperto e chiuso li tiene `<details>`, e qui si leggono
+// con `[open]` e, per il pannello, con `:has`.
 // ============================================================================
 
 .barra {
@@ -147,79 +150,147 @@ img, svg { display: block; max-width: 100%; }
 .barra .marchio { width: 48px; height: 48px; border-radius: 12px; }
 .barra .nome { font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; }
 
-// IL PULSANTE «Menu» — è un <summary>, cioè un pulsante di apertura NATIVO.
-// ⛔ `list-style: none` più la riga `::-webkit-details-marker` tolgono il
-// triangolino di difetto: servono tutte e due, perché i browser non sono
-// d'accordo su quale dei due ascoltare. Al suo posto c'è un chevron disegnato
-// col bordo, che GIRA quando il menu è aperto — ⚠️ è l'unico segno che dice
-// «aperto» a chi guarda; a chi ascolta lo dice già `<details>` da sé.
+// I DUE PULSANTI CHE SI APRONO — «Menu» sul telefono, «Features» sul
+// computer — sono `<summary>`, pulsanti di apertura NATIVI. ⛔ `list-style:
+// none` più `::-webkit-details-marker` tolgono il triangolino di difetto:
+// servono tutte e due, perché i browser non sono d'accordo su quale
+// ascoltare. Al suo posto un chevron disegnato col bordo, che GIRA da aperto:
+// è il segno che dice «aperto» a chi guarda; a chi ascolta lo dice `<details>`.
+.barra summary { list-style: none; cursor: pointer; }
+.barra summary::-webkit-details-marker { display: none; }
+.barra .apri > summary::after,
+.barra .tendina > summary::after {
+  content: ""; width: .42rem; height: .42rem; margin-top: -.18rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.barra .apri[open] > summary::after,
+.barra .tendina[open] > summary::after { transform: rotate(-135deg); margin-top: .1rem; }
+
 .barra .apri > summary {
-  list-style: none; cursor: pointer;
   display: inline-flex; align-items: center; gap: .55rem;
   padding: .52rem .95rem; border-radius: 999px;
   border: 1px solid rgba(140, 204, 166, .30);
   background: rgba(140, 204, 166, .07);
   color: #CFE3D8; font-size: .92rem; font-weight: 600;
 }
-.barra .apri > summary::-webkit-details-marker { display: none; }
-.barra .apri > summary::after {
-  content: ""; width: .46rem; height: .46rem; margin-top: -.18rem;
-  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
-}
-.barra .apri[open] > summary::after { transform: rotate(-135deg); margin-top: .1rem; }
 .barra .apri > summary:hover { color: var(--bianco); border-color: rgba(140, 204, 166, .5); }
+// ⚠️ Le due parole del pulsante: se ne vede UNA, e `display: none` toglie
+// l'altra anche a chi ascolta.
+.barra .apri .se-aperto,
+.barra .apri[open] .se-chiuso { display: none; }
+.barra .apri[open] .se-aperto { display: inline; }
 
-// LE VOCI. ⛔ La classe è `voci-barra` e NON `voci`: `.voci` è già delle carte
-// della landing, con la stessa specificità, e `b.scss` si carica dopo — il
-// perché per esteso sta in `_includes/barra.html`.
-// ⛔ Sul telefono partono nascoste e le mostra `details[open] ~ .voci-barra`,
-// cioè il FRATELLO aperto: il perché di questa forma sta in
-// `_includes/barra.html`, ed è che sul computer le voci devono esserci sempre.
+// LE VOCI. ⛔ La classe è `voci-barra` e NON `voci`: `.voci` è delle carte
+// della landing (`_includes/barra.html`).
 // ⚠️ `display: none` non è solo «non si vede»: toglie anche dal giro del
-// tasto Tab, che è quello che serve — un link invisibile ma raggiungibile da
-// tastiera è peggio di nessun link.
+// tasto Tab, che è quello che serve.
 .barra .voci-barra { display: none; }
-.barra .apri[open] ~ .voci-barra {
-  display: flex; flex-direction: column; width: 100%;
-  padding: .35rem 0 .2rem;
-  border-top: 1px solid rgba(253, 253, 253, .10);
-}
-.barra .voci-barra a {
-  display: block; padding: .6rem .1rem;
-  color: #CFE3D8; text-decoration: none; font-weight: 600; font-size: .98rem;
-}
-.barra .voci-barra a:hover { color: var(--bianco); }
+.barra .voci-barra a,
+.barra .tendina > summary { color: #CFE3D8; text-decoration: none; font-weight: 600; }
+.barra .voci-barra a:hover,
+.barra .tendina > summary:hover { color: var(--bianco); }
 // ⭐ La voce della pagina che si sta già leggendo: bianca E sottolineata. ⛔ Il
-// colore da solo non basterebbe (WCAG 2.1, «Use of Color»), e qui le voci non
-// sono sottolineate, quindi il filetto è il segno che resta a chi non
-// distingue il bianco dal verde chiaro.
+// colore da solo non basterebbe (WCAG 2.1, «Use of Color»).
 .barra .voci-barra [aria-current="page"] {
   color: var(--bianco); text-decoration: underline; text-underline-offset: .25em;
 }
+// «Download»: un PULSANTE DI TESTO. ⛔ Non imita il badge di Apple — niente
+// nero, niente logo, niente bordo grigio: il verde chiaro del sito col testo
+// del fondo. ⚠️ Contrasto del bosco sul verde chiaro: ben oltre AA, ed è
+// misurato da `scripts/contrasto.mjs` come ogni altro testo.
+.barra .voci-barra .pulsante {
+  display: inline-block; border-radius: 999px;
+  background: var(--verde-chiaro); color: var(--bosco);
+}
+.barra .voci-barra .pulsante:hover { background: var(--bianco); color: var(--bosco); }
 
-// ⚠️ 760px non è a caso: sotto, le cinque voci più il marchio non ci stanno su
-// una riga e andrebbero a capo in mezzo a una voce. Sopra, ci stanno.
+// --- il telefono: il pannello a tutto schermo --------------------------------
+// ⭐ Sotto i 760 px il pulsante «Menu» apre un pannello che copre la pagina, e
+// il pulsante stesso resta in alto a destra e dice «Close». «Features» non si
+// apre: è un titolo, con le sue pagine già in elenco sotto.
+@media (max-width: 759.98px) {
+  .barra .tendina { display: none; }
+  .barra .apri[open] > summary {
+    position: fixed; z-index: 31;
+    top: clamp(1.1rem, 3.2vw, 1.8rem); right: clamp(1.1rem, 4vw, 2.5rem);
+    margin-top: 4px;
+  }
+  .barra .apri[open] ~ .voci-barra {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0; z-index: 30; overflow-y: auto;
+    padding: 5.6rem clamp(1.1rem, 4vw, 2.5rem) 2.4rem;
+    background: var(--bosco);
+    background-image: linear-gradient(180deg, var(--alto) 0%, var(--bosco) 24rem);
+  }
+  .barra .voci-barra > li { border-bottom: 1px solid rgba(253, 253, 253, .10); }
+  .barra .voci-barra > li > a { display: block; padding: .95rem 0; font-size: 1.2rem; }
+  .barra .voci-barra .gruppo {
+    display: block; padding: 1rem 0 .2rem;
+    font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: #9DB6AA;
+  }
+  .barra .voci-barra .sotto { padding-bottom: .6rem; }
+  .barra .voci-barra .sotto a { display: block; padding: .62rem 0 .62rem .9rem; font-size: 1.12rem; }
+  .barra .voci-barra .scarica-voce { border-bottom: 0; padding-top: 1.6rem; }
+  .barra .voci-barra .pulsante { display: block; padding: .9rem 1rem; text-align: center; font-size: 1.1rem; }
+  // ⭐ Mentre il pannello è aperto, il resto della pagina NON c'è: non si vede,
+  // non scorre e non si raggiunge col Tab — `visibility: hidden` toglie dal
+  // giro del fuoco, che è quel che fa una finestra modale. ⚠️ `:has` manca
+  // solo a browser vecchi: lì il pannello copre la pagina lo stesso, e il Tab
+  // può scendere sotto di lui. È il prezzo di zero JavaScript, dichiarato.
+  body:has(.barra .apri[open]) { overflow: hidden; }
+  body:has(.barra .apri[open]) :is(.apertura > :not(.barra), main, .firma, .chiusa),
+  body:has(.barra .apri[open]) .barra .acasa { visibility: hidden; }
+}
+
+// --- il computer: le voci in riga, e la tendina -----------------------------
+// ⚠️ 760px non è a caso: sotto, quattro voci col pulsante e il marchio non ci
+// stanno su una riga. Sopra, ci stanno — misurato da `scripts/sbordi.mjs`.
 @media (min-width: 760px) {
   .barra .apri { display: none; }
   .barra .voci-barra {
-    display: flex; flex-direction: row; align-items: center; width: auto;
-    gap: clamp(.9rem, 2.2vw, 1.7rem);
-    padding: 0; border-top: 0;
+    display: flex; flex-direction: row; align-items: center;
+    gap: clamp(1rem, 2.4vw, 1.8rem);
   }
-  .barra .voci-barra a { padding: .3rem 0; font-size: .92rem; }
+  .barra .voci-barra > li > a,
+  .barra .tendina > summary { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem 0; font-size: .92rem; }
+  .barra .voci-barra .pulsante { padding: .5rem 1.05rem; }
+  .barra .gruppo { display: none; }
+  .barra .con-tendina { position: relative; }
+  // LA TENDINA: un foglio bianco come le carte, sotto la sua voce. ⛔ Chiusa è
+  // `display: none`, quindi fuori dal Tab; aperta, le sue voci vengono subito
+  // dopo il pulsante, che è l'ordine in cui si sentono.
+  .barra .sotto { display: none; }
+  .barra .tendina[open] ~ .sotto {
+    display: block; position: absolute; z-index: 30;
+    top: calc(100% + .7rem); left: -1rem; min-width: 14rem;
+    padding: .45rem; border-radius: 14px;
+    background: var(--bianco);
+    box-shadow: 0 14px 34px rgba(6, 24, 16, .38);
+  }
+  .barra .sotto a {
+    display: block; padding: .6rem .8rem; border-radius: 9px;
+    color: var(--inchiostro); font-size: .95rem;
+  }
+  .barra .sotto a:hover { color: var(--inchiostro); background: var(--fascia-verde); }
+  .barra .sotto [aria-current="page"] { color: var(--titolo-verde); }
+  .barra .sotto .tutte { margin-top: .3rem; padding-top: .3rem; border-top: 1px solid #E4EAEE; }
+  .barra .sotto .tutte a { color: var(--titolo-verde); }
 }
 
-// ⚠️ Le voci saltano a una sezione della landing: senza questo, il titolo
-// finirebbe incollato al bordo alto della finestra.
+// ⚠️ «Free and Pro» salta a una sezione della landing: senza questo, il titolo
+// finirebbe incollato al bordo alto della finestra. Le altre tre sezioni non
+// sono più nella barra, ma restano raggiungibili dagli indirizzi già scritti.
 #features, #privacy, #security, #free-and-pro { scroll-margin-top: 1.2rem; }
 
 // ============================================================================
 // IL PIEDE — l'eccezione dichiarata in testa a questo file.
 // ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
 // piede è lo stesso su tutte le pagine, e un prefisso vorrebbe dire ripeterle.
-// ⛔ Quel che resta ai due fogli è la LARGHEZZA della colonna — 66rem sulla
-// landing, 52 sulle pagine da leggere — perché quella sì che cambia.
+// ⛔ Quel che resta ai fogli è la LARGHEZZA della colonna.
+// ⭐ Dal giro W24 è A COLONNE: una sotto l'altra sul telefono, tre in riga da
+// 640 px — ci stanno con le etichette più lunghe, «Privacy Policy».
 // ============================================================================
 
 .chiusa {
@@ -229,29 +300,56 @@ img, svg { display: block; max-width: 100%; }
 }
 .motto { font-size: 1rem; font-weight: 600; color: var(--verde-chiaro); }
 
-// I LINK, dal giro W9 (quattro dal W17). ⛔ Sottolineati: il colore da solo non
-// basta a dire «questo si clicca» (WCAG 2.1, «Use of Color»).
-// ⚠️ `nowrap` dal giro W17: col quarto link, «What's new», a 390 px la riga
-// andava a capo DENTRO il link — «What's» su una riga, «new» sotto. Un link
-// va a capo intero, fra un link e l'altro.
-.collegamenti { margin-top: .9rem; font-size: .92rem; line-height: 1.9; }
-.collegamenti a {
-  white-space: nowrap;
-  color: var(--verde-chiaro);
-  text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: .07em;
+.colonne {
+  display: grid; gap: 1.5rem 2rem;
+  margin-block: clamp(1.4rem, 3.5vw, 2rem) clamp(1.4rem, 3.5vw, 2rem);
 }
-.collegamenti a:hover { color: var(--bianco); text-decoration-thickness: .15em; }
-// ⭐ Il link alla pagina che si sta già leggendo: bianco e senza filetto, così
-// si vede a colpo d'occhio dove si è. `aria-current="page"` lo dice a chi
-// ascolta la pagina, questa regola a chi la guarda: la stessa informazione per
-// tutti e due, che è il punto.
-.collegamenti [aria-current="page"] { color: var(--bianco); text-decoration: none; }
-// ⚠️ Il separatore è `aria-hidden` nell'HTML, ma si VEDE: quindi il suo
-// contrasto conta come quello di ogni altro testo, e porta lo stesso grigio
-// verde della riga minuta qui sotto, già misurato nei giri precedenti.
-.collegamenti .sep { display: inline-block; margin-inline: .55rem; color: #9DB6AA; }
+@media (min-width: 640px) { .colonne { grid-template-columns: repeat(3, minmax(0, 12rem)); } }
+.colonne .intesta {
+  font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: #9DB6AA;
+}
+.colonne ul { margin-top: .55rem; }
+// ⚠️ Qui i link NON sono sottolineati, e la regola «il colore da solo non
+// basta» non è tradita: sono un ELENCO di soli link sotto un titolo, non una
+// parola-link in mezzo a una frase. Al passaggio del mouse si sottolineano.
+.colonne a {
+  display: inline-block; padding: .3rem 0;
+  color: #CFE3D8; text-decoration: none; font-size: .95rem;
+}
+.colonne a:hover { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
+// ⭐ Il link della pagina che si sta già leggendo: bianco e sottolineato —
+// `aria-current="page"` lo dice a chi ascolta, questa regola a chi guarda.
+.colonne [aria-current="page"] { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
 
 .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
+
+// ============================================================================
+// LE PAGINE DI SEZIONE — dal giro W24: le briciole, e il segno di ogni
+// funzione (la tinta e il glifo nel cerchietto) che usano l'indice e «More
+// features». ⚠️ Qui e non in un foglio solo, perché le usano due modelli.
+// ============================================================================
+
+.briciole { margin-bottom: clamp(.9rem, 2.4vw, 1.3rem); font-size: .86rem; color: #9DB6AA; }
+.briciole ol { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.briciole .sep { margin-inline: .5rem; }
+.briciole a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .18em; }
+.briciole a:hover { color: var(--bianco); }
+.briciole [aria-current="page"] { color: #CFE3D8; }
+
+.sez-verde        { --sez: var(--sez-verde);        --fascia: var(--fascia-verde);        --titolo: var(--titolo-verde); }
+.sez-lime         { --sez: var(--sez-lime);         --fascia: var(--fascia-lime);         --titolo: var(--titolo-lime); }
+.sez-ciano        { --sez: var(--sez-ciano);        --fascia: var(--fascia-ciano);        --titolo: var(--titolo-ciano); }
+.sez-ardesia      { --sez: var(--sez-ardesia);      --fascia: var(--fascia-ardesia);      --titolo: var(--titolo-ardesia); }
+.sez-salvia       { --sez: var(--sez-salvia);       --fascia: var(--fascia-salvia);       --titolo: var(--titolo-salvia); }
+.sez-arancioTenue { --sez: var(--sez-arancioTenue); --fascia: var(--fascia-arancioTenue); --titolo: var(--titolo-arancioTenue); }
+.sez-blu          { --sez: var(--sez-blu);          --fascia: var(--fascia-blu);          --titolo: var(--titolo-blu); }
+.cerchietto {
+  flex: none; display: inline-grid; place-items: center;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  background: var(--sez, var(--sez-verde)); color: #fff;
+}
+.cerchietto .glifo { width: 1.15rem; height: 1.15rem; }
 
 // ============================================================================
 // LA CORNICE DELLE SCHERMATE — la terza eccezione, e per la stessa ragione del

@@ -62,31 +62,10 @@
 
 brand: "AIMONX"
 
-# ⭐ LA BARRA IN ALTO, dal giro W10 — decisa e approvata da Pier il 22/09/2026.
-# Le stringhe stanno nella bozza, sezione `## Menu`: le voci sono una riga
-# sola là dentro («Home · Features · Privacy · Security · Free and Pro · FAQ ·
-# Support»), spezzata qui voce per voce perché ciascuna è un LINK diverso — la
-# stessa ragione dei tre link del piede, e la stessa regola di Pier.
-# ⛔ Il «·» che le separa in pagina non è qui: è un segno, non una parola.
-# ⛔ E `apri` è l'etichetta del pulsante che sul telefono apre le voci: anche
-# quella è nella bozza, da sola, su una riga sua.
-# ⚠️ Dove portano sta in `_data/collegamenti.yml`, che è di CC.
-menu:
-  # ⭐ «Home» in testa, dal giro W10 fase B — Pier, 22/09/2026: «metti anche
-  # home insieme agli altri link». ⚠️ La bozza la dava per il giro W11: ha
-  # deciso Pier di anticiparla, e la nota della bozza è da riallineare.
-  voci:
-    - "Home"
-    - "Features"
-    - "Privacy"
-    - "Security"
-    - "Free and Pro"
-    # ⭐ «FAQ», dal giro W22 — Pier, 16/10/2026: le FAQ si trovavano solo dal
-    # piede, e devono trovarsi subito. La bozza (`## Menu`) la mette qui,
-    # fra «Free and Pro» e «Support».
-    - "FAQ"
-    - "Support"
-  apri: "Menu"
+# ⛔ LA BARRA IN ALTO NON È PIÙ QUI, dal giro W24: le sue parole stanno in
+# `_data/navigazione.yml`, perché la barra è di tutto il sito e la sua bozza è
+# quella della navigazione. ⚠️ La sezione `## Menu` di questa bozza porta le
+# stesse parole, e vanno tenute uguali (Cowork).
 
 meta:
   # Due righe della bozza, alla lettera: vedi la nota qui sopra.
@@ -171,56 +150,12 @@ hero:
 # stesse parole e la maiuscola solo all'inizio. ⛔ Se per Cowork erano etichette
 # e non titoli, si toglie da qui e le tre varianti si adeguano da sé.
 #
-# ⭐ DAL GIRO W14 OGNI VOCE HA LA SUA SCHERMATA, e `alt` è il suo TESTO
-# ALTERNATIVO: non si scrive in pagina, si sente. Le sette righe vengono dalla
-# sezione «Screenshots — alt text» della bozza, alla lettera.
-# ⚠️ Nella bozza le otto righe sono nell'ordine delle immagini — la Home, poi
-# le sette voci come stanno qui sotto. ⛔ Ma l'accoppiamento si fa GUARDANDO
-# l'immagine, non contando le righe: nella prima consegna la riga della
-# manutenzione era terza e la voce quarta, e presa per posizione la schermata
-# delle sessioni avrebbe detto di essere la pagina di un'arma.
+# ⛔ LE CARTE NON SONO PIÙ QUI, dal giro W24: ogni funzione sta UNA volta in
+# `_data/funzioni.yml` — testo, schermata e aspetto insieme — e da lì nascono
+# la carta, la tendina, l'indice `/features/` e «More features». Qui resta il
+# titolo della sezione, che è della landing.
 what:
   title: "What it keeps track of"
-  items:
-    - lead: "Every firearm, every round."
-      body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
-      alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
-      # ⭐ Dal giro W15: il link alla pagina che racconta questa voce per
-      # esteso. Nella bozza è la riga sotto il paragrafo. Dove porta sta in
-      # `_data/collegamenti.yml` (`frasi`), come ogni altro link.
-      link: "See how round count works"
-    - lead: "Range sessions and matches."
-      body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
-      alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
-    - lead: "Ammo you can count on."
-      body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
-      alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
-    - lead: "Maintenance your way."
-      body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
-      alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
-      # ⭐ Dal giro W17: il link alla pagina «Maintenance», come per Round count.
-      link: "See how maintenance works"
-    # ⭐ Giro W23 (Pier, 16/10/2026): la voce delle liste, dopo la manutenzione.
-    - lead: "Your lists, your way."
-      body: "Can't find your caliber or firearm type? Add it. Swipe away what you never use. Every list you pick from is yours to shape."
-      alt: "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
-      link: "See how custom lists work"
-    # ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026: «renewals
-    # come su app, stiamo allineati»), su tutto il sito.
-    - lead: "Renewals you won't miss."
-      body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
-      alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
-    - lead: "What your shooting really costs."
-      body: "Cost per session, per round and per firearm, and how practice compares to competition."
-      alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
-    # ⭐ Giro W23 (Pier, 16/10/2026): le statistiche, prima dei PDF. Con lei le
-    # carte del computer tornano a righe pari.
-    - lead: "Stats that show your progress."
-      body: "Rounds over time and by firearm, your most-used ammo, each firearm's reliability and the ranges you visit most. See how your shooting is really going."
-      alt: "The Stats screen in AIMONX: rounds fired, sessions and money spent over three months, compared with the previous period, above a chart of rounds fired over time."
-    - lead: "Firearm reports in PDF."
-      body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
-      alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."
 
 privacy:
   title: "Privacy"
@@ -286,20 +221,10 @@ footer:
   # prima frase dell'hero: è la parola che un motore o una IA cercano per
   # capire COSA è AIMONX (Pier, 08/10/2026). Le quattro stringhe vanno insieme.
   tagline: "AIMONX — the technical logbook app for sport shooters."
-  # ⚠️ TRE ETICHETTE, NON UNA RIGA, ed è la regola di Pier del 22/09: una frase
-  # si può dividere in pezzi per l'impaginazione purché le parole restino
-  # identiche e il controllo lo provi. Qui i pezzi devono essere tre perché
-  # ciascuno è un LINK diverso, e un link è un pezzo per forza.
-  # ⛔ Il «·» che li separa non è qui: è un segno, non una parola, e lo mette
-  # `_includes/piede.html`. Dove portano sta in `_data/collegamenti.yml`.
-  # ⭐ Dal giro W17 sono QUATTRO: «What's new» porta alla pagina `/updates/`.
-  # ⭐ Dal giro W18 CINQUE: «FAQ», dopo «Support», porta a `/faq/`.
-  links:
-    - "Privacy Policy"
-    - "Support"
-    - "FAQ"
-    - "Terms of Use"
-    - "What's new"
+  # ⛔ I LINK DEL PIEDE NON SONO PIÙ QUI, dal giro W24: il piede è a colonne,
+  # e titoli ed etichette stanno in `_data/navigazione.yml`. ⚠️ La riga
+  # «Privacy Policy · Support · FAQ · Terms of Use · What's new» della bozza
+  # della landing non va più in pagina, ed è da riallineare (Cowork).
   # ⭐ Dal giro W12 la riga dei marchi cita anche «Apple» e «the Apple logo»:
   # lo chiede Apple a chi usa il badge, che il suo logo lo porta dentro.
   # ⭐ Dal giro W17 anche «Face ID», «Keychain» e «Touch ID»: sono marchi

@@ -559,3 +559,10 @@ body.v-b {
 // scriverlo in due fogli lo farebbe divergere alla prima correzione. Di suo
 // questo foglio tiene solo la LARGHEZZA della colonna, che è nella regola in
 // testa al file insieme a `.apertura` e a `main`.
+
+// --- il link all'indice delle funzioni, sotto la griglia (giro W24) --------
+// ⚠️ Sul fondo scuro, come il link sotto il proclama della privacy: stesso
+// verde chiaro, sottolineato (il colore da solo non dice «si clicca»).
+.v-b .tutte-le-funzioni { margin-top: clamp(1.2rem, 3vw, 1.8rem); text-align: center; font-size: 1rem; font-weight: 600; }
+.v-b .tutte-le-funzioni a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .22em; }
+.v-b .tutte-le-funzioni a:hover { color: var(--bianco); }

@@ -115,37 +115,36 @@ frasi:
 # ⚠️ È un link, non una risorsa: la pagina non scarica niente da apple.com.
 store: "https://apps.apple.com/app/aimonx/id6794895643"
 
-# --- LA BARRA IN ALTO, dal giro W10 ----------------------------------------
+# --- LA NAVIGAZIONE: barra, tendina e piede (giro W10, rifatta nel W24) ----
 #
 # ⚠️ È UNA MAPPA A PARTE da `frasi` qui sopra, e la ragione è che le due cose
 # sono diverse: `frasi` trasforma una parola IN MEZZO A UNA FRASE in un link,
-# `menu` dice dove porta una VOCE della barra. Mischiarle vorrebbe dire che
-# scrivere «Privacy» dentro un paragrafo lo trasformerebbe in un salto a una
-# sezione della landing, che non è mai quello che si vuole.
+# `menu` dice dove porta una VOCE — della barra o del piede. Mischiarle vorrebbe
+# dire che scrivere «Features» dentro un paragrafo lo trasformerebbe in un link.
 #
-# ⛔ LE PRIME QUATTRO PORTANO A SEZIONI DELLA LANDING, con l'indirizzo INTERO
-# e non il solo `#features`: così funzionano anche da `/privacy-policy/`, da
-# `/support/` e da `/terms/`, dove un `#features` nudo non troverebbe niente.
+# ⭐ DAL GIRO W24 LA SERVONO IN TRE: la barra, la tendina e il piede a colonne
+# leggono tutti questa mappa, quindi una voce porta nello stesso posto ovunque.
+# ⛔ Dove una voce compare anche in `frasi` («FAQ», «Support», «What's new»,
+# «Privacy Policy», «Terms of Use»), i due indirizzi DEVONO coincidere: se uno
+# sbagliasse, `link_rotti` di `scripts/misure-pagine.rb` lo troverebbe — ogni
+# indirizzo interno di ogni pagina costruita deve risolvere.
 #
-# ⚠️ «Support» compare anche in `frasi`, e i due indirizzi DEVONO coincidere.
-# ⛔ Non è lasciato alla memoria: se uno dei due sbagliasse, il controllo
-# `link_rotti` di `scripts/misure-pagine.rb` lo troverebbe — ogni indirizzo
-# interno di ogni pagina costruita deve risolvere in una pagina che esiste.
+# ⛔ «Download» NON è un indirizzo di questo sito: `store` vuol dire «il link
+# allo Store qui sopra», nudo, scritto una volta sola. È un link di TESTO
+# (giro W24 ②): ⛔ il badge di Apple resta uno per pagina, e questo non lo è.
 #
-# ⛔ Privacy Policy e Terms NON sono nella barra: stanno nel piede (giro W10
-# §2⑤). Una barra con dentro tutto non è una barra, è un indice.
+# ⚠️ «Free and Pro» porta ancora a una sezione della landing, con l'indirizzo
+# INTERO e non il solo `#free-and-pro`: così funziona da ogni pagina.
+# ⭐ «Home», «Privacy» e «Security» sono usciti dalla barra nel W24 (bozza
+# della navigazione): la casa la fa il logo, e la privacy ha la sua pagina,
+# «Your data», nella tendina. Le due sezioni della landing restano.
 menu:
-  # ⚠️ «Home» porta alla radice, non a un `#`: è l'unica voce della barra che
-  # non salta dentro la landing ma ci VA. ⛔ Sulla landing stessa diventa
-  # quindi la voce «dove sei già», e `aria-current="page"` lo dice — il logo
-  # accanto porta allo stesso posto, ed è voluto: uno è il marchio, l'altra è
-  # una voce di menu, e chi usa un lettore di schermo cerca la seconda.
-  "Home":         "/"
-  "Features":     "/#features"
-  "Privacy":      "/#privacy"
-  "Security":     "/#security"
-  "Free and Pro": "/#free-and-pro"
-  # ⭐ Giro W22: la stessa pagina della frase «FAQ» qui sopra — e i due
-  # indirizzi DEVONO coincidere, come per «Support» (`link_rotti` lo misura).
-  "FAQ":          "/faq/"
-  "Support":      "/support/"
+  "Features":       "/features/"
+  "All features":   "/features/"
+  "FAQ":            "/faq/"
+  "Free and Pro":   "/#free-and-pro"
+  "Download":       "store"
+  "What's new":     "/updates/"
+  "Support":        "/support/"
+  "Privacy Policy": "/privacy-policy/"
+  "Terms of Use":   "/terms/"

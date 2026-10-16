@@ -13,55 +13,10 @@
 # tinte della stessa coppia (verde/lime, teal/ciano, salvia/ardesia,
 # oro/arancio tenue) — è rispettata nell'ordine qui sotto.
 #
-# ⚠️ L'ACCOPPIAMENTO È PER POSIZIONE: la prima riga qui vale per la prima voce
-# di `what.items` in `_data/landing.yml`. Se Cowork aggiunge o toglie una voce
-# senza toccare questo file, l'accoppiamento scivola. ⛔ Non resta una
-# supposizione: `scripts/testo-approvato.sh` confronta le due lunghezze e
-# protesta. Il layout, per parte sua, cade su verde invece di rompersi.
-
-what:
-  - icona: mirino      # Every firearm, every round  → «Armi» nell'app
-    tinta: verde
-    schermata: aimonx-firearms-round-count
-  - icona: bandiera    # Range sessions and matches  → «Gare/Luoghi»
-    tinta: lime
-    schermata: aimonx-range-sessions
-  - icona: cartuccia   # Ammo you can count on       → «Munizioni»
-    tinta: ciano
-    schermata: aimonx-ammo-inventory
-  - icona: chiave      # Maintenance your way        → «Manutenzione»
-    tinta: ardesia
-    schermata: aimonx-maintenance-rules
-  # ⭐ Giro W23: «Your lists, your way». Il ciano e l'elenco puntato sono quelli
-  # di «Gestione Liste» nell'app (`HomeView.swift`: `.ciano`, `list.bullet`).
-  # ⚠️ Il ciano c'è già, sulle munizioni: due voci più su, non accanto — la
-  # regola di §4b guarda solo le vicine. ⭐ La schermata è la stessa della
-  # pagina «Custom lists» (Pier, 16/10/2026: senza, sul computer la carta
-  # restava mezza vuota accanto a «Renewals»).
-  - icona: lista       # Your lists, your way        → «Gestione Liste»
-    tinta: ciano
-    schermata: aimonx-manage-lists
-  - icona: calendario  # Renewals you won't miss     → «Scadenze»
-    tinta: salvia
-    schermata: aimonx-renewals
-  - icona: grafico     # What your shooting costs    → «Costi»
-    tinta: arancioTenue
-    schermata: aimonx-shooting-costs
-  # ⭐ Giro W23 (Pier, 16/10/2026): «Stats that show your progress.». ⭐ Il BLU
-  # è quello di «Statistiche» nell'app, ed è lo stesso del PDF qui sotto: la
-  # tavolozza (§4b) lo permette — «due card della STESSA sezione possono
-  # condividere il colore: è identità, non un difetto», e il PDF è «Statistiche/
-  # report». ⚠️ Il GLIFO NON è quello di «Statistiche» (le barre): le barre
-  # sono già su «Costs», nella stessa riga, e due segni uguali vicini si leggono
-  # come la stessa cosa detta due volte. È la linea che sale di «Rounds Fired
-  # Over Time», nella schermata stessa. Scelte da guardare, non fatti.
-  - icona: andamento   # Stats that show your progress → «Statistiche»
-    tinta: blu
-    schermata: aimonx-stats-overview
-  - icona: documento   # Firearm reports in PDF      → «Statistiche/report»
-    tinta: blu
-    schermata: aimonx-firearm-inventory-pdf
-    forma: foglio      # ⚠️ non è una schermata: è la pagina di un PDF, distesa
+# ⛔ GLIFO, TINTA E SCHERMATA DELLE FUNZIONI NON SONO PIÙ QUI, dal giro W24:
+# stanno in `_data/funzioni.yml`, accanto al testo di ciascuna (chiave
+# `aspetto`). Qui resta l'aspetto di ciò che non è una funzione: la parte alta,
+# le misure delle schermate e le schermate delle pagine-funzione.
 
 # --- le schermate dell'app, dal giro W14 ----------------------------------
 #

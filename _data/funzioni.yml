@@ -1,0 +1,149 @@
+# _data/funzioni.yml — LE FUNZIONI DI AIMONX, UNA VOLTA SOLA. Giro W24.
+#
+# ⭐ LA FONTE UNICA (architettura del 16/10/2026, §2.1; giro W24 ①). Ogni
+# funzione è descritta QUI e solo qui, e da qui nascono cinque cose:
+#   · la carta sulla landing (`_layouts/landing.html`) — se `vetrina` non è `no`;
+#   · la voce nella tendina «Features» (`_includes/barra.html`) — se ha `pagina`;
+#   · la riga nell'indice `/features/` (`_layouts/indice.html`) — tutte;
+#   · l'elenco «More features» delle pagine sorelle (`_layouts/funzione.html`)
+#     — se ha `pagina`;
+#   · la mappa del sito — ⚠️ per via della pagina, non di questo file: la mappa
+#     elenca le pagine che esistono, e una funzione senza pagina non ha un
+#     indirizzo da mettere in mappa. Che la pagina esista lo misura `link_rotti`.
+# ⛔ Aggiungere una funzione = una voce qui (più la sua pagina, se ne ha una).
+#
+# ⚠️ FINO AL W23 ERANO DUE METÀ DELLA STESSA COSA, com'era l'ipotesi di Cowork:
+# il testo in `_data/landing.yml` (`what.items`) e l'aspetto in
+# `_data/aspetto.yml` (`what`), accoppiati PER POSIZIONE — e un controllo
+# apposta contava che fossero lunghe uguali. ⭐ Adesso ogni voce porta il suo
+# aspetto con sé: l'accoppiamento non c'è più, e con lui il modo di sbagliarlo.
+#
+# ⛔ DUE PROPRIETARI IN UN FILE, e il confine passa per la chiave `aspetto`:
+#   · FUORI da `aspetto` è TESTO, approvato da Pier e scritto da Cowork:
+#     `nome` viene dalla bozza della navigazione (le voci della tendina), le
+#     altre righe dalla bozza della landing, ALLA LETTERA — le carte com'erano.
+#     `scripts/testo-approvato.sh` cerca ogni stringa nelle due bozze.
+#   · DENTRO `aspetto` è di Claude Code: indirizzo, glifo, tinta, schermata.
+#     Il controllo lo salta per nome di chiave, e solo quello.
+#
+# ⚠️ I COLORI seguono la rampa d'identità delle sezioni dell'app
+# (`…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` §4b): due voci VICINE
+# non portano mai la stessa tinta né due della stessa coppia (verde/lime,
+# teal/ciano, salvia/ardesia, oro/arancio tenue). Le ragioni di ogni glifo e
+# di ogni tinta sono quelle scritte nel W14 e nel W23, riportate accanto.
+#
+# ⚠️ `nome` c'è SOLO dove la bozza della navigazione lo dà: le quattro funzioni
+# che hanno una pagina. Le altre compaiono nell'indice con la loro riga, senza
+# nome breve e senza link, finché la pagina non esiste (bozza della
+# navigazione, nota alla pagina indice).
+#
+# ⚠️ `alt` è il TESTO ALTERNATIVO della schermata: non si scrive, si sente.
+
+- nome: "Round count"
+  lead: "Every firearm, every round."
+  body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
+  alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
+  link: "See how round count works"
+  aspetto:
+    pagina: /features/round-count/
+    icona: mirino      # → «Armi» nell'app
+    tinta: verde
+    schermata: aimonx-firearms-round-count
+
+- lead: "Range sessions and matches."
+  body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
+  alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
+  aspetto:
+    icona: bandiera    # → «Gare/Luoghi»
+    tinta: lime
+    schermata: aimonx-range-sessions
+
+- lead: "Ammo you can count on."
+  body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
+  alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
+  aspetto:
+    icona: cartuccia   # → «Munizioni»
+    tinta: ciano
+    schermata: aimonx-ammo-inventory
+
+- nome: "Maintenance"
+  lead: "Maintenance your way."
+  body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
+  alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
+  link: "See how maintenance works"
+  aspetto:
+    pagina: /features/maintenance/
+    icona: chiave      # → «Manutenzione»
+    tinta: ardesia
+    schermata: aimonx-maintenance-rules
+
+# ⭐ Giro W23. Il ciano e l'elenco puntato sono quelli di «Gestione Liste»
+# nell'app (`HomeView.swift`: `.ciano`, `list.bullet`). ⚠️ Il ciano c'è già,
+# sulle munizioni: due voci più su, non accanto.
+- nome: "Custom lists"
+  lead: "Your lists, your way."
+  body: "Can't find your caliber or firearm type? Add it. Swipe away what you never use. Every list you pick from is yours to shape."
+  alt: "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
+  link: "See how custom lists work"
+  aspetto:
+    pagina: /features/custom-lists/
+    icona: lista       # → «Gestione Liste»
+    tinta: ciano
+    schermata: aimonx-manage-lists
+
+# ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026).
+- lead: "Renewals you won't miss."
+  body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
+  alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
+  aspetto:
+    icona: calendario  # → «Scadenze»
+    tinta: salvia
+    schermata: aimonx-renewals
+
+- lead: "What your shooting really costs."
+  body: "Cost per session, per round and per firearm, and how practice compares to competition."
+  alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
+  aspetto:
+    icona: grafico     # → «Costi»
+    tinta: arancioTenue
+    schermata: aimonx-shooting-costs
+
+# ⭐ Giro W23. Il BLU è quello di «Statistiche» nell'app, lo stesso del PDF qui
+# sotto: la tavolozza (§4b) lo permette a due voci della stessa sezione. Il
+# glifo è la linea che sale, non le barre: le barre sono già su «Costs».
+- lead: "Stats that show your progress."
+  body: "Rounds over time and by firearm, your most-used ammo, each firearm's reliability and the ranges you visit most. See how your shooting is really going."
+  alt: "The Stats screen in AIMONX: rounds fired, sessions and money spent over three months, compared with the previous period, above a chart of rounds fired over time."
+  aspetto:
+    icona: andamento   # → «Statistiche»
+    tinta: blu
+    schermata: aimonx-stats-overview
+
+- lead: "Firearm reports in PDF."
+  body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
+  alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."
+  aspetto:
+    icona: documento   # → «Statistiche/report»
+    tinta: blu
+    schermata: aimonx-firearm-inventory-pdf
+    forma: foglio      # ⚠️ non è una schermata: è la pagina di un PDF, distesa
+
+# ⭐ «Your data» — la pagina `/features/privacy-and-security/`. ⛔ NON È UNA
+# CARTA della landing (`vetrina: no`): sulla landing la racconta la sezione
+# «Privacy», che resta com'è. ⚠️ SCELTA DI CC DA GUARDARE: la bozza della
+# navigazione vuole per ogni voce dell'indice «la riga della carta della
+# landing alla lettera», e questa carta non c'è. Le righe sono quindi quelle
+# della sezione «Privacy» della landing, alla lettera: il proclama, la nota e
+# il link — e il testo alternativo è quello già approvato nella bozza di «Your
+# data» per la sua prima schermata.
+- nome: "Your data"
+  lead: "No account. No AIMONX servers. We never see your data."
+  body: "Your logbook lives encrypted on your iPhone. An encrypted copy is kept in your own iCloud — on by default, and you can turn it off — so a new phone doesn't mean starting over. Serial numbers are optional."
+  alt: 'The AIMONX lock screen: "AIMONX Is Locked. Unlock to see your data."'
+  link: "See how AIMONX keeps your data private"
+  aspetto:
+    pagina: /features/privacy-and-security/
+    vetrina: no
+    icona: lucchetto
+    tinta: verde
+    schermata: aimonx-app-locked

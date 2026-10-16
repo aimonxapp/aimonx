@@ -55,3 +55,36 @@
 }
 .v-funzione .scarica a { display: inline-block; }
 .v-funzione .scarica img { height: var(--badge); width: auto; }
+
+// --- le pagine di sezione: due colonne e «More features» (giro W24) ---------
+// ⭐ Solo `.v-sezione` — le pagine di «Features». Le FAQ usano lo stesso
+// scheletro e restano a una colonna.
+// ⚠️ LA COLONNA DEL TESTO NON SI ALLARGA: il foglio resta largo quanto prima
+// (la riga sotto i 75 caratteri, `testo.scss`), e la pagina si allarga della
+// colonna di lato — 15rem più lo spazio fra le due. ⚠️ Da 1040 px: sotto, la
+// colonna di lato ruberebbe al testo, e l'elenco scende in fondo come sul
+// telefono.
+// ⚠️ `sticky`: l'elenco resta in vista mentre si scorre una pagina lunga.
+.v-sezione .sorelle { margin-top: clamp(1.6rem, 4vw, 2.2rem); }
+.v-sezione .sorelle h2 {
+  font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: #9DB6AA;
+}
+.v-sezione .sorelle ul { margin-top: .7rem; display: grid; gap: .25rem; }
+.v-sezione .sorelle a {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .45rem .2rem; border-radius: 12px;
+  color: #CFE3D8; text-decoration: none; font-weight: 600; font-size: 1rem;
+}
+.v-sezione .sorelle a:hover { color: var(--bianco); }
+.v-sezione .sorelle a:hover span:last-child { text-decoration: underline; text-underline-offset: .2em; }
+
+@media (min-width: 1040px) {
+  .v-sezione .apertura,
+  .v-sezione main,
+  .v-sezione .chiusa { max-width: #{"calc(52rem + 17.5rem)"}; }
+  .v-sezione .due-colonne {
+    display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2.5rem; align-items: start;
+  }
+  .v-sezione .sorelle { margin-top: 0; position: sticky; top: 1.5rem; }
+}

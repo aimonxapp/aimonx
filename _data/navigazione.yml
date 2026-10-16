@@ -1,0 +1,69 @@
+# _data/navigazione.yml — LE PAROLE DELLA NAVIGAZIONE E DELL'INDICE. Giro W24.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 16/10/2026
+# (19:44), che sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/navigazione/navigazione-en-bozza.md
+# `scripts/testo-approvato.sh` cerca ogni stringa qui dentro ALLA LETTERA in
+# quella bozza — solo nelle sezioni che vanno in pagina, non nella rilettura
+# né nella tabella «Controllo» — e nella bozza della landing, dove stanno le
+# etichette dei link del piede che esistevano già.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+# ⛔ QUI DENTRO CI SONO SOLO PAROLE. Dove porta ciascuna sta in
+# `_data/collegamenti.yml` (`menu`), che è di CC; le funzioni della tendina,
+# dell'indice e di «More features» stanno in `_data/funzioni.yml`.
+#
+# ⚠️ LA RIGA «Features · FAQ · Free and Pro · Download» È SPEZZATA VOCE PER
+# VOCE, come la barra di prima e per la stessa regola di Pier (22/09): ogni
+# pezzo è un link diverso, e il «·» è un segno, non una parola.
+# ⛔ Fino al W23 queste voci stavano in `_data/landing.yml` (`menu`): spostate
+# qui perché la barra non è della landing, è di tutto il sito.
+
+menu:
+  voci:
+    - "Features"
+    - "FAQ"
+    - "Free and Pro"
+    - "Download"
+  # ⚠️ La voce che si apre: è la prima di `voci`, e sotto di lei vanno le
+  # funzioni con una pagina e, in fondo, questa.
+  tutte: "All features"
+  # Il pulsante del telefono, chiuso e aperto.
+  apri: "Menu"
+  chiudi: "Close"
+
+# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ «Features» è la
+# prima voce del menu qui sopra, e il nome breve viene da `_data/funzioni.yml`:
+# qui c'è solo la parola che manca. Il «›» lo mette il layout: è un segno.
+briciole:
+  casa: "Home"
+
+# Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
+sorelle: "More features"
+
+# Il piede a colonne. ⚠️ Le etichette dei link sono quelle già approvate.
+piede:
+  - titolo: "App"
+    voci:
+      - "Features"
+      - "Free and Pro"
+      - "What's new"
+      - "Download"
+  - titolo: "Learn"
+    voci:
+      - "FAQ"
+  - titolo: "Support"
+    voci:
+      - "Support"
+      - "Privacy Policy"
+      - "Terms of Use"
+
+# La pagina indice `/features/` — sezioni «Meta» e «Page» della bozza.
+indice:
+  meta:
+    title: "AIMONX Features: Round Count, Maintenance, Custom Lists and More | AIMONX"
+    description: "Everything AIMONX keeps track of for you: firearms and rounds, range sessions, ammo, maintenance, renewals, costs and stats. All on your iPhone, with no account."
+  titolo: "Everything AIMONX keeps track of"
+  sommario: "One app for your firearms, your rounds, your ammo and your maintenance. Pick a feature to see how it works."
+  # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+  badge: "Download on the App Store"

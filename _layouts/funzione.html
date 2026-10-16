@@ -32,18 +32,37 @@
 
   `page.dati` sceglie il testo, `page.tinta` il colore, `page.foglio` e
   `page.foglio_funzione` i fogli di stile.
+
+  ⭐ DAL GIRO W24 LE PAGINE DELLA SEZIONE «FEATURES» SONO PAGINE DI SEZIONE
+  (`page.sezione: features`; architettura del 16/10/2026, §4 e §5, il modello
+  «articolo»): in cima le BRICIOLE — Home › Features › <nome breve> — e accanto
+  al testo l'elenco «More features» delle pagine sorelle. Sul computer sta di
+  lato, in una seconda colonna; sul telefono scende in fondo, sopra il badge,
+  perché nell'HTML viene DOPO il testo: chi legge col lettore di schermo
+  sente prima la pagina e poi dove altro andare, a ogni larghezza.
+  ⛔ Tutto viene da `_data/funzioni.yml`: la pagina si riconosce per
+  indirizzo, e l'elenco non si aggiorna mai a mano.
+  ⚠️ SCELTA DI CC: la pagina corrente NON è nell'elenco — «More features»
+  vuol dire «le altre», e dove si è lo dicono già le briciole e il titolo.
+  ⚠️ Le FAQ usano questo scheletro ma NON sono della sezione: niente briciole,
+  niente colonna, e la pagina esce come prima.
 {%- endcomment -%}
 {%- assign d = site.data[page.dati] -%}
 {%- assign nomi = site.data.aspetto.funzioni[page.dati] -%}
 {%- assign quale = 0 -%}
+{%- assign nav = site.data.navigazione -%}
+{%- assign questa = site.data.funzioni | where: "aspetto.pagina", page.url | first -%}
 <head>
   {%- include testa.html meta=d.meta -%}
 </head>
-<body class="v-testo v-funzione tinta-{{ page.tinta | default: 'verde' }}">
+<body class="v-testo v-funzione{% if page.sezione %} v-sezione{% endif %} tinta-{{ page.tinta | default: 'verde' }}">
   <div class="apertura">
     {%- include barra.html -%}
 
     <div class="titolone">
+      {%- if page.sezione %}
+      {% include briciole.html nome=questa.nome %}
+      {%- endif %}
       <h1>{{ d.titolo }}</h1>
       {%- if d.sommario %}
       <p class="sommario">{% include frase.html testo=d.sommario %}</p>
@@ -52,6 +71,9 @@
   </div>
 
   <main id="principale">
+    {%- if page.sezione %}
+    <div class="due-colonne">
+    {%- endif %}
     <article class="foglio">
       {%- for b in d.blocchi -%}
       {%- case b.tipo -%}
@@ -101,6 +123,25 @@
       {%- endcase -%}
       {%- endfor %}
     </article>
+    {%- if page.sezione %}
+    {%- comment -%} «More features»: le pagine sorelle, dalla fonte unica, questa esclusa. {%- endcomment %}
+    <aside class="sorelle" aria-labelledby="t-sorelle">
+      <h2 id="t-sorelle">{{ nav.sorelle }}</h2>
+      <ul>
+        {%- for f in site.data.funzioni -%}
+        {%- if f.aspetto.pagina and f.aspetto.pagina != page.url %}
+        <li class="sez-{{ f.aspetto.tinta | default: 'verde' }}">
+          <a href="{{ f.aspetto.pagina | relative_url }}">
+            {%- if f.aspetto.icona %}<span class="cerchietto">{% include glifo.html nome=f.aspetto.icona %}</span>{% endif -%}
+            <span>{{ f.nome }}</span>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- endfor %}
+      </ul>
+    </aside>
+    </div>
+    {%- endif %}
 
     {%- comment -%}
       IL BADGE DELL'APP STORE, in fondo. ⛔ UNO SOLO SULLA PAGINA — Apple, «Use

@@ -91,7 +91,8 @@ if [ -z "$PIER_DIR" ]; then
 else
   for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
                support/support-en-bozza.md terms/terms-en-bozza.md \
-               round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md; do
+               round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md \
+               navigazione/navigazione-en-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
   done
 fi
@@ -115,6 +116,11 @@ fi
 # qualcuno fa saltare. Con <<'PROGRAMMA' nessun carattere è speciale.
 "$RUBY" -ryaml -rjson - "$MODO" "$CONTENUTI" "$REPO" "$COSTRUITO" <<'PROGRAMMA'
 modo, contenuti, repo, costruito = ARGV
+
+# Le sezioni della bozza della navigazione che vanno in pagina (giro W24).
+SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
+  "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/features/`",
+  "Piede, i titoli delle colonne"]
 
 # Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
@@ -163,6 +169,24 @@ PAGINE = [
   { nome: "faq", dati: "_data/faq.yml", bozza: "faq/faq-en-bozza.md",
     uscita: "faq/index.html", sezioni: ["Meta", "Page"],
     alt_da: "your-data/your-data-en-bozza.md" },
+  # ⭐ Giro W24, LA NAVIGAZIONE E L'INDICE `/features/`. ⚠️ Della bozza valgono
+  # le sezioni che vanno in pagina — menu, briciole, «More features», l'indice
+  # e i titoli del piede — e NON la rilettura da madrelingua né la tabella
+  # «Controllo». ⚠️ `anche`: le etichette dei link del piede esistevano già, e
+  # stanno nella bozza della landing. ⚠️ `alt_da`: l'indice mostra la prima
+  # schermata di «Your data», col testo alternativo approvato là.
+  { nome: "navigazione", dati: "_data/navigazione.yml", bozza: "navigazione/navigazione-en-bozza.md",
+    uscita: "features/index.html", sezioni: SEZIONI_NAVIGAZIONE,
+    anche: [["landing/landing-en-bozza.md", nil]],
+    alt_da: "your-data/your-data-en-bozza.md" },
+  # ⭐ Giro W24, LA FONTE UNICA DELLE FUNZIONI. Non è una pagina — `uscita` non
+  # c'è, e la misura ② la salta: il suo testo esce nella landing e nell'indice,
+  # e lì lo guardano le loro voci. ⚠️ Le righe sono quelle delle carte (bozza
+  # della landing), il nome breve è della bozza della navigazione, e il testo
+  # alternativo di «Your data» della sua bozza.
+  { nome: "funzioni", dati: "_data/funzioni.yml", bozza: "landing/landing-en-bozza.md",
+    anche: [["navigazione/navigazione-en-bozza.md", SEZIONI_NAVIGAZIONE]],
+    alt_da: "your-data/your-data-en-bozza.md" },
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
@@ -188,7 +212,11 @@ TITOLI = [".what.title", ".privacy.title", ".security.title", ".piani.title"]
 # ⚠️ Questa lista e volutamente CORTA e fatta di nomi di chiave, non di valori:
 # perdonare un valore («h2 va bene») vorrebbe dire perdonarlo ovunque, anche
 # dentro una frase. Cosi invece si perdona una casella precisa.
-STRUTTURA = ["tipo"]
+# ⭐ Dal giro W24 anche `aspetto`, ed è un SOTTOALBERO intero: nella fonte
+# unica delle funzioni (`_data/funzioni.yml`) indirizzo, glifo, tinta e
+# schermata stanno sotto quella chiave, che è di CC e non porta parole. ⚠️ Si
+# guarda ogni pezzo del percorso, non solo l ultimo, apposta per questo.
+STRUTTURA = ["tipo", "aspetto"]
 
 # La bozza è markdown. Si toglie quel che per regola NON va in pagina: le note
 # fra quadre in corsivo (sono per Cowork) e i marcatori di grassetto e corsivo,
@@ -221,11 +249,17 @@ end
 
 PAGINE.each do |p|
   p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni])
+  # ⭐ Giro W24: le bozze in più da cui una voce prende testo (`anche`).
+  (p[:anche] || []).each { |b, s| p[:testo_bozza] += "\n" + piano(File.join(contenuti, b), s) }
   # Le righe intere della bozza da cui una pagina prende in prestito i testi
   # alternativi (giro W18, `alt_da`). Vuoto per tutte le altre.
   p[:alt_prestati] = p[:alt_da] ? piano(File.join(contenuti, p[:alt_da]), ["Page"]).split("\n").map(&:strip) : []
 end
 BOZZA_LANDING = PAGINE.first[:testo_bozza]
+# ⭐ Giro W24: la barra, le briciole e il piede sono su OGNI pagina, e le loro
+# parole stanno nella bozza della navigazione — come il piede di prima stava
+# in quella della landing. Quindi ogni pagina si confronta anche con lei.
+BOZZA_NAVIGAZIONE = piano(File.join(contenuti, "navigazione/navigazione-en-bozza.md"), SEZIONI_NAVIGAZIONE)
 
 fuori = 0
 
@@ -240,7 +274,7 @@ if modo == "sorgente"
     eccezioni = DICHIARATE[p[:nome]] || {}
     stringhe(YAML.load_file(percorso)) do |via, s|
       t = s.gsub(/[ \t]+/, " ").strip
-      next if STRUTTURA.include?(via.split(".").last)
+      next if (via.split(".").map { |x| x.sub(/\[\d+\]\z/, "") } & STRUTTURA).any?
       if eccezioni.key?(via)
         dich += 1
         puts "     ⚠️ #{p[:nome]}#{via}: «#{t}» — #{eccezioni[via]}"
@@ -248,7 +282,9 @@ if modo == "sorgente"
       end
       if p[:testo_bozza].include?(t)
         ok += 1
-      elsif via =~ /\.alt\[\d+\]\z/ && p[:alt_prestati].include?(t)
+      # ⚠️ `alt` con o senza indice: nelle pagine è una lista (`alt[0]`), nella
+      # fonte unica delle funzioni una riga per voce (`[9].alt`, giro W24).
+      elsif via =~ /\.alt(\[\d+\])?\z/ && p[:alt_prestati].include?(t)
         dich += 1
         puts "     ⚠️ #{p[:nome]}#{via}: testo alternativo preso ALLA LETTERA da #{p[:alt_da]}"
       elsif TITOLI.include?(via) && p[:testo_bozza].include?(t.upcase)
@@ -282,8 +318,9 @@ if modo == "sorgente"
       n_alt = File.readable?(f) ? (YAML.load_file(f)["blocchi"] || []).sum { |b| b["tipo"] == "schermate" ? (b["alt"] || []).size : 0 } : 0
       coppie << ["schermate di #{pagina}", n_alt, (nomi || []).size]
     end
+    # ⭐ Dal giro W24 le CARTE non si accoppiano più: testo e aspetto di ogni
+    # funzione stanno nella stessa voce di `_data/funzioni.yml`.
     ([
-      ["carte",    (t["what"]["items"] || []).size, (a["what"] || []).size],
       ["punti",    (eroe["punti"] || []).size,      (a["hero_punti"] || []).size],
       ["garanzie", (eroe["garanzie"] || []).size,   (a["hero_garanzie"] || []).size],
     ] + coppie).each do |nome, n_testo, n_asp|
@@ -304,6 +341,7 @@ else
   # niente, ma non mentono neanche, e contarli separati e piu onesto che
   # buttarli via in silenzio.
   PAGINE.each do |p|
+    next unless p[:uscita]
     percorso = File.join(costruito, p[:uscita])
     unless File.readable?(percorso)
       puts "  #{p[:nome]}: ⛔ NON MISURABILE — la pagina non e nel sito costruito"
@@ -328,7 +366,9 @@ else
     # ⭐ Dal giro W17 anche `priceCurrency`: un codice di tre lettere («USD»),
     # non una frase. ⛔ Che l offerta sia UNA, a zero, con quel codice e
     # nient altro, lo misura `misure-pagine.rb` (`offerte_a_zero`).
-    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot", "priceCurrency"]
+    # ⭐ Dal giro W24 anche `item`: nel `BreadcrumbList` è l indirizzo di ogni
+    # briciola, come `url`. I NOMI delle briciole restano controllati.
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot", "priceCurrency", "item"]
     parole_jsonld = []
     html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
       begin
@@ -375,7 +415,7 @@ else
     # nella bozza al suo posto c è uno spazio normale.
     pezzi.map! { |x| x.gsub("&nbsp;", " ").gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
 
-    consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING
+    consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING + "\n" + BOZZA_NAVIGAZIONE
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,

@@ -1,0 +1,82 @@
+---
+---
+// assets/css/indice.scss — L'INDICE DI UNA SEZIONE, il modello «hub». Giro W24.
+// Oggi `/features/`. Si carica DOPO `testo.css`, come `funzione.css` per le
+// pagine-funzione: barra, titolo, piede e colori vengono da lì e da
+// `comune.css`; qui c'è solo l'elenco e il badge.
+// ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
+//
+// ⭐ OGNI VOCE È UNA CARTA BIANCA, come le carte della landing ma più bassa:
+// il segno della funzione in alto (tinta e glifo, gli stessi della carta), la
+// riga, il link dove c'è, e la schermata di lato — piccola, perché qui si
+// sceglie, non si guarda. ⛔ L etichetta col nome breve è `nome-breve` e NON `nome`: `.barra .nome` è il nome AIMONX nella barra, e la collisione lo colorava come un etichetta — trovato guardando lo screenshot. ⚠️ Il filetto a sinistra è DIRITTO, come quello del
+// foglio delle pagine da leggere (`testo.scss`): un `::before` dentro
+// `overflow: hidden`, non un bordo che negli angoli si incurva.
+
+.v-indice .apertura,
+.v-indice main,
+.v-indice .chiusa { max-width: 66rem; }
+.v-indice .titolone h1 { max-width: 20ch; }
+.v-indice .sommario {
+  margin-top: clamp(.9rem, 2.4vw, 1.3rem); max-width: 60ch;
+  font-size: clamp(1.02rem, 1.8vw, 1.16rem); line-height: 1.62; color: #CFE3D8;
+}
+
+.v-indice .indice { display: grid; gap: clamp(.9rem, 2.4vw, 1.3rem); }
+@media (min-width: 880px) { .v-indice .indice { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.v-indice .indice > li {
+  position: relative; overflow: hidden;
+  display: flex; gap: clamp(.9rem, 3vw, 1.4rem); align-items: flex-start;
+  padding: clamp(1.1rem, 3.5vw, 1.5rem); padding-left: clamp(1.3rem, 4vw, 1.8rem);
+  border-radius: 18px;
+  background: var(--bianco); color: var(--inchiostro);
+  box-shadow: 0 2px 12px rgba(6, 24, 16, .28);
+}
+.v-indice .indice > li::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--sez);
+}
+.v-indice .parole { flex: 1 1 auto; min-width: 0; }
+.v-indice .testa { display: flex; align-items: center; gap: .65rem; min-height: 2.1rem; }
+.v-indice .nome-breve {
+  font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--titolo);
+}
+.v-indice .indice h2 {
+  margin-top: .75rem;
+  font-size: clamp(1.08rem, 2.2vw, 1.22rem); font-weight: 700; line-height: 1.25; letter-spacing: -.01em;
+  color: var(--titolo);
+}
+.v-indice .indice p:not(.nome-breve) { margin-top: .5rem; font-size: .98rem; line-height: 1.55; color: var(--inchiostro-2); }
+.v-indice .indice .oltre a {
+  font-weight: 600; color: var(--titolo);
+  text-decoration: underline; text-underline-offset: .18em;
+}
+
+// La schermata di lato, piccola. ⚠️ `sizes` in `_layouts/indice.html` dice le
+// stesse misure: chi cambia l'una cambia l'altra.
+.v-indice .indice .telefono {
+  flex: none; width: 112px; margin-top: .2rem;
+  box-shadow: 0 8px 20px rgba(6, 24, 16, .22);
+}
+@media (min-width: 880px) { .v-indice .indice .telefono { width: 150px; } }
+// ⚠️ La pagina del PDF è larga, non alta: va sotto il testo, non di lato.
+.v-indice .forma-foglio { flex-direction: column; }
+.v-indice .forma-foglio .foglio { width: 100%; max-width: 400px; align-self: center; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 20px rgba(6, 24, 16, .18); }
+
+// --- il badge dell'App Store, in fondo ---------------------------------------
+// ⛔⛔ LE REGOLE DI APPLE, le stesse delle pagine-funzione (`funzione.scss`):
+// il file non si modifica, il CSS gli dà SOLO una misura, altezza ≥ 40 px,
+// spazio libero ≥ ¼ dell'altezza, uno solo. Lo misura `scripts/badge.mjs`.
+.v-indice main { --badge: #{"max(40px, clamp(3rem, 5vw, 3.5rem))"}; padding-block-end: clamp(1.6rem, 4vw, 2.4rem); }
+.v-indice .scarica {
+  margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
+  text-align: center; line-height: 0;
+}
+.v-indice .scarica a { display: inline-block; }
+.v-indice .scarica img { height: var(--badge); width: auto; }
+// ⛔ `.foglio` è ANCHE il foglio bianco delle pagine da leggere (`testo.scss`),
+// e questa pagina carica quel foglio: senza queste due righe la pagina del
+// PDF prenderebbe padding e filetto di un foglio di testo.
+.v-indice .indice .schermata.foglio { padding: 0; background: none; }
+.v-indice .indice .schermata.foglio::before { content: none; }
