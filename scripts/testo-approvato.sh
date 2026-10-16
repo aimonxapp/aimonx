@@ -170,6 +170,13 @@ PAGINE = [
   { nome: "faq", dati: "_data/faq.yml", bozza: "faq/faq-en-bozza.md",
     uscita: "faq/index.html", sezioni: ["Meta", "Page"],
     alt_da: "your-data/your-data-en-bozza.md" },
+  # ⭐ Giro W25, LA PAGINA «FREE AND PRO» (`/pricing/`), con le regole delle
+  # pagine-funzione: della bozza valgono «Meta» e «Page», e il link per la
+  # landing, la rilettura e la tabella «Controllo» restano fuori. ⚠️ Le righe
+  # della tabella nella bozza sono righe con le sbarre (`| Firearms | 1 active
+  # | Unlimited |`): ogni cella si trova lo stesso, alla lettera.
+  { nome: "pricing", dati: "_data/pricing.yml", bozza: "pricing/pricing-en-bozza.md",
+    uscita: "pricing/index.html", sezioni: ["Meta", "Page"] },
   # ⭐ Giro W24, LA NAVIGAZIONE E L'INDICE `/features/`. ⚠️ Della bozza valgono
   # le sezioni che vanno in pagina — menu, briciole, «More features», l'indice
   # e i titoli del piede — e NON la rilettura da madrelingua né la tabella

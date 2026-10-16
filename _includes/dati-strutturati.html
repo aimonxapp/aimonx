@@ -110,23 +110,25 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "description": {{ include.meta.description | jsonify }},
       "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
       "inLanguage": "en-US"
-    }{% endif %}{% if page.sezione == 'features' %},
+    }{% endif %}{% if page.sezione %},
     {%- comment -%}
       LE BRICIOLE. ⚠️ Google: l'ultima voce può non avere `item` quando è la
-      pagina stessa; qui ce l'ha, ed è l'indirizzo della pagina. Sull'indice
-      le voci sono due, sulle pagine-funzione tre — il nome breve viene da
-      `_data/funzioni.yml`, cercato per indirizzo.
+      pagina stessa; qui ce l'ha, ed è l'indirizzo della pagina. ⭐ Dal giro
+      W25 le voci le calcola `_includes/briciole-calcola.html`, lo stesso
+      delle briciole in pagina: due sull'indice e su «Free and Pro», tre
+      sulle pagine-funzione.
     {%- endcomment -%}
+    {%- include briciole-calcola.html -%}
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": {{ site.data.navigazione.briciole.casa | jsonify }}, "item": {{ '/' | absolute_url | jsonify }} },
-        { "@type": "ListItem", "position": 2, "name": {{ site.data.navigazione.menu.voci.first | jsonify }}, "item": {{ '/features/' | absolute_url | jsonify }} }
-        {%- for dsa_f in site.data.funzioni -%}
-        {%- if dsa_f.aspetto.pagina and dsa_f.aspetto.pagina == page.url %},
-        { "@type": "ListItem", "position": 3, "name": {{ dsa_f.nome | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
-        {%- endif -%}
-        {%- endfor %}
+        {%- if bri_su %}
+        { "@type": "ListItem", "position": 2, "name": {{ bri_su_v | jsonify }}, "item": {{ bri_su | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ bri_qui | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+        {%- else %}
+        { "@type": "ListItem", "position": 2, "name": {{ bri_qui | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+        {%- endif %}
       ]
     }{% endif %}{% if page.scheda_app %},
     {

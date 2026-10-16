@@ -1,25 +1,23 @@
 {%- comment -%}
-_includes/briciole.html — LE BRICIOLE DI PANE delle pagine di sezione. Giro W24.
-  «Home › Features» sull'indice, «Home › Features › <nome breve>» su una
-  pagina-funzione: `include.nome` è il nome breve, e senza di lui l'ultima
-  voce è «Features». Le stesse voci, negli stessi termini, le dichiara
-  `BreadcrumbList` in `_includes/dati-strutturati.html`.
+_includes/briciole.html — LE BRICIOLE DI PANE delle pagine di sezione. Giro W24,
+  generalizzate nel W25 con la seconda sezione, «Free and Pro».
+  Chi è la voce di mezzo e come si chiama la pagina lo decide
+  `_includes/briciole-calcola.html`, lo stesso che usa `BreadcrumbList` in
+  `_includes/dati-strutturati.html`: stesse voci, stessi indirizzi.
   ⚠️ Il «›» è un SEGNO, non una parola: `aria-hidden`, e chi ascolta sente le
   voci di un elenco ordinato. L'ultima è la pagina stessa: testo con
   `aria-current`, non un link a sé.
   ⭐ L'etichetta del `<nav>`, «Breadcrumb», è invisibile e viene dalla bozza
   della navigazione (Cowork, 16/10/2026 21:37), via `_data/navigazione.yml`.
-  ⛔ Variabili col prefisso `bri_` (la nota in `_includes/barra.html`).
 {%- endcomment -%}
+{%- include briciole-calcola.html -%}
 {%- assign bri_n = site.data.navigazione -%}
 <nav class="briciole" aria-label="{{ bri_n.etichette.briciole }}">
   <ol>
     <li><a href="{{ '/' | relative_url }}">{{ bri_n.briciole.casa }}</a></li>
-    {%- if include.nome %}
-    <li><span class="sep" aria-hidden="true">›</span><a href="{{ '/features/' | relative_url }}">{{ bri_n.menu.voci.first }}</a></li>
-    <li><span class="sep" aria-hidden="true">›</span><span aria-current="page">{{ include.nome }}</span></li>
-    {%- else %}
-    <li><span class="sep" aria-hidden="true">›</span><span aria-current="page">{{ bri_n.menu.voci.first }}</span></li>
+    {%- if bri_su %}
+    <li><span class="sep" aria-hidden="true">›</span><a href="{{ bri_su | relative_url }}">{{ bri_su_v }}</a></li>
     {%- endif %}
+    <li><span class="sep" aria-hidden="true">›</span><span aria-current="page">{{ bri_qui }}</span></li>
   </ol>
 </nav>

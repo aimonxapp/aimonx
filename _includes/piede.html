@@ -2,15 +2,17 @@
 _includes/piede.html — IL PIEDE DI OGNI PAGINA, scritto una volta sola.
 Nato nel giro W9, che ha portato il sito da una pagina a quattro.
 
-  ⭐ DAL GIRO W24 È A COLONNE (architettura del 16/10/2026, §4): App · Learn ·
-  Support, sul computer una accanto all'altra e sul telefono una sotto
-  l'altra. Titoli ed etichette vengono da `_data/navigazione.yml`, gli
+  ⭐ DAL GIRO W24 È A COLONNE (architettura del 16/10/2026, §4): dal W25 sono quattro,
+  App · Features · Learn · Support (Pier, 16/10/2026 22:07): sul computer una
+  accanto all'altra, due per riga in mezzo, sul telefono una sotto l'altra.
+  ⭐ «Features» non ha voci scritte: sono le funzioni con una pagina, dalla
+  fonte unica, più «All features» — una pagina nuova ci compare da sola. Titoli ed etichette vengono da `_data/navigazione.yml`, gli
   indirizzi da `_data/collegamenti.yml` (`menu`) — gli stessi della barra.
   ⚠️ I titoli delle colonne sono PARAGRAFI e non `h2`: non sono capitoli
   della pagina, e un titolo vero nel piede entrerebbe nell'ordine dei titoli
   di ogni pagina. ⭐ Ogni elenco è legato al suo titolo con
   `aria-labelledby`, quindi chi ascolta sente «App, elenco» senza una parola
-  in più. La quarta colonna, «Languages», arriva con la seconda lingua.
+  in più. La quinta colonna, «Languages», arriva con la seconda lingua.
   ⚠️ La storia qui sotto racconta la riga di link che c'era fino al W23.
 
   ⛔ PRIMA DEL W9 IL PIEDE STAVA DENTRO `_layouts/landing.html`, e andava bene
@@ -48,9 +50,19 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
     <div class="colonna">
       <p class="intesta" id="piede-{{ piede_c.titolo | slugify }}">{{ piede_c.titolo }}</p>
       <ul aria-labelledby="piede-{{ piede_c.titolo | slugify }}">
+        {%- if piede_c.dalla_fonte %}
+        {%- comment -%} La colonna delle funzioni (giro W25): quelle con una pagina, dalla fonte unica, più «All features». {%- endcomment %}
+        {%- for piede_f in site.data.funzioni %}
+        {%- if piede_f.aspetto.pagina %}
+        <li>{% include voce.html v=piede_f.nome dove=piede_f.aspetto.pagina %}</li>
+        {%- endif %}
+        {%- endfor %}
+        <li>{% include voce.html v=site.data.navigazione.menu.tutte %}</li>
+        {%- else %}
         {%- for piede_v in piede_c.voci %}
         <li>{% include voce.html v=piede_v %}</li>
         {%- endfor %}
+        {%- endif %}
       </ul>
     </div>
     {%- endfor %}

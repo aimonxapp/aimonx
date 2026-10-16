@@ -289,8 +289,8 @@ img, svg { display: block; max-width: 100%; }
 // ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
 // piede è lo stesso su tutte le pagine, e un prefisso vorrebbe dire ripeterle.
 // ⛔ Quel che resta ai fogli è la LARGHEZZA della colonna.
-// ⭐ Dal giro W24 è A COLONNE: una sotto l'altra sul telefono, tre in riga da
-// 640 px — ci stanno con le etichette più lunghe, «Privacy Policy».
+// ⭐ Dal giro W24 è A COLONNE, quattro dal W25: una sotto l'altra sul
+// telefono, poi due per riga, quattro da 760 px.
 // ============================================================================
 
 .chiusa {
@@ -304,7 +304,9 @@ img, svg { display: block; max-width: 100%; }
   display: grid; gap: 1.5rem 2rem;
   margin-block: clamp(1.4rem, 3.5vw, 2rem) clamp(1.4rem, 3.5vw, 2rem);
 }
-@media (min-width: 640px) { .colonne { grid-template-columns: repeat(3, minmax(0, 12rem)); } }
+// ⭐ Giro W25: quattro colonne — due per riga da 480 px, quattro da 760.
+@media (min-width: 480px) { .colonne { grid-template-columns: repeat(2, minmax(0, 12rem)); } }
+@media (min-width: 760px) { .colonne { grid-template-columns: repeat(4, minmax(0, 12rem)); } }
 .colonne .intesta {
   font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
   color: #9DB6AA;
@@ -323,6 +325,29 @@ img, svg { display: block; max-width: 100%; }
 .colonne [aria-current="page"] { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
 
 .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
+
+// ============================================================================
+// UNA LARGHEZZA SOLA PER IL SITO — giro W25 (la coda di Cowork, punto 1).
+// ⛔ Fino al W24 ogni foglio scriveva la sua: 66rem la landing e l'indice,
+// 69,5rem le pagine-funzione, 52rem le pagine da leggere — e siccome la barra
+// e il piede stanno DENTRO quelle colonne, cambiando pagina il logo, il menu
+// e il piede saltavano. ⭐ Adesso la larghezza è UNA, qui, e i fogli non la
+// riscrivono: è quella della landing, su cui Pier ha guardato le carte.
+// ⚠️ La colonna di LETTURA resta più stretta dove serve (`testo.scss`), ma
+// parte dallo stesso bordo sinistro del logo: è la stessa griglia.
+// ⚠️ `body >` non è un vezzo: dà a queste righe più peso di `.chiusa` qui
+// sopra, e il piede resta senza margine in alto come era con le regole dei
+// fogli (`margin: 0 auto`) — misurato al byte che la landing non si sposta.
+// ============================================================================
+:root { --sito: 66rem; --margine: clamp(1.1rem, 4vw, 2.5rem); }
+body > :is(.apertura, main, .chiusa) { max-width: var(--sito); margin: 0 auto; padding-inline: var(--margine); }
+
+// Il testo per chi ascolta e non per chi guarda: fuori dalla vista, dentro
+// all'albero dell'accessibilità (giro W25, «Included» e «Not included»).
+.solo-voce {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 
 // ============================================================================
 // LE PAGINE DI SEZIONE — dal giro W24: le briciole, e il segno di ogni

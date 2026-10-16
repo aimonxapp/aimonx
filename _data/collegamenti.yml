@@ -101,6 +101,11 @@ frasi:
   - frase: "FAQ"
     href: "/faq/"
     tipo: pagina
+  # ⭐ Giro W25: dalla pagina «Free and Pro» alla domanda delle FAQ, con la
+  # sua ancora (il testo della domanda in forma d'indirizzo, `_layouts/funzione.html`).
+  - frase: "See what happens when Pro ends"
+    href: "/faq/#what-happens-to-my-data-if-my-aimonx-pro-subscription-ends"
+    tipo: pagina
 
 # --- LO STORE, dal giro W12 --------------------------------------------------
 #
@@ -114,6 +119,11 @@ frasi:
 # (`badge_guasti`), sulla FORMA dell'indirizzo e non su questo valore.
 # ⚠️ È un link, non una risorsa: la pagina non scarica niente da apple.com.
 store: "https://apps.apple.com/app/aimonx/id6794895643"
+
+# ⭐ Giro W25: la voce del menu che SI APRE a tendina è quella che porta qui,
+# l'indice delle funzioni. ⚠️ Fino al W24 era «la prima voce», e con «Home»
+# tornata in testa la prima non è più lei: un indirizzo non cambia di posto.
+apre: "/features/"
 
 # --- LA NAVIGAZIONE: barra, tendina e piede (giro W10, rifatta nel W24) ----
 #
@@ -133,16 +143,19 @@ store: "https://apps.apple.com/app/aimonx/id6794895643"
 # allo Store qui sopra», nudo, scritto una volta sola. È un link di TESTO
 # (giro W24 ②): ⛔ il badge di Apple resta uno per pagina, e questo non lo è.
 #
-# ⚠️ «Free and Pro» porta ancora a una sezione della landing, con l'indirizzo
-# INTERO e non il solo `#free-and-pro`: così funziona da ogni pagina.
-# ⭐ «Home», «Privacy» e «Security» sono usciti dalla barra nel W24 (bozza
-# della navigazione): la casa la fa il logo, e la privacy ha la sua pagina,
-# «Your data», nella tendina. Le due sezioni della landing restano.
+# ⭐ Giro W25: «Free and Pro» porta alla pagina `/pricing/`, non più alla
+# sezione della landing — e lì porta anche il link «Compare Free and Pro» in
+# fondo a quella sezione. ⭐ «Home» TORNA nella barra (Pier, 16/10/2026
+# 22:07: l'aveva decisa il 22/09, e l'architettura l'aveva tolta per errore).
+# «Privacy» e «Security» restano fuori: la privacy ha la sua pagina, «Your
+# data», nella tendina, e le due sezioni della landing restano.
 menu:
+  "Home":           "/"
   "Features":       "/features/"
   "All features":   "/features/"
   "FAQ":            "/faq/"
-  "Free and Pro":   "/#free-and-pro"
+  "Free and Pro":   "/pricing/"
+  "Compare Free and Pro": "/pricing/"
   "Download":       "store"
   "What's new":     "/updates/"
   "Support":        "/support/"

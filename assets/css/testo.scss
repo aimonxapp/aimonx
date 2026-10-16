@@ -33,9 +33,14 @@ body.v-testo {
   color: var(--bianco);
 }
 
-.v-testo .apertura,
-.v-testo main,
-.v-testo .chiusa { max-width: 52rem; margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+// ⭐ DAL GIRO W25 LA COLONNA È QUELLA DEL SITO (`comune.scss`, `--sito`), e
+// i 52rem di prima restano dove servono: al foglio e al titolo, cioè alla
+// riga da leggere — 52rem meno i due margini, 47rem. ⚠️ Partono dal bordo
+// sinistro del logo, non dal centro: così barra, titolo e foglio stanno
+// sulla stessa griglia, e cambiando pagina niente salta.
+.v-testo { --lettura: 47rem; }
+.v-testo .titolone,
+.v-testo .foglio { max-width: var(--lettura); }
 
 // ⚠️ Il respiro sotto al foglio: senza, il bordo bianco finisce ADDOSSO al
 // filetto del piede. Si vede sul telefono e non sul computer, dove la pagina

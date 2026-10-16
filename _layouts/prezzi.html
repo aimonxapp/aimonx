@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/prezzi.html — LA PAGINA «FREE AND PRO», `/pricing/`. Giro W25.
+  ⭐ IL MODELLO «ARTICOLO» (architettura del 16/10/2026, §5): briciole, titolo,
+  e poi la pagina — qui la tabella di confronto dell'app, i quattro vantaggi
+  di Pro e tre blocchi da leggere.
+
+  ⭐ LA TABELLA È LA CARD «COMPARE PLANS» DELL'APP, rifatta per il web
+  (`prodotto.md` §11.2-ter; nel repo dell'app `UI/PaginaProView.swift`, letto
+  e non toccato): colonna Free verde tenue, colonna Pro crema col bordo oro,
+  che attraversano tutta la tabella; una quantità è testo, un sì o un no è
+  spunta o croce. ⛔ È una `<table>` VERA: chi ascolta sente «Firearms, Free,
+  1 active» — e al posto della spunta e della croce «Included» e «Not
+  included», le parole della bozza (`.solo-voce`). Il titolo «Compare Plans»
+  sta nella cella d'angolo, come nell'app, e dà il nome alla tabella.
+  ⛔ Sul telefono NESSUNO SCORRIMENTO DI LATO: tre colonne di larghezza fissa
+  che vanno a capo dentro di sé (`assets/css/prezzi.scss`), misurato a 360.
+  ⚠️ LE ICONE DI RIGA DELL'APP NON CI SONO, ed è una scelta: sono simboli di
+  Apple (SF Symbols), che sul web non si possono usare, e i glifi del sito ne
+  coprono solo una parte — mezze icone sarebbero peggio di nessuna.
+
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: vengono da
+  `_data/pricing.yml`, di Cowork. ⛔ UN SOLO BADGE in fondo, con le regole di
+  `_layouts/funzione.html`. ⛔ NESSUN PREZZO nei dati strutturati.
+{%- endcomment -%}
+{%- assign d = site.data[page.dati] -%}
+{%- assign c = d.confronto -%}
+<head>
+  {%- include testa.html meta=d.meta -%}
+</head>
+<body class="v-testo v-prezzi tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- include barra.html -%}
+    <div class="titolone">
+      {% include briciole.html %}
+      <h1>{{ d.titolo }}</h1>
+      <p class="sommario">{{ d.sommario }}</p>
+    </div>
+  </div>
+
+  <main id="principale">
+    <div class="confronto">
+      <table aria-labelledby="t-confronto">
+        <thead>
+          <tr>
+            <td class="angolo"><h2 id="t-confronto">{{ c.titolo }}</h2></td>
+            <th scope="col" class="free">{{ c.piani[0] }}</th>
+            <th scope="col" class="pro">{{ c.piani[1] }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for r in c.righe %}
+          <tr>
+            <th scope="row">{{ r.voce }}</th>
+            {%- for prezzi_v in (0..1) %}
+            {%- if prezzi_v == 0 %}{% assign prezzi_x = r.free %}{% assign prezzi_k = 'free' %}{% else %}{% assign prezzi_x = r.pro %}{% assign prezzi_k = 'pro' %}{% endif %}
+            {%- if prezzi_x == true %}
+            <td class="{{ prezzi_k }}"><svg class="segno si" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.4l3.2 3.2L17 8.8"/></svg><span class="solo-voce">{{ c.incluso }}</span></td>
+            {%- elsif prezzi_x == false %}
+            <td class="{{ prezzi_k }}"><svg class="segno no" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M8.3 8.3l7.4 7.4M15.7 8.3l-7.4 7.4"/></svg><span class="solo-voce">{{ c.escluso }}</span></td>
+            {%- else %}
+            <td class="{{ prezzi_k }}">{{ prezzi_x }}</td>
+            {%- endif %}
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <section class="vantaggi" aria-labelledby="t-vantaggi">
+      <h2 id="t-vantaggi">{{ d.vantaggi.titolo }}</h2>
+      <ul>
+        {%- for v in d.vantaggi.voci %}
+        <li><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    <article class="foglio">
+      {%- for b in d.blocchi %}
+      <h2>{{ b.titolo }}</h2>
+      <p>{% if b.forte %}<strong>{{ b.forte }}</strong> {% endif %}{{ b.testo }}</p>
+      {%- if b.link %}
+      <p>{% include frase.html testo=b.link collega=true %}</p>
+      {%- endif %}
+      {%- endfor %}
+    </article>
+
+    {%- if d.badge %}
+    <p class="scarica">
+      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
+        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+             alt="{{ d.badge }}" width="120" height="40">
+      </a>
+    </p>
+    {%- endif %}
+  </main>
+
+  {%- include piede.html -%}
+</body>
+</html>

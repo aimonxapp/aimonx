@@ -215,6 +215,10 @@ piani:
     # ⭐ Giro W17, in fondo alla sezione come nella bozza.
     - lead: "More is on the way."
       body: "Lots of new features are coming in future updates, built around how sport shooters actually train."
+  # ⭐ Giro W25: il link in fondo alla sezione, verso la pagina `/pricing/`
+  # (bozza della landing, sezione «Free and Pro»). Dove porta lo dice
+  # `_data/collegamenti.yml` (`menu`).
+  confronta: "Compare Free and Pro"
 
 footer:
   # ⭐ Dal giro W13 la riga dice «app», e con lei il titolo di scheda e la

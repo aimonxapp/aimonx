@@ -1,8 +1,8 @@
 {%- comment -%}
 _includes/barra.html — LA BARRA IN ALTO, su tutte le pagine.
 Giro W10, decisa e approvata da Pier il 22/09/2026. ⭐ RIFATTA NEL GIRO W24
-(Pier, 16/10/2026: il sito diventa un sito a sezioni): quattro voci —
-Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
+(Pier, 16/10/2026: il sito diventa un sito a sezioni): cinque voci dal W25 —
+Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
 
   ⭐ COSA C'È ADESSO, e perché è fatto così:
     · sul COMPUTER «Features» è una tendina: un `<details>` il cui `<summary>`
@@ -22,7 +22,8 @@ Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
       raggiunge col Tab, che è quel che fa una finestra modale — senza script.
     · «Download» è un PULSANTE DI TESTO verso lo Store, ⛔ non un badge: il
       badge di Apple resta uno per pagina.
-    · il logo porta alla landing, e «Home» non c'è più.
+    · il logo porta alla landing, e dal W25 anche «Home», tornata nel menu
+      (Pier, 16/10/2026 22:07: decisa il 22/09, tolta per errore nel W24).
   ⛔ SENZA JAVASCRIPT IL MENU È INTERO: lo script aggiunge solo Esc e il clic
   fuori, e se non arriva si perde quello e basta.
 
@@ -99,9 +100,10 @@ Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
   {%- endcomment -%}
   <ul class="voci-barra">
     {%- for v in barra_m.voci -%}
-    {%- if forloop.first %}
+    {%- if site.data.collegamenti.menu[v] == site.data.collegamenti.apre %}
     {%- comment -%}
-      LA VOCE CHE SI APRE. Sul computer la tendina (`details.tendina`), sul
+      LA VOCE CHE SI APRE — quella che porta all'indice delle funzioni
+      (`_data/collegamenti.yml`, `apre`; fino al W24 era «la prima»). Sul computer la tendina (`details.tendina`), sul
       telefono il titolo `gruppo` con l'elenco già aperto: il CSS mostra l'uno
       o l'altro, e quello nascosto è `display: none` — fuori dalla vista, dal
       Tab e dal lettore di schermo, quindi la voce non si sente due volte.

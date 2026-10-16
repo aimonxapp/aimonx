@@ -345,6 +345,10 @@
         </li>
         {%- endfor %}
       </ul>
+      {%- comment -%} ⭐ Giro W25: il link alla pagina «Free and Pro», come «All features» sotto la griglia. {%- endcomment %}
+      {%- if d.piani.confronta %}
+      <p class="oltre confronta-piani">{% include voce.html v=d.piani.confronta %}</p>
+      {%- endif %}
     </section>
   </main>
 

@@ -1,0 +1,32 @@
+{%- comment -%}
+_includes/briciole-calcola.html — DOVE SI È, in tre variabili. Giro W25.
+  Lo usano le briciole in pagina (`_includes/briciole.html`) e il
+  `BreadcrumbList` (`_includes/dati-strutturati.html`): una regola sola, così
+  le due file non possono dire cose diverse.
+  ⭐ LA REGOLA, per ogni pagina con `page.sezione`:
+    · la casa della sezione è `/<sezione>/`. Se la pagina NON è lei, la
+      sezione è la voce di mezzo: `bri_su` (indirizzo) e `bri_su_v` (la voce
+      del menu che porta lì, da `_data/collegamenti.yml`);
+    · `bri_qui` è il nome della pagina: il nome breve della funzione, se la
+      pagina è una funzione (`_data/funzioni.yml`), se no la voce del menu che
+      porta proprio a lei.
+  Così: `/features/round-count/` → Home › Features › Round count;
+  `/features/` → Home › Features; `/pricing/` → Home › Free and Pro.
+  ⚠️ Fino al W24 «Features» era scritto qui dentro come «la prima voce del
+  menu»: con «Home» tornata in testa sarebbe diventato «Home › Home».
+  ⛔ Nessuna parola: vengono tutte da `_data/navigazione.yml` e dalla fonte.
+  ⛔ Variabili col prefisso `bri_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- assign bri_su = nil -%}
+{%- assign bri_su_v = nil -%}
+{%- assign bri_qui = nil -%}
+{%- assign bri_sezione = '/' | append: page.sezione | append: '/' -%}
+{%- if page.url != bri_sezione -%}{%- assign bri_su = bri_sezione -%}{%- endif -%}
+{%- for bri_v in site.data.navigazione.menu.voci -%}
+  {%- assign bri_d = site.data.collegamenti.menu[bri_v] -%}
+  {%- if bri_su and bri_d == bri_su and bri_su_v == nil -%}{%- assign bri_su_v = bri_v -%}{%- endif -%}
+  {%- if bri_d == page.url and bri_qui == nil -%}{%- assign bri_qui = bri_v -%}{%- endif -%}
+{%- endfor -%}
+{%- for bri_f in site.data.funzioni -%}
+  {%- if bri_f.aspetto.pagina == page.url -%}{%- assign bri_qui = bri_f.nome -%}{%- endif -%}
+{%- endfor -%}

@@ -53,15 +53,20 @@
   margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
   text-align: center; line-height: 0;
 }
+// ⭐ Giro W25: il badge si centra sotto il FOGLIO, non sulla larghezza del
+// sito — il foglio parte da sinistra, e al centro della pagina il badge
+// starebbe fuori asse rispetto a lui.
+.v-funzione .scarica { max-width: var(--lettura); }
 .v-funzione .scarica a { display: inline-block; }
 .v-funzione .scarica img { height: var(--badge); width: auto; }
 
 // --- le pagine di sezione: due colonne e «More features» (giro W24) ---------
 // ⭐ Solo `.v-sezione` — le pagine di «Features». Le FAQ usano lo stesso
 // scheletro e restano a una colonna.
-// ⚠️ LA COLONNA DEL TESTO NON SI ALLARGA: il foglio resta largo quanto prima
-// (la riga sotto i 75 caratteri, `testo.scss`), e la pagina si allarga della
-// colonna di lato — 15rem più lo spazio fra le due. ⚠️ Da 1040 px: sotto, la
+// ⚠️ DAL GIRO W25 LA PAGINA NON SI ALLARGA PIÙ per far posto alla colonna di
+// lato (fino al W24 andava a 69,5rem, e la barra saltava): sta nella
+// larghezza del sito, e il foglio prende quel che resta — 43,5rem contro i 47
+// delle pagine a una colonna, una riga appena più corta. ⚠️ Da 1040 px: sotto, la
 // colonna di lato ruberebbe al testo, e l'elenco scende in fondo come sul
 // telefono.
 // ⚠️ `sticky`: l'elenco resta in vista mentre si scorre una pagina lunga.
@@ -80,11 +85,10 @@
 .v-sezione .sorelle a:hover span:last-child { text-decoration: underline; text-underline-offset: .2em; }
 
 @media (min-width: 1040px) {
-  .v-sezione .apertura,
-  .v-sezione main,
-  .v-sezione .chiusa { max-width: #{"calc(52rem + 17.5rem)"}; }
   .v-sezione .due-colonne {
     display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2.5rem; align-items: start;
   }
   .v-sezione .sorelle { margin-top: 0; position: sticky; top: 1.5rem; }
+  // Sotto la colonna del foglio: la larghezza meno la colonna di lato e lo spazio.
+  .v-sezione .scarica { max-width: #{"calc(100% - 17.5rem)"}; }
 }

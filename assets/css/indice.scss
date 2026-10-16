@@ -13,9 +13,8 @@
 // foglio delle pagine da leggere (`testo.scss`): un `::before` dentro
 // `overflow: hidden`, non un bordo che negli angoli si incurva.
 
-.v-indice .apertura,
-.v-indice main,
-.v-indice .chiusa { max-width: 66rem; }
+// ⚠️ La larghezza è quella del sito (`comune.scss`, giro W25), ed era già
+// questa: l'indice non la riscrive più.
 .v-indice .titolone h1 { max-width: 20ch; }
 .v-indice .sommario {
   margin-top: clamp(.9rem, 2.4vw, 1.3rem); max-width: 60ch;

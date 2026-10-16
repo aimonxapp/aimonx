@@ -13,10 +13,9 @@
   e i testi della pagina `site.data[page.dati][page.chiave]`. Una sezione
   nuova — guide, range system — è una seconda fonte dello stesso tipo e un
   front matter che la nomina: questo file non si tocca.
-  ⚠️ OGGI DUE COSE SONO ANCORA DI «FEATURES», e lo si dice invece di
-  nasconderlo: le briciole (`_includes/briciole.html`) e il `BreadcrumbList`
-  scrivono «Features» e `/features/`. Si generalizzano col giro che porta la
-  seconda sezione: farlo ora sarebbe costruire per una sezione che non c'è.
+  ⭐ Le briciole e il `BreadcrumbList` non dicono più «Features» per nome:
+  dal giro W25, con la seconda sezione, li calcola
+  `_includes/briciole-calcola.html` dall'indirizzo della pagina.
 
   ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: i testi
   vengono da `_data/navigazione.yml` e da `_data/funzioni.yml`, di Cowork.

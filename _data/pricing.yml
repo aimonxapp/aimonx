@@ -1,0 +1,71 @@
+# _data/pricing.yml — IL TESTO DELLA PAGINA «FREE AND PRO», UNA VOLTA SOLA.
+# Giro W25.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 16/10/2026
+# (22:00), che sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/pricing/pricing-en-bozza.md
+# sezioni `## Meta` e `## Page`. `scripts/testo-approvato.sh` cerca ogni stringa
+# qui dentro ALLA LETTERA in quelle due sezioni — e SOLO in quelle: le note fra
+# quadre, il link per la landing, la rilettura e la tabella «Controllo» della
+# stessa bozza non vanno in pagina.
+#
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code (CLAUDE.md, «Chi decide cosa»).
+# ⛔ NESSUN PREZZO NEI DATI STRUTTURATI (Pier, 14/10/2026): i prezzi stanno
+# qui, in pagina, e `_includes/dati-strutturati.html` non li legge.
+#
+# ⚠️ LA TABELLA: ogni riga ha la voce e i due valori, Free e Pro. Un valore è
+# una parola (una quantità, «1 active») oppure `true` / `false` — la spunta e
+# la croce della bozza (✓, ✗), che in pagina si disegnano e a chi ascolta
+# dicono «Included» / «Not included». ⛔ `true` e `false` non sono parole che
+# si leggono: sono la forma del valore, e il layout le traduce.
+
+meta:
+  title: "AIMONX Pricing: Free vs. Pro | AIMONX"
+  description: "AIMONX is free to download, and Free is a real logbook. Pro is $1.99 a month or $14.99 a year, with Family Sharing included. Compare the two plans."
+
+titolo: "Free and Pro"
+sommario: "Start with a real logbook, not a demo. Go Pro when you need more."
+
+confronto:
+  titolo: "Compare Plans"
+  piani: ["Free", "Pro"]
+  incluso: "Included"
+  escluso: "Not included"
+  righe:
+    - { voce: "Firearms", free: "1 active", pro: "Unlimited" }
+    - { voce: "Factory ammo", free: "Everything, no limits", pro: "Everything, no limits" }
+    - { voce: "Reloaded ammo", free: false, pro: "Recipe, costs, batches, inventory" }
+    - { voce: "Maintenance rules", free: "1 cleaning rule per firearm", pro: "Unlimited" }
+    - { voce: "Renewals to track", free: "Up to 2", pro: "Unlimited" }
+    - { voce: "Matches", free: false, pro: "Finishes, scores, divisions, results" }
+    - { voce: "Stats", free: true, pro: true }
+    - { voce: "AIMONX Backup", free: true, pro: true }
+    - { voce: "Create an archive to export", free: false, pro: true }
+    - { voce: "Import an archive", free: "Always available", pro: "Always available" }
+    - { voce: "Reactivate a firearm beyond the limit", free: false, pro: true }
+    - { voce: "Advanced protection (passphrase)", free: false, pro: true }
+
+vantaggi:
+  titolo: "Pro Benefits"
+  voci:
+    - { titolo: "Unlimited Firearms", testo: "Your collection grows with you." }
+    - { titolo: "Reloaded ammo", testo: "Recipes, costs, batches, inventory." }
+    - { titolo: "Unlimited maintenance", testo: "More rules for each firearm, as many as you need." }
+    - { titolo: "Matches", testo: "Finishes, scores and results." }
+
+# I tre blocchi in fondo: un titolo, la riga in neretto, il resto.
+blocchi:
+  - titolo: "What Pro costs"
+    forte: "Pro is $1.99 a month or $14.99 a year."
+    testo: "Family Sharing is included, so your family gets Pro too. Cancel anytime. Prices vary by country: the App Store shows yours."
+  - titolo: "If Pro ends"
+    forte: "If your Pro subscription ends, nothing gets lost."
+    testo: "Everything beyond the Free limits stays readable, just frozen, until you come back."
+    # Il link alla domanda delle FAQ: dove porta lo dice `_data/collegamenti.yml` (`frasi`).
+    link: "See what happens when Pro ends"
+  - titolo: "More is on the way"
+    testo: "Lots of new features are coming in future updates, built around how sport shooters actually train."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO dell'immagine del
+# badge di Apple in fondo — ed essendo l'unico contenuto del link, il suo nome.
+badge: "Download on the App Store"

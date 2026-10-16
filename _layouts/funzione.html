@@ -61,7 +61,7 @@
 
     <div class="titolone">
       {%- if page.sezione %}
-      {% include briciole.html nome=questa.nome %}
+      {% include briciole.html %}
       {%- endif %}
       <h1>{{ d.titolo }}</h1>
       {%- if d.sommario %}
@@ -81,7 +81,8 @@
       <h2>{% include frase.html testo=b.testo %}</h2>
       {%- comment -%} ⭐ Giro W18: le domande delle FAQ. Lo stile è quello delle pagine da leggere (`testo.scss`). {%- endcomment %}
       {%- when 'h3' %}
-      <h3>{% include frase.html testo=b.testo %}</h3>
+      {%- comment -%} ⭐ Giro W25: ogni domanda ha un'ancora, il suo testo in forma d'indirizzo — ci porta «See what happens when Pro ends» dalla pagina «Free and Pro». {%- endcomment %}
+      <h3 id="{{ b.testo | slugify }}">{% include frase.html testo=b.testo %}</h3>
       {%- when 'schermate' %}
       {%- comment -%}
         ⚠️ Una o più schermate sulla stessa riga. `sizes` dice 208 px: è la

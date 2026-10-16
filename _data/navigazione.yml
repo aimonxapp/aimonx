@@ -21,20 +21,23 @@
 
 menu:
   voci:
+    - "Home"
     - "Features"
     - "FAQ"
     - "Free and Pro"
     - "Download"
-  # ⚠️ La voce che si apre: è la prima di `voci`, e sotto di lei vanno le
-  # funzioni con una pagina e, in fondo, questa.
+  # ⚠️ La voce che si apre è quella che porta all'indice delle funzioni
+  # (`_data/collegamenti.yml`, `apre`), e sotto di lei vanno le funzioni con
+  # una pagina e, in fondo, questa.
   tutte: "All features"
   # Il pulsante del telefono, chiuso e aperto.
   apri: "Menu"
   chiudi: "Close"
 
-# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ «Features» è la
-# prima voce del menu qui sopra, e il nome breve viene da `_data/funzioni.yml`:
-# qui c'è solo la parola che manca. Il «›» lo mette il layout: è un segno.
+# Le briciole di pane: «Home › Features › <nome breve>», «Home › Free and Pro».
+# ⚠️ Le voci di mezzo sono quelle del menu qui sopra, cercate per indirizzo, e
+# il nome breve viene da `_data/funzioni.yml`: qui c'è solo la parola della
+# casa. Il «›» lo mette il layout: è un segno.
 briciole:
   casa: "Home"
 
@@ -50,13 +53,19 @@ etichette:
 sorelle: "More features"
 
 # Il piede a colonne. ⚠️ Le etichette dei link sono quelle già approvate.
+# ⭐ Giro W25 (Pier, 16/10/2026 22:07): quattro colonne, e «Home» torna.
+# ⚠️ La colonna «Features» NON ha `voci`: le sue sono le funzioni con una
+# pagina, dalla fonte unica (`_data/funzioni.yml`), più «All features» — una
+# pagina nuova ci compare da sola (`_includes/piede.html`).
 piede:
   - titolo: "App"
     voci:
-      - "Features"
+      - "Home"
       - "Free and Pro"
       - "What's new"
       - "Download"
+  - titolo: "Features"
+    dalla_fonte: true
   - titolo: "Learn"
     voci:
       - "FAQ"

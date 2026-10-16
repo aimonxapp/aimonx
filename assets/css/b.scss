@@ -56,9 +56,8 @@ body.v-b {
 // allargare tutto per farcela stare. ⭐ Non è servito: misurato, a 1440 px la
 // colonna del testo resta di 678 px e la domanda ci sta a 76.8 px di corpo.
 // Allargare avrebbe cambiato anche le carte, che questo giro non tocca.
-.v-b .apertura,
-.v-b main,
-.v-b .chiusa { max-width: 66rem; margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+// ⭐ Dal giro W25 la larghezza è quella del sito, in `comune.scss` (`--sito`):
+// è ancora 66rem, e qui non si riscrive.
 
 // --- testata ---------------------------------------------------------------
 // ⛔ LA TESTATA NON È PIÙ QUI, dal giro W10: è diventata la barra di
@@ -517,7 +516,7 @@ body.v-b {
 // l'angolo delle icone iOS lo mettiamo noi; il suo verde è quasi quello del
 // fondo, e senza il filo il quadrato si perde.
 .v-b .firma {
-  max-width: 66rem; margin: 0 auto;
+  max-width: var(--sito); margin: 0 auto;
   padding: clamp(1.4rem, 4vw, 2.4rem) clamp(1.1rem, 4vw, 2.5rem) clamp(2.4rem, 6vw, 3.6rem);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
   gap: clamp(1.6rem, 5vw, 3.2rem);
@@ -556,13 +555,13 @@ body.v-b {
 // --- chiusa ----------------------------------------------------------------
 // ⛔ L'ASPETTO DEL PIEDE NON È PIÙ QUI, dal giro W9: sta in `comune.scss`, non
 // prefissato, perché il piede è lo stesso su tutte e quattro le pagine e
-// scriverlo in due fogli lo farebbe divergere alla prima correzione. Di suo
-// questo foglio tiene solo la LARGHEZZA della colonna, che è nella regola in
-// testa al file insieme a `.apertura` e a `main`.
+// scriverlo in due fogli lo farebbe divergere alla prima correzione.  ⭐ E dal
+// giro W25 nemmeno la larghezza: è una sola per il sito, in `comune.scss`.
 
 // --- il link all'indice delle funzioni, sotto la griglia (giro W24) --------
 // ⚠️ Sul fondo scuro, come il link sotto il proclama della privacy: stesso
 // verde chiaro, sottolineato (il colore da solo non dice «si clicca»).
-.v-b .tutte-le-funzioni { margin-top: clamp(1.2rem, 3vw, 1.8rem); text-align: center; font-size: 1rem; font-weight: 600; }
-.v-b .tutte-le-funzioni a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .22em; }
-.v-b .tutte-le-funzioni a:hover { color: var(--bianco); }
+// ⭐ Giro W25: lo stesso per «Compare Free and Pro», in fondo ai piani.
+.v-b :is(.tutte-le-funzioni, .confronta-piani) { margin-top: clamp(1.2rem, 3vw, 1.8rem); text-align: center; font-size: 1rem; font-weight: 600; }
+.v-b :is(.tutte-le-funzioni, .confronta-piani) a { color: var(--verde-chiaro); text-decoration: underline; text-underline-offset: .22em; }
+.v-b :is(.tutte-le-funzioni, .confronta-piani) a:hover { color: var(--bianco); }

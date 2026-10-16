@@ -1,0 +1,120 @@
+---
+---
+// assets/css/prezzi.scss — LA PAGINA «FREE AND PRO», `/pricing/`. Giro W25.
+// Si carica DOPO `testo.css`, come `indice.css` e `funzione.css`: barra,
+// titolo, foglio, piede e colori vengono da lì e da `comune.css`; qui ci sono
+// la tabella di confronto, i quattro vantaggi e il badge.
+// ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
+
+// ⭐ I COLORI DELLA CARD DELL'APP (`UI/Theme.swift`, letto e non toccato):
+// la colonna Free è `variazioneFondo`, la Pro la fascia oro col bordo della
+// tinta oro al 55%, e il nome «Pro» il titolo oro. ⚠️ La spunta è il verde di
+// sezione e non il «positivo» dell'app: sul verde tenue il positivo arriva a
+// 2,7:1, sotto i 3:1 che WCAG chiede a un segno che porta significato.
+.v-prezzi {
+  --free: #E3F1E9;
+  --pro: #F7EEDC;
+  --bordo-pro: rgba(180, 118, 31, .55);
+  --titolo-pro: #7A5211;
+  --righello: #EAF0EC;
+  --si: #0E9152;
+  --no: #C62828;
+}
+
+.v-prezzi .sommario {
+  margin-top: clamp(.9rem, 2.4vw, 1.3rem); max-width: 60ch;
+  font-size: clamp(1.02rem, 1.8vw, 1.16rem); line-height: 1.62; color: #CFE3D8;
+}
+// ⚠️ Tabella, vantaggi e badge stanno nella colonna di lettura, come il foglio.
+.v-prezzi main > * { max-width: var(--lettura); }
+.v-prezzi main > * + * { margin-top: clamp(1.4rem, 4vw, 2.2rem); }
+.v-prezzi main { padding-block-end: clamp(1.6rem, 4vw, 2.4rem); }
+
+// --- la tabella --------------------------------------------------------------
+// ⛔ NESSUNO SCORRIMENTO DI LATO: `table-layout: fixed` e tre colonne in
+// percentuale, e ogni cella va a capo dentro di sé — come l'app a 375 punti.
+// ⚠️ Le colonne colorate sono i FONDI DELLE CELLE, uno per riga, e il bordo
+// oro sono i lati delle celle Pro: in alto si chiude sulla testata, in basso
+// sull'ultima riga, con gli angoli tondi. Così attraversano tutta la tabella.
+.v-prezzi .confronto {
+  background: var(--bianco); color: var(--inchiostro);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(6, 24, 16, .28);
+}
+.v-prezzi table {
+  width: 100%; table-layout: fixed;
+  border-collapse: separate; border-spacing: 0;
+}
+.v-prezzi th, .v-prezzi td {
+  padding: .7rem clamp(.3rem, 1.4vw, .7rem);
+  vertical-align: middle; overflow-wrap: anywhere;
+}
+.v-prezzi thead :is(th, td) { padding-block: 1rem .9rem; }
+.v-prezzi .angolo { width: 40%; text-align: left; background: var(--free); padding-left: clamp(.8rem, 2.6vw, 1.3rem); }
+.v-prezzi .angolo h2 {
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem); font-weight: 700; line-height: 1.2;
+  letter-spacing: -.01em; color: var(--bosco);
+}
+.v-prezzi thead th { font-size: clamp(1rem, 2.4vw, 1.12rem); font-weight: 700; text-align: center; }
+.v-prezzi thead .free { color: var(--bosco); }
+.v-prezzi thead .pro { color: var(--titolo-pro); }
+
+.v-prezzi tbody th {
+  text-align: left; font-weight: 600; line-height: 1.35;
+  font-size: clamp(.86rem, 1.9vw, .98rem);
+  padding-left: clamp(.8rem, 2.6vw, 1.3rem);
+}
+.v-prezzi tbody td {
+  text-align: center; line-height: 1.35;
+  font-size: clamp(.8rem, 1.7vw, .9rem);
+}
+.v-prezzi tbody tr + tr > * { border-top: 1px solid var(--righello); }
+
+.v-prezzi .free { background: var(--free); }
+.v-prezzi .pro {
+  background: var(--pro);
+  border-inline: 1.5px solid var(--bordo-pro);
+}
+.v-prezzi thead .pro { border-top: 1.5px solid var(--bordo-pro); border-radius: 14px 14px 0 0; }
+.v-prezzi tbody tr:last-child .pro { border-bottom: 1.5px solid var(--bordo-pro); border-radius: 0 0 14px 14px; }
+
+// La spunta e la croce: un cerchio pieno e il segno in bianco, come l'app.
+.v-prezzi .segno { display: inline-block; width: 1.5rem; height: 1.5rem; vertical-align: middle; }
+.v-prezzi .segno path { fill: none; stroke: #FFFFFF; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.v-prezzi .segno.si circle { fill: var(--si); }
+.v-prezzi .segno.no circle { fill: var(--no); }
+
+// --- i quattro vantaggi di Pro ------------------------------------------------
+// Riquadri bianchi, due per riga dove ci stanno (il tetto dell'app: quattro,
+// «due file da due», Pier). Il filetto è l'oro di Pro, diritto come quello
+// del foglio (`testo.scss`).
+.v-prezzi .vantaggi h2 {
+  font-size: clamp(1.4rem, 3.6vw, 1.8rem); font-weight: 700; letter-spacing: -.02em;
+  color: var(--bianco);
+}
+.v-prezzi .vantaggi ul { margin-top: clamp(.8rem, 2.4vw, 1.1rem); display: grid; gap: clamp(.7rem, 2vw, 1rem); }
+@media (min-width: 560px) { .v-prezzi .vantaggi ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.v-prezzi .vantaggi li {
+  position: relative; overflow: hidden;
+  background: var(--bianco); color: var(--inchiostro);
+  border-radius: 14px; padding: 1rem 1.1rem 1.05rem 1.35rem;
+  box-shadow: 0 2px 10px rgba(6, 24, 16, .22);
+}
+.v-prezzi .vantaggi li::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: #B4761F;
+}
+.v-prezzi .vantaggi h3 { font-size: 1.02rem; font-weight: 700; line-height: 1.3; }
+.v-prezzi .vantaggi p { margin-top: .3rem; font-size: .95rem; line-height: 1.5; color: var(--inchiostro-2); }
+
+// --- il badge dell'App Store, in fondo ---------------------------------------
+// ⛔⛔ LE REGOLE DI APPLE, le stesse delle pagine-funzione (`funzione.scss`):
+// il file non si modifica, il CSS gli dà SOLO una misura, altezza ≥ 40 px,
+// spazio libero ≥ ¼ dell'altezza, uno solo. Lo misura `scripts/badge.mjs`.
+.v-prezzi main { --badge: #{"max(40px, clamp(3rem, 5vw, 3.5rem))"}; }
+.v-prezzi .scarica {
+  margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
+  text-align: center; line-height: 0;
+}
+.v-prezzi .scarica a { display: inline-block; }
+.v-prezzi .scarica img { height: var(--badge); width: auto; }
