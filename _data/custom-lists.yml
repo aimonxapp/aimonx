@@ -13,11 +13,6 @@
 #
 # ⛔ QUI DENTRO NON C'È NIENTE CHE NON SIA TESTO. Quale file sia ogni schermata
 # sta in `_data/aspetto.yml` (`funzioni`), accoppiato PER ORDINE DI COMPARSA.
-#
-# ⚠️ LA QUINTA SCHERMATA NON C'È, e aspetta Pier (giro W23, fase A): sotto
-# «Icons where they help» la bozza mette `liste_7_maintenance-types-icons.png`,
-# col testo alternativo «…each with its own icon: cleaning, lubrication…». Nel
-# file, sei voci su sette hanno la STESSA icona: il testo direbbe il falso.
 
 meta:
   # Le due righe della sezione `## Meta`, alla lettera: nessuna eccezione.
@@ -64,6 +59,9 @@ blocchi:
   testo: Icons where they help
 - tipo: p
   testo: "Pick your own icon for each maintenance type, session type and renewal type. That's the icon you see on your firearms, your sessions and your renewals."
+- tipo: schermate
+  alt:
+  - "Maintenance types in AIMONX, each with its own icon: cleaning, lubrication, inspection, parts replacement, repair and gunsmith."
 - tipo: h2
   testo: Free
 - tipo: p

@@ -256,20 +256,20 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=26
+schermate_in_pagina=29
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
 # schermata dell'app, e a un motore non si dice che lo è.
-schermate_nei_dati_strutturati=7
+schermate_nei_dati_strutturati=9
 
 # ⛔ DAL DISCO DI PIER NEL REPO ENTRANO OTTO IMMAGINI, NON UNA CARTELLA (giro
 # W14 §2①): sette schermate e la pagina del PDF di prova, ciascuna in tre
 # larghezze. Il repo è pubblico. Se il primo numero sale è entrata un'immagine
 # in più; se sale solo il secondo, un file che non è una delle tre larghezze.
 # ⛔ Nessuno dei due si alza per far passare qualcosa: prima si guarda cos'è.
-schermate_immagini=22
-schermate_file=66
+schermate_immagini=24
+schermate_file=72
 
 # --- giro W15: la prima pagina-funzione, «Round count» ------------------------
 #
@@ -360,3 +360,9 @@ banner_pagine=10
 #   schermate_immagini  18 → 22  ·  schermate_file  54 → 66
 # ⚠️ `schermate_nei_dati_strutturati` resta 7: quel conto è della landing, e la
 # voce nuova della landing non ha una schermata, apposta (giro W23 §1②).
+# ⛔ E spostate ancora, nella stessa fase A, dopo le scelte di Pier del 16/10
+# (15:14): la quinta schermata di «Custom lists» (il file giusto), la schermata
+# sulla carta «Your lists» e la carta nuova «Stats that show your progress.»:
+#   schermate_in_pagina  26 → 29  ·  schermate_nei_dati_strutturati  7 → 9
+#   (le due schermate nuove della landing: sono dell'app, quindi ci vanno)
+#   schermate_immagini  22 → 24  ·  schermate_file  66 → 72

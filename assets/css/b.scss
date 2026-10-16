@@ -20,7 +20,7 @@
 // in filigrana nell'angolo, angoli 18 px, ombra bassa e larga, corpo bianco e
 // testo scuro. Non somigliano alle card dell'app: sono le sue.
 //
-// ⛔ E i colori delle sette voci non sono scelti a gusto: vengono dalla rampa
+// ⛔ E i colori delle voci non sono scelti a gusto: vengono dalla rampa
 // d'identità di §4b, quella che nell'app dice «questa è la sezione Armi»,
 // «questa è Manutenzione».
 //
@@ -246,7 +246,7 @@ body.v-b {
 // --- LE SCHERMATE DELL'APP — giro W14 ---------------------------------------
 //
 // ⭐ La landing fa vedere l'app: la Home nella parte alta, una schermata per
-// ciascuna delle sette voci. Sono le schermate VERE, con dati di prova, rifatte
+// ciascuna delle voci. Sono le schermate VERE, con dati di prova, rifatte
 // da `scripts/schermate.mjs`; il markup è uno solo, `_includes/schermata.html`.
 //
 // ⭐ LA CORNICE DEL TELEFONO NON È PIÙ QUI, dal giro W16: sta in `comune.scss`,
@@ -375,7 +375,7 @@ body.v-b {
 }
 .v-b .pro { color: var(--titolo); font-style: italic; font-weight: 600; }
 
-// ⑥ LA SCHERMATA DENTRO LA CARTA — giro W14. Solo le sette voci la portano.
+// ⑥ LA SCHERMATA DENTRO LA CARTA — giro W14. Solo le voci la portano.
 //
 // ⭐ DUE DISPOSIZIONI, E LE SCEGLIE LA LARGHEZZA DELLA CARTA, non quella della
 // finestra: stretta, la schermata sta SOTTO il testo, al centro; larga, sta A
@@ -418,10 +418,24 @@ body.v-b {
 }
 
 // IL FOGLIO È LARGO, quindi la sua carta prende tutte e due le colonne — ed è
-// la settima di sette: senza, sarebbe rimasta da sola a sinistra con mezza
-// riga vuota accanto. Quando la carta è larga abbastanza, testo e foglio
-// stanno fianco a fianco come nelle altre.
+// l'ultima: senza, sarebbe potuta restare da sola a sinistra con mezza riga
+// vuota accanto. Quando la carta è larga abbastanza, testo e foglio stanno
+// fianco a fianco come nelle altre.
 @media (min-width: 880px) { .v-b .voci-glifo .mostra-foglio { grid-column: #{"1 / -1"}; } }
+// ⭐ LA RETE, dal giro W23 (Pier, 16/10/2026): una carta rimasta SOLA nella sua
+// riga prende tutta la riga, invece di lasciarne metà vuota. È successo
+// davvero, con la carta delle liste: otto carte prima del foglio, e «Costs»
+// restava sola. ⚠️ «Sola» vuol dire: in posizione dispari, e l'ultima — o
+// l'ultima prima del foglio. Regge finché il foglio sta in fondo; un foglio a
+// metà lista sfaserebbe il conto, e lì la rete va ripensata.
+// ⚠️ `:has()` manca solo ai browser vecchi (Safari prima della 15.4): lì la
+// rete non scatta e la carta resta com'era, cioè il comportamento di prima.
+// ⛔ Oggi NON deve scattare — le carte prima del foglio sono pari — ed è
+// misurato in anteprima, non supposto.
+@media (min-width: 880px) {
+  .v-b .voci-glifo .voce:not(.mostra-foglio):nth-child(odd):last-child,
+  .v-b .voci-glifo .voce:not(.mostra-foglio):nth-child(odd):has(+ .mostra-foglio) { grid-column: #{"1 / -1"}; }
+}
 @container (min-width: 46rem) {
   .v-b .mostra-foglio .corpo {
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
@@ -430,7 +444,7 @@ body.v-b {
   .v-b .mostra-foglio .corpo .foglio { width: auto; margin: 1.4rem 1.4rem 1.5rem 0; }
 }
 
-// le tinte delle sette voci — rampa d'identità §4b
+// le tinte delle voci — rampa d'identità §4b
 .v-b .tinta-verde        { --sez: var(--sez-verde);        --fascia: var(--fascia-verde);        --titolo: var(--titolo-verde); }
 .v-b .tinta-lime         { --sez: var(--sez-lime);         --fascia: var(--fascia-lime);         --titolo: var(--titolo-lime); }
 .v-b .tinta-ciano        { --sez: var(--sez-ciano);        --fascia: var(--fascia-ciano);        --titolo: var(--titolo-ciano); }

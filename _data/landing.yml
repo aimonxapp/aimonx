@@ -201,9 +201,9 @@ what:
       # ⭐ Dal giro W17: il link alla pagina «Maintenance», come per Round count.
       link: "See how maintenance works"
     # ⭐ Giro W23 (Pier, 16/10/2026): la voce delle liste, dopo la manutenzione.
-    # ⛔ Senza `alt`, apposta: questa carta non ha una schermata.
     - lead: "Your lists, your way."
       body: "Can't find your caliber or firearm type? Add it. Swipe away what you never use. Every list you pick from is yours to shape."
+      alt: "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
       link: "See how custom lists work"
     # ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026: «renewals
     # come su app, stiamo allineati»), su tutto il sito.
@@ -213,6 +213,11 @@ what:
     - lead: "What your shooting really costs."
       body: "Cost per session, per round and per firearm, and how practice compares to competition."
       alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
+    # ⭐ Giro W23 (Pier, 16/10/2026): le statistiche, prima dei PDF. Con lei le
+    # carte del computer tornano a righe pari.
+    - lead: "Stats that show your progress."
+      body: "Rounds over time and by firearm, your most-used ammo, each firearm's reliability and the ranges you visit most. See how your shooting is really going."
+      alt: "The Stats screen in AIMONX: rounds fired, sessions and money spent over three months, compared with the previous period, above a chart of rounds fired over time."
     - lead: "Firearm reports in PDF."
       body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
       alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."

@@ -1,4 +1,4 @@
-# _data/aspetto.yml — l'ASPETTO delle sette voci: un glifo, un colore e, dal
+# _data/aspetto.yml — l'ASPETTO delle voci: un glifo, un colore e, dal
 # giro W14, una schermata dell'app ciascuna.
 #
 # ⛔ QUESTO FILE È DI CLAUDE CODE, `_data/landing.yml` è di Cowork. La riga fra
@@ -35,16 +35,29 @@ what:
   # ⭐ Giro W23: «Your lists, your way». Il ciano e l'elenco puntato sono quelli
   # di «Gestione Liste» nell'app (`HomeView.swift`: `.ciano`, `list.bullet`).
   # ⚠️ Il ciano c'è già, sulle munizioni: due voci più su, non accanto — la
-  # regola di §4b guarda solo le vicine. ⛔ NESSUNA SCHERMATA, apposta (giro
-  # W23 §1②): la carta esce senza immagine, come il layout prevede.
+  # regola di §4b guarda solo le vicine. ⭐ La schermata è la stessa della
+  # pagina «Custom lists» (Pier, 16/10/2026: senza, sul computer la carta
+  # restava mezza vuota accanto a «Renewals»).
   - icona: lista       # Your lists, your way        → «Gestione Liste»
     tinta: ciano
+    schermata: aimonx-manage-lists
   - icona: calendario  # Renewals you won't miss     → «Scadenze»
     tinta: salvia
     schermata: aimonx-renewals
   - icona: grafico     # What your shooting costs    → «Costi»
     tinta: arancioTenue
     schermata: aimonx-shooting-costs
+  # ⭐ Giro W23 (Pier, 16/10/2026): «Stats that show your progress.». ⭐ Il BLU
+  # è quello di «Statistiche» nell'app, ed è lo stesso del PDF qui sotto: la
+  # tavolozza (§4b) lo permette — «due card della STESSA sezione possono
+  # condividere il colore: è identità, non un difetto», e il PDF è «Statistiche/
+  # report». ⚠️ Il GLIFO NON è quello di «Statistiche» (le barre): le barre
+  # sono già su «Costs», nella stessa riga, e due segni uguali vicini si leggono
+  # come la stessa cosa detta due volte. È la linea che sale di «Rounds Fired
+  # Over Time», nella schermata stessa. Scelte da guardare, non fatti.
+  - icona: andamento   # Stats that show your progress → «Statistiche»
+    tinta: blu
+    schermata: aimonx-stats-overview
   - icona: documento   # Firearm reports in PDF      → «Statistiche/report»
     tinta: blu
     schermata: aimonx-firearm-inventory-pdf
@@ -72,7 +85,7 @@ schermate:
 # Per ogni pagina (la chiave è il suo `dati:`), i nomi delle sue schermate
 # NELL'ORDINE IN CUI COMPAIONO nel testo: `_layouts/funzione.html` li accoppia
 # alle righe `alt` del file di Cowork per posizione. ⛔ Stessa fragilità delle
-# sette carte, stesso controllo: `scripts/testo-approvato.sh` confronta i conti.
+# carte, stesso controllo: `scripts/testo-approvato.sh` confronta i conti.
 # ⚠️ `aimonx-maintenance-rules` è la stessa schermata della landing: un file
 # solo, due pagine.
 funzioni:
@@ -99,20 +112,21 @@ funzioni:
     - aimonx-maintenance-mark-as-done
     - aimonx-maintenance-new-entry
     - aimonx-maintenance-log
-  # ⭐ Giro W23, la quarta: quattro schermate nuove. ⚠️ La quinta della bozza
-  # (`liste_7`) aspetta Pier — vedi `_data/custom-lists.yml`.
+  # ⭐ Giro W23, la quarta: cinque schermate nuove. ⚠️ `aimonx-manage-lists` è
+  # anche sulla landing, sulla carta «Your lists»: un file solo, due pagine.
   custom-lists:
     - aimonx-manage-lists
     - aimonx-bullet-types-custom
     - aimonx-malfunctions
     - aimonx-caliber-picker
+    - aimonx-maintenance-types-icons
 
 # La schermata della parte alta: la Home dell'app, accanto alla domanda.
 hero_schermata: aimonx-home-screen
 
 # --- la parte alta, dal giro W6 -------------------------------------------
 #
-# ⚠️ STESSO ACCOPPIAMENTO PER POSIZIONE delle sette voci qui sopra, con la
+# ⚠️ STESSO ACCOPPIAMENTO PER POSIZIONE delle voci qui sopra, con la
 # stessa fragilità e lo stesso controllo: `scripts/testo-approvato.sh` confronta
 # le lunghezze delle tre coppie e protesta se una scivola.
 #

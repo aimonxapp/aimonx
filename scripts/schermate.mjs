@@ -63,7 +63,10 @@
 //   · senza gruppo: le sorgenti di «ScreenShot APP v1.0.0» (W14, W15);
 //   · `privacy`: le quattro di «ScreenShot APP v1.0.1 privacy» (W16);
 //   · `manutenzione`: le tre di «ScreenShot APP v1.0.1 maintenance» (W17).
-//   · `liste`: quelle di «ScreenShot APP v1.0.1 liste» (W23).
+//   · `liste`: quelle di «ScreenShot APP v1.0.1 liste» (W23); `liste-icone` è la
+//     sola `liste_7`, arrivata dopo e quindi in un gruppo suo;
+//   · `statistiche`: `stats_1.png` di «ScreenShot APP v1.0.0/2° giro» (W23), in
+//     un gruppo suo perché rifarla non deve rifare le altre di quella cartella.
 //   ⚠️ Il gruppo c'è perché le cartelle sono più d'una, e ⛔ perché rifare una
 //   schermata non deve rifare le altre: un altro Chromium dà byte diversi.
 // Esce: assets/img/screenshots/<nome>-<larghezza>.webp
@@ -123,13 +126,16 @@ const LISTA = [
   { da: 'maintenance_3_firearm-log.png',            a: 'aimonx-maintenance-log',          larghezze: TELEFONO, gruppo: 'manutenzione' },
   // --- giro W23, la pagina «Custom lists» — schermate della 1.0.1 (Pier, 16/10) ---
   // ⛔ `liste_8_choose-icon.png` NON entra: un riquadro è vuoto (giro W23 §1①).
-  // ⚠️ `liste_7_maintenance-types-icons.png` ASPETTA Pier: il suo testo
-  // alternativo dice «each with its own icon», e nel file sei voci su sette
-  // hanno la stessa icona (giro W23, fase A).
+  // ⚠️ `liste_7` è il file RISCRITTO da Cowork il 16/10 alle 15:10: il primo
+  // aveva sei voci su sette con la stessa icona, e il testo alternativo
+  // («each with its own icon») diceva il falso. Riguardato a piena risoluzione.
   { da: 'liste_1b_manage-lists-originale.png', a: 'aimonx-manage-lists',        larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_6_bullet-types-custom.png',     a: 'aimonx-bullet-types-custom', larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_5_malfunctions.png',            a: 'aimonx-malfunctions',        larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_2_caliber-dropdown.png',        a: 'aimonx-caliber-picker',      larghezze: TELEFONO, gruppo: 'liste' },
+  { da: 'liste_7_maintenance-types-icons.png', a: 'aimonx-maintenance-types-icons', larghezze: TELEFONO, gruppo: 'liste-icone' },
+  // --- giro W23, la carta «Stats that show your progress.» della landing ---
+  { da: 'stats_1.png',                         a: 'aimonx-stats-overview',      larghezze: TELEFONO, gruppo: 'statistiche' },
 ].filter((v) => (v.gruppo ?? null) === gruppo);
 if (!LISTA.length) { console.error(`⛔ nessuna sorgente nel gruppo «${gruppo}»`); process.exit(2); }
 // ⚠️ 0,82: sotto, il testo piccolo delle schermate comincia a sporcarsi
