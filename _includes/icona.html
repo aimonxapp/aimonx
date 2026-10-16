@@ -1,24 +1,36 @@
 {%- comment -%}
-_includes/icona.html — UN'ICONA, scritta DENTRO la pagina. Giro W26.
-  Due famiglie, dello stesso disegno (griglia 24, tratto tondo):
-  · `include.nome` — un'icona di LUCIDE (lucide.dev, versione 1.49.0), dal
-    file in `_includes/lucide/`, copiato com'è dal rilascio ufficiale. ⛔ Nel
-    repo entrano SOLO le icone che una pagina usa, e con loro la licenza
-    (`_includes/lucide/LICENSE`: ISC, e MIT per quelle che vengono da Feather);
-    sul sito la riga dei Terms (`_data/terms.yml`).
-  · `include.glifo` — un glifo del SITO (`_includes/glifo.html`, giro W14):
-    l'arma e la cartuccia, che Lucide non ha.
-  ⛔ NESSUNA RICHIESTA: l'SVG sta nell'HTML, niente file da scaricare, niente
-  JavaScript di Lucide, niente font di icone.
-  ⛔ DECORATIVA: `aria-hidden`, perché la parola accanto dice già la cosa. Se
-  un giorno un'icona dicesse qualcosa che il testo non dice, servirebbe una
-  parola di Cowork, non un'icona più parlante.
+_includes/icona.html — UN'ICONA. Giro W26. Quattro famiglie, un modo solo:
+  · `include.nome` — un'icona di PHOSPHOR (phosphoricons.com, v2.0.8, MIT),
+    piena come i simboli dell'app (Pier, 16/10/2026 23:27: «icone fighe come
+    nell'app»), dal file in `_includes/phosphor/`, copiato com'è dal rilascio.
+    ⛔ Nel repo entrano SOLO le icone usate, con la loro licenza
+    (`_includes/phosphor/LICENSE`); sul sito la riga dei Terms.
+  · `include.aimonx` — un disegno DI PIER (`_includes/aimonx/`), suo al 100%:
+    oggi le cartucce, copiate com'erano dalla cartella dell'app. Coi colori
+    suoi, l'ottone, se `include.colori`; se no tinte come le altre icone
+    (bossolo e palla del colore del testo, il solco in chiaro), come l'app
+    le tinge nelle righe della tabella.
+  · `include.sagoma` — una SAGOMA D'ARMA di Pier, un PNG piatto servito da noi
+    (`/assets/img/arma-<sagoma>.png`, 96 px) e usato come MASCHERA: il colore
+    lo dà il CSS (`.sagoma`, `comune.scss`), come alle altre icone.
+  · `include.glifo` — un glifo del SITO (`_includes/glifo.html`, giro W14).
+  ⛔ NESSUNA RICHIESTA ESTERNA: gli SVG stanno nell'HTML, la sagoma è un file
+  di aimonx.app. ⛔ DECORATIVE: `aria-hidden`, la parola accanto dice la cosa.
   ⛔ Variabili col prefisso `icona_` (la nota in `_includes/barra.html`).
 {%- endcomment -%}
 {%- if include.glifo -%}
 {%- include glifo.html nome=include.glifo classe=include.classe -%}
+{%- elsif include.sagoma -%}
+<span class="icona sagoma {{ include.classe }}" style="--sagoma: url('{{ '/assets/img/arma-' | append: include.sagoma | append: '.png' | relative_url }}')" aria-hidden="true"></span>
 {%- else -%}
-{%- capture icona_svg -%}{% include lucide/{{ include.nome }}.svg %}{%- endcapture -%}
+{%- if include.aimonx -%}
+{%- capture icona_svg -%}{% include aimonx/{{ include.aimonx }}.svg %}{%- endcapture -%}
+{%- unless include.colori -%}
+{%- assign icona_svg = icona_svg | replace: 'fill="#CF8A30"', 'fill="currentColor"' | replace: 'fill="#EFC98C"', 'fill="currentColor"' | replace: 'fill="#B4741F"', 'fill="#FFFFFF"' -%}
+{%- endunless -%}
+{%- else -%}
+{%- capture icona_svg -%}{% include phosphor/{{ include.nome }}.svg %}{%- endcapture -%}
+{%- endif -%}
 {%- capture icona_apri -%}<svg class="icona {{ include.classe }}" aria-hidden="true" focusable="false"{%- endcapture -%}
 {{- icona_svg | strip_newlines | replace: '<svg', icona_apri | replace: '  ', ' ' | replace: '  ', ' ' -}}
 {%- endif -%}

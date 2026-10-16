@@ -18,10 +18,10 @@
   che vanno a capo dentro di sé (`assets/css/prezzi.scss`), misurato a 360.
   ⭐ LE ICONE, dal giro W26 (Pier, 16/10/2026: «nella app sono più belli»):
   quelle dell'app sono simboli di Apple (SF Symbols), che sul web non si
-  possono usare, e al loro posto ci sono le più vicine di LUCIDE, scritte
-  dentro la pagina (`_includes/icona.html`) — più l'arma e la cartuccia, che
-  Lucide non ha, dai glifi del sito. Sono decorative: la parola accanto dice
-  già la cosa.
+  possono usare, e al loro posto ci sono le più vicine di PHOSPHOR, PIENE
+  come nell'app, scritte dentro la pagina (`_includes/icona.html`) — più i
+  disegni di Pier: la sagoma della pistola e le tre cartucce, gli stessi
+  dell'app. Sono decorative: la parola accanto dice già la cosa.
 
   ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: vengono da
   `_data/pricing.yml`, di Cowork. ⛔ UN SOLO BADGE in fondo, con le regole di
@@ -58,7 +58,7 @@
         <tbody>
           {%- for r in c.righe %}
           <tr>
-            <th scope="row"><span class="voce">{%- if r.aspetto %}<span class="riquadro">{% include icona.html nome=r.aspetto.icona glifo=r.aspetto.glifo %}</span>{% endif %}<span>{{ r.voce }}</span></span></th>
+            <th scope="row"><span class="voce">{%- if r.aspetto %}<span class="riquadro">{% include icona.html nome=r.aspetto.icona glifo=r.aspetto.glifo aimonx=r.aspetto.aimonx sagoma=r.aspetto.sagoma %}</span>{% endif %}<span>{{ r.voce }}</span></span></th>
             {%- for prezzi_v in (0..1) %}
             {%- if prezzi_v == 0 %}{% assign prezzi_x = r.free %}{% assign prezzi_k = 'free' %}{% else %}{% assign prezzi_x = r.pro %}{% assign prezzi_k = 'pro' %}{% endif %}
             {%- if prezzi_x == true %}
@@ -80,7 +80,7 @@
       <p class="sotto-titolo">{{ d.vantaggi.sottotitolo }}</p>
       <ul>
         {%- for v in d.vantaggi.voci %}
-        <li class="tinta-{{ v.aspetto.tinta | default: 'oro' }}"><span class="cerchio">{% include icona.html nome=v.aspetto.icona glifo=v.aspetto.glifo %}</span><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
+        <li class="tinta-{{ v.aspetto.tinta | default: 'oro' }}"><span class="cerchio">{% include icona.html nome=v.aspetto.icona glifo=v.aspetto.glifo aimonx=v.aspetto.aimonx colori=v.aspetto.colori sagoma=v.aspetto.sagoma %}</span><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
         {%- endfor %}
       </ul>
     </section>

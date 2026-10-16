@@ -115,7 +115,8 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
       <span class="gruppo">{{ v }}</span>
       <ul class="sotto">
         {%- for f in barra_pagine %}
-        <li>{% include voce.html v=f.nome dove=f.aspetto.pagina %}</li>
+        {%- comment -%} ⭐ Giro W26 (Pier, sì alla proposta): il segno della funzione davanti al nome — lo stesso cerchietto colorato di «More features» e dell'indice. Decorativo: `glifo.html` è `aria-hidden`. {%- endcomment %}
+        <li class="sez-{{ f.aspetto.tinta | default: 'verde' }} con-segno"><span class="cerchietto">{% include glifo.html nome=f.aspetto.icona %}</span>{% include voce.html v=f.nome dove=f.aspetto.pagina %}</li>
         {%- endfor %}
         <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
       </ul>

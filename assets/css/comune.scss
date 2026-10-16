@@ -342,6 +342,27 @@ img, svg { display: block; max-width: 100%; }
 :root { --sito: 66rem; --margine: clamp(1.1rem, 4vw, 2.5rem); }
 body > :is(.apertura, main, .chiusa) { max-width: var(--sito); margin: 0 auto; padding-inline: var(--margine); }
 
+// IL SEGNO DELLE FUNZIONI NELLA TENDINA E NEL PANNELLO — giro W26 (Pier, sì
+// alla proposta). Il cerchietto è quello di «More features» (qui sotto, «LE
+// PAGINE DI SEZIONE»); ⚠️ il link resta tutta la riga a destra del segno, e
+// il segno non è cliccabile: è decorazione, non un secondo bersaglio.
+.barra .sotto .con-segno { display: flex; align-items: center; gap: .55rem; padding-left: .5rem; }
+.barra .sotto .con-segno a { flex: 1; padding-left: .2rem; }
+@media (max-width: 759.98px) {
+  .barra .voci-barra .sotto .con-segno { padding-left: .9rem; }
+  .barra .voci-barra .sotto .con-segno a { padding-left: 0; }
+}
+
+// LA SAGOMA D'ARMA come icona (giro W26, `_includes/icona.html`): il PNG di
+// Pier è una MASCHERA, e il colore è quello del testo, come per gli SVG.
+// ⚠️ `-webkit-mask` per Safari, che la versione senza prefisso la legge da poco.
+.icona.sagoma {
+  display: inline-block; width: 1em; height: 1em;
+  background: currentColor;
+  -webkit-mask: var(--sagoma) center / contain no-repeat;
+  mask: var(--sagoma) center / contain no-repeat;
+}
+
 // Il testo per chi ascolta e non per chi guarda: fuori dalla vista, dentro
 // all'albero dell'accessibilità (giro W25, «Included» e «Not included»).
 .solo-voce {
