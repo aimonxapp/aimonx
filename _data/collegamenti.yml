@@ -141,4 +141,7 @@ menu:
   "Privacy":      "/#privacy"
   "Security":     "/#security"
   "Free and Pro": "/#free-and-pro"
+  # ⭐ Giro W22: la stessa pagina della frase «FAQ» qui sopra — e i due
+  # indirizzi DEVONO coincidere, come per «Support» (`link_rotti` lo misura).
+  "FAQ":          "/faq/"
   "Support":      "/support/"

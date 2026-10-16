@@ -63,9 +63,9 @@
 brand: "AIMONX"
 
 # ⭐ LA BARRA IN ALTO, dal giro W10 — decisa e approvata da Pier il 22/09/2026.
-# Le sette stringhe stanno nella bozza, sezione `## Menu`: le sei voci sono
-# una riga sola là dentro («Home · Features · Privacy · Security · Free and
-# Pro · Support»), spezzata qui in sei perché ciascuna è un LINK diverso — la
+# Le stringhe stanno nella bozza, sezione `## Menu`: le voci sono una riga
+# sola là dentro («Home · Features · Privacy · Security · Free and Pro · FAQ ·
+# Support»), spezzata qui voce per voce perché ciascuna è un LINK diverso — la
 # stessa ragione dei tre link del piede, e la stessa regola di Pier.
 # ⛔ Il «·» che le separa in pagina non è qui: è un segno, non una parola.
 # ⛔ E `apri` è l'etichetta del pulsante che sul telefono apre le voci: anche
@@ -81,6 +81,10 @@ menu:
     - "Privacy"
     - "Security"
     - "Free and Pro"
+    # ⭐ «FAQ», dal giro W22 — Pier, 16/10/2026: le FAQ si trovavano solo dal
+    # piede, e devono trovarsi subito. La bozza (`## Menu`) la mette qui,
+    # fra «Free and Pro» e «Support».
+    - "FAQ"
     - "Support"
   apri: "Menu"
 
