@@ -107,18 +107,18 @@
   body: "Cost per session, per round and per firearm, and how practice compares to competition."
   alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
   aspetto:
-    icona: coins-fill  # → «Costi»
+    icona: currency-circle-dollar-fill  # → «Costi» (Pier, 17/10/2026: le monete, piccole, erano una macchia)
     tinta: arancioTenue
     schermata: aimonx-shooting-costs
 
 # ⭐ Giro W23. Il BLU è quello di «Statistiche» nell'app, lo stesso del PDF qui
 # sotto: la tavolozza (§4b) lo permette a due voci della stessa sezione. Il
-# segno è la linea che sale; i costi portano le monete (giro W26).
+# segno sono le barre, i costi portano il dollaro (Pier, 17/10/2026).
 - lead: "Stats that show your progress."
   body: "Rounds over time and by firearm, your most-used ammo, each firearm's reliability and the ranges you visit most. See how your shooting is really going."
   alt: "The Stats screen in AIMONX: rounds fired, sessions and money spent over three months, compared with the previous period, above a chart of rounds fired over time."
   aspetto:
-    icona: chart-line-up-fill  # → «Statistiche»
+    icona: chart-bar-fill  # → «Statistiche» (Pier, 17/10/2026: la linea nel riquadro, piccola, sembrava una foto)
     tinta: blu
     schermata: aimonx-stats-overview
 

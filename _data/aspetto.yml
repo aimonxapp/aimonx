@@ -87,14 +87,16 @@ hero_schermata: aimonx-home-screen
 #
 # ⛔ I QUATTRO SEGNI NON SONO SCELTI A CASO: ⭐ dal giro W26 sono GLI STESSI
 # delle carte più in basso, icone piene come nell'app (`_includes/segno.html`)
-# — la pistola di Pier è «Armi», la linea che sale «Statistiche», la chiave
-# «Manutenzione», le monete «Costi». Chi scorre ritrova in alto i segni che
+# — la pistola di Pier è «Armi», le barre «Statistiche», la chiave
+# «Manutenzione», il dollaro «Costi» (Pier, 17/10/2026). ⚠️ Fino al W25 qui
+# c'era la nota che un simbolo di valuta direbbe una moneta sola mentre l'app
+# conta nella moneta dell'utente: il dollaro è una scelta di Pier, guardando. Chi scorre ritrova in alto i segni che
 # rivede nelle carte. ⚠️ I glifi a tratto del W14 si leggono al commit `4f08921`.
 hero_punti:
   - sagoma: pistola-striker     # Organize your firearms → «Armi» nell'app
-  - icona: chart-line-up-fill   # Track your progress    → «Statistiche»
+  - icona: chart-bar-fill       # Track your progress    → «Statistiche»
   - icona: wrench-fill          # Plan your maintenance  → «Manutenzione»
-  - icona: coins-fill           # Know your real costs   → «Costi»
+  - icona: currency-circle-dollar-fill  # Know your real costs → «Costi»
 
 # ⚠️ IL TERZO GLIFO È UNA SCELTA DA GUARDARE, non un fatto: «No AIMONX servers»
 # è un server BARRATO, non una nuvola barrata. ⛔ La nuvola direbbe il falso —
