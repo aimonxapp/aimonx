@@ -133,7 +133,7 @@
         {%- if f.aspetto.pagina and f.aspetto.pagina != page.url %}
         <li class="sez-{{ f.aspetto.tinta | default: 'verde' }}">
           <a href="{{ f.aspetto.pagina | relative_url }}">
-            {%- if f.aspetto.icona %}<span class="cerchietto">{% include glifo.html nome=f.aspetto.icona %}</span>{% endif -%}
+            {%- include segno.html a=f.aspetto involucro='cerchietto' -%}
             <span>{{ f.nome }}</span>
           </a>
         </li>

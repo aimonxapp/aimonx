@@ -1,0 +1,19 @@
+{%- comment -%}
+_includes/segno.html — IL SEGNO DI UNA VOCE, dal suo `aspetto`. Giro W26.
+  ⭐ Una famiglia sola di icone su tutto il sito (Pier, 17/10/2026 12:05): la
+  carta della landing, l'indice, «More features», la tendina e il pannello
+  leggono il segno di una funzione da `_data/funzioni.yml` e lo scrivono QUI,
+  quindi una funzione ha lo stesso segno ovunque. Le chiavi sono quelle di
+  `_includes/icona.html`: `icona` (Phosphor), `sagoma`, `aimonx`, `glifo`.
+  · `include.a` — l'`aspetto` della voce;
+  · `include.involucro` — la classe dello `span` che lo contiene (`cerchio`,
+    `cerchietto`, `casella`); senza, il segno esce nudo (la filigrana);
+  · `include.classe` — una classe in più sull'icona.
+  ⚠️ Se l'aspetto non ha un segno non esce niente, nemmeno l'involucro.
+  ⛔ Variabili col prefisso `segno_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- assign segno_a = include.a -%}
+{%- if segno_a.icona or segno_a.sagoma or segno_a.aimonx or segno_a.glifo -%}
+{%- capture segno_html -%}{% include icona.html nome=segno_a.icona sagoma=segno_a.sagoma aimonx=segno_a.aimonx glifo=segno_a.glifo classe=include.classe %}{%- endcapture -%}
+{%- if include.involucro -%}<span class="{{ include.involucro }}">{{ segno_html }}</span>{%- else -%}{{ segno_html }}{%- endif -%}
+{%- endif -%}

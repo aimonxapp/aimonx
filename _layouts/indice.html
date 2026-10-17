@@ -45,9 +45,7 @@
       <li class="sez-{{ a.tinta | default: 'verde' }} forma-{{ forma }}">
         <div class="parole">
           <div class="testa">
-            {%- if a.icona %}
-            <span class="cerchietto">{% include glifo.html nome=a.icona %}</span>
-            {%- endif %}
+            {% include segno.html a=a involucro='cerchietto' %}
             {%- if f.nome %}
             <p class="nome-breve">{{ f.nome }}</p>
             {%- endif %}

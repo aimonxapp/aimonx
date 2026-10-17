@@ -9,11 +9,14 @@ _includes/icona.html — UN'ICONA. Giro W26. Quattro famiglie, un modo solo:
     oggi le cartucce, copiate com'erano dalla cartella dell'app. Coi colori
     suoi, l'ottone, se `include.colori`; se no tinte come le altre icone
     (bossolo e palla del colore del testo, il solco in chiaro), come l'app
-    le tinge nelle righe della tabella.
+    le tinge nelle righe della tabella. ⚠️ Il solco porta la classe `solco`:
+    dentro un cerchio pieno il CSS lo tinge col fondo (`comune.scss`), se no
+    bianco su bianco sparirebbe.
   · `include.sagoma` — una SAGOMA D'ARMA di Pier, un PNG piatto servito da noi
     (`/assets/img/arma-<sagoma>.png`, 96 px) e usato come MASCHERA: il colore
     lo dà il CSS (`.sagoma`, `comune.scss`), come alle altre icone.
-  · `include.glifo` — un glifo del SITO (`_includes/glifo.html`, giro W14).
+  · `include.glifo` — un glifo DISEGNATO DA NOI dove Phosphor non ha il segno
+    giusto (`_includes/glifo.html`): dal giro W26 uno solo, il server barrato.
   ⛔ NESSUNA RICHIESTA ESTERNA: gli SVG stanno nell'HTML, la sagoma è un file
   di aimonx.app. ⛔ DECORATIVE: `aria-hidden`, la parola accanto dice la cosa.
   ⛔ Variabili col prefisso `icona_` (la nota in `_includes/barra.html`).
@@ -26,7 +29,7 @@ _includes/icona.html — UN'ICONA. Giro W26. Quattro famiglie, un modo solo:
 {%- if include.aimonx -%}
 {%- capture icona_svg -%}{% include aimonx/{{ include.aimonx }}.svg %}{%- endcapture -%}
 {%- unless include.colori -%}
-{%- assign icona_svg = icona_svg | replace: 'fill="#CF8A30"', 'fill="currentColor"' | replace: 'fill="#EFC98C"', 'fill="currentColor"' | replace: 'fill="#B4741F"', 'fill="#FFFFFF"' -%}
+{%- assign icona_svg = icona_svg | replace: 'fill="#CF8A30"', 'fill="currentColor"' | replace: 'fill="#EFC98C"', 'fill="currentColor"' | replace: 'fill="#B4741F"', 'class="solco" fill="#FFFFFF"' -%}
 {%- endunless -%}
 {%- else -%}
 {%- capture icona_svg -%}{% include phosphor/{{ include.nome }}.svg %}{%- endcapture -%}

@@ -178,7 +178,8 @@ body.v-b {
   color: var(--verde-chiaro);
   display: grid; place-items: center;
 }
-.v-b .casella .glifo { width: 21px; height: 21px; }
+.v-b .casella .icona { width: 21px; height: 21px; }
+.v-b .casella .sagoma { width: 26px; height: 26px; }
 
 // IL BADGE DELL'APP STORE — dal giro W12, al posto della pillola arancio.
 //
@@ -281,7 +282,7 @@ body.v-b {
 .v-b .garanzie { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem 1.4rem; }
 .v-b .garanzie li { display: flex; align-items: center; gap: .6rem; font-size: .95rem; font-weight: 600; color: #CFE3D8; }
 .v-b .garanzie .casella { width: 38px; height: 38px; border-radius: 11px; }
-.v-b .garanzie .casella .glifo { width: 19px; height: 19px; }
+.v-b .garanzie .casella .icona { width: 19px; height: 19px; }
 @media (min-width: 880px) {
   .v-b .garanzie { flex-direction: column; align-items: flex-start; gap: .85rem; }
 }
@@ -357,8 +358,9 @@ body.v-b {
   background: var(--sez); color: var(--bianco);
   display: grid; place-items: center;
 }
-.v-b .cerchio .glifo { width: 23px; height: 23px; }
-// ④ il glifo in filigrana nell'angolo, fuori dal bordo
+.v-b .cerchio .icona { width: 23px; height: 23px; }
+.v-b .cerchio .sagoma { width: 29px; height: 29px; }
+// ④ il segno in filigrana nell'angolo, fuori dal bordo
 .v-b .filigrana {
   position: absolute; top: -22px; right: -18px; width: 104px; height: 104px;
   color: var(--sez); opacity: .12; pointer-events: none;

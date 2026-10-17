@@ -23,7 +23,10 @@
 #     `nome` viene dalla bozza della navigazione (le voci della tendina), le
 #     altre righe dalla bozza della landing, ALLA LETTERA — le carte com'erano.
 #     `scripts/testo-approvato.sh` cerca ogni stringa nelle due bozze.
-#   · DENTRO `aspetto` è di Claude Code: indirizzo, glifo, tinta, schermata.
+#   · DENTRO `aspetto` è di Claude Code: indirizzo, segno, tinta, schermata.
+#     ⭐ Il segno dal giro W26 è un'icona PIENA (Pier, 17/10/2026): `icona` è
+#     un nome di Phosphor, `sagoma` e `aimonx` i disegni di Pier — le chiavi di
+#     `_includes/icona.html`, scritte da `_includes/segno.html`.
 #     Il controllo lo salta per nome di chiave, e solo quello.
 #
 # ⚠️ I COLORI seguono la rampa d'identità delle sezioni dell'app
@@ -46,7 +49,7 @@
   link: "See how round count works"
   aspetto:
     pagina: /features/round-count/
-    icona: mirino      # → «Armi» nell'app
+    sagoma: pistola-striker  # → «Armi» nell'app: la sagoma di Pier
     tinta: verde
     schermata: aimonx-firearms-round-count
 
@@ -54,7 +57,7 @@
   body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
   alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
   aspetto:
-    icona: bandiera    # → «Gare/Luoghi»
+    icona: flag-fill   # → «Gare/Luoghi»
     tinta: lime
     schermata: aimonx-range-sessions
 
@@ -62,7 +65,7 @@
   body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
   alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
   aspetto:
-    icona: cartuccia   # → «Munizioni»
+    aimonx: cartucce   # → «Munizioni»: le cartucce di Pier
     tinta: ciano
     schermata: aimonx-ammo-inventory
 
@@ -73,7 +76,7 @@
   link: "See how maintenance works"
   aspetto:
     pagina: /features/maintenance/
-    icona: chiave      # → «Manutenzione»
+    icona: wrench-fill # → «Manutenzione»
     tinta: ardesia
     schermata: aimonx-maintenance-rules
 
@@ -87,7 +90,7 @@
   link: "See how custom lists work"
   aspetto:
     pagina: /features/custom-lists/
-    icona: lista       # → «Gestione Liste»
+    icona: list-bullets-fill  # → «Gestione Liste»
     tinta: ciano
     schermata: aimonx-manage-lists
 
@@ -96,7 +99,7 @@
   body: "Licenses and permits, club and range memberships, insurance — with a reminder as many days ahead as you like."
   alt: "Renewals in AIMONX: range and club memberships and a firearm license, each with its due date."
   aspetto:
-    icona: calendario  # → «Scadenze»
+    icona: calendar-check-fill  # → «Scadenze»
     tinta: salvia
     schermata: aimonx-renewals
 
@@ -104,18 +107,18 @@
   body: "Cost per session, per round and per firearm, and how practice compares to competition."
   alt: "The cost breakdown in AIMONX: what you spend on ammo, matches and more, and cost by type of session."
   aspetto:
-    icona: grafico     # → «Costi»
+    icona: coins-fill  # → «Costi»
     tinta: arancioTenue
     schermata: aimonx-shooting-costs
 
 # ⭐ Giro W23. Il BLU è quello di «Statistiche» nell'app, lo stesso del PDF qui
 # sotto: la tavolozza (§4b) lo permette a due voci della stessa sezione. Il
-# glifo è la linea che sale, non le barre: le barre sono già su «Costs».
+# segno è la linea che sale; i costi portano le monete (giro W26).
 - lead: "Stats that show your progress."
   body: "Rounds over time and by firearm, your most-used ammo, each firearm's reliability and the ranges you visit most. See how your shooting is really going."
   alt: "The Stats screen in AIMONX: rounds fired, sessions and money spent over three months, compared with the previous period, above a chart of rounds fired over time."
   aspetto:
-    icona: andamento   # → «Statistiche»
+    icona: chart-line-up-fill  # → «Statistiche»
     tinta: blu
     schermata: aimonx-stats-overview
 
@@ -123,7 +126,7 @@
   body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
   alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."
   aspetto:
-    icona: documento   # → «Statistiche/report»
+    icona: file-pdf-fill  # → «Statistiche/report»
     tinta: blu
     schermata: aimonx-firearm-inventory-pdf
     forma: foglio      # ⚠️ non è una schermata: è la pagina di un PDF, distesa
@@ -144,6 +147,6 @@
   aspetto:
     pagina: /features/privacy-and-security/
     vetrina: no
-    icona: lucchetto
+    icona: lock-fill
     tinta: verde
     schermata: aimonx-app-locked

@@ -96,7 +96,7 @@
         <p class="sommario">{{ d.hero.lead | replace: " —", "&nbsp;—" }}</p>
 
         {%- comment -%}
-          Le quattro voci con il glifo. ⚠️ Il glifo viene da `_data/aspetto.yml`
+          Le quattro voci col segno (giro W26: icone piene, `_includes/segno.html`). ⚠️ Il segno viene da `_data/aspetto.yml`
           accoppiato PER POSIZIONE, come le carte più in basso: se lì
           manca la riga, la voce esce senza segno invece di rompere la pagina.
           Che le due liste siano lunghe uguale lo controlla
@@ -106,9 +106,7 @@
           {%- for v in d.hero.punti -%}
           {%- assign a = site.data.aspetto.hero_punti[forloop.index0] %}
           <li>
-            {%- if a.icona %}
-            <span class="casella">{% include glifo.html nome=a.icona %}</span>
-            {%- endif %}
+            {% include segno.html a=a involucro='casella' %}
             <span class="dice"><b>{{ v.forte }}</b> {{ v.resto }}</span>
           </li>
           {%- endfor %}
@@ -185,9 +183,7 @@
           {%- for g in d.hero.garanzie -%}
           {%- assign a = site.data.aspetto.hero_garanzie[forloop.index0] %}
           <li>
-            {%- if a.icona %}
-            <span class="casella">{% include glifo.html nome=a.icona %}</span>
-            {%- endif %}
+            {% include segno.html a=a involucro='casella' %}
             <span>{{ g }}</span>
           </li>
           {%- endfor %}
@@ -204,7 +200,7 @@
   </div>
 
   <main id="principale">
-    {%- comment -%} ① Cosa tiene in ordine — le voci, col glifo e con la schermata. {%- endcomment -%}
+    {%- comment -%} ① Cosa tiene in ordine — le voci, col segno e con la schermata. {%- endcomment -%}
     <section id="features" class="blocco blocco-cose" aria-labelledby="t-cose">
       <h2 id="t-cose">{{ d.what.title }}</h2>
       {%- comment -%}
@@ -214,7 +210,7 @@
         vetrina lo decide Pier (architettura del 16/10/2026, §10.2).
         ⚠️ Testo e aspetto stanno nella stessa voce: non c'è più un
         accoppiamento per posizione da tenere allineato. Se manca la tinta la
-        carta cade sul verde, se manca il glifo esce senza segno.
+        carta cade sul verde, se manca il segno esce senza (`_includes/segno.html`).
       {%- endcomment -%}
       {%- assign carte = site.data.funzioni | where_exp: "f", "f.aspetto.vetrina != false" -%}
       <ul class="voci voci-glifo">
@@ -224,13 +220,9 @@
           {%- assign forma = a.forma | default: 'telefono' -%}
         <li class="voce tinta-{{ tinta }}{% if a.schermata and v.alt %} mostra-{{ forma }}{% endif %}">
           <div class="testa">
-            {%- if a.icona %}
-            <span class="cerchio">{% include glifo.html nome=a.icona %}</span>
-            {%- endif %}
+            {% include segno.html a=a involucro='cerchio' %}
             <h3>{{ v.lead }}</h3>
-            {%- if a.icona %}
-            {% include glifo.html nome=a.icona classe='filigrana' %}
-            {%- endif %}
+            {% include segno.html a=a classe='filigrana' %}
           </div>
           {%- comment -%}
             ⭐ LA SCHERMATA DELLA VOCE, dal giro W14. Sta DENTRO la carta e

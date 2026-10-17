@@ -7,7 +7,7 @@
 // ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
 //
 // ⭐ OGNI VOCE È UNA CARTA BIANCA, come le carte della landing ma più bassa:
-// il segno della funzione in alto (tinta e glifo, gli stessi della carta), la
+// il segno della funzione in alto (tinta e icona, le stesse della carta), la
 // riga, il link dove c'è, e la schermata di lato — piccola, perché qui si
 // sceglie, non si guarda. ⛔ L etichetta col nome breve è `nome-breve` e NON `nome`: `.barra .nome` è il nome AIMONX nella barra, e la collisione lo colorava come un etichetta — trovato guardando lo screenshot. ⚠️ Il filetto a sinistra è DIRITTO, come quello del
 // foglio delle pagine da leggere (`testo.scss`): un `::before` dentro
@@ -37,6 +37,11 @@
 }
 .v-indice .parole { flex: 1 1 auto; min-width: 0; }
 .v-indice .testa { display: flex; align-items: center; gap: .65rem; min-height: 2.1rem; }
+// ⭐ Giro W26: il cerchietto qui è più grande che nella tendina — è il segno
+// della voce, come il cerchio della carta (la proposta approvata da Pier).
+.v-indice .cerchietto { width: 2.5rem; height: 2.5rem; }
+.v-indice .cerchietto .icona { width: 1.35rem; height: 1.35rem; }
+.v-indice .cerchietto .sagoma { width: 1.7rem; height: 1.7rem; }
 .v-indice .nome-breve {
   font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   color: var(--titolo);

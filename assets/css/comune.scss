@@ -372,7 +372,7 @@ body > :is(.apertura, main, .chiusa) { max-width: var(--sito); margin: 0 auto; p
 
 // ============================================================================
 // LE PAGINE DI SEZIONE — dal giro W24: le briciole, e il segno di ogni
-// funzione (la tinta e il glifo nel cerchietto) che usano l'indice e «More
+// funzione (la tinta e l'icona nel cerchietto) che usano l'indice e «More
 // features». ⚠️ Qui e non in un foglio solo, perché le usano due modelli.
 // ============================================================================
 
@@ -395,7 +395,14 @@ body > :is(.apertura, main, .chiusa) { max-width: var(--sito); margin: 0 auto; p
   width: 2.1rem; height: 2.1rem; border-radius: 50%;
   background: var(--sez, var(--sez-verde)); color: #fff;
 }
-.cerchietto .glifo { width: 1.15rem; height: 1.15rem; }
+.cerchietto .icona { width: 1.15rem; height: 1.15rem; }
+// ⭐ Giro W26: le icone piene (`_includes/segno.html`). La sagoma della pistola
+// è larga e bassa, e nel suo quadrato «contain» la rimpicciolisce: un poco più
+// grande, perché pesi come le altre. Il solco delle cartucce prende il fondo.
+.cerchietto .sagoma { width: 1.45rem; height: 1.45rem; }
+:is(.cerchietto, .cerchio) .solco { fill: var(--sez, var(--sez-verde)); }
+// Gli SVG di Phosphor non portano misure: senza CSS sarebbero 300×150.
+svg.icona { width: 1em; height: 1em; flex: none; }
 
 // ============================================================================
 // LA CORNICE DELLE SCHERMATE — la terza eccezione, e per la stessa ragione del
