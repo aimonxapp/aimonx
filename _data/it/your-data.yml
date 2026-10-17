@@ -1,0 +1,97 @@
+# _data/it/your-data.yml — LA PAGINA «I TUOI DATI», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/your-data/your-data-it-bozza.md
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/your-data.yml`: le schermate si
+# accoppiano per ordine ai nomi di `_data/aspetto.yml` (`funzioni.your-data`).
+# `scripts/testo-approvato.sh` cerca ogni stringa ALLA LETTERA nella bozza.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "App diario armi privata: cifrata e senza account | AIMONX"
+  description: "AIMONX tiene il diario delle tue armi cifrato sul tuo iPhone e nel tuo iCloud. Nessun account, nessun server AIMONX, nessun tracciamento. Ecco come."
+
+titolo: "I tuoi dati restano tuoi"
+sommario: "Quali armi hai e come spari non sono affari di nessuno, a parte te. Per questo abbiamo fatto AIMONX in modo che nemmeno noi possiamo vedere il tuo diario. Ecco come funziona, detto semplice, e come puoi verificarlo da solo."
+
+blocchi:
+  - tipo: h2
+    testo: "Nessun account. Niente da registrare."
+  - tipo: p
+    testo: "Scarichi AIMONX e cominci. Nessuna email, nessuna password da inventare, nessun nome. Non c'è un login, perché un account AIMONX non esiste proprio."
+  - tipo: h2
+    testo: "Nessun server AIMONX"
+  - tipo: p
+    testo: "Il tuo diario non sta su un server AIMONX, perché non ce n'è nessuno. Non vediamo mai le tue armi, le tue matricole o i tuoi colpi."
+  - tipo: h2
+    testo: "Cifrato sul tuo iPhone"
+  - tipo: p
+    testo: "Tutto il diario vive in un database cifrato sul tuo iPhone. Si apre solo quando confermi che sei tu, con Face ID, Touch ID o il codice, e di serie si richiude quando esci dall'app. Anche nel multitasking AIMONX mostra solo il suo logo."
+  - tipo: schermate
+    alt:
+      - "La schermata di blocco di AIMONX: «AIMONX è bloccata», e i tuoi dati non si vedono finché non la sblocchi."
+      - "AIMONX nel multitasking dell'iPhone: si vedono solo il logo e un lucchetto al posto dei tuoi dati."
+  - tipo: h2
+    testo: "Una copia cifrata nel tuo iCloud"
+  - tipo: p
+    testo: "I telefoni si rompono, si perdono, si cambiano. Per questo, di serie, AIMONX tiene una copia cifrata del diario nel tuo iCloud. Salva le modifiche quando apri o chiudi l'app, e ogni volta che tocchi Esegui backup adesso."
+  - tipo: ul
+    voci:
+      - "Viene cifrata sul tuo iPhone, con la stessa chiave del diario, prima di andare da qualsiasi parte."
+      - "Sta nel tuo spazio iCloud personale. Noi non ci possiamo accedere."
+      - "È separata dal Backup iCloud dell'iPhone, che può riportare indietro solo il telefono intero, tutto insieme."
+      - "iPhone nuovo, o hai reinstallato l'app? Armi, sessioni e munizioni tornano subito."
+      - "Non la vuoi? Puoi spegnerla."
+  - tipo: schermate
+    alt:
+      - "La pagina Backup AIMONX: copia attiva, l'ora dell'ultimo backup e il tasto Esegui backup adesso."
+  - tipo: h2
+    testo: "Funziona offline"
+  - tipo: p
+    testo: "Al poligono non c'è campo? Registra come sempre. La copia cifrata si salva sul tuo iCloud la prima volta che usi l'app con la connessione."
+  - tipo: h2
+    testo: "Protezione avanzata, se la vuoi"
+  - tipo: p
+    testo: "Se perdi il telefono o te lo rubano, c'è Face ID a proteggerti. Ma di serie la chiave del diario è custodita dal Portachiavi di Apple, quindi chi riesce a entrare nel tuo Account Apple potrebbe arrivarci. La vuoi fuori dalla portata di tutti tranne te? Aggiungi una passphrase che conosci solo tu. AIMONX te la chiederà a ogni avvio, e Face ID da solo non aprirà il diario. Falla lunga, per esempio qualche parola di fila. La Protezione avanzata è di Pro."
+  - tipo: p
+    testo: "Un avviso, onesto: se la dimentichi, nessuno può recuperare i tuoi dati. Né noi, né nessun altro."
+  - tipo: schermate
+    alt:
+      - "Le impostazioni della Protezione avanzata di AIMONX: blocco quando esci, Face ID attivo e la possibilità di aggiungere una password che conosci solo tu."
+  - tipo: h2
+    testo: "La matricola è facoltativa"
+  - tipo: p
+    testo: "Mettila solo se vuoi, oppure usa un nome tuo come «Pistola gara 1». Alle foto che aggiungi vengono tolti la posizione e gli altri dati nascosti prima di salvarle."
+  - tipo: h2
+    testo: "Niente pubblicità. Niente statistiche d'uso. Niente tracciamento."
+  - tipo: p
+    testo: "AIMONX non contiene codice di terze parti che parli con Internet: niente statistiche d'uso, niente raccolta dei crash, niente reti pubblicitarie. I tuoi dati parlano solo con il tuo iCloud."
+  - tipo: h2
+    testo: "I tuoi dati, alle tue condizioni"
+  - tipo: ul
+    voci:
+      - forte: "Report PDF"
+        testo: "delle tue armi, creati direttamente sul tuo iPhone, con password se vuoi."
+      - forte: "Archivi cifrati (Pro):"
+        testo: "esporti tutto il diario con una password sua, e lo tieni dove vuoi: un disco, un altro cloud, una chiavetta."
+      - forte: "Caricare un archivio è sempre gratis"
+        testo: ", anche senza Pro."
+      - forte: "Vuoi ripartire da zero?"
+        testo: "Inizializza l'app cancella il diario dal tuo iPhone, e anche la copia cifrata su iCloud."
+  - tipo: h2
+    testo: "Verificalo da solo"
+  - tipo: ul
+    voci:
+      - "Scarica AIMONX. Non c'è nessuna schermata di registrazione."
+      - "Attiva Uso in aereo e registra una sessione. Funziona."
+      - "Guarda «Privacy dell'app» sulla nostra pagina dell'App Store: Dati non raccolti."
+  - tipo: h2
+    testo: "Free e Pro"
+  - tipo: p
+    testo: "Con Free hai tutto quello che c'è in questa pagina, compresa la copia cifrata su iCloud, con due eccezioni che sono di Pro: la Protezione avanzata e l'esportazione degli archivi cifrati."
+  - tipo: p
+    testo: "Vuoi i dettagli legali? Leggi la nostra Privacy Policy."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

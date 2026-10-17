@@ -1,0 +1,68 @@
+# _data/it/funzioni.yml — LE FUNZIONI, in italiano: SOLO LE PAROLE. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: le righe sono quelle delle carte della landing
+# italiana e i nomi brevi quelli della bozza della navigazione, approvate da
+# Pier il 17/10/2026 (14:34):
+#     …/2- Contenuti/landing/landing-it-bozza.md
+#     …/2- Contenuti/navigazione/navigazione-it-bozza.md
+# e il testo alternativo di «I tuoi dati» viene dalla bozza della sua pagina.
+# ⛔ STESSO NUMERO DI VOCI E STESSO ORDINE di `_data/funzioni.yml`: indirizzo,
+# segno, tinta e schermata stanno LÀ (`aspetto`), e i layout li accoppiano a
+# queste voci per posizione.
+# ⚠️ I nomi brevi delle funzioni SENZA pagina ci sono, a differenza
+# dell'inglese: la bozza italiana li dà per l'indice delle funzioni.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+- nome: "Contacolpi"
+  lead: "Ogni arma, ogni colpo."
+  body: "Inserisci l'arma una volta sola. I colpi si sommano da soli dalle tue sessioni al poligono: niente conti a mente, niente quaderno."
+  alt: "Le tue armi in AIMONX, ognuna con i suoi colpi e lo stato della manutenzione a colori."
+  link: "Scopri come funziona il contacolpi"
+
+- nome: "Sessioni e gare"
+  lead: "Sessioni e gare."
+  body: "Registra dove hai sparato, con cosa e com'è andata, malfunzionamenti compresi. Nelle gare anche piazzamento, punteggio e divisione."
+  alt: "L'elenco delle sessioni in AIMONX: allenamenti e sessioni dry fire, ognuna con l'arma, il luogo e i colpi sparati."
+
+- nome: "Munizioni"
+  lead: "Munizioni sotto controllo."
+  body: "Munizioni commerciali con lotti e inventario. Ricaricate con ricetta, costi dei componenti e produzioni."
+  alt: "Le munizioni commerciali in AIMONX, con i colpi disponibili e gli avvisi di scorta bassa."
+
+- nome: "Manutenzione"
+  lead: "La manutenzione come vuoi tu."
+  body: "Crea le tue regole per ogni arma (pulizia, lubrificazione, cambio molle, qualsiasi cosa) ai colpi che scegli tu. Decidi con quanto anticipo saperlo, e AIMONX te lo dice dentro l'app quando è il momento."
+  alt: "La pagina di un'arma in AIMONX, con i colpi totali e le regole di manutenzione a colpi per la pulizia e per la molla di recupero."
+  link: "Scopri come funziona la manutenzione"
+
+- nome: "Liste personalizzate"
+  lead: "Le tue liste, a modo tuo."
+  body: "Non trovi il tuo calibro o il tuo tipo di arma? Aggiungilo. Quello che non usi mai lo togli scorrendo. Ogni lista da cui scegli la decidi tu."
+  alt: "Gestione liste in AIMONX: calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza."
+  link: "Scopri come funzionano le liste personalizzate"
+
+- nome: "Scadenze"
+  lead: "Scadenze che non ti sfuggono."
+  body: "Porto d'armi e licenze, iscrizioni a club e poligoni, assicurazione: con un promemoria quanti giorni prima vuoi."
+  alt: "Le scadenze in AIMONX: iscrizioni a poligono e club e un porto d'armi, ognuna con la sua data."
+
+- nome: "Costi"
+  lead: "Quanto ti costa davvero sparare."
+  body: "Costo per sessione, per colpo e per arma, e quanto spendi in allenamento rispetto alle gare."
+  alt: "Il riepilogo dei costi in AIMONX: quanto spendi in munizioni, gare e altro, e il costo per tipo di sessione."
+
+- nome: "Statistiche"
+  lead: "Statistiche che mostrano i progressi."
+  body: "Colpi nel tempo e per arma, le munizioni che usi di più, l'affidabilità di ogni arma e i poligoni dove vai più spesso. Per vedere come va davvero il tuo tiro."
+  alt: "La schermata Statistiche di AIMONX: colpi sparati, sessioni e spesa degli ultimi tre mesi, a confronto con il periodo precedente, sopra il grafico dei colpi sparati nel tempo."
+
+- nome: "Report PDF"
+  lead: "Schede arma in PDF."
+  body: "Una scheda per ogni arma e l'inventario completo: create sul tuo iPhone, con password se vuoi, condivise solo quando decidi tu."
+  alt: "Un inventario armi in PDF fatto con AIMONX, con foto, matricole, dati d'acquisto e totali."
+
+- nome: "I tuoi dati"
+  lead: "Nessun account. Nessun server AIMONX. I tuoi dati non li vediamo mai."
+  body: "Il tuo diario vive cifrato sul tuo iPhone. Una copia cifrata resta nel tuo iCloud (attiva di serie, e puoi spegnerla), così un iPhone nuovo non vuol dire ricominciare da capo. La matricola è facoltativa."
+  alt: "La schermata di blocco di AIMONX: «AIMONX è bloccata», e i tuoi dati non si vedono finché non la sblocchi."
+  link: "Scopri come AIMONX protegge i tuoi dati"

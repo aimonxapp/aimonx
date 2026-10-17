@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/funzione.html — LO SCHELETRO DELLE PAGINE-FUNZIONE. Giro W15.
 
@@ -47,11 +48,10 @@
   ⚠️ Le FAQ usano questo scheletro ma NON sono della sezione: niente briciole,
   niente colonna, e la pagina esce come prima.
 {%- endcomment -%}
-{%- assign d = site.data[page.dati] -%}
+{%- assign d = lin_t[page.dati] -%}
 {%- assign nomi = site.data.aspetto.funzioni[page.dati] -%}
 {%- assign quale = 0 -%}
-{%- assign nav = site.data.navigazione -%}
-{%- assign questa = site.data.funzioni | where: "aspetto.pagina", page.url | first -%}
+{%- assign nav = lin_t.navigazione -%}
 <head>
   {%- include testa.html meta=d.meta -%}
 </head>
@@ -129,12 +129,13 @@
     <aside class="sorelle" aria-labelledby="t-sorelle">
       <h2 id="t-sorelle">{{ nav.sorelle }}</h2>
       <ul>
+        {%- comment -%} ⭐ Giro W28: indirizzo e segno dal file inglese, il nome dalla stessa voce nella lingua della pagina. {%- endcomment -%}
         {%- for f in site.data.funzioni -%}
-        {%- if f.aspetto.pagina and f.aspetto.pagina != page.url %}
+        {%- if f.aspetto.pagina and f.aspetto.pagina != lin_base %}
         <li class="sez-{{ f.aspetto.tinta | default: 'verde' }}">
-          <a href="{{ f.aspetto.pagina | relative_url }}">
+          <a href="{{ lin_pre | append: f.aspetto.pagina | relative_url }}">
             {%- include segno.html a=f.aspetto involucro='cerchietto' -%}
-            <span>{{ f.nome }}</span>
+            <span>{{ lin_t.funzioni[forloop.index0].nome }}</span>
           </a>
         </li>
         {%- endif -%}
@@ -156,8 +157,8 @@
     {%- endcomment -%}
     {%- if d.badge %}
     <p class="scarica">
-      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
-        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+      <a href="{{ lin_store }}" rel="noreferrer">
+        <img src="{{ lin_badge | relative_url }}"
              alt="{{ d.badge }}" width="120" height="40">
       </a>
     </p>

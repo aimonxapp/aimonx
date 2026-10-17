@@ -10,10 +10,11 @@ _includes/voce.html — UNA VOCE DI NAVIGAZIONE, scritta in un modo solo. Giro W
   ⛔ Variabili col prefisso `voce_`: un include scrive nella scatola del layout
   che lo chiama (la nota in `_includes/barra.html`).
 {%- endcomment -%}
-{%- assign voce_dove = include.dove | default: site.data.collegamenti.menu[include.v] -%}
+{%- comment -%} ⭐ Giro W28: l'etichetta si cerca nella mappa della lingua della pagina (`lin_c`), e l'indirizzo prende il suo prefisso (`_includes/lingua.html`). {%- endcomment -%}
+{%- assign voce_dove = include.dove | default: lin_c.menu[include.v] -%}
 {%- if voce_dove == 'store' -%}
-<a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ site.data.collegamenti.store }}" rel="noreferrer">{{ include.v }}</a>
+<a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ lin_store }}" rel="noreferrer">{{ include.v }}</a>
 {%- else -%}
-{%- assign voce_dove = voce_dove | relative_url -%}
+{%- assign voce_dove = lin_pre | append: voce_dove | relative_url -%}
 <a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ voce_dove }}"{% if voce_dove == page.url %} aria-current="page"{% endif %}>{{ include.v }}</a>
 {%- endif -%}

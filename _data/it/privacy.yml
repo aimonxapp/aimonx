@@ -1,0 +1,120 @@
+# _data/it/privacy.yml — LA PRIVACY POLICY, in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/privacy-policy/privacy-policy-it-bozza.md
+# e il titolo della scheda viene dalla bozza dei titoli italiana.
+# ⭐ Strada A (Pier, 17/10/2026 14:33): nessuna riga su quale versione valga —
+# l'inglese e l'italiana dicono le stesse cose e cambiano INSIEME, nello
+# stesso giro.
+# ⚠️ La descrizione è la prima voce di «In breve», come per l'inglese: la bozza
+# italiana non ha una sezione Meta.
+# ⚠️ `data_pubblicazione` sostituisce «[data di pubblicazione]» della bozza: è
+# il giorno in cui la pagina va online (fase B del giro).
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/privacy.yml`.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Privacy Policy | AIMONX"
+  description: "AIMONX non ha account e non ha server AIMONX. I tuoi dati non li vediamo mai."
+
+titolo: "Privacy Policy"
+aggiornato: "Ultimo aggiornamento:"
+data_pubblicazione: "17 ottobre 2026"
+
+blocchi:
+  - tipo: h2
+    testo: "In breve"
+  - tipo: ul
+    voci:
+      - "AIMONX non ha account e non ha server AIMONX. I tuoi dati non li vediamo mai."
+      - "Il tuo diario è cifrato sul tuo iPhone. Di serie una copia cifrata si salva nel tuo iCloud, così cambiando telefono non perdi niente. Puoi spegnerla."
+      - "Niente pubblicità, niente statistiche d'uso, niente tracciamento. Il tuo diario non arriva mai a noi, quindi non c'è niente da vendere o da condividere."
+      - "Questo sito non usa cookie né sistemi di tracciamento."
+  - tipo: h2
+    testo: "Chi siamo"
+  - tipo: p
+    testo: "AIMONX è fatta da Piermichele Fassio, sviluppatore indipendente con sede in Italia («noi»). Ai sensi della normativa europea sulla protezione dei dati (il GDPR) siamo il titolare del trattamento per i pochi dati personali di cui parla questa informativa."
+  - tipo: p
+    testo: "Domande sulla privacy? Scrivici a support@aimonx.app."
+  - tipo: h2
+    testo: "L'app AIMONX"
+  - tipo: h3
+    testo: "Cosa resta sul tuo iPhone"
+  - tipo: p
+    testo: "Tutto quello che inserisci in AIMONX resta in AIMONX: le tue armi, le matricole se scegli di inserirle, i colpi, le sessioni al poligono, le gare, le munizioni, le ricaricate, la manutenzione, le scadenze, i costi, le note e le foto."
+  - tipo: p
+    testo: "Tutto è salvato in un database cifrato sul tuo iPhone, che si apre solo quando confermi che sei tu. Non c'è nessun server AIMONX che ne tenga una copia, quindi non c'è niente che noi possiamo leggere."
+  - tipo: h3
+    testo: "La tua copia cifrata su iCloud"
+  - tipo: p
+    testo: "Di serie AIMONX salva una copia cifrata del diario nel tuo account iCloud, così un telefono nuovo o rotto non vuol dire ricominciare da capo."
+  - tipo: ul
+    voci:
+      - "La copia viene cifrata sul tuo iPhone, con la stessa chiave del diario, prima di andare da qualsiasi parte."
+      - "Sta nel tuo spazio iCloud personale. Noi non ci possiamo accedere."
+      - "Puoi spegnerla nell'app in qualsiasi momento."
+  - tipo: p
+    testo: "iCloud è gestito da Apple ed è coperto dall'informativa sulla privacy di Apple."
+  - tipo: h3
+    testo: "Cosa non raccogliamo"
+  - tipo: p
+    testo: "Nessun account, nessun indirizzo email, nessun nome, nessuna posizione, nessun contatto, nessuna statistica d'uso, nessun identificativo pubblicitario. AIMONX non contiene codice di terze parti che parli con Internet: niente statistiche d'uso, niente raccolta dei crash, niente reti pubblicitarie."
+  - tipo: h3
+    testo: "Foto"
+  - tipo: p
+    testo: "Puoi aggiungere foto delle tue armi da Foto o da File. AIMONX non usa mai la fotocamera. Prima di salvare una foto, AIMONX le toglie la posizione e gli altri metadati, poi la cifra come il resto del diario."
+  - tipo: h3
+    testo: "Report PDF e archivi"
+  - tipo: p
+    testo: "I report PDF e gli archivi cifrati vengono creati sul tuo iPhone. Vanno dove decidi di mandarli, e da nessun'altra parte. Quando condividi un file, cosa ne succede dipende dall'app o dal servizio a cui l'hai mandato."
+  - tipo: h3
+    testo: "Acquisti"
+  - tipo: p
+    testo: "AIMONX Pro si vende tramite App Store. Il pagamento lo gestisce Apple, e noi non vediamo mai i tuoi dati di pagamento."
+  - tipo: h3
+    testo: "Rapporti sui crash e statistiche da Apple"
+  - tipo: p
+    testo: "Se sul tuo iPhone hai attivato Condividi con gli sviluppatori di app, Apple può condividere con noi statistiche e informazioni diagnostiche sull'app, aggregate o in una forma che non ti identifica. È una funzione di Apple, non nostra, e puoi spegnerla quando vuoi in Impostazioni > Privacy e sicurezza > Analisi e miglioramenti."
+  - tipo: h3
+    testo: "Cancellare i tuoi dati"
+  - tipo: p
+    testo: "I tuoi dati sono tuoi. Tocca Inizializza l'app nelle impostazioni dell'app per cancellare il diario dal tuo iPhone. AIMONX cancella anche la tua copia cifrata su iCloud (per questa parte serve la connessione)."
+  - tipo: p
+    testo: "Se cancelli l'app, il diario sparisce dal tuo iPhone ma la copia cifrata su iCloud resta, così se reinstalli riprendi da dove eri. La copia serve proprio a questo."
+  - tipo: h2
+    testo: "Questo sito"
+  - tipo: p
+    testo: "aimonx.app è un sito statico. Non usa cookie, statistiche d'uso né moduli, e non carica niente da altri server: anche i caratteri arrivano da aimonx.app."
+  - tipo: p
+    testo: "Il sito è ospitato da GitHub Pages. Come per ogni sito ospitato lì, GitHub registra gli indirizzi IP dei visitatori per motivi di sicurezza. GitHub ha sede negli Stati Uniti e dichiara di essere certificata nell'ambito del Data Privacy Framework UE-USA. I dettagli sono nella Privacy Statement di GitHub."
+  - tipo: p
+    testo: "Non ti tracciamo, quindi i segnali «Do Not Track» qui non cambiano niente."
+  - tipo: h2
+    testo: "Se ci scrivi"
+  - tipo: p
+    testo: "Se scrivi a support@aimonx.app, riceviamo il tuo indirizzo email e quello che scrivi. Lo usiamo solo per risponderti, lo teniamo solo per il tempo che serve ad aiutarti, e non lo condividiamo né ti iscriviamo a nessuna mailing list. La nostra posta è gestita da Mail di iCloud di Apple."
+  - tipo: h2
+    testo: "Basi giuridiche (per chi ci visita e ci usa dall'UE)"
+  - tipo: ul
+    voci:
+      - "Rispondere alle tue email: il nostro legittimo interesse ad aiutarti."
+      - "Registri tenuti da GitHub per l'hosting: un legittimo interesse a mantenere il sito sicuro."
+  - tipo: h2
+    testo: "I tuoi diritti"
+  - tipo: p
+    testo: "Ai sensi del GDPR puoi chiederci di accedere ai dati personali che abbiamo su di te, di correggerli o cancellarli, di limitarne o contestarne l'uso, e di averne una copia. In pratica, gli unici dati personali che possiamo avere sono quelli che ci mandi per email. Il tuo diario vive sul tuo iPhone e nel tuo iCloud, dove decidi tu."
+  - tipo: p
+    testo: "Se sei nell'UE puoi anche presentare un reclamo alla tua autorità per la protezione dei dati. In Italia è il Garante per la protezione dei dati personali."
+  - tipo: h2
+    testo: "Leggi sulla privacy degli Stati Uniti"
+  - tipo: p
+    testo: "Non vendiamo né condividiamo informazioni personali, e non le raccogliamo per pubblicità o profilazione."
+  - tipo: h2
+    testo: "Minori"
+  - tipo: p
+    testo: "AIMONX non è pensata per i bambini, e non raccogliamo consapevolmente dati personali di chi ha meno di 13 anni."
+  - tipo: h2
+    testo: "Modifiche a questa informativa"
+  - tipo: p
+    testo: "Se questa informativa cambia, la aggiorniamo su questa pagina e cambiamo la data in alto."

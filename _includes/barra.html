@@ -60,15 +60,23 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
   layout che lo chiama, quindi un nome corto qui può cancellare un nome corto
   là. Misurato nel W10 su `d`, e costato il corpo di tre pagine.
 {%- endcomment -%}
-{%- assign barra_m = site.data.navigazione.menu -%}
-{%- assign barra_pagine = site.data.funzioni | where_exp: "f", "f.aspetto.pagina" -%}
-<nav class="barra" aria-label="{{ site.data.navigazione.etichette.menu }}">
+{%- comment -%}
+  ⭐ Giro W28: le parole vengono dalla lingua della pagina (`lin_t`,
+  `_includes/lingua.html`), gli indirizzi portano il suo prefisso, e sopra la
+  barra c'è il selettore di lingua (`_includes/selettore.html`).
+  ⚠️ Le funzioni della tendina: segno e indirizzo dal file inglese
+  (`site.data.funzioni`, `aspetto`), il nome dalla stessa voce nella lingua
+  della pagina — stessa posizione.
+{%- endcomment -%}
+{%- assign barra_m = lin_t.navigazione.menu -%}
+{%- include selettore.html dove='alto' -%}
+<nav class="barra" aria-label="{{ lin_t.navigazione.etichette.menu }}">
   {%- comment -%}
     ⚠️ alt="" — l'icona è DECORATIVA anche qui: «AIMONX» è scritto in lettere
     dentro lo stesso link, quindi il link ha già il suo nome e un testo
     alternativo lo farebbe leggere due volte.
   {%- endcomment -%}
-  <a class="acasa" href="{{ '/' | relative_url }}">
+  <a class="acasa" href="{{ lin_pre | append: '/' | relative_url }}">
     {%- comment -%}
       ⭐ TRE FILE, UNO PER DENSITÀ, dal giro W14. Il marchio è largo 48 px: con
       il solo file da 96 un telefono a 3× doveva riempirne 144 e lo
@@ -79,7 +87,7 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
     <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
          srcset="{{ '/assets/img/aimonx-48.png' | relative_url }} 1x, {{ '/assets/img/aimonx-96.png' | relative_url }} 2x, {{ '/assets/img/aimonx-192.png' | relative_url }} 3x"
          alt="" width="48" height="48">
-    <span class="nome">{{ site.data.landing.brand }}</span>
+    <span class="nome">{{ lin_t.landing.brand }}</span>
   </a>
 
   {%- comment -%}
@@ -100,7 +108,7 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
   {%- endcomment -%}
   <ul class="voci-barra">
     {%- for v in barra_m.voci -%}
-    {%- if site.data.collegamenti.menu[v] == site.data.collegamenti.apre %}
+    {%- if lin_c.menu[v] == site.data.collegamenti.apre %}
     {%- comment -%}
       LA VOCE CHE SI APRE — quella che porta all'indice delle funzioni
       (`_data/collegamenti.yml`, `apre`; fino al W24 era «la prima»). Sul computer la tendina (`details.tendina`), sul
@@ -114,9 +122,12 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
       </details>
       <span class="gruppo">{{ v }}</span>
       <ul class="sotto">
-        {%- for f in barra_pagine %}
+        {%- for f in site.data.funzioni %}
+        {%- if f.aspetto.pagina %}
+        {%- assign barra_nome = lin_t.funzioni[forloop.index0].nome %}
         {%- comment -%} ⭐ Giro W26 (Pier, sì alla proposta): il segno della funzione davanti al nome — lo stesso cerchietto colorato di «More features» e dell'indice. Decorativo: l'icona è `aria-hidden` (`_includes/segno.html`). {%- endcomment %}
-        <li class="sez-{{ f.aspetto.tinta | default: 'verde' }} con-segno">{% include segno.html a=f.aspetto involucro='cerchietto' %}{% include voce.html v=f.nome dove=f.aspetto.pagina %}</li>
+        <li class="sez-{{ f.aspetto.tinta | default: 'verde' }} con-segno">{% include segno.html a=f.aspetto involucro='cerchietto' %}{% include voce.html v=barra_nome dove=f.aspetto.pagina %}</li>
+        {%- endif %}
         {%- endfor %}
         <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
       </ul>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/non-trovato.html — LA PAGINA 404. Giro W27.
   ⭐ Lo scheletro delle pagine da leggere (`_layouts/pagina.html`): la barra,
@@ -14,7 +15,7 @@
   ⚠️ Gli indirizzi sono tutti dalla radice (`relative_url`): la stessa pagina
   risponde a `/qualcosa` e a `/a/b/c/`, e un indirizzo relativo si romperebbe.
 {%- endcomment -%}
-{%- assign d = site.data[page.dati] -%}
+{%- assign d = lin_t[page.dati] -%}
 <head>
   {%- include testa.html meta=d.meta -%}
 </head>
@@ -34,9 +35,9 @@
         {%- endfor %}
       </ul>
       <p class="scarica">
-        <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
-          <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
-               alt="{{ site.data.landing.hero.badge }}" width="120" height="40">
+        <a href="{{ lin_store }}" rel="noreferrer">
+          <img src="{{ lin_badge | relative_url }}"
+               alt="{{ lin_t.landing.hero.badge }}" width="120" height="40">
         </a>
       </p>
     </article>

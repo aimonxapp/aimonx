@@ -1,0 +1,95 @@
+# _data/it/landing.yml — LA LANDING, in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/landing/landing-it-bozza.md
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/landing.yml`: segni e schermate
+# (`_data/aspetto.yml`) si accoppiano per posizione.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+#
+# ⚠️ TRE SCELTE DI CC DA GUARDARE, perché la bozza scrive le cose in un pezzo
+# solo e la pagina le vuole in pezzi — ⛔ le parole restano quelle, alla lettera:
+#   · la domanda in tre righe come l'inglese, con la centrale in verde: «Sai
+#     davvero / quanti colpi ha sparato / la tua arma?»;
+#   · i quattro punti in neretto + resto, come l'inglese: il verbo in neretto;
+#   · «(Pro)» staccato dalla frase, come l'inglese (`tag`).
+# ⭐ I due motti restano in INGLESE (Pier, 17/10/2026 14:30 e 14:31): la pagina
+# li marca `lang` dell'originale (`_layouts/landing.html`).
+# ⚠️ LA RIGA DEI MARCHI È LA FORMULA ITALIANA DI APPLE, non quella della bozza:
+# il perché e la fonte stanno in `_data/it/terms.yml`.
+
+brand: "AIMONX"
+
+meta:
+  title: "AIMONX: app diario di tiro e contacolpi per le tue armi"
+  description: "AIMONX è il diario tecnico per tiratori sportivi: armi, colpi, sessioni al poligono, munizioni, manutenzione e costi, tutto sul tuo iPhone."
+
+hero:
+  sopratitolo: "TRACK · MAINTAIN · SHOOT BETTER"
+  titolo:
+    - "Sai davvero"
+    - "quanti colpi ha sparato"
+    - "la tua arma?"
+  lead: "AIMONX è l'app diario tecnico per tiratori sportivi. Armi, colpi, sessioni al poligono, munizioni, manutenzione e costi: tutto in un posto solo, sul tuo iPhone."
+  punti:
+    - forte: "Organizza"
+      resto: "le tue armi"
+    - forte: "Segui"
+      resto: "i tuoi progressi"
+    - forte: "Pianifica"
+      resto: "la manutenzione"
+    - forte: "Conosci"
+      resto: "i costi veri"
+  # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge italiano di
+  # Apple — e, scritto, il link di testo allo Store in fondo alla pagina.
+  badge: "Scarica su App Store"
+  schermata: "La schermata Home di AIMONX: ogni arma con i suoi colpi, gli ultimi 30 giorni a colpo d'occhio e le prossime scadenze."
+  riga: "I TUOI DATI DI TIRO. SEMPRE CON TE."
+  garanzie:
+    - "Nessun account"
+    - "Nessun tracciamento"
+    - "Nessun server AIMONX"
+  motto:
+    - "Same passion."
+    - "Every round counted."
+
+what:
+  title: "Cosa tiene in ordine"
+
+privacy:
+  title: "Privacy"
+  claim:
+    - "Nessun account. Nessun server AIMONX."
+    - "I tuoi dati non li vediamo mai."
+  items:
+    - lead: "Funziona offline."
+      body: "Usala al poligono anche senza campo. La copia cifrata si salva sul tuo iCloud la prima volta che usi l'app con la connessione."
+    - lead: "I tuoi dati parlano solo con il tuo iCloud."
+      body: "Nessun server AIMONX, nessuna terza parte, nessuna statistica d'uso."
+  note: "Il tuo diario vive cifrato sul tuo iPhone. Una copia cifrata resta nel tuo iCloud (attiva di serie, e puoi spegnerla), così un iPhone nuovo non vuol dire ricominciare da capo. La matricola è facoltativa."
+  link: "Scopri come AIMONX protegge i tuoi dati"
+
+security:
+  title: "Sicurezza"
+  items:
+    - lead: "Bloccata con Face ID."
+      body: "AIMONX si blocca quando la lasci e nel multitasking nasconde quello che contiene."
+    - lead: "Protezione avanzata, se la vuoi."
+      body: "Aggiungi una passphrase che conosci solo tu: a quel punto all'avvio non basta più nemmeno Face ID per aprire il diario. Se la dimentichi, nessuno può recuperare i tuoi dati."
+      tag: "(Pro)"
+
+piani:
+  title: "Free e Pro"
+  items:
+    - lead: "Free è un diario vero, non una demo."
+      body: "Un'arma attiva, sessioni illimitate, munizioni commerciali con inventario, una regola di pulizia a colpi, scadenze, statistiche, report PDF e la copia cifrata su iCloud."
+    - lead: "Pro toglie i limiti."
+      body: "Armi illimitate, munizioni ricaricate, regole di manutenzione illimitate di ogni tipo con il preavviso, scadenze illimitate, gare e statistiche di gara, archivi cifrati da esportare e la Protezione avanzata."
+    - lead: "Pro costa 1,99 € al mese o 14,99 € all'anno."
+      body: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
+  confronta: "Confronta Free e Pro"
+
+footer:
+  tagline: "AIMONX: l'app diario tecnico per tiratori sportivi."
+  copyright: "© 2026 Piermichele Fassio. Apple, il logo Apple, Face ID, iCloud, iPhone, Portachiavi, Touch ID e App Store sono marchi di Apple Inc., registrati negli Stati Uniti e in altri paesi e zone."
+  altri_marchi: "Tutti gli altri marchi appartengono ai rispettivi proprietari."

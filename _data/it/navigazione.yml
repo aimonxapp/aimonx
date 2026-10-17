@@ -1,0 +1,60 @@
+# _data/it/navigazione.yml — LE PAROLE DELLA NAVIGAZIONE E DELL'INDICE, in
+# italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/navigazione/navigazione-it-bozza.md
+# ⛔ STESSE CHIAVI di `_data/navigazione.yml`. Dove porta ogni voce sta in
+# `_data/it/collegamenti.yml` (`menu`); le funzioni in `_data/it/funzioni.yml`.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+menu:
+  voci:
+    - "Home"
+    - "Funzioni"
+    - "FAQ"
+    - "Free e Pro"
+    - "Scarica"
+  tutte: "Tutte le funzioni"
+  apri: "Menu"
+  chiudi: "Chiudi"
+
+briciole:
+  casa: "Home"
+
+# Le etichette per i lettori di schermo, invisibili a schermo.
+etichette:
+  menu: "Menu principale"
+  briciole: "Percorso"
+  lingua: "Lingua"
+
+sorelle: "Altre funzioni"
+
+piede:
+  - titolo: "App"
+    voci:
+      - "Home"
+      - "Free e Pro"
+      - "Novità"
+      - "Scarica"
+  - titolo: "Funzioni"
+    dalla_fonte: true
+  - titolo: "Approfondisci"
+    voci:
+      - "FAQ"
+  - titolo: "Supporto"
+    voci:
+      - "Supporto"
+      - "Privacy Policy"
+      - "Termini d'uso"
+  - titolo: "Lingua"
+    lingue: true
+
+indice:
+  meta:
+    title: "Funzioni: contacolpi, manutenzione, liste | AIMONX"
+    description: "Tutto quello che AIMONX tiene in ordine: armi, colpi, sessioni, munizioni, manutenzione, scadenze, costi e statistiche. Sul tuo iPhone, senza account."
+  titolo: "Tutto quello che AIMONX tiene in ordine"
+  sommario: "Un'app sola per le tue armi, i tuoi colpi, le tue munizioni e la tua manutenzione. Scegli una funzione per vedere come funziona."
+  # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+  badge: "Scarica su App Store"

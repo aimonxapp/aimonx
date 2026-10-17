@@ -11,12 +11,12 @@ _includes/briciole.html — LE BRICIOLE DI PANE delle pagine di sezione. Giro W2
   della navigazione (Cowork, 16/10/2026 21:37), via `_data/navigazione.yml`.
 {%- endcomment -%}
 {%- include briciole-calcola.html -%}
-{%- assign bri_n = site.data.navigazione -%}
+{%- assign bri_n = lin_t.navigazione -%}
 <nav class="briciole" aria-label="{{ bri_n.etichette.briciole }}">
   <ol>
-    <li><a href="{{ '/' | relative_url }}">{{ bri_n.briciole.casa }}</a></li>
+    <li><a href="{{ lin_pre | append: '/' | relative_url }}">{{ bri_n.briciole.casa }}</a></li>
     {%- if bri_su %}
-    <li><span class="sep" aria-hidden="true">›</span><a href="{{ bri_su | relative_url }}">{{ bri_su_v }}</a></li>
+    <li><span class="sep" aria-hidden="true">›</span><a href="{{ lin_pre | append: bri_su | relative_url }}">{{ bri_su_v }}</a></li>
     {%- endif %}
     <li><span class="sep" aria-hidden="true">›</span><span aria-current="page">{{ bri_qui }}</span></li>
   </ol>

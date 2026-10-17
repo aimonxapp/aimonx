@@ -42,22 +42,26 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
   nessuna parola — è lo stesso testo, con un'informazione in più.
 {%- endcomment -%}
 {%- comment -%} ⛔ `piede_f`, non `f`: vedi la nota in `_includes/barra.html`. {%- endcomment -%}
-{%- assign piede_f = site.data.landing.footer -%}
+{%- assign piede_f = lin_t.landing.footer -%}
 <footer class="chiusa">
   <p class="motto">{{ piede_f.tagline }}</p>
   <div class="colonne">
-    {%- for piede_c in site.data.navigazione.piede %}
+    {%- for piede_c in lin_t.navigazione.piede %}
     <div class="colonna">
       <p class="intesta" id="piede-{{ piede_c.titolo | slugify }}">{{ piede_c.titolo }}</p>
       <ul aria-labelledby="piede-{{ piede_c.titolo | slugify }}">
-        {%- if piede_c.dalla_fonte %}
-        {%- comment -%} La colonna delle funzioni (giro W25): quelle con una pagina, dalla fonte unica, più «All features». {%- endcomment %}
-        {%- for piede_f in site.data.funzioni %}
-        {%- if piede_f.aspetto.pagina %}
-        <li>{% include voce.html v=piede_f.nome dove=piede_f.aspetto.pagina %}</li>
+        {%- if piede_c.lingue %}
+        {%- comment -%} ⭐ Giro W28: la colonna delle lingue — le stesse voci del selettore in alto. {%- endcomment %}
+        {% include selettore.html %}
+        {%- elsif piede_c.dalla_fonte %}
+        {%- comment -%} La colonna delle funzioni (giro W25): quelle con una pagina, dalla fonte unica, più «All features». ⭐ Giro W28: l'indirizzo dal file inglese, il nome dalla stessa voce nella lingua della pagina. {%- endcomment %}
+        {%- for piede_a in site.data.funzioni %}
+        {%- if piede_a.aspetto.pagina %}
+        {%- assign piede_nome = lin_t.funzioni[forloop.index0].nome %}
+        <li>{% include voce.html v=piede_nome dove=piede_a.aspetto.pagina %}</li>
         {%- endif %}
         {%- endfor %}
-        <li>{% include voce.html v=site.data.navigazione.menu.tutte %}</li>
+        <li>{% include voce.html v=lin_t.navigazione.menu.tutte %}</li>
         {%- else %}
         {%- for piede_v in piede_c.voci %}
         <li>{% include voce.html v=piede_v %}</li>

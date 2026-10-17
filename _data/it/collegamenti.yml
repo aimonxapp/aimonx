@@ -1,0 +1,70 @@
+# _data/it/collegamenti.yml — DOVE PORTANO LE PAROLE ITALIANE. Giro W28.
+#
+# ⛔ QUESTO FILE È DI CLAUDE CODE, come `_data/collegamenti.yml`, di cui è la
+# gemella: stesse regole, scritte per esteso là — una frase diventa link solo
+# nei paragrafi e nelle voci di elenco, dalla più lunga alla più corta.
+# ⭐ GLI INDIRIZZI DEL SITO SONO SENZA `/it`: il prefisso lo mettono i layout
+# (`_includes/lingua.html`), così la pagina italiana porta alla pagina italiana.
+# ⚠️ Gli indirizzi esterni: quello italiano dove Apple ne pubblica uno
+# (l'informativa sulla privacy), se no quello dell'inglese — lo Standard EULA
+# Apple non lo pubblica in italiano come pagina a sé (verificato il 17/10/2026:
+# `apple.com/it/legal/internet-services/itunes/dev/stdeula/` risponde 404), e
+# GitHub non ha la sua Privacy Statement in italiano.
+
+frasi:
+  - frase: "Scopri come funzionano le liste personalizzate"
+    href: "/features/custom-lists/"
+    tipo: pagina
+  - frase: "Scopri cosa succede quando Pro finisce"
+    href: "/faq/#cosa-succede-ai-miei-dati-se-l-abbonamento-aimonx-pro-finisce"
+    tipo: pagina
+  - frase: "Scopri come funziona la Protezione avanzata"
+    href: "/features/privacy-and-security/"
+    tipo: pagina
+  - frase: "Scopri come funziona la manutenzione"
+    href: "/features/maintenance/"
+    tipo: pagina
+  - frase: "Scopri come AIMONX protegge i tuoi dati"
+    href: "/features/privacy-and-security/"
+    tipo: pagina
+  - frase: "Scopri come funziona il contacolpi"
+    href: "/features/round-count/"
+    tipo: pagina
+  - frase: "Garante per la protezione dei dati personali"
+    href: "https://www.garanteprivacy.it/"
+    tipo: esterno
+  - frase: "informativa sulla privacy di Apple"
+    href: "https://www.apple.com/it/legal/privacy/"
+    tipo: esterno
+  - frase: "Leggi lo Standard EULA di Apple"
+    href: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+    tipo: esterno
+  - frase: "Privacy Statement di GitHub"
+    href: "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+    tipo: esterno
+  - frase: "support@aimonx.app"
+    href: "mailto:support@aimonx.app"
+    tipo: posta
+  - frase: "Privacy Policy"
+    href: "/privacy-policy/"
+    tipo: pagina
+  - frase: "Termini d'uso"
+    href: "/terms/"
+    tipo: pagina
+  - frase: "FAQ"
+    href: "/faq/"
+    tipo: pagina
+
+# Le voci della barra, della tendina e del piede.
+menu:
+  "Home":                 "/"
+  "Funzioni":             "/features/"
+  "Tutte le funzioni":    "/features/"
+  "FAQ":                  "/faq/"
+  "Free e Pro":           "/pricing/"
+  "Confronta Free e Pro": "/pricing/"
+  "Scarica":              "store"
+  "Novità":               "/updates/"
+  "Supporto":             "/support/"
+  "Privacy Policy":       "/privacy-policy/"
+  "Termini d'uso":        "/terms/"

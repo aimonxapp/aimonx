@@ -1,0 +1,63 @@
+# _data/it/pricing.yml — LA PAGINA «FREE E PRO», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/pricing/pricing-it-bozza.md
+# ⛔ SOLO PAROLE: i segni e le tinte di piani, righe e vantaggi stanno in
+# `_data/pricing.yml` (`aspetto`), e `_layouts/prezzi.html` li prende da lì voce
+# per voce — quindi STESSO NUMERO DI VOCI E STESSO ORDINE dell'inglese.
+# ⚠️ `free` e `pro` di una riga: `true`/`false` sono il segno ✓/✗, una frase è
+# testo. ⚠️ I nomi dei piani restano «Free» e «Pro», come nell'app.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Free e Pro: piani e prezzi | AIMONX"
+  description: "AIMONX si scarica gratis, e Free è un diario vero. Pro costa 1,99 € al mese o 14,99 € all'anno, condivisibile con In famiglia. Confronta i due piani."
+
+titolo: "Free e Pro"
+sommario: "Comincia con un diario vero, non una demo. Passa a Pro quando ti serve di più."
+
+confronto:
+  titolo: "Confronto piani"
+  sottotitolo: "Tutte le funzionalità a colpo d'occhio."
+  piani:
+    - { nome: "Free", motto: "Perfetto per iniziare" }
+    - { nome: "Pro", motto: "Zero limiti, massime possibilità" }
+  incluso: "Compreso"
+  escluso: "Non compreso"
+  righe:
+    - { voce: "Armi", free: "1 attiva", pro: "Illimitate" }
+    - { voce: "Munizioni commerciali", free: "Complete, senza limiti", pro: "Complete, senza limiti" }
+    - { voce: "Munizioni ricaricate", free: false, pro: "Ricetta, costi, produzioni, inventario" }
+    - { voce: "Regole di manutenzione", free: "1 regola di pulizia per arma", pro: "Illimitate" }
+    - { voce: "Scadenze da seguire", free: "Fino a 2", pro: "Illimitate" }
+    - { voce: "Gare", free: false, pro: "Piazzamenti, punteggi, divisioni, risultati" }
+    - { voce: "Statistiche", free: true, pro: true }
+    - { voce: "Backup AIMONX", free: true, pro: true }
+    - { voce: "Creare un archivio da esportare", free: false, pro: true }
+    - { voce: "Importare un archivio", free: "Sempre disponibile", pro: "Sempre disponibile" }
+    - { voce: "Riattivare un'arma oltre il limite", free: false, pro: true }
+    - { voce: "Protezione avanzata (passphrase)", free: false, pro: true }
+
+vantaggi:
+  titolo: "Vantaggi Pro"
+  sottotitolo: "Tutto quello che ti serve, senza compromessi."
+  voci:
+    - { titolo: "Armi illimitate", testo: "La tua collezione cresce con te." }
+    - { titolo: "Munizioni ricaricate", testo: "Ricette, costi, produzioni, inventario." }
+    - { titolo: "Manutenzione senza limiti", testo: "Più regole per ogni arma, quante ne servono." }
+    - { titolo: "Gare", testo: "Piazzamenti, punteggi e risultati." }
+
+blocchi:
+  - titolo: "Quanto costa Pro"
+    forte: "Pro costa 1,99 € al mese o 14,99 € all'anno."
+    testo: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
+  - titolo: "Se Pro finisce"
+    forte: "Se l'abbonamento Pro finisce, non si perde niente."
+    testo: "Tutto quello che va oltre i limiti di Free resta leggibile, solo congelato, finché non torni."
+    link: "Scopri cosa succede quando Pro finisce"
+  - titolo: "Ne arriveranno altre"
+    testo: "Con i prossimi aggiornamenti arriveranno tante funzioni nuove, pensate per come si allenano davvero i tiratori sportivi."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

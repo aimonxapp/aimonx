@@ -48,6 +48,9 @@ briciole:
 etichette:
   menu: "Main menu"
   briciole: "Breadcrumb"
+  # ⭐ Giro W28: il selettore di lingua in alto (sezione «Language selector and
+  # footer column» della bozza, approvata da Pier il 17/10/2026 14:34).
+  lingua: "Language"
 
 # Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
 sorelle: "More features"
@@ -74,6 +77,10 @@ piede:
       - "Support"
       - "Privacy Policy"
       - "Terms of Use"
+  # ⭐ Giro W28: la quinta colonna, le lingue. ⚠️ Non ha `voci`: sono quelle del
+  # selettore in alto, una per lingua, coi nomi di `_data/lingue.yml`.
+  - titolo: "Language"
+    lingue: true
 
 # La pagina indice `/features/` — sezioni «Meta» e «Page» della bozza.
 indice:

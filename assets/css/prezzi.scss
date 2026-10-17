@@ -49,6 +49,13 @@
   padding: .7rem clamp(.3rem, 1.4vw, .7rem);
   vertical-align: middle; overflow-wrap: anywhere;
 }
+// ⭐ Giro W28: in italiano le parole sono più lunghe, e a 360 px
+// «manutenzione» si spezzava a caso («manutenzion / e»). Con `hyphens` il
+// browser va a capo dove la lingua lo permette (`<html lang>`), col trattino;
+// `overflow-wrap` resta come ultima rete. ⚠️ SOLO nella colonna delle voci:
+// sulle celle dei piani spezzava anche parole che stavano a capo da sole
+// («co-sti»). ⚠️ Il trattino è un segno del browser: il testo non cambia.
+.v-prezzi tbody th { hyphens: auto; -webkit-hyphens: auto; }
 .v-prezzi thead :is(th, td) { padding-block: 1rem .9rem; }
 // ⚠️ La colonna delle voci è più larga sul telefono: dal W26 porta anche il
 // riquadro dell'icona, e le parole devono restarci.

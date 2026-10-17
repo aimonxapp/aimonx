@@ -498,6 +498,14 @@ body.v-b {
 // detto. ⚠️ Senza questa riga tornerebbe a spezzarsi dove capita, e «No AIMONX
 // server» finirebbe a cavallo di due righe.
 .v-b .proclama .intero { white-space: nowrap; }
+// ⭐ Giro W28: sotto i 480 px un pezzo può essere più largo della finestra —
+// misurato in italiano, «Nessun account. Nessun server AIMONX.» a 360 px usciva
+// di 63 px. Lì ogni pezzo prende la SUA riga (si divide ancora dove ha detto
+// Pier) e, solo se non ci sta, va a capo dentro di sé. ⚠️ In inglese i pezzi
+// stavano già su una riga ciascuno a quelle larghezze: non cambia niente.
+@media (max-width: 479.98px) {
+  .v-b .proclama .intero { display: block; white-space: normal; }
+}
 .v-b .chiosa {
   margin-top: 1.3rem; max-width: 62ch;
   font-size: .98rem; line-height: 1.65; color: #B7CEC2;

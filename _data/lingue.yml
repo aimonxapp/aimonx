@@ -1,0 +1,45 @@
+# _data/lingue.yml — LE LINGUE DEL SITO. Giro W28 (architettura del 16/10/2026,
+# §2.3: «lo stesso scheletro in ogni lingua»).
+#
+# ⛔ QUESTO FILE È DI CLAUDE CODE: dice COME si chiama e DOVE vive ogni lingua.
+# Le parole di ogni lingua stanno altrove:
+#   · l'inglese, l'originale, nei file di testo di `_data/` (`landing.yml`, …);
+#   · ogni altra lingua in una cartella sua, `_data/<codice>/`, con GLI STESSI
+#     NOMI DI FILE E LE STESSE CHIAVI dell'inglese — ma SOLO le parole: segni,
+#     tinte e schermate (`aspetto`) restano nel file inglese, e i layout li
+#     prendono da lì, voce per voce, nello stesso ordine.
+# ⭐ Una lingua nuova costa file di testo, non codice: una riga qui, la cartella
+#   `_data/<codice>/`, e le pagine sotto `/<codice>/` — un front matter ciascuna,
+#   con `lingua: <codice>` (vedi `it/`). Una pagina non ancora tradotta NON
+#   esiste in quella lingua (architettura §7): niente pagine metà inglesi.
+#
+# I campi:
+#   · `codice`   — il nome della cartella dei dati e della lingua nel front matter;
+#   · `html`     — `<html lang>`, `hreflang` e `inLanguage` (BCP 47);
+#   · `og`       — `og:locale` (lingua_PAESE, la forma di Open Graph);
+#   · `nome`     — ⛔ il nome della lingua NELLA SUA LINGUA, come lo scrive il
+#                  selettore su tutte le versioni del sito (bozza della
+#                  navigazione, Cowork, approvata da Pier il 17/10/2026 14:34);
+#   · `prefisso` — dove vive l'albero di quella lingua: «» per l'inglese;
+#   · `store`    — il link allo Store di quella lingua, ⛔ NUDO; se manca vale
+#                  quello di `_data/collegamenti.yml`;
+#   · `badge`    — il file del badge di Apple in quella lingua, ⛔ quello di
+#                  Apple non modificato (fonte e impronta in `scripts/attese.txt`).
+# ⚠️ La PRIMA voce è l'originale e la `x-default` di `hreflang` (Google).
+
+- codice: en
+  html: en-US
+  og: en_US
+  nome: "English"
+  prefisso: ""
+  badge: /assets/img/download-on-the-app-store-black-en-us.svg
+
+- codice: it
+  html: it
+  og: it_IT
+  nome: "Italiano"
+  prefisso: /it
+  # ⭐ Il link dato dal giro W28: stesso numero dell'app, il paese davanti e
+  # nessun parametro di campagna.
+  store: "https://apps.apple.com/it/app/aimonx/id6794895643"
+  badge: /assets/img/download-on-the-app-store-black-it-it.svg

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/pagina.html — LO SCHELETRO DELLE PAGINE DA LEGGERE. Giro W9.
 
@@ -32,7 +33,7 @@
   `page.dati` sceglie il testo, `page.tinta` il colore del filetto, `page.foglio`
   il foglio di stile (lo legge `_includes/testa.html`).
 {%- endcomment -%}
-{%- assign d = site.data[page.dati] -%}
+{%- assign d = lin_t[page.dati] -%}
 <head>
   {%- include testa.html meta=d.meta -%}
 </head>

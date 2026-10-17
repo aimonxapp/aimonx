@@ -1,0 +1,33 @@
+# _data/it/whats-new.yml — LA PAGINA «NOVITÀ», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/whats-new/whats-new-it-bozza.md
+# ⚠️ La data della 1.0.1 è il 15 ottobre, il giorno in cui è uscita sullo Store
+# italiano (Pier, 17/10/2026 14:29); la pagina inglese resta al 14 (data USA).
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/whats-new.yml`.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Novità: tutte le versioni dell'app | AIMONX"
+  description: "Cosa è cambiato in ogni versione di AIMONX, l'app diario per armi su iPhone, dalla più recente."
+
+titolo: "Novità di AIMONX"
+sommario: "Ogni aggiornamento dell'app, dal più recente."
+
+blocchi:
+  - tipo: h2
+    testo: "Versione 1.0.1 — 15 ottobre 2026"
+  - tipo: ul
+    voci:
+      - "Nuovo tasto Esegui backup adesso nella pagina Backup AIMONX, per fare il backup su iCloud quando vuoi."
+      - "Il backup su iCloud ora si rimette in pari anche quando apri l'app, non solo quando la chiudi."
+      - "Corretto un arresto dell'app durante l'eliminazione di un'arma."
+      - "Il backup di diari grandi usa molta meno memoria."
+  - tipo: h2
+    testo: "Versione 1.0.0 — 8 ottobre 2026"
+  - tipo: p
+    testo: "La prima versione. Registra le tue armi, le sessioni al poligono e le gare. Tieni il conto di colpi, munizioni, manutenzione, scadenze e costi. Crea report PDF delle tue armi. Il diario è cifrato sul tuo iPhone, con una copia cifrata nel tuo iCloud."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

@@ -37,6 +37,8 @@ $img_badge = 0
 $banner_pagine = 0
 $banner_id = []
 $app_jsonld = 0
+$alternate = {}
+$lingua_pagina = {}
 $immagini = []
 $schermate = 0
 $schermate_jsonld = 0
@@ -78,14 +80,23 @@ pagine.each do |percorso|
   # quel che si misura. ⚠️ Si raccoglie il primo paragrafo `minuta` del piede
   # di ogni pagina che ne ha uno; quante VARIANTI ne escono si stampa qui
   # sotto (`marchi_varianti`, atteso 1), insieme a quante pagine la portano.
+  # ⭐ Giro W28: la lingua della pagina, e le sue gemelle (`hreflang`).
+  lingua = nudo[/<html lang="([^"]*)"/, 1].to_s
+  via_qui = "/" + nome.sub(%r{index\.html\z}, "")
+  $lingua_pagina[via_qui] = lingua
+  $alternate[via_qui] = nudo.scan(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/)
   piede = nudo[%r{<footer class="chiusa">(.*?)</footer>}m, 1]
   if piede
+    # ⭐ Giro W28: PIEDE E MARCHI SI CONFRONTANO LINGUA PER LINGUA — l'italiano
+    # ha il suo — e la colonna delle lingue porta alla gemella di OGNI pagina:
+    # i suoi indirizzi e il suo `aria-current` si tolgono prima del confronto.
+    piede = piede.gsub(/<a href="[^"]*"( hreflang=)/, '<a\\1').gsub(/ aria-current="true"/, "")
     # ⭐ Giro W18: il PIEDE INTERO, non solo la riga dei marchi — tolto
     # `aria-current`, che giustamente cambia da pagina a pagina. Quante
     # versioni ne escono si stampa (`piedi_varianti`, atteso 1).
-    ($piedi[piede.gsub(/ aria-current="page"/, "").gsub(/[[:space:]]+/, " ").strip] ||= []) << nome
+    (($piedi[lingua] ||= {})[piede.gsub(/ aria-current="page"/, "").gsub(/[[:space:]]+/, " ").strip] ||= []) << nome
     riga = piede[%r{<p class="minuta">(.*?)</p>}m, 1].to_s.gsub(/[[:space:]]+/, " ").strip
-    ($marchi[riga] ||= []) << nome
+    (($marchi[lingua] ||= {})[riga] ||= []) << nome
   end
 
   # --- ⓪ i dati strutturati e l immagine di condivisione (giro W10) ---------
@@ -211,7 +222,9 @@ pagine.each do |percorso|
   # un link incollato domani da una mail di Apple li porterebbe con sé.
   nudo.scan(/<a\b[^>]*\bhref="(https?:\/\/apps\.apple\.com[^"]*)"/i) do |(dove)|
     $link_store << dove
-    unless dove =~ %r{\Ahttps://apps\.apple\.com/app/[a-z0-9-]+/id\d+\z}
+    # ⭐ Giro W28: col paese davanti (`/it/`) per le lingue che ne hanno uno
+    # (`_data/lingue.yml`, `store`) — ⛔ sempre senza `?`.
+    unless dove =~ %r{\Ahttps://apps\.apple\.com/(?:[a-z]{2}/)?app/[a-z0-9-]+/id\d+\z}
       $badge << "#{nome}: il link allo Store non e nudo -> #{dove[0, 90]}"
     end
   end
@@ -402,6 +415,50 @@ unless id_banner.size == 1 && id_store == id_banner
   $badge << "il banner di Safari dice app-id #{id_banner.join(",")}, il link allo Store id #{id_store.join(",")}"
 end
 
+# --- ⑤ le lingue e le gemelle (giro W28) -----------------------------------
+# ⭐ Google (localized-versions): ogni versione elenca TUTTE le versioni, sé
+# stessa compresa, con indirizzi assoluti, e le elenca ognuna allo stesso modo
+# — RECIPROCO —, più `x-default`. ⛔ Qui si misura sul sito costruito, non sul
+# codice che dovrebbe farlo: ogni gemella deve esistere, rimandare indietro,
+# e dichiarare in `<html lang>` la lingua con cui è elencata.
+$hreflang = []
+coppie = Set.new
+con_gemelle = 0
+$alternate.each do |via, voci|
+  next if voci.empty?
+  con_gemelle += 1
+  mappa = {}
+  voci.each do |h, u|
+    $hreflang << "#{via}: hreflang non assoluto -> #{u}" unless u.start_with?("https://aimonx.app/")
+    $hreflang << "#{via}: hreflang #{h} ripetuto" if mappa.key?(h)
+    mappa[h] = u.sub(%r{\Ahttps://aimonx\.app}, "")
+  end
+  $hreflang << "#{via}: manca x-default" unless mappa.key?("x-default")
+  sue = mappa.reject { |h, _| h == "x-default" }
+  $hreflang << "#{via}: non elenca sé stessa" unless sue.values.include?(via)
+  if sue.key?($lingua_pagina[via].to_s) && sue[$lingua_pagina[via].to_s] != via
+    $hreflang << "#{via}: <html lang=#{$lingua_pagina[via]}> ma hreflang dice un'altra pagina"
+  end
+  $hreflang << "#{via}: <html lang> «#{$lingua_pagina[via]}» non è fra i suoi hreflang" unless sue.key?($lingua_pagina[via].to_s)
+  sue.each do |h, altra|
+    next if altra == via
+    indietro = ($alternate[altra] || []).map { |hh, uu| [hh, uu.sub(%r{\Ahttps://aimonx\.app}, "")] }
+    if !$alternate.key?(altra)
+      $hreflang << "#{via}: la gemella #{h} non è una pagina costruita -> #{altra}"
+    elsif !indietro.include?([$lingua_pagina[via].to_s, via])
+      $hreflang << "#{via}: la gemella #{altra} NON rimanda qui"
+    elsif $lingua_pagina[altra] != h
+      $hreflang << "#{via}: la gemella #{altra} è elencata #{h} ma dice <html lang=#{$lingua_pagina[altra]}>"
+    else
+      coppie << [via, altra].sort
+    end
+    x = mappa["x-default"]
+    xx = indietro.to_h["x-default"]
+    $hreflang << "#{via}: x-default diverso da quello della gemella #{altra}" if xx && x != xx
+  end
+end
+# ⛔ E una pagina indicizzabile SENZA gemelle si conta: oggi sono tutte gemellate.
+senza = $alternate.select { |via, v| v.empty? && !noindex.any? { |f| ("/" + f.sub(radice.chomp("/") + "/", "").sub(%r{index\.html\z}, "")) == via } }.keys
 puts "pagine_costruite=#{pagine.size}"
 puts "link_rotti=#{$link_rotti.size}"
 puts "titoli_fuori_ordine=#{$titoli_fuori.size}"
@@ -413,13 +470,19 @@ puts "pagine_noindex=#{noindex.size}"
 puts "link_verso_fuori=#{$verso_fuori.size}"
 puts "blocchi_jsonld=#{$jsonld}"
 puts "offerte_a_zero=#{$offerte_a_zero}"
-puts "marchi_pagine=#{$marchi.values.flatten.size}"
-puts "marchi_varianti=#{$marchi.size}"
-puts "piedi_varianti=#{$piedi.size}"
+puts "marchi_pagine=#{$marchi.values.map(&:values).flatten.size}"
+# ⭐ Giro W28: le varianti si contano DENTRO ogni lingua, e si stampa la più alta.
+puts "marchi_varianti=#{$marchi.values.map(&:size).max.to_i}"
+puts "piedi_varianti=#{$piedi.values.map(&:size).max.to_i}"
+puts "lingue_nel_sito=#{$lingua_pagina.values.uniq.size}"
+puts "hreflang_pagine=#{con_gemelle}"
+puts "hreflang_coppie=#{coppie.size}"
+puts "hreflang_senza_gemelle=#{senza.size}"
+puts "hreflang_guasti=#{$hreflang.size}"
 puts "deadline_nel_sito=#{$deadline.size}"
 puts "faqpage_nel_sito=#{$faqpage}"
 $deadline.tally.each { |f, n| puts "  · «deadline» #{n} volte in #{f}" }
-$marchi.each { |r, n| puts "  · marchi (#{n.size} pagine): #{r[0, 110]}" } if $marchi.size > 1
+$marchi.each { |l, m| m.each { |r, n| puts "  · marchi #{l} (#{n.size} pagine): #{r[0, 110]}" } if m.size > 1 }
 puts "badge_guasti=#{$badge.size}"
 # ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il
 # giorno in cui le schermate sparissero dalla pagina — zero immagini sono anche
@@ -430,5 +493,6 @@ puts "banner_pagine=#{$banner_pagine}"
 puts "immagini_guasti=#{$immagini.size}"
 puts "schermate_in_pagina=#{$schermate}"
 puts "schermate_nei_dati_strutturati=#{$schermate_jsonld}"
-($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge + $immagini).each { |r| puts "  ⛔ #{r}" }
+($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge + $immagini + $hreflang).each { |r| puts "  ⛔ #{r}" }
+senza.each { |v| puts "  · pagina indicizzabile senza gemelle: #{v}" }
 $verso_fuori.sort.each { |u| puts "  · #{u}" }

@@ -31,12 +31,41 @@ _includes/testa.html — la testa di OGNI pagina, scritta una volta sola.
 <meta name="robots" content="noindex">
 {%- else %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- comment -%}
+  ⭐ Giro W28: LE GEMELLE IN ALTRE LINGUE, come le chiede Google
+  (developers.google.com/search/docs/specialty/international/localized-versions):
+  ogni versione elenca TUTTE le versioni, sé stessa compresa, con l'indirizzo
+  assoluto, più `x-default` sull'originale — la prima di `_data/lingue.yml`,
+  l'inglese. ⛔ Reciproco per costruzione: la gemella è lo stesso indirizzo
+  dopo il prefisso, e ogni pagina lo calcola allo stesso modo. ⚠️ Una pagina
+  che in un'altra lingua NON esiste non la elenca (architettura §7: niente
+  pagine metà inglesi); senza almeno due versioni non esce niente. Che sia
+  reciproco lo misura `scripts/misure-pagine.rb` (`hreflang_guasti`).
+  ⛔ `canonical` resta su sé stessa: l'italiana non punta all'inglese.
+{%- endcomment -%}
+{%- assign testa_n = 0 -%}
+{%- capture testa_alt -%}
+{%- for testa_l in site.data.lingue -%}
+{%- assign testa_u = testa_l.prefisso | append: lin_base -%}
+{%- assign testa_p = site.pages | where: "url", testa_u | first -%}
+{%- if testa_p -%}
+{%- assign testa_n = testa_n | plus: 1 %}
+<link rel="alternate" hreflang="{{ testa_l.html }}" href="{{ testa_u | absolute_url }}">
+{%- if forloop.first -%}{%- assign testa_x = testa_u -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if testa_n > 1 -%}
+{{ testa_alt }}
+<link rel="alternate" hreflang="x-default" href="{{ testa_x | absolute_url }}">
+{%- endif %}
 {%- endif %}
 
 {%- comment -%} Condivisione. ⛔ Nessuna immagine presa da fuori (giro W4 §3③):
 l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcomment -%}
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="{{ site.data.landing.brand }}">
+<meta property="og:site_name" content="{{ lin_t.landing.brand }}">
+<meta property="og:locale" content="{{ lin.og }}">
 <meta property="og:title" content="{{ include.meta.title }}">
 {%- if include.meta.description %}
 <meta property="og:description" content="{{ include.meta.description }}">
@@ -54,6 +83,9 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
   sono quelle approvate del piede, e i colori quelli di `comune.scss`.
   ⚠️ `og:image:alt` porta la riga del piede, che è testo già approvato: è quel
   che sente chi riceve il messaggio e non vede l'immagine.
+  ⚠️ Giro W28: resta la riga INGLESE anche sulle pagine in altre lingue, ed è
+  voluto — l'immagine è una sola, e la frase scritta dentro è quella inglese:
+  il testo alternativo dice cosa c'è nell'immagine, non cosa dice la pagina.
 {%- endcomment -%}
 <meta property="og:image" content="{{ '/assets/img/condivisione-1200x630.png' | absolute_url }}">
 <meta property="og:image:width" content="1200">
@@ -70,7 +102,7 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/aimonx-180.png' | relative_url }}">
 <meta name="theme-color" content="#0F3625">
 {%- comment -%} Giro W21: il banner di Safari (Smart App Banner), come lo descrive Apple — developer.apple.com/documentation/webkit/promoting-apps-with-smart-app-banners: il tag nel `head` di OGNI pagina, perché da Google si atterra anche su una pagina interna. ⛔ L'`app-id` non è ricopiato: è il numero in coda al link allo Store di `_data/collegamenti.yml`, una fonte sola. ⛔ Senza `app-argument`: il sito non promette di portare a una schermata dell'app. ⚠️ Non è un secondo badge: lo disegna Safari, coi dati dello Store, e la pagina non scarica niente. {%- endcomment %}
-<meta name="apple-itunes-app" content="app-id={{ site.data.collegamenti.store | split: '/id' | last }}">
+<meta name="apple-itunes-app" content="app-id={{ lin_store | split: '/id' | last }}">
 
 {%- comment -%} ⭐ Giro W26: ogni foglio e script porta la sua IMPRONTA, `?v=…`, da `_data/impronte.yml` (lo scrive `scripts/impronte.sh`): l'indirizzo cambia quando cambia il file, e il browser non mescola più il vecchio col nuovo. {%- endcomment %}
 {%- assign testa_v = site.data.impronte %}

@@ -1,0 +1,68 @@
+# _data/it/terms.yml — I TERMINI D'USO, in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/terms/terms-it-bozza.md
+# e il titolo della scheda viene dalla bozza dei titoli italiana.
+# ⭐ Strada A (Pier, 17/10/2026 14:33): l'inglese e l'italiana dicono le stesse
+# cose e cambiano INSIEME.
+# ⚠️ La descrizione sono le prime due frasi di «Cos'è AIMONX, e cosa non è», come
+# per l'inglese: la bozza italiana non ha una sezione Meta.
+# ⚠️ `data_pubblicazione` sostituisce «[data di pubblicazione]» della bozza.
+# ⚠️ LA RIGA DEI MARCHI È LA FORMULA ITALIANA DI APPLE, non quella della bozza
+# («…in altri Paesi e aree geografiche»): il giro W28 chiede di confrontarla con
+# la fonte ufficiale e, se diversa, di usare quella di Apple. Le guide italiane
+# di Apple (support.apple.com/it-it, «Copyright e marchi registrati», lette il
+# 17/10/2026) scrivono «…sono marchi di Apple Inc., registrati negli Stati Uniti
+# e in altri paesi e zone». ⛔ Le linee guida di Apple per i terzi esistono solo
+# in inglese (apple.com/it/legal/intellectual-property/guidelinesfor3rdparties.html
+# serve il testo inglese). È dichiarata in `scripts/testo-approvato.sh`.
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/terms.yml`.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Termini d'uso | AIMONX"
+  description: "AIMONX è un diario per tiratori sportivi. Non vende armi né munizioni, e niente nell'app o in questo sito è una consulenza legale."
+
+titolo: "Termini d'uso"
+aggiornato: "Ultimo aggiornamento:"
+data_pubblicazione: "17 ottobre 2026"
+
+blocchi:
+  - tipo: h2
+    testo: "Usare l'app AIMONX"
+  - tipo: p
+    testo: "AIMONX ti viene concessa in licenza secondo il Contratto di licenza standard per l'utente finale di Apple (lo «Standard EULA»). Non aggiungiamo una licenza nostra."
+  - tipo: p
+    testo: "Leggi lo Standard EULA di Apple"
+  - tipo: h2
+    testo: "AIMONX Pro"
+  - tipo: p
+    testo: "AIMONX si usa gratis. AIMONX Pro è un abbonamento facoltativo che sblocca più funzioni."
+  - tipo: ul
+    voci:
+      - "Pro è un abbonamento a rinnovo automatico, venduto e fatturato da Apple tramite App Store. Si rinnova finché non lo disdici."
+      - "Puoi gestirlo o disdirlo quando vuoi nelle Impostazioni dell'iPhone: tocca il tuo nome, poi Abbonamenti."
+      - "I rimborsi li gestisce Apple, secondo le sue regole."
+  - tipo: p
+    testo: "Se l'abbonamento Pro finisce, non si perde niente. Tutto quello che va oltre i limiti di Free resta leggibile, solo congelato, finché non torni."
+  - tipo: h2
+    testo: "Cos'è AIMONX, e cosa non è"
+  - tipo: p
+    testo: "AIMONX è un diario per tiratori sportivi. Non vende armi né munizioni, e niente nell'app o in questo sito è una consulenza legale. Rispettare le leggi del posto in cui vivi spetta a te."
+  - tipo: h2
+    testo: "Questo sito"
+  - tipo: p
+    testo: "© 2026 Piermichele Fassio. Salvo dove indicato, tutti i contenuti di aimonx.app sono nostri. Facciamo il possibile perché siano esatti, ma sono forniti «così come sono»."
+  - tipo: p
+    testo: "Apple, il logo Apple, Face ID, iCloud, iPhone, Portachiavi, Touch ID e App Store sono marchi di Apple Inc., registrati negli Stati Uniti e in altri paesi e zone."
+  - tipo: p
+    testo: "Icone di Phosphor Icons (phosphoricons.com), usate secondo la licenza MIT."
+  - tipo: h2
+    testo: "Contatti"
+  - tipo: p
+    testo: "Domande su questi termini? Scrivici a support@aimonx.app."
+  - tipo: h2
+    testo: "Modifiche"
+  - tipo: p
+    testo: "Se questi termini cambiano, aggiorniamo questa pagina e cambiamo la data in alto."

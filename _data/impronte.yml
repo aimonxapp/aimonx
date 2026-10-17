@@ -1,10 +1,10 @@
 # _data/impronte.yml — SCRITTO DA scripts/impronte.sh, non a mano.
 # L'impronta (SHA-256, 10 caratteri) di ogni foglio e script costruito:
 # va in coda al suo indirizzo, `?v=…` (`_includes/testa.html`).
-"/assets/css/b.css": "f374b38491"
-"/assets/css/comune.css": "321cf6557c"
+"/assets/css/b.css": "edc0341568"
+"/assets/css/comune.css": "24c0438caf"
 "/assets/css/funzione.css": "1592196ac0"
 "/assets/css/indice.css": "0d96d11925"
-"/assets/css/prezzi.css": "7828d84791"
+"/assets/css/prezzi.css": "8dc5ef08b9"
 "/assets/css/testo.css": "3551faaffa"
 "/assets/js/menu.js": "4044bfa305"

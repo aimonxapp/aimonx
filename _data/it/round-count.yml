@@ -1,0 +1,73 @@
+# _data/it/round-count.yml — LA PAGINA «CONTACOLPI», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/round-count/round-count-it-bozza.md
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/round-count.yml`: le schermate si
+# accoppiano per ordine ai nomi di `_data/aspetto.yml` (`funzioni.round-count`).
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Contacolpi automatico per ogni arma | AIMONX"
+  description: "Registri una sessione al poligono e AIMONX somma da solo i colpi a quell'arma, poi ti dice quando è ora di pulirla o di cambiare una molla."
+
+titolo: "Il contacolpi che fa i conti al posto tuo"
+sommario: "Quasi tutti i tiratori perdono il conto da qualche parte fra la borsa del poligono e il quaderno. Con AIMONX registri la sessione e i colpi di ogni arma si aggiornano da soli. Niente conti a mente, niente fogli di calcolo."
+
+blocchi:
+  - tipo: h2
+    testo: "Come funziona"
+  - tipo: p
+    forte: "Registra la sessione."
+    testo: "Scegli l'arma, scegli la munizione, scrivi quanti colpi hai sparato. Fine."
+  - tipo: p
+    forte: "Il totale si aggiorna da solo."
+    testo: "I colpi dell'arma salgono. Se tieni l'inventario di quella munizione, i colpi disponibili scendono. E con loro si muovono i contatori della manutenzione."
+  - tipo: p
+    forte: "Hai sbagliato? Correggi e basta."
+    testo: "Modifichi una sessione o la cancelli, e i totali la seguono. AIMONX non tiene un numero a parte che col tempo può sballare: ogni volta rifà la somma delle tue sessioni."
+  - tipo: schermate
+    alt:
+      - "Una sessione al poligono in AIMONX: l'arma, la data, il poligono, la munizione e i 150 colpi sparati."
+  - tipo: h2
+    testo: "Parti da dove è la tua arma oggi"
+  - tipo: p
+    testo: "L'hai comprata usata, o ci hai già sparato qualche migliaio di colpi? Inserisci i colpi con cui è arrivata e scegli se devono contare nel totale e nella manutenzione."
+  - tipo: h2
+    testo: "Hai sparato più di una munizione?"
+  - tipo: p
+    testo: "Aggiungi una riga per ognuna. Una scatola da allenamento e qualche colpo della munizione da gara finiscono nella stessa sessione, contati ciascuno per conto suo."
+  - tipo: h2
+    testo: "Il dry fire non aggiunge colpi"
+  - tipo: p
+    testo: "Registra l'allenamento a secco come una sessione a parte, con i tuoi scatti a secco. Non tocca mai i colpi dell'arma né le munizioni."
+  - tipo: h2
+    testo: "Contano anche le armi in affitto"
+  - tipo: p
+    testo: "Hai sparato con un'arma in affitto al poligono? Registrala come le altre. I suoi colpi contano, e non c'è manutenzione da seguire."
+  - tipo: h2
+    testo: "I colpi guidano la manutenzione"
+  - tipo: p
+    testo: "Imposta le tue regole per ogni arma, per esempio una pulizia ogni 500 colpi o una molla di recupero nuova a 5.000, e scegli con quanto anticipo saperlo. Ogni arma mostra lo stato a colori: verde quando è tutto a posto, giallo quando la manutenzione è consigliata, arancio quando è necessaria."
+  - tipo: schermate
+    alt:
+      - "La pagina di un'arma in AIMONX, con i colpi totali e le regole di manutenzione a colpi per la pulizia e per la molla di recupero."
+  - tipo: h2
+    testo: "Guarda dove vanno i tuoi colpi"
+  - tipo: p
+    testo: "Colpi per arma, colpi nel tempo e quanto ti costa davvero ogni colpo."
+  - tipo: schermate
+    alt:
+      - "I colpi sparati per arma in AIMONX, con la quota di ogni arma, le sessioni e il costo per colpo."
+      - "Le foto di un'arma e i suoi ultimi 30 giorni in AIMONX: colpi, sessioni, spesa e costo per colpo."
+  - tipo: h2
+    testo: "Free e Pro"
+  - tipo: p
+    testo: "Free conta i colpi di un'arma attiva, con sessioni illimitate. Pro li conta per tutte le armi che hai. Pro aggiunge anche regole di manutenzione di ogni tipo e il preavviso."
+  - tipo: h2
+    testo: "Privata per come è fatta"
+  - tipo: p
+    testo: "I tuoi colpi vivono cifrati sul tuo iPhone. Nessun account. Nessun server AIMONX. I tuoi dati non li vediamo mai."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

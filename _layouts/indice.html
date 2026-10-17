@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/indice.html — IL MODELLO «HUB»: la pagina-indice di una sezione.
   Giro W24 (architettura del 16/10/2026, §5). Oggi la usa `/features/`.
@@ -21,7 +22,7 @@
   vengono da `_data/navigazione.yml` e da `_data/funzioni.yml`, di Cowork.
   ⛔ UN SOLO BADGE in fondo, con le regole di `_layouts/funzione.html`.
 {%- endcomment -%}
-{%- assign ind = site.data[page.dati][page.chiave] -%}
+{%- assign ind = lin_t[page.dati][page.chiave] -%}
 <head>
   {%- include testa.html meta=ind.meta -%}
 </head>
@@ -39,8 +40,10 @@
 
   <main id="principale">
     <ul class="indice">
-      {%- for f in site.data[page.fonte] -%}
-      {%- assign a = f.aspetto -%}
+      {%- comment -%} ⭐ Giro W28: l'aspetto dal file inglese, le parole dalla stessa voce nella lingua della pagina. {%- endcomment -%}
+      {%- for fa in site.data[page.fonte] -%}
+      {%- assign a = fa.aspetto -%}
+      {%- assign f = lin_t[page.fonte][forloop.index0] -%}
       {%- assign forma = a.forma | default: 'telefono' %}
       <li class="sez-{{ a.tinta | default: 'verde' }} forma-{{ forma }}">
         <div class="parole">
@@ -58,7 +61,7 @@
             link non c'è. L'indirizzo è quello della fonte unica.
           {%- endcomment -%}
           {%- if a.pagina and f.link %}
-          <p class="oltre"><a href="{{ a.pagina | relative_url }}">{{ f.link }}</a></p>
+          <p class="oltre"><a href="{{ lin_pre | append: a.pagina | relative_url }}">{{ f.link }}</a></p>
           {%- endif %}
         </div>
         {%- if a.schermata and f.alt %}
@@ -74,8 +77,8 @@
 
     {%- if ind.badge %}
     <p class="scarica">
-      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
-        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+      <a href="{{ lin_store }}" rel="noreferrer">
+        <img src="{{ lin_badge | relative_url }}"
              alt="{{ ind.badge }}" width="120" height="40">
       </a>
     </p>

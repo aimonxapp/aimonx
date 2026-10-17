@@ -353,7 +353,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti pagine_noindex badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti pagine_noindex lingue_nel_sito hreflang_pagine hreflang_coppie hreflang_senza_gemelle hreflang_guasti badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done
@@ -369,6 +369,14 @@ VOCI
         "$(shasum -a 256 "$BADGE_COSTRUITO" | cut -c1-16)"
     else
       confronta "impronta del badge di Apple nella build" badge_apple_impronta "assente"
+    fi
+    # ⭐ Giro W28: il badge ITALIANO, stessa prova sullo stesso genere di file.
+    BADGE_IT="$SITO_TMP/assets/img/download-on-the-app-store-black-it-it.svg"
+    if [ -r "$BADGE_IT" ]; then
+      confronta "impronta del badge italiano di Apple nella build" badge_apple_impronta_it \
+        "$(shasum -a 256 "$BADGE_IT" | cut -c1-16)"
+    else
+      confronta "impronta del badge italiano di Apple nella build" badge_apple_impronta_it "assente"
     fi
     printf '%s\n' "$PAGINE_OUT" | grep -E '^  ' | sed 's/^/   /'
     N_FUORI_LINK=$(printf '%s\n' "$PAGINE_OUT" | sed -n 's/^link_verso_fuori=\([0-9]*\)$/\1/p' | head -1)

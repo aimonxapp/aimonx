@@ -1,0 +1,32 @@
+{%- comment -%}
+_includes/lingua.html — IN CHE LINGUA È QUESTA PAGINA, in poche variabili. Giro W28.
+  Lo include ogni layout PRIMA di tutto il resto, e da lì in poi barra, piede,
+  briciole, frasi e dati strutturati leggono queste e non più `site.data`
+  direttamente:
+    · `lin`       — la voce di `_data/lingue.yml` (dal front matter `lingua:`;
+                    senza, la prima: l'inglese);
+    · `lin_t`     — dove stanno le PAROLE: `site.data` per l'inglese,
+                    `site.data.<codice>` (la cartella `_data/<codice>/`) per le altre;
+    · `lin_c`     — dove portano le parole (`collegamenti.yml` di quella lingua);
+    · `lin_pre`   — il prefisso dell'albero: «» o `/it`;
+    · `lin_base`  — l'indirizzo della pagina SENZA prefisso: è lo stesso in ogni
+                    lingua, ed è quel che si confronta con gli indirizzi dei dati;
+    · `lin_store` — il link allo Store di quella lingua, ⛔ nudo;
+    · `lin_badge` — il file del badge di Apple in quella lingua.
+  ⛔ Gli indirizzi nei dati restano SENZA prefisso (`/features/round-count/`):
+  il prefisso lo mettono i layout, così una lingua nuova non riscrive un
+  indirizzo. ⛔ Variabili col prefisso `lin_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- assign lin_prima = site.data.lingue | first -%}
+{%- assign lin = site.data.lingue | where: "codice", page.lingua | first | default: lin_prima -%}
+{%- if lin.codice == lin_prima.codice -%}
+  {%- assign lin_t = site.data -%}
+{%- else -%}
+  {%- assign lin_t = site.data[lin.codice] -%}
+{%- endif -%}
+{%- assign lin_c = lin_t.collegamenti -%}
+{%- assign lin_pre = lin.prefisso | default: "" -%}
+{%- assign lin_store = lin.store | default: site.data.collegamenti.store -%}
+{%- assign lin_badge = lin.badge -%}
+{%- assign lin_base = page.url -%}
+{%- if lin_pre != "" -%}{%- assign lin_base = page.url | remove_first: lin_pre -%}{%- endif -%}

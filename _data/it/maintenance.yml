@@ -1,0 +1,65 @@
+# _data/it/maintenance.yml — LA PAGINA «MANUTENZIONE», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/maintenance/maintenance-it-bozza.md
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/maintenance.yml`: le schermate si
+# accoppiano per ordine ai nomi di `_data/aspetto.yml` (`funzioni.maintenance`).
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Manutenzione armi a colpi: pulizie e interventi | AIMONX"
+  description: "Regole di pulizia e manutenzione a colpi per ogni arma. AIMONX ti mostra nell'app cosa è consigliato o necessario e tiene il diario di ogni intervento."
+
+titolo: "La manutenzione delle armi, a colpi"
+sommario: "Una pulizia ogni 500 colpi, una molla di recupero nuova a 5.000: le tue regole le conosci. Il difficile è tenere il conto. AIMONX conta i colpi dalle tue sessioni al poligono e ti mostra quando è il momento."
+
+blocchi:
+  - tipo: h2
+    testo: "Le tue regole, i tuoi colpi"
+  - tipo: p
+    testo: "Per ogni arma scegli cosa va fatto e ogni quanti colpi: pulizia, lubrificazione, cambio molle, un controllo o qualsiasi voce della tua lista. Dai a ogni regola un titolo e, se vuoi, due righe su come la fai. AIMONX non ti dice ogni quanto pulire: le regole le decidi tu, dal manuale o dalla tua esperienza."
+  - tipo: schermate
+    alt:
+      - "La pagina di un'arma in AIMONX, con i colpi totali e le regole di manutenzione a colpi per la pulizia e per la molla di recupero."
+  - tipo: h2
+    testo: "Cosa c'è da fare, a colpo d'occhio"
+  - tipo: p
+    testo: "Ogni arma mostra lo stato a colori: verde quando è tutto a posto, giallo quando la manutenzione è consigliata, arancio quando è necessaria. Lo vedi sull'arma, in Home e subito dopo aver salvato una sessione."
+  - tipo: schermate
+    alt:
+      - "Le tue armi in AIMONX, ognuna con i suoi colpi e lo stato della manutenzione a colori."
+  - tipo: h2
+    testo: "Il preavviso, per arrivare prima"
+  - tipo: p
+    testo: "Scegli con quanti colpi di anticipo vuoi saperlo, così la pulizia la pianifichi invece di trovartela addosso. Il preavviso è di Pro."
+  - tipo: h2
+    testo: "Segnala come fatta, e il conto riparte"
+  - tipo: p
+    testo: "Apri una regola e tocca Segna come eseguita. AIMONX compila data, colpi dell'arma e dati della regola. Correggi quello che non va, per esempio la data se l'hai fatta due giorni fa, e salva. Il contatore di quella regola riparte da lì."
+  - tipo: schermate
+    alt:
+      - "La modifica di una regola di manutenzione in AIMONX: in alto il tasto Segna come eseguita, poi tipo, titolo, descrizione dell'intervento, intervallo in colpi e preavviso."
+      - "Un intervento di manutenzione nuovo in AIMONX, già compilato dalla regola: titolo, descrizione e i colpi attuali dell'arma."
+  - tipo: h2
+    testo: "Ogni intervento nel diario dell'arma"
+  - tipo: p
+    testo: "Manutenzione & Diario Arma tiene la storia di ogni arma: pulizie, lubrificazioni, controlli, riparazioni. Scrivi cosa hai fatto, i prodotti che hai usato e quanto è costato."
+  - tipo: schermate
+    alt:
+      - "Manutenzione & Diario Arma in AIMONX: due pulizie complete della stessa pistola, ognuna con data, colpi e descrizione."
+  - tipo: h2
+    testo: "Niente notifiche, apposta"
+  - tipo: p
+    testo: "AIMONX non ti manda mai una notifica per la manutenzione. I colpi salgono solo quando registri una sessione: è lì che AIMONX controlla, e te lo dice subito nell'app."
+  - tipo: h2
+    testo: "L'hai comprata usata?"
+  - tipo: p
+    testo: "Inserisci i colpi con cui è arrivata e scegli se devono contare per la manutenzione."
+  - tipo: h2
+    testo: "Free e Pro"
+  - tipo: p
+    testo: "Free dà a ogni arma una regola di pulizia, ai colpi che scegli tu. Pro aggiunge regole illimitate di ogni tipo e il preavviso."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

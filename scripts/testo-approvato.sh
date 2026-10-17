@@ -92,7 +92,9 @@ else
   for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
                support/support-en-bozza.md terms/terms-en-bozza.md \
                round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md \
-               navigazione/navigazione-en-bozza.md; do
+               navigazione/navigazione-en-bozza.md \
+               landing/landing-it-bozza.md navigazione/navigazione-it-bozza.md \
+               titoli/titoli-it-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
   done
 fi
@@ -121,7 +123,12 @@ modo, contenuti, repo, costruito = ARGV
 SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/features/`",
-  "Piede, i titoli delle colonne"]
+  "Piede, i titoli delle colonne", "Language selector and footer column (with the Italian site)"]
+# ⭐ Giro W28: le stesse sezioni, nella bozza italiana — dove i titoli hanno parole loro.
+SEZIONI_NAVIGAZIONE_IT = ["Menu in alto", "Briciole di pane",
+  "Etichette per i lettori di schermo (invisibili a schermo)",
+  "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/it/features/`",
+  "Piede, i titoli delle colonne", "Il selettore di lingua (nuovo, anche sul sito inglese)"]
 
 # Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
@@ -212,11 +219,60 @@ PAGINE = [
 # descrizione stanno ALLA LETTERA nella bozza (la riga del piede e il paragrafo
 # della parte alta), quindi si cercano come tutto il resto. ⛔ Era `WD38`: da
 # eccezioni, una descrizione rimasta vecchia non la guardava nessuno.
+# ⭐ GIRO W28, IL SITO IN ITALIANO: le stesse pagine, con i file di
+# `_data/it/` e le bozze `*-it-bozza.md`. ⛔ Un'altra lista e non un ciclo
+# sulla prima, ed è voluto: le sezioni delle bozze italiane hanno nomi loro, e
+# una riga scritta per esteso si legge — una regola di traduzione dei nomi no.
+# ⚠️ La 404 non c'è: il sito ne ha una sola, inglese (`404.html`).
+PAGINE_IT = [
+  { nome: "it/landing", dati: "_data/it/landing.yml", bozza: "landing/landing-it-bozza.md",
+    uscita: "it/index.html", lingua: "it" },
+  { nome: "it/privacy", dati: "_data/it/privacy.yml", bozza: "privacy-policy/privacy-policy-it-bozza.md",
+    uscita: "it/privacy-policy/index.html", lingua: "it", anche: [["titoli/titoli-it-bozza.md", ["Titoli e indirizzi"]]] },
+  { nome: "it/support", dati: "_data/it/support.yml", bozza: "support/support-it-bozza.md",
+    uscita: "it/support/index.html", lingua: "it" },
+  { nome: "it/terms",   dati: "_data/it/terms.yml",   bozza: "terms/terms-it-bozza.md",
+    uscita: "it/terms/index.html", lingua: "it", anche: [["titoli/titoli-it-bozza.md", ["Titoli e indirizzi"]]] },
+  { nome: "it/round-count", dati: "_data/it/round-count.yml", bozza: "round-count/round-count-it-bozza.md",
+    uscita: "it/features/round-count/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/your-data", dati: "_data/it/your-data.yml", bozza: "your-data/your-data-it-bozza.md",
+    uscita: "it/features/privacy-and-security/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/maintenance", dati: "_data/it/maintenance.yml", bozza: "maintenance/maintenance-it-bozza.md",
+    uscita: "it/features/maintenance/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/custom-lists", dati: "_data/it/custom-lists.yml", bozza: "custom-lists/custom-lists-it-bozza.md",
+    uscita: "it/features/custom-lists/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/whats-new", dati: "_data/it/whats-new.yml", bozza: "whats-new/whats-new-it-bozza.md",
+    uscita: "it/updates/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/faq", dati: "_data/it/faq.yml", bozza: "faq/faq-it-bozza.md",
+    uscita: "it/faq/index.html", sezioni: ["Meta", "Page"], lingua: "it",
+    alt_da: "your-data/your-data-it-bozza.md" },
+  { nome: "it/pricing", dati: "_data/it/pricing.yml", bozza: "pricing/pricing-it-bozza.md",
+    uscita: "it/pricing/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/navigazione", dati: "_data/it/navigazione.yml", bozza: "navigazione/navigazione-it-bozza.md",
+    uscita: "it/features/index.html", sezioni: SEZIONI_NAVIGAZIONE_IT, lingua: "it",
+    anche: [["landing/landing-it-bozza.md", nil]],
+    alt_da: "your-data/your-data-it-bozza.md" },
+  { nome: "it/funzioni", dati: "_data/it/funzioni.yml", bozza: "landing/landing-it-bozza.md", lingua: "it",
+    anche: [["navigazione/navigazione-it-bozza.md", SEZIONI_NAVIGAZIONE_IT]],
+    alt_da: "your-data/your-data-it-bozza.md" },
+]
+PAGINE.each { |p| p[:lingua] ||= "en" }
+PAGINE.concat(PAGINE_IT)
+
 DICHIARATE = {
   "landing" => {},
   "privacy" => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
   "support" => {},
   "terms"   => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
+  # ⭐ Giro W28: la data, come per l'inglese, e LA RIGA DEI MARCHI — la formula
+  # italiana di Apple («…in altri paesi e zone», support.apple.com/it-it,
+  # «Copyright e marchi registrati», letta il 17/10/2026) al posto di quella
+  # della bozza («…in altri Paesi e aree geografiche»): il giro W28 chiede la
+  # formula di Apple se diversa. Fonte per esteso in `_data/it/terms.yml`.
+  "it/privacy" => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza" },
+  "it/terms"   => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza",
+                    ".blocchi[11].testo" => "la formula italiana dei marchi di Apple, non quella della bozza (giro W28)" },
+  "it/landing" => { ".footer.copyright" => "la formula italiana dei marchi di Apple, non quella della bozza (giro W28)" },
 }
 
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
@@ -273,11 +329,19 @@ PAGINE.each do |p|
   # alternativi (giro W18, `alt_da`). Vuoto per tutte le altre.
   p[:alt_prestati] = p[:alt_da] ? piano(File.join(contenuti, p[:alt_da]), ["Page"]).split("\n").map(&:strip) : []
 end
-BOZZA_LANDING = PAGINE.first[:testo_bozza]
+# ⭐ Giro W28: landing e navigazione PER LINGUA — una pagina italiana si
+# confronta con le bozze italiane, e l'inglese con le inglesi.
+BOZZA_LANDING = {
+  "en" => PAGINE.first[:testo_bozza],
+  "it" => PAGINE.find { |q| q[:nome] == "it/landing" }[:testo_bozza],
+}
 # ⭐ Giro W24: la barra, le briciole e il piede sono su OGNI pagina, e le loro
 # parole stanno nella bozza della navigazione — come il piede di prima stava
 # in quella della landing. Quindi ogni pagina si confronta anche con lei.
-BOZZA_NAVIGAZIONE = piano(File.join(contenuti, "navigazione/navigazione-en-bozza.md"), SEZIONI_NAVIGAZIONE)
+BOZZA_NAVIGAZIONE = {
+  "en" => piano(File.join(contenuti, "navigazione/navigazione-en-bozza.md"), SEZIONI_NAVIGAZIONE),
+  "it" => piano(File.join(contenuti, "navigazione/navigazione-it-bozza.md"), SEZIONI_NAVIGAZIONE_IT),
+}
 
 fuori = 0
 
@@ -346,6 +410,42 @@ if modo == "sorgente"
       fuori += d
       puts "  #{nome}: voci di testo #{n_testo} - righe di aspetto #{n_asp}" + (d.zero? ? "" : "  NON COINCIDONO")
     end
+  end
+
+  # ⭐ GIRO W28: OGNI FILE DI UN'ALTRA LINGUA HA LA FORMA DELL'INGLESE. Segni,
+  # tinte, schermate e indirizzi stanno SOLO nel file inglese, e i layout li
+  # accoppiano alle parole per POSIZIONE: una voce in più o in meno in
+  # italiano farebbe scivolare tutto di una riga senza rompere la pagina.
+  # ⛔ Si confrontano chiavi, lunghezze degli elenchi e i ✓/✗ (`true`/`false`)
+  # della tabella dei prezzi; le frasi no — sono l'altra misura.
+  # ⚠️ Una chiave in più è ammessa solo dove è dichiarata qui sotto.
+  IN_PIU = { "funzioni" => ["nome"] }
+  confronta_forma = lambda do |en, al, via, ammesse, diff|
+    case en
+    when Hash
+      return diff << "#{via}: nell'inglese è un gruppo di chiavi, qui no" unless al.is_a?(Hash)
+      (en.keys - ["aspetto"]).each { |k| diff << "#{via}.#{k}: manca" unless al.key?(k) }
+      (al.keys - en.keys - ammesse).each { |k| diff << "#{via}.#{k}: in più rispetto all'inglese" }
+      (en.keys & al.keys).each { |k| confronta_forma.call(en[k], al[k], "#{via}.#{k}", ammesse, diff) unless k == "aspetto" }
+    when Array
+      return diff << "#{via}: nell'inglese è un elenco, qui no" unless al.is_a?(Array)
+      diff << "#{via}: #{al.size} voci, l'inglese #{en.size}" if al.size != en.size
+      en.zip(al).each_with_index { |(x, y), i| confronta_forma.call(x, y, "#{via}[#{i}]", ammesse, diff) unless y.nil? }
+    when true, false
+      diff << "#{via}: #{al.inspect}, l'inglese #{en.inspect}" unless al == en
+    else
+      diff << "#{via}: nell'inglese è una frase, qui no" unless al.is_a?(String)
+    end
+  end
+  PAGINE.select { |p| p[:lingua] != "en" }.each do |p|
+    en_file = File.join(repo, p[:dati].sub(%r{\A_data/[a-z]{2}/}, "_data/"))
+    al_file = File.join(repo, p[:dati])
+    next unless File.readable?(en_file) && File.readable?(al_file)
+    diff = []
+    confronta_forma.call(YAML.load_file(en_file), YAML.load_file(al_file), "", IN_PIU[File.basename(en_file, ".yml")] || [], diff)
+    fuori += diff.size
+    puts "  #{p[:nome]}: forma uguale all'inglese" + (diff.empty? ? "" : " — NO, #{diff.size} scarti")
+    diff.each { |x| puts "     ⛔ #{p[:nome]}#{x}" }
   end
 else
   # ② IL SERVITO. Si prende il testo che esce dai tag e si cerca nella bozza.
@@ -442,7 +542,16 @@ else
     # nella bozza al suo posto c è uno spazio normale.
     pezzi.map! { |x| x.gsub("&nbsp;", " ").gsub("&amp;", "&").gsub("&lt;", "<").gsub("&#39;", "'").gsub("&quot;", "\"") }
 
-    consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING + "\n" + BOZZA_NAVIGAZIONE
+    consentito = p[:testo_bozza] + "\n" + BOZZA_LANDING[p[:lingua]] + "\n" + BOZZA_NAVIGAZIONE[p[:lingua]]
+    # ⭐ Giro W28: il selettore scrive OGNI lingua nel suo nome, su tutte le
+    # versioni: «Italiano» sulle inglesi e «English» sulle italiane. Quei nomi
+    # stanno nella sezione del selettore di ciascuna bozza della navigazione.
+    BOZZA_NAVIGAZIONE.each_value { |b| consentito += "\n" + b[/^.*English · Italiano.*$/].to_s }
+    # ⭐ La riga dei marchi dichiarata (formula italiana di Apple) esce nel piede di ogni pagina italiana.
+    if p[:lingua] == "it"
+      dl = YAML.load_file(File.join(repo, "_data/it/landing.yml"))
+      consentito += "\n" + dl.dig("footer", "copyright").to_s
+    end
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,
@@ -461,6 +570,9 @@ else
     if File.readable?(dati)
       d = YAML.load_file(dati)
       date << d["data_pubblicazione"] if d["data_pubblicazione"]
+      if p[:nome] == "it/terms"
+        consentito += "\n" + d.dig("blocchi", 11, "testo").to_s
+      end
       if (DICHIARATE[p[:nome]] || {}).key?(".meta.title")
         titolo_dichiarato = d.dig("meta", "title")
       end

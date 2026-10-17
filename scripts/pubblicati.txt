@@ -23,6 +23,11 @@
 index.html
 */index.html
 features/*/index.html
+# ⭐ Giro W28: le lingue, ognuna nella sua cartella con lo stesso albero
+# (`_data/lingue.yml`). ⚠️ Per forma, non per nome: una lingua nuova di due
+# lettere ci entra da sola; un'altra cartella di due livelli no, e si nomina.
+??/*/index.html
+??/features/*/index.html
 # ⭐ Giro W27: la pagina «non trovato», che GitHub Pages cerca alla radice con
 # questo nome e serve per ogni indirizzo che non esiste.
 404.html

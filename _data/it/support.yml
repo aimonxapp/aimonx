@@ -1,0 +1,44 @@
+# _data/it/support.yml — LA PAGINA «SUPPORTO», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/support/support-it-bozza.md
+# ⚠️ «FAQ», «Privacy Policy», «Termini d'uso» e l'indirizzo email diventano link
+# da soli (`_data/it/collegamenti.yml`, `frasi`).
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/support.yml`.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Supporto e contatti | AIMONX"
+  description: "Hai una domanda, hai trovato un errore o hai un'idea per AIMONX? Scrivici a support@aimonx.app. Ogni email la legge chi costruisce l'app."
+
+titolo: "Supporto"
+
+blocchi:
+  - tipo: p
+    testo: "Hai una domanda, hai trovato un errore o hai un'idea per AIMONX? Scrivici a support@aimonx.app. Puoi scriverci in italiano."
+  - tipo: p
+    testo: "Guarda le FAQ per risposte veloci su iPhone nuovo, password e Free e Pro."
+  - tipo: p
+    testo: "AIMONX la fa un solo sviluppatore indipendente, quindi ogni email la legge la persona che costruisce l'app."
+  - tipo: h2
+    testo: "Per aiutarci ad aiutarti"
+  - tipo: p
+    testo: "Dicci:"
+  - tipo: ul
+    voci:
+      - "il modello del tuo iPhone e la versione di iOS"
+      - "la versione di AIMONX (la trovi nelle impostazioni dell'app)"
+      - "cosa hai fatto, cosa ti aspettavi e cosa è successo invece"
+  - tipo: p
+    testo: "Anche uno screenshot aiuta."
+  - tipo: h2
+    testo: "Le tue cose private restano private"
+  - tipo: p
+    testo: "Per aiutarti non ci servono mai le tue matricole, le foto delle tue armi o il tuo diario. Lasciali fuori dall'email, e coprili se compaiono in uno screenshot."
+  - tipo: h2
+    testo: "Privacy e termini"
+  - tipo: ul
+    voci:
+      - "Privacy Policy"
+      - "Termini d'uso"

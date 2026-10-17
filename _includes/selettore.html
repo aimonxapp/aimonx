@@ -1,0 +1,35 @@
+{%- comment -%}
+_includes/selettore.html — LE LINGUE, una voce per lingua. Giro W28 (architettura
+  del 16/10/2026, §4; bozza della navigazione, Cowork, approvata da Pier il
+  17/10/2026 14:34).
+  La usano il selettore in alto (`include.dove == 'alto'`, dentro un `<nav>`
+  con la sua etichetta) e la colonna «Language» del piede (solo le voci).
+  ⭐ COME FUNZIONA, e senza JavaScript: ogni voce è un link alla STESSA pagina
+  nell'altra lingua — stesso indirizzo dopo il prefisso (`lin_base`). Se la
+  gemella non esiste (oggi la 404, che è una sola: `404.html`), la voce porta
+  alla home di quella lingua invece che a un indirizzo rotto.
+  ⛔ NIENTE BANDIERE, e il nome di ogni lingua è scritto NELLA SUA LINGUA su
+  tutte le versioni, con il suo `lang` (lo pronuncia giusto un lettore di
+  schermo) e `hreflang` (dice dove porta). La lingua della pagina porta
+  `aria-current="true"`.
+  ⛔ NESSUN REINDIRIZZAMENTO AUTOMATICO, per lingua del browser o paese: si
+  sceglie cliccando, e basta.
+  ⛔ Qui non c'è nessuna parola: i nomi vengono da `_data/lingue.yml`,
+  l'etichetta da `_data/<lingua>/navigazione.yml`. Variabili `sel_`.
+{%- endcomment -%}
+{%- capture sel_voci -%}
+  {%- for sel_l in site.data.lingue -%}
+  {%- assign sel_dove = sel_l.prefisso | append: lin_base -%}
+  {%- assign sel_c = site.pages | where: "url", sel_dove | first -%}
+  {%- unless sel_c -%}{%- assign sel_dove = sel_l.prefisso | append: '/' -%}{%- endunless %}
+  <li><a href="{{ sel_dove | relative_url }}" hreflang="{{ sel_l.html }}" lang="{{ sel_l.html }}"{% if sel_l.codice == lin.codice %} aria-current="true"{% endif %}>{{ sel_l.nome }}</a></li>
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if include.dove == 'alto' -%}
+<nav class="lingue" aria-label="{{ lin_t.navigazione.etichette.lingua }}">
+  <ul>{{ sel_voci }}
+  </ul>
+</nav>
+{%- else -%}
+{{ sel_voci }}
+{%- endif -%}

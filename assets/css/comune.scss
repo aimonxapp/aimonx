@@ -279,6 +279,30 @@ img, svg { display: block; max-width: 100%; }
   .barra .sotto .tutte a { color: var(--titolo-verde); }
 }
 
+// --- il selettore di lingua (giro W28) ----------------------------------------
+// ⭐ Architettura del 16/10/2026, §4: «discreto, in alto a destra». Una riga
+// piccola SOPRA la barra, allineata a destra, uguale a ogni larghezza: sul
+// telefono non ruba posto al pulsante «Menu», sul computer non allunga la fila
+// delle voci (che in italiano sono più lunghe). ⛔ Niente bandiere, niente
+// JavaScript: due link. ⛔ Il separatore fra le lingue è un PUNTO DISEGNATO,
+// non un carattere: un «·» scritto qui lo leggerebbe un lettore di schermo.
+// ⭐ La lingua della pagina: bianca E sottolineata (il colore da solo non
+// basta, WCAG «Use of Color»), come la voce corrente della barra.
+// ⚠️ Mentre il pannello del telefono è aperto, sparisce col resto della
+// pagina: sta in `.apertura` e non è la barra (regola qui sopra).
+.lingue { display: flex; justify-content: flex-end; padding-top: .55rem; margin-bottom: -.6rem; }
+.lingue ul { display: flex; align-items: center; font-size: .82rem; }
+.lingue li { display: flex; align-items: center; }
+.lingue li + li::before {
+  content: ""; width: 3px; height: 3px; margin-inline: .55rem; border-radius: 50%;
+  background: #9DB6AA;
+}
+.lingue a { display: inline-block; padding: .35rem .15rem; color: #CFE3D8; text-decoration: none; }
+.lingue a:hover { color: var(--bianco); text-decoration: underline; text-underline-offset: .25em; }
+.lingue [aria-current="true"] {
+  color: var(--bianco); font-weight: 700; text-decoration: underline; text-underline-offset: .25em;
+}
+
 // ⚠️ «Free and Pro» salta a una sezione della landing: senza questo, il titolo
 // finirebbe incollato al bordo alto della finestra. Le altre tre sezioni non
 // sono più nella barra, ma restano raggiungibili dagli indirizzi già scritti.
@@ -305,8 +329,12 @@ img, svg { display: block; max-width: 100%; }
   margin-block: clamp(1.4rem, 3.5vw, 2rem) clamp(1.4rem, 3.5vw, 2rem);
 }
 // ⭐ Giro W25: quattro colonne — due per riga da 480 px, quattro da 760.
+// ⭐ Giro W28: CINQUE, con le lingue — due per riga da 480 px, tre da 760,
+// tutte e cinque da 1024: a 760 cinque colonne sarebbero larghe un centinaio
+// di pixel, e «APPROFONDISCI» in maiuscolo spaziato non ci sta.
 @media (min-width: 480px) { .colonne { grid-template-columns: repeat(2, minmax(0, 12rem)); } }
-@media (min-width: 760px) { .colonne { grid-template-columns: repeat(4, minmax(0, 12rem)); } }
+@media (min-width: 760px) { .colonne { grid-template-columns: repeat(3, minmax(0, 12rem)); } }
+@media (min-width: 1024px) { .colonne { grid-template-columns: repeat(5, minmax(0, 12rem)); } }
 .colonne .intesta {
   font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
   color: #9DB6AA;
@@ -322,7 +350,8 @@ img, svg { display: block; max-width: 100%; }
 .colonne a:hover { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
 // ⭐ Il link della pagina che si sta già leggendo: bianco e sottolineato —
 // `aria-current="page"` lo dice a chi ascolta, questa regola a chi guarda.
-.colonne [aria-current="page"] { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
+.colonne :is([aria-current="page"], [aria-current="true"]) { color: var(--bianco); text-decoration: underline; text-underline-offset: .2em; }
+// ⭐ Giro W28: `true` è la lingua della pagina, nella colonna delle lingue.
 
 .minuta { margin-top: .95rem; max-width: 62ch; font-size: .85rem; line-height: 1.6; color: #9DB6AA; }
 

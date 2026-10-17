@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/prezzi.html — LA PAGINA «FREE AND PRO», `/pricing/`. Giro W25.
   ⭐ IL MODELLO «ARTICOLO» (architettura del 16/10/2026, §5): briciole, titolo,
@@ -27,8 +28,10 @@
   `_data/pricing.yml`, di Cowork. ⛔ UN SOLO BADGE in fondo, con le regole di
   `_layouts/funzione.html`. ⛔ NESSUN PREZZO nei dati strutturati.
 {%- endcomment -%}
-{%- assign d = site.data[page.dati] -%}
+{%- assign d = lin_t[page.dati] -%}
 {%- assign c = d.confronto -%}
+{%- comment -%} ⭐ Giro W28: segni e tinte dal file inglese (`site.data[page.dati]`), voce per voce nello stesso ordine; le parole dalla lingua della pagina. {%- endcomment -%}
+{%- assign prezzi_en = site.data[page.dati] -%}
 <head>
   {%- include testa.html meta=d.meta -%}
 </head>
@@ -51,14 +54,16 @@
             {%- comment -%} ⚠️ La testata della colonna si ripete a chi ascolta a ogni cella, e col motto dentro sarebbe «Pro, No limits. Everything unlocked.» dodici volte: `abbr` è il nome breve che l'HTML prevede per questo, il solo nome del piano. ⚠️ Quanto i lettori di schermo lo rispettino non è misurato qui. {%- endcomment %}
             {%- for prezzi_p in c.piani %}
             {%- assign prezzi_k = prezzi_p.nome | downcase %}
-            <th scope="col" class="{{ prezzi_k }}" abbr="{{ prezzi_p.nome }}">{% include icona.html nome=prezzi_p.aspetto.icona classe='piano' %}<span class="nome-piano">{{ prezzi_p.nome }}</span><span class="motto-piano">{{ prezzi_p.motto }}</span></th>
+            {%- assign prezzi_a = prezzi_en.confronto.piani[forloop.index0].aspetto %}
+            <th scope="col" class="{{ prezzi_k }}" abbr="{{ prezzi_p.nome }}">{% include icona.html nome=prezzi_a.icona classe='piano' %}<span class="nome-piano">{{ prezzi_p.nome }}</span><span class="motto-piano">{{ prezzi_p.motto }}</span></th>
             {%- endfor %}
           </tr>
         </thead>
         <tbody>
           {%- for r in c.righe %}
+          {%- assign prezzi_a = prezzi_en.confronto.righe[forloop.index0].aspetto %}
           <tr>
-            <th scope="row"><span class="voce">{%- if r.aspetto %}<span class="riquadro">{% include icona.html nome=r.aspetto.icona glifo=r.aspetto.glifo aimonx=r.aspetto.aimonx sagoma=r.aspetto.sagoma %}</span>{% endif %}<span>{{ r.voce }}</span></span></th>
+            <th scope="row"><span class="voce">{%- if prezzi_a %}<span class="riquadro">{% include icona.html nome=prezzi_a.icona glifo=prezzi_a.glifo aimonx=prezzi_a.aimonx sagoma=prezzi_a.sagoma %}</span>{% endif %}<span>{{ r.voce }}</span></span></th>
             {%- for prezzi_v in (0..1) %}
             {%- if prezzi_v == 0 %}{% assign prezzi_x = r.free %}{% assign prezzi_k = 'free' %}{% else %}{% assign prezzi_x = r.pro %}{% assign prezzi_k = 'pro' %}{% endif %}
             {%- if prezzi_x == true %}
@@ -80,7 +85,8 @@
       <p class="sotto-titolo">{{ d.vantaggi.sottotitolo }}</p>
       <ul>
         {%- for v in d.vantaggi.voci %}
-        <li class="tinta-{{ v.aspetto.tinta | default: 'oro' }}"><span class="cerchio">{% include icona.html nome=v.aspetto.icona glifo=v.aspetto.glifo aimonx=v.aspetto.aimonx colori=v.aspetto.colori sagoma=v.aspetto.sagoma %}</span><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
+        {%- assign prezzi_a = prezzi_en.vantaggi.voci[forloop.index0].aspetto %}
+        <li class="tinta-{{ prezzi_a.tinta | default: 'oro' }}"><span class="cerchio">{% include icona.html nome=prezzi_a.icona glifo=prezzi_a.glifo aimonx=prezzi_a.aimonx colori=prezzi_a.colori sagoma=prezzi_a.sagoma %}</span><h3>{{ v.titolo }}</h3><p>{{ v.testo }}</p></li>
         {%- endfor %}
       </ul>
     </section>
@@ -97,8 +103,8 @@
 
     {%- if d.badge %}
     <p class="scarica">
-      <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
-        <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+      <a href="{{ lin_store }}" rel="noreferrer">
+        <img src="{{ lin_badge | relative_url }}"
              alt="{{ d.badge }}" width="120" height="40">
       </a>
     </p>

@@ -1,0 +1,67 @@
+# _data/it/custom-lists.yml — LA PAGINA «LISTE PERSONALIZZATE», in italiano. Giro W28.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (14:34), nella sua cartella dei contenuti:
+#     …/2- Contenuti/custom-lists/custom-lists-it-bozza.md
+# ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/custom-lists.yml`: le schermate si
+# accoppiano per ordine ai nomi di `_data/aspetto.yml` (`funzioni.custom-lists`).
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "Liste personalizzate: calibri e tipologie d'arma | AIMONX"
+  description: "Non trovi il tuo calibro o la tua tipologia d'arma? Aggiungila. Ogni lista da cui scegli in AIMONX la decidi tu: l'app si adatta a come tiri."
+
+titolo: "AIMONX, su misura per come tiri"
+sommario: "Non trovi il tuo calibro? La tua tipologia d'arma? La tua disciplina di gara? Aggiungila. Ogni lista da cui scegli in AIMONX la decidi tu. È l'app che si adatta a te, non il contrario."
+
+blocchi:
+  - tipo: h2
+    testo: "Nove liste, tutte tue"
+  - tipo: p
+    testo: "Calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza. Le trovi in Gestione liste, nella scheda Home: ognuna la sistemi come vuoi."
+  - tipo: schermate
+    alt:
+      - "Gestione liste in AIMONX: calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza."
+  - tipo: h2
+    testo: "Aggiungi quello che manca"
+  - tipo: p
+    testo: "Spari un calibro wildcat? Fai gare in una disciplina che non conosciamo? Aggiungila una volta, e la ritrovi ogni volta che serve: quando inserisci un'arma, registri una scatola di munizioni o una gara."
+  - tipo: schermate
+    alt:
+      - "I tipi di palla in AIMONX, con LRN aggiunta dall'utente e segnata come personale, sopra a quelli di serie come FMJ, TMJ e HP."
+  - tipo: h2
+    testo: "Togli quello che non usi mai"
+  - tipo: p
+    testo: "Non hai revolver? Non spari mai ad avancarica? Toglili dalle liste scorrendo, e nelle tendine vedi solo quello che è tuo. Tutto quello che hai già registrato resta esattamente com'era."
+  - tipo: schermate
+    alt:
+      - "I malfunzionamenti in AIMONX, dalla mancata alimentazione allo squib load, con il tasto Ripristina predefiniti sotto la lista."
+  - tipo: h2
+    testo: "Puoi sempre cambiare idea"
+  - tipo: p
+    testo: "Tocca Ripristina predefiniti e le voci di serie tornano. Quelle che hai aggiunto tu restano dove sono."
+  - tipo: h2
+    testo: "Statistiche pulite, niente errori di battitura"
+  - tipo: p
+    testo: "Scegliere da una lista invece di scrivere tiene pulite le statistiche: niente «9mm» da una parte e «9x19» dall'altra."
+  - tipo: schermate
+    alt:
+      - "La scelta del calibro per un'arma nuova in AIMONX, da una lista che comincia con 9mm Luger, 9x21 e .45 ACP."
+  - tipo: h2
+    testo: "Icone dove servono"
+  - tipo: p
+    testo: "Scegli la tua icona per ogni tipo di intervento, tipo di sessione e tipologia di scadenza. È l'icona che vedi sulle tue armi, sulle sessioni e sulle scadenze."
+  - tipo: schermate
+    alt:
+      - "I tipi di intervento in AIMONX, ognuno con la sua icona: pulizia, lubrificazione, controllo, sostituzione parti, riparazione e armaiolo."
+  - tipo: h2
+    testo: "Free"
+  - tipo: p
+    testo: "La gestione delle liste fa parte di AIMONX Free. Per usare nelle regole di manutenzione tipi di intervento diversi dalla pulizia serve Pro."
+  - tipo: h2
+    testo: "Privata per come è fatta"
+  - tipo: p
+    testo: "Le tue liste vivono cifrate sul tuo iPhone, insieme al resto del diario. Nessun account. Nessun server AIMONX. I tuoi dati non li vediamo mai."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

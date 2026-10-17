@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
 {%- comment -%}
   _layouts/landing.html — L'UNICO scheletro della landing.
 
@@ -40,10 +41,17 @@
   stile (li legge `_includes/testa.html`).
 {%- endcomment -%}
 <head>
-  {%- include testa.html meta=site.data.landing.meta -%}
+  {%- include testa.html meta=lin_t.landing.meta -%}
 </head>
 <body class="v-{{ page.variante }}">
-  {%- assign d = site.data.landing -%}
+  {%- assign d = lin_t.landing -%}
+  {%- comment -%}
+    ⭐ Giro W28: i due motti — «TRACK · MAINTAIN · SHOOT BETTER» e «Same
+    passion. Every round counted.» — restano in INGLESE in tutte le lingue
+    (Pier, 17/10/2026 14:31), e fuori dall'inglese lo dicono anche a un
+    lettore di schermo: `lang` dell'originale sull'elemento.
+  {%- endcomment -%}
+  {%- capture motto_lang -%}{%- unless lin.codice == lin_prima.codice %} lang="{{ lin_prima.html }}"{% endunless -%}{%- endcapture -%}
 
   <div class="apertura">
     {%- comment -%}
@@ -60,7 +68,7 @@
 
     <div class="eroe">
       <div class="parole">
-        <p class="sopratitolo">{{ d.hero.sopratitolo }}</p>
+        <p class="sopratitolo"{{ motto_lang }}>{{ d.hero.sopratitolo }}</p>
 
         {%- comment -%}
           LA DOMANDA, sulle tre righe della bozza, con la CENTRALE in verde.
@@ -145,8 +153,8 @@
           ⛔ NESSUN EFFETTO AL PASSAGGIO DEL MOUSE: sarebbe modificarlo.
         {%- endcomment -%}
         <p class="scarica">
-          <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
-            <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+          <a href="{{ lin_store }}" rel="noreferrer">
+            <img src="{{ lin_badge | relative_url }}"
                  alt="{{ d.hero.badge }}" width="120" height="40">
           </a>
         </p>
@@ -212,10 +220,12 @@
         accoppiamento per posizione da tenere allineato. Se manca la tinta la
         carta cade sul verde, se manca il segno esce senza (`_includes/segno.html`).
       {%- endcomment -%}
-      {%- assign carte = site.data.funzioni | where_exp: "f", "f.aspetto.vetrina != false" -%}
+      {%- comment -%} ⭐ Giro W28: l'aspetto dal file inglese, le parole dalla stessa voce nella lingua della pagina. {%- endcomment -%}
       <ul class="voci voci-glifo">
-        {%- for v in carte -%}
-          {%- assign a = v.aspetto -%}
+        {%- for f in site.data.funzioni -%}
+          {%- if f.aspetto.vetrina == false %}{% continue %}{% endif -%}
+          {%- assign a = f.aspetto -%}
+          {%- assign v = lin_t.funzioni[forloop.index0] -%}
           {%- assign tinta = a.tinta | default: 'verde' -%}
           {%- assign forma = a.forma | default: 'telefono' -%}
         <li class="voce tinta-{{ tinta }}{% if a.schermata and v.alt %} mostra-{{ forma }}{% endif %}">
@@ -242,9 +252,9 @@
               ⛔ se lì manca, il link non esce invece di uscire rotto.
             {%- endcomment -%}
             {%- if v.link -%}
-            {%- assign c = site.data.collegamenti.frasi | where: "frase", v.link | first -%}
+            {%- assign c = lin_c.frasi | where: "frase", v.link | first -%}
             {%- if c %}
-            <p class="oltre"><a href="{{ c.href | relative_url }}">{{ v.link }}</a></p>
+            <p class="oltre"><a href="{{ lin_pre | append: c.href | relative_url }}">{{ v.link }}</a></p>
             {%- endif -%}
             {%- endif -%}
             {%- if a.schermata and v.alt %}
@@ -263,7 +273,7 @@
         Le parole sono quelle della tendina, dalla bozza della navigazione; lo
         stile è quello dei link sotto le carte (`oltre`).
       {%- endcomment %}
-      <p class="oltre tutte-le-funzioni">{% include voce.html v=site.data.navigazione.menu.tutte %}</p>
+      <p class="oltre tutte-le-funzioni">{% include voce.html v=lin_t.navigazione.menu.tutte %}</p>
     </section>
 
     {%- comment -%} ② Privacy — il proclama è la seconda voce più forte della pagina. {%- endcomment -%}
@@ -306,9 +316,9 @@
         sezione resta qui, raggiungibile scorrendo.
       {%- endcomment -%}
       {%- if d.privacy.link -%}
-      {%- assign c = site.data.collegamenti.frasi | where: "frase", d.privacy.link | first -%}
+      {%- assign c = lin_c.frasi | where: "frase", d.privacy.link | first -%}
       {%- if c %}
-      <p class="oltre"><a href="{{ c.href | relative_url }}">{{ d.privacy.link }}</a></p>
+      <p class="oltre"><a href="{{ lin_pre | append: c.href | relative_url }}">{{ d.privacy.link }}</a></p>
       {%- endif -%}
       {%- endif %}
     </section>
@@ -384,7 +394,7 @@
       `_data/landing.yml`.
       ⚠️ Lo svolazzo sotto è decorativo e basta: `aria-hidden`.
     {%- endcomment -%}
-    <p class="scritta-mano">
+    <p class="scritta-mano"{{ motto_lang }}>
       {%- comment -%}
         ⚠️ Gli span sono separati da un a capo VERO, come le tre righe
         della domanda: sono blocchi, quindi a vedersi non cambia niente,
@@ -399,7 +409,7 @@
               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
       </svg>
     </p>
-    <p class="allo-store"><a href="{{ site.data.collegamenti.store }}" rel="noreferrer">{{ d.hero.badge }}</a></p>
+    <p class="allo-store"><a href="{{ lin_store }}" rel="noreferrer">{{ d.hero.badge }}</a></p>
     </div>
   </div>
 

@@ -21,12 +21,17 @@ _includes/briciole-calcola.html — DOVE SI È, in tre variabili. Giro W25.
 {%- assign bri_su_v = nil -%}
 {%- assign bri_qui = nil -%}
 {%- assign bri_sezione = '/' | append: page.sezione | append: '/' -%}
-{%- if page.url != bri_sezione -%}{%- assign bri_su = bri_sezione -%}{%- endif -%}
-{%- for bri_v in site.data.navigazione.menu.voci -%}
-  {%- assign bri_d = site.data.collegamenti.menu[bri_v] -%}
+{%- comment -%}
+  ⭐ Giro W28: tutto si confronta SENZA prefisso di lingua (`lin_base`), e le
+  parole vengono dalla lingua della pagina (`lin_t`, `lin_c`). ⚠️ `bri_su`
+  resta senza prefisso: lo mettono le briciole e il `BreadcrumbList`.
+{%- endcomment -%}
+{%- if lin_base != bri_sezione -%}{%- assign bri_su = bri_sezione -%}{%- endif -%}
+{%- for bri_v in lin_t.navigazione.menu.voci -%}
+  {%- assign bri_d = lin_c.menu[bri_v] -%}
   {%- if bri_su and bri_d == bri_su and bri_su_v == nil -%}{%- assign bri_su_v = bri_v -%}{%- endif -%}
-  {%- if bri_d == page.url and bri_qui == nil -%}{%- assign bri_qui = bri_v -%}{%- endif -%}
+  {%- if bri_d == lin_base and bri_qui == nil -%}{%- assign bri_qui = bri_v -%}{%- endif -%}
 {%- endfor -%}
 {%- for bri_f in site.data.funzioni -%}
-  {%- if bri_f.aspetto.pagina == page.url -%}{%- assign bri_qui = bri_f.nome -%}{%- endif -%}
+  {%- if bri_f.aspetto.pagina == lin_base -%}{%- assign bri_qui = lin_t.funzioni[forloop.index0].nome -%}{%- endif -%}
 {%- endfor -%}

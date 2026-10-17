@@ -132,7 +132,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=13
+pagine_costruite=25
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -173,11 +173,11 @@ ancore_rotte=0
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
 # nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
-sitemap_indirizzi=12
+sitemap_indirizzi=24
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=13
+blocchi_jsonld=25
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -256,7 +256,7 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=39
+schermate_in_pagina=78
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
@@ -279,8 +279,8 @@ schermate_file=72
 # «one badge per layout»), ogni link nudo — ed è `badge_guasti`, che resta 0.
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
-badge_nel_sito=10
-link_allo_store=37
+badge_nel_sito=19
+link_allo_store=71
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -320,7 +320,7 @@ offerte_a_zero=1
 # VERSIONI diverse. ⛔ `marchi_varianti` deve restare 1: il piede è scritto una
 # volta sola, e questa è la prova che lo è ancora. `marchi_pagine` sale con le
 # pagine, come `pagine_costruite`.
-marchi_pagine=13
+marchi_pagine=25
 marchi_varianti=1
 
 # ⛔ Spostate a mano nel giro W18, e SOLO dopo aver guardato cosa è entrato — la
@@ -351,7 +351,7 @@ faqpage_nel_sito=0
 # soglia: deve essere uguale a `pagine_costruite`, e sale con lei. ⛔ La regola
 # — uno per pagina, solo `app-id`, lo stesso numero del link allo Store — è in
 # `badge_guasti`, che resta 0.
-banner_pagine=13
+banner_pagine=25
 
 # ⛔ Spostate a mano nel giro W23, e SOLO dopo aver guardato cosa è entrato — la
 # quarta pagina-funzione, `/features/custom-lists/`, con quattro schermate nuove:
@@ -377,3 +377,40 @@ impronte_scadute=0
 # ⚠️ `sitemap_indirizzi` resta 12: la 404 è `noindex` e fuori dalla mappa, e
 # `seo_guasti` lo controlla nei due versi. Quante pagine siano `noindex`:
 pagine_noindex=1
+
+# --- giro W28: il sito in italiano -------------------------------------------
+#
+# ⛔ Spostate a mano, e SOLO dopo aver guardato cosa è entrato — le dodici
+# gemelle italiane sotto `/it/`, con barra, piede, banner, badge italiano e
+# schermate (le stesse, in inglese: decisione di Pier):
+#   pagine_costruite, blocchi_jsonld, marchi_pagine, banner_pagine   13 → 25
+#   sitemap_indirizzi  12 → 24 (la 404 resta fuori, e resta una sola)
+#   badge_nel_sito  10 → 19  ·  link_allo_store  37 → 71
+#   schermate_in_pagina  39 → 78 (ogni gemella mostra le schermate dell'inglese)
+# ⚠️ `marchi_varianti` e `piedi_varianti` restano 1 perché dal W28 si contano
+# DENTRO ogni lingua (`scripts/misure-pagine.rb`): l'italiano ha il suo piede.
+# ⚠️ `schermate_nei_dati_strutturati` resta 9: il `MobileApplication` è uno,
+# sulla landing inglese (scelta di CC da guardare, `_includes/dati-strutturati.html`).
+#
+# Le lingue e le gemelle (`hreflang`), misurate sul sito costruito: quante
+# lingue dichiarano le pagine in `<html lang>`, quante pagine elencano le loro
+# gemelle, quante coppie sono RECIPROCHE (ognuna rimanda all'altra, con la
+# lingua giusta), le pagine indicizzabili senza gemelle, e i guasti.
+# ⭐ Provato su una copia rotta della build (una gemella che non rimanda, un
+# `<html lang>` sbagliato, una pagina senza gemelle): 5 guasti, 1 senza gemelle.
+lingue_nel_sito=2
+hreflang_pagine=24
+hreflang_coppie=12
+hreflang_senza_gemelle=0
+hreflang_guasti=0
+# ⛔⛔ IL BADGE ITALIANO È IL FILE DI APPLE, NON MODIFICATO, come l'inglese.
+#   file:     assets/img/download-on-the-app-store-black-it-it.svg (10 497 byte)
+#   scaricato il 17/10/2026 da
+#     · toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/it-it
+#       (lo stesso generatore dell'inglese, senza parametri; `…/black/it-IT` dà lo
+#       stesso file al byte, `…/black/it` risponde 404)
+#   sha256 intera:
+#     ec8e9566058da3382fc0c8b8a8532a342e3587be801fee42e110f8fd707cee0b
+#   il suo <title> interno: Download_on_the_App_Store_Badge_IT_RGB_blk_100317
+# ⚠️ In pagina si legge «Scarica su App Store» (guardato sulla schermata).
+badge_apple_impronta_it=ec8e9566058da338
