@@ -15,8 +15,7 @@
 #   · «(Pro)» staccato dalla frase, come l'inglese (`tag`).
 # ⭐ I due motti restano in INGLESE (Pier, 17/10/2026 14:30 e 14:31): la pagina
 # li marca `lang` dell'originale (`_layouts/landing.html`).
-# ⚠️ LA RIGA DEI MARCHI È LA FORMULA ITALIANA DI APPLE, non quella della bozza:
-# il perché e la fonte stanno in `_data/it/terms.yml`.
+# ⚠️ La riga dei marchi è la formula italiana di Apple (fonte in `_data/it/terms.yml`).
 
 brand: "AIMONX"
 

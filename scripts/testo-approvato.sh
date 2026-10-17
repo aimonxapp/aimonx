@@ -264,15 +264,10 @@ DICHIARATE = {
   "privacy" => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
   "support" => {},
   "terms"   => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
-  # ⭐ Giro W28: la data, come per l'inglese, e LA RIGA DEI MARCHI — la formula
-  # italiana di Apple («…in altri paesi e zone», support.apple.com/it-it,
-  # «Copyright e marchi registrati», letta il 17/10/2026) al posto di quella
-  # della bozza («…in altri Paesi e aree geografiche»): il giro W28 chiede la
-  # formula di Apple se diversa. Fonte per esteso in `_data/it/terms.yml`.
+  # ⭐ Giro W28: la data, come per l'inglese. (La riga dei marchi, dichiarata
+  # nella prima fase A, è uscita: dalla correzione di Cowork sta nelle bozze.)
   "it/privacy" => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza" },
-  "it/terms"   => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza",
-                    ".blocchi[11].testo" => "la formula italiana dei marchi di Apple, non quella della bozza (giro W28)" },
-  "it/landing" => { ".footer.copyright" => "la formula italiana dei marchi di Apple, non quella della bozza (giro W28)" },
+  "it/terms"   => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza" },
 }
 
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
@@ -418,8 +413,9 @@ if modo == "sorgente"
   # italiano farebbe scivolare tutto di una riga senza rompere la pagina.
   # ⛔ Si confrontano chiavi, lunghezze degli elenchi e i ✓/✗ (`true`/`false`)
   # della tabella dei prezzi; le frasi no — sono l'altra misura.
-  # ⚠️ Una chiave in più è ammessa solo dove è dichiarata qui sotto.
-  IN_PIU = { "funzioni" => ["nome"] }
+  # ⚠️ Una chiave in più è ammessa solo dove è dichiarata qui sotto — oggi da
+  # nessuna parte (fino alla correzione della fase A, i nomi brevi italiani).
+  IN_PIU = {}
   confronta_forma = lambda do |en, al, via, ammesse, diff|
     case en
     when Hash
@@ -547,11 +543,6 @@ else
     # versioni: «Italiano» sulle inglesi e «English» sulle italiane. Quei nomi
     # stanno nella sezione del selettore di ciascuna bozza della navigazione.
     BOZZA_NAVIGAZIONE.each_value { |b| consentito += "\n" + b[/^.*English · Italiano.*$/].to_s }
-    # ⭐ La riga dei marchi dichiarata (formula italiana di Apple) esce nel piede di ogni pagina italiana.
-    if p[:lingua] == "it"
-      dl = YAML.load_file(File.join(repo, "_data/it/landing.yml"))
-      consentito += "\n" + dl.dig("footer", "copyright").to_s
-    end
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,
@@ -570,9 +561,6 @@ else
     if File.readable?(dati)
       d = YAML.load_file(dati)
       date << d["data_pubblicazione"] if d["data_pubblicazione"]
-      if p[:nome] == "it/terms"
-        consentito += "\n" + d.dig("blocchi", 11, "testo").to_s
-      end
       if (DICHIARATE[p[:nome]] || {}).key?(".meta.title")
         titolo_dichiarato = d.dig("meta", "title")
       end

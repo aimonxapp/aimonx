@@ -6,17 +6,11 @@
 # e il titolo della scheda viene dalla bozza dei titoli italiana.
 # ⭐ Strada A (Pier, 17/10/2026 14:33): l'inglese e l'italiana dicono le stesse
 # cose e cambiano INSIEME.
-# ⚠️ La descrizione sono le prime due frasi di «Cos'è AIMONX, e cosa non è», come
-# per l'inglese: la bozza italiana non ha una sezione Meta.
+# ⚠️ Titolo e descrizione dalla sezione Meta della bozza.
 # ⚠️ `data_pubblicazione` sostituisce «[data di pubblicazione]» della bozza.
-# ⚠️ LA RIGA DEI MARCHI È LA FORMULA ITALIANA DI APPLE, non quella della bozza
-# («…in altri Paesi e aree geografiche»): il giro W28 chiede di confrontarla con
-# la fonte ufficiale e, se diversa, di usare quella di Apple. Le guide italiane
-# di Apple (support.apple.com/it-it, «Copyright e marchi registrati», lette il
-# 17/10/2026) scrivono «…sono marchi di Apple Inc., registrati negli Stati Uniti
-# e in altri paesi e zone». ⛔ Le linee guida di Apple per i terzi esistono solo
-# in inglese (apple.com/it/legal/intellectual-property/guidelinesfor3rdparties.html
-# serve il testo inglese). È dichiarata in `scripts/testo-approvato.sh`.
+# ⚠️ La riga dei marchi è la formula delle guide italiane di Apple
+# (support.apple.com/it-it, «Copyright e marchi registrati», verificata nel W28):
+# «…in altri paesi e zone». Dalla correzione della fase A sta anche nella bozza.
 # ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/terms.yml`.
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
 
