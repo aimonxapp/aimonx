@@ -25,20 +25,19 @@
 # paragrafo.
 
 meta:
-  # ⚠️ NON VENGONO DALLA BOZZA, che non dà un titolo di scheda né una
-  # descrizione, e le due righe qui sotto non stanno sullo stesso piano.
+  # ⚠️ NON VENGONO DALLA BOZZA DELLA PAGINA, che non dà un titolo di scheda né
+  # una descrizione.
   #
   # ⭐ `description` è una FRASE INTERA della bozza, presa alla lettera: il
   # controllo la trova da sé e non ha bisogno di nessuna eccezione.
   #
-  # ⛔ `title` NO, ed è un'eccezione DICHIARATA. In Fase A era il titolo `#`
-  # della bozza — «Privacy Policy», «Support», «Terms of Use» — come il giro W9
-  # §1 ordinava di fare finché Cowork non ne portasse uno. ⭐ CC ne ha proposti
-  # tre nella consegna della Fase A e **Pier li ha approvati il 22/09/2026**:
-  # sono questi. ⚠️ Nessuna parola nuova — il titolo della bozza più il nome
-  # dell'app — ma la COMBINAZIONE non sta in nessuna bozza, quindi i due
-  # controlli la nominano invece di lasciarla passare: si vede a ogni run.
-  title: "Privacy Policy — AIMONX"
+  # ⭐ `title` DAL GIRO W27 VIENE DALLA BOZZA DEI TITOLI
+  # (`titoli/titoli-en-bozza.md`, tabella «Titoli», approvata da Pier il
+  # 17/10/2026 12:43), con lo stesso separatore ` | AIMONX` delle altre pagine.
+  # ⚠️ Fino al W26 era un'eccezione dichiarata: il titolo proposto da CC e
+  # approvato da Pier il 22/09/2026, che in nessuna bozza compariva. Adesso il
+  # controllo lo trova da sé, e l'eccezione è uscita.
+  title: "Privacy Policy | AIMONX"
   description: "AIMONX has no accounts and no AIMONX servers. We never see your data."
 
 titolo: "Privacy Policy"

@@ -78,8 +78,8 @@ piede:
 # La pagina indice `/features/` — sezioni «Meta» e «Page» della bozza.
 indice:
   meta:
-    title: "AIMONX Features: Round Count, Maintenance, Custom Lists and More | AIMONX"
-    description: "Everything AIMONX keeps track of for you: firearms and rounds, range sessions, ammo, maintenance, renewals, costs and stats. All on your iPhone, with no account."
+    title: "Features: Round Count, Maintenance, Custom Lists | AIMONX"
+    description: "Everything AIMONX keeps track of: firearms, rounds, range sessions, ammo, maintenance, renewals, costs and stats. On your iPhone, with no account."
   titolo: "Everything AIMONX keeps track of"
   sommario: "One app for your firearms, your rounds, your ammo and your maintenance. Pick a feature to see how it works."
   # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.

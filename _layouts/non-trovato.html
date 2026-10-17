@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  _layouts/non-trovato.html — LA PAGINA 404. Giro W27.
+  ⭐ Lo scheletro delle pagine da leggere (`_layouts/pagina.html`): la barra,
+  il titolo sul verde, un foglio bianco, il piede — chi sbaglia indirizzo
+  resta nel sito, con il menu davanti. Sul foglio la riga della bozza, i
+  cinque link e il badge dell'App Store.
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA: il testo viene da
+  `_data/non-trovato.yml`, gli indirizzi da `_data/collegamenti.yml`, l'alt del
+  badge da `_data/landing.yml` — come sulla landing.
+  ⛔⛔ IL BADGE È QUELLO DI APPLE, NON MODIFICATO, uno solo: le regole sono
+  quelle scritte in `_layouts/landing.html`, e le misura `scripts/badge.mjs`.
+  ⚠️ Gli indirizzi sono tutti dalla radice (`relative_url`): la stessa pagina
+  risponde a `/qualcosa` e a `/a/b/c/`, e un indirizzo relativo si romperebbe.
+{%- endcomment -%}
+{%- assign d = site.data[page.dati] -%}
+<head>
+  {%- include testa.html meta=d.meta -%}
+</head>
+<body class="v-testo v-non-trovato tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- include barra.html -%}
+    <div class="titolone">
+      <h1>{{ d.titolo }}</h1>
+    </div>
+  </div>
+  <main id="principale">
+    <article class="foglio">
+      <p>{{ d.testo }}</p>
+      <ul class="strade">
+        {%- for v in d.voci %}
+        <li>{% include voce.html v=v %}</li>
+        {%- endfor %}
+      </ul>
+      <p class="scarica">
+        <a href="{{ site.data.collegamenti.store }}" rel="noreferrer">
+          <img src="{{ '/assets/img/download-on-the-app-store-black-en-us.svg' | relative_url }}"
+               alt="{{ site.data.landing.hero.badge }}" width="120" height="40">
+        </a>
+      </p>
+    </article>
+  </main>
+  {%- include piede.html -%}
+</body>
+</html>

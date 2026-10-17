@@ -1,0 +1,26 @@
+# _data/non-trovato.yml — IL TESTO DELLA PAGINA 404, UNA VOLTA SOLA. Giro W27.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
+# (12:43), nella bozza dei titoli, sezione «La pagina «non trovato» (404)»:
+#     …/2- Contenuti/titoli/titoli-en-bozza.md
+# `scripts/testo-approvato.sh` cerca ogni stringa qui dentro ALLA LETTERA lì,
+# e le etichette dei link nella bozza della navigazione, dove erano già
+# approvate. ⛔ Lo cambia Cowork, non Claude Code.
+#
+# ⚠️ La bozza dà solo il titolo di scheda, non una descrizione: la pagina non
+# ne ha (`_includes/testa.html` non scrive il tag vuoto). Una pagina `noindex`
+# non finisce nei risultati, e la descrizione non la legge nessuno.
+# ⚠️ Dove portano i link lo dice `_data/collegamenti.yml` (`menu`), come per la
+# barra e il piede: qui ci sono solo le etichette, nell'ordine della bozza.
+
+meta:
+  title: "Page Not Found | AIMONX"
+
+titolo: "We can't find that page"
+testo: "The link might be out of date, or there may be a typo in the address. Try one of these instead."
+voci:
+  - "Home"
+  - "All features"
+  - "Free and Pro"
+  - "FAQ"
+  - "Support"

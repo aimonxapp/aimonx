@@ -353,7 +353,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti pagine_noindex badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done

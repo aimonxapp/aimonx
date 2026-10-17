@@ -132,7 +132,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=12
+pagine_costruite=13
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -177,7 +177,7 @@ sitemap_indirizzi=12
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=12
+blocchi_jsonld=13
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -279,8 +279,8 @@ schermate_file=72
 # «one badge per layout»), ogni link nudo — ed è `badge_guasti`, che resta 0.
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
-badge_nel_sito=9
-link_allo_store=34
+badge_nel_sito=10
+link_allo_store=37
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -320,7 +320,7 @@ offerte_a_zero=1
 # VERSIONI diverse. ⛔ `marchi_varianti` deve restare 1: il piede è scritto una
 # volta sola, e questa è la prova che lo è ancora. `marchi_pagine` sale con le
 # pagine, come `pagine_costruite`.
-marchi_pagine=12
+marchi_pagine=13
 marchi_varianti=1
 
 # ⛔ Spostate a mano nel giro W18, e SOLO dopo aver guardato cosa è entrato — la
@@ -351,7 +351,7 @@ faqpage_nel_sito=0
 # soglia: deve essere uguale a `pagine_costruite`, e sale con lei. ⛔ La regola
 # — uno per pagina, solo `app-id`, lo stesso numero del link allo Store — è in
 # `badge_guasti`, che resta 0.
-banner_pagine=12
+banner_pagine=13
 
 # ⛔ Spostate a mano nel giro W23, e SOLO dopo aver guardato cosa è entrato — la
 # quarta pagina-funzione, `/features/custom-lists/`, con quattro schermate nuove:
@@ -367,3 +367,13 @@ banner_pagine=12
 #   (le due schermate nuove della landing: sono dell'app, quindi ci vanno)
 #   schermate_immagini  22 → 24  ·  schermate_file  66 → 72
 impronte_scadute=0
+
+# --- giro W27: la pagina 404 ---------------------------------------------------
+#
+# ⛔ Spostate a mano, e SOLO dopo aver guardato cosa è entrato — la pagina
+# «non trovato», `404.html`, con barra, piede, banner, badge e i cinque link:
+#   pagine_costruite, blocchi_jsonld, marchi_pagine, banner_pagine   12 → 13
+#   badge_nel_sito  9 → 10  ·  link_allo_store  34 → 37 (badge, Download, piede)
+# ⚠️ `sitemap_indirizzi` resta 12: la 404 è `noindex` e fuori dalla mappa, e
+# `seo_guasti` lo controlla nei due versi. Quante pagine siano `noindex`:
+pagine_noindex=1

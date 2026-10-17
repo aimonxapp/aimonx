@@ -23,6 +23,9 @@
 index.html
 */index.html
 features/*/index.html
+# ⭐ Giro W27: la pagina «non trovato», che GitHub Pages cerca alla radice con
+# questo nome e serve per ogni indirizzo che non esiste.
+404.html
 
 # i due file per i motori: la mappa (jekyll-sitemap) e robots.txt (giro W10)
 sitemap.xml

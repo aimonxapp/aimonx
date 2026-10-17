@@ -167,3 +167,24 @@ body.v-testo {
 .v-testo.tinta-verde   { --sez: var(--sez-verde);   --titolo: var(--titolo-verde); }
 .v-testo.tinta-salvia  { --sez: var(--sez-salvia);  --titolo: var(--titolo-salvia); }
 .v-testo.tinta-ardesia { --sez: var(--sez-ardesia); --titolo: var(--titolo-ardesia); }
+
+// --- la pagina 404 (giro W27) -----------------------------------------------
+// ⭐ Le cinque strade in fila, che vanno a capo sul telefono: sono link come
+// quelli del foglio (sottolineati, colore del titolo), solo più grandi.
+.v-non-trovato .strade {
+  display: flex; flex-wrap: wrap; gap: .6rem 1.6rem;
+  margin: 0; padding: 0; list-style: none;
+  margin-top: clamp(1.1rem, 3vw, 1.5rem);
+  font-size: clamp(1.02rem, 1.8vw, 1.12rem); font-weight: 600;
+}
+.v-non-trovato .strade a { color: var(--titolo); text-decoration: underline; text-underline-offset: .2em; }
+// ⛔⛔ IL BADGE: le regole di Apple, le stesse delle pagine-funzione
+// (`funzione.scss`) — il CSS gli dà SOLO una misura, altezza ≥ 40 px, spazio
+// libero ≥ ¼ dell'altezza. Lo misura `scripts/badge.mjs`.
+.v-non-trovato { --badge: #{"max(40px, clamp(3rem, 5vw, 3.5rem))"}; }
+.v-non-trovato .foglio .scarica {
+  margin-top: #{"max(clamp(1.8rem, 4.5vw, 2.6rem), calc(var(--badge) / 4))"};
+  line-height: 0;
+}
+.v-non-trovato .scarica a { display: inline-block; }
+.v-non-trovato .scarica img { height: var(--badge); width: auto; }

@@ -101,6 +101,15 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       ⚠️ Nome e descrizione arrivano da `include.meta`, cioè dallo stesso
       parametro che dà `<title>` e `description` alla pagina (giro W24): prima
       si leggevano da `_data/<page.dati>.yml`, e l'indice non ha un file suo.
+      ⭐ `about` DAL GIRO W27: la pagina dice DI COSA parla — l'app, per `@id`
+      (`/#app`, il `MobileApplication` della landing). Verificato su schema.org:
+      `about` sta su ogni `CreativeWork` e vuole una `Thing`, e un `@id` è un
+      indirizzo che vale per tutto il sito, non solo per questa pagina.
+      ⛔ L'app NON è ridichiarata qui, ed è una scelta di CC DA GUARDARE: un
+      secondo `MobileApplication` su nove pagine moltiplicherebbe per nove il
+      candidato al risultato «ricco» delle app, e con lui il voto mancante che
+      il Rich Results Test segna in rosso (atteso, vedi sopra). ⚠️ Se Google
+      unisca l'`@id` fra due pagine non lo dice la sua guida: è un'ipotesi.
     {%- endcomment -%}
     {
       "@type": "WebPage",
@@ -109,6 +118,7 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "name": {{ include.meta.title | jsonify }},
       "description": {{ include.meta.description | jsonify }},
       "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
+      "about": { "@id": {{ '/#app' | absolute_url | jsonify }} },
       "inLanguage": "en-US"
     }{% endif %}{% if page.sezione %},
     {%- comment -%}

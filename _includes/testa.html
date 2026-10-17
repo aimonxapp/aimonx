@@ -23,16 +23,27 @@ _includes/testa.html — la testa di OGNI pagina, scritta una volta sola.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ include.meta.title }}</title>
+{%- comment -%} ⭐ Giro W27: la pagina 404 non ha descrizione né indirizzo suo — risponde a ogni indirizzo che non esiste — e dice ai motori di non metterla nei risultati (`page.noindex`). {%- endcomment %}
+{%- if include.meta.description %}
 <meta name="description" content="{{ include.meta.description }}">
+{%- endif %}
+{%- if page.noindex %}
+<meta name="robots" content="noindex">
+{%- else %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- endif %}
 
 {%- comment -%} Condivisione. ⛔ Nessuna immagine presa da fuori (giro W4 §3③):
 l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcomment -%}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.data.landing.brand }}">
 <meta property="og:title" content="{{ include.meta.title }}">
+{%- if include.meta.description %}
 <meta property="og:description" content="{{ include.meta.description }}">
+{%- endif %}
+{%- unless page.noindex %}
 <meta property="og:url" content="{{ page.url | absolute_url }}">
+{%- endunless %}
 {%- comment -%}
   ⭐ DAL GIRO W10 L'IMMAGINE DI CONDIVISIONE È SUA, 1200×630, e non più l'icona
   quadrata da 512. ⚠️ La differenza non è estetica: con un'icona quadrata i

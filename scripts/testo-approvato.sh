@@ -37,8 +37,8 @@
 #
 # ⛔ LE ECCEZIONI SONO TRE, TUTTE DICHIARATE E TUTTE STAMPATE a ogni run. Una
 # eccezione che non si vede è il buco da cui rientra il testo riscritto.
-#   · `.meta.title` di Privacy, Support e Terms: il titolo di scheda proposto
-#     da CC e approvato da Pier il 22/09/2026, che in nessuna bozza compare.
+#   · ⭐ DAL GIRO W27 NON PIÙ i `.meta.title` di Privacy, Support e Terms:
+#     stanno nella bozza dei titoli (`titoli/titoli-en-bozza.md`).
 #     ⭐ DAL GIRO W12 NON CI SONO PIÙ `.meta.title` e `.meta.description`
 #     DELLA LANDING: stanno alla lettera nella bozza, e un'eccezione che non
 #     serve è un controllo spento per niente (`WD38`);
@@ -129,12 +129,14 @@ SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
 PAGINE = [
   { nome: "landing", dati: "_data/landing.yml", bozza: "landing/landing-en-bozza.md",
     uscita: "index.html" },
+  # ⭐ Giro W27: il titolo di scheda di queste tre sta nella bozza dei titoli,
+  # tabella «Titoli» (`anche`), e non è più un'eccezione.
   { nome: "privacy", dati: "_data/privacy.yml", bozza: "privacy-policy/privacy-policy-en-bozza.md",
-    uscita: "privacy-policy/index.html" },
+    uscita: "privacy-policy/index.html", anche: [["titoli/titoli-en-bozza.md", ["Titoli"]]] },
   { nome: "support", dati: "_data/support.yml", bozza: "support/support-en-bozza.md",
-    uscita: "support/index.html" },
+    uscita: "support/index.html", anche: [["titoli/titoli-en-bozza.md", ["Titoli"]]] },
   { nome: "terms",   dati: "_data/terms.yml",   bozza: "terms/terms-en-bozza.md",
-    uscita: "terms/index.html" },
+    uscita: "terms/index.html", anche: [["titoli/titoli-en-bozza.md", ["Titoli"]]] },
   # ⭐ Giro W15, la prima pagina-funzione. ⛔ `sezioni`: della sua bozza valgono
   # SOLO «Meta» e «Page». Il resto di quel file — il link per la landing, la
   # tabella «Controllo», le note — non va in pagina, e se il controllo lo
@@ -187,6 +189,12 @@ PAGINE = [
     uscita: "features/index.html", sezioni: SEZIONI_NAVIGAZIONE,
     anche: [["landing/landing-en-bozza.md", nil]],
     alt_da: "your-data/your-data-en-bozza.md" },
+  # ⭐ Giro W27, LA PAGINA 404: il testo è nella bozza dei titoli, nella sua
+  # sezione (i sottotitoli «Meta» e «Page» cadono come tutti i `###`); le
+  # etichette dei cinque link sono quelle già approvate della navigazione.
+  { nome: "404", dati: "_data/non-trovato.yml", bozza: "titoli/titoli-en-bozza.md",
+    uscita: "404.html", sezioni: ["La pagina «non trovato» (404)"],
+    anche: [["navigazione/navigazione-en-bozza.md", SEZIONI_NAVIGAZIONE]] },
   # ⭐ Giro W24, LA FONTE UNICA DELLE FUNZIONI. Non è una pagina — `uscita` non
   # c'è, e la misura ② la salta: il suo testo esce nella landing e nell'indice,
   # e lì lo guardano le loro voci. ⚠️ Le righe sono quelle delle carte (bozza
@@ -198,18 +206,17 @@ PAGINE = [
 ]
 
 # Le eccezioni dichiarate, per pagina e per percorso dentro il file di dati.
-TITOLO_PIER = "titolo di scheda proposto da CC e APPROVATO da Pier il 22/09/2026"
+# ⭐ Dal giro W27 non c'è più `TITOLO_PIER`: i titoli di Privacy, Support e
+# Terms stanno nella bozza dei titoli, e si cercano lì come tutto il resto.
 # ⭐ La landing non ne ha più, dal giro W12: il suo titolo di scheda e la sua
 # descrizione stanno ALLA LETTERA nella bozza (la riga del piede e il paragrafo
 # della parte alta), quindi si cercano come tutto il resto. ⛔ Era `WD38`: da
 # eccezioni, una descrizione rimasta vecchia non la guardava nessuno.
 DICHIARATE = {
   "landing" => {},
-  "privacy" => { ".meta.title" => TITOLO_PIER,
-                 ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
-  "support" => { ".meta.title" => TITOLO_PIER },
-  "terms"   => { ".meta.title" => TITOLO_PIER,
-                 ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
+  "privacy" => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
+  "support" => {},
+  "terms"   => { ".data_pubblicazione" => "sostituisce «[date of publication]» della bozza" },
 }
 
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
@@ -244,6 +251,9 @@ def piano(percorso, sezioni = nil)
   t = t.gsub(/\*\[[^\]]*\]\*/m, "")
   t = t.gsub(/\[([^\]]+)\]\(\S+\)/) { $1 }
   t = t.gsub("**", "").gsub("*", "")
+  # ⭐ Giro W27: dentro una tabella markdown la sbarra si scrive `\|`, e in
+  # pagina si legge `|` (i titoli «… | AIMONX» della bozza dei titoli).
+  t = t.gsub("\\|", "|")
   t.gsub(/[ \t]+/, " ")
 end
 

@@ -308,6 +308,11 @@ end
 # ⚠️ Un solo verso non basterebbe: una mappa vuota passerebbe il primo.
 mappa = File.join(radice, "sitemap.xml")
 indirizzi = []
+# ⭐ Giro W27: le pagine che chiedono di restare fuori dai risultati. ⛔ Quante
+# siano si conta (`pagine_noindex`, attesa in `scripts/attese.txt`): un
+# `noindex` finito per sbaglio su una pagina vera la toglierebbe da Google
+# senza che nessuno lo veda in pagina.
+noindex = pagine.select { |f| File.read(f, encoding: "UTF-8") =~ /<meta name="robots" content="[^"]*noindex/ }
 if !File.file?(mappa)
   $seo << "sitemap.xml non c e"
 else
@@ -320,9 +325,16 @@ else
     c = [File.join(radice, percorso), File.join(radice, percorso, "index.html")]
     $seo << "sitemap: indirizzo che non esiste nella build -> #{u}" unless c.any? { |x| File.file?(x) }
   end
+  # ⭐ Giro W27: una pagina `noindex` (oggi la 404) è il contrario, e si
+  # controlla al contrario — NON deve stare nella mappa: dire a Google «non
+  # indicizzarla» e insieme dargliela da indicizzare è un guasto.
   pagine.each do |f|
     via = "/" + f.sub(radice.chomp("/") + "/", "").sub(%r{index\.html\z}, "")
-    $seo << "sitemap: pagina costruita che NON sta nella mappa -> #{via}" unless indirizzi.any? { |u| u.end_with?(via) }
+    if noindex.include?(f)
+      $seo << "sitemap: pagina noindex che STA nella mappa -> #{via}" if indirizzi.any? { |u| u.end_with?(via) }
+    else
+      $seo << "sitemap: pagina costruita che NON sta nella mappa -> #{via}" unless indirizzi.any? { |u| u.end_with?(via) }
+    end
   end
 end
 
@@ -397,6 +409,7 @@ puts "indirizzi_o_telefoni=#{$sospetti.size}"
 puts "ancore_rotte=#{$ancore_rotte.size}"
 puts "sitemap_indirizzi=#{indirizzi.size}"
 puts "seo_guasti=#{$seo.size}"
+puts "pagine_noindex=#{noindex.size}"
 puts "link_verso_fuori=#{$verso_fuori.size}"
 puts "blocchi_jsonld=#{$jsonld}"
 puts "offerte_a_zero=#{$offerte_a_zero}"

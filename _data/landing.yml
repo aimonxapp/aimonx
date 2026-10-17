@@ -69,7 +69,10 @@ brand: "AIMONX"
 
 meta:
   # Due righe della bozza, alla lettera: vedi la nota qui sopra.
-  title: "AIMONX — the technical logbook app for sport shooters"
+  # ⭐ Giro W27: il titolo di scheda NON è più la riga del piede (`footer.tagline`,
+  # che resta com'è): è la sezione «Meta — titolo della pagina» della bozza,
+  # con le parole che la gente cerca (Pier, 17/10/2026 12:43).
+  title: "AIMONX: Gun Log & Round Count App for Sport Shooters"
   description: "AIMONX is the technical logbook app for sport shooters. Firearms, rounds, range sessions, ammo, maintenance and costs — all in one place, on your iPhone."
 
 # ⛔ LA PARTE ALTA È LA «HERO — versione 2» DELLA BOZZA, non la 1. Pier l'ha
@@ -210,20 +213,19 @@ piani:
     # (cambia da paese a paese) — vedi `_includes/dati-strutturati.html`.
     - lead: "Pro is $1.99 a month or $14.99 a year."
       body: "Family Sharing is included, so your family gets Pro too. Cancel anytime. Prices vary by country: the App Store shows yours."
-    - lead: "If your Pro subscription ends, nothing gets lost."
-      body: "Everything beyond the Free limits stays readable, just frozen, until you come back."
-    # ⭐ Giro W17, in fondo alla sezione come nella bozza.
-    - lead: "More is on the way."
-      body: "Lots of new features are coming in future updates, built around how sport shooters actually train."
+    # ⛔ Giro W27: qui c'erano anche «If your Pro subscription ends…» e «More
+    # is on the way.», IDENTICI a quelli di `/pricing/`: due pagine con gli
+    # stessi paragrafi si fanno concorrenza (Pier, 17/10/2026 12:37). Stanno là.
   # ⭐ Giro W25: il link in fondo alla sezione, verso la pagina `/pricing/`
   # (bozza della landing, sezione «Free and Pro»). Dove porta lo dice
   # `_data/collegamenti.yml` (`menu`).
   confronta: "Compare Free and Pro"
 
 footer:
-  # ⭐ Dal giro W13 la riga dice «app», e con lei il titolo di scheda e la
-  # prima frase dell'hero: è la parola che un motore o una IA cercano per
-  # capire COSA è AIMONX (Pier, 08/10/2026). Le quattro stringhe vanno insieme.
+  # ⭐ Dal giro W13 la riga dice «app», e con lei la prima frase dell'hero: è
+  # la parola che un motore o una IA cercano per capire COSA è AIMONX (Pier,
+  # 08/10/2026). ⚠️ Fino al W26 era anche il titolo di scheda: dal W27 il
+  # titolo è suo (`meta.title`), e questa riga resta com'è.
   tagline: "AIMONX — the technical logbook app for sport shooters."
   # ⛔ I LINK DEL PIEDE NON SONO PIÙ QUI, dal giro W24: il piede è a colonne,
   # e titoli ed etichette stanno in `_data/navigazione.yml`. ⚠️ La riga
