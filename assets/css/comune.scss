@@ -279,28 +279,47 @@ img, svg { display: block; max-width: 100%; }
   .barra .sotto .tutte a { color: var(--titolo-verde); }
 }
 
-// --- il selettore di lingua (giro W28) ----------------------------------------
+// --- il selettore di lingua (giro W28; a tendina dal W29) ---------------------
 // ⭐ Architettura del 16/10/2026, §4: «discreto, in alto a destra». Una riga
 // piccola SOPRA la barra, allineata a destra, uguale a ogni larghezza: sul
-// telefono non ruba posto al pulsante «Menu», sul computer non allunga la fila
-// delle voci (che in italiano sono più lunghe). ⛔ Niente bandiere, niente
-// JavaScript: due link. ⛔ Il separatore fra le lingue è un PUNTO DISEGNATO,
-// non un carattere: un «·» scritto qui lo leggerebbe un lettore di schermo.
-// ⭐ La lingua della pagina: bianca E sottolineata (il colore da solo non
-// basta, WCAG «Use of Color»), come la voce corrente della barra.
+// telefono si trova senza scorrere e non ruba posto al pulsante «Menu».
+// ⭐ Dal giro W29 (Pier, 17/10/2026 17:19) è una TENDINA come «Features»:
+// chiusa si legge la lingua della pagina col chevron, aperta un foglio bianco
+// con tutte le lingue. ⛔ Chiusa, le voci sono `display: none`: fuori dal Tab.
+// ⛔ Niente bandiere, niente JavaScript per aprirla (`<details>`).
 // ⚠️ Mentre il pannello del telefono è aperto, sparisce col resto della
 // pagina: sta in `.apertura` e non è la barra (regola qui sopra).
-.lingue { display: flex; justify-content: flex-end; padding-top: .55rem; margin-bottom: -.6rem; }
-.lingue ul { display: flex; align-items: center; font-size: .82rem; }
-.lingue li { display: flex; align-items: center; }
-.lingue li + li::before {
-  content: ""; width: 3px; height: 3px; margin-inline: .55rem; border-radius: 50%;
-  background: #9DB6AA;
+.lingue { position: relative; display: flex; justify-content: flex-end; padding-top: .55rem; margin-bottom: -.6rem; }
+.lingue summary { list-style: none; cursor: pointer; }
+.lingue summary::-webkit-details-marker { display: none; }
+.lingue .tendina-lingue > summary {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .35rem .15rem; font-size: .82rem; font-weight: 600; color: #CFE3D8;
 }
-.lingue a { display: inline-block; padding: .35rem .15rem; color: #CFE3D8; text-decoration: none; }
-.lingue a:hover { color: var(--bianco); text-decoration: underline; text-underline-offset: .25em; }
-.lingue [aria-current="true"] {
-  color: var(--bianco); font-weight: 700; text-decoration: underline; text-underline-offset: .25em;
+.lingue .tendina-lingue > summary:hover { color: var(--bianco); }
+.lingue .tendina-lingue > summary::after {
+  content: ""; width: .36rem; height: .36rem; margin-top: -.16rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.lingue .tendina-lingue[open] > summary::after { transform: rotate(-135deg); margin-top: .1rem; }
+.lingue .lingue-voci { display: none; }
+.lingue .tendina-lingue[open] ~ .lingue-voci {
+  display: block; position: absolute; z-index: 40;
+  top: calc(100% + .1rem); right: 0; min-width: 10rem;
+  padding: .45rem; border-radius: 14px;
+  background: var(--bianco);
+  box-shadow: 0 14px 34px rgba(6, 24, 16, .38);
+}
+.lingue .lingue-voci a {
+  display: block; padding: .55rem .8rem; border-radius: 9px;
+  color: var(--inchiostro); font-size: .95rem; text-decoration: none;
+}
+.lingue .lingue-voci a:hover { background: var(--fascia-verde); }
+// ⭐ La lingua della pagina: verde scuro E sottolineata (il colore da solo non
+// basta, WCAG «Use of Color»), come la voce corrente della tendina «Features».
+.lingue .lingue-voci [aria-current="true"] {
+  color: var(--titolo-verde); font-weight: 700; text-decoration: underline; text-underline-offset: .25em;
 }
 
 // ⚠️ «Free and Pro» salta a una sezione della landing: senza questo, il titolo

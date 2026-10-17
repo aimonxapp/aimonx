@@ -142,6 +142,8 @@ apre: "/features/"
 # ⛔ «Download» NON è un indirizzo di questo sito: `store` vuol dire «il link
 # allo Store qui sopra», nudo, scritto una volta sola. È un link di TESTO
 # (giro W24 ②): ⛔ il badge di Apple resta uno per pagina, e questo non lo è.
+# ⭐ Dal giro W29 non sta più in questa mappa: barra e piede lo chiamano con
+# `dove='store'`, e il link è quello della lingua della pagina (`_data/lingue.yml`).
 #
 # ⭐ Giro W25: «Free and Pro» porta alla pagina `/pricing/`, non più alla
 # sezione della landing — e lì porta anche il link «Compare Free and Pro» in
@@ -156,7 +158,6 @@ menu:
   "FAQ":            "/faq/"
   "Free and Pro":   "/pricing/"
   "Compare Free and Pro": "/pricing/"
-  "Download":       "store"
   "What's new":     "/updates/"
   "Support":        "/support/"
   "Privacy Policy": "/privacy-policy/"

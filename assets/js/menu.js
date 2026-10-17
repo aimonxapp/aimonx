@@ -7,6 +7,8 @@
 // sono `<details>` (la nota in `_includes/barra.html`): senza questo file il
 // menu funziona uguale, e si perdono solo Esc e il clic fuori.
 // ⛔ Nessuna libreria, nessuna richiesta, nessuna parola: spec-sito.md §6.
+// ⭐ Giro W29: anche la tendina delle LINGUE, in alto a destra (`.lingue`):
+// stesse due regole, stesso codice.
 (function () {
   'use strict';
   var barra = document.querySelector('.barra');
@@ -14,7 +16,7 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    var aperti = barra.querySelectorAll('details[open]');
+    var aperti = document.querySelectorAll('.barra details[open], .lingue details[open]');
     var torna = null;
     for (var i = 0; i < aperti.length; i++) {
       aperti[i].open = false;
@@ -27,8 +29,11 @@
   });
 
   document.addEventListener('click', function (e) {
-    var t = barra.querySelector('details.tendina[open]');
-    // `.con-tendina` tiene il pulsante e le sue voci: un clic lì non è «fuori».
-    if (t && !t.parentNode.contains(e.target)) t.open = false;
+    // `.con-tendina` (e `.lingue`) tiene il pulsante e le sue voci: un clic lì
+    // non è «fuori».
+    var t = document.querySelectorAll('.barra details.tendina[open], .lingue details.tendina-lingue[open]');
+    for (var i = 0; i < t.length; i++) {
+      if (!t[i].parentNode.contains(e.target)) t[i].open = false;
+    }
   });
 })();

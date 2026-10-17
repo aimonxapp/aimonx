@@ -66,6 +66,10 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
         {%- for piede_v in piede_c.voci %}
         <li>{% include voce.html v=piede_v %}</li>
         {%- endfor %}
+        {%- if piede_c.scarica %}
+        {%- comment -%} ⭐ Giro W29: «Download», uguale in ogni lingua (`_data/navigazione.yml`, `menu.scarica`). {%- endcomment %}
+        <li>{% include voce.html v=site.data.navigazione.menu.scarica dove='store' %}</li>
+        {%- endif %}
         {%- endif %}
       </ul>
     </div>

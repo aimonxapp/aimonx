@@ -14,7 +14,8 @@ menu:
     - "Funzioni"
     - "FAQ"
     - "Free e Pro"
-    - "Scarica"
+# ⭐ Giro W29: «Download» non sta qui — è uguale in ogni lingua, e lo scrive una
+# volta sola `_data/navigazione.yml` (`menu.scarica`).
   tutte: "Tutte le funzioni"
   apri: "Menu"
   chiudi: "Chiudi"
@@ -36,7 +37,7 @@ piede:
       - "Home"
       - "Free e Pro"
       - "Novità"
-      - "Scarica"
+    scarica: true
   - titolo: "Funzioni"
     dalla_fonte: true
   - titolo: "Approfondisci"

@@ -26,8 +26,22 @@ _includes/selettore.html — LE LINGUE, una voce per lingua. Giro W28 (architett
   {%- endfor -%}
 {%- endcapture -%}
 {%- if include.dove == 'alto' -%}
+{%- comment -%}
+  ⭐ Giro W29 (Pier, 17/10/2026 17:19): in alto è UNA TENDINA, fatta come
+  quella di «Features» (`_includes/barra.html`): un `<details>` vuoto il cui
+  `<summary>` dice la lingua della pagina — col suo `lang` — e le voci nella
+  `<ul>` SUBITO DOPO, link veri. Chiusa, le voci sono `display: none`: fuori
+  dalla vista e dal Tab. Si apre e si chiude col clic, Invio e spazio, SENZA
+  JavaScript; Esc e il clic fuori la chiudono con `assets/js/menu.js`. Il segno
+  della tendina («▾») è il chevron disegnato dal CSS, come per «Features».
+  ⛔ Niente `<select>`: i link non si vedrebbero, e cambierebbe pagina solo con
+  JavaScript. Nel piede la colonna resta un elenco (ramo qui sotto).
+{%- endcomment %}
 <nav class="lingue" aria-label="{{ lin_t.navigazione.etichette.lingua }}">
-  <ul>{{ sel_voci }}
+  <details class="tendina-lingue">
+    <summary><span lang="{{ lin.html }}">{{ lin.nome }}</span></summary>
+  </details>
+  <ul class="lingue-voci">{{ sel_voci }}
   </ul>
 </nav>
 {%- else -%}

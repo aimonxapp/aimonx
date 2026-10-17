@@ -128,7 +128,7 @@ SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
 SEZIONI_NAVIGAZIONE_IT = ["Menu in alto", "Briciole di pane",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/it/features/`",
-  "Piede, i titoli delle colonne", "Il selettore di lingua (nuovo, anche sul sito inglese)"]
+  "Piede, i titoli delle colonne", "Il selettore di lingua (anche sul sito inglese) — menu a tendina"]
 
 # Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
@@ -416,11 +416,14 @@ if modo == "sorgente"
   # ⚠️ Una chiave in più è ammessa solo dove è dichiarata qui sotto — oggi da
   # nessuna parte (fino alla correzione della fase A, i nomi brevi italiani).
   IN_PIU = {}
+  # ⭐ Giro W29: le chiavi che stanno SOLO nell'inglese, apposta — «Download»
+  # è uguale in ogni lingua e si scrive una volta (`_data/navigazione.yml`).
+  SOLO_INGLESE = { "navigazione" => [".menu.scarica"] }
   confronta_forma = lambda do |en, al, via, ammesse, diff|
     case en
     when Hash
       return diff << "#{via}: nell'inglese è un gruppo di chiavi, qui no" unless al.is_a?(Hash)
-      (en.keys - ["aspetto"]).each { |k| diff << "#{via}.#{k}: manca" unless al.key?(k) }
+      (en.keys - ["aspetto"]).each { |k| diff << "#{via}.#{k}: manca" unless al.key?(k) || $solo_inglese.include?("#{via}.#{k}") }
       (al.keys - en.keys - ammesse).each { |k| diff << "#{via}.#{k}: in più rispetto all'inglese" }
       (en.keys & al.keys).each { |k| confronta_forma.call(en[k], al[k], "#{via}.#{k}", ammesse, diff) unless k == "aspetto" }
     when Array
@@ -438,6 +441,7 @@ if modo == "sorgente"
     al_file = File.join(repo, p[:dati])
     next unless File.readable?(en_file) && File.readable?(al_file)
     diff = []
+    $solo_inglese = SOLO_INGLESE[File.basename(en_file, ".yml")] || []
     confronta_forma.call(YAML.load_file(en_file), YAML.load_file(al_file), "", IN_PIU[File.basename(en_file, ".yml")] || [], diff)
     fuori += diff.size
     puts "  #{p[:nome]}: forma uguale all'inglese" + (diff.empty? ? "" : " — NO, #{diff.size} scarti")

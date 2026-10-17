@@ -132,11 +132,11 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
         <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
       </ul>
     </li>
-    {%- elsif forloop.last %}
-    <li class="scarica-voce">{% include voce.html v=v classe='pulsante' %}</li>
     {%- else %}
     <li>{% include voce.html v=v %}</li>
     {%- endif -%}
     {%- endfor %}
+    {%- comment -%} ⭐ Giro W29: «Download» in fondo, uguale in ogni lingua — scritto una volta sola in `_data/navigazione.yml` (`menu.scarica`), verso il link allo Store della lingua della pagina. {%- endcomment %}
+    <li class="scarica-voce">{% include voce.html v=site.data.navigazione.menu.scarica dove='store' classe='pulsante' %}</li>
   </ul>
 </nav>

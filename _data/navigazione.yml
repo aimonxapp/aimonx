@@ -25,7 +25,12 @@ menu:
     - "Features"
     - "FAQ"
     - "Free and Pro"
-    - "Download"
+  # ⭐ Giro W29 (Pier, 17/10/2026 17:18): «Download» in TUTTE le lingue, ed è
+  # scritto QUI e basta — il pulsante in fondo alla barra e l'ultima voce della
+  # colonna «App» del piede lo prendono da questo file su ogni versione del
+  # sito, e i file delle altre lingue non lo ripetono. ⛔ Il badge di Apple
+  # resta nella sua lingua: è un'altra cosa (`hero.badge`, `badge`).
+  scarica: "Download"
   # ⚠️ La voce che si apre è quella che porta all'indice delle funzioni
   # (`_data/collegamenti.yml`, `apre`), e sotto di lei vanno le funzioni con
   # una pagina e, in fondo, questa.
@@ -66,7 +71,8 @@ piede:
       - "Home"
       - "Free and Pro"
       - "What's new"
-      - "Download"
+    # ⭐ Giro W29: in fondo alla colonna, «Download» (`menu.scarica`, qui sopra).
+    scarica: true
   - titolo: "Features"
     dalla_fonte: true
   - titolo: "Learn"

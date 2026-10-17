@@ -84,6 +84,15 @@ for (const url of urls) {
     console.log(`  --- ${nome}: ${cosa} raggiungibili col Tab: ${chiuse.visibili} su ${chiuse.tutte}` +
                 (chiuse.visibili === 0 && chiuse.tutte > 0 ? '  ✅' : '  ⛔ dovrebbero essere 0 su più di 0'));
     if (chiuse.visibili !== 0 || chiuse.tutte === 0) guasti++;
+    // ⭐ Giro W29: la tendina delle LINGUE, in alto a destra, a ogni larghezza —
+    // chiusa, le sue voci non si raggiungono col Tab. Stessa misura, stesso conto.
+    const lingueChiuse = await page.evaluate(() => {
+      const tutte = [...document.querySelectorAll('.lingue .lingue-voci a')];
+      return { tutte: tutte.length, visibili: tutte.filter((a) => a.offsetParent !== null).length };
+    });
+    console.log(`  --- ${nome}: tendina delle lingue CHIUSA, voci raggiungibili col Tab: ${lingueChiuse.visibili} su ${lingueChiuse.tutte}` +
+                (lingueChiuse.visibili === 0 && lingueChiuse.tutte > 0 ? '  ✅' : '  ⛔ dovrebbero essere 0 su più di 0'));
+    if (lingueChiuse.visibili !== 0 || lingueChiuse.tutte === 0) guasti++;
 
     const giro = [];
     await page.evaluate(() => document.body.focus());
@@ -117,34 +126,41 @@ for (const url of urls) {
 
     // Il pulsante aperto si richiude da sé, col suo Invio.
     // ⭐ Giro W24: e si RICHIUDE da tastiera — fuoco sul pulsante, Invio.
-    const richiusi = await page.evaluate(() =>
-      [...document.querySelectorAll('.barra details[open] > summary')].filter((s) => s.getBoundingClientRect().width > 0).length);
-    for (let k = 0; k < richiusi; k++) {
-      await page.evaluate(() => [...document.querySelectorAll('.barra details[open] > summary')].find((s) => s.getBoundingClientRect().width > 0).focus());
+    // ⭐ Giro W29: anche la tendina delle lingue (`.lingue`). ⚠️ Si chiude
+    // sempre il pulsante che SI VEDE: senza script, sul telefono, la tendina
+    // delle lingue può restare aperta SOTTO il pannello «Menu» (che nasconde il
+    // resto della pagina), e si raggiunge solo dopo aver chiuso il pannello.
+    const visibileAperto = () => [...document.querySelectorAll(':is(.barra, .lingue) details[open] > summary')]
+      .find((s) => s.getBoundingClientRect().width > 0 && getComputedStyle(s).visibility !== 'hidden');
+    let richiusi = 0;
+    for (let k = 0; k < 4; k++) {
+      const c = await page.evaluate(`(() => { const s = (${visibileAperto.toString()})(); if (!s) return false; s.focus(); return true; })()`);
+      if (!c) break;
       await page.keyboard.press('Enter');
+      richiusi++;
     }
-    const ancoraAperti = await page.evaluate(() => document.querySelectorAll('.barra details[open]').length);
+    const ancoraAperti = await page.evaluate(() => document.querySelectorAll(':is(.barra, .lingue) details[open]').length);
     console.log(`   Invio sul pulsante aperto → ${ancoraAperti === 0 ? `richiuso (${richiusi})  ✅` : `⛔ ancora aperti: ${ancoraAperti}`}`);
     if (ancoraAperti !== 0) guasti++;
 
     // ④ Esc, su ogni pulsante che si vede: si apre con Invio, poi Esc.
     const pulsanti = await page.evaluate(() =>
-      [...document.querySelectorAll('.barra details > summary')].filter((s) => s.getClientRects().length).map((s) => s.parentElement.className));
+      [...document.querySelectorAll(':is(.barra, .lingue) details > summary')].filter((s) => s.getClientRects().length).map((s) => s.parentElement.className));
     for (const classe of pulsanti) {
-      await page.focus(`.barra details.${classe} > summary`);
+      await page.focus(`:is(.barra, .lingue) details.${classe} > summary`);
       await page.keyboard.press('Enter');
       // Un Tab DENTRO, sulla prima voce: Esc si preme da lì, ed è da lì che il
       // fuoco deve tornare al pulsante.
       await page.keyboard.press('Tab');
-      const dentro = await page.evaluate(() => document.activeElement.closest('.voci-barra, .sotto') ? document.activeElement.innerText.trim() : null);
+      const dentro = await page.evaluate(() => document.activeElement.closest('.voci-barra, .sotto, .lingue-voci') ? document.activeElement.innerText.trim() : null);
       await page.keyboard.press('Escape');
       const dopo = await page.evaluate((c) => {
-        const d = document.querySelector(`.barra details.${c}`);
+        const d = document.querySelector(`:is(.barra, .lingue) details.${c}`);
         return { aperto: d.open, fuoco: document.activeElement === d.querySelector('summary') };
       }, classe);
       if (!script) {
         console.log(`   Esc sul pulsante «${classe}» → ${dopo.aperto ? 'resta aperto (atteso: senza script Esc non c è)' : 'richiuso'}`);
-        await page.evaluate((c) => { document.querySelector(`.barra details.${c}`).open = false; }, classe);
+        await page.evaluate((c) => { document.querySelector(`:is(.barra, .lingue) details.${c}`).open = false; }, classe);
         continue;
       }
       const bene = !dopo.aperto && dopo.fuoco && dentro !== null;
@@ -170,6 +186,21 @@ for (const url of urls) {
       } else {
         console.log(`   clic fuori dalla tendina aperta → ${aperta ? 'resta aperta (atteso: senza script)' : 'richiusa'}`);
       }
+    }
+    // ⭐ Giro W29: il clic fuori anche sulla tendina delle lingue, a ogni larghezza.
+    await page.evaluate(() => { document.querySelector('.lingue details.tendina-lingue').open = false; });
+    await page.focus('.lingue details.tendina-lingue > summary');
+    await page.keyboard.press('Enter');
+    if (!await page.evaluate(() => document.querySelector('.lingue details.tendina-lingue').open)) { console.log('   ⛔ la tendina delle lingue non si è aperta'); guasti++; }
+    // ⚠️ Nel margine laterale, dove non c'è niente: in mezzo, al telefono, il
+    // clic cadeva su un link e cambiava pagina (misurato su `/features/`).
+    await page.mouse.click(4, 600);
+    const lingueAperta = await page.evaluate(() => document.querySelector('.lingue details.tendina-lingue').open);
+    if (script) {
+      console.log(`   clic fuori dalla tendina delle lingue → ${lingueAperta ? '⛔ resta aperta' : 'richiusa  ✅'}`);
+      if (lingueAperta) guasti++;
+    } else {
+      console.log(`   clic fuori dalla tendina delle lingue → ${lingueAperta ? 'resta aperta (atteso: senza script)' : 'richiusa'}`);
     }
     await ctx.close();
   }
