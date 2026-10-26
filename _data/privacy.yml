@@ -65,9 +65,9 @@ titolo: "Privacy Policy"
 # dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
 # ⚠️ Giro W18: October 15, 2026 («deadlines» → «renewals»).
-# ⭐ GIRO W30, LA 1.1.0: il testo cambia, quindi la data cambia. ⚠️ In Fase A
-# è PROVVISORIA e dichiarata — il giorno dell'anteprima —, e in Fase B diventa
-# il giorno in cui Pier scrive «pubblica», se è un altro.
+# ⭐ GIRO W30, LA 1.1.0: il testo cambia, quindi la data cambia. ⭐ È LA DATA
+# VERA: il 26/10/2026 Pier ha scritto «pubblica», lo stesso giorno
+# dell'anteprima.
 data_pubblicazione: "October 26, 2026"
 
 blocchi:
