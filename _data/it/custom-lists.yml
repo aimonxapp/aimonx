@@ -53,7 +53,7 @@ blocchi:
     testo: "Scegli la tua icona per ogni tipo di intervento, tipo di sessione e tipologia di scadenza. È l'icona che vedi sulle tue armi, sulle sessioni e sulle scadenze."
   - tipo: schermate
     alt:
-      - "I tipi di intervento in AIMONX, ognuno con la sua icona: pulizia, lubrificazione, controllo, sostituzione parti, riparazione e armaiolo."
+      - "I tipi di intervento in AIMONX, ognuno con la sua icona: pulizia, lubrificazione, controllo, sostituzione parti, riparazione e Gunsmith."
   - tipo: h2
     testo: "Free"
   - tipo: p

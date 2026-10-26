@@ -1,15 +1,19 @@
 # _data/it/privacy.yml — LA PRIVACY POLICY, in italiano. Giro W28.
 #
 # ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 17/10/2026
-# (14:34), nella sua cartella dei contenuti:
-#     …/2- Contenuti/privacy-policy/privacy-policy-it-bozza.md
+# (14:34), e dal giro W30 quello della 1.1.0 dell'app (approvato da Pier il
+# 26/10/2026: gli stessi cinque punti dell'inglese), nella sua cartella:
+#     …/2- Contenuti/privacy-policy/privacy-policy-it-1.1.0-bozza.md
+# ⚠️ Il 🆕 della bozza non va in pagina; «[il tuo nome]» sì, è il segnaposto
+# del percorso nelle Impostazioni di iOS.
 # e il titolo della scheda viene dalla bozza dei titoli italiana.
 # ⭐ Strada A (Pier, 17/10/2026 14:33): nessuna riga su quale versione valga —
 # l'inglese e l'italiana dicono le stesse cose e cambiano INSIEME, nello
 # stesso giro.
 # ⚠️ Titolo e descrizione dalla sezione Meta della bozza.
 # ⚠️ `data_pubblicazione` sostituisce «[data di pubblicazione]» della bozza: è
-# il giorno in cui la pagina va online (fase B del giro).
+# il giorno in cui la pagina va online (fase B del giro). ⚠️ Giro W30: in
+# Fase A è provvisoria — il giorno dell'anteprima — come per l'inglese.
 # ⛔ STESSE CHIAVI E STESSO ORDINE di `_data/privacy.yml`.
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
 
@@ -19,7 +23,7 @@ meta:
 
 titolo: "Privacy Policy"
 aggiornato: "Ultimo aggiornamento:"
-data_pubblicazione: "17 ottobre 2026"
+data_pubblicazione: "26 ottobre 2026"
 
 blocchi:
   - tipo: h2
@@ -28,6 +32,7 @@ blocchi:
     voci:
       - "AIMONX non ha account e non ha server AIMONX. I tuoi dati non li vediamo mai."
       - "Il tuo diario è cifrato sul tuo iPhone. Di serie una copia cifrata si salva nel tuo iCloud, così cambiando telefono non perdi niente. Puoi spegnerla."
+      - "Se metti un poligono sulla mappa, la sua posizione resta nel tuo diario, cifrata. A noi non arriva mai."
       - "Niente pubblicità, niente statistiche d'uso, niente tracciamento. Il tuo diario non arriva mai a noi, quindi non c'è niente da vendere o da condividere."
       - "Questo sito non usa cookie né sistemi di tracciamento."
   - tipo: h2
@@ -41,7 +46,7 @@ blocchi:
   - tipo: h3
     testo: "Cosa resta sul tuo iPhone"
   - tipo: p
-    testo: "Tutto quello che inserisci in AIMONX resta in AIMONX: le tue armi, le matricole se scegli di inserirle, i colpi, le sessioni al poligono, le gare, le munizioni, le ricaricate, la manutenzione, le scadenze, i costi, le note e le foto."
+    testo: "Tutto quello che inserisci in AIMONX resta in AIMONX: le tue armi, le matricole se scegli di inserirle, i colpi, le sessioni al poligono, le gare, le munizioni, le ricaricate, la manutenzione, le scadenze, i costi, le note, le foto e i tuoi poligoni e armerie, con il punto sulla mappa se lo aggiungi."
   - tipo: p
     testo: "Tutto è salvato in un database cifrato sul tuo iPhone, che si apre solo quando confermi che sei tu. Non c'è nessun server AIMONX che ne tenga una copia, quindi non c'è niente che noi possiamo leggere."
   - tipo: h3
@@ -52,17 +57,30 @@ blocchi:
     voci:
       - "La copia viene cifrata sul tuo iPhone, con la stessa chiave del diario, prima di andare da qualsiasi parte."
       - "Sta nel tuo spazio iCloud personale. Noi non ci possiamo accedere."
-      - "Puoi spegnerla nell'app in qualsiasi momento."
+      - "Puoi spegnerla quando vuoi in Impostazioni > [il tuo nome] > iCloud > Salvati su iCloud > Mostra tutto > AIMONX. Da quel momento il diario resta solo sul tuo iPhone."
   - tipo: p
     testo: "iCloud è gestito da Apple ed è coperto dall'informativa sulla privacy di Apple."
   - tipo: h3
     testo: "Cosa non raccogliamo"
   - tipo: p
-    testo: "Nessun account, nessun indirizzo email, nessun nome, nessuna posizione, nessun contatto, nessuna statistica d'uso, nessun identificativo pubblicitario. AIMONX non contiene codice di terze parti che parli con Internet: niente statistiche d'uso, niente raccolta dei crash, niente reti pubblicitarie."
+    testo: "Nessun account, nessun indirizzo email, nessun nome, nessun contatto, nessuna statistica d'uso, nessun identificativo pubblicitario. Non raccogliamo nemmeno la tua posizione: se metti un luogo sulla mappa, resta nel tuo diario. AIMONX non contiene codice di terze parti che parli con Internet: niente statistiche d'uso, niente raccolta dei crash, niente reti pubblicitarie."
+  - tipo: h3
+    testo: "Posizione"
+  - tipo: p
+    testo: "AIMONX usa la posizione per una cosa sola: mettere sulla mappa i tuoi poligoni e le armerie. È facoltativo, e puoi farlo in tre modi:"
+  - tipo: ul
+    voci:
+      - "Tocca Usa la posizione attuale. La prima volta l'iPhone ti chiede il permesso. AIMONX riceve la tua posizione solo in quel momento, mentre usi l'app, e mai in background."
+      - "Tocca Scegli sulla mappa e metti tu il punto."
+      - "Lascia che AIMONX trovi il punto dall'indirizzo che hai scritto. Per farlo, l'app manda l'indirizzo al servizio mappe di Apple, solo quando tocchi Scegli sulla mappa."
+  - tipo: p
+    testo: "La posizione si salva col luogo nel tuo diario cifrato, e nella tua copia cifrata su iCloud e negli archivi. A noi non viene mai inviata. Le sessioni non hanno una posizione propria: mostrano la mappa del loro poligono."
+  - tipo: p
+    testo: "Mappe e indicazioni sono fornite da Apple (MapKit e Mappe) e rientrano nell'informativa sulla privacy di Apple."
   - tipo: h3
     testo: "Foto"
   - tipo: p
-    testo: "Puoi aggiungere foto delle tue armi da Foto o da File. AIMONX non usa mai la fotocamera. Prima di salvare una foto, AIMONX le toglie la posizione e gli altri metadati, poi la cifra come il resto del diario."
+    testo: "Puoi aggiungere foto delle tue armi, delle sessioni e delle munizioni da Foto o da File. AIMONX non usa mai la fotocamera. Prima di salvare una foto, AIMONX le toglie la posizione e gli altri metadati, poi la cifra come il resto del diario. Le foto fanno parte della tua copia cifrata su iCloud."
   - tipo: h3
     testo: "Report PDF e archivi"
   - tipo: p

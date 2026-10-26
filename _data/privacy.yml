@@ -1,8 +1,15 @@
 # _data/privacy.yml — IL TESTO DELLA PAGINA PRIVACY POLICY, UNA VOLTA SOLA.
 #
 # ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 22/09/2026, che
-# sta nella sua cartella dei contenuti:
-#     …/2- Contenuti/privacy-policy/privacy-policy-en-bozza.md
+# sta nella sua cartella dei contenuti.
+# ⭐ DAL GIRO W30 LA BOZZA È QUELLA DELLA 1.1.0 DELL'APP (approvata da Pier il
+# 26/10/2026): cinque punti cambiati — la posizione dei luoghi, la sezione
+# «Location», le foto, e la copia in iCloud che si spegne da iOS e non
+# dall'app — e il resto identico:
+#     …/2- Contenuti/privacy-policy/privacy-policy-en-1.1.0-bozza.md
+# ⚠️ Il segno 🆕 con cui la bozza marca i punti nuovi non va in pagina, e il
+# controllo lo toglie come le note fra quadre. «[your name]» invece è testo:
+# è il segnaposto del percorso nelle Impostazioni di iOS, e la bozza lo vuole.
 # Non è stato ricopiato a mano: è stato CONVERTITO, e `scripts/testo-approvato.sh`
 # cerca ogni stringa qui dentro ALLA LETTERA in quella bozza. ⭐ Il «parola per
 # parola» del giro W9 non è una promessa: è una misura che gira a ogni giro.
@@ -57,10 +64,11 @@ titolo: "Privacy Policy"
 # stesse, in «Changes». `scripts/testo-approvato.sh` la STAMPA a ogni run,
 # dichiarata, accanto al segnaposto che sostituisce.
 aggiornato: "Last updated:"
-# ⭐ NEL GIRO W18 IL TESTO CAMBIA — «deadlines» diventa «renewals», la parola
-# dell'app — quindi la data cambia. ⭐ È LA DATA VERA: il 15/10/2026 Pier ha
-# scritto «pubblica» (Fase B del giro W18), lo stesso giorno dell'anteprima.
-data_pubblicazione: "October 15, 2026"
+# ⚠️ Giro W18: October 15, 2026 («deadlines» → «renewals»).
+# ⭐ GIRO W30, LA 1.1.0: il testo cambia, quindi la data cambia. ⚠️ In Fase A
+# è PROVVISORIA e dichiarata — il giorno dell'anteprima —, e in Fase B diventa
+# il giorno in cui Pier scrive «pubblica», se è un altro.
+data_pubblicazione: "October 26, 2026"
 
 blocchi:
 - tipo: h2
@@ -69,6 +77,7 @@ blocchi:
   voci:
   - AIMONX has no accounts and no AIMONX servers. We never see your data.
   - Your logbook is encrypted on your iPhone. By default, an encrypted copy is saved to your own iCloud, so nothing gets lost when you switch phones. You can turn it off.
+  - If you put a range on the map, its location stays in your logbook, encrypted. It never reaches us.
   - No ads, no analytics, no tracking. Your logbook never reaches us, so there's nothing to sell or share.
   - This website uses no cookies and no trackers.
 - tipo: h2
@@ -82,7 +91,7 @@ blocchi:
 - tipo: h3
   testo: What stays on your iPhone
 - tipo: p
-  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, renewals, costs, notes and photos.'
+  testo: 'Everything you put in AIMONX stays in AIMONX: your firearms, serial numbers if you choose to add them, round counts, range sessions, matches, ammo, handloads, maintenance, renewals, costs, notes, photos, and your ranges and gun shops, with their spot on the map if you add one.'
 - tipo: p
   testo: It's stored in an encrypted database on your iPhone, and it only unlocks when you verify it's you. There's no AIMONX server holding a copy, so there's nothing for us to read.
 - tipo: h3
@@ -93,17 +102,30 @@ blocchi:
   voci:
   - The copy is encrypted on your iPhone, with the same key as your logbook, before it goes anywhere.
   - It sits in your personal iCloud storage. We can't access it.
-  - You can turn it off in the app at any time.
+  - You can turn it off anytime in Settings > [your name] > iCloud > Saved to iCloud > See All > AIMONX. Your logbook then stays only on your iPhone.
 - tipo: p
   testo: iCloud is run by Apple and covered by Apple's privacy policy.
 - tipo: h3
   testo: What we don't collect
 - tipo: p
-  testo: 'No account, no email address, no name, no location, no contacts, no usage analytics, no advertising IDs. AIMONX doesn''t include any third-party code that talks to the internet: no analytics, no crash reporters, no ad networks.'
+  testo: 'No account, no email address, no name, no contacts, no usage analytics, no advertising IDs. We don''t collect your location either: if you put a place on the map, it stays in your logbook. AIMONX doesn''t include any third-party code that talks to the internet: no analytics, no crash reporters, no ad networks.'
+- tipo: h3
+  testo: Location
+- tipo: p
+  testo: 'AIMONX uses location for one thing only: putting your ranges and gun shops on the map. It''s optional, and you can do it three ways:'
+- tipo: ul
+  voci:
+  - Tap Use Current Location. The first time, your iPhone asks for permission. AIMONX gets your location only when you tap it, while you're using the app, and never in the background.
+  - Tap Choose on Map and drop the pin yourself.
+  - Let AIMONX find the spot from the address you entered. To do that, it sends the address to Apple's map service, only when you tap Choose on Map.
+- tipo: p
+  testo: 'The location is saved with the place in your encrypted logbook, and in your encrypted iCloud copy and archives. It''s never sent to us. Sessions don''t get a location of their own: they show the map of their range.'
+- tipo: p
+  testo: Maps and directions are provided by Apple (MapKit and Apple Maps) and covered by Apple's privacy policy.
 - tipo: h3
   testo: Photos
 - tipo: p
-  testo: You can add photos of your firearms from Photos or Files. AIMONX never uses your camera. Before a photo is saved, AIMONX strips out its location and other metadata, then encrypts it like the rest of your logbook.
+  testo: You can add photos of your firearms, sessions, and ammo from Photos or Files. AIMONX never uses your camera. Before a photo is saved, AIMONX strips out its location and other metadata, then encrypts it like the rest of your logbook. Your photos are included in your encrypted iCloud copy.
 - tipo: h3
   testo: PDF reports and archives
 - tipo: p

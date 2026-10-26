@@ -89,7 +89,7 @@ ILLEGGIBILI=0
 if [ -z "$PIER_DIR" ]; then
   ILLEGGIBILI=1
 else
-  for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-bozza.md \
+  for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-1.1.0-bozza.md \
                support/support-en-bozza.md terms/terms-en-bozza.md \
                round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md \
                navigazione/navigazione-en-bozza.md \
@@ -138,7 +138,7 @@ PAGINE = [
     uscita: "index.html" },
   # ⭐ Giro W27: il titolo di scheda di queste tre sta nella bozza dei titoli,
   # tabella «Titoli» (`anche`), e non è più un'eccezione.
-  { nome: "privacy", dati: "_data/privacy.yml", bozza: "privacy-policy/privacy-policy-en-bozza.md",
+  { nome: "privacy", dati: "_data/privacy.yml", bozza: "privacy-policy/privacy-policy-en-1.1.0-bozza.md",
     uscita: "privacy-policy/index.html", anche: [["titoli/titoli-en-bozza.md", ["Titoli"]]] },
   { nome: "support", dati: "_data/support.yml", bozza: "support/support-en-bozza.md",
     uscita: "support/index.html", anche: [["titoli/titoli-en-bozza.md", ["Titoli"]]] },
@@ -227,7 +227,7 @@ PAGINE = [
 PAGINE_IT = [
   { nome: "it/landing", dati: "_data/it/landing.yml", bozza: "landing/landing-it-bozza.md",
     uscita: "it/index.html", lingua: "it" },
-  { nome: "it/privacy", dati: "_data/it/privacy.yml", bozza: "privacy-policy/privacy-policy-it-bozza.md",
+  { nome: "it/privacy", dati: "_data/it/privacy.yml", bozza: "privacy-policy/privacy-policy-it-1.1.0-bozza.md",
     uscita: "it/privacy-policy/index.html", lingua: "it", anche: [["titoli/titoli-it-bozza.md", ["Titoli e indirizzi"]]] },
   { nome: "it/support", dati: "_data/it/support.yml", bozza: "support/support-it-bozza.md",
     uscita: "it/support/index.html", lingua: "it" },
@@ -292,8 +292,12 @@ STRUTTURA = ["tipo", "aspetto"]
 # ⭐ Dal giro W15 `sezioni` restringe la bozza ai soli titoli `## ` nominati, e
 # toglie le righe che sono una NOTA FRA QUADRE da sole («[schermata: …]»): sono
 # istruzioni per chi costruisce, non testo.
+# ⭐ Dal giro W30 si toglie anche il 🆕 con lo spazio che lo segue: le bozze di
+# una versione nuova marcano così i punti cambiati, e il segno è per chi
+# rilegge, non per la pagina. ⚠️ Sta anche in mezzo a una frase («photos, and
+# 🆕 your ranges…»): toglierlo è l unico modo di trovarla intera.
 def piano(percorso, sezioni = nil)
-  t = File.read(percorso, encoding: "UTF-8")
+  t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "")
   if sezioni
     pezzi = t.split(/^## /).drop(1).select { |s| sezioni.include?(s.lines.first.to_s.strip) }
     t = pezzi.map { |s| s.lines.drop(1).reject { |r| r.strip.start_with?("[") && r.strip.end_with?("]") }.join }.join("\n")
