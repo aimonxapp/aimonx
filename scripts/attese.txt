@@ -256,7 +256,7 @@ immagini_guasti=0
 # Quante schermate dell'app mostra la landing: la Home nella parte alta e una
 # per ciascuna delle sette voci. ⚠️ Non è una soglia: è l'allarme che suona se
 # una sparisce — zero immagini sono anche zero immagini sbagliate.
-schermate_in_pagina=106
+schermate_in_pagina=104
 
 # Quante ne dichiarano i dati strutturati (`screenshot`). ⛔ Sette e non otto,
 # apposta: la pagina del PDF è un documento che l'app produce, non una
@@ -268,8 +268,8 @@ schermate_nei_dati_strutturati=9
 # larghezze. Il repo è pubblico. Se il primo numero sale è entrata un'immagine
 # in più; se sale solo il secondo, un file che non è una delle tre larghezze.
 # ⛔ Nessuno dei due si alza per far passare qualcosa: prima si guarda cos'è.
-schermate_immagini=48
-schermate_file=144
+schermate_immagini=47
+schermate_file=141
 
 # --- giro W15: la prima pagina-funzione, «Round count» ------------------------
 #
@@ -416,5 +416,5 @@ hreflang_guasti=0
 badge_apple_impronta_it=ec8e9566058da338
 foto_in_pagina=10
 foto_file=15
-immagini_guardate=171
+immagini_guardate=168
 immagini_con_metadati=0

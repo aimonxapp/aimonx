@@ -27,9 +27,6 @@ blocchi:
   testo: Give a setup a name, like "124 gr match load, 5-inch barrel", and save it to the history. AIMONX keeps your last 50, newest first, with weight, velocity, Power Factor, energy, date and time.
 - tipo: p
   testo: 'The history is a scratch pad: it isn''t part of your logbook, your backup or your archive. Once it''s gone, it''s gone.'
-- tipo: schermate
-  alt:
-  - The Power Factor calculator history in AIMONX, with the last setups saved, newest first.
 - tipo: h2
   testo: On every ammo card too
 - tipo: p

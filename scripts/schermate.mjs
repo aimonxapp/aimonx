@@ -125,7 +125,6 @@ const LISTA = [
     ritaglio: { x: 193, y: 391, larga: 903, alta: 1957, angolo: 136 } },
   { da: 'privacy_3_backup.png',               a: 'aimonx-icloud-backup',       larghezze: TELEFONO, gruppo: 'privacy' },
   { da: 'privacy_4_protezione-avanzata.png',  a: 'aimonx-advanced-protection', larghezze: TELEFONO, gruppo: 'privacy' },
-  { da: 'maintenance_1_edit-rule-mark-as-done.png', a: 'aimonx-maintenance-mark-as-done', larghezze: TELEFONO, gruppo: 'manutenzione' },
   { da: 'maintenance_2_new-entry-prefilled.png',    a: 'aimonx-maintenance-new-entry',    larghezze: TELEFONO, gruppo: 'manutenzione' },
   { da: 'maintenance_3_firearm-log.png',            a: 'aimonx-maintenance-log',          larghezze: TELEFONO, gruppo: 'manutenzione' },
   // --- giro W23, la pagina «Custom lists» — schermate della 1.0.1 (Pier, 16/10) ---
@@ -145,7 +144,7 @@ const LISTA = [
   // ⚠️ I numeri delle due cartelle sono diversi: la gemella si cerca per nome di pagina.
   ...[['058_reload_form_5', '054_reload_form_5', 'aimonx-handload-components'], ['049_reload_card_1', '045_reload_card_1', 'aimonx-handload-card'],
     ['043_ammo_card_2', '038_ammo_card_2', 'aimonx-ammo-card-inventory'], ['060_ammo_1', '056_ammo_1', 'aimonx-ammo-list'], ['042_ammo_card_1', '037_ammo_card_1', 'aimonx-ammo-card-details'],
-    ['062_pf_calc_1', '058_pf_calc_1', 'aimonx-power-factor-calculator'], ['063_pf_calc_2', '059_pf_calc_2', 'aimonx-power-factor-history'],
+    ['062_pf_calc_1', '058_pf_calc_1', 'aimonx-power-factor-calculator'], ['065_rule_form_1', '061_rule_form_1', 'aimonx-maintenance-rule-form'],
     ['008_firearm_card_3', '010_firearm_card_3', 'aimonx-firearm-tech-specs'], ['009_firearm_card_4', '011_firearm_card_4', 'aimonx-firearm-photos'],
     ['022_session_card_1', '024_session_card_1', 'aimonx-session-map'], ['088_location_card_1', '086_location_card_1', 'aimonx-range-map'],
   ].flatMap(([us, it, a]) => [{ da: `US/${us}.png`, a, larghezze: TELEFONO, gruppo: '1.1.0' }, { da: `IT/${it}.png`, a: `${a}-it`, larghezze: TELEFONO, gruppo: '1.1.0' }]),

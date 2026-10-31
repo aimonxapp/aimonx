@@ -78,14 +78,16 @@ menu_funzioni:
 funzioni_it:
   handloads: [aimonx-handload-components-it, aimonx-handload-card-it]
   ammo-and-costs: [aimonx-ammo-card-inventory-it, aimonx-ammo-list-it, aimonx-ammo-card-details-it]
-  power-factor-calculator: [aimonx-power-factor-calculator-it, aimonx-power-factor-history-it]
+  power-factor-calculator: [aimonx-power-factor-calculator-it]
   firearm-records: [aimonx-firearm-tech-specs-it, aimonx-firearm-photos-it, aimonx-inventory-pdf-it]
   range-log: [aimonx-session-map-it, aimonx-range-map-it]
+  # ⭐ La terza è la regola 1.1.0 in italiano (Pier, 31/10); le altre quattro restano quelle di sempre.
+  maintenance: [aimonx-maintenance-rules, aimonx-firearms-round-count, aimonx-maintenance-rule-form-it, aimonx-maintenance-new-entry, aimonx-maintenance-log]
 
 funzioni:
   handloads: [aimonx-handload-components, aimonx-handload-card]
   ammo-and-costs: [aimonx-ammo-card-inventory, aimonx-ammo-list, aimonx-ammo-card-details]
-  power-factor-calculator: [aimonx-power-factor-calculator, aimonx-power-factor-history]
+  power-factor-calculator: [aimonx-power-factor-calculator]
   firearm-records: [aimonx-firearm-tech-specs, aimonx-firearm-photos, aimonx-inventory-pdf]
   range-log: [aimonx-session-map, aimonx-range-map]
   round-count:
@@ -108,7 +110,7 @@ funzioni:
   maintenance:
     - aimonx-maintenance-rules
     - aimonx-firearms-round-count
-    - aimonx-maintenance-mark-as-done
+    - aimonx-maintenance-rule-form
     - aimonx-maintenance-new-entry
     - aimonx-maintenance-log
   # ⭐ Giro W23, la quarta: cinque schermate nuove. ⚠️ `aimonx-manage-lists` è

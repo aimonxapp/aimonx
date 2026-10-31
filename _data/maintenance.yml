@@ -55,7 +55,7 @@ blocchi:
   testo: "Open a rule and tap Mark as Done. AIMONX fills in the date, the firearm's round count and the rule's details. Fix anything that's off, like the date if you did it two days ago, then save. That rule's counters, rounds and time, start again from there."
 - tipo: schermate
   alt:
-  - "Editing a maintenance rule in AIMONX: a Mark as Done button on top, then the type, title, procedure, interval in rounds and early warning."
+  - "Editing a maintenance rule in AIMONX: Mark as Done on top, then the type, title and procedure, and an interval in rounds or in time."
   - "A new maintenance entry in AIMONX, already filled in from the rule: title, procedure and the firearm's current round count."
 - tipo: h2
   testo: Every job in the firearm's log

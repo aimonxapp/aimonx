@@ -14,7 +14,7 @@ sommario: Major o minor? Inserisci peso palla e velocità alla volata, e AIMONX 
 blocchi:
 - tipo: schermate
   alt:
-  - 'Il Calcolo Power Factor in AIMONX: una palla da 147 grani a 880 fps dà un Power Factor di 129 e l''energia alla volata.'
+  - 'Il Calcolo Power Factor in AIMONX: una palla da 124 grani a 350 m/s dà un Power Factor di 142 e l''energia alla volata.'
 - tipo: h2
   testo: Come si calcola
 - tipo: p
@@ -27,9 +27,6 @@ blocchi:
   testo: Dai un nome al setup, per esempio «124 gr gara, canna 5 pollici», e salvalo nello storico. AIMONX tiene gli ultimi 50, dal più recente, con peso, velocità, Power Factor, energia, data e ora.
 - tipo: p
   testo: 'Lo storico è un blocco appunti: non fa parte del diario, del backup né dell''archivio. Se lo cancelli, non torna.'
-- tipo: schermate
-  alt:
-  - Lo storico del Calcolo Power Factor in AIMONX, con gli ultimi setup salvati, dal più recente.
 - tipo: h2
   testo: Anche su ogni munizione
 - tipo: p
