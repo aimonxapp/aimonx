@@ -120,6 +120,11 @@ frasi:
 # ⚠️ È un link, non una risorsa: la pagina non scarica niente da apple.com.
 store: "https://apps.apple.com/app/aimonx/id6794895643"
 
+# ⭐ Giro W31: la scheda della prima scatola del Range System, per la lingua della
+# pagina. ⛔ NUDO: niente parametri né il `#profileId` del link dato da Pier. È un
+# link, non una risorsa: dalla pagina non si scarica niente da MakerWorld.
+makerworld: "https://makerworld.com/en/models/3524948-ammo-box-9mm-100-rounds-aimonx-range-system"
+
 # ⭐ Giro W25: la voce del menu che SI APRE a tendina è quella che porta qui,
 # l'indice delle funzioni. ⚠️ Fino al W24 era «la prima voce», e con «Home»
 # tornata in testa la prima non è più lei: un indirizzo non cambia di posto.
@@ -156,6 +161,7 @@ menu:
   "Features":       "/features/"
   "All features":   "/features/"
   "FAQ":            "/faq/"
+  "Range System":   "/range-system/"
   "Free and Pro":   "/pricing/"
   "Compare Free and Pro": "/pricing/"
   "What's new":     "/updates/"

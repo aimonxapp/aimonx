@@ -35,6 +35,21 @@ schermate:
   telefono: { larghezze: [430, 645, 860],  larga: 645, alta: 1398 }
   foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 482 }  # ⚠️ 482 e non 637: senza il bianco (W14)
 
+# --- le foto del Range System, dal giro W31 ----------------------------------
+#
+# Per ogni pagina, le foto NELL'ORDINE IN CUI COMPAIONO nel testo: si accoppiano
+# ai testi alternativi di Cowork per posizione, e i conti li confronta
+# `scripts/testo-approvato.sh`. `larga` e `alta` sono quelle del file da 800.
+# ⛔ Le sorgenti e la loro ragione stanno in `scripts/schermate.mjs`.
+foto_larghezze: [480, 800, 1200]
+foto:
+  range-system:
+    - { nome: 9mm-ammo-box-open-100-rounds, larga: 800, alta: 1067, grande: true }
+    - { nome: 9mm-ammo-box-closed,          larga: 800, alta: 726 }
+    - { nome: 9mm-ammo-box-honeycomb-insert, larga: 800, alta: 1067 }
+    - { nome: 9mm-ammo-box-latch,           larga: 800, alta: 794 }
+    - { nome: 9mm-ammo-box-parts,           larga: 800, alta: 600 }
+
 # --- le pagine-funzione, dal giro W15 ---------------------------------------
 #
 # Per ogni pagina (la chiave è il suo `dati:`), i nomi delle sue schermate

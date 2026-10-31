@@ -93,6 +93,7 @@ else
                support/support-en-bozza.md terms/terms-en-bozza.md \
                round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md \
                navigazione/navigazione-en-bozza.md \
+               range-system/range-system-en-bozza.md range-system/range-system-it-bozza.md \
                landing/landing-it-bozza.md navigazione/navigazione-it-bozza.md \
                titoli/titoli-it-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
@@ -123,12 +124,20 @@ modo, contenuti, repo, costruito = ARGV
 SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/features/`",
-  "Piede, i titoli delle colonne", "Language selector and footer column (with the Italian site)"]
+  "Piede, i titoli delle colonne", "Language selector and footer column (with the Italian site)",
+  "Range System (31/10/2026)"]
 # ⭐ Giro W28: le stesse sezioni, nella bozza italiana — dove i titoli hanno parole loro.
 SEZIONI_NAVIGAZIONE_IT = ["Menu in alto", "Briciole di pane",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/it/features/`",
-  "Piede, i titoli delle colonne", "Il selettore di lingua (anche sul sito inglese) — menu a tendina"]
+  "Piede, i titoli delle colonne", "Il selettore di lingua (anche sul sito inglese) — menu a tendina",
+  "Range System (31/10/2026)"]
+# ⭐ Giro W31: il testo della scatola sta in una sezione `## ` sua, sotto «Page»;
+# «Note» e «Controllo» restano fuori. ⚠️ Il riquadro del regalo Pro sta DENTRO
+# quella sezione: che non esca in pagina lo dice il giro, non questa misura.
+SEZIONI_RANGE = ["Meta", "Page", "9mm Ammo Box, 100 rounds"]
+SEZIONI_RANGE_IT = ["Meta", "Page", "Scatola porta munizioni 9×19 da 100 colpi"]
+TITOLI_IN_PAGINA = [SEZIONI_RANGE.last, SEZIONI_RANGE_IT.last]
 
 # Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
@@ -186,6 +195,8 @@ PAGINE = [
   # | Unlimited |`): ogni cella si trova lo stesso, alla lettera.
   { nome: "pricing", dati: "_data/pricing.yml", bozza: "pricing/pricing-en-bozza.md",
     uscita: "pricing/index.html", sezioni: ["Meta", "Page"] },
+  { nome: "range-system", dati: "_data/range-system.yml", bozza: "range-system/range-system-en-bozza.md",
+    uscita: "range-system/index.html", sezioni: SEZIONI_RANGE },
   # ⭐ Giro W24, LA NAVIGAZIONE E L'INDICE `/features/`. ⚠️ Della bozza valgono
   # le sezioni che vanno in pagina — menu, briciole, «More features», l'indice
   # e i titoli del piede — e NON la rilettura da madrelingua né la tabella
@@ -248,6 +259,8 @@ PAGINE_IT = [
     alt_da: "your-data/your-data-it-bozza.md" },
   { nome: "it/pricing", dati: "_data/it/pricing.yml", bozza: "pricing/pricing-it-bozza.md",
     uscita: "it/pricing/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/range-system", dati: "_data/it/range-system.yml", bozza: "range-system/range-system-it-bozza.md",
+    uscita: "it/range-system/index.html", sezioni: SEZIONI_RANGE_IT, lingua: "it" },
   { nome: "it/navigazione", dati: "_data/it/navigazione.yml", bozza: "navigazione/navigazione-it-bozza.md",
     uscita: "it/features/index.html", sezioni: SEZIONI_NAVIGAZIONE_IT, lingua: "it",
     anche: [["landing/landing-it-bozza.md", nil]],
@@ -299,8 +312,13 @@ STRUTTURA = ["tipo", "aspetto"]
 def piano(percorso, sezioni = nil)
   t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "")
   if sezioni
+    # ⭐ Giro W31: la nota «[pulsante: parole → indirizzo]» è l'unica che porta
+    # PAROLE approvate: quelle restano, e cade solo l'indirizzo.
+    t = t.gsub(/^\[pulsante: (.*?) → \S+\]$/) { $1 }
     pezzi = t.split(/^## /).drop(1).select { |s| sezioni.include?(s.lines.first.to_s.strip) }
-    t = pezzi.map { |s| s.lines.drop(1).reject { |r| r.strip.start_with?("[") && r.strip.end_with?("]") }.join }.join("\n")
+    # ⚠️ Il titolo di una sezione non va in pagina: «Meta» e «Page» sono etichette. ⭐ Giro
+    # W31: quello della scatola sì, ed è l unico caso (`SEZIONI_RANGE`, ultima voce).
+    t = pezzi.map { |s| (TITOLI_IN_PAGINA.include?(s.lines.first.to_s.strip) ? s.lines : s.lines.drop(1)).reject { |r| r.strip.start_with?("[") && r.strip.end_with?("]") }.join }.join("\n")
     t = t.gsub(/^\#{2,}\s*/, "")
   end
   t = t.gsub(/\*\[[^\]]*\]\*/m, "")
@@ -398,6 +416,12 @@ if modo == "sorgente"
       f = File.join(repo, "_data/#{pagina}.yml")
       n_alt = File.readable?(f) ? (YAML.load_file(f)["blocchi"] || []).sum { |b| b["tipo"] == "schermate" ? (b["alt"] || []).size : 0 } : 0
       coppie << ["schermate di #{pagina}", n_alt, (nomi || []).size]
+    end
+    # ⭐ Giro W31: le foto del Range System, stessa fragilità e stesso controllo.
+    (a["foto"] || {}).each do |pagina, voci|
+      f = File.join(repo, "_data/#{pagina}.yml")
+      n_alt = File.readable?(f) ? (YAML.load_file(f)["blocchi"] || []).count { |b| b["tipo"] == "foto" } : 0
+      coppie << ["foto di #{pagina}", n_alt, (voci || []).size]
     end
     # ⭐ Dal giro W24 le CARTE non si accoppiano più: testo e aspetto di ogni
     # funzione stanno nella stessa voce di `_data/funzioni.yml`.

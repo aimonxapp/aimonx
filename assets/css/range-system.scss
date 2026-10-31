@@ -1,0 +1,71 @@
+---
+---
+// assets/css/range-system.scss — QUEL CHE LA PAGINA DEL RANGE SYSTEM HA IN PIÙ
+// di una pagina-funzione. Giro W31.
+//
+// ⛔ È UN TERZO FOGLIO, chiesto da `page.foglio_pagina`: le altre pagine non lo
+// scaricano e non ricevono nemmeno uno spazio (`_includes/testa.html`).
+// ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
+
+// --- il pulsante verso MakerWorld -------------------------------------------
+// ⚠️ `--titolo` e non `--sez`: il bianco sulla tinta chiara non arriva ad AA.
+// Alto almeno 44 px, la misura di un dito (Apple, Human Interface Guidelines).
+.v-range .foglio .vai { margin-top: 1.2rem; }
+.v-range .foglio .pulsante {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: .6rem 1.3rem; border-radius: 999px;
+  background: var(--titolo); color: var(--bianco);
+  font-weight: 700; text-decoration: none;
+}
+.v-range .foglio .pulsante:hover { background: var(--inchiostro); color: var(--bianco); }
+
+// --- le foto ---------------------------------------------------------------
+// ⭐ Il foglio è largo quanto il sito e il testo si ferma a `--riga`: da 1040 px
+// le foto stanno a destra, nel margine che resta, all'altezza della sezione di
+// cui parlano. Sotto, in colonna con il testo.
+// ⚠️ Una griglia e non un float, per le sezioni: un float parte da DOVE STA
+// nell'HTML, cioè DOPO il testo, e le foto scivolavano nella sezione dopo.
+// ⭐ La prima, `grande`, resta float: scende anche accanto alla tabella.
+// ⛔ `height: auto` insieme a `width`/`height` nell'HTML: il posto è tenuto.
+// ⚠️ `testo.scss` dà ritmo e larghezza ai figli del foglio: dentro `.parte`
+// servono le stesse due regole.
+.v-range .foglio > .parte { max-width: none; }
+.v-range .parte > * { max-width: var(--riga); }
+.v-range .parte > * + * { margin-top: .95rem; }
+.v-range .parte > .foto { max-width: 26rem; margin: 1.3rem auto .4rem; }
+.v-range .foto img { display: block; width: 100%; height: auto; border-radius: 14px; }
+
+@media (min-width: 1040px) {
+  // ⚠️ La riga corta resta a sinistra anche di fianco a una foto, e il testo non
+  // scorre intorno: `--riga` + la colonna delle foto stanno nel foglio.
+  .v-range { --riga: 38rem; }
+  .v-range .parte > .foto.grande { float: right; width: 17rem; max-width: none; margin: .4rem 0 1rem; }
+  .v-range .parte:has(> .foto:not(.grande)) {
+    display: grid; grid-template-columns: var(--riga) minmax(0, 1fr); column-gap: 1.5rem; align-items: start;
+  }
+  .v-range .parte:has(> .foto:not(.grande)) > * { grid-column: 1; }
+  .v-range .parte > .foto:not(.grande) {
+    grid-column: 2; grid-row: 1 / span 12; justify-self: end;
+    width: 15rem; max-width: 100%; margin: 1.8rem 0 .6rem;
+  }
+}
+
+// --- la tabella «At a glance» ------------------------------------------------
+.v-range .scheda { width: 100%; border-collapse: collapse; }
+.v-range .scheda th,
+.v-range .scheda td {
+  padding: .55rem 0; vertical-align: top; text-align: left;
+  border-bottom: 1px solid #E4EAEE; font-size: 1rem; line-height: 1.5;
+}
+.v-range .scheda th { width: 34%; padding-right: 1rem; font-weight: 700; color: var(--inchiostro); }
+.v-range .scheda td { color: var(--inchiostro); }
+
+// --- i titoli di terzo livello e i passi numerati ------------------------------
+// ⚠️ Qui gli `h3` reggono sezioni intere, non una domanda delle FAQ.
+.v-range .foglio h3 { margin-top: clamp(1.7rem, 3.6vw, 2.2rem); font-size: 1.16rem; color: var(--titolo); }
+.v-range .foglio .passi { margin-top: .85rem; padding-left: 1.4rem; list-style: decimal; }
+.v-range .foglio .passi li {
+  padding-left: .2rem; font-size: clamp(1rem, 1.5vw, 1.05rem); line-height: 1.68;
+  color: var(--inchiostro);
+}
+.v-range .foglio .passi li + li { margin-top: .5rem; }

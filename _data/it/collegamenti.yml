@@ -55,12 +55,16 @@ frasi:
     href: "/faq/"
     tipo: pagina
 
+# ⭐ Giro W31: la scheda della prima scatola, ⛔ nuda (la nota nella gemella inglese).
+makerworld: "https://makerworld.com/it/models/3524948-ammo-box-9mm-100-rounds-aimonx-range-system"
+
 # Le voci della barra, della tendina e del piede.
 menu:
   "Home":                 "/"
   "Funzioni":             "/features/"
   "Tutte le funzioni":    "/features/"
   "FAQ":                  "/faq/"
+  "Range System":         "/range-system/"
   "Free e Pro":           "/pricing/"
   "Confronta Free e Pro": "/pricing/"
   "Novità":               "/updates/"

@@ -69,7 +69,10 @@
 //     un gruppo suo perché rifarla non deve rifare le altre di quella cartella.
 //   ⚠️ Il gruppo c'è perché le cartelle sono più d'una, e ⛔ perché rifare una
 //   schermata non deve rifare le altre: un altro Chromium dà byte diversi.
-// Esce: assets/img/screenshots/<nome>-<larghezza>.webp
+//   · `range-system`: le foto della prima scatola (W31), da «4- risorse/range-system/
+//     9mm-ammo-box-100». ⛔ Solo le cinque della bozza. Sono JPEG senza EXIF né GPS;
+//     il WebP che esce non ne porta comunque, e lo prova `scripts/foto-pulite.rb`.
+// Esce: assets/img/screenshots/<nome>-<larghezza>.webp (le foto: assets/img/range-system/)
 
 import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -96,6 +99,7 @@ if (!sorgenti) {
 // che li accoppia alle voci della landing.
 const TELEFONO = [430, 645, 860];
 const FOGLIO = [600, 900, 1200];
+const FOTO = [480, 800, 1200];
 const LISTA = [
   { da: 'home_1.png',          a: 'aimonx-home-screen',          larghezze: TELEFONO },
   { da: 'firearms_1.png',      a: 'aimonx-firearms-round-count', larghezze: TELEFONO },
@@ -136,6 +140,13 @@ const LISTA = [
   { da: 'liste_7_maintenance-types-icons.png', a: 'aimonx-maintenance-types-icons', larghezze: TELEFONO, gruppo: 'liste-icone' },
   // --- giro W23, la carta «Stats that show your progress.» della landing ---
   { da: 'stats_1.png',                         a: 'aimonx-stats-overview',      larghezze: TELEFONO, gruppo: 'statistiche' },
+  // --- giro W31, la pagina del Range System ---
+  // ⛔ Mai le foto con la scatola Geco (7733, 7735, 7737): la nota in testa alla bozza.
+  { da: 'ars-9mm-100_7643.jpg', a: 'range-system/9mm-ammo-box-open-100-rounds',  larghezze: FOTO, gruppo: 'range-system' },
+  { da: 'ars-9mm-100_7726.jpg', a: 'range-system/9mm-ammo-box-closed',           larghezze: FOTO, gruppo: 'range-system' },
+  { da: 'ars-9mm-100_7717.jpg', a: 'range-system/9mm-ammo-box-honeycomb-insert', larghezze: FOTO, gruppo: 'range-system' },
+  { da: 'ars-9mm-100_7716.jpg', a: 'range-system/9mm-ammo-box-latch',            larghezze: FOTO, gruppo: 'range-system' },
+  { da: 'ars-9mm-100_7709.jpg', a: 'range-system/9mm-ammo-box-parts',            larghezze: FOTO, gruppo: 'range-system' },
 ].filter((v) => (v.gruppo ?? null) === gruppo);
 if (!LISTA.length) { console.error(`⛔ nessuna sorgente nel gruppo «${gruppo}»`); process.exit(2); }
 // ⚠️ 0,82: sotto, il testo piccolo delle schermate comincia a sporcarsi
@@ -157,7 +168,8 @@ for (const voce of LISTA) {
     execFileSync('pdftoppm', ['-f', '1', '-l', '1', '-singlefile', '-r', '300', '-png', png, join(tmp, 'foglio')]);
     png = join(tmp, 'foglio.png');
   }
-  const dati = `data:image/png;base64,${(await readFile(png)).toString('base64')}`;
+  const tipo = png.endsWith('.jpg') ? 'jpeg' : 'png';
+  const dati = `data:image/${tipo};base64,${(await readFile(png)).toString('base64')}`;
   for (const l of voce.larghezze) {
     const esito = await page.evaluate(async ({ dati, l, q, accorcia, ritaglio }) => {
       const img = new Image();
@@ -215,7 +227,8 @@ for (const voce of LISTA) {
       for (let i = 0; i < byte.length; i += 0x8000) s += String.fromCharCode(...byte.subarray(i, i + 0x8000));
       return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte, ritagliata: ritaglio ? [larga, alta] : null };
     }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf'), ritaglio: voce.ritaglio ?? null });
-    const file = join(USCITA, `${voce.a}-${l}.webp`);
+    const file = join(voce.gruppo === 'range-system' ? dirname(USCITA) : USCITA, `${voce.a}-${l}.webp`);
+    await mkdir(dirname(file), { recursive: true });
     const corpo = Buffer.from(esito.base64, 'base64');
     await writeFile(file, corpo);
     totale += corpo.length;

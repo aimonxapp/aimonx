@@ -353,7 +353,7 @@ VOCI
     # ⚠️ Misurato nel giro W9: l'errore si è visto perché l'uscita usciva
     # appiccicata, non perché qualcuno l'avesse previsto.
     PAGINE_OUT=$("$RUBY_BIN/ruby" "$REPO/scripts/misure-pagine.rb" "$SITO_TMP" 2>&1)
-    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti pagine_noindex lingue_nel_sito hreflang_pagine hreflang_coppie hreflang_senza_gemelle hreflang_guasti badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina schermate_nei_dati_strutturati; do
+    for CHIAVE in pagine_costruite link_rotti ancore_rotte titoli_fuori_ordine indirizzi_o_telefoni sitemap_indirizzi blocchi_jsonld offerte_a_zero marchi_pagine marchi_varianti piedi_varianti deadline_nel_sito faqpage_nel_sito seo_guasti pagine_noindex lingue_nel_sito hreflang_pagine hreflang_coppie hreflang_senza_gemelle hreflang_guasti badge_guasti badge_nel_sito link_allo_store banner_pagine immagini_guasti schermate_in_pagina foto_in_pagina schermate_nei_dati_strutturati; do
       VALORE=$(printf '%s\n' "$PAGINE_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
       if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/misure-pagine.rb non l'ha stampato)"; fi
     done
@@ -453,6 +453,24 @@ SCHERMATE_L=$(git ls-files 'assets/img/screenshots/')
 confronta "file tracciati in assets/img/screenshots" schermate_file "$(conta_righe "$SCHERMATE_L")"
 confronta "immagini diverse fra quei file" schermate_immagini \
   "$(printf '%s\n' "$SCHERMATE_L" | sed -E 's|.*/||; s|-[0-9]+\.[a-z]+$||' | sort -u | grep -c . | tr -d ' ')"
+
+# --- giro W31: le foto del Range System, e nessuna posizione dentro un'immagine
+# ⛔ Il MUST di Pier vale anche dentro i file (`scripts/foto-pulite.rb`). Si guarda
+# OGNI immagine tracciata, non solo le foto: il byte è quello che GitHub serve.
+echo
+echo "--- le foto nel repo, e i metadati di ogni immagine (giro W31) ---"
+FOTO_L=$(git ls-files 'assets/img/range-system/')
+confronta "file tracciati in assets/img/range-system" foto_file "$(conta_righe "$FOTO_L")"
+if [ -x "$RUBY_BIN/ruby" ]; then
+  IMG_OUT=$(git ls-files -z 'assets/img/' | xargs -0 "$RUBY_BIN/ruby" "$REPO/scripts/foto-pulite.rb" 2>&1)
+  printf '%s\n' "$IMG_OUT" | grep '⛔'
+  for CHIAVE in immagini_guardate immagini_con_metadati; do
+    VALORE=$(printf '%s\n' "$IMG_OUT" | sed -n "s/^$CHIAVE=\([0-9]*\)$/\1/p" | head -1)
+    if [ -n "$VALORE" ]; then confronta "$CHIAVE" "$CHIAVE" "$VALORE"; else non_misurabile "$CHIAVE (scripts/foto-pulite.rb non l'ha stampato)"; fi
+  done
+else
+  non_misurabile "i metadati delle immagini (manca la toolchain Ruby)"
+fi
 
 # --- guardrail dei file vivi -------------------------------------------------
 # ⛔ È l'unica cosa che impedisce di ricascare nel monolite IN SILENZIO.

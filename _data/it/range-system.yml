@@ -1,0 +1,133 @@
+# _data/it/range-system.yml — IL TESTO DELLA PAGINA «AIMONX RANGE SYSTEM», in
+# italiano. Giro W31.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella
+# sua cartella dei contenuti:
+#     …/2- Contenuti/range-system/range-system-it-bozza.md
+# ⛔ STESSE CHIAVI di `_data/range-system.yml`, dove stanno le regole.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+
+meta:
+  title: "AIMONX Range System: scatola porta munizioni 9×19 da stampare in 3D"
+  description: "Accessori da stampare in 3D per tiratori sportivi, gratis. Si comincia con una scatola robusta per 100 colpi 9×19: chiusure a scatto, cerniera stampata, niente viti. Gratis su MakerWorld."
+
+titolo: "AIMONX Range System"
+sommario: "Accessori per la borsa del poligono, disegnati da un tiratore, da stampare gratis."
+
+blocchi:
+- tipo: p
+  testo: "Il Range System è la nostra linea di accessori da stampare in 3D per chi tira. Ogni pezzo è un progetto originale: lo scarichi gratis da MakerWorld e lo stampi tutte le volte che vuoi. Non vendiamo niente: li regaliamo, perché più tiratori conoscano l'app AIMONX. Arriveranno altri calibri e altri tipi di scatole."
+- tipo: h2
+  testo: "Scatola porta munizioni 9×19 da 100 colpi"
+- tipo: p
+  testo: "Una scatola robusta da stampare in 3D, per 100 colpi 9×19. Progetto originale, da scaricare e stampare gratis."
+- tipo: pulsante
+  testo: "Scaricala gratis da MakerWorld"
+- tipo: foto
+  alt: "La scatola porta munizioni 9×19 aperta, con 100 colpi a punta in giù in due blocchi da 50."
+- tipo: p
+  testo: "È il primo pezzo del Range System. Tiene 100 colpi sfusi, a punta in giù, in due blocchi da 50. Si chiude con due chiusure a scatto, si apre su una cerniera stampata a tutta larghezza e sta in piedi su tutti e quattro i lati. Niente viti, niente magneti, niente perni di metallo: stampi cinque pezzi e li incastri."
+- tipo: h3
+  testo: "In breve"
+- tipo: tabella
+  righe:
+  - ["Calibro", "9×19 (9 mm Luger). Va bene anche per il 9×21"]
+  - ["Capienza", "100 colpi, due blocchi da 50"]
+  - ["Ingombro", "156 × 173 × 43 mm"]
+  - ["Pezzi", "fondo, coperchio, inserto, 2 chiusure"]
+  - ["Minuteria", "nessuna"]
+  - ["Materiale", "PETG"]
+  - ["Coperchi", "inciso (un colore) o con intarsi (tre colori)"]
+  - ["Lucchetto", "foro da 4 mm per un lucchetto a cavo"]
+- tipo: h3
+  testo: "Fatta per vivere nella borsa del poligono"
+- tipo: p
+  forte: "Pareti spesse."
+  testo: "5 mm ai lati e sul fondo, 4 mm sopra."
+- tipo: p
+  forte: "Sta in piedi su ogni lato."
+  testo: "Cerniera e chiusure restano dentro la sagoma, così la scatola sta dritta sul banco o sullo scaffale."
+- tipo: p
+  forte: "Presa dove metti le mani."
+  testo: "Nervature inclinate sui due lati del coperchio."
+- tipo: p
+  forte: "Il logo sul fondo."
+  testo: "Togli l'inserto e trovi il logo AX e aimonx.app incisi nella base."
+- tipo: foto
+  alt: "La scatola chiusa, verde, con il logo AX e un proiettile arancione sul coperchio."
+- tipo: h3
+  testo: "Un inserto che tiene ogni colpo"
+- tipo: p
+  testo: "I colpi entrano a punta in giù in celle esagonali. Ogni cella si stringe a cono e tiene la cartuccia sull'ogiva, così la punta non tocca niente. Restano fuori circa 9 mm di bossolo, quanto basta per prenderla con le dita. Un divisorio pieno separa i 100 colpi in due blocchi da 50, e contarli diventa facile. L'inserto si aggancia al fondo e non si muove anche se scuoti la scatola."
+- tipo: foto
+  alt: "La scatola aperta e vuota, con l'inserto grigio a nido d'ape."
+- tipo: h3
+  testo: "Chiusure che fanno clic"
+- tipo: p
+  testo: "Le due chiusure sono incassate sul davanti: non si impigliano nella borsa e non si aprono per sbaglio. Ognuna ruota su un perno, stringe il coperchio sul fondo e si blocca con uno scatto netto."
+- tipo: foto
+  alt: "Una mano che apre una delle due chiusure davanti."
+- tipo: p
+  testo: "La cerniera corre per tutta la larghezza, si monta a scatto senza perni da infilare e lascia aprire il coperchio del tutto."
+- tipo: h3
+  testo: "Se vuoi, la chiudi col lucchetto"
+- tipo: p
+  testo: "Un foro da 4 mm nell'angolo davanti attraversa coperchio e fondo. Un lucchetto a cavo da 3 mm, quelli per le cerniere degli zaini, tiene chiusa la scatola."
+- tipo: h3
+  testo: "Due coperchi, stessa scatola"
+- tipo: p
+  forte: "Inciso:"
+  testo: "un colore solo, con proiettile, 9×19 e logo AX incisi."
+- tipo: p
+  forte: "A colori:"
+  testo: "proiettile arancione, 9×19 e logo AX bianchi, a intarsio, a filo del coperchio. Serve un AMS o un altro sistema multimateriale."
+- tipo: p
+  testo: "Tutti e due vanno sullo stesso fondo."
+- tipo: foto
+  alt: "I cinque pezzi stampati: coperchio, fondo, inserto e due chiusure."
+- tipo: h3
+  testo: "Stampa"
+- tipo: ul
+  voci:
+  - forte: "Materiale:"
+    testo: "PETG per tutti i pezzi. Noi usiamo il PETG Basic di Bambu."
+  - forte: "Altezza strato:"
+    testo: "0,20 mm, primo strato compreso (Bambu Studio 0.20 mm High Quality). L'incisione è profonda esattamente tre strati: se cambi l'altezza strato, la grafica del coperchio non viene bene."
+  - forte: "Piatto:"
+    testo: "Textured PEI."
+  - forte: "Compensazione X-Y di fori e contorni:"
+    testo: "0. Cerniera, chiusure e inserto sono disegnati con giochi precisi."
+  - forte: "Supporti:"
+    testo: "solo sul fondo. Tutto il resto si stampa senza."
+  - forte: "Orientamento:"
+    testo: "i file sono già orientati."
+- tipo: h3
+  testo: "Montaggio"
+- tipo: ol
+  voci:
+  - "Premi l'inserto nel fondo finché si aggancia."
+  - "Apri del tutto il coperchio, allinea la cerniera e spingilo sul fondo finché scatta."
+  - "Chiudi il coperchio. Tieni aperta una chiusura, infila il perno nei canali dall'alto e abbassala. Lo stesso con l'altra."
+  - "Chiudi le due chiusure fino allo scatto. Fatto."
+- tipo: p
+  testo: "Per aprire, tira la linguetta in basso di ogni chiusura verso l'esterno e in su. Per pulire l'inserto, capovolgi la scatola vuota e dai un colpetto sul bordo."
+- tipo: h3
+  testo: "Da sapere"
+- tipo: ul
+  voci:
+  - "Metti i colpi a punta in giù. A punta in su non vengono tenuti."
+  - "Palle di forma diversa stanno ad altezze un po' diverse. Il coperchio lascia spazio alle cartucce 9×19 e 9×21 più lunghe ammesse dal C.I.P."
+  - "È un progetto originale, disegnato da zero. Non è un remix."
+  - "Gratis per uso personale. Per favore, non vendere le stampe e non pubblicare remix. Vuoi produrle e venderle? Scrivici e chiedi."
+- tipo: h3
+  testo: "Ti serve un altro calibro?"
+- tipo: p
+  testo: "Dicci quale, e se lo vuoi da 50 o da 100 colpi, nei commenti su MakerWorld."
+  link: "MakerWorld"
+- tipo: h3
+  testo: "Cos'è AIMONX?"
+- tipo: p
+  testo: "L'app per cui è nata questa scatola. AIMONX è il diario del tiratore sportivo: registri una sessione al poligono e i colpi di ogni arma, le munizioni che hai e la manutenzione si aggiornano da soli. Cifrato sul tuo iPhone, niente account."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Scarica su App Store"

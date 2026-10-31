@@ -41,6 +41,7 @@ $alternate = {}
 $lingua_pagina = {}
 $immagini = []
 $schermate = 0
+$foto = 0
 $schermate_jsonld = 0
 
 # ---------------------------------------------------------------------------
@@ -279,8 +280,11 @@ pagine.each do |percorso|
         $immagini << "#{nome}: il file dell immagine non e nella build -> #{c}"
       end
     end
-    next unless src.include?("/assets/img/screenshots/")
-    $schermate += 1
+    # ⭐ Giro W31: le foto del Range System sono contenuto come le schermate, con le
+    # stesse due regole qui sotto; si contano a parte (`foto_in_pagina`).
+    foto = src.include?("/assets/img/range-system/")
+    next unless foto || src.include?("/assets/img/screenshots/")
+    foto ? $foto += 1 : $schermate += 1
     # ⛔ Una schermata è CONTENUTO: il suo testo alternativo non può essere vuoto.
     $immagini << "#{nome}: schermata con il testo alternativo vuoto -> #{corto}" unless tag =~ /\balt="[^"]+"/
     # ⚠️ Solo quella della parte alta si carica subito; le altre aspettano.
@@ -492,6 +496,7 @@ puts "link_allo_store=#{$link_store.size}"
 puts "banner_pagine=#{$banner_pagine}"
 puts "immagini_guasti=#{$immagini.size}"
 puts "schermate_in_pagina=#{$schermate}"
+puts "foto_in_pagina=#{$foto}"
 puts "schermate_nei_dati_strutturati=#{$schermate_jsonld}"
 ($link_rotti + $ancore_rotte + $titoli_fuori + $sospetti + $seo + $badge + $immagini + $hreflang).each { |r| puts "  ⛔ #{r}" }
 senza.each { |v| puts "  · pagina indicizzabile senza gemelle: #{v}" }

@@ -114,3 +114,7 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 {%- comment -%} Giro W15: il foglio in più delle pagine-funzione. ⛔ Chi non lo chiede non riceve nemmeno uno spazio: le altre pagine escono identiche al byte a prima, ed è misurato. {%- endcomment %}
 <link rel="stylesheet" href="{{ page.foglio_funzione | relative_url }}?v={{ testa_v[page.foglio_funzione] }}">
 {%- endif %}
+{%- if page.foglio_pagina %}
+{%- comment -%} Giro W31: il foglio di una pagina sola, con la stessa regola del foglio qui sopra. {%- endcomment %}
+<link rel="stylesheet" href="{{ page.foglio_pagina | relative_url }}?v={{ testa_v[page.foglio_pagina] }}">
+{%- endif %}

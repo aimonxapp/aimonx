@@ -51,3 +51,6 @@ assets/img/*.svg
 
 # le schermate dell'app
 assets/img/screenshots/*.webp
+
+# ⭐ Giro W31: le foto del Range System, senza metadati (`scripts/foto-pulite.rb`)
+assets/img/range-system/*.webp

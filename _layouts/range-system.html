@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{%- include lingua.html %}
+<html lang="{{ lin.html }}">
+{%- comment -%}
+  _layouts/range-system.html — LA PAGINA DEL RANGE SYSTEM. Giro W31.
+
+  ⚠️ SCELTA DI CC: un layout suo e non `funzione.html`. Le ragioni sono due, e
+  sono di sostanza: `funzione.html` scrive «More features» accanto a ogni pagina
+  con una sezione, e qui non è una funzione dell'app; e questa pagina ha pezzi
+  che quella non ha (foto, tabella, passi numerati, pulsante). Toccare il
+  modello delle pagine-funzione per loro sarebbe stato un rischio su quattro
+  pagine che in questo giro non devono cambiare (giro W31, «Divieti»).
+  ⭐ Con la seconda scatola questa pagina torna un elenco e la scatola va in
+  `/range-system/boxes/<scatola>/` (nota in testa alla bozza).
+
+  ⛔ QUESTO FILE NON CONTIENE NESSUNA PAROLA CHE IL PUBBLICO LEGGA: vengono
+  tutte da `_data/<page.dati>.yml`, che è di Cowork. Gli indirizzi da
+  `_data/collegamenti.yml`, che è di CC.
+
+  ⛔ MAKERWORLD È UN LINK NUDO, MAI UNA RISORSA: nessuna immagine, script o
+  widget da lì, e il link è come gli altri esterni — `rel="noreferrer"`, stessa
+  scheda (la nota in `_data/collegamenti.yml`).
+
+  ⚠️ LE FOTO SI ACCOPPIANO AI LORO FILE PER ORDINE DI COMPARSA, come le
+  schermate di `funzione.html`: se i nomi finiscono, l'immagine NON esce.
+  ⭐ Sono il contenuto, non l'interfaccia: quindi niente cornice da telefono.
+  `width`/`height` tengono il posto (`scripts/peso.mjs`, spostamento 0), e la
+  prima porta `fetchpriority` come la schermata della parte alta della landing.
+  ⚠️ Una tabella senza testata, come nella bozza: la prima cella di ogni riga
+  è `th scope="row"`, e il nome alla tabella lo dà il titolo che la precede.
+  ⭐ OGNI TITOLO APRE UNA `<section class="parte">`: sul computer la foto sta a
+  destra e parte dall'altezza del titolo della SUA sezione (`range-system.scss`),
+  senza cambiare l'ordine dell'HTML, che è quello della bozza e di chi ascolta.
+  ⛔ Variabili col prefisso `rs_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- assign d = lin_t[page.dati] -%}
+{%- assign rs_foto = site.data.aspetto.foto[page.dati] -%}
+{%- assign rs_quale = 0 -%}
+{%- assign rs_ultimo_h3 = '' -%}
+{%- assign spazio = " " -%}
+{%- assign rs_aperta = false -%}
+<head>
+  {%- include testa.html meta=d.meta -%}
+</head>
+<body class="v-testo v-funzione v-range tinta-{{ page.tinta | default: 'verde' }}">
+  <div class="apertura">
+    {%- include barra.html -%}
+
+    <div class="titolone">
+      {% include briciole.html %}
+      <h1>{{ d.titolo }}</h1>
+      <p class="sommario">{% include frase.html testo=d.sommario %}</p>
+    </div>
+  </div>
+
+  <main id="principale">
+    <article class="foglio">
+      {%- for b in d.blocchi -%}
+      {%- case b.tipo -%}
+      {%- when 'h2' %}
+      {% if rs_aperta %}</section>{% endif %}<section class="parte">
+      {%- assign rs_aperta = true %}
+      <h2>{% include frase.html testo=b.testo %}</h2>
+      {%- when 'h3' %}
+      {%- assign rs_ultimo_h3 = b.testo | slugify %}
+      {% if rs_aperta %}</section>{% endif %}<section class="parte">
+      {%- assign rs_aperta = true %}
+      <h3 id="{{ rs_ultimo_h3 }}">{% include frase.html testo=b.testo %}</h3>
+      {%- when 'pulsante' %}
+      <p class="vai"><a class="pulsante" href="{{ lin_c.makerworld }}" rel="noreferrer">{% include frase.html testo=b.testo %}</a></p>
+      {%- when 'foto' %}
+      {%- assign rs_f = rs_foto[rs_quale] -%}
+      {%- assign rs_quale = rs_quale | plus: 1 -%}
+      {%- if rs_f %}
+      <div class="foto{% if rs_f.grande %} grande{% endif %}">
+        <img src="{{ '/assets/img/range-system/' | append: rs_f.nome | append: '-800.webp' | relative_url }}"
+             srcset="{% for l in site.data.aspetto.foto_larghezze %}{{ '/assets/img/range-system/' | append: rs_f.nome | append: '-' | append: l | append: '.webp' | relative_url }} {{ l }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
+             sizes="(min-width: 1040px) 15rem, (min-width: 760px) 26rem, calc(100vw - 5.5rem)"
+             alt="{{ b.alt | replace: '"', '&quot;' }}"
+             width="{{ rs_f.larga }}" height="{{ rs_f.alta }}"
+             {% if rs_f.grande %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+      </div>
+      {%- endif -%}
+      {%- when 'tabella' %}
+      <table class="scheda" aria-labelledby="{{ rs_ultimo_h3 }}">
+        <tbody>
+          {%- for r in b.righe %}
+          {%- comment -%} ⚠️ Un include non accetta `r[0]` come parametro: si passa per un nome. {%- endcomment -%}
+          {%- assign rs_a0 = r[0] -%}
+          {%- assign rs_a1 = r[1] %}
+          <tr><th scope="row">{% include frase.html testo=rs_a0 %}</th><td>{% include frase.html testo=rs_a1 %}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      {%- when 'ul' %}
+      <ul class="elenco">
+        {%- for v in b.voci %}
+        {%- if v.testo %}
+        <li><strong>{% include frase.html testo=v.forte %}</strong>{{ spazio }}{% include frase.html testo=v.testo %}</li>
+        {%- else %}
+        <li>{% include frase.html testo=v %}</li>
+        {%- endif %}
+        {%- endfor %}
+      </ul>
+      {%- when 'ol' %}
+      <ol class="passi">
+        {%- for v in b.voci %}
+        <li>{% include frase.html testo=v %}</li>
+        {%- endfor %}
+      </ol>
+      {%- else %}
+      {%- capture rs_t -%}{% include frase.html testo=b.testo %}{%- endcapture -%}
+      {%- if b.link -%}
+      {%- capture rs_a -%}<a href="{{ lin_c.makerworld }}" rel="noreferrer">{{ b.link }}</a>{%- endcapture -%}
+      {%- assign rs_t = rs_t | replace: b.link, rs_a -%}
+      {%- endif %}
+      <p>{% if b.forte %}<strong>{% include frase.html testo=b.forte %}</strong>{{ spazio }}{% endif %}{{ rs_t }}</p>
+      {%- endcase -%}
+      {%- endfor %}
+      {%- if rs_aperta %}
+      </section>
+      {%- endif %}
+    </article>
+
+    {%- comment -%}
+      IL BADGE DELL'APP STORE. ⛔ UNO SOLO SULLA PAGINA, il file di Apple non
+      modificato, il link nudo: le regole stanno in `_layouts/landing.html`, e
+      lo stile è quello di `assets/css/funzione.scss`.
+    {%- endcomment %}
+    <p class="scarica">
+      <a href="{{ lin_store }}" rel="noreferrer">
+        <img src="{{ lin_badge | relative_url }}"
+             alt="{{ d.badge }}" width="120" height="40">
+      </a>
+    </p>
+  </main>
+
+  {%- include piede.html -%}
+</body>
+</html>

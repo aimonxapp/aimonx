@@ -24,6 +24,8 @@ menu:
     - "Home"
     - "Features"
     - "FAQ"
+    # ⭐ Giro W31 (Pier, 31/10/2026): fra FAQ e Free and Pro, come nel piede dopo FAQ.
+    - "Range System"
     - "Free and Pro"
   # ⭐ Giro W29 (Pier, 17/10/2026 17:18): «Download» in TUTTE le lingue, ed è
   # scritto QUI e basta — il pulsante in fondo alla barra e l'ultima voce della
@@ -78,6 +80,7 @@ piede:
   - titolo: "Learn"
     voci:
       - "FAQ"
+      - "Range System"
   - titolo: "Support"
     voci:
       - "Support"

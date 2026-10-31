@@ -1,0 +1,144 @@
+# _data/range-system.yml — IL TESTO DELLA PAGINA «AIMONX RANGE SYSTEM». Giro W31.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, che
+# sta nella sua cartella dei contenuti:
+#     …/2- Contenuti/range-system/range-system-en-bozza.md
+# sezioni `## Meta`, `## Page` e `## 9mm Ammo Box, 100 rounds`.
+# `scripts/testo-approvato.sh` cerca ogni stringa qui dentro ALLA LETTERA in
+# quelle sezioni. ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+#
+# ⛔ IL RIQUADRO «Printed yours? AIMONX Pro is on us» NON C'È, e non è una
+# svista: il codice non esiste ancora, ed entra in un giro successivo con il
+# codice vero (giro W31, punto 2).
+#
+# ⚠️ I corsivi della bozza (*aimonx.app*, *9×19*) qui sono testo normale: come
+# nelle altre pagine, questi file portano parole e non formattazione.
+# ⚠️ `link` nomina la parola che diventa link verso la scheda MakerWorld;
+# l'indirizzo sta in `_data/collegamenti.yml` (`makerworld`), con quello del
+# pulsante. Le foto si accoppiano ai loro file per ordine di comparsa
+# (`_data/aspetto.yml`, `foto`), e i conti li confronta `testo-approvato.sh`.
+
+meta:
+  title: "AIMONX Range System: Free 3D-Printable 9mm Ammo Box"
+  description: "Free 3D-printable gear for sport shooters. First up: a rugged ammo box for 100 rounds of 9mm (9×19). Snap latches, printed hinge, no hardware. Free on MakerWorld."
+
+titolo: "AIMONX Range System"
+sommario: "Gear for your range bag, designed by a shooter, free to print."
+
+blocchi:
+- tipo: p
+  testo: "The Range System is our line of 3D-printable gear for sport shooters. Every piece is an original design, free to download on MakerWorld and print as many times as you like. We don't sell gear. We give it away, so more shooters get to know the AIMONX app. More calibers and more kinds of boxes are on the way."
+- tipo: h2
+  testo: "9mm Ammo Box, 100 rounds"
+- tipo: p
+  testo: "A rugged, 3D-printable ammo box for 100 rounds of 9×19. Original design, free to download and print."
+- tipo: pulsante
+  testo: "Download free on MakerWorld"
+- tipo: foto
+  alt: "The 9mm ammo box open, with 100 rounds standing bullet down in two blocks of 50."
+- tipo: p
+  testo: "It's the first piece of the Range System. It holds 100 loose rounds bullet down, in two blocks of 50. Two snap latches close it, a full-width printed hinge opens it, and it stands flat on any of its four sides. No screws, no magnets, no metal pins: you print five parts and snap them together."
+- tipo: h3
+  testo: "At a glance"
+- tipo: tabella
+  righe:
+  - ["Caliber", "9×19 (9mm Luger). Also sized for 9×21"]
+  - ["Capacity", "100 rounds, two blocks of 50"]
+  - ["Outside size", "156 × 173 × 43 mm (6.1 × 6.8 × 1.7 in)"]
+  - ["Parts", "base, lid, insert, 2 latches"]
+  - ["Hardware", "none"]
+  - ["Material", "PETG"]
+  - ["Lids", "engraved (one color) or color inlay (three colors)"]
+  - ["Padlock", "4 mm hole for a cable padlock"]
+- tipo: h3
+  testo: "Built to live in a range bag"
+- tipo: p
+  forte: "Thick walls."
+  testo: "5 mm sides and floor, 4 mm on top."
+- tipo: p
+  forte: "Stands on any side."
+  testo: "The hinge and latches sit inside the outline, so the box stays upright on the bench or the shelf."
+- tipo: p
+  forte: "Grips where your hands go."
+  testo: "Angled ribs on both sides of the lid."
+- tipo: p
+  forte: "Our logo on the floor."
+  testo: "Pull the insert and you'll find the AX logo and aimonx.app engraved in the base."
+- tipo: foto
+  alt: "The closed ammo box in green, with the AX logo and an orange bullet on the lid."
+- tipo: h3
+  testo: "An insert that holds every round"
+- tipo: p
+  testo: "Rounds drop into hex cells, bullet down. Each cell narrows into a cone that holds the round by the bullet, so the tip doesn't touch anything. About 9 mm of case sticks out, enough to grab each round with your fingers. A solid divider splits the 100 into two blocks of 50, which makes counting easy. The insert snaps into the base and stays put when you shake the box."
+- tipo: foto
+  alt: "The empty box open, showing the gray honeycomb insert."
+- tipo: h3
+  testo: "Latches that click"
+- tipo: p
+  testo: "Two latches sit recessed in the front, so they don't snag in the bag or pop open by accident. Each one pivots on a pin, clamps the lid to the base, and snaps shut with a clear click."
+- tipo: foto
+  alt: "A hand opening one of the two front latches."
+- tipo: p
+  testo: "The hinge runs the full width of the box, snaps together with no pins to insert, and lets the lid open all the way."
+- tipo: h3
+  testo: "Lock it if you want"
+- tipo: p
+  testo: "A 4 mm hole in the front corner goes through the lid and the base. A cable padlock with a 3 mm cable, like the ones made for zippers, keeps the box shut."
+- tipo: h3
+  testo: "Two lids, same box"
+- tipo: p
+  forte: "Engraved:"
+  testo: "one color, with the bullet, 9×19 and the AX logo engraved in the lid."
+- tipo: p
+  forte: "Color:"
+  testo: "the bullet in orange, 9×19 and the AX logo in white, inlaid flush in the lid. Needs an AMS or another multi-material setup."
+- tipo: p
+  testo: "Both lids fit the same base."
+- tipo: foto
+  alt: "The five printed parts laid out: lid, base, insert and two latches."
+- tipo: h3
+  testo: "Printing"
+- tipo: ul
+  voci:
+  - forte: "Material:"
+    testo: "PETG for every part. We print with Bambu PETG Basic."
+  - forte: "Layer height:"
+    testo: "0.20 mm, first layer included (Bambu Studio 0.20 mm High Quality). The engraving is exactly three layers deep: change the layer height and the lid graphics won't come out right."
+  - forte: "Plate:"
+    testo: "Textured PEI."
+  - forte: "X-Y hole and contour compensation:"
+    testo: "0. The hinge, latches and insert are designed with exact clearances."
+  - forte: "Supports:"
+    testo: "base only. Everything else prints without them."
+  - forte: "Orientation:"
+    testo: "the files come already oriented."
+- tipo: h3
+  testo: "Putting it together"
+- tipo: ol
+  voci:
+  - "Press the insert into the base until it locks in."
+  - "Open the lid all the way, line up the hinge and push it onto the base until it clicks."
+  - "Close the lid. Hold a latch open, drop its pin into the channels from the top and swing it down. Same for the other one."
+  - "Snap both latches shut. Done."
+- tipo: p
+  testo: "To open it, pull the bottom tab of each latch out and up. To clean the insert, turn the empty box upside down and tap the rim."
+- tipo: h3
+  testo: "Good to know"
+- tipo: ul
+  voci:
+  - "Load rounds bullet down. Bullet up, they won't be held."
+  - "Different bullet shapes sit at slightly different heights. The lid clears the longest 9×19 and 9×21 rounds C.I.P. allows."
+  - "It's an original design, drawn from scratch. Not a remix."
+  - "Free for personal use. Please don't sell prints or post remixes. Want to make and sell them? Email us and ask."
+- tipo: h3
+  testo: "Want another caliber?"
+- tipo: p
+  testo: "Tell us which one, and whether you want 50 or 100 rounds, in the comments on MakerWorld."
+  link: "MakerWorld"
+- tipo: h3
+  testo: "What's AIMONX?"
+- tipo: p
+  testo: "The app this box was made for. AIMONX is a logbook for sport shooters: log a range session and each firearm's round count, your ammo on hand and your maintenance all update on their own. Encrypted on your iPhone, no account."
+
+# ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
+badge: "Download on the App Store"

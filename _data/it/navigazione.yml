@@ -13,6 +13,7 @@ menu:
     - "Home"
     - "Funzioni"
     - "FAQ"
+    - "Range System"
     - "Free e Pro"
 # ⭐ Giro W29: «Download» non sta qui — è uguale in ogni lingua, e lo scrive una
 # volta sola `_data/navigazione.yml` (`menu.scarica`).
@@ -43,6 +44,7 @@ piede:
   - titolo: "Approfondisci"
     voci:
       - "FAQ"
+      - "Range System"
   - titolo: "Supporto"
     voci:
       - "Supporto"

@@ -122,7 +122,10 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "name": {{ include.meta.title | jsonify }},
       "description": {{ include.meta.description | jsonify }},
       "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
+      {%- comment -%} ⭐ Giro W31: `senza_about` sulla pagina del Range System, che parla della scatola e non dell'app. {%- endcomment -%}
+      {%- unless page.senza_about %}
       "about": { "@id": {{ '/#app' | absolute_url | jsonify }} },
+      {%- endunless %}
       "inLanguage": {{ lin.html | jsonify }}
     }{% endif %}{% if page.sezione %},
     {%- comment -%}
