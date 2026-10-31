@@ -2,12 +2,6 @@
 # ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
 
 frasi:
-- frase: Privacy Policy
-  href: "/privacy-policy/"
-  tipo: radice
-- frase: Terms of Use
-  href: "/terms/"
-  tipo: radice
 - frase: Voir comment marche le suivi des munitions
   href: "/features/ammo-and-costs/"
   tipo: pagina

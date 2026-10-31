@@ -21,7 +21,7 @@ blocchi:
     testo: "Calibri, tipologie arma, categorie arma, tipi di azione, tipi di scatto, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza. Le trovi in Gestione liste, nella scheda Home: ognuna la sistemi come vuoi."
   - tipo: schermate
     alt:
-      - "Gestione liste in AIMONX: calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza."
+      - "Gestione liste in AIMONX: calibri, tipologie arma, categorie arma, tipi di azione, tipi di scatto, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza."
   - tipo: h2
     testo: "Aggiungi quello che manca"
   - tipo: p

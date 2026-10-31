@@ -4,7 +4,7 @@
 
 meta:
   title: Soporte y contacto | AIMONX
-  description: "¿Tienes una pregunta, has encontrado un fallo o tienes una idea para AIMONX? Escríbenos a support@aimonx.app. Puedes escribirnos en español o en inglés."
+  description: "¿Una pregunta, un fallo o una idea para AIMONX? Escribe a support@aimonx.app. Cada correo lo lee quien hace la app."
 titolo: Soporte
 blocchi:
 - tipo: p
@@ -32,5 +32,5 @@ blocchi:
   testo: Privacidad y condiciones
 - tipo: ul
   voci:
-  - Privacy Policy (en inglés)
-  - Terms of Use (en inglés)
+  - Política de privacidad (en inglés)
+  - "Condiciones de uso (en inglés)"

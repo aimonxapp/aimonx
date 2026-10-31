@@ -14,7 +14,7 @@ blocchi:
   testo: 'Calibres, tipos de arma, categorías de arma, tipos de funcionamiento, tipos de disparador, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación. Las encuentras en Gestionar listas, en la pestaña Inicio: hazlas tuyas una por una.'
 - tipo: schermate
   alt:
-  - 'Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación.'
+  - "Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de funcionamiento, tipos de disparador, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación."
 - tipo: h2
   testo: Añade lo que falta
 - tipo: p

@@ -22,7 +22,7 @@ blocchi:
   testo: Tout votre journal vit dans une base de données chiffrée sur votre iPhone. Elle ne s'ouvre que quand vous confirmez que c'est bien vous, avec Face ID, Touch ID ou votre code, et par défaut elle se verrouille dès que vous quittez l'app. Même dans le sélecteur d'apps, AIMONX n'affiche que son logo.
 - tipo: schermate
   alt:
-  - 'L''écran de verrouillage d''AIMONX : « AIMONX est verrouillée », avec le bouton Déverrouiller.'
+  - "L'écran de verrouillage d'AIMONX, avec le bouton pour déverrouiller."
   - 'AIMONX dans le sélecteur d''apps de l''iPhone : seulement son logo et un cadenas, à la place de vos données.'
 - tipo: h2
   testo: Une copie chiffrée dans votre propre iCloud
@@ -87,5 +87,5 @@ blocchi:
 - tipo: p
   testo: 'Free vous donne tout ce qui est sur cette page, y compris votre copie chiffrée dans iCloud, à deux exceptions près, réservées à Pro : la protection avancée et l''export d''archives chiffrées.'
 - tipo: p
-  testo: Vous voulez les détails juridiques ? Lisez notre Privacy Policy.
+  testo: "Vous voulez les détails juridiques ? Lisez notre Politique de confidentialité (en anglais)."
 badge: Télécharger dans l'App Store

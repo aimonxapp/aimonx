@@ -59,7 +59,7 @@ for (const url of urls) {
     const page = await ctx.newPage();
     await page.goto(url, { waitUntil: 'networkidle' });
 
-    // ③ Il pulsante c è solo sul telefono: sopra i 760px il CSS lo toglie.
+    // ③ Il pulsante c è solo sul telefono: sopra i 820px il CSS lo toglie.
     const pulsante = await page.evaluate(() => {
       const s = document.querySelector('.barra .apri > summary');
       return s && s.getBoundingClientRect().width > 0 ? s.innerText.trim() : null;

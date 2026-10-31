@@ -4,7 +4,7 @@
 
 meta:
   title: Assistance et contact | AIMONX
-  description: Une question, un bug, une idée pour AIMONX ? Écrivez-nous à support@aimonx.app. Vous pouvez nous écrire en français ou en anglais.
+  description: "Une question, un bug ou une idée pour AIMONX ? Écrivez à support@aimonx.app. Chaque e-mail est lu par la personne qui construit l'app."
 titolo: Assistance
 blocchi:
 - tipo: p
@@ -32,5 +32,5 @@ blocchi:
   testo: Confidentialité et conditions
 - tipo: ul
   voci:
-  - Privacy Policy
-  - Terms of Use
+  - Politique de confidentialité (en anglais)
+  - "Conditions d'utilisation (en anglais)"

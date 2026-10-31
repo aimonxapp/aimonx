@@ -22,7 +22,7 @@ blocchi:
   testo: Todo tu diario vive en una base de datos cifrada en tu iPhone. Solo se abre cuando confirmas que eres tú, con Face ID, Touch ID o el código del iPhone, y de serie se vuelve a bloquear cuando sales de la app. Incluso en el selector de apps, AIMONX solo muestra su logotipo.
 - tipo: schermate
   alt:
-  - 'La pantalla de bloqueo de AIMONX: «AIMONX está bloqueada».'
+  - "La pantalla de bloqueo de AIMONX, con el botón para desbloquear."
   - AIMONX en el selector de apps del iPhone, que solo muestra su logotipo y un candado en lugar de tus datos.
 - tipo: h2
   testo: Una copia cifrada en tu propio iCloud
@@ -87,5 +87,5 @@ blocchi:
 - tipo: p
   testo: 'Con Free tienes todo lo que hay en esta página, incluida tu copia cifrada en iCloud, con dos excepciones que son de Pro: la protección avanzada y la exportación de archivos cifrados.'
 - tipo: p
-  testo: "¿Quieres los detalles legales? Lee nuestra Privacy Policy (en inglés)."
+  testo: "¿Quieres los detalles legales? Lee nuestra Política de privacidad (en inglés)."
 badge: Descargar en el App Store

@@ -206,10 +206,10 @@ img, svg { display: block; max-width: 100%; }
 .barra .voci-barra .pulsante:hover { background: var(--bianco); color: var(--bosco); }
 
 // --- il telefono: il pannello a tutto schermo --------------------------------
-// ⭐ Sotto i 760 px il pulsante «Menu» apre un pannello che copre la pagina, e
+// ⭐ Sotto gli 820 px (Pier, 31/10/2026: il francese a 760 andava a capo) il pulsante «Menu» apre un pannello che copre la pagina, e
 // il pulsante stesso resta in alto a destra e dice «Close». «Features» non si
 // apre: è un titolo, con le sue pagine già in elenco sotto.
-@media (max-width: 759.98px) {
+@media (max-width: 819.98px) {
   .barra .tendina { display: none; }
   .barra .apri[open] > summary {
     position: fixed; z-index: 31;
@@ -245,9 +245,9 @@ img, svg { display: block; max-width: 100%; }
 }
 
 // --- il computer: le voci in riga, e la tendina -----------------------------
-// ⚠️ 760px non è a caso: sotto, quattro voci col pulsante e il marchio non ci
+// ⚠️ 820px non è a caso (fino al W32 erano 760; il francese ne chiede 818): sotto, quattro voci col pulsante e il marchio non ci
 // stanno su una riga. Sopra, ci stanno — misurato da `scripts/sbordi.mjs`.
-@media (min-width: 760px) {
+@media (min-width: 820px) {
   .barra .apri { display: none; }
   .barra .voci-barra {
     display: flex; flex-direction: row; align-items: center;
@@ -396,7 +396,7 @@ body > :is(.apertura, main, .chiusa) { max-width: var(--sito); margin: 0 auto; p
 // il segno non è cliccabile: è decorazione, non un secondo bersaglio.
 .barra .sotto .con-segno { display: flex; align-items: center; gap: .55rem; padding-left: .5rem; }
 .barra .sotto .con-segno a { flex: 1; padding-left: .2rem; }
-@media (max-width: 759.98px) {
+@media (max-width: 819.98px) {
   .barra .voci-barra .sotto .con-segno { padding-left: .9rem; }
   .barra .voci-barra .sotto .con-segno a { padding-left: 0; }
 }

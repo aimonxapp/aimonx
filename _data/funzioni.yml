@@ -121,7 +121,7 @@
 - nome: "Custom lists"
   lead: "Your lists, your way."
   body: "Can't find your caliber or firearm type? Add it. Swipe away what you never use. Every list you pick from is yours to shape."
-  alt: "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
+  alt: "Manage Lists in AIMONX: calibers, firearm types, firearm categories, action types, trigger types, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
   link: "See how custom lists work"
   aspetto:
     pagina: /features/custom-lists/

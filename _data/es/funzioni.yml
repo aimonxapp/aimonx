@@ -33,7 +33,7 @@
 - nome: Listas personalizadas
   lead: Tus listas, a tu manera.
   body: "¿No encuentras tu calibre o tu tipo de arma? Añádelo. Lo que nunca usas, quítalo deslizando. Cada lista de la que eliges la decides tú."
-  alt: 'Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación.'
+  alt: "Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de funcionamiento, tipos de disparador, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación."
   link: Mira cómo funcionan las listas personalizadas
 - lead: Renovaciones que no se te escapan.
   body: 'Licencias y permisos, cuotas de club y de campo de tiro, seguro: con un recordatorio los días antes que quieras.'
@@ -52,5 +52,5 @@
 - nome: Tus datos
   lead: Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
   body: Tu diario vive cifrado en tu iPhone. Una copia cifrada se guarda en tu propio iCloud (activada de serie, y puedes desactivarla), así que un iPhone nuevo no significa empezar de cero. El número de serie es opcional.
-  alt: 'La pantalla de bloqueo de AIMONX: «AIMONX está bloqueada».'
+  alt: "La pantalla de bloqueo de AIMONX, con el botón para desbloquear."
   link: Mira cómo protege AIMONX tus datos

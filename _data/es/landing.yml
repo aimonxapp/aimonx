@@ -35,7 +35,7 @@ hero:
 what:
   title: Lo que lleva al día
 privacy:
-  title: Privacy
+  title: "Privacidad"
   claim:
   - Sin cuenta. Sin servidores de AIMONX.
   - Nunca vemos tus datos.
@@ -47,7 +47,7 @@ privacy:
   note: Tu diario vive cifrado en tu iPhone. Una copia cifrada se guarda en tu propio iCloud (activada de serie, y puedes desactivarla), así que un iPhone nuevo no significa empezar de cero. El número de serie es opcional.
   link: Mira cómo protege AIMONX tus datos
 security:
-  title: Sicurezza
+  title: "Seguridad"
   items:
   - lead: Bloqueada con Face ID.
     body: AIMONX se bloquea cuando sales y oculta su contenido en el selector de apps.

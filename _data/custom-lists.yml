@@ -29,7 +29,7 @@ blocchi:
   testo: "Calibers, firearm types, firearm categories, action types, trigger types, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Find them under Manage Lists, on the Home tab, and make each one your own."
 - tipo: schermate
   alt:
-  - "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
+  - "Manage Lists in AIMONX: calibers, firearm types, firearm categories, action types, trigger types, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."
 - tipo: h2
   testo: Add what's missing
 - tipo: p

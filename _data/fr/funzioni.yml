@@ -52,5 +52,5 @@
 - nome: Vos données
   lead: Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
   body: Votre journal vit chiffré sur votre iPhone. Une copie chiffrée est gardée dans votre propre iCloud (activée par défaut, et vous pouvez la désactiver), pour qu'un nouvel iPhone ne veuille pas dire tout recommencer. Le numéro de série est facultatif.
-  alt: 'L''écran de verrouillage d''AIMONX : « AIMONX est verrouillée », avec le bouton Déverrouiller.'
+  alt: "L'écran de verrouillage d'AIMONX, avec le bouton pour déverrouiller."
   link: Voir comment AIMONX protège vos données
