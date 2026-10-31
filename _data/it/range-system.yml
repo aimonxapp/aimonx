@@ -8,7 +8,7 @@
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
 
 meta:
-  title: "AIMONX Range System: scatola porta munizioni 9×19 da stampare in 3D"
+  title: "AIMONX Range System: porta munizioni 9×19 da stampare in 3D"
   description: "Accessori da stampare in 3D per tiratori sportivi, gratis. Si comincia con una scatola robusta per 100 colpi 9×19: chiusure a scatto, cerniera stampata, niente viti. Gratis su MakerWorld."
 
 titolo: "AIMONX Range System"
@@ -16,7 +16,7 @@ sommario: "Accessori per la borsa del poligono, disegnati da un tiratore, da sta
 
 blocchi:
 - tipo: p
-  testo: "Il Range System è la nostra linea di accessori da stampare in 3D per chi tira. Ogni pezzo è un progetto originale: lo scarichi gratis da MakerWorld e lo stampi tutte le volte che vuoi. Non vendiamo niente: li regaliamo, perché più tiratori conoscano l'app AIMONX. Arriveranno altri calibri e altri tipi di scatole."
+  testo: "Il Range System è la nostra linea di accessori da stampare in 3D per chi tira. Ogni pezzo è un progetto originale: lo scarichi gratis da MakerWorld e lo stampi tutte le volte che vuoi. Non vendiamo accessori: li regaliamo, perché più tiratori conoscano l'app AIMONX. Arriveranno altri calibri e altri tipi di scatole."
 - tipo: h2
   testo: "Scatola porta munizioni 9×19 da 100 colpi"
 - tipo: p
@@ -66,7 +66,7 @@ blocchi:
 - tipo: p
   testo: "Le due chiusure sono incassate sul davanti: non si impigliano nella borsa e non si aprono per sbaglio. Ognuna ruota su un perno, stringe il coperchio sul fondo e si blocca con uno scatto netto."
 - tipo: foto
-  alt: "Una mano che apre una delle due chiusure davanti."
+  alt: "Una delle due chiusure, staccata e tenuta in mano accanto alla scatola."
 - tipo: p
   testo: "La cerniera corre per tutta la larghezza, si monta a scatto senza perni da infilare e lascia aprire il coperchio del tutto."
 - tipo: h3
