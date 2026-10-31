@@ -8,17 +8,17 @@
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
 
 meta:
-  title: "Manutenzione armi a colpi: pulizie e interventi | AIMONX"
-  description: "Regole di pulizia e manutenzione a colpi per ogni arma. AIMONX ti mostra nell'app cosa è consigliato o necessario e tiene il diario di ogni intervento."
+  title: "Manutenzione armi a colpi o a tempo: pulizie e interventi | AIMONX"
+  description: "Regole di pulizia e manutenzione per ogni arma a colpi, a tempo o tutte e due. AIMONX ti mostra nell'app cosa è consigliato o necessario e tiene il diario di ogni intervento."
 
-titolo: "La manutenzione delle armi, a colpi"
-sommario: "Una pulizia ogni 500 colpi, una molla di recupero nuova a 5.000: le tue regole le conosci. Il difficile è tenere il conto. AIMONX conta i colpi dalle tue sessioni al poligono e ti mostra quando è il momento."
+titolo: "La manutenzione delle armi, a colpi o a tempo"
+sommario: "Una pulizia ogni 500 colpi, una molla di recupero nuova a 5.000, una lubrificazione ogni 3 mesi: le tue regole le conosci. Il difficile è tenere il conto. AIMONX conta i colpi dalle tue sessioni al poligono, tiene d'occhio il calendario e ti mostra quando è il momento."
 
 blocchi:
   - tipo: h2
-    testo: "Le tue regole, i tuoi colpi"
+    testo: "Le tue regole, i tuoi tempi"
   - tipo: p
-    testo: "Per ogni arma scegli cosa va fatto e ogni quanti colpi: pulizia, lubrificazione, cambio molle, un controllo o qualsiasi voce della tua lista. Dai a ogni regola un titolo e, se vuoi, due righe su come la fai. AIMONX non ti dice ogni quanto pulire: le regole le decidi tu, dal manuale o dalla tua esperienza."
+    testo: "Per ogni arma scegli cosa va fatto e ogni quanto: ogni tanti colpi, ogni tanti giorni o mesi, o tutte e due, e vince chi arriva prima, come «ogni 5.000 colpi o 12 mesi». Pulizia, lubrificazione, cambio molle, un controllo o qualsiasi voce della tua lista. Dai a ogni regola un titolo e, se vuoi, due righe su come la fai. AIMONX non ti dice ogni quanto pulire: le regole le decidi tu, dal manuale o dalla tua esperienza."
   - tipo: schermate
     alt:
       - "La pagina di un'arma in AIMONX, con i colpi totali e le regole di manutenzione a colpi per la pulizia e per la molla di recupero."
@@ -26,17 +26,19 @@ blocchi:
     testo: "Cosa c'è da fare, a colpo d'occhio"
   - tipo: p
     testo: "Ogni arma mostra lo stato a colori: verde quando è tutto a posto, giallo quando la manutenzione è consigliata, arancio quando è necessaria. Lo vedi sull'arma, in Home e subito dopo aver salvato una sessione."
+  - tipo: p
+    testo: "In Home e nell'elenco delle armi, sotto ogni arma una barretta si riempie man mano che si avvicina la prossima pulizia, a colpi o a giorni."
   - tipo: schermate
     alt:
       - "Le tue armi in AIMONX, ognuna con i suoi colpi e lo stato della manutenzione a colori."
   - tipo: h2
     testo: "Il preavviso, per arrivare prima"
   - tipo: p
-    testo: "Scegli con quanti colpi di anticipo vuoi saperlo, così la pulizia la pianifichi invece di trovartela addosso. Il preavviso è di Pro."
+    testo: "Scegli con quanti colpi o giorni di anticipo vuoi saperlo, così la pulizia la pianifichi invece di trovartela addosso. Il preavviso ora è gratis."
   - tipo: h2
     testo: "Segnala come fatta, e il conto riparte"
   - tipo: p
-    testo: "Apri una regola e tocca Segna come eseguita. AIMONX compila data, colpi dell'arma e dati della regola. Correggi quello che non va, per esempio la data se l'hai fatta due giorni fa, e salva. Il contatore di quella regola riparte da lì."
+    testo: "Apri una regola e tocca Segna come eseguita. AIMONX compila data, colpi dell'arma e dati della regola. Correggi quello che non va, per esempio la data se l'hai fatta due giorni fa, e salva. I contatori di quella regola, colpi e tempo, ripartono da lì."
   - tipo: schermate
     alt:
       - "La modifica di una regola di manutenzione in AIMONX: in alto il tasto Segna come eseguita, poi tipo, titolo, descrizione dell'intervento, intervallo in colpi e preavviso."
@@ -51,7 +53,7 @@ blocchi:
   - tipo: h2
     testo: "Niente notifiche, apposta"
   - tipo: p
-    testo: "AIMONX non ti manda mai una notifica per la manutenzione. I colpi salgono solo quando registri una sessione: è lì che AIMONX controlla, e te lo dice subito nell'app."
+    testo: "AIMONX non ti manda mai una notifica per la manutenzione, né a colpi né a tempo. Apri l'app e lo trovi lì: sull'arma, in Home e dopo aver salvato una sessione."
   - tipo: h2
     testo: "L'hai comprata usata?"
   - tipo: p
@@ -59,7 +61,7 @@ blocchi:
   - tipo: h2
     testo: "Free e Pro"
   - tipo: p
-    testo: "Free dà a ogni arma una regola di pulizia, ai colpi che scegli tu. Pro aggiunge regole illimitate di ogni tipo e il preavviso."
+    testo: "Free dà a ogni arma una regola di pulizia, a colpi, a tempo o tutte e due, con il preavviso. Pro aggiunge regole illimitate di ogni tipo."
 
 # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
 badge: "Scarica su App Store"

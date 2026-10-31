@@ -40,6 +40,14 @@ blocchi:
     testo: "Come cancello tutti i miei dati di AIMONX?"
   - tipo: p
     testo: "Nelle Impostazioni di AIMONX tocca Inizializza l'app. Cancella tutti i dati sull'iPhone insieme alla chiave che li apre, quindi anche la copia di AIMONX su iCloud non si può più usare. AIMONX riparte come una nuova installazione. Non si può tornare indietro."
+  - tipo: h3
+    testo: "AIMONX sa dove sono?"
+  - tipo: p
+    testo: "Solo se glielo chiedi tu. Quando metti un poligono sulla mappa puoi toccare Usa la posizione attuale, e AIMONX chiede la tua posizione solo in quel momento. Il punto resta nel diario cifrato e a noi non arriva mai. Mappe e indicazioni sono di Apple."
+  - tipo: h3
+    testo: "Le foto in AIMONX dicono dove sono state scattate?"
+  - tipo: p
+    testo: "No. Quando aggiungi una foto, AIMONX toglie la posizione e gli altri dati nascosti prima di salvarla. Quando la scegli, iOS può scrivere comunque «Posizione inclusa»: è il selettore delle foto del sistema, e AIMONX la toglie quando la salva."
   - tipo: h2
     testo: "AIMONX su misura per te"
   - tipo: h3
@@ -122,15 +130,19 @@ blocchi:
   - tipo: h3
     testo: "AIMONX è gratis?"
   - tipo: p
-    testo: "Sì. AIMONX si scarica gratis, e Free è un diario vero, non una prova. Pro è un abbonamento facoltativo: 1,99 € al mese o 14,99 € all'anno. I prezzi cambiano da paese a paese: App Store ti mostra il tuo. Pro si condivide con In famiglia, così vale anche per la tua famiglia."
+    testo: "Sì. AIMONX si scarica gratis, e Free è un diario vero, non una prova. Pro è un abbonamento facoltativo: 1,99 € al mese o 14,99 € all'anno. I prezzi cambiano da paese a paese: App Store ti mostra il tuo. Pro si condivide con In famiglia, così vale anche per la tua famiglia. Chi si abbona per la prima volta ha il primo mese di Pro gratis."
   - tipo: h3
     testo: "Cosa c'è in AIMONX Free?"
   - tipo: p
-    testo: "Un'arma attiva, sessioni illimitate, munizioni commerciali con inventario, una regola di pulizia a colpi per ogni arma, due scadenze, tutte le statistiche, i report PDF, fino a cinque foto per arma e la copia cifrata su iCloud."
+    testo: "Un'arma attiva, sessioni illimitate, munizioni commerciali con inventario e balistica, una regola di pulizia per ogni arma a colpi o a tempo con il preavviso, due scadenze, tutte le statistiche, le foto, il Calcolo Power Factor, i poligoni sulla mappa, i report PDF e la copia cifrata su iCloud."
   - tipo: h3
     testo: "Cosa aggiunge AIMONX Pro?"
   - tipo: p
-    testo: "Armi illimitate, munizioni ricaricate, regole di manutenzione illimitate di ogni tipo con il preavviso, scadenze illimitate, gare e statistiche di gara, archivi cifrati da esportare e la Protezione avanzata."
+    testo: "Armi illimitate, munizioni ricaricate, regole di manutenzione illimitate di ogni tipo, scadenze illimitate, gare e statistiche di gara, archivi cifrati da esportare e la Protezione avanzata."
+  - tipo: h3
+    testo: "C'è una prova gratuita di AIMONX Pro?"
+  - tipo: p
+    testo: "Sì. Se non ti sei mai abbonato, il primo mese di Pro è gratis, sul piano mensile o annuale. Poi Pro si rinnova al prezzo normale, a meno che tu non disdica almeno 24 ore prima della fine del mese. Puoi disdire quando vuoi dagli abbonamenti di App Store."
 
 # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
 badge: "Scarica su App Store"

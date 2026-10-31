@@ -1,0 +1,59 @@
+# _data/it/handloads.yml — IL TESTO DELLA PAGINA «Le tue ricaricate, al centesimo». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'App per la ricarica: ricette, costo per colpo e Power Factor | AIMONX'
+  description: Registra le ricette delle tue ricaricate, il costo dei componenti e le produzioni. AIMONX calcola per te costo per colpo, Power Factor ed energia.
+titolo: Le tue ricaricate, al centesimo
+sommario: Se ricarichi, la ricetta ce l'hai in testa. AIMONX la tiene per te, insieme a quanto ti costa ogni colpo, alle produzioni che hai caricato e a come vanno. Poi ogni sessione al poligono le consuma e aggiunge i colpi all'arma, come qualsiasi altra munizione.
+blocchi:
+- tipo: h2
+  testo: La ricetta
+- tipo: p
+  testo: 'Dai un nome, scegli calibro, tipo e peso palla, e ci sei. Se vuoi, aggiungi i dati di ricarica: COL/OAL, diametro palla, lunghezza bossolo e crimpatura, in millimetri o pollici.'
+- tipo: h2
+  testo: Quanto ti costa davvero ogni colpo
+- tipo: p
+  testo: Due modi per inserire i componenti.
+- tipo: p
+  forte: 'Per confezione:'
+  testo: per bossoli, inneschi e palle, quanto hai pagato e quanti pezzi c'erano nella confezione; per la polvere, il prezzo, il peso della confezione in libbre, grammi o chili, e la tua dose in grani. AIMONX calcola quanto costa ogni componente per colpo, e il totale. Cambi la dose e il costo della polvere si aggiorna subito.
+- tipo: p
+  forte: 'Per colpo:'
+  testo: i conti li hai già fatti? Scrivi il costo per colpo di ogni componente. Passare da una modalità all'altra non cancella niente.
+- tipo: schermate
+  alt:
+  - I componenti di una ricaricata in AIMONX, ognuno con il prezzo pagato e la quantità, e sotto il costo per colpo calcolato.
+- tipo: h2
+  testo: Produzioni con il loro prezzo
+- tipo: p
+  testo: Registra ogni produzione con quantità, lotto e data. Ogni produzione tiene i costi della ricetta del giorno in cui l'hai caricata. Sono aumentati i prezzi? Aggiorni la ricetta e le produzioni nuove prendono i prezzi nuovi. Quelle vecchie restano com'erano.
+- tipo: h2
+  testo: Power Factor ed energia, calcolati per te
+- tipo: p
+  testo: Inserisci la velocità alla volata in fps o m/s. AIMONX ti mostra il Power Factor (peso palla in grani per velocità in fps, diviso 1.000, senza decimali, come in gara) e l'energia alla volata, in joule o ft·lb. Basta conti con la calcolatrice.
+- tipo: schermate
+  alt:
+  - 'Una ricaricata in AIMONX: calibro, tipo e peso palla, costo per colpo, e la sua velocità, il Power Factor e l''energia.'
+- tipo: h2
+  testo: Quante ne hai, e quando ricaricare
+- tipo: p
+  testo: I colpi che spari escono dall'inventario, a partire dalla produzione più vecchia. Imposta una soglia minima e AIMONX ti avvisa quando stai finendo, appena salvi la sessione.
+- tipo: h2
+  testo: Foto e statistiche
+- tipo: p
+  testo: 'Fino a 3 foto per ogni ricaricata. La sua scheda ti mostra gli ultimi 12 mesi: colpi sparati, ultimo utilizzo, l''arma che l''ha usata di più, sessioni, gare e spesa.'
+- tipo: h2
+  testo: Free e Pro
+- tipo: p
+  testo: Le ricaricate fanno parte di AIMONX Pro. Le munizioni commerciali, con lotti, costo per colpo, Power Factor ed energia, sono gratis e senza limiti. Chi si abbona per la prima volta ha il primo mese di Pro gratis.
+- tipo: h2
+  testo: Privata per come è fatta
+- tipo: p
+  testo: Le tue ricette restano cifrate sul tuo iPhone. Niente account. Nessun server di AIMONX. Non vediamo mai i tuoi dati.
+badge: Scarica su App Store

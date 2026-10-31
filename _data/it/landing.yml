@@ -81,11 +81,12 @@ piani:
   title: "Free e Pro"
   items:
     - lead: "Free è un diario vero, non una demo."
-      body: "Un'arma attiva, sessioni illimitate, munizioni commerciali con inventario, una regola di pulizia a colpi, scadenze, statistiche, report PDF e la copia cifrata su iCloud."
+      body: "Un'arma attiva, sessioni illimitate, munizioni commerciali con inventario, una regola di pulizia a colpi o a tempo con il preavviso, scadenze, statistiche, foto, report PDF e la copia cifrata su iCloud."
     - lead: "Pro toglie i limiti."
-      body: "Armi illimitate, munizioni ricaricate, regole di manutenzione illimitate di ogni tipo con il preavviso, scadenze illimitate, gare e statistiche di gara, archivi cifrati da esportare e la Protezione avanzata."
+      body: "Armi illimitate, munizioni ricaricate, regole di manutenzione illimitate di ogni tipo, scadenze illimitate, gare e statistiche di gara, archivi cifrati da esportare e la Protezione avanzata."
     - lead: "Pro costa 1,99 € al mese o 14,99 € all'anno."
-      body: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
+      body: "Chi si abbona per la prima volta ha il primo mese gratis."
+      poi: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
   confronta: "Confronta Free e Pro"
 
 footer:

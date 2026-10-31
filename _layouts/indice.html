@@ -44,7 +44,10 @@
       {%- for fa in site.data[page.fonte] -%}
       {%- assign a = fa.aspetto -%}
       {%- assign f = lin_t[page.fonte][forloop.index0] -%}
-      {%- assign forma = a.forma | default: 'telefono' %}
+      {%- assign forma = a.forma | default: 'telefono' -%}
+      {%- comment -%} ⭐ Giro W32: la schermata nella lingua della pagina, dove c'è (`schermata_it`). {%- endcomment -%}
+      {%- assign ind_k = 'schermata_' | append: lin.codice -%}
+      {%- assign ind_s = a[ind_k] | default: a.schermata %}
       <li class="sez-{{ a.tinta | default: 'verde' }} forma-{{ forma }}">
         <div class="parole">
           <div class="testa">
@@ -60,15 +63,16 @@
             works»), che sono già approvate; dove la carta non ne ha uno, il
             link non c'è. L'indirizzo è quello della fonte unica.
           {%- endcomment -%}
-          {%- if a.pagina and f.link %}
-          <p class="oltre"><a href="{{ lin_pre | append: a.pagina | relative_url }}">{{ f.link }}</a></p>
+          {%- comment -%} ⭐ Giro W32: dove non c'è una carta, il link è il nome breve: nessuna parola nuova. {%- endcomment -%}
+          {%- if a.pagina %}
+          <p class="oltre"><a href="{{ lin_pre | append: a.pagina | relative_url }}">{{ f.link | default: f.nome }}</a></p>
           {%- endif %}
         </div>
         {%- if a.schermata and f.alt %}
         {%- if forma == 'foglio' %}
-        {% include schermata.html nome=a.schermata alt=f.alt forma='foglio' sizes='(min-width: 880px) 400px, 80vw' %}
+        {% include schermata.html nome=ind_s alt=f.alt forma='foglio' sizes='(min-width: 880px) 400px, 80vw' %}
         {%- else %}
-        {% include schermata.html nome=a.schermata alt=f.alt forma='telefono' sizes='(min-width: 880px) 150px, 112px' %}
+        {% include schermata.html nome=ind_s alt=f.alt forma='telefono' sizes='(min-width: 880px) 150px, 112px' %}
         {%- endif %}
         {%- endif %}
       </li>

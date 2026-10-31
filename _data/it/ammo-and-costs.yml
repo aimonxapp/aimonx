@@ -1,0 +1,56 @@
+# _data/it/ammo-and-costs.yml — IL TESTO DELLA PAGINA «Sai cosa hai sullo scaffale, e quanto ti costa». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'App per le munizioni: scorte, costo per colpo e avviso di scorta bassa | AIMONX'
+  description: Registra ogni scatola che compri. AIMONX consuma prima il lotto più vecchio, ti mostra il costo vero per colpo e ti avvisa quando stai finendo.
+titolo: Sai cosa hai sullo scaffale, e quanto ti costa
+sommario: Registri una volta le munizioni che compri. Da lì in poi ogni sessione al poligono toglie i colpi dall'inventario e aggiunge il loro costo alla sessione, senza contare niente a mano.
+blocchi:
+- tipo: h2
+  testo: Ogni scatola che compri
+- tipo: p
+  testo: 'Aggiungi un acquisto con la quantità, il prezzo della scatola, il lotto e la data. Quante ne hai è semplice: quelle comprate meno quelle sparate.'
+- tipo: h2
+  testo: Prima il lotto più vecchio
+- tipo: p
+  testo: Le sessioni consumano prima il lotto più vecchio, e il costo della sessione segue quei lotti. Hai comprato la stessa munizione a due prezzi diversi? Ogni colpo costa quello che l'hai pagato davvero.
+- tipo: schermate
+  alt:
+  - 'La scheda di una munizione in AIMONX: colpi disponibili, la soglia minima e gli acquisti, consumati dal più vecchio.'
+- tipo: h2
+  testo: Mai senza colpi il giorno del poligono
+- tipo: p
+  testo: Imposta una soglia minima per ogni munizione. Se ci scendi sotto, AIMONX te lo dice appena salvi la sessione, e l'elenco la segnala. Le munizioni finite restano in elenco, segnate come esaurite, così ti ricordi di ricomprarle.
+- tipo: schermate
+  alt:
+  - L'elenco delle munizioni in AIMONX, con i colpi disponibili di ciascuna e un avviso di scorta bassa.
+- tipo: h2
+  testo: Velocità, Power Factor ed energia
+- tipo: p
+  testo: Aggiungi la velocità alla volata in fps o m/s. Power Factor ed energia si calcolano mentre scrivi, e da lì restano sulla scheda della munizione.
+- tipo: schermate
+  alt:
+  - 'Una munizione in AIMONX: calibro, tipo e peso palla, costo per colpo, velocità, Power Factor ed energia.'
+- tipo: h2
+  testo: Cosa spari, e quanto ti costa
+- tipo: p
+  testo: 'La scheda di ogni munizione ti mostra gli ultimi 12 mesi: colpi, ultimo utilizzo, l''arma che l''ha usata di più, sessioni, gare e spesa. Nelle Statistiche vedi i costi per voce e per tipo di sessione.'
+- tipo: h2
+  testo: Foto e un'icona tua
+- tipo: p
+  testo: Fino a 3 foto della scatola o della cartuccia, oppure scegli un'icona. Se vuoi, usa la prima foto come icona, così la riconosci al volo nell'elenco.
+- tipo: h2
+  testo: Free e Pro
+- tipo: p
+  testo: 'Le munizioni commerciali sono gratis, senza limiti: acquisti, lotti, inventario, costo per colpo e balistica. Le ricaricate fanno parte di Pro.'
+- tipo: h2
+  testo: Privata per come è fatta
+- tipo: p
+  testo: Quello che compri e quello che spari resta cifrato sul tuo iPhone. Niente account. Nessun server di AIMONX. Non vediamo mai i tuoi dati.
+badge: Scarica su App Store

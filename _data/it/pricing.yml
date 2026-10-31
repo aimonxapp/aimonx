@@ -12,7 +12,7 @@
 
 meta:
   title: "Free e Pro: piani e prezzi | AIMONX"
-  description: "AIMONX si scarica gratis, e Free è un diario vero. Pro costa 1,99 € al mese o 14,99 € all'anno, condivisibile con In famiglia. Confronta i due piani."
+  description: "AIMONX si scarica gratis, e Free è un diario vero. Pro costa 1,99 € al mese o 14,99 € all'anno, e chi si abbona per la prima volta ha il primo mese gratis. Confronta i due piani."
 
 titolo: "Free e Pro"
 sommario: "Comincia con un diario vero, non una demo. Passa a Pro quando ti serve di più."
@@ -20,6 +20,7 @@ sommario: "Comincia con un diario vero, non una demo. Passa a Pro quando ti serv
 confronto:
   titolo: "Confronto piani"
   sottotitolo: "Tutte le funzionalità a colpo d'occhio."
+  nota: "Foto, Calcolo Power Factor e poligoni sulla mappa ci sono in tutti e due i piani."
   piani:
     - { nome: "Free", motto: "Perfetto per iniziare" }
     - { nome: "Pro", motto: "Zero limiti, massime possibilità" }
@@ -51,7 +52,8 @@ vantaggi:
 blocchi:
   - titolo: "Quanto costa Pro"
     forte: "Pro costa 1,99 € al mese o 14,99 € all'anno."
-    testo: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
+    testo: "Chi si abbona per la prima volta ha il primo mese gratis, sul piano mensile o annuale. Poi Pro si rinnova al prezzo normale, a meno che tu non disdica almeno 24 ore prima della fine del mese."
+    poi: "Pro si condivide con In famiglia, così vale anche per la tua famiglia. Disdici quando vuoi. I prezzi cambiano da paese a paese: App Store ti mostra il tuo."
   - titolo: "Se Pro finisce"
     forte: "Se l'abbonamento Pro finisce, non si perde niente."
     testo: "Tutto quello che va oltre i limiti di Free resta leggibile, solo congelato, finché non torni."

@@ -12,6 +12,15 @@
 # GitHub non ha la sua Privacy Statement in italiano.
 
 frasi:
+  - frase: "Scopri come funzionano le munizioni"
+    href: "/features/ammo-and-costs/"
+    tipo: pagina
+  - frase: "Scopri il diario di tiro"
+    href: "/features/range-log/"
+    tipo: pagina
+  - frase: "Scopri le schede delle armi"
+    href: "/features/firearm-records/"
+    tipo: pagina
   - frase: "Scopri come funzionano le liste personalizzate"
     href: "/features/custom-lists/"
     tipo: pagina

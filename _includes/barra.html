@@ -122,12 +122,15 @@ Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
       </details>
       <span class="gruppo">{{ v }}</span>
       <ul class="sotto">
+        {%- comment -%} ⭐ Giro W32: l'ordine è quello della navigazione (`menu_funzioni`), non delle carte. {%- endcomment -%}
+        {%- for barra_p in site.data.aspetto.menu_funzioni %}
         {%- for f in site.data.funzioni %}
-        {%- if f.aspetto.pagina %}
+        {%- if f.aspetto.pagina == barra_p %}
         {%- assign barra_nome = lin_t.funzioni[forloop.index0].nome %}
         {%- comment -%} ⭐ Giro W26 (Pier, sì alla proposta): il segno della funzione davanti al nome — lo stesso cerchietto colorato di «More features» e dell'indice. Decorativo: l'icona è `aria-hidden` (`_includes/segno.html`). {%- endcomment %}
         <li class="sez-{{ f.aspetto.tinta | default: 'verde' }} con-segno">{% include segno.html a=f.aspetto involucro='cerchietto' %}{% include voce.html v=barra_nome dove=f.aspetto.pagina %}</li>
         {%- endif %}
+        {%- endfor %}
         {%- endfor %}
         <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
       </ul>

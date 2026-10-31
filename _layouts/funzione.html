@@ -49,7 +49,9 @@
   niente colonna, e la pagina esce come prima.
 {%- endcomment -%}
 {%- assign d = lin_t[page.dati] -%}
-{%- assign nomi = site.data.aspetto.funzioni[page.dati] -%}
+{%- comment -%} ⭐ Giro W32: dove ci sono schermate nella lingua della pagina (`funzioni_it`), quelle. {%- endcomment -%}
+{%- assign nomi_chiave = 'funzioni_' | append: lin.codice -%}
+{%- assign nomi = site.data.aspetto[nomi_chiave][page.dati] | default: site.data.aspetto.funzioni[page.dati] -%}
 {%- assign quale = 0 -%}
 {%- assign nav = lin_t.navigazione -%}
 <head>
@@ -93,7 +95,11 @@
         {%- comment -%} ⚠️ Un include non accetta `nomi[quale]` come parametro: si passa per un nome. {%- endcomment -%}
         {%- assign nome_ora = nomi[quale] -%}
         {%- if nome_ora %}
+        {%- if b.forma == 'pdf' %}
+        {% include schermata.html nome=nome_ora alt=testo_alt forma='pdf' sizes='(min-width: 760px) 544px, calc(100vw - 5.5rem)' %}
+        {%- else %}
         {% include schermata.html nome=nome_ora alt=testo_alt forma='telefono' sizes='208px' %}
+        {%- endif %}
         {%- endif -%}
         {%- assign quale = quale | plus: 1 -%}
         {%- endfor %}
@@ -130,8 +136,10 @@
       <h2 id="t-sorelle">{{ nav.sorelle }}</h2>
       <ul>
         {%- comment -%} ⭐ Giro W28: indirizzo e segno dal file inglese, il nome dalla stessa voce nella lingua della pagina. {%- endcomment -%}
+        {%- comment -%} ⭐ Giro W32: l'ordine è quello della navigazione (`menu_funzioni`), non delle carte. {%- endcomment -%}
+        {%- for sor_p in site.data.aspetto.menu_funzioni -%}
         {%- for f in site.data.funzioni -%}
-        {%- if f.aspetto.pagina and f.aspetto.pagina != lin_base %}
+        {%- if f.aspetto.pagina == sor_p and f.aspetto.pagina != lin_base %}
         <li class="sez-{{ f.aspetto.tinta | default: 'verde' }}">
           <a href="{{ lin_pre | append: f.aspetto.pagina | relative_url }}">
             {%- include segno.html a=f.aspetto involucro='cerchietto' -%}
@@ -139,6 +147,7 @@
           </a>
         </li>
         {%- endif -%}
+        {%- endfor -%}
         {%- endfor %}
       </ul>
     </aside>

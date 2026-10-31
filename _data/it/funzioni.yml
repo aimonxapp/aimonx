@@ -19,17 +19,31 @@
   alt: "Le tue armi in AIMONX, ognuna con i suoi colpi e lo stato della manutenzione a colori."
   link: "Scopri come funziona il contacolpi"
 
-- lead: "Sessioni e gare."
-  body: "Registra dove hai sparato, con cosa e com'è andata, malfunzionamenti compresi. Nelle gare anche piazzamento, punteggio e divisione."
+- nome: "Diario di tiro"
+  lead: "Sessioni e gare."
+  body: "Registra dove hai sparato, con cosa e com'è andata, malfunzionamenti compresi. Metti i tuoi poligoni sulla mappa. Nelle gare anche piazzamento, punteggio e divisione."
   alt: "L'elenco delle sessioni in AIMONX: allenamenti e sessioni dry fire, ognuna con l'arma, il luogo e i colpi sparati."
+  link: "Scopri il diario di tiro"
 
-- lead: "Munizioni sotto controllo."
-  body: "Munizioni commerciali con lotti e inventario. Ricaricate con ricetta, costi dei componenti e produzioni."
+- nome: "Munizioni e costi"
+  lead: "Munizioni sotto controllo."
+  body: "Munizioni commerciali con lotti e inventario. Ricaricate con ricetta, costi dei componenti e produzioni. Velocità alla volata, Power Factor ed energia per ogni munizione."
   alt: "Le munizioni commerciali in AIMONX, con i colpi disponibili e gli avvisi di scorta bassa."
+  link: "Scopri come funzionano le munizioni"
+
+- nome: "Ricarica"
+  lead: "Le tue ricaricate, al centesimo"
+  body: "Se ricarichi, la ricetta ce l'hai in testa. AIMONX la tiene per te, insieme a quanto ti costa ogni colpo, alle produzioni che hai caricato e a come vanno. Poi ogni sessione al poligono le consuma e aggiunge i colpi all'arma, come qualsiasi altra munizione."
+  alt: "Una ricaricata in AIMONX: calibro, tipo e peso palla, costo per colpo, e la sua velocità, il Power Factor e l'energia."
+
+- nome: "Calcolo Power Factor"
+  lead: "Il calcolo del Power Factor, sul tuo iPhone"
+  body: "Major o minor? Inserisci peso palla e velocità alla volata, e AIMONX ti mostra Power Factor ed energia mentre scrivi. È gratis, ed è a un tocco dalla Home."
+  alt: "Il Calcolo Power Factor in AIMONX: una palla da 147 grani a 880 fps dà un Power Factor di 129 e l'energia alla volata."
 
 - nome: "Manutenzione"
   lead: "La manutenzione come vuoi tu."
-  body: "Crea le tue regole per ogni arma (pulizia, lubrificazione, cambio molle, qualsiasi cosa) ai colpi che scegli tu. Decidi con quanto anticipo saperlo, e AIMONX te lo dice dentro l'app quando è il momento."
+  body: "Crea le tue regole per ogni arma (pulizia, lubrificazione, cambio molle, qualsiasi cosa) a colpi, a tempo o tutte e due: vince chi arriva prima. Decidi con quanto anticipo saperlo, e AIMONX te lo dice dentro l'app quando è il momento."
   alt: "La pagina di un'arma in AIMONX, con i colpi totali e le regole di manutenzione a colpi per la pulizia e per la molla di recupero."
   link: "Scopri come funziona la manutenzione"
 
@@ -51,9 +65,11 @@
   body: "Colpi nel tempo e per arma, le munizioni che usi di più, l'affidabilità di ogni arma e i poligoni dove vai più spesso. Per vedere come va davvero il tuo tiro."
   alt: "La schermata Statistiche di AIMONX: colpi sparati, sessioni e spesa degli ultimi tre mesi, a confronto con il periodo precedente, sopra il grafico dei colpi sparati nel tempo."
 
-- lead: "Schede arma in PDF."
-  body: "Una scheda per ogni arma e l'inventario completo: create sul tuo iPhone, con password se vuoi, condivise solo quando decidi tu."
+- nome: "Schede delle armi"
+  lead: "Schede arma in PDF."
+  body: "Specifiche, accessori e fino a 5 foto per ogni arma. Una scheda per ognuna e l'inventario completo: creati sul tuo iPhone, con password se vuoi, condivisi solo quando decidi tu."
   alt: "Un inventario armi in PDF fatto con AIMONX, con foto, matricole, dati d'acquisto e totali."
+  link: "Scopri le schede delle armi"
 
 - nome: "I tuoi dati"
   lead: "Nessun account. Nessun server AIMONX. I tuoi dati non li vediamo mai."

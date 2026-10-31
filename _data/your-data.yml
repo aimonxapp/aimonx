@@ -56,7 +56,7 @@ blocchi:
 - tipo: h2
   testo: An encrypted copy in your own iCloud
 - tipo: p
-  testo: "Phones break, get lost, get replaced. So by default, AIMONX keeps an encrypted copy of your logbook in your own iCloud. It backs up your changes when you open or close the app, or whenever you tap Back Up Now."
+  testo: "Phones break, get lost, get replaced. So by default, AIMONX keeps an encrypted copy of your logbook in your own iCloud. It backs up your changes when you open the app, every few minutes while you use it, when you close it, and whenever you tap Back Up Now. Your photos go up too, each one encrypted with its own key."
 - tipo: ul
   voci:
   - "It's encrypted on your iPhone, with the same key as your logbook, before it goes anywhere."
@@ -84,6 +84,10 @@ blocchi:
   testo: Serial numbers are optional
 - tipo: p
   testo: 'Add one only if you want to, or use a private name like "Match pistol 1." Photos you add are stripped of their location and other hidden details before they''re saved.'
+- tipo: h2
+  testo: "Maps only when you tap"
+- tipo: p
+  testo: "Pin your ranges on the map if you want. Your location is used only when you tap Use Current Location, and the map, directions and address search come from Apple and only run when you tap. Your pins stay in your encrypted logbook. They never reach us."
 - tipo: h2
   testo: No ads. No analytics. No tracking.
 - tipo: p

@@ -26,6 +26,22 @@ titolo: "What's new in AIMONX"
 sommario: "Every update to the app, newest first."
 
 blocchi:
+# ⛔ Giro W32: la data resta `[RELEASE DATE]` fino alla Fase B, poi si scrive quella vera.
+- tipo: h2
+  testo: "Version 1.1.0 — [RELEASE DATE]"
+- tipo: ul
+  voci:
+  - "Photos for your firearms, sessions, and ammo. Make the first one the icon"
+  - "Time-based maintenance: by days or months, by round count, or both. Early alerts are now free, too"
+  - "Reload costs from what you paid (Pro): enter the price of your bullets, primers, brass, and powder, and AIMONX works out the cost per round"
+  - "Muzzle velocity, Power Factor, and energy for every load, plus a Power Factor Calculator on the Home screen"
+  - "Your ranges on the map, with directions in Apple Maps"
+  - "Sessions: distance, weather, wind, temperature, and Copy Last Session"
+  - "Firearms: capacity and technical specs (action, trigger, finish, barrel)"
+  - "Ammo: custom icons, out-of-stock ammo stays visible, and 12-month stats"
+  - "Your encrypted iCloud copy updates more often, and there's a new Back Up Now button"
+  - "Now in French and Spanish"
+  - "Try AIMONX Pro free for 1 month (new subscribers)"
 - tipo: h2
   testo: Version 1.0.1 — October 14, 2026
 - tipo: ul

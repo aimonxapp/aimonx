@@ -55,11 +55,13 @@ Nato nel giro W9, che ha portato il sito da una pagina a quattro.
         {% include selettore.html %}
         {%- elsif piede_c.dalla_fonte %}
         {%- comment -%} La colonna delle funzioni (giro W25): quelle con una pagina, dalla fonte unica, più «All features». ⭐ Giro W28: l'indirizzo dal file inglese, il nome dalla stessa voce nella lingua della pagina. {%- endcomment %}
+        {%- for piede_p in site.data.aspetto.menu_funzioni %}
         {%- for piede_a in site.data.funzioni %}
-        {%- if piede_a.aspetto.pagina %}
+        {%- if piede_a.aspetto.pagina == piede_p %}
         {%- assign piede_nome = lin_t.funzioni[forloop.index0].nome %}
         <li>{% include voce.html v=piede_nome dove=piede_a.aspetto.pagina %}</li>
         {%- endif %}
+        {%- endfor %}
         {%- endfor %}
         <li>{% include voce.html v=lin_t.navigazione.menu.tutte %}</li>
         {%- else %}

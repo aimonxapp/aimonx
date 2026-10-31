@@ -16,6 +16,22 @@ titolo: "Novità di AIMONX"
 sommario: "Ogni aggiornamento dell'app, dal più recente."
 
 blocchi:
+  # ⛔ Giro W32: la data resta `[DATA DEL RILASCIO]` fino alla Fase B.
+  - tipo: h2
+    testo: "Versione 1.1.0 — [DATA DEL RILASCIO]"
+  - tipo: ul
+    voci:
+      - "Foto: fino a 5 per arma e per sessione, 3 per munizione. La prima può diventare l'icona"
+      - "Manutenzione anche a tempo: a giorni o mesi, a colpi, o tutte e due. E il preavviso ora è gratis"
+      - "Il costo della ricarica da quello che hai speso (Pro): scrivi il prezzo di palle, inneschi, bossoli e polvere, e AIMONX calcola il costo per colpo"
+      - "Velocità alla volata, Power Factor ed energia per ogni munizione, e il Calcolo Power Factor nella Home"
+      - "I tuoi poligoni sulla mappa, con le Indicazioni di Mappe di Apple"
+      - "Sessioni: distanza, meteo, vento, temperatura e Copia l'ultima sessione"
+      - "Armi: capacità e specifiche tecniche (azione, scatto, finitura, canna)"
+      - "Munizioni: icona a scelta, le esaurite restano in vista, statistiche degli ultimi 12 mesi"
+      - "La copia cifrata su iCloud si aggiorna più spesso, e c'è il nuovo tasto Esegui backup adesso"
+      - "Ora anche in francese e spagnolo"
+      - "Prova AIMONX Pro gratis per un mese (nuovi abbonati)"
   - tipo: h2
     testo: "Versione 1.0.1 — 15 ottobre 2026"
   - tipo: ul

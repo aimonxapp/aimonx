@@ -1,0 +1,41 @@
+# _data/power-factor-calculator.yml — IL TESTO DELLA PAGINA «Power Factor calculator, right on your iPhone». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-en-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: Power Factor Calculator for USPSA and IPSC | AIMONX
+  description: Enter bullet weight and muzzle velocity, get your Power Factor and muzzle energy. Free in the AIMONX app for iPhone, with a history of your last 50 setups.
+titolo: Power Factor calculator, right on your iPhone
+sommario: Making major or minor? Enter the bullet weight and the muzzle velocity, and AIMONX shows the Power Factor and the muzzle energy as you type. It's free, and it's one tap from the Home screen.
+blocchi:
+- tipo: schermate
+  alt:
+  - 'The Power Factor calculator in AIMONX: a 147-grain bullet at 880 fps gives a Power Factor of 129 and the muzzle energy.'
+- tipo: h2
+  testo: How it's calculated
+- tipo: p
+  testo: Power Factor is bullet weight in grains times muzzle velocity in feet per second, divided by 1,000. AIMONX drops the decimals instead of rounding up, the way it's done at a match. A 124-grain bullet at 1,050 fps comes out at 130.
+- tipo: p
+  testo: Muzzle energy shows in foot-pounds when you enter fps, and in joules when you enter m/s.
+- tipo: h2
+  testo: Save your setups
+- tipo: p
+  testo: Give a setup a name, like "124 gr match load, 5-inch barrel", and save it to the history. AIMONX keeps your last 50, newest first, with weight, velocity, Power Factor, energy, date and time.
+- tipo: p
+  testo: 'The history is a scratch pad: it isn''t part of your logbook, your backup or your archive. Once it''s gone, it''s gone.'
+- tipo: schermate
+  alt:
+  - The Power Factor calculator history in AIMONX, with the last setups saved, newest first.
+- tipo: h2
+  testo: On every ammo card too
+- tipo: p
+  testo: Add the muzzle velocity to any ammo you track, factory or handloaded, and its Power Factor and energy stay on its card for good.
+- tipo: h2
+  testo: Free
+- tipo: p
+  testo: The calculator and the ballistics on your ammo cards are free, with no limits.
+badge: Download on the App Store

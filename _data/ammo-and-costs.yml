@@ -1,0 +1,56 @@
+# _data/ammo-and-costs.yml — IL TESTO DELLA PAGINA «Know what's on the shelf, and what it costs». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-en-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'Ammo Tracker: Inventory, Cost per Round and Low-Stock Alerts | AIMONX'
+  description: Track every box of ammo you buy. AIMONX uses up the oldest lot first, shows the real cost per round and tells you when you're running low.
+titolo: Know what's on the shelf, and what it costs
+sommario: Log the ammo you buy once. From then on, every range session takes the rounds off your inventory and adds their cost to the session, with nothing to count by hand.
+blocchi:
+- tipo: h2
+  testo: Every box you buy
+- tipo: p
+  testo: 'Add a purchase with the quantity, what the box cost, the lot number and the date. What''s on hand is simple: what you bought minus what you shot.'
+- tipo: h2
+  testo: Oldest lot first
+- tipo: p
+  testo: Sessions use up your oldest lot first, and the cost of the session follows those lots. Bought the same load at two prices? Each round is charged at what you actually paid for it.
+- tipo: schermate
+  alt:
+  - 'An ammo card in AIMONX: rounds on hand, the low-stock alert and the purchases, used oldest first.'
+- tipo: h2
+  testo: Never run out on range day
+- tipo: p
+  testo: Set a minimum for each load. Drop below it and AIMONX lets you know right after you save the session, and the ammo list flags it. Empty loads stay in the list, marked out of stock, so you remember to buy more.
+- tipo: schermate
+  alt:
+  - The ammo list in AIMONX, with the rounds on hand for each load and a low-stock warning.
+- tipo: h2
+  testo: Velocity, Power Factor and energy
+- tipo: p
+  testo: Add the muzzle velocity in fps or m/s. Power Factor and muzzle energy are worked out as you type, and they're on the ammo card from then on.
+- tipo: schermate
+  alt:
+  - 'A box of ammo in AIMONX: caliber, bullet type and weight, cost per round, velocity, Power Factor and muzzle energy.'
+- tipo: h2
+  testo: What you shoot, and what it costs
+- tipo: p
+  testo: 'Each load''s card shows its last 12 months: rounds, last used, the firearm that shot it most, sessions, matches and money spent. In Stats you see your costs by category and by session type.'
+- tipo: h2
+  testo: Photos and your own icon
+- tipo: p
+  testo: Add up to 3 photos of the box or the cartridge, or pick an icon. Use the first photo as the icon if you want to spot it in the list at a glance.
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: 'Factory ammo is free, with no limits: purchases, lots, inventory, cost per round and ballistics. Handloads are part of Pro.'
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: What you buy and what you shoot stays encrypted on your iPhone. No account. No AIMONX servers. We never see your data.
+badge: Download on the App Store

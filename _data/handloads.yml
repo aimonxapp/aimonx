@@ -1,0 +1,59 @@
+# _data/handloads.yml — IL TESTO DELLA PAGINA «Your handloads, down to the cent». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-en-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'Reloading App: Handload Recipes, Cost per Round and Power Factor | AIMONX'
+  description: Log your handload recipes, component costs and production batches. AIMONX works out the cost per round, Power Factor and muzzle energy for you.
+titolo: Your handloads, down to the cent
+sommario: If you reload, you already know your recipe. AIMONX keeps it, along with what it costs you per round, the batches you've loaded and how they perform. Then every range session uses them up and adds to your round count, like any other ammo.
+blocchi:
+- tipo: h2
+  testo: The recipe
+- tipo: p
+  testo: 'Name it, pick the caliber, bullet type and weight, and you''re set. Add your load data if you want: COL/OAL, bullet diameter, case length and crimp, in millimeters or inches.'
+- tipo: h2
+  testo: What each round really costs
+- tipo: p
+  testo: Two ways to enter your components.
+- tipo: p
+  forte: 'Per Package:'
+  testo: for brass, primers and bullets, what you paid and how many came in the box; for powder, the price, the container weight in pounds, grams or kilograms, and your charge in grains. AIMONX works out what each component costs per round, and the total. Change the charge and the powder cost updates right away.
+- tipo: p
+  forte: 'Per Round:'
+  testo: already know your numbers? Type in the cost per round of each component. Switching back and forth doesn't erase anything.
+- tipo: schermate
+  alt:
+  - The components of a handload in AIMONX, each with the price paid and the quantity, and the cost per round worked out below.
+- tipo: h2
+  testo: Batches with their own price tag
+- tipo: p
+  testo: Log each production run with its quantity, lot number and date. Every batch keeps the costs of the recipe on the day you loaded it. Prices went up? Update the recipe, and your new batches pick up the new prices. The old ones stay the way they were.
+- tipo: h2
+  testo: Power Factor and muzzle energy, worked out for you
+- tipo: p
+  testo: Enter the muzzle velocity in fps or m/s. AIMONX shows the Power Factor (bullet weight in grains times velocity in fps, divided by 1,000, decimals dropped the way they are at a match) and the muzzle energy, in ft-lb or joules. No more doing the math on a calculator.
+- tipo: schermate
+  alt:
+  - 'A handload in AIMONX: caliber, bullet type and weight, cost per round, and its velocity, Power Factor and muzzle energy.'
+- tipo: h2
+  testo: On hand, and when to load more
+- tipo: p
+  testo: Rounds you shoot come off your inventory, oldest batch first. Set a minimum and AIMONX tells you when you're running low, right after you save a session.
+- tipo: h2
+  testo: Photos and stats
+- tipo: p
+  testo: 'Add up to 3 photos to each load. Its card shows the last 12 months: rounds fired, last used, the firearm that shot it most, sessions, matches and money spent.'
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: Handloads are part of AIMONX Pro. Factory ammo, with batches, cost per round, Power Factor and energy, is free with no limits. New subscribers get the first month of Pro free.
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: Your recipes stay encrypted on your iPhone. No account. No AIMONX servers. We never see your data.
+badge: Download on the App Store

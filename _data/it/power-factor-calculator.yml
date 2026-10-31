@@ -1,0 +1,41 @@
+# _data/it/power-factor-calculator.yml — IL TESTO DELLA PAGINA «Il calcolo del Power Factor, sul tuo iPhone». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: Calcolo Power Factor per IPSC e USPSA | AIMONX
+  description: Inserisci peso palla e velocità alla volata, ottieni Power Factor ed energia. Gratis nell'app AIMONX per iPhone, con lo storico degli ultimi 50 setup.
+titolo: Il calcolo del Power Factor, sul tuo iPhone
+sommario: Major o minor? Inserisci peso palla e velocità alla volata, e AIMONX ti mostra Power Factor ed energia mentre scrivi. È gratis, ed è a un tocco dalla Home.
+blocchi:
+- tipo: schermate
+  alt:
+  - 'Il Calcolo Power Factor in AIMONX: una palla da 147 grani a 880 fps dà un Power Factor di 129 e l''energia alla volata.'
+- tipo: h2
+  testo: Come si calcola
+- tipo: p
+  testo: Il Power Factor è il peso palla in grani per la velocità alla volata in piedi al secondo, diviso 1.000. AIMONX scarta i decimali invece di arrotondare per eccesso, come si fa in gara. Una palla da 124 grani a 1.050 fps fa 130.
+- tipo: p
+  testo: L'energia alla volata si legge in ft·lb se inserisci fps, in joule se inserisci m/s.
+- tipo: h2
+  testo: Salva i tuoi setup
+- tipo: p
+  testo: Dai un nome al setup, per esempio «124 gr gara, canna 5 pollici», e salvalo nello storico. AIMONX tiene gli ultimi 50, dal più recente, con peso, velocità, Power Factor, energia, data e ora.
+- tipo: p
+  testo: 'Lo storico è un blocco appunti: non fa parte del diario, del backup né dell''archivio. Se lo cancelli, non torna.'
+- tipo: schermate
+  alt:
+  - Lo storico del Calcolo Power Factor in AIMONX, con gli ultimi setup salvati, dal più recente.
+- tipo: h2
+  testo: Anche su ogni munizione
+- tipo: p
+  testo: Aggiungi la velocità alla volata a qualsiasi munizione che registri, commerciale o ricaricata, e Power Factor ed energia restano sulla sua scheda.
+- tipo: h2
+  testo: Gratis
+- tipo: p
+  testo: Il calcolo e la balistica sulle schede delle munizioni sono gratis, senza limiti.
+badge: Scarica su App Store

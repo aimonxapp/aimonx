@@ -197,6 +197,10 @@ PAGINE = [
     uscita: "pricing/index.html", sezioni: ["Meta", "Page"] },
   { nome: "range-system", dati: "_data/range-system.yml", bozza: "range-system/range-system-en-bozza.md",
     uscita: "range-system/index.html", sezioni: SEZIONI_RANGE },
+  # ⭐ Giro W32, le cinque pagine-funzione della 1.1.0, tutte in un file: `pezzo`.
+  *%w[handloads ammo-and-costs power-factor-calculator firearm-records range-log].each_with_index.map { |k, i|
+    { nome: k, dati: "_data/#{k}.yml", bozza: "funzioni-1.1.0/funzioni-1.1.0-en-bozza.md", pezzo: i + 1,
+      uscita: "features/#{k}/index.html", sezioni: ["Meta", "Page"] } },
   # ⭐ Giro W24, LA NAVIGAZIONE E L'INDICE `/features/`. ⚠️ Della bozza valgono
   # le sezioni che vanno in pagina — menu, briciole, «More features», l'indice
   # e i titoli del piede — e NON la rilettura da madrelingua né la tabella
@@ -205,7 +209,7 @@ PAGINE = [
   # schermata di «Your data», col testo alternativo approvato là.
   { nome: "navigazione", dati: "_data/navigazione.yml", bozza: "navigazione/navigazione-en-bozza.md",
     uscita: "features/index.html", sezioni: SEZIONI_NAVIGAZIONE,
-    anche: [["landing/landing-en-bozza.md", nil]],
+    anche: [["landing/landing-en-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-en-bozza.md", ["Page"]]],
     alt_da: "your-data/your-data-en-bozza.md" },
   # ⭐ Giro W27, LA PAGINA 404: il testo è nella bozza dei titoli, nella sua
   # sezione (i sottotitoli «Meta» e «Page» cadono come tutti i `###`); le
@@ -219,7 +223,8 @@ PAGINE = [
   # della landing), il nome breve è della bozza della navigazione, e il testo
   # alternativo di «Your data» della sua bozza.
   { nome: "funzioni", dati: "_data/funzioni.yml", bozza: "landing/landing-en-bozza.md",
-    anche: [["navigazione/navigazione-en-bozza.md", SEZIONI_NAVIGAZIONE]],
+    # ⭐ Giro W32: Handloads e Power Factor non hanno carta: titolo e apertura vengono dalla loro pagina.
+    anche: [["navigazione/navigazione-en-bozza.md", SEZIONI_NAVIGAZIONE], ["funzioni-1.1.0/funzioni-1.1.0-en-bozza.md", ["Page"]]],
     alt_da: "your-data/your-data-en-bozza.md" },
 ]
 
@@ -261,12 +266,15 @@ PAGINE_IT = [
     uscita: "it/pricing/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
   { nome: "it/range-system", dati: "_data/it/range-system.yml", bozza: "range-system/range-system-it-bozza.md",
     uscita: "it/range-system/index.html", sezioni: SEZIONI_RANGE_IT, lingua: "it" },
+  *%w[handloads ammo-and-costs power-factor-calculator firearm-records range-log].each_with_index.map { |k, i|
+    { nome: "it/#{k}", dati: "_data/it/#{k}.yml", bozza: "funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", pezzo: i + 1,
+      uscita: "it/features/#{k}/index.html", sezioni: ["Meta", "Page"], lingua: "it" } },
   { nome: "it/navigazione", dati: "_data/it/navigazione.yml", bozza: "navigazione/navigazione-it-bozza.md",
     uscita: "it/features/index.html", sezioni: SEZIONI_NAVIGAZIONE_IT, lingua: "it",
-    anche: [["landing/landing-it-bozza.md", nil]],
+    anche: [["landing/landing-it-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", ["Page"]]],
     alt_da: "your-data/your-data-it-bozza.md" },
   { nome: "it/funzioni", dati: "_data/it/funzioni.yml", bozza: "landing/landing-it-bozza.md", lingua: "it",
-    anche: [["navigazione/navigazione-it-bozza.md", SEZIONI_NAVIGAZIONE_IT]],
+    anche: [["navigazione/navigazione-it-bozza.md", SEZIONI_NAVIGAZIONE_IT], ["funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", ["Page"]]],
     alt_da: "your-data/your-data-it-bozza.md" },
 ]
 PAGINE.each { |p| p[:lingua] ||= "en" }
@@ -295,7 +303,7 @@ TITOLI = [".what.title", ".privacy.title", ".security.title", ".piani.title"]
 # unica delle funzioni (`_data/funzioni.yml`) indirizzo, glifo, tinta e
 # schermata stanno sotto quella chiave, che è di CC e non porta parole. ⚠️ Si
 # guarda ogni pezzo del percorso, non solo l ultimo, apposta per questo.
-STRUTTURA = ["tipo", "aspetto"]
+STRUTTURA = ["tipo", "aspetto", "forma"]
 
 # La bozza è markdown. Si toglie quel che per regola NON va in pagina: le note
 # fra quadre in corsivo (sono per Cowork) e i marcatori di grassetto e corsivo,
@@ -309,8 +317,10 @@ STRUTTURA = ["tipo", "aspetto"]
 # una versione nuova marcano così i punti cambiati, e il segno è per chi
 # rilegge, non per la pagina. ⚠️ Sta anche in mezzo a una frase («photos, and
 # 🆕 your ranges…»): toglierlo è l unico modo di trovarla intera.
-def piano(percorso, sezioni = nil)
+def piano(percorso, sezioni = nil, pezzo = nil)
   t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "")
+  # ⭐ Giro W32: un file solo per cinque pagine, ognuna sotto `# N — …`: `pezzo` è N.
+  t = t.split(/^# \d — .*$/)[pezzo] if pezzo
   if sezioni
     # ⭐ Giro W31: la nota «[pulsante: parole → indirizzo]» è l'unica che porta
     # PAROLE approvate: quelle restano, e cade solo l'indirizzo.
@@ -339,7 +349,7 @@ def stringhe(n, via = "", &b)
 end
 
 PAGINE.each do |p|
-  p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni])
+  p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni], p[:pezzo])
   # ⭐ Giro W24: le bozze in più da cui una voce prende testo (`anche`).
   (p[:anche] || []).each { |b, s| p[:testo_bozza] += "\n" + piano(File.join(contenuti, b), s) }
   # Le righe intere della bozza da cui una pagina prende in prestito i testi

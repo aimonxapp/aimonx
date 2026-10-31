@@ -53,25 +53,56 @@
     tinta: verde
     schermata: aimonx-firearms-round-count
 
-- lead: "Range sessions and matches."
-  body: "Record where you shot, what you shot and how it went — including malfunctions. Matches also record your placement, points and division."
+- nome: "Range log"
+  lead: "Range sessions and matches."
+  body: "Record where you shot, what you shot and how it went — including malfunctions. Pin your ranges on the map. Matches also record your placement, points and division."
   alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
+  link: "See how the range log works"
   aspetto:
+    pagina: /features/range-log/
     icona: flag-fill   # → «Gare/Luoghi»
     tinta: lime
     schermata: aimonx-range-sessions
 
-- lead: "Ammo you can count on."
-  body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches."
+- nome: "Ammo and costs"
+  lead: "Ammo you can count on."
+  body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches. Muzzle velocity, Power Factor and energy for every load."
   alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
+  link: "See how ammo tracking works"
   aspetto:
+    pagina: /features/ammo-and-costs/
     aimonx: cartucce   # → «Munizioni»: le cartucce di Pier
     tinta: ciano
     schermata: aimonx-ammo-inventory
 
+- nome: "Handloads"
+  lead: "Your handloads, down to the cent"
+  body: "If you reload, you already know your recipe. AIMONX keeps it, along with what it costs you per round, the batches you've loaded and how they perform. Then every range session uses them up and adds to your round count, like any other ammo."
+  alt: "A handload in AIMONX: caliber, bullet type and weight, cost per round, and its velocity, Power Factor and muzzle energy."
+  # ⭐ Giro W32: niente carta sulla landing (`vetrina: no`), e nell'indice titolo e apertura della pagina.
+  aspetto:
+    pagina: /features/handloads/
+    vetrina: no
+    icona: scales-fill
+    tinta: arancioTenue
+    schermata: aimonx-handload-card
+    schermata_it: aimonx-handload-card-it
+
+- nome: "Power Factor Calculator"
+  lead: "Power Factor calculator, right on your iPhone"
+  body: "Making major or minor? Enter the bullet weight and the muzzle velocity, and AIMONX shows the Power Factor and the muzzle energy as you type. It's free, and it's one tap from the Home screen."
+  alt: "The Power Factor calculator in AIMONX: a 147-grain bullet at 880 fps gives a Power Factor of 129 and the muzzle energy."
+  aspetto:
+    pagina: /features/power-factor-calculator/
+    vetrina: no
+    icona: calculator-fill
+    tinta: blu
+    schermata: aimonx-power-factor-calculator
+    schermata_it: aimonx-power-factor-calculator-it
+
 - nome: "Maintenance"
   lead: "Maintenance your way."
-  body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — at the round counts you choose. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
+  body: "Create your own rules for each firearm — cleaning, lubrication, spring changes, anything — by round count, by time, or both, whichever comes first. Choose how early you want the heads-up, and AIMONX tells you inside the app when something is due."
   alt: "A firearm's page in AIMONX, with its total rounds and round-count maintenance rules for cleaning and a recoil spring."
   link: "See how maintenance works"
   aspetto:
@@ -122,10 +153,13 @@
     tinta: blu
     schermata: aimonx-stats-overview
 
-- lead: "Firearm reports in PDF."
-  body: "A record sheet for each firearm and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
+- nome: "Firearm records"
+  lead: "Firearm reports in PDF."
+  body: "Specs, accessories and up to 5 photos for each firearm. A record sheet for each one and a full inventory — generated on your iPhone, optionally password-protected, shared only when you choose."
   alt: "A firearm inventory PDF made with AIMONX, with photos, serial numbers, purchase details and totals."
+  link: "See firearm records"
   aspetto:
+    pagina: /features/firearm-records/
     icona: file-pdf-fill  # → «Statistiche/report»
     tinta: blu
     schermata: aimonx-firearm-inventory-pdf

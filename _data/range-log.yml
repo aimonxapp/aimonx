@@ -1,0 +1,51 @@
+# _data/range-log.yml — IL TESTO DELLA PAGINA «A range log that fills itself in». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-en-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'Range Log App: Sessions, Ranges and Maps | AIMONX'
+  description: 'Log every range trip: firearm, ammo, rounds, distance, weather and malfunctions. Pin your ranges on the map and get directions in Apple Maps.'
+titolo: A range log that fills itself in
+sommario: Log a session in a few taps, and your round count, ammo and maintenance all update on their own. Next time, start from the last one.
+blocchi:
+- tipo: h2
+  testo: What goes in a session
+- tipo: p
+  testo: The firearm, the date, the type of session, the range and the distance. The ammo you shot, one line per load, with the rounds for each. Lane fees and other costs, any malfunctions, the weather, a star rating and notes. Plus up to 5 photos, like your targets.
+- tipo: schermate
+  alt:
+  - 'A range session in AIMONX: description, firearm, date, type, range, distance and a map of the range.'
+- tipo: h2
+  testo: Copy the last session
+- tipo: p
+  testo: Shoot the same setup every week? Tap Copy Last Session and the firearm, type, range, distance and ammo are already filled in. Today's date, empty round counts, and you're done.
+- tipo: h2
+  testo: Your ranges, on the map
+- tipo: p
+  testo: 'Save your ranges and gun shops with their address and contact info. Then drop a pin: use your current location, tap the spot on the map, or let AIMONX suggest it from the address. Every session at that range shows the map, and Directions opens Apple Maps to get you there.'
+- tipo: p
+  testo: Maps and address search come from Apple and only run when you tap. Your pins stay in your encrypted logbook, never sent to us.
+- tipo: schermate
+  alt:
+  - A range in AIMONX with its address, a map with a pin and the Directions button.
+- tipo: h2
+  testo: Dry fire counts as practice, not rounds
+- tipo: p
+  testo: Log dry fire as its own session with your reps. It never touches your round count, your ammo or your maintenance.
+- tipo: h2
+  testo: Matches, too
+- tipo: p
+  testo: With Pro, log a match with its discipline, division and level, plus your place, points, percentage and time. AIMONX tracks your best results and how you're trending.
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: Sessions are unlimited in Free, and so are ranges, maps and photos. Matches are part of Pro.
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: Your sessions and your ranges stay encrypted on your iPhone. No account. No AIMONX servers. We never see your data.
+badge: Download on the App Store

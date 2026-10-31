@@ -140,6 +140,18 @@ const LISTA = [
   { da: 'liste_7_maintenance-types-icons.png', a: 'aimonx-maintenance-types-icons', larghezze: TELEFONO, gruppo: 'liste-icone' },
   // --- giro W23, la carta «Stats that show your progress.» della landing ---
   { da: 'stats_1.png',                         a: 'aimonx-stats-overview',      larghezze: TELEFONO, gruppo: 'statistiche' },
+  // --- giro W32, le cinque pagine-funzione della 1.1.0: `US/` e `IT/` del catalogo ---
+  // ⛔ Mai `g39_501`, `g39_504`, `g39_509` (dati di prova, bacheca 31/10).
+  // ⚠️ I numeri delle due cartelle sono diversi: la gemella si cerca per nome di pagina.
+  ...[['058_reload_form_5', '054_reload_form_5', 'aimonx-handload-components'], ['049_reload_card_1', '045_reload_card_1', 'aimonx-handload-card'],
+    ['043_ammo_card_2', '038_ammo_card_2', 'aimonx-ammo-card-inventory'], ['060_ammo_1', '056_ammo_1', 'aimonx-ammo-list'], ['042_ammo_card_1', '037_ammo_card_1', 'aimonx-ammo-card-details'],
+    ['062_pf_calc_1', '058_pf_calc_1', 'aimonx-power-factor-calculator'], ['063_pf_calc_2', '059_pf_calc_2', 'aimonx-power-factor-history'],
+    ['008_firearm_card_3', '010_firearm_card_3', 'aimonx-firearm-tech-specs'], ['009_firearm_card_4', '011_firearm_card_4', 'aimonx-firearm-photos'],
+    ['022_session_card_1', '024_session_card_1', 'aimonx-session-map'], ['088_location_card_1', '086_location_card_1', 'aimonx-range-map'],
+  ].flatMap(([us, it, a]) => [{ da: `US/${us}.png`, a, larghezze: TELEFONO, gruppo: '1.1.0' }, { da: `IT/${it}.png`, a: `${a}-it`, larghezze: TELEFONO, gruppo: '1.1.0' }]),
+  // ⚠️ `togli`: quante righe bianche toglie, uguale nelle due lingue, così i due file hanno la stessa altezza.
+  { da: 'US/096_pdf_inventory_p1.png', a: 'aimonx-inventory-pdf', larghezze: FOGLIO, gruppo: '1.1.0', togli: 200 },
+  { da: 'IT/095_pdf_inventory_p1.png', a: 'aimonx-inventory-pdf-it', larghezze: FOGLIO, gruppo: '1.1.0', togli: 200 },
   // --- giro W31, la pagina del Range System ---
   // ⛔ Mai le foto con la scatola Geco (7733, 7735, 7737): la nota in testa alla bozza.
   { da: 'ars-9mm-100_7643.jpg', a: 'range-system/9mm-ammo-box-open-100-rounds',  larghezze: FOTO, gruppo: 'range-system' },
@@ -171,7 +183,7 @@ for (const voce of LISTA) {
   const tipo = png.endsWith('.jpg') ? 'jpeg' : 'png';
   const dati = `data:image/${tipo};base64,${(await readFile(png)).toString('base64')}`;
   for (const l of voce.larghezze) {
-    const esito = await page.evaluate(async ({ dati, l, q, accorcia, ritaglio }) => {
+    const esito = await page.evaluate(async ({ dati, l, q, accorcia, ritaglio, togli }) => {
       const img = new Image();
       img.src = dati;
       await img.decode();
@@ -207,7 +219,8 @@ for (const voce of LISTA) {
           if (!b && da >= 0) { if (da > 0 && y < alta && y - da > meglio[1] - meglio[0]) meglio = [da, y]; da = -1; }
         }
         const resta = Math.round(alta * 0.05);
-        tolte = Math.max(0, meglio[1] - meglio[0] - resta);
+        tolte = togli ?? Math.max(0, meglio[1] - meglio[0] - resta);
+        if (tolte > meglio[1] - meglio[0]) throw new Error('togli: più righe della fascia bianca');
         if (tolte > 0) {
           const corta = new OffscreenCanvas(larga, alta - tolte);
           const k = corta.getContext('2d');
@@ -226,7 +239,7 @@ for (const voce of LISTA) {
       let s = '';
       for (let i = 0; i < byte.length; i += 0x8000) s += String.fromCharCode(...byte.subarray(i, i + 0x8000));
       return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte, ritagliata: ritaglio ? [larga, alta] : null };
-    }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf'), ritaglio: voce.ritaglio ?? null });
+    }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf') || voce.togli != null, ritaglio: voce.ritaglio ?? null, togli: voce.togli ?? null });
     const file = join(voce.gruppo === 'range-system' ? dirname(USCITA) : USCITA, `${voce.a}-${l}.webp`);
     await mkdir(dirname(file), { recursive: true });
     const corpo = Buffer.from(esito.base64, 'base64');

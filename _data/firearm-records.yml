@@ -1,0 +1,59 @@
+# _data/firearm-records.yml — IL TESTO DELLA PAGINA «Every firearm, on record». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-en-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'Gun Inventory App: Firearm Records, Photos and PDF | AIMONX'
+  description: 'Keep every firearm''s details in one place: specs, accessories, purchase info and up to 5 photos. Create a PDF of one firearm or your whole inventory.'
+titolo: Every firearm, on record
+sommario: Make, model, caliber, specs, what's mounted on it and what you paid. AIMONX keeps it all in one place, with photos, and turns it into a PDF when you need one.
+blocchi:
+- tipo: h2
+  testo: The details that matter
+- tipo: p
+  testo: Name it the way you call it at the range. Add make, model, caliber, category and type. The serial number is optional, and you can use a private ID instead. Add proof marks, year, magazines and capacity.
+- tipo: h2
+  testo: Tech specs
+- tipo: p
+  testo: Action, trigger, finish, color, barrel length in millimeters or inches, and barrel notes. Shoot something the lists don't cover? Add your own action and trigger types.
+- tipo: schermate
+  alt:
+  - 'A firearm''s tech specs in AIMONX: action, trigger, finish, color and barrel length, then its accessories.'
+- tipo: h2
+  testo: Accessories
+- tipo: p
+  testo: 'One line per accessory: optic, sights, grips. Add one straight from the firearm''s page, without opening the editor.'
+- tipo: h2
+  testo: Up to 5 photos
+- tipo: p
+  testo: Add up to 5 photos to each firearm, from your library or from Files, and reorder them any way you like. Use the first one as the firearm's icon so you spot it in the list right away.
+- tipo: p
+  testo: 'Photos are saved without their location data: AIMONX strips the GPS and the camera details when you add them. They''re encrypted like the rest of your logbook.'
+- tipo: schermate
+  alt:
+  - A firearm's photos in AIMONX, with the option to use the first one as its icon.
+- tipo: h2
+  testo: Purchase and value
+- tipo: p
+  testo: Date, price, where you bought it and the seller's address, plus the current value, which you set yourself. Sold it? Mark it as sold. AIMONX offers to delete the serial number, and its history stays.
+- tipo: h2
+  testo: PDF, for one firearm or all of them
+- tipo: p
+  testo: Create a PDF of a single firearm, with its details, specs, purchase info, accessories, notes and all its photos, or of your whole inventory, with a row and a thumbnail for each firearm and the totals. Add a password if you want. The PDF never includes your name or your private ID.
+- tipo: schermate
+  forma: pdf
+  alt:
+  - A firearm inventory PDF from AIMONX, with a thumbnail, purchase details and value for each firearm.
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: Free keeps one active firearm, with photos and PDFs. Pro keeps every firearm you own. Sold and inactive firearms don't count toward the limit.
+- tipo: h2
+  testo: Private by design
+- tipo: p
+  testo: Your firearm records stay encrypted on your iPhone, and the serial number is optional. No account. No AIMONX servers. We never see your data.
+badge: Download on the App Store

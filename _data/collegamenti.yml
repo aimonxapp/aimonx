@@ -42,6 +42,16 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W32: le carte della landing verso le pagine nuove.
+  - frase: "See how the range log works"
+    href: "/features/range-log/"
+    tipo: pagina
+  - frase: "See how ammo tracking works"
+    href: "/features/ammo-and-costs/"
+    tipo: pagina
+  - frase: "See firearm records"
+    href: "/features/firearm-records/"
+    tipo: pagina
   # ⭐ Giro W16, la seconda pagina-funzione: la frase più lunga, in testa.
   - frase: "See how AIMONX keeps your data private"
     href: "/features/privacy-and-security/"

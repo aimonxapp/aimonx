@@ -55,6 +55,14 @@ blocchi:
   testo: How do I delete all my AIMONX data?
 - tipo: p
   testo: In AIMONX Settings, tap Reset App. It deletes all your data on the iPhone, along with the key that unlocks it, so the AIMONX copy in iCloud can't be used anymore either. AIMONX starts over like a new install. This can't be undone.
+- tipo: h3
+  testo: "Does AIMONX know where I am?"
+- tipo: p
+  testo: "Only if you ask it to. When you pin a range on the map, you can tap Use Current Location, and AIMONX asks for your location only then. The pin stays in your encrypted logbook and never reaches us. Maps and directions come from Apple."
+- tipo: h3
+  testo: "Do my AIMONX photos include where they were taken?"
+- tipo: p
+  testo: "No. When you add a photo, AIMONX removes its location and the other hidden details before saving it. iOS may still say \"Location included\" when you pick the photo: that's the system's photo picker, and AIMONX strips it on save."
 
 # ⭐ Giro W23 (Pier, 16/10/2026): la sezione delle liste, dopo «Your data».
 - tipo: h2
@@ -143,15 +151,19 @@ blocchi:
 - tipo: h3
   testo: Is AIMONX free?
 - tipo: p
-  testo: "Yes. AIMONX is free to download, and Free is a real logbook, not a trial. Pro is an optional subscription: $1.99 a month or $14.99 a year. Prices vary by country: the App Store shows yours. Family Sharing is included, so your family gets Pro too."
+  testo: "Yes. AIMONX is free to download, and Free is a real logbook, not a trial. Pro is an optional subscription: $1.99 a month or $14.99 a year. Prices vary by country: the App Store shows yours. Family Sharing is included, so your family gets Pro too. New subscribers get the first month of Pro free."
 - tipo: h3
   testo: What's included in AIMONX Free?
 - tipo: p
-  testo: One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count for each firearm, two renewals, all your statistics, PDF reports, up to five photos per firearm, and your encrypted iCloud copy.
+  testo: "One active firearm, unlimited range sessions, factory ammo with inventory and ballistics, a cleaning rule for each firearm by rounds or time with an early heads-up, two renewals, all your statistics, photos, the Power Factor Calculator, your ranges on the map, PDF reports and your encrypted iCloud copy."
 - tipo: h3
   testo: What does AIMONX Pro add?
 - tipo: p
-  testo: Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited renewals, matches and match stats, encrypted archives to export, and Advanced Protection.
+  testo: "Unlimited firearms, handloads, unlimited maintenance rules of every type, unlimited renewals, matches and match stats, encrypted archives to export, and Advanced Protection."
+- tipo: h3
+  testo: "Is there a free trial of AIMONX Pro?"
+- tipo: p
+  testo: "Yes. If you've never subscribed, your first month of Pro is free, on the monthly or the yearly plan. After that, Pro renews at the regular price unless you cancel at least 24 hours before the month is up. You can cancel anytime in your App Store subscriptions."
 
 # ⛔ NON SI SCRIVE IN PAGINA: è il TESTO ALTERNATIVO del badge di Apple in fondo.
 badge: "Download on the App Store"

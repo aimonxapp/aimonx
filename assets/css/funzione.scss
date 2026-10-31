@@ -39,6 +39,9 @@
 // di impilarsi in due schermate di scorrimento.
 .v-funzione .mostra-coppia .telefono { width: #{"min(13rem, calc(50% - .6rem))"}; }
 
+// ⭐ Giro W32: la pagina del PDF è larga, e sta distesa nella colonna del testo.
+.v-funzione .schermata.pdf { flex: none; width: #{"min(34rem, 100%)"}; box-shadow: 0 10px 26px rgba(6, 24, 16, .24); }
+
 // --- il badge dell'App Store, in fondo ---------------------------------------
 // ⛔⛔ QUI VALGONO LE REGOLE DI APPLE, le stesse della landing (`b.scss`):
 // il file non si modifica — nessun filtro, ombra, raggio, `:hover` — e il CSS

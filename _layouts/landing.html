@@ -344,6 +344,9 @@
         <li class="voce">
           <div class="testa"><h3>{{ v.lead }}</h3></div>
           <p>{{ v.body }}</p>
+          {%- if v.poi %}
+          <p>{{ v.poi }}</p>
+          {%- endif %}
         </li>
         {%- endfor %}
       </ul>

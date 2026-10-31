@@ -1,0 +1,51 @@
+# _data/it/range-log.yml — IL TESTO DELLA PAGINA «Un diario di tiro che si compila da solo». Giro W32.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
+# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
+# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
+# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+
+meta:
+  title: 'Diario di tiro: sessioni, poligoni e mappe | AIMONX'
+  description: 'Registra ogni sessione al poligono: arma, munizioni, colpi, distanza, meteo e malfunzionamenti. Metti i tuoi poligoni sulla mappa e arrivaci con Mappe di Apple.'
+titolo: Un diario di tiro che si compila da solo
+sommario: Registri una sessione in pochi tocchi, e colpi, munizioni e manutenzione si aggiornano da soli. La volta dopo, parti dall'ultima.
+blocchi:
+- tipo: h2
+  testo: Cosa c'è in una sessione
+- tipo: p
+  testo: L'arma, la data, il tipo di sessione, il poligono e la distanza. Le munizioni che hai sparato, una riga per munizione, ognuna con i suoi colpi. Costo della linea e altre spese, eventuali malfunzionamenti, il meteo, le stelle e le note. E fino a 5 foto, per esempio dei bersagli.
+- tipo: schermate
+  alt:
+  - 'Una sessione al poligono in AIMONX: descrizione, arma, data, tipo, poligono, distanza e la mappa del poligono.'
+- tipo: h2
+  testo: Copia l'ultima sessione
+- tipo: p
+  testo: Spari sempre con la stessa configurazione? Tocca Copia l'ultima sessione e arma, tipo, poligono, distanza e munizioni sono già compilati. Data di oggi, colpi da scrivere, e hai finito.
+- tipo: h2
+  testo: I tuoi poligoni, sulla mappa
+- tipo: p
+  testo: 'Salva i poligoni e le armerie con indirizzo e contatti. Poi metti il punto: con la posizione attuale, toccando la mappa, o facendolo proporre ad AIMONX dall''indirizzo. Ogni sessione in quel poligono ne mostra la mappa, e Indicazioni apre Mappe di Apple per arrivarci.'
+- tipo: p
+  testo: Mappe e ricerca dell'indirizzo sono di Apple e partono solo quando tocchi. I tuoi punti restano nel diario cifrato, e non arrivano mai a noi.
+- tipo: schermate
+  alt:
+  - Un poligono in AIMONX con l'indirizzo, la mappa con il punto e il tasto Indicazioni.
+- tipo: h2
+  testo: Il dry fire è allenamento, non colpi
+- tipo: p
+  testo: Registra il dry fire come una sessione a parte, con i tuoi scatti. Non tocca mai il conteggio dei colpi, le munizioni né la manutenzione.
+- tipo: h2
+  testo: Anche le gare
+- tipo: p
+  testo: Con Pro registri una gara con disciplina, divisione e livello, più posizione, punti, percentuale e tempo. AIMONX tiene i tuoi record e ti mostra l'andamento.
+- tipo: h2
+  testo: Free e Pro
+- tipo: p
+  testo: Le sessioni sono illimitate in Free, e così poligoni, mappe e foto. Le gare fanno parte di Pro.
+- tipo: h2
+  testo: Privata per come è fatta
+- tipo: p
+  testo: Le tue sessioni e i tuoi poligoni restano cifrati sul tuo iPhone. Niente account. Nessun server di AIMONX. Non vediamo mai i tuoi dati.
+badge: Scarica su App Store

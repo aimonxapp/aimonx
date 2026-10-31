@@ -34,6 +34,8 @@
 schermate:
   telefono: { larghezze: [430, 645, 860],  larga: 645, alta: 1398 }
   foglio:   { larghezze: [600, 900, 1200], larga: 900, alta: 482 }  # ⚠️ 482 e non 637: senza il bianco (W14)
+  # ⭐ Giro W32: la pagina del PDF dalla 1.1.0, nelle pagine-funzione (`scripts/schermate.mjs`).
+  pdf:      { larghezze: [600, 900, 1200], larga: 900, alta: 497 }
 
 # --- le foto del Range System, dal giro W31 ----------------------------------
 #
@@ -58,7 +60,34 @@ foto:
 # carte, stesso controllo: `scripts/testo-approvato.sh` confronta i conti.
 # ⚠️ `aimonx-maintenance-rules` è la stessa schermata della landing: un file
 # solo, due pagine.
+# ⭐ Giro W32: l'ordine della tendina, del piede e di «More features» è quello della
+# bozza della navigazione, che non è quello delle carte della landing.
+menu_funzioni:
+  - /features/round-count/
+  - /features/maintenance/
+  - /features/custom-lists/
+  - /features/privacy-and-security/
+  - /features/handloads/
+  - /features/ammo-and-costs/
+  - /features/power-factor-calculator/
+  - /features/firearm-records/
+  - /features/range-log/
+
+# ⭐ Giro W32: le pagine con schermate proprie in italiano (nome `-it`). Le altre
+# pagine italiane mostrano ancora quelle inglesi di `funzioni`, com'è stato finora.
+funzioni_it:
+  handloads: [aimonx-handload-components-it, aimonx-handload-card-it]
+  ammo-and-costs: [aimonx-ammo-card-inventory-it, aimonx-ammo-list-it, aimonx-ammo-card-details-it]
+  power-factor-calculator: [aimonx-power-factor-calculator-it, aimonx-power-factor-history-it]
+  firearm-records: [aimonx-firearm-tech-specs-it, aimonx-firearm-photos-it, aimonx-inventory-pdf-it]
+  range-log: [aimonx-session-map-it, aimonx-range-map-it]
+
 funzioni:
+  handloads: [aimonx-handload-components, aimonx-handload-card]
+  ammo-and-costs: [aimonx-ammo-card-inventory, aimonx-ammo-list, aimonx-ammo-card-details]
+  power-factor-calculator: [aimonx-power-factor-calculator, aimonx-power-factor-history]
+  firearm-records: [aimonx-firearm-tech-specs, aimonx-firearm-photos, aimonx-inventory-pdf]
+  range-log: [aimonx-session-map, aimonx-range-map]
   round-count:
     - aimonx-session-rounds
     - aimonx-maintenance-rules

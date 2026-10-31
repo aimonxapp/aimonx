@@ -35,7 +35,7 @@ blocchi:
   - tipo: h2
     testo: "Una copia cifrata nel tuo iCloud"
   - tipo: p
-    testo: "I telefoni si rompono, si perdono, si cambiano. Per questo, di serie, AIMONX tiene una copia cifrata del diario nel tuo iCloud. Salva le modifiche quando apri o chiudi l'app, e ogni volta che tocchi Esegui backup adesso."
+    testo: "I telefoni si rompono, si perdono, si cambiano. Per questo, di serie, AIMONX tiene una copia cifrata del diario nel tuo iCloud. Salva le modifiche quando apri l'app, ogni pochi minuti mentre la usi, quando la chiudi e ogni volta che tocchi Esegui backup adesso. Ci vanno anche le foto, ognuna cifrata con una chiave sua."
   - tipo: ul
     voci:
       - "Viene cifrata sul tuo iPhone, con la stessa chiave del diario, prima di andare da qualsiasi parte."
@@ -63,6 +63,10 @@ blocchi:
     testo: "La matricola è facoltativa"
   - tipo: p
     testo: "Mettila solo se vuoi, oppure usa un nome tuo come «Pistola gara 1». Alle foto che aggiungi vengono tolti la posizione e gli altri dati nascosti prima di salvarle."
+  - tipo: h2
+    testo: "Le mappe solo quando tocchi"
+  - tipo: p
+    testo: "Se vuoi, metti i tuoi poligoni sulla mappa. La tua posizione si usa solo quando tocchi Usa la posizione attuale, e mappa, indicazioni e ricerca dell'indirizzo sono di Apple e partono solo quando tocchi. I tuoi punti restano nel diario cifrato. A noi non arrivano mai."
   - tipo: h2
     testo: "Niente pubblicità. Niente statistiche d'uso. Niente tracciamento."
   - tipo: p

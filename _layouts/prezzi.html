@@ -79,6 +79,9 @@
         </tbody>
       </table>
     </div>
+    {%- if c.nota %}
+    <p class="nota-tabella">{{ c.nota }}</p>
+    {%- endif %}
 
     <section class="vantaggi" aria-labelledby="t-vantaggi">
       <h2 id="t-vantaggi">{{ d.vantaggi.titolo }}</h2>
@@ -95,6 +98,9 @@
       {%- for b in d.blocchi %}
       <h2>{{ b.titolo }}</h2>
       <p>{% if b.forte %}<strong>{{ b.forte }}</strong> {% endif %}{{ b.testo }}</p>
+      {%- if b.poi %}
+      <p>{{ b.poi }}</p>
+      {%- endif %}
       {%- if b.link %}
       <p>{% include frase.html testo=b.link collega=true %}</p>
       {%- endif %}

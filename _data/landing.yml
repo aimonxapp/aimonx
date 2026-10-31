@@ -205,14 +205,15 @@ piani:
       # e nel Pro le regole «of every type with an early heads-up» — nel codice
       # della 1.0.1 il Free ha una sola regola di pulizia per arma, senza
       # preavviso (Pier, 14/10/2026).
-      body: "One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by round count, renewals, statistics, PDF reports and your encrypted iCloud copy."
+      body: "One active firearm, unlimited range sessions, factory ammo with inventory, a cleaning rule by rounds or time with an early heads-up, renewals, statistics, photos, PDF reports and your encrypted iCloud copy."
     - lead: "Pro removes the limits."
-      body: "Unlimited firearms, handloads, unlimited maintenance rules of every type with an early heads-up, unlimited renewals, matches and match stats, encrypted archives to export, and advanced protection."
+      body: "Unlimited firearms, handloads, unlimited maintenance rules of every type, unlimited renewals, matches and match stats, encrypted archives to export, and advanced protection."
     # ⭐ Giro W17: i prezzi, approvati da Pier il 14/10/2026. ⛔ Solo dollari, e
     # SOLO qui in pagina: nei dati strutturati non c'è nessun prezzo di Pro
     # (cambia da paese a paese) — vedi `_includes/dati-strutturati.html`.
     - lead: "Pro is $1.99 a month or $14.99 a year."
-      body: "Family Sharing is included, so your family gets Pro too. Cancel anytime. Prices vary by country: the App Store shows yours."
+      body: "New subscribers get the first month free."
+      poi: "Family Sharing is included, so your family gets Pro too. Cancel anytime. Prices vary by country: the App Store shows yours."
     # ⛔ Giro W27: qui c'erano anche «If your Pro subscription ends…» e «More
     # is on the way.», IDENTICI a quelli di `/pricing/`: due pagine con gli
     # stessi paragrafi si fanno concorrenza (Pier, 17/10/2026 12:37). Stanno là.
