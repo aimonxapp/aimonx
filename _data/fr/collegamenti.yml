@@ -1,0 +1,65 @@
+# _data/fr/collegamenti.yml — DOVE PORTANO LE PAROLE. Giro W33. ⛔ Di Claude Code, gemella di `_data/it/collegamenti.yml`.
+# ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
+
+frasi:
+- frase: Privacy Policy
+  href: "/privacy-policy/"
+  tipo: radice
+- frase: Terms of Use
+  href: "/terms/"
+  tipo: radice
+- frase: Voir comment marche le suivi des munitions
+  href: "/features/ammo-and-costs/"
+  tipo: pagina
+- frase: Découvrir le journal de tir
+  href: "/features/range-log/"
+  tipo: pagina
+- frase: Voir les fiches des armes
+  href: "/features/firearm-records/"
+  tipo: pagina
+- frase: Voir comment marchent les listes personnalisées
+  href: "/features/custom-lists/"
+  tipo: pagina
+- frase: Voir ce qui se passe quand Pro s'arrête
+  href: "/faq/#que-deviennent-mes-données-si-mon-abonnement-aimonx-pro-s-arrête"
+  tipo: pagina
+- frase: Voir comment marche la protection avancée
+  href: "/features/privacy-and-security/"
+  tipo: pagina
+- frase: Voir comment marche l'entretien
+  href: "/features/maintenance/"
+  tipo: pagina
+- frase: Voir comment AIMONX protège vos données
+  href: "/features/privacy-and-security/"
+  tipo: pagina
+- frase: Voir comment marche le compteur de coups
+  href: "/features/round-count/"
+  tipo: pagina
+- frase: support@aimonx.app
+  href: mailto:support@aimonx.app
+  tipo: posta
+- frase: FAQ
+  href: "/faq/"
+  tipo: pagina
+- frase: Politique de confidentialité (en anglais)
+  href: "/privacy-policy/"
+  tipo: radice
+- frase: Conditions d'utilisation (en anglais)
+  href: "/terms/"
+  tipo: radice
+makerworld: https://makerworld.com/en/models/3524948-ammo-box-9mm-100-rounds-aimonx-range-system
+radice:
+- Politique de confidentialité (en anglais)
+- Conditions d'utilisation (en anglais)
+menu:
+  Accueil: "/"
+  Fonctionnalités: "/features/"
+  Toutes les fonctionnalités: "/features/"
+  FAQ: "/faq/"
+  Range System: "/range-system/"
+  Free et Pro: "/pricing/"
+  Comparer Free et Pro: "/pricing/"
+  Nouveautés: "/updates/"
+  Assistance: "/support/"
+  Politique de confidentialité (en anglais): "/privacy-policy/"
+  Conditions d'utilisation (en anglais): "/terms/"

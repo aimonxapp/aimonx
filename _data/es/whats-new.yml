@@ -1,0 +1,38 @@
+# _data/es/whats-new.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Novedades: todas las versiones de la app | AIMONX'
+  description: Qué ha cambiado en cada versión de AIMONX, la app de diario de armas para iPhone, de la más reciente a la más antigua.
+titolo: Novedades de AIMONX
+sommario: Cada actualización de la app, de la más reciente a la más antigua.
+blocchi:
+- tipo: h2
+  testo: Versión 1.1.0 — [FECHA DE LANZAMIENTO]
+- tipo: ul
+  voci:
+  - Fotos para tus armas, sesiones y munición. La primera puede ser el icono
+  - 'Mantenimiento por tiempo: por días o meses, por disparos, o ambos. Y el aviso previo ahora es gratis'
+  - 'El coste de tus recargas a partir de lo que pagaste (Pro): introduce el precio de puntas, pistones, vainas y pólvora, y AIMONX calcula el coste por disparo'
+  - Velocidad en boca, factor de potencia y energía de cada munición, y la calculadora del factor de potencia en el inicio
+  - Tus campos de tiro en el mapa, con Cómo llegar en Mapas de Apple
+  - 'Sesiones: distancia, condiciones, viento, temperatura y Copiar última sesión'
+  - 'Armas: capacidad y especificaciones técnicas (funcionamiento, disparador, acabado, cañón)'
+  - 'Munición: icono a elegir, la munición agotada sigue a la vista y estadísticas de 12 meses'
+  - La copia cifrada en iCloud se actualiza más a menudo, y hay un nuevo botón Hacer copia ahora
+  - AIMONX ya está en francés y español
+  - Prueba AIMONX Pro gratis durante 1 mes (nuevos suscriptores)
+- tipo: h2
+  testo: Versión 1.0.1 — 15 de octubre de 2026
+- tipo: ul
+  voci:
+  - Nuevo botón Hacer copia ahora en la página Copia de seguridad de AIMONX, para hacer la copia en iCloud cuando quieras.
+  - La copia en iCloud ahora también se pone al día al abrir la app, no solo al cerrarla.
+  - Se ha corregido un cierre inesperado al eliminar un arma.
+  - Los diarios grandes usan mucha menos memoria al hacer la copia.
+- tipo: h2
+  testo: Versión 1.0.0 — 8 de octubre de 2026
+- tipo: p
+  testo: La primera versión. Registra tus armas, tus sesiones en el campo de tiro y tus competiciones. Lleva la cuenta de disparos, munición, mantenimiento, renovaciones y costes. Crea informes PDF de tus armas. Tu diario está cifrado en tu iPhone, con una copia cifrada en tu propio iCloud.
+badge: Descargar en el App Store

@@ -1,0 +1,138 @@
+# _data/fr/faq.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'FAQ : données, nouvel iPhone, mot de passe, Free et Pro | AIMONX'
+  description: Où sont vos données, passer à un nouvel iPhone, mot de passe oublié, ce qui se passe quand Pro s'arrête, ce que contient Free. Des réponses claires sur AIMONX.
+titolo: FAQ AIMONX
+sommario: Des réponses claires aux questions qu'on nous pose le plus.
+blocchi:
+- tipo: h2
+  testo: Vos données
+- tipo: h3
+  testo: Faut-il un compte pour utiliser AIMONX ?
+- tipo: p
+  testo: Non. Rien à créer, aucune connexion. Téléchargez AIMONX et commencez.
+- tipo: h3
+  testo: Où sont stockées mes données AIMONX ?
+- tipo: p
+  testo: Sur votre iPhone, chiffrées. AIMONX garde aussi une copie chiffrée dans votre propre iCloud, pour que votre journal survive à un téléphone perdu ou cassé. Il n'y a aucun serveur AIMONX, et nous ne pouvons pas voir vos données.
+- tipo: p
+  testo: Voir comment AIMONX protège vos données
+- tipo: h3
+  testo: AIMONX collecte-t-elle ou vend-elle mes données ?
+- tipo: p
+  testo: 'Non. Vos données ne nous parviennent jamais : aucun serveur AIMONX, aucun suivi publicitaire, rien à vendre. Vous pouvez même utiliser AIMONX sans jamais saisir un numéro de série.'
+- tipo: h3
+  testo: Puis-je exporter mes données d'AIMONX ?
+- tipo: p
+  testo: 'Oui. Avec Free, vous pouvez créer des rapports PDF : une fiche pour chaque arme et un inventaire de toutes, avec photos et numéros de série si vous le souhaitez. Avec Pro, vous pouvez aussi créer une archive chiffrée de tout votre journal, la garder où vous voulez et la réimporter à tout moment.'
+- tipo: h3
+  testo: Comment supprimer toutes mes données AIMONX ?
+- tipo: p
+  testo: 'Dans les réglages d''AIMONX, touchez Réinitialiser l''app. Toutes vos données sur l''iPhone sont supprimées, avec la clé qui les ouvre : la copie AIMONX dans iCloud devient donc inutilisable elle aussi. AIMONX repart comme une nouvelle installation. C''est irréversible.'
+- tipo: h3
+  testo: AIMONX sait-elle où je suis ?
+- tipo: p
+  testo: Seulement si vous le lui demandez. Quand vous placez un stand sur la carte, vous pouvez toucher Utiliser la position actuelle, et AIMONX ne demande votre position qu'à ce moment-là. Le repère reste dans votre journal chiffré et ne nous parvient jamais. Les cartes et l'itinéraire sont fournis par Apple.
+- tipo: h3
+  testo: Mes photos dans AIMONX indiquent-elles où elles ont été prises ?
+- tipo: p
+  testo: 'Non. Quand vous ajoutez une photo, AIMONX supprime sa position et les autres informations cachées avant de l''enregistrer. Au moment de la choisir, iOS peut quand même afficher « Position incluse » : c''est le sélecteur de photos du système, et AIMONX la retire à l''enregistrement.'
+- tipo: h2
+  testo: Une app à votre façon
+- tipo: h3
+  testo: Puis-je ajouter mes propres calibres dans AIMONX ?
+- tipo: p
+  testo: Oui. Dans AIMONX, depuis l'accueil, ouvrez Gérer les listes, puis Calibres, et touchez + pour ajouter le vôtre. Il apparaît chaque fois que vous choisissez un calibre pour une arme ou des munitions. C'est gratuit.
+- tipo: h3
+  testo: Puis-je personnaliser les autres listes d'AIMONX ?
+- tipo: p
+  testo: 'Oui, les onze : calibres, types d''arme, catégories d''arme, types de fonctionnement, types de détente, types de séance, incidents, types d''intervention, types d''ogive, disciplines de match et types de renouvellement. Ajoutez vos propres éléments, retirez ceux que vous n''utilisez jamais, et faites-les revenir quand vous voulez.'
+- tipo: p
+  testo: Voir comment marchent les listes personnalisées
+- tipo: h3
+  testo: Si je retire un élément d'une liste, que deviennent mes anciens enregistrements ?
+- tipo: p
+  testo: Rien ne change. Retirer un élément l'enlève seulement de vos choix pour les nouvelles saisies. Tout ce que vous avez déjà enregistré avec lui reste tel quel.
+- tipo: h2
+  testo: Passer à un nouvel iPhone
+- tipo: h3
+  testo: Comment passer AIMONX sur un nouvel iPhone ?
+- tipo: p
+  testo: 'Connectez votre nouvel iPhone avec le même compte Apple, puis installez AIMONX et ouvrez-la. Vos armes, vos séances et vos munitions reviennent toutes seules. C''est la copie iCloud d''AIMONX qui travaille : elle est activée par défaut, et il n''y a rien à configurer.'
+- tipo: p
+  testo: 'Un point à vérifier : AIMONX transfère la clé qui ouvre votre journal grâce à Mots de passe et trousseau iCloud, la fonction qui synchronise déjà vos mots de passe enregistrés. Sur votre nouvel iPhone, allez dans Réglages > [votre nom] > iCloud > Mots de passe et vérifiez que Synchroniser cet iPhone est activé.'
+- tipo: p
+  testo: Avant de changer, ouvrez Sauvegarde AIMONX sur votre ancien iPhone et touchez Sauvegarder maintenant, pour que la copie ait vos dernières modifications.
+- tipo: schermate
+  alt:
+  - 'La page Sauvegarde AIMONX : la sauvegarde activée, l''heure de la dernière sauvegarde et le bouton Sauvegarder maintenant.'
+- tipo: h3
+  testo: Comment passer AIMONX sur un nouvel iPhone avec la protection avancée activée ?
+- tipo: p
+  testo: Même compte Apple, et Synchroniser cet iPhone activé dans Réglages > [votre nom] > iCloud > Mots de passe. Ensuite, installez AIMONX et ouvrez-la. AIMONX vous demande le mot de passe de votre protection avancée. Saisissez-le, et votre journal est de retour.
+- tipo: h3
+  testo: Mes données AIMONX ne sont pas revenues sur mon nouvel iPhone. Que faire ?
+- tipo: p
+  testo: 'D''abord, vérifiez que Synchroniser cet iPhone est activé dans Réglages > [votre nom] > iCloud > Mots de passe : c''est par là que la clé qui ouvre votre journal arrive sur votre nouvel iPhone, et ça peut prendre quelques minutes. Ensuite, fermez complètement AIMONX et rouvrez-la.'
+- tipo: h3
+  testo: La sauvegarde iCloud de mon iPhone ne couvre-t-elle pas déjà AIMONX ?
+- tipo: p
+  testo: 'N''y comptez pas. La sauvegarde iCloud de l''iPhone enregistre tout l''appareil et ne peut être restaurée que d''un bloc. La copie iCloud d''AIMONX est distincte : c''est elle qui ramène votre journal si vous supprimez l''app ou changez d''iPhone.'
+- tipo: h3
+  testo: Et si je n'utilise pas iCloud ?
+- tipo: p
+  testo: 'Alors AIMONX n''a nulle part où garder une copie en dehors de votre iPhone. Il n''y a aucun serveur AIMONX : si vous perdez l''iPhone, votre journal part avec lui. Avec Pro, vous pouvez créer une archive chiffrée et la garder où vous voulez, sur un disque ou un autre service de cloud, puis l''importer sur votre nouvel iPhone. L''import marche aussi avec Free. Attention : importer remplace tout ce qu''il y a sur cet iPhone.'
+- tipo: h2
+  testo: Mots de passe
+- tipo: h3
+  testo: J'ai oublié mon mot de passe AIMONX. Pouvez-vous le réinitialiser ?
+- tipo: p
+  testo: 'Non. Personne ne le peut, pas même nous, et c''est tout l''intérêt. Par défaut, AIMONX n''utilise aucun mot de passe : elle s''ouvre avec Face ID, Touch ID ou votre code. Un mot de passe n''existe que si vous avez activé la protection avancée, une fonction Pro qui verrouille la clé de votre journal avec un mot de passe que vous seul connaissez.'
+- tipo: p
+  testo: 'Vous pouvez essayer autant de fois que vous voulez : il n''y a pas de blocage. Si vous ne vous en souvenez pas, la seule issue est Réinitialiser l''app, qui supprime votre journal et fait repartir AIMONX de zéro.'
+- tipo: p
+  testo: Voir comment marche la protection avancée
+- tipo: h3
+  testo: Et si j'oublie le mot de passe d'une archive AIMONX ?
+- tipo: p
+  testo: Chaque archive a son propre mot de passe, choisi au moment de la créer. Oubliez-le, et personne ne pourra ouvrir cette archive. Le journal de votre iPhone n'est pas touché.
+- tipo: h2
+  testo: Quand Pro s'arrête
+- tipo: h3
+  testo: Que deviennent mes données si mon abonnement AIMONX Pro s'arrête ?
+- tipo: p
+  testo: Rien ne se perd. Tout ce qui dépasse les limites de Free reste lisible, simplement figé, jusqu'à votre retour.
+- tipo: ul
+  voci:
+  - 'Parmi vos armes actives, celle que vous avez ajoutée en premier reste entièrement utilisable. Les autres passent en lecture seule : vous pouvez les ouvrir et voir leur historique, leurs coups, leurs coûts et leur entretien, mais pas les modifier ni enregistrer de nouvelles séances avec.'
+  - 'C''est pareil pour tout ce qui dépasse les limites de Free : règles d''entretien en plus, renouvellements au-delà des deux premiers, et munitions rechargées.'
+  - Vous pouvez toujours vendre, désactiver ou supprimer n'importe quelle arme.
+  - Votre copie iCloud continue de fonctionner, et vous pouvez toujours importer une archive.
+- tipo: p
+  testo: Réabonnez-vous et tout se débloque aussitôt.
+- tipo: h3
+  testo: Que devient la protection avancée quand Pro s'arrête ?
+- tipo: p
+  testo: 'Elle revient à la configuration standard, mais seulement la prochaine fois que vous ouvrez AIMONX et saisissez votre mot de passe, et l''app vous le signale. Vos données restent chiffrées. Le seul changement : la clé est de nouveau conservée par votre compte Apple. Réabonnez-vous quand vous voulez pour remettre un mot de passe.'
+- tipo: h2
+  testo: Free et Pro
+- tipo: h3
+  testo: AIMONX est-elle gratuite ?
+- tipo: p
+  testo: 'Oui. AIMONX se télécharge gratuitement, et Free est un vrai journal, pas un essai. Pro est un abonnement facultatif : 1,99 € par mois ou 14,99 € par an. Les prix varient selon les pays : l''App Store affiche le vôtre. Le partage familial est inclus : votre famille profite aussi de Pro. Le premier mois de Pro est offert aux nouveaux abonnés.'
+- tipo: h3
+  testo: Que contient AIMONX Free ?
+- tipo: p
+  testo: Une arme active, des séances illimitées, les munitions manufacturées avec inventaire et balistique, une règle de nettoyage par arme, par coups ou par temps, avec le rappel anticipé, deux renouvellements, toutes vos statistiques, les photos, le calcul du facteur de puissance, vos stands sur la carte, les rapports PDF et votre copie chiffrée dans iCloud.
+- tipo: h3
+  testo: Qu'ajoute AIMONX Pro ?
+- tipo: p
+  testo: Armes illimitées, munitions rechargées, règles d'entretien illimitées de tous types, renouvellements illimités, matchs et statistiques de match, archives chiffrées à exporter, et la protection avancée.
+- tipo: h3
+  testo: Y a-t-il un essai gratuit d'AIMONX Pro ?
+- tipo: p
+  testo: Oui. Si vous ne vous êtes jamais abonné, votre premier mois de Pro est offert, sur l'abonnement mensuel ou annuel. Ensuite, Pro se renouvelle au prix normal, sauf si vous l'annulez au moins 24 heures avant la fin du mois. Vous pouvez résilier à tout moment dans vos abonnements App Store.
+badge: Télécharger dans l'App Store

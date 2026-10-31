@@ -1,0 +1,132 @@
+# _data/es/range-system.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'AIMONX Range System: caja de munición 9×19 imprimible en 3D'
+  description: 'Accesorios para imprimir en 3D para tiradores deportivos, gratis. Empezamos con una caja robusta para 100 cartuchos de 9×19: cierres a presión, bisagra impresa, sin tornillos. Gratis en MakerWorld.'
+titolo: AIMONX Range System
+sommario: Accesorios para tu bolsa de tiro, diseñados por un tirador, para imprimir gratis.
+blocchi:
+- tipo: p
+  testo: 'El Range System es nuestra línea de accesorios para imprimir en 3D para tiradores deportivos. Cada pieza es un diseño original: la descargas gratis en MakerWorld y la imprimes todas las veces que quieras. No vendemos accesorios: los regalamos, para que más tiradores conozcan la app AIMONX. Llegarán más calibres y más tipos de cajas.'
+- tipo: h2
+  testo: Caja de munición 9×19, 100 cartuchos
+- tipo: p
+  testo: Una caja robusta para imprimir en 3D, para 100 cartuchos de 9×19. Diseño original, para descargar e imprimir gratis.
+- tipo: pulsante
+  testo: Descárgala gratis en MakerWorld
+- tipo: foto
+  alt: La caja de munición 9×19 abierta, con 100 cartuchos de pie con la punta hacia abajo en dos bloques de 50.
+- tipo: p
+  testo: 'Es la primera pieza del Range System. Lleva 100 cartuchos sueltos, con la punta hacia abajo, en dos bloques de 50. Se cierra con dos cierres a presión, se abre sobre una bisagra impresa de lado a lado y se tiene de pie sobre cualquiera de sus cuatro lados. Sin tornillos, sin imanes, sin pasadores metálicos: imprimes cinco piezas y las encajas.'
+- tipo: h3
+  testo: De un vistazo
+- tipo: tabella
+  righe:
+  - - Calibre
+    - 9×19 (9 mm Parabellum). También pensada para el 9×21
+  - - Capacidad
+    - 100 cartuchos, dos bloques de 50
+  - - Medidas exteriores
+    - 156 × 173 × 43 mm
+  - - Piezas
+    - base, tapa, inserto, 2 cierres
+  - - Tornillería
+    - ninguna
+  - - Material
+    - PETG
+  - - Tapas
+    - grabada (un color) o con incrustaciones (tres colores)
+  - - Candado
+    - orificio de 4 mm para un candado de cable
+- tipo: h3
+  testo: Hecha para vivir en la bolsa de tiro
+- tipo: p
+  forte: Paredes gruesas.
+  testo: 5 mm en los laterales y el fondo, 4 mm arriba.
+- tipo: p
+  forte: De pie sobre cualquier lado.
+  testo: La bisagra y los cierres quedan dentro del contorno, así que la caja se tiene derecha en el banco o en la estantería.
+- tipo: p
+  forte: Agarre donde van las manos.
+  testo: Nervios inclinados a los dos lados de la tapa.
+- tipo: p
+  forte: Nuestro logotipo en el fondo.
+  testo: Saca el inserto y encontrarás el logotipo AX y aimonx.app grabados en la base.
+- tipo: foto
+  alt: La caja cerrada, verde, con el logotipo AX y una bala naranja en la tapa.
+- tipo: h3
+  testo: Un inserto que sujeta cada cartucho
+- tipo: p
+  testo: Los cartuchos entran con la punta hacia abajo en celdas hexagonales. Cada celda se estrecha en cono y sujeta el cartucho por la punta, así que el extremo no toca nada. Sobresalen unos 9 mm de vaina, lo justo para cogerlo con los dedos. Un separador macizo divide los 100 en dos bloques de 50, y contarlos es fácil. El inserto se encaja en la base y no se mueve aunque agites la caja.
+- tipo: foto
+  alt: La caja abierta y vacía, con el inserto gris en forma de panal.
+- tipo: h3
+  testo: Cierres que hacen clic
+- tipo: p
+  testo: 'Los dos cierres van empotrados en el frontal: no se enganchan en la bolsa ni se abren por accidente. Cada uno gira sobre un pivote, aprieta la tapa contra la base y se cierra con un clic claro.'
+- tipo: foto
+  alt: Uno de los dos cierres, suelto y en la mano junto a la caja.
+- tipo: p
+  testo: La bisagra recorre todo el ancho de la caja, se monta a presión sin pasadores que meter y deja abrir la tapa del todo.
+- tipo: h3
+  testo: Ciérrala con candado, si quieres
+- tipo: p
+  testo: Un orificio de 4 mm en la esquina delantera atraviesa la tapa y la base. Un candado de cable de 3 mm, de los de las cremalleras de mochila, mantiene la caja cerrada.
+- tipo: h3
+  testo: Dos tapas, la misma caja
+- tipo: p
+  forte: 'Grabada:'
+  testo: de un solo color, con la bala, 9×19 y el logotipo AX grabados en la tapa.
+- tipo: p
+  forte: 'A color:'
+  testo: la bala en naranja, 9×19 y el logotipo AX en blanco, incrustados a ras de la tapa. Necesitas un AMS u otro sistema multimaterial.
+- tipo: p
+  testo: Las dos tapas valen para la misma base.
+- tipo: foto
+  alt: 'Las cinco piezas impresas: tapa, base, inserto y dos cierres.'
+- tipo: h3
+  testo: Impresión
+- tipo: ul
+  voci:
+  - forte: 'Material:'
+    testo: PETG en todas las piezas. Nosotros imprimimos con Bambu PETG Basic.
+  - forte: 'Altura de capa:'
+    testo: '0,20 mm, primera capa incluida (Bambu Studio 0.20 mm High Quality). El grabado tiene exactamente tres capas de profundidad: si cambias la altura de capa, el gráfico de la tapa no sale bien.'
+  - forte: 'Placa:'
+    testo: PEI texturizada.
+  - forte: 'Compensación X-Y de agujeros y contornos:'
+    testo: 0. La bisagra, los cierres y el inserto están diseñados con holguras exactas.
+  - forte: 'Soportes:'
+    testo: solo en la base. Todo lo demás se imprime sin soportes.
+  - forte: 'Orientación:'
+    testo: los archivos ya vienen orientados.
+- tipo: h3
+  testo: Montaje
+- tipo: ol
+  voci:
+  - Presiona el inserto en la base hasta que encaje.
+  - Abre la tapa del todo, alinea la bisagra y empújala sobre la base hasta que haga clic.
+  - Cierra la tapa. Sujeta un cierre abierto, mete su pivote en los canales desde arriba y bájalo. Lo mismo con el otro.
+  - Cierra los dos cierres hasta oír el clic. Listo.
+- tipo: p
+  testo: Para abrirla, tira hacia fuera y hacia arriba de la pestaña inferior de cada cierre. Para limpiar el inserto, da la vuelta a la caja vacía y golpea suavemente el borde.
+- tipo: h3
+  testo: Conviene saber
+- tipo: ul
+  voci:
+  - Mete los cartuchos con la punta hacia abajo. Con la punta hacia arriba no quedan sujetos.
+  - Las balas de distinta forma quedan a alturas un poco distintas. La tapa deja sitio a los cartuchos de 9×19 y 9×21 más largos que admite la C.I.P.
+  - Es un diseño original, dibujado desde cero. No es un remix.
+  - Gratis para uso personal. Por favor, no vendas las impresiones ni publiques remixes. ¿Quieres fabricarlas y venderlas? Escríbenos y pregúntanos.
+- tipo: h3
+  testo: "¿Quieres otro calibre?"
+- tipo: p
+  testo: Dinos cuál, y si lo quieres de 50 o de 100 cartuchos, en los comentarios de MakerWorld.
+  link: MakerWorld
+- tipo: h3
+  testo: "¿Qué es AIMONX?"
+- tipo: p
+  testo: 'La app para la que nació esta caja. AIMONX es el diario del tirador deportivo: registras una sesión en el campo de tiro y los disparos de cada arma, la munición que te queda y el mantenimiento se actualizan solos. Cifrado en tu iPhone, sin cuenta.'
+badge: Descargar en el App Store

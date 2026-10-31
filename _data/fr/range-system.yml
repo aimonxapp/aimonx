@@ -1,0 +1,132 @@
+# _data/fr/range-system.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'AIMONX Range System : boîte à munitions 9 mm à imprimer en 3D'
+  description: 'Des accessoires gratuits à imprimer en 3D pour les tireurs sportifs. Pour commencer : une boîte robuste pour 100 cartouches de 9 mm (9×19). Fermetures à clip, charnière imprimée, sans quincaillerie. Gratuite sur MakerWorld.'
+titolo: AIMONX Range System
+sommario: Des accessoires pour votre sac de tir, conçus par un tireur, gratuits à imprimer.
+blocchi:
+- tipo: p
+  testo: 'Le Range System, c''est notre ligne d''accessoires à imprimer en 3D pour les tireurs sportifs. Chaque pièce est une création originale, à télécharger gratuitement sur MakerWorld et à imprimer autant de fois que vous voulez. Nous ne vendons pas d''accessoires : nous les offrons, pour que plus de tireurs découvrent l''app AIMONX. D''autres calibres et d''autres boîtes arrivent.'
+- tipo: h2
+  testo: Boîte à munitions 9 mm, 100 cartouches
+- tipo: p
+  testo: Une boîte à munitions robuste, à imprimer en 3D, pour 100 cartouches de 9×19. Création originale, à télécharger et imprimer gratuitement.
+- tipo: pulsante
+  testo: Télécharger gratuitement sur MakerWorld
+- tipo: foto
+  alt: La boîte à munitions 9 mm ouverte, avec 100 cartouches ogive vers le bas en deux blocs de 50.
+- tipo: p
+  testo: 'C''est la première pièce du Range System. Elle accueille 100 cartouches en vrac, ogive vers le bas, en deux blocs de 50. Deux fermetures à clip la ferment, une charnière imprimée sur toute la largeur l''ouvre, et elle tient debout sur ses quatre côtés. Ni vis, ni aimants, ni goupilles métalliques : vous imprimez cinq pièces et vous les clipsez.'
+- tipo: h3
+  testo: En bref
+- tipo: tabella
+  righe:
+  - - Calibre
+    - 9×19 (9 mm Luger). Dimensionnée aussi pour le 9×21
+  - - Capacité
+    - 100 cartouches, deux blocs de 50
+  - - Encombrement
+    - 156 × 173 × 43 mm
+  - - Pièces
+    - fond, couvercle, insert, 2 fermetures
+  - - Quincaillerie
+    - aucune
+  - - Matière
+    - PETG
+  - - Couvercles
+    - gravé (une couleur) ou avec incrustations (trois couleurs)
+  - - Cadenas
+    - trou de 4 mm pour un cadenas à câble
+- tipo: h3
+  testo: Faite pour vivre dans un sac de tir
+- tipo: p
+  forte: Des parois épaisses.
+  testo: 5 mm sur les côtés et au fond, 4 mm sur le dessus.
+- tipo: p
+  forte: Debout sur chaque côté.
+  testo: La charnière et les fermetures restent dans le gabarit, donc la boîte tient droite sur l'établi ou l'étagère.
+- tipo: p
+  forte: Une prise là où vont vos mains.
+  testo: Des nervures inclinées sur les deux côtés du couvercle.
+- tipo: p
+  forte: Notre logo au fond.
+  testo: Retirez l'insert et vous trouverez le logo AX et aimonx.app gravés dans le fond.
+- tipo: foto
+  alt: La boîte fermée, verte, avec le logo AX et une ogive orange sur le couvercle.
+- tipo: h3
+  testo: Un insert qui tient chaque cartouche
+- tipo: p
+  testo: Les cartouches se glissent ogive vers le bas dans des alvéoles hexagonales. Chaque alvéole se resserre en cône et tient la cartouche par l'ogive, si bien que la pointe ne touche rien. Environ 9 mm d'étui dépassent, de quoi saisir chaque cartouche avec les doigts. Une cloison pleine sépare les 100 cartouches en deux blocs de 50, ce qui facilite le comptage. L'insert se clipse dans le fond et ne bouge pas quand vous secouez la boîte.
+- tipo: foto
+  alt: La boîte ouverte et vide, avec l'insert gris en nid d'abeille.
+- tipo: h3
+  testo: Des fermetures qui font clic
+- tipo: p
+  testo: 'Les deux fermetures sont encastrées à l''avant : elles n''accrochent pas dans le sac et ne s''ouvrent pas par accident. Chacune pivote sur un axe, serre le couvercle contre le fond et se verrouille avec un clic net.'
+- tipo: foto
+  alt: Une des deux fermetures, détachée et tenue en main.
+- tipo: p
+  testo: La charnière court sur toute la largeur de la boîte, se monte en clipsant sans goupille à insérer, et laisse le couvercle s'ouvrir complètement.
+- tipo: h3
+  testo: Un cadenas, si vous voulez
+- tipo: p
+  testo: Un trou de 4 mm dans le coin avant traverse le couvercle et le fond. Un cadenas à câble de 3 mm, comme ceux des fermetures éclair de bagages, garde la boîte fermée.
+- tipo: h3
+  testo: Deux couvercles, une seule boîte
+- tipo: p
+  forte: 'Gravé :'
+  testo: une seule couleur, avec l'ogive, 9×19 et le logo AX gravés dans le couvercle.
+- tipo: p
+  forte: 'Couleur :'
+  testo: l'ogive en orange, 9×19 et le logo AX en blanc, incrustés à fleur du couvercle. Il faut un AMS ou un autre système multimatière.
+- tipo: p
+  testo: Les deux couvercles vont sur le même fond.
+- tipo: foto
+  alt: 'Les cinq pièces imprimées : couvercle, fond, insert et deux fermetures.'
+- tipo: h3
+  testo: Impression
+- tipo: ul
+  voci:
+  - forte: 'Matière :'
+    testo: PETG pour toutes les pièces. Nous imprimons en PETG Basic de Bambu.
+  - forte: 'Hauteur de couche :'
+    testo: '0,20 mm, première couche comprise (Bambu Studio 0.20 mm High Quality). La gravure fait exactement trois couches de profondeur : si vous changez la hauteur de couche, les graphismes du couvercle ne sortiront pas bien.'
+  - forte: 'Plateau :'
+    testo: Textured PEI.
+  - forte: 'Compensation X-Y des trous et des contours :'
+    testo: 0. La charnière, les fermetures et l'insert sont dessinés avec des jeux précis.
+  - forte: 'Supports :'
+    testo: seulement pour le fond. Tout le reste s'imprime sans.
+  - forte: 'Orientation :'
+    testo: les fichiers sont déjà orientés.
+- tipo: h3
+  testo: Montage
+- tipo: ol
+  voci:
+  - Enfoncez l'insert dans le fond jusqu'à ce qu'il se clipse.
+  - Ouvrez complètement le couvercle, alignez la charnière et poussez-le sur le fond jusqu'au clic.
+  - Fermez le couvercle. Tenez une fermeture ouverte, glissez son axe dans les rainures par le haut et rabattez-la. Pareil pour l'autre.
+  - Fermez les deux fermetures jusqu'au clic. C'est fait.
+- tipo: p
+  testo: Pour ouvrir, tirez la languette du bas de chaque fermeture vers l'extérieur et vers le haut. Pour nettoyer l'insert, retournez la boîte vide et tapotez le bord.
+- tipo: h3
+  testo: Bon à savoir
+- tipo: ul
+  voci:
+  - Rangez les cartouches ogive vers le bas. Ogive vers le haut, elles ne tiennent pas.
+  - Selon la forme de l'ogive, les cartouches sont à des hauteurs un peu différentes. Le couvercle laisse la place aux cartouches 9×19 et 9×21 les plus longues admises par la C.I.P.
+  - C'est une création originale, dessinée de zéro. Pas un remix.
+  - Gratuite pour un usage personnel. Merci de ne pas vendre les impressions ni publier de remix. Vous voulez les produire et les vendre ? Écrivez-nous pour demander.
+- tipo: h3
+  testo: Un autre calibre ?
+- tipo: p
+  testo: Dites-nous lequel, et si vous le voulez en 50 ou en 100 cartouches, dans les commentaires sur MakerWorld.
+  link: MakerWorld
+- tipo: h3
+  testo: AIMONX, c'est quoi ?
+- tipo: p
+  testo: 'L''app pour laquelle cette boîte est née. AIMONX est un journal pour les tireurs sportifs : vous enregistrez une séance au stand et le compteur de chaque arme, vos munitions disponibles et votre entretien se mettent à jour tout seuls. Chiffrée sur votre iPhone, sans compte.'
+badge: Télécharger dans l'App Store

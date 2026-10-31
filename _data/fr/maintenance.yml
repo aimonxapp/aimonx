@@ -1,0 +1,58 @@
+# _data/fr/maintenance.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Entretien des armes par coups ou par temps | AIMONX
+  description: Créez des règles de nettoyage et d'entretien pour chaque arme, par coups, par temps ou les deux. AIMONX vous montre dans l'app ce qui approche ou ce qui est à faire, et garde la trace de chaque intervention.
+titolo: L'entretien de vos armes, par coups ou par temps
+sommario: 'Un nettoyage tous les 500 coups, un ressort récupérateur neuf à 5 000, une lubrification tous les 3 mois : vos règles, vous les connaissez. Le plus dur, c''est de suivre. AIMONX compte les coups de vos séances, garde un œil sur le calendrier et vous montre quand c''est le moment.'
+blocchi:
+- tipo: h2
+  testo: Vos règles, votre rythme
+- tipo: p
+  testo: 'Pour chaque arme, choisissez ce qu''il faut faire et à quelle fréquence : tous les tant de coups, tous les tant de jours ou de mois, ou les deux, la première échéance l''emporte, comme « tous les 5 000 coups ou 12 mois ». Nettoyage, lubrification, changement de ressort, contrôle, ou n''importe quel élément de votre liste. Donnez un titre à chaque règle et, si vous voulez, quelques lignes sur votre façon de faire. AIMONX ne vous dit pas à quelle fréquence nettoyer : c''est vous qui fixez les règles, d''après le manuel ou votre expérience.'
+- tipo: schermate
+  alt:
+  - La page d'une arme dans AIMONX, avec son total de coups et ses règles d'entretien.
+- tipo: h2
+  testo: Ce qui est à faire, d'un coup d'œil
+- tipo: p
+  testo: 'Chaque arme affiche un état en couleur : vert quand tout va bien, jaune quand l''entretien approche, orange quand il est à faire. Vous le voyez sur l''arme, sur l''accueil et juste après avoir enregistré une séance.'
+- tipo: p
+  testo: Sur l'accueil et dans la liste de vos armes, une barre sous chaque arme se remplit à mesure que le prochain nettoyage approche, en coups ou en jours.
+- tipo: schermate
+  alt:
+  - Vos armes dans AIMONX, chacune avec son nombre de coups et l'état de son entretien en couleur.
+- tipo: h2
+  testo: Soyez prévenu à l'avance
+- tipo: p
+  testo: Choisissez combien de coups ou de jours à l'avance vous voulez être prévenu, pour planifier le nettoyage au lieu de le subir. Le rappel anticipé est désormais gratuit.
+- tipo: h2
+  testo: Marquez-le comme effectué, et le compte repart
+- tipo: p
+  testo: Ouvrez une règle et touchez Marquer comme effectué. AIMONX remplit la date, le nombre de coups de l'arme et les détails de la règle. Corrigez ce qui ne va pas, la date par exemple si vous l'avez fait il y a deux jours, puis enregistrez. Les compteurs de cette règle, coups et temps, repartent de là.
+- tipo: schermate
+  alt:
+  - 'La modification d''une règle d''entretien dans AIMONX : Marquer comme effectué en haut, puis le type, le titre, la procédure et un intervalle en coups ou en temps.'
+  - 'Une nouvelle intervention dans AIMONX, déjà remplie à partir de la règle : titre, procédure et nombre de coups actuel de l''arme.'
+- tipo: h2
+  testo: Chaque intervention dans le journal de l'arme
+- tipo: p
+  testo: 'Entretien et journal de l''arme garde l''histoire de chaque arme : nettoyages, lubrifications, contrôles, réparations. Notez ce que vous avez fait, les produits utilisés et ce que ça a coûté.'
+- tipo: schermate
+  alt:
+  - 'Entretien et journal de l''arme dans AIMONX : les interventions sur une arme, chacune avec sa date, son nombre de coups et sa procédure.'
+- tipo: h2
+  testo: Pas de notifications, exprès
+- tipo: p
+  testo: 'AIMONX ne vous envoie jamais de notification pour l''entretien, ni par coups ni par temps. Ouvrez l''app et c''est là : sur l''arme, sur l''accueil et après avoir enregistré une séance.'
+- tipo: h2
+  testo: Achetée d'occasion ?
+- tipo: p
+  testo: Indiquez le nombre de coups avec lequel elle est arrivée, et choisissez s'ils comptent pour son entretien.
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: Free donne à chaque arme une règle de nettoyage, par coups, par temps ou les deux, avec le rappel anticipé. Pro ajoute des règles illimitées de tous types.
+badge: Télécharger dans l'App Store

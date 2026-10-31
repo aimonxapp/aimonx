@@ -1,0 +1,55 @@
+# _data/es/handloads.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'App de recarga: recetas, coste por disparo y factor de potencia | AIMONX'
+  description: Apunta las recetas de tus recargas, el coste de los componentes y las producciones. AIMONX calcula por ti el coste por disparo, el factor de potencia y la energía.
+titolo: Tus recargas, al céntimo
+sommario: Si recargas, la receta ya la tienes en la cabeza. AIMONX te la guarda, junto con lo que te cuesta cada disparo, las producciones que has cargado y cómo rinden. Luego cada sesión en el campo de tiro las va gastando y suma los disparos al arma, como cualquier otra munición.
+blocchi:
+- tipo: h2
+  testo: La receta
+- tipo: p
+  testo: 'Ponle nombre, elige calibre, tipo y peso de la punta, y listo. Si quieres, añade los datos de recarga: COL/OAL, diámetro de la punta, longitud de la vaina y engarce, en milímetros o en pulgadas.'
+- tipo: h2
+  testo: Lo que de verdad te cuesta cada disparo
+- tipo: p
+  testo: Dos formas de introducir los componentes.
+- tipo: p
+  forte: 'Por paquete:'
+  testo: para vainas, pistones y puntas, lo que pagaste y cuántas unidades traía la caja; para la pólvora, el precio, el peso del bote en libras, gramos o kilos, y tu carga en grains. AIMONX calcula lo que cuesta cada componente por disparo, y el total. Cambia la carga y el coste de la pólvora se actualiza al momento.
+- tipo: p
+  forte: 'Por disparo:'
+  testo: "¿ya tienes tus números? Escribe el coste por disparo de cada componente. Pasar de una forma a otra no borra nada."
+- tipo: schermate
+  alt:
+  - Los componentes de una recarga en AIMONX, cada uno con el precio pagado y la cantidad, y debajo el coste por disparo calculado.
+- tipo: h2
+  testo: Producciones con su propio precio
+- tipo: p
+  testo: Registra cada producción con la cantidad, el lote y la fecha. Cada producción guarda los costes de la receta del día en que la cargaste. ¿Han subido los precios? Actualiza la receta y las producciones nuevas toman los precios nuevos. Las antiguas se quedan como estaban.
+- tipo: h2
+  testo: Factor de potencia y energía, calculados por ti
+- tipo: p
+  testo: Introduce la velocidad en boca en fps o en m/s. AIMONX te muestra el factor de potencia (peso de la punta en grains por velocidad en fps, dividido entre 1000, sin decimales, como en competición) y la energía en boca, en julios o ft·lb. Se acabaron las cuentas con la calculadora.
+- tipo: schermate
+  alt:
+  - 'Una munición recargada en AIMONX: calibre, tipo y peso de la punta, coste por disparo, y su velocidad, factor de potencia y energía.'
+- tipo: h2
+  testo: Lo que te queda, y cuándo recargar
+- tipo: p
+  testo: Los disparos que haces salen del stock, empezando por la producción más antigua. Fija un mínimo y AIMONX te avisa cuando te estás quedando sin munición, nada más guardar la sesión.
+- tipo: h2
+  testo: Fotos y estadísticas
+- tipo: p
+  testo: 'Hasta 3 fotos de cada recarga. Su ficha te muestra los últimos 12 meses: disparos, último uso, el arma que más la ha usado, sesiones, competiciones y gasto.'
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: La munición recargada forma parte de AIMONX Pro. La munición comercial, con lotes, coste por disparo, factor de potencia y energía, es gratis y sin límites. Los nuevos suscriptores tienen el primer mes de Pro gratis.
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Tus recetas se quedan cifradas en tu iPhone. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

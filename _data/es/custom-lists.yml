@@ -1,0 +1,58 @@
+# _data/es/custom-lists.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Listas personalizadas: calibres y tipos de arma | AIMONX'
+  description: "¿No encuentras tu calibre o tu tipo de arma? Añádelo. Cada lista de la que eliges en AIMONX la decides tú, para que la app se adapte a cómo tiras."
+titolo: Haz que AIMONX se adapte a cómo tiras
+sommario: "¿No encuentras tu calibre? ¿Tu tipo de arma? ¿Tu disciplina de competición? Añádelo. Cada lista de la que eliges en AIMONX la decides tú. La app se adapta a ti, no al revés."
+blocchi:
+- tipo: h2
+  testo: Once listas, todas tuyas
+- tipo: p
+  testo: 'Calibres, tipos de arma, categorías de arma, tipos de funcionamiento, tipos de disparador, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación. Las encuentras en Gestionar listas, en la pestaña Inicio: hazlas tuyas una por una.'
+- tipo: schermate
+  alt:
+  - 'Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación.'
+- tipo: h2
+  testo: Añade lo que falta
+- tipo: p
+  testo: "¿Tiras con un calibre poco común? ¿Compites en una disciplina que no conocemos? Añádela una vez y estará ahí siempre que la necesites: al dar de alta un arma, al registrar una caja de munición o al apuntar una competición."
+- tipo: schermate
+  alt:
+  - Los tipos de punta en AIMONX, con LRN añadida por el usuario y la etiqueta personalizado, encima de las de serie como FMJ, TMJ y HP.
+- tipo: h2
+  testo: Quita deslizando lo que nunca usas
+- tipo: p
+  testo: "¿No tienes revólver? ¿Nunca tiras con avancarga? Quítalos de tus listas deslizando, y en los menús solo verás lo tuyo. Todo lo que ya registraste se queda exactamente como estaba."
+- tipo: schermate
+  alt:
+  - Las interrupciones en AIMONX, del fallo de alimentación al squib load, con el botón Restaurar predeterminados debajo de la lista.
+- tipo: h2
+  testo: Cambia de idea cuando quieras
+- tipo: p
+  testo: Toca Restaurar predeterminados y vuelven los originales. Todo lo que añadiste se queda donde estaba.
+- tipo: h2
+  testo: Estadísticas limpias, sin erratas
+- tipo: p
+  testo: 'Elegir de una lista en lugar de escribir mantiene limpias tus estadísticas: nada de «9 mm» en un sitio y «9x19» en otro.'
+- tipo: schermate
+  alt:
+  - Elegir el calibre de un arma nueva en AIMONX, en una lista que empieza por 9mm Luger, 9x21 y .45 ACP.
+- tipo: h2
+  testo: Iconos donde ayudan
+- tipo: p
+  testo: Elige tu propio icono para cada tipo de mantenimiento, tipo de sesión y tipo de renovación. Es el icono que verás en tus armas, tus sesiones y tus renovaciones.
+- tipo: schermate
+  alt:
+  - 'Los tipos de mantenimiento en AIMONX, cada uno con su icono: limpieza, lubricación, inspección, sustitución de piezas, reparación y Gunsmith.'
+- tipo: h2
+  testo: Free
+- tipo: p
+  testo: Gestionar tus listas forma parte de AIMONX Free. Para usar en tus reglas de mantenimiento tipos distintos de la limpieza hace falta Pro.
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Tus listas viven cifradas en tu iPhone, con el resto de tu diario. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

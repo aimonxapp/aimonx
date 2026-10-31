@@ -137,7 +137,18 @@ SEZIONI_NAVIGAZIONE_IT = ["Menu in alto", "Briciole di pane",
 # quella sezione: che non esca in pagina lo dice il giro, non questa misura.
 SEZIONI_RANGE = ["Meta", "Page", "9mm Ammo Box, 100 rounds"]
 SEZIONI_RANGE_IT = ["Meta", "Page", "Scatola porta munizioni 9×19 da 100 colpi"]
-TITOLI_IN_PAGINA = [SEZIONI_RANGE.last, SEZIONI_RANGE_IT.last]
+SEZIONI_ALTRE = {
+  # ⭐ Giro W33: le sezioni della navigazione e del Range System in francese e spagnolo.
+  "fr" => { nav: ["Menu in alto", "Briciole di pane", "Etichette per i lettori di schermo (invisibili a schermo)",
+                  "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/fr/features/`",
+                  "Piede, i titoli delle colonne", "Liens vers les pages restées en anglais (31/10/2026)", "Range System", "Il selettore di lingua"],
+            range: ["Meta", "Page", "Boîte à munitions 9 mm, 100 cartouches"] },
+  "es" => { nav: ["Menu in alto", "Briciole di pane", "Etichette per i lettori di schermo (invisibili a schermo)",
+                  "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/es/features/`",
+                  "Piede, i titoli delle colonne", "Enlaces a las páginas que siguen en inglés (31/10/2026)", "Il selettore di lingua — menu a tendina"],
+            range: ["Meta", "Page", "Caja de munición 9×19, 100 cartuchos"] },
+}
+TITOLI_IN_PAGINA = [SEZIONI_RANGE.last, SEZIONI_RANGE_IT.last, SEZIONI_ALTRE["fr"][:range].last, SEZIONI_ALTRE["es"][:range].last]
 
 # Le pagine del sito: nome, file di dati, bozza, e dove esce nel
 # sito costruito. ⛔ Una lista sola per tutte e due le misure: se qui manca
@@ -278,7 +289,22 @@ PAGINE_IT = [
     alt_da: "your-data/your-data-it-bozza.md" },
 ]
 PAGINE.each { |p| p[:lingua] ||= "en" }
-PAGINE.concat(PAGINE_IT)
+# ⭐ GIRO W33, FRANCESE E SPAGNOLO: le stesse voci dell'italiano, tranne Privacy e
+# Terms, che lì non esistono (Pier, 31/10). ⚠️ I titoli stanno nelle bozze `titoli`,
+# le bozze hanno gli stessi nomi con `-fr-`/`-es-`, e le sezioni nomi loro.
+PAGINE_ALTRE = %w[fr es].flat_map do |l|
+  s = SEZIONI_ALTRE[l]
+  PAGINE_IT.reject { |p| p[:nome].match?(/privacy|terms/) }.map do |p|
+    q = p.merge(nome: p[:nome].sub("it/", "#{l}/"), dati: p[:dati].sub("_data/it/", "_data/#{l}/"), bozza: p[:bozza].sub("-it-", "-#{l}-").sub("-it.", "-#{l}."), lingua: l)
+    q[:uscita] = p[:uscita].sub(%r{\Ait/}, "#{l}/") if p[:uscita]
+    q[:sezioni] = s[:nav] if p[:sezioni].equal?(SEZIONI_NAVIGAZIONE_IT)
+    q[:sezioni] = s[:range] if p[:sezioni].equal?(SEZIONI_RANGE_IT)
+    q[:anche] = (p[:anche] || []).map { |b, x| [b.sub("-it-", "-#{l}-"), x.equal?(SEZIONI_NAVIGAZIONE_IT) ? s[:nav] : x] } + [["titoli/titoli-#{l}-bozza.md", ["Titoli e indirizzi"]], ["navigazione/navigazione-#{l}-bozza.md", s[:nav]]]
+    q[:alt_da] = p[:alt_da].sub("-it-", "-#{l}-") if p[:alt_da]
+    q
+  end
+end
+PAGINE.concat(PAGINE_IT).concat(PAGINE_ALTRE)
 
 DICHIARATE = {
   "landing" => {},
@@ -318,7 +344,9 @@ STRUTTURA = ["tipo", "aspetto", "forma"]
 # rilegge, non per la pagina. ⚠️ Sta anche in mezzo a una frase («photos, and
 # 🆕 your ranges…»): toglierlo è l unico modo di trovarla intera.
 def piano(percorso, sezioni = nil, pezzo = nil)
-  t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "")
+  # ⭐ Giro W33: il francese vuole lo spazio non separabile prima di «:;!?» e dentro «»:
+  # per il confronto è uno spazio, come fa già la misura del testo servito.
+  t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "").gsub(/[\u00A0\u202F]/, " ")
   # ⭐ Giro W32: un file solo per cinque pagine, ognuna sotto `# N — …`: `pezzo` è N.
   t = t.split(/^# \d — .*$/)[pezzo] if pezzo
   if sezioni
@@ -361,6 +389,8 @@ end
 BOZZA_LANDING = {
   "en" => PAGINE.first[:testo_bozza],
   "it" => PAGINE.find { |q| q[:nome] == "it/landing" }[:testo_bozza],
+  "fr" => PAGINE.find { |q| q[:nome] == "fr/landing" }[:testo_bozza],
+  "es" => PAGINE.find { |q| q[:nome] == "es/landing" }[:testo_bozza],
 }
 # ⭐ Giro W24: la barra, le briciole e il piede sono su OGNI pagina, e le loro
 # parole stanno nella bozza della navigazione — come il piede di prima stava
@@ -368,6 +398,8 @@ BOZZA_LANDING = {
 BOZZA_NAVIGAZIONE = {
   "en" => piano(File.join(contenuti, "navigazione/navigazione-en-bozza.md"), SEZIONI_NAVIGAZIONE),
   "it" => piano(File.join(contenuti, "navigazione/navigazione-it-bozza.md"), SEZIONI_NAVIGAZIONE_IT),
+  "fr" => piano(File.join(contenuti, "navigazione/navigazione-fr-bozza.md"), SEZIONI_ALTRE["fr"][:nav]),
+  "es" => piano(File.join(contenuti, "navigazione/navigazione-es-bozza.md"), SEZIONI_ALTRE["es"][:nav]),
 }
 
 fuori = 0
@@ -382,7 +414,7 @@ if modo == "sorgente"
     ok = 0; dich = 0; mancanti = []
     eccezioni = DICHIARATE[p[:nome]] || {}
     stringhe(YAML.load_file(percorso)) do |via, s|
-      t = s.gsub(/[ \t]+/, " ").strip
+      t = s.gsub(/[ \t\u00A0\u202F]+/, " ").strip
       next if (via.split(".").map { |x| x.sub(/\[\d+\]\z/, "") } & STRUTTURA).any?
       if eccezioni.key?(via)
         dich += 1
@@ -585,6 +617,9 @@ else
     # versioni: «Italiano» sulle inglesi e «English» sulle italiane. Quei nomi
     # stanno nella sezione del selettore di ciascuna bozza della navigazione.
     BOZZA_NAVIGAZIONE.each_value { |b| consentito += "\n" + b[/^.*English · Italiano.*$/].to_s }
+    # ⭐ Giro W33: i motti restano in inglese in ogni lingua, e il piede inglese delle
+    # pagine legali non c'entra: si consente solo la riga inglese del motto.
+    consentito += "\nTRACK · MAINTAIN · SHOOT BETTER\nSame passion. Every round counted.\n"
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,
@@ -671,7 +706,7 @@ else
         jl_fuori << "JSON-LD NON SI LEGGE: #{x}"
       # ⛔ Nessun perdono qui dentro, dal giro W12: ogni parola dei dati
       # strutturati sta in una bozza, e nessuna ha bisogno di un'eccezione.
-      elsif consentito_jsonld.include?(x)
+      elsif consentito_jsonld.include?(x.gsub(/[  ]/, " "))
         jl_ok += 1
       else
         jl_fuori << "nei dati strutturati, NON approvato -> «#{x[0, 120]}»"

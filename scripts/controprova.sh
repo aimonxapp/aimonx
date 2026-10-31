@@ -370,6 +370,15 @@ VOCI
     else
       confronta "impronta del badge di Apple nella build" badge_apple_impronta "assente"
     fi
+    # ⭐ Giro W33: il francese e lo spagnolo, stessa prova.
+    for BL in fr es; do
+      BADGE_X="$SITO_TMP/assets/img/download-on-the-app-store-black-$BL-$BL.svg"
+      if [ -r "$BADGE_X" ]; then
+        confronta "impronta del badge $BL di Apple nella build" "badge_apple_impronta_$BL" "$(shasum -a 256 "$BADGE_X" | cut -c1-16)"
+      else
+        confronta "impronta del badge $BL di Apple nella build" "badge_apple_impronta_$BL" "assente"
+      fi
+    done
     # ⭐ Giro W28: il badge ITALIANO, stessa prova sullo stesso genere di file.
     BADGE_IT="$SITO_TMP/assets/img/download-on-the-app-store-black-it-it.svg"
     if [ -r "$BADGE_IT" ]; then

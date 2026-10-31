@@ -87,6 +87,8 @@
     tinta: arancioTenue
     schermata: aimonx-handload-card
     schermata_it: aimonx-handload-card-it
+    schermata_fr: aimonx-handload-card-fr
+    schermata_es: aimonx-handload-card-es
 
 - nome: "Power Factor Calculator"
   lead: "Power Factor calculator, right on your iPhone"
@@ -99,6 +101,8 @@
     tinta: blu
     schermata: aimonx-power-factor-calculator
     schermata_it: aimonx-power-factor-calculator-it
+    schermata_fr: aimonx-power-factor-calculator-fr
+    schermata_es: aimonx-power-factor-calculator-es
 
 - nome: "Maintenance"
   lead: "Maintenance your way."
@@ -124,6 +128,9 @@
     icona: list-bullets-fill  # → «Gestione Liste»
     tinta: ciano
     schermata: aimonx-manage-lists
+    schermata_it: aimonx-manage-lists-it
+    schermata_fr: aimonx-manage-lists-fr
+    schermata_es: aimonx-manage-lists-es
 
 # ⭐ Giro W18: «Renewals», la parola dell'app (Pier, 15/10/2026).
 - lead: "Renewals you won't miss."

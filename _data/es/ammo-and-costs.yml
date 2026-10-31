@@ -1,0 +1,52 @@
+# _data/es/ammo-and-costs.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Control de munición: stock y coste por disparo | AIMONX'
+  description: Registra cada caja que compras. AIMONX gasta primero el lote más antiguo, te muestra el coste real por disparo y te avisa cuando te queda poca.
+titolo: Sabes lo que tienes en la estantería, y lo que te cuesta
+sommario: Registras una vez la munición que compras. A partir de ahí, cada sesión en el campo de tiro descuenta los disparos del stock y suma su coste a la sesión, sin contar nada a mano.
+blocchi:
+- tipo: h2
+  testo: Cada caja que compras
+- tipo: p
+  testo: 'Añade una compra con la cantidad, lo que costó la caja, el lote y la fecha. Lo que te queda es sencillo: lo comprado menos lo disparado.'
+- tipo: h2
+  testo: Primero, el lote más antiguo
+- tipo: p
+  testo: Las sesiones gastan primero el lote más antiguo, y el coste de la sesión sigue esos lotes. ¿Compraste la misma munición a dos precios? Cada disparo cuesta lo que de verdad pagaste por él.
+- tipo: schermate
+  alt:
+  - 'La ficha de una munición en AIMONX: disparos disponibles, el aviso de stock bajo y las compras, gastadas de la más antigua a la más reciente.'
+- tipo: h2
+  testo: Nunca sin munición el día de tiro
+- tipo: p
+  testo: Fija un mínimo para cada munición. Si bajas de ahí, AIMONX te lo dice nada más guardar la sesión, y la lista la marca. La munición que se acaba sigue en la lista, marcada como agotada, para que te acuerdes de comprar más.
+- tipo: schermate
+  alt:
+  - La lista de munición en AIMONX, con los disparos disponibles de cada una y un aviso de stock bajo.
+- tipo: h2
+  testo: Velocidad, factor de potencia y energía
+- tipo: p
+  testo: Añade la velocidad en boca en fps o en m/s. El factor de potencia y la energía en boca se calculan mientras escribes, y desde ahí se quedan en la ficha de la munición.
+- tipo: schermate
+  alt:
+  - 'Una munición en AIMONX: calibre, tipo y peso de la punta, coste por disparo, velocidad, factor de potencia y energía.'
+- tipo: h2
+  testo: Lo que tiras, y lo que te cuesta
+- tipo: p
+  testo: 'La ficha de cada munición te muestra los últimos 12 meses: disparos, último uso, el arma que más la ha usado, sesiones, competiciones y gasto. En Estadísticas ves tus costes por categoría y por tipo de sesión.'
+- tipo: h2
+  testo: Fotos y tu propio icono
+- tipo: p
+  testo: Hasta 3 fotos de la caja o del cartucho, o elige un icono. Si quieres, usa la primera foto como icono para reconocerla de un vistazo en la lista.
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: 'La munición comercial es gratis, sin límites: compras, lotes, stock, coste por disparo y balística. La munición recargada forma parte de Pro.'
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Lo que compras y lo que tiras se queda cifrado en tu iPhone. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

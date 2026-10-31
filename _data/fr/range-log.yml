@@ -1,0 +1,47 @@
+# _data/fr/range-log.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Journal de tir : séances, stands et cartes | AIMONX'
+  description: 'Enregistrez chaque séance au stand : arme, munitions, coups, distance, météo et incidents. Placez vos stands sur la carte et obtenez l''itinéraire dans Plans d''Apple.'
+titolo: Un journal de tir qui se remplit tout seul
+sommario: Enregistrez une séance en quelques touchers, et vos coups, vos munitions et votre entretien se mettent à jour tout seuls. La fois suivante, partez de la dernière.
+blocchi:
+- tipo: h2
+  testo: Ce qu'il y a dans une séance
+- tipo: p
+  testo: L'arme, la date, le type de séance, le stand et la distance. Les munitions tirées, une ligne par munition, avec les coups de chacune. Le prix du pas de tir et les autres frais, les éventuels incidents, la météo, une note en étoiles et vos remarques. Plus jusqu'à 5 photos, de vos cibles par exemple.
+- tipo: schermate
+  alt:
+  - 'Une séance de tir dans AIMONX : description, arme, date, lieu, distance et la carte du stand.'
+- tipo: h2
+  testo: Copier la dernière séance
+- tipo: p
+  testo: 'Vous tirez toujours avec la même configuration ? Touchez Copier la dernière séance : l''arme, le type, le stand, la distance et les munitions sont déjà remplis. Date du jour, coups à saisir, et c''est fini.'
+- tipo: h2
+  testo: Vos stands, sur la carte
+- tipo: p
+  testo: 'Enregistrez vos stands et vos armureries avec leur adresse et leurs coordonnées. Puis placez le repère : avec votre position actuelle, en touchant la carte, ou en laissant AIMONX le proposer à partir de l''adresse. Chaque séance dans ce stand en affiche la carte, et Itinéraire ouvre Plans d''Apple pour vous y conduire.'
+- tipo: p
+  testo: Les cartes et la recherche d'adresse sont fournies par Apple et ne se lancent que quand vous touchez. Vos repères restent dans votre journal chiffré, et ne nous parviennent jamais.
+- tipo: schermate
+  alt:
+  - Un stand dans AIMONX avec son adresse, une carte avec le repère et le bouton Itinéraire.
+- tipo: h2
+  testo: Le dry fire, c'est de l'entraînement, pas des coups
+- tipo: p
+  testo: Enregistrez le dry fire comme une séance à part, avec vos répétitions. Il ne touche jamais au compteur de coups, à vos munitions ni à l'entretien.
+- tipo: h2
+  testo: Les matchs aussi
+- tipo: p
+  testo: Avec Pro, enregistrez un match avec sa discipline, sa division et son niveau, plus votre classement, vos points, votre pourcentage et votre temps. AIMONX garde vos records et vous montre votre progression.
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: Les séances sont illimitées dans Free, tout comme les stands, les cartes et les photos. Les matchs font partie de Pro.
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Vos séances et vos stands restent chiffrés sur votre iPhone. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

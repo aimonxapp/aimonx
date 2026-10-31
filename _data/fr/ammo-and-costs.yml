@@ -1,0 +1,52 @@
+# _data/fr/ammo-and-costs.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Suivi des munitions : stock, coût par coup, alertes | AIMONX'
+  description: Enregistrez chaque boîte achetée. AIMONX consomme d'abord le lot le plus ancien, montre le vrai coût par coup et vous prévient quand le stock baisse.
+titolo: Ce que vous avez sur l'étagère, et ce que ça coûte
+sommario: Enregistrez une fois les munitions que vous achetez. Ensuite, chaque séance au stand retire les coups de votre inventaire et ajoute leur coût à la séance, sans rien compter à la main.
+blocchi:
+- tipo: h2
+  testo: Chaque boîte achetée
+- tipo: p
+  testo: 'Ajoutez un achat avec la quantité, le prix de la boîte, le numéro de lot et la date. Votre stock, c''est simple : ce que vous avez acheté moins ce que vous avez tiré.'
+- tipo: h2
+  testo: Le lot le plus ancien d'abord
+- tipo: p
+  testo: Les séances consomment d'abord le lot le plus ancien, et le coût de la séance suit ces lots. Vous avez acheté la même munition à deux prix ? Chaque coup coûte ce que vous l'avez vraiment payé.
+- tipo: schermate
+  alt:
+  - 'La fiche d''une munition dans AIMONX : coups disponibles, alerte de stock faible et achats, consommés du plus ancien au plus récent.'
+- tipo: h2
+  testo: Jamais à court le jour du stand
+- tipo: p
+  testo: Fixez un seuil minimum pour chaque munition. Si vous passez en dessous, AIMONX vous le dit dès que vous enregistrez la séance, et la liste le signale. Les munitions épuisées restent dans la liste, marquées comme épuisées, pour penser à en racheter.
+- tipo: schermate
+  alt:
+  - La liste des munitions dans AIMONX, avec les coups disponibles pour chacune et une alerte de stock faible.
+- tipo: h2
+  testo: Vitesse, facteur de puissance et énergie
+- tipo: p
+  testo: Ajoutez la vitesse initiale en fps ou en m/s. Le facteur de puissance et l'énergie à la bouche se calculent pendant que vous tapez, et restent ensuite sur la fiche de la munition.
+- tipo: schermate
+  alt:
+  - 'Une boîte de munitions dans AIMONX : calibre, type et poids de l''ogive, coût par coup, vitesse, facteur de puissance et énergie à la bouche.'
+- tipo: h2
+  testo: Ce que vous tirez, et ce que ça coûte
+- tipo: p
+  testo: 'La fiche de chaque munition montre ses 12 derniers mois : coups, dernière utilisation, l''arme qui l''a le plus utilisée, séances, matchs et dépenses. Dans les statistiques, vous voyez vos coûts par catégorie et par type de séance.'
+- tipo: h2
+  testo: Des photos et votre icône
+- tipo: p
+  testo: Jusqu'à 3 photos de la boîte ou de la cartouche, ou une icône au choix. Utilisez la première photo comme icône si vous voulez la repérer d'un coup d'œil dans la liste.
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: 'Les munitions manufacturées sont gratuites, sans limites : achats, lots, inventaire, coût par coup et balistique. Les munitions rechargées font partie de Pro.'
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Ce que vous achetez et ce que vous tirez reste chiffré sur votre iPhone. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

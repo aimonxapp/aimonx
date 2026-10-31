@@ -1,0 +1,34 @@
+# _data/fr/power-factor-calculator.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Calcul du facteur de puissance pour l'IPSC | AIMONX
+  description: Saisissez le poids de l'ogive et la vitesse initiale, obtenez le facteur de puissance et l'énergie. Gratuit dans l'app AIMONX pour iPhone, avec l'historique de vos 50 derniers réglages.
+titolo: Le calcul du facteur de puissance, sur votre iPhone
+sommario: Major ou minor ? Saisissez le poids de l'ogive et la vitesse initiale, et AIMONX affiche le facteur de puissance et l'énergie pendant que vous tapez. C'est gratuit, et c'est à un toucher de l'accueil.
+blocchi:
+- tipo: schermate
+  alt:
+  - 'Le calcul du facteur de puissance dans AIMONX : une ogive de 124 grains à 350 m/s donne un facteur de puissance de 142 et une énergie de 492 joules.'
+- tipo: h2
+  testo: Comment il se calcule
+- tipo: p
+  testo: Le facteur de puissance, c'est le poids de l'ogive en grains multiplié par la vitesse initiale en pieds par seconde, divisé par 1 000. AIMONX supprime les décimales au lieu d'arrondir au-dessus, comme en match. Une ogive de 124 grains à 1 050 fps donne 130.
+- tipo: p
+  testo: L'énergie à la bouche s'affiche en ft·lb si vous saisissez des fps, et en joules si vous saisissez des m/s.
+- tipo: h2
+  testo: Enregistrez vos réglages
+- tipo: p
+  testo: Donnez un nom au réglage, par exemple « 124 gr match, canon 5 pouces », et enregistrez-le dans l'historique. AIMONX garde les 50 derniers, du plus récent au plus ancien, avec poids, vitesse, facteur de puissance, énergie, date et heure.
+- tipo: p
+  testo: 'L''historique est un bloc-notes : il ne fait partie ni de votre journal, ni de votre sauvegarde, ni de vos archives. Une fois effacé, il ne revient pas.'
+- tipo: h2
+  testo: Aussi sur chaque munition
+- tipo: p
+  testo: Ajoutez la vitesse initiale à n'importe quelle munition que vous suivez, manufacturée ou rechargée, et son facteur de puissance et son énergie restent sur sa fiche.
+- tipo: h2
+  testo: Gratuit
+- tipo: p
+  testo: Le calcul et la balistique sur les fiches de vos munitions sont gratuits, sans limites.
+badge: Télécharger dans l'App Store

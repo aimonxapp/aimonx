@@ -1,0 +1,64 @@
+# _data/es/round-count.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Contador de disparos automático para cada arma | AIMONX
+  description: Registra una sesión en el campo de tiro y AIMONX suma los disparos a esa arma por sí sola, y te avisa cuando toca limpiarla o cambiar un muelle.
+titolo: El contador de disparos que hace las cuentas por ti
+sommario: Casi todos los tiradores pierden la cuenta en algún punto entre la bolsa de tiro y la libreta. Con AIMONX, registras la sesión y los disparos de cada arma se actualizan solos. Sin cuentas de cabeza, sin hojas de cálculo.
+blocchi:
+- tipo: h2
+  testo: Cómo funciona
+- tipo: p
+  forte: Registra la sesión.
+  testo: Elige el arma, elige la munición, escribe cuántos disparos has hecho. Y ya está.
+- tipo: p
+  forte: El total se actualiza solo.
+  testo: Suben los disparos del arma. Si llevas el stock de esa munición, baja lo que te queda. Y los contadores del mantenimiento avanzan con ellos.
+- tipo: p
+  forte: "¿Te has equivocado? Corrígelo."
+  testo: 'Edita o elimina una sesión y los totales la siguen. AIMONX no guarda un número aparte que se pueda descuadrar: suma tus sesiones cada vez.'
+- tipo: schermate
+  alt:
+  - 'Una sesión en AIMONX: el arma, la fecha, el campo de tiro, la munición y los 150 disparos.'
+- tipo: h2
+  testo: Empieza desde donde está hoy tu arma
+- tipo: p
+  testo: "¿La compraste de segunda mano, o ya le has metido unos cuantos miles de disparos? Introduce los disparos con los que llegó y elige si cuentan para su total y para su mantenimiento."
+- tipo: h2
+  testo: "¿Has tirado más de una munición?"
+- tipo: p
+  testo: Añade una línea para cada una. Una caja de munición de entrenamiento y unos cuantos cartuchos de competición acaban en la misma sesión, cada uno con su cuenta.
+- tipo: h2
+  testo: El dry fire no suma disparos
+- tipo: p
+  testo: Registra tu práctica de dry fire como una sesión aparte, con tus repeticiones. Nunca toca el contador de disparos ni tu munición.
+- tipo: h2
+  testo: Las armas de alquiler también cuentan
+- tipo: p
+  testo: "¿Has tirado con un arma de alquiler en el campo de tiro? Regístrala como cualquier otra. Sus disparos cuentan, y no tienes ningún mantenimiento que seguir."
+- tipo: h2
+  testo: Los disparos mandan en el mantenimiento
+- tipo: p
+  testo: 'Pon tus propias reglas para cada arma, como limpiar cada 500 disparos o cambiar el muelle recuperador a los 5000, y elige con cuánta antelación quieres el aviso. Cada arma muestra su estado por colores: verde cuando está bien, amarillo cuando se acerca el mantenimiento, naranja cuando toca.'
+- tipo: schermate
+  alt:
+  - La página de un arma en AIMONX, con sus disparos totales y las reglas de mantenimiento por disparos para la limpieza y el muelle recuperador.
+- tipo: h2
+  testo: Mira adónde van tus disparos
+- tipo: p
+  testo: Disparos por arma, disparos en el tiempo y lo que de verdad te cuesta cada disparo.
+- tipo: schermate
+  alt:
+  - Disparos por arma en AIMONX, con el porcentaje de cada arma, las sesiones y el coste por disparo.
+  - 'Las fotos de un arma y sus últimos 30 días en AIMONX: disparos, sesiones, gasto y coste por disparo.'
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: Free lleva la cuenta de disparos de un arma activa, con sesiones ilimitadas. Pro la lleva de todas las armas que tengas, y añade reglas de mantenimiento de cualquier tipo.
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Tus disparos viven cifrados en tu iPhone. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

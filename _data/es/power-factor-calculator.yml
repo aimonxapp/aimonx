@@ -1,0 +1,34 @@
+# _data/es/power-factor-calculator.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Calculadora del factor de potencia para IPSC | AIMONX
+  description: Introduce el peso de la punta y la velocidad en boca, y obtén el factor de potencia y la energía. Gratis en la app AIMONX para iPhone, con un historial de tus últimas 50 configuraciones.
+titolo: La calculadora del factor de potencia, en tu iPhone
+sommario: "¿Major o minor? Introduce el peso de la punta y la velocidad en boca, y AIMONX te muestra el factor de potencia y la energía mientras escribes. Es gratis, y está a un toque desde Inicio."
+blocchi:
+- tipo: schermate
+  alt:
+  - 'La calculadora del factor de potencia en AIMONX: el peso de la punta y la velocidad en boca dan el factor de potencia y la energía en boca.'
+- tipo: h2
+  testo: Cómo se calcula
+- tipo: p
+  testo: El factor de potencia es el peso de la punta en grains por la velocidad en boca en pies por segundo, dividido entre 1000. AIMONX descarta los decimales en lugar de redondear hacia arriba, como se hace en competición. Una punta de 124 grains a 1050 fps da 130.
+- tipo: p
+  testo: La energía en boca se lee en ft·lb si introduces fps, y en julios si introduces m/s.
+- tipo: h2
+  testo: Guarda tus configuraciones
+- tipo: p
+  testo: Ponle nombre a una configuración, por ejemplo «124 gr competición, cañón de 5 pulgadas», y guárdala en el historial. AIMONX guarda las últimas 50, de la más reciente a la más antigua, con peso, velocidad, factor de potencia, energía, fecha y hora.
+- tipo: p
+  testo: 'El historial es un bloc de notas: no forma parte de tu diario, de tu copia de seguridad ni de tu archivo. Si lo borras, no vuelve.'
+- tipo: h2
+  testo: También en cada munición
+- tipo: p
+  testo: Añade la velocidad en boca a cualquier munición que registres, comercial o recargada, y su factor de potencia y su energía se quedan en su ficha.
+- tipo: h2
+  testo: Gratis
+- tipo: p
+  testo: La calculadora y la balística de tus fichas de munición son gratis, sin límites.
+badge: Descargar en el App Store

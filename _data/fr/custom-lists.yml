@@ -1,0 +1,58 @@
+# _data/fr/custom-lists.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Listes personnalisées : calibres et types d''armes | AIMONX'
+  description: Votre calibre ou votre type d'arme n'y est pas ? Ajoutez-le. Chaque liste d'AIMONX se règle à votre façon, pour que l'app colle à votre pratique du tir.
+titolo: Une app qui s'adapte à votre façon de tirer
+sommario: Votre calibre n'y est pas ? Votre type d'arme ? Votre discipline ? Ajoutez-les. Chaque liste dans laquelle vous choisissez, dans AIMONX, se règle à votre façon. C'est l'app qui s'adapte à vous, pas l'inverse.
+blocchi:
+- tipo: h2
+  testo: Onze listes, toutes à vous
+- tipo: p
+  testo: Calibres, types d'arme, catégories d'arme, types de fonctionnement, types de détente, types de séance, incidents, types d'intervention, types d'ogive, disciplines de match et types de renouvellement. Vous les trouvez dans Gérer les listes, depuis l'accueil, et chacune se règle à votre goût.
+- tipo: schermate
+  alt:
+  - 'Gérer les listes dans AIMONX : calibres, types d''arme, catégories d''arme, types de fonctionnement, types de détente, types de séance, incidents, types d''intervention, types d''ogive, disciplines de match et types de renouvellement.'
+- tipo: h2
+  testo: Ajoutez ce qui manque
+- tipo: p
+  testo: 'Vous tirez un calibre wildcat ? Vous pratiquez une discipline que nous ne connaissons pas ? Ajoutez-la une fois, et elle sera là chaque fois que vous en aurez besoin : quand vous ajoutez une arme, enregistrez une boîte de munitions ou un match.'
+- tipo: schermate
+  alt:
+  - Les types d'ogive dans AIMONX, avec un type ajouté par l'utilisateur et marqué personnalisé, au-dessus des types par défaut.
+- tipo: h2
+  testo: Retirez ce qui ne vous sert jamais
+- tipo: p
+  testo: Pas de revolver ? Jamais d'arme à poudre noire ? Faites-les glisser hors de vos listes, et vos menus n'affichent que ce qui vous concerne. Tout ce que vous avez déjà enregistré reste tel quel.
+- tipo: schermate
+  alt:
+  - Les incidents dans AIMONX, de l'enrayage à l'alimentation au squib load, avec le bouton Rétablir les valeurs par défaut sous la liste.
+- tipo: h2
+  testo: Changez d'avis quand vous voulez
+- tipo: p
+  testo: Touchez Rétablir les valeurs par défaut et les éléments d'origine reviennent. Tout ce que vous avez ajouté reste en place.
+- tipo: h2
+  testo: Des statistiques propres, sans fautes de frappe
+- tipo: p
+  testo: 'Choisir dans une liste plutôt que taper garde vos statistiques propres : pas de « 9mm » d''un côté et de « 9x19 » de l''autre.'
+- tipo: schermate
+  alt:
+  - Le choix du calibre pour une nouvelle arme dans AIMONX, dans une liste qui commence par les calibres les plus courants.
+- tipo: h2
+  testo: Des icônes là où elles aident
+- tipo: p
+  testo: Choisissez votre icône pour chaque type d'intervention, type de séance et type de renouvellement. C'est l'icône que vous voyez sur vos armes, vos séances et vos renouvellements.
+- tipo: schermate
+  alt:
+  - 'Les types d''intervention dans AIMONX, chacun avec son icône : nettoyage, lubrification, contrôle, remplacement de pièces, réparation et armurier.'
+- tipo: h2
+  testo: Free
+- tipo: p
+  testo: La gestion des listes fait partie d'AIMONX Free. Pour utiliser dans vos règles d'entretien d'autres types d'intervention que le nettoyage, il faut Pro.
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Vos listes sont chiffrées sur votre iPhone, avec le reste de votre journal. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

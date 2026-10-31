@@ -1,0 +1,48 @@
+# _data/es/navigazione.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+menu:
+  voci:
+  - Inicio
+  - Funciones
+  - FAQ
+  - Range System
+  - Free y Pro
+  tutte: Todas las funciones
+  apri: Menú
+  chiudi: Cerrar
+briciole:
+  casa: Inicio
+etichette:
+  menu: Menú principal
+  briciole: Ruta de navegación
+  lingua: Idioma
+sorelle: Más funciones
+piede:
+- titolo: App
+  voci:
+  - Inicio
+  - Free y Pro
+  - Novedades
+  scarica: true
+- titolo: Funciones
+  dalla_fonte: true
+- titolo: Más información
+  voci:
+  - FAQ
+  - Range System
+- titolo: Soporte
+  voci:
+  - Soporte
+  - Política de privacidad (en inglés)
+  - Condiciones de uso (en inglés)
+- titolo: Idioma
+  lingue: true
+indice:
+  meta:
+    title: 'Funciones: contador de disparos, mantenimiento | AIMONX'
+    description: 'Todo lo que AIMONX lleva al día: armas, disparos, sesiones, munición, mantenimiento, renovaciones, costes y estadísticas. En tu iPhone, sin cuenta.'
+  titolo: Todo lo que AIMONX lleva al día
+  sommario: Una sola app para tus armas, tus disparos, tu munición y tu mantenimiento. Elige una función para ver cómo funciona.
+  badge: Descargar en el App Store

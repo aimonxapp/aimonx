@@ -1,0 +1,65 @@
+# _data/es/collegamenti.yml — DOVE PORTANO LE PAROLE. Giro W33. ⛔ Di Claude Code, gemella di `_data/it/collegamenti.yml`.
+# ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
+
+frasi:
+- frase: Privacy Policy (en inglés)
+  href: "/privacy-policy/"
+  tipo: radice
+- frase: Terms of Use (en inglés)
+  href: "/terms/"
+  tipo: radice
+- frase: Mira cómo funciona la munición
+  href: "/features/ammo-and-costs/"
+  tipo: pagina
+- frase: Descubre el diario de tiro
+  href: "/features/range-log/"
+  tipo: pagina
+- frase: Descubre las fichas de armas
+  href: "/features/firearm-records/"
+  tipo: pagina
+- frase: Mira cómo funcionan las listas personalizadas
+  href: "/features/custom-lists/"
+  tipo: pagina
+- frase: Mira qué pasa cuando Pro termina
+  href: "/faq/#qué-pasa-con-mis-datos-si-termina-mi-suscripción-a-aimonx-pro"
+  tipo: pagina
+- frase: Mira cómo funciona la protección avanzada
+  href: "/features/privacy-and-security/"
+  tipo: pagina
+- frase: Mira cómo funciona el mantenimiento
+  href: "/features/maintenance/"
+  tipo: pagina
+- frase: Mira cómo protege AIMONX tus datos
+  href: "/features/privacy-and-security/"
+  tipo: pagina
+- frase: Mira cómo funciona el contador de disparos
+  href: "/features/round-count/"
+  tipo: pagina
+- frase: support@aimonx.app
+  href: mailto:support@aimonx.app
+  tipo: posta
+- frase: FAQ
+  href: "/faq/"
+  tipo: pagina
+- frase: Política de privacidad (en inglés)
+  href: "/privacy-policy/"
+  tipo: radice
+- frase: Condiciones de uso (en inglés)
+  href: "/terms/"
+  tipo: radice
+makerworld: https://makerworld.com/en/models/3524948-ammo-box-9mm-100-rounds-aimonx-range-system
+radice:
+- Política de privacidad (en inglés)
+- Condiciones de uso (en inglés)
+menu:
+  Inicio: "/"
+  Funciones: "/features/"
+  Todas las funciones: "/features/"
+  FAQ: "/faq/"
+  Range System: "/range-system/"
+  Free y Pro: "/pricing/"
+  Compara Free y Pro: "/pricing/"
+  Novedades: "/updates/"
+  Soporte: "/support/"
+  Política de privacidad (en inglés): "/privacy-policy/"
+  Condiciones de uso (en inglés): "/terms/"

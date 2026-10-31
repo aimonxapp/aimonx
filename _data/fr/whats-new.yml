@@ -1,0 +1,38 @@
+# _data/fr/whats-new.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Nouveautés : toutes les versions de l''app | AIMONX'
+  description: Ce qui a changé dans chaque version d'AIMONX, le journal de tir pour iPhone, de la plus récente à la plus ancienne.
+titolo: Nouveautés d'AIMONX
+sommario: Toutes les mises à jour de l'app, de la plus récente à la plus ancienne.
+blocchi:
+- tipo: h2
+  testo: Version 1.1.0 — [DATE DE SORTIE]
+- tipo: ul
+  voci:
+  - Photos pour vos armes, séances et munitions. La première peut servir d'icône
+  - 'Entretien selon le temps : en jours ou en mois, en coups, ou les deux. Et le rappel anticipé est désormais gratuit'
+  - 'Le coût de vos rechargements d''après ce que vous avez payé (Pro) : saisissez le prix des ogives, amorces, douilles et poudre, et AIMONX calcule le coût par coup'
+  - Vitesse initiale, facteur de puissance et énergie pour chaque munition, et le calcul du facteur de puissance sur l'accueil
+  - Vos stands sur la carte, avec l'itinéraire dans Plans d'Apple
+  - 'Séances : distance, météo, vent, température et Copier la dernière séance'
+  - 'Armes : capacité et caractéristiques techniques (fonctionnement, détente, finition, canon)'
+  - 'Munitions : icône au choix, les munitions épuisées restent visibles, statistiques sur 12 mois'
+  - La copie chiffrée dans iCloud se met à jour plus souvent, avec un nouveau bouton Sauvegarder maintenant
+  - AIMONX parle désormais français et espagnol
+  - Essayez AIMONX Pro gratuitement pendant 1 mois (nouveaux abonnés)
+- tipo: h2
+  testo: Version 1.0.1 — 15 octobre 2026
+- tipo: ul
+  voci:
+  - Nouveau bouton Sauvegarder maintenant sur la page Sauvegarde AIMONX, pour sauvegarder dans iCloud quand vous voulez.
+  - Votre sauvegarde iCloud se met aussi à jour quand vous ouvrez l'app, pas seulement quand vous la quittez.
+  - Correction d'un plantage lors de la suppression d'une arme.
+  - Les gros journaux utilisent beaucoup moins de mémoire pendant la sauvegarde.
+- tipo: h2
+  testo: Version 1.0.0 — 8 octobre 2026
+- tipo: p
+  testo: La première version. Enregistrez vos armes, vos séances au stand et vos matchs. Suivez vos coups, vos munitions, l'entretien, les renouvellements et les coûts. Créez des rapports PDF de vos armes. Votre journal est chiffré sur votre iPhone, avec une copie chiffrée dans votre propre iCloud.
+badge: Télécharger dans l'App Store

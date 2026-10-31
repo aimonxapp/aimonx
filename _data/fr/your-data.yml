@@ -1,0 +1,91 @@
+# _data/fr/your-data.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Journal de tir privé : chiffré et sans compte | AIMONX'
+  description: AIMONX garde votre journal de tir chiffré sur votre iPhone et dans votre propre iCloud. Pas de compte, aucun serveur AIMONX, aucun suivi. Voici comment ça marche.
+titolo: Vos données restent à vous
+sommario: Ce que vous possédez et la façon dont vous tirez ne regardent que vous. C'est pourquoi nous avons conçu AIMONX pour que même nous ne puissions pas voir votre journal. Voici comment ça marche, en clair, et comment le vérifier vous-même.
+blocchi:
+- tipo: h2
+  testo: Pas de compte. Rien à créer.
+- tipo: p
+  testo: Téléchargez AIMONX et commencez. Pas d'e-mail, pas de mot de passe à créer, pas de nom. Il n'y a pas de connexion, parce qu'il n'y a pas de compte AIMONX du tout.
+- tipo: h2
+  testo: Aucun serveur AIMONX
+- tipo: p
+  testo: Votre journal n'est pas stocké sur un serveur AIMONX, parce qu'il n'y en a pas. Nous ne voyons jamais vos armes, vos numéros de série ni vos compteurs de coups.
+- tipo: h2
+  testo: Chiffré sur votre iPhone
+- tipo: p
+  testo: Tout votre journal vit dans une base de données chiffrée sur votre iPhone. Elle ne s'ouvre que quand vous confirmez que c'est bien vous, avec Face ID, Touch ID ou votre code, et par défaut elle se verrouille dès que vous quittez l'app. Même dans le sélecteur d'apps, AIMONX n'affiche que son logo.
+- tipo: schermate
+  alt:
+  - 'L''écran de verrouillage d''AIMONX : « AIMONX est verrouillée », avec le bouton Déverrouiller.'
+  - 'AIMONX dans le sélecteur d''apps de l''iPhone : seulement son logo et un cadenas, à la place de vos données.'
+- tipo: h2
+  testo: Une copie chiffrée dans votre propre iCloud
+- tipo: p
+  testo: Un téléphone, ça se casse, ça se perd, ça se remplace. C'est pourquoi, par défaut, AIMONX garde une copie chiffrée de votre journal dans votre propre iCloud. Elle enregistre vos modifications quand vous ouvrez l'app, toutes les quelques minutes pendant que vous l'utilisez, quand vous la fermez, et chaque fois que vous touchez Sauvegarder maintenant. Vos photos y vont aussi, chacune chiffrée avec sa propre clé.
+- tipo: ul
+  voci:
+  - Elle est chiffrée sur votre iPhone, avec la même clé que votre journal, avant d'aller où que ce soit.
+  - Elle se trouve dans votre espace iCloud personnel. Nous n'y avons pas accès.
+  - Elle est distincte de la sauvegarde iCloud de votre iPhone, qui ne peut restaurer que le téléphone entier, d'un bloc.
+  - Nouvel iPhone, ou app réinstallée ? Vos armes, vos séances et vos munitions reviennent toutes seules.
+  - Vous n'en voulez pas ? Vous pouvez la désactiver.
+- tipo: schermate
+  alt:
+  - 'La page Sauvegarde AIMONX : la sauvegarde activée, l''heure de la dernière sauvegarde et le bouton Sauvegarder maintenant.'
+- tipo: h2
+  testo: Fonctionne hors ligne
+- tipo: p
+  testo: Pas de réseau au stand ? Enregistrez comme d'habitude. Votre copie chiffrée est enregistrée dans votre iCloud la prochaine fois que vous utilisez l'app avec une connexion.
+- tipo: h2
+  testo: Une protection avancée, si vous le souhaitez
+- tipo: p
+  testo: 'Face ID vous protège si votre téléphone est perdu ou volé. Mais par défaut, la clé de votre journal est conservée dans votre trousseau Apple : quiconque peut entrer dans votre compte Apple pourrait l''atteindre. Vous la voulez hors de portée de tous, sauf de vous ? Ajoutez un mot de passe que vous seul connaissez. AIMONX vous le demandera à chaque démarrage, et Face ID seul n''ouvrira plus votre journal. Choisissez-le long, comme quelques mots à la suite. La protection avancée est incluse dans Pro.'
+- tipo: p
+  testo: 'Une mise en garde, en toute franchise : si vous l''oubliez, personne ne pourra récupérer vos données. Ni nous, ni personne.'
+- tipo: schermate
+  alt:
+  - 'Les réglages de Protection avancée d''AIMONX : verrouillage automatique en sortant, Face ID activé, et l''option d''ajouter un mot de passe que vous seul connaissez.'
+- tipo: h2
+  testo: Le numéro de série est facultatif
+- tipo: p
+  testo: Ajoutez-le seulement si vous le voulez, ou utilisez un nom à vous comme « Pistolet de match 1 ». Les photos que vous ajoutez sont débarrassées de leur position et des autres informations cachées avant d'être enregistrées.
+- tipo: h2
+  testo: Les cartes, seulement quand vous touchez
+- tipo: p
+  testo: Placez vos stands sur la carte si vous le voulez. Votre position n'est utilisée que quand vous touchez Utiliser la position actuelle, et la carte, l'itinéraire et la recherche d'adresse sont fournis par Apple et ne se lancent que quand vous touchez. Vos repères restent dans votre journal chiffré. Ils ne nous parviennent jamais.
+- tipo: h2
+  testo: Pas de pub. Pas d'analyse d'usage. Aucun suivi.
+- tipo: p
+  testo: 'AIMONX ne contient aucun code tiers qui communique avec Internet : pas d''analyse d''usage, pas de collecte de plantages, pas de régies publicitaires. Vos données ne parlent qu''à votre propre iCloud.'
+- tipo: h2
+  testo: Vos données, à vos conditions
+- tipo: ul
+  voci:
+  - forte: Les rapports PDF
+    testo: de vos armes sont créés directement sur votre iPhone, avec un mot de passe facultatif.
+  - forte: 'Les archives chiffrées (Pro) :'
+    testo: 'exportez tout votre journal avec un mot de passe à part, et gardez-le où vous voulez : un disque, un autre cloud, une clé USB.'
+  - forte: La restauration d'une archive est toujours gratuite
+    testo: ", même sans Pro."
+  - forte: Envie de repartir de zéro ?
+    testo: Réinitialiser l'app supprime votre journal de votre iPhone, et votre copie chiffrée dans iCloud aussi.
+- tipo: h2
+  testo: Vérifiez-le vous-même
+- tipo: ul
+  voci:
+  - Téléchargez AIMONX. Il n'y a pas d'écran d'inscription.
+  - Activez le mode Avion et enregistrez une séance. Ça marche.
+  - 'Regardez la section Confidentialité de l''app sur notre page App Store : Données non collectées.'
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: 'Free vous donne tout ce qui est sur cette page, y compris votre copie chiffrée dans iCloud, à deux exceptions près, réservées à Pro : la protection avancée et l''export d''archives chiffrées.'
+- tipo: p
+  testo: Vous voulez les détails juridiques ? Lisez notre Privacy Policy.
+badge: Télécharger dans l'App Store

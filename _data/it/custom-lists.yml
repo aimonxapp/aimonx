@@ -16,9 +16,9 @@ sommario: "Non trovi il tuo calibro? La tua tipologia d'arma? La tua disciplina 
 
 blocchi:
   - tipo: h2
-    testo: "Nove liste, tutte tue"
+    testo: "Undici liste, tutte tue"
   - tipo: p
-    testo: "Calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza. Le trovi in Gestione liste, nella scheda Home: ognuna la sistemi come vuoi."
+    testo: "Calibri, tipologie arma, categorie arma, tipi di azione, tipi di scatto, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza. Le trovi in Gestione liste, nella scheda Home: ognuna la sistemi come vuoi."
   - tipo: schermate
     alt:
       - "Gestione liste in AIMONX: calibri, tipologie arma, categorie arma, tipi sessione, malfunzionamenti, tipi di intervento, tipi di palla, discipline gara e tipologie di scadenza."

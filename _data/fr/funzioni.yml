@@ -1,0 +1,56 @@
+# _data/fr/funzioni.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+- nome: Compteur de coups
+  lead: Chaque arme, chaque coup.
+  body: 'Saisissez chaque arme une seule fois. Les coups s''additionnent tout seuls à partir de vos séances au stand : pas de calcul de tête, pas de carnet.'
+  alt: Vos armes dans AIMONX, chacune avec son nombre de coups et l'état de son entretien en couleur.
+  link: Voir comment marche le compteur de coups
+- nome: Journal de tir
+  lead: Séances et matchs.
+  body: Notez où vous avez tiré, avec quoi et comment ça s'est passé, incidents compris. Placez vos stands sur la carte. Pour les matchs, aussi le classement, les points et la division.
+  alt: 'La liste des séances dans AIMONX : entraînements et séances de dry fire, chacune avec l''arme, le lieu et les coups tirés.'
+  link: Découvrir le journal de tir
+- nome: Munitions et coûts
+  lead: Des munitions sous contrôle.
+  body: Munitions manufacturées avec numéros de lot et inventaire. Munitions rechargées avec recettes, coût des composants et productions. Vitesse initiale, facteur de puissance et énergie pour chaque munition.
+  alt: Les munitions manufacturées dans AIMONX, avec les coups disponibles et les alertes de stock faible.
+  link: Voir comment marche le suivi des munitions
+- nome: Rechargement
+  lead: Vos rechargements, au centime près
+  body: Si vous rechargez, votre recette, vous la connaissez. AIMONX la garde pour vous, avec ce que vous coûte chaque coup, les productions que vous avez chargées et leurs performances. Ensuite, chaque séance au stand les consomme et ajoute les coups à l'arme, comme n'importe quelle munition.
+  alt: 'Une munition rechargée dans AIMONX : calibre, type et poids de l''ogive, coût par coup, puis sa vitesse, son facteur de puissance et son énergie.'
+- nome: Calcul du facteur de puissance
+  lead: Le calcul du facteur de puissance, sur votre iPhone
+  body: Major ou minor ? Saisissez le poids de l'ogive et la vitesse initiale, et AIMONX affiche le facteur de puissance et l'énergie pendant que vous tapez. C'est gratuit, et c'est à un toucher de l'accueil.
+  alt: 'Le calcul du facteur de puissance dans AIMONX : une ogive de 124 grains à 350 m/s donne un facteur de puissance de 142 et une énergie de 492 joules.'
+- nome: Entretien
+  lead: L'entretien à votre façon.
+  body: Créez vos propres règles pour chaque arme (nettoyage, lubrification, changement de ressort, tout ce que vous voulez) par coups, par temps ou les deux, la première échéance l'emporte. Choisissez quand être prévenu, et AIMONX vous le dit dans l'app quand c'est le moment.
+  alt: La page d'une arme dans AIMONX, avec son total de coups et ses règles d'entretien pour le nettoyage et le ressort récupérateur.
+  link: Voir comment marche l'entretien
+- nome: Listes personnalisées
+  lead: Vos listes, à votre façon.
+  body: Votre calibre ou votre type d'arme n'y est pas ? Ajoutez-le. Ce que vous n'utilisez jamais, faites-le glisser. Chaque liste dans laquelle vous choisissez, c'est vous qui la réglez.
+  alt: 'Gérer les listes dans AIMONX : calibres, types d''arme, catégories d''arme, types de séance, incidents, types d''intervention, types d''ogive, disciplines de match et types de renouvellement.'
+  link: Voir comment marchent les listes personnalisées
+- lead: Des renouvellements qui ne vous échappent pas.
+  body: 'Autorisations et licences, adhésions au club et au stand, assurance : avec un rappel autant de jours avant que vous le voulez.'
+  alt: 'Les renouvellements dans AIMONX : adhésions au stand et au club et un permis, chacun avec sa date.'
+- lead: Ce que vous coûte vraiment le tir.
+  body: Le coût par séance, par coup et par arme, et l'entraînement comparé à la compétition.
+  alt: 'Le détail des coûts dans AIMONX : ce que vous dépensez en munitions, matchs et autres, et le coût par type de séance.'
+- lead: Des statistiques qui montrent vos progrès.
+  body: Les coups dans le temps et par arme, vos munitions les plus utilisées, la fiabilité de chaque arme et les stands où vous allez le plus. Pour voir où en est vraiment votre tir.
+  alt: 'L''écran Statistiques d''AIMONX : coups tirés, séances et dépenses sur trois mois, comparés à la période précédente, au-dessus d''un graphique des coups tirés dans le temps.'
+- nome: Fiches des armes
+  lead: Les fiches de vos armes en PDF.
+  body: 'Caractéristiques, accessoires et jusqu''à 5 photos pour chaque arme. Une fiche pour chacune et l''inventaire complet : créés sur votre iPhone, avec mot de passe si vous voulez, partagés seulement quand vous le décidez.'
+  alt: Un inventaire des armes en PDF créé avec AIMONX, avec photos, numéros de série, détails d'achat et totaux.
+  link: Voir les fiches des armes
+- nome: Vos données
+  lead: Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+  body: Votre journal vit chiffré sur votre iPhone. Une copie chiffrée est gardée dans votre propre iCloud (activée par défaut, et vous pouvez la désactiver), pour qu'un nouvel iPhone ne veuille pas dire tout recommencer. Le numéro de série est facultatif.
+  alt: 'L''écran de verrouillage d''AIMONX : « AIMONX est verrouillée », avec le bouton Déverrouiller.'
+  link: Voir comment AIMONX protège vos données

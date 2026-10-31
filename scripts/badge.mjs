@@ -134,7 +134,8 @@ for (const url of urls) {
     const note = [];
     if (m.quanti !== 1) note.push(`⛔ ${m.quanti} badge (Apple: uno per pagina)`);
     if (m.alt < 40) note.push('⛔ sotto i 40 px');
-    if (Math.abs(m.proporzione - m.naturale) > 0.01) note.push(`⛔ proporzioni ${m.proporzione.toFixed(3)} invece di ${m.naturale.toFixed(3)}`);
+    // ⚠️ 0,02 dal giro W33: il badge francese è largo 126,5 e il browser ne dà 127 in `naturalWidth`: la soglia di prima protestava per un arrotondamento.
+    if (Math.abs(m.proporzione - m.naturale) > 0.02) note.push(`⛔ proporzioni ${m.proporzione.toFixed(3)} invece di ${m.naturale.toFixed(3)}`);
     for (const v of ['sopra', 'sotto', 'sinistra', 'destra'])
       if (m.vicino[v] && m.vicino[v].d < m.quarto) note.push(`⛔ ${v}: ${m.vicino[v].chi} a ${m.vicino[v].d} px`);
     if (m.ritocchi.length) note.push(`⛔ ritocchi: ${m.ritocchi.join(', ')}`);

@@ -75,6 +75,7 @@
 // Esce: assets/img/screenshots/<nome>-<larghezza>.webp (le foto: assets/img/range-system/)
 
 import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { homedir, tmpdir } from 'node:os';
 import { join, dirname, resolve } from 'node:path';
@@ -100,6 +101,7 @@ if (!sorgenti) {
 const TELEFONO = [430, 645, 860];
 const FOGLIO = [600, 900, 1200];
 const FOTO = [480, 800, 1200];
+const paese = (p, nome) => `${p}/${readdirSync(join(sorgenti, p)).find((f) => f.endsWith(`_${nome}.png`))}`;
 const LISTA = [
   { da: 'home_1.png',          a: 'aimonx-home-screen',          larghezze: TELEFONO },
   { da: 'firearms_1.png',      a: 'aimonx-firearms-round-count', larghezze: TELEFONO },
@@ -132,7 +134,6 @@ const LISTA = [
   // ⚠️ `liste_7` è il file RISCRITTO da Cowork il 16/10 alle 15:10: il primo
   // aveva sei voci su sette con la stessa icona, e il testo alternativo
   // («each with its own icon») diceva il falso. Riguardato a piena risoluzione.
-  { da: 'liste_1b_manage-lists-originale.png', a: 'aimonx-manage-lists',        larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_6_bullet-types-custom.png',     a: 'aimonx-bullet-types-custom', larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_5_malfunctions.png',            a: 'aimonx-malfunctions',        larghezze: TELEFONO, gruppo: 'liste' },
   { da: 'liste_2_caliber-dropdown.png',        a: 'aimonx-caliber-picker',      larghezze: TELEFONO, gruppo: 'liste' },
@@ -151,6 +152,19 @@ const LISTA = [
   // ⚠️ `togli`: quante righe bianche toglie, uguale nelle due lingue, così i due file hanno la stessa altezza.
   { da: 'US/096_pdf_inventory_p1.png', a: 'aimonx-inventory-pdf', larghezze: FOGLIO, gruppo: '1.1.0', togli: 200 },
   { da: 'IT/095_pdf_inventory_p1.png', a: 'aimonx-inventory-pdf-it', larghezze: FOGLIO, gruppo: '1.1.0', togli: 200 },
+  // --- giro W33: le liste a undici voci in quattro lingue, e FR/ES delle pagine nuove ---
+  // ⚠️ `paese()` cerca per nome di pagina: i numeri cambiano da una cartella all'altra.
+  ...(gruppo === 'paesi' ? [
+    { da: paese('US', 'lists'), a: 'aimonx-manage-lists', larghezze: TELEFONO, gruppo },
+    { da: paese('IT', 'lists'), a: 'aimonx-manage-lists-it', larghezze: TELEFONO, gruppo },
+    ...['FR', 'ES'].flatMap((p) => [
+      ['reload_form_5', 'aimonx-handload-components'], ['reload_card_1', 'aimonx-handload-card'], ['ammo_card_2', 'aimonx-ammo-card-inventory'],
+      ['ammo_1', 'aimonx-ammo-list'], ['ammo_card_1', 'aimonx-ammo-card-details'], ['pf_calc_1', 'aimonx-power-factor-calculator'],
+      ['firearm_card_3', 'aimonx-firearm-tech-specs'], ['firearm_card_4', 'aimonx-firearm-photos'], ['session_card_1', 'aimonx-session-map'],
+      ['location_card_1', 'aimonx-range-map'], ['rule_form_1', 'aimonx-maintenance-rule-form'], ['lists', 'aimonx-manage-lists'],
+    ].map(([n, a]) => ({ da: paese(p, n), a: `${a}-${p.toLowerCase()}`, larghezze: TELEFONO, gruppo })).concat(
+      [{ da: paese(p, 'pdf_inventory_p1'), a: `aimonx-inventory-pdf-${p.toLowerCase()}`, larghezze: FOGLIO, gruppo, togli: 200 }])),
+  ] : []),
   // --- giro W31, la pagina del Range System ---
   // ⛔ Mai le foto con la scatola Geco (7733, 7735, 7737): la nota in testa alla bozza.
   { da: 'ars-9mm-100_7643.jpg', a: 'range-system/9mm-ammo-box-open-100-rounds',  larghezze: FOTO, gruppo: 'range-system' },

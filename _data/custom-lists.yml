@@ -24,9 +24,9 @@ sommario: "Can't find your caliber? Your firearm type? Your match discipline? Ad
 
 blocchi:
 - tipo: h2
-  testo: Nine lists, all yours
+  testo: "Eleven lists, all yours"
 - tipo: p
-  testo: "Calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Find them under Manage Lists, on the Home tab, and make each one your own."
+  testo: "Calibers, firearm types, firearm categories, action types, trigger types, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Find them under Manage Lists, on the Home tab, and make each one your own."
 - tipo: schermate
   alt:
   - "Manage Lists in AIMONX: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types."

@@ -81,8 +81,27 @@ funzioni_it:
   power-factor-calculator: [aimonx-power-factor-calculator-it]
   firearm-records: [aimonx-firearm-tech-specs-it, aimonx-firearm-photos-it, aimonx-inventory-pdf-it]
   range-log: [aimonx-session-map-it, aimonx-range-map-it]
+  custom-lists: [aimonx-manage-lists-it, aimonx-bullet-types-custom, aimonx-malfunctions, aimonx-caliber-picker, aimonx-maintenance-types-icons]
   # ⭐ La terza è la regola 1.1.0 in italiano (Pier, 31/10); le altre quattro restano quelle di sempre.
   maintenance: [aimonx-maintenance-rules, aimonx-firearms-round-count, aimonx-maintenance-rule-form-it, aimonx-maintenance-new-entry, aimonx-maintenance-log]
+
+funzioni_fr:
+  handloads: [aimonx-handload-components-fr, aimonx-handload-card-fr]
+  ammo-and-costs: [aimonx-ammo-card-inventory-fr, aimonx-ammo-list-fr, aimonx-ammo-card-details-fr]
+  power-factor-calculator: [aimonx-power-factor-calculator-fr]
+  firearm-records: [aimonx-firearm-tech-specs-fr, aimonx-firearm-photos-fr, aimonx-inventory-pdf-fr]
+  range-log: [aimonx-session-map-fr, aimonx-range-map-fr]
+  maintenance: [aimonx-maintenance-rules, aimonx-firearms-round-count, aimonx-maintenance-rule-form-fr, aimonx-maintenance-new-entry, aimonx-maintenance-log]
+  custom-lists: [aimonx-manage-lists-fr, aimonx-bullet-types-custom, aimonx-malfunctions, aimonx-caliber-picker, aimonx-maintenance-types-icons]
+
+funzioni_es:
+  handloads: [aimonx-handload-components-es, aimonx-handload-card-es]
+  ammo-and-costs: [aimonx-ammo-card-inventory-es, aimonx-ammo-list-es, aimonx-ammo-card-details-es]
+  power-factor-calculator: [aimonx-power-factor-calculator-es]
+  firearm-records: [aimonx-firearm-tech-specs-es, aimonx-firearm-photos-es, aimonx-inventory-pdf-es]
+  range-log: [aimonx-session-map-es, aimonx-range-map-es]
+  maintenance: [aimonx-maintenance-rules, aimonx-firearms-round-count, aimonx-maintenance-rule-form-es, aimonx-maintenance-new-entry, aimonx-maintenance-log]
+  custom-lists: [aimonx-manage-lists-es, aimonx-bullet-types-custom, aimonx-malfunctions, aimonx-caliber-picker, aimonx-maintenance-types-icons]
 
 funzioni:
   handloads: [aimonx-handload-components, aimonx-handload-card]

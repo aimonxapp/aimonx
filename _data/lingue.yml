@@ -43,3 +43,21 @@
   # nessun parametro di campagna.
   store: "https://apps.apple.com/it/app/aimonx/id6794895643"
   badge: /assets/img/download-on-the-app-store-black-it-it.svg
+
+# ⭐ Giro W33: francese e spagnolo. ⛔ Privacy Policy e Terms of Use lì non esistono
+# (Pier, 31/10): i loro link portano alle pagine inglesi (`radice`, `collegamenti.yml`).
+- codice: fr
+  html: fr
+  og: fr_FR
+  nome: "Français"
+  prefisso: /fr
+  store: "https://apps.apple.com/fr/app/aimonx/id6794895643"
+  badge: /assets/img/download-on-the-app-store-black-fr-fr.svg
+
+- codice: es
+  html: es
+  og: es_ES
+  nome: "Español"
+  prefisso: /es
+  store: "https://apps.apple.com/es/app/aimonx/id6794895643"
+  badge: /assets/img/download-on-the-app-store-black-es-es.svg

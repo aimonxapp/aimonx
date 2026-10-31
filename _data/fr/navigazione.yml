@@ -1,0 +1,48 @@
+# _data/fr/navigazione.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+menu:
+  voci:
+  - Accueil
+  - Fonctionnalités
+  - FAQ
+  - Range System
+  - Free et Pro
+  tutte: Toutes les fonctionnalités
+  apri: Menu
+  chiudi: Fermer
+briciole:
+  casa: Accueil
+etichette:
+  menu: Menu principal
+  briciole: Fil d'Ariane
+  lingua: Langue
+sorelle: Autres fonctionnalités
+piede:
+- titolo: App
+  voci:
+  - Accueil
+  - Free et Pro
+  - Nouveautés
+  scarica: true
+- titolo: Fonctionnalités
+  dalla_fonte: true
+- titolo: En savoir plus
+  voci:
+  - FAQ
+  - Range System
+- titolo: Assistance
+  voci:
+  - Assistance
+  - Politique de confidentialité (en anglais)
+  - Conditions d'utilisation (en anglais)
+- titolo: Langue
+  lingue: true
+indice:
+  meta:
+    title: 'Fonctionnalités : compteur de coups, entretien, listes | AIMONX'
+    description: 'Tout ce que suit AIMONX : armes, coups, séances, munitions, entretien, renouvellements, coûts et statistiques. Sur votre iPhone, sans compte.'
+  titolo: Tout ce que suit AIMONX
+  sommario: Une seule app pour vos armes, vos coups, vos munitions et votre entretien. Choisissez une fonctionnalité pour voir comment elle marche.
+  badge: Télécharger dans l'App Store

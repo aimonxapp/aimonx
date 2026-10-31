@@ -1,0 +1,55 @@
+# _data/es/firearm-records.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Inventario de armas: fichas, fotos y PDF | AIMONX'
+  description: 'Ten en un solo sitio los datos de cada arma: especificaciones, accesorios, compra y hasta 5 fotos. Crea un PDF de un arma o de todo tu inventario.'
+titolo: Cada arma, con su ficha
+sommario: Marca, modelo, calibre, especificaciones, lo que le has montado y lo que te costó. AIMONX lo guarda todo en un solo sitio, con fotos, y cuando lo necesitas lo convierte en un PDF.
+blocchi:
+- tipo: h2
+  testo: Los datos que importan
+- tipo: p
+  testo: Llámala como la llamas en el campo de tiro. Añade marca, modelo, calibre, categoría y tipo. El número de serie es opcional, y en su lugar puedes usar un identificador privado. Después, punzones de prueba, año, cargadores y capacidad.
+- tipo: h2
+  testo: Especificaciones técnicas
+- tipo: p
+  testo: Funcionamiento, disparador, acabado, color, longitud del cañón en milímetros o en pulgadas, y notas del cañón. ¿Tiras con algo que no está en las listas? Añade tus propios tipos de funcionamiento y de disparador.
+- tipo: schermate
+  alt:
+  - 'Las especificaciones técnicas de un arma en AIMONX: funcionamiento, disparador, acabado, color y longitud del cañón, y después sus accesorios.'
+- tipo: h2
+  testo: Accesorios
+- tipo: p
+  testo: 'Una línea por accesorio: visor, miras, cachas. Añade uno directamente desde la ficha del arma, sin abrir el formulario.'
+- tipo: h2
+  testo: Hasta 5 fotos
+- tipo: p
+  testo: Añade hasta 5 fotos a cada arma, desde Fotos o desde Archivos, y ordénalas como quieras. Usa la primera como icono del arma para encontrarla enseguida en la lista.
+- tipo: p
+  testo: 'Las fotos se guardan sin sus datos de ubicación: AIMONX quita el GPS y los datos de la cámara al añadirlas. Van cifradas, como el resto de tu diario.'
+- tipo: schermate
+  alt:
+  - Las fotos de un arma en AIMONX, con la opción de usar la primera como icono.
+- tipo: h2
+  testo: Compra y valor
+- tipo: p
+  testo: 'Fecha, precio, dónde la compraste y la dirección del vendedor, más el valor actual, que pones tú. ¿La has vendido? Toca Marcar como vendida: AIMONX te propone borrar el número de serie, y el historial se queda.'
+- tipo: h2
+  testo: PDF, de un arma o de todas
+- tipo: p
+  testo: Crea el PDF de un arma, con sus datos, especificaciones, compra, accesorios, notas y todas sus fotos, o de todo tu inventario, con una fila y una miniatura por arma y los totales. Si quieres, añade una contraseña. El PDF nunca incluye tu nombre ni tu identificador privado.
+- tipo: schermate
+  forma: pdf
+  alt:
+  - Un inventario de armas en PDF hecho con AIMONX, con una miniatura, los datos de compra y el valor de cada arma.
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: Free lleva un arma activa, con fotos y PDF. Pro lleva todas las armas que tengas. Las armas vendidas o desactivadas no cuentan para el límite.
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Las fichas de tus armas se quedan cifradas en tu iPhone, y el número de serie es opcional. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

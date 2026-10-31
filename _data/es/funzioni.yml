@@ -1,0 +1,56 @@
+# _data/es/funzioni.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+- nome: Contador de disparos
+  lead: Cada arma, cada disparo.
+  body: 'Registra cada arma una sola vez. Los disparos se suman solos a partir de tus sesiones en el campo de tiro: sin cuentas de cabeza, sin libreta.'
+  alt: Tus armas en AIMONX, cada una con sus disparos y el estado del mantenimiento por colores.
+  link: Mira cómo funciona el contador de disparos
+- nome: Diario de tiro
+  lead: Sesiones y competiciones.
+  body: Apunta dónde has tirado, con qué y cómo ha ido, interrupciones incluidas. Pon tus campos de tiro en el mapa. En las competiciones, también el puesto, la puntuación y la división.
+  alt: 'La lista de sesiones en AIMONX: entrenamientos y sesiones de dry fire, cada una con el arma, el lugar y los disparos.'
+  link: Descubre el diario de tiro
+- nome: Munición y costes
+  lead: Munición bajo control.
+  body: Munición comercial con lotes y stock. Recargas con receta, coste de los componentes y producciones. Velocidad en boca, factor de potencia y energía para cada munición.
+  alt: La munición comercial en AIMONX, con los disparos disponibles y los avisos de stock bajo.
+  link: Mira cómo funciona la munición
+- nome: Recarga
+  lead: Tus recargas, al céntimo
+  body: Si recargas, la receta ya la tienes en la cabeza. AIMONX te la guarda, junto con lo que te cuesta cada disparo, las producciones que has cargado y cómo rinden. Luego cada sesión en el campo de tiro las va gastando y suma los disparos al arma, como cualquier otra munición.
+  alt: 'Una munición recargada en AIMONX: calibre, tipo y peso de la punta, coste por disparo, y su velocidad, factor de potencia y energía.'
+- nome: Calculadora del factor de potencia
+  lead: La calculadora del factor de potencia, en tu iPhone
+  body: "¿Major o minor? Introduce el peso de la punta y la velocidad en boca, y AIMONX te muestra el factor de potencia y la energía mientras escribes. Es gratis, y está a un toque desde Inicio."
+  alt: 'La calculadora del factor de potencia en AIMONX: el peso de la punta y la velocidad en boca dan el factor de potencia y la energía en boca.'
+- nome: Mantenimiento
+  lead: El mantenimiento, a tu manera.
+  body: 'Crea tus propias reglas para cada arma (limpieza, lubricación, cambio de muelles, lo que quieras) por disparos, por tiempo o ambos: manda lo que llegue primero. Elige con cuánta antelación quieres saberlo, y AIMONX te avisa dentro de la app cuando toca.'
+  alt: La página de un arma en AIMONX, con sus disparos totales y las reglas de mantenimiento por disparos para la limpieza y el muelle recuperador.
+  link: Mira cómo funciona el mantenimiento
+- nome: Listas personalizadas
+  lead: Tus listas, a tu manera.
+  body: "¿No encuentras tu calibre o tu tipo de arma? Añádelo. Lo que nunca usas, quítalo deslizando. Cada lista de la que eliges la decides tú."
+  alt: 'Gestionar listas en AIMONX: calibres, tipos de arma, categorías de arma, tipos de sesión, interrupciones, tipos de mantenimiento, tipos de punta, disciplinas de competición y tipos de renovación.'
+  link: Mira cómo funcionan las listas personalizadas
+- lead: Renovaciones que no se te escapan.
+  body: 'Licencias y permisos, cuotas de club y de campo de tiro, seguro: con un recordatorio los días antes que quieras.'
+  alt: 'Las renovaciones en AIMONX: cuotas de campo de tiro y de club y una licencia de armas, cada una con su fecha.'
+- lead: Lo que de verdad te cuesta tirar.
+  body: Coste por sesión, por disparo y por arma, y cuánto gastas en entrenamiento frente a competición.
+  alt: 'El resumen de costes en AIMONX: lo que gastas en munición, competiciones y otros, y el coste por tipo de sesión.'
+- lead: Estadísticas que muestran tu progreso.
+  body: Disparos en el tiempo y por arma, la munición que más usas, la fiabilidad de cada arma y los campos de tiro que más visitas. Para ver cómo va de verdad tu tiro.
+  alt: 'La pantalla Estadísticas de AIMONX: disparos, sesiones y gasto de los últimos tres meses, comparados con el periodo anterior, sobre la gráfica de disparos en el tiempo.'
+- nome: Fichas de armas
+  lead: Fichas de armas en PDF.
+  body: 'Especificaciones, accesorios y hasta 5 fotos de cada arma. Una ficha para cada una y el inventario completo: creados en tu iPhone, con contraseña si quieres, compartidos solo cuando tú decides.'
+  alt: Un inventario de armas en PDF hecho con AIMONX, con fotos, números de serie, datos de compra y totales.
+  link: Descubre las fichas de armas
+- nome: Tus datos
+  lead: Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+  body: Tu diario vive cifrado en tu iPhone. Una copia cifrada se guarda en tu propio iCloud (activada de serie, y puedes desactivarla), así que un iPhone nuevo no significa empezar de cero. El número de serie es opcional.
+  alt: 'La pantalla de bloqueo de AIMONX: «AIMONX está bloqueada».'
+  link: Mira cómo protege AIMONX tus datos

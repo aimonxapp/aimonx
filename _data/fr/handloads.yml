@@ -1,0 +1,55 @@
+# _data/fr/handloads.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Rechargement : recettes, coût par coup, facteur de puissance | AIMONX'
+  description: Notez les recettes de vos munitions rechargées, le coût des composants et vos productions. AIMONX calcule pour vous le coût par coup, le facteur de puissance et l'énergie.
+titolo: Vos rechargements, au centime près
+sommario: Si vous rechargez, votre recette, vous la connaissez. AIMONX la garde pour vous, avec ce que vous coûte chaque coup, les productions que vous avez chargées et leurs performances. Ensuite, chaque séance au stand les consomme et ajoute les coups à l'arme, comme n'importe quelle munition.
+blocchi:
+- tipo: h2
+  testo: La recette
+- tipo: p
+  testo: 'Donnez-lui un nom, choisissez le calibre, le type et le poids de l''ogive, et c''est parti. Ajoutez votre recette de chargement si vous voulez : COL/OAL, diamètre de l''ogive, longueur de l''étui et sertissage, en millimètres ou en pouces.'
+- tipo: h2
+  testo: Ce que vous coûte vraiment chaque coup
+- tipo: p
+  testo: Deux façons de saisir vos composants.
+- tipo: p
+  forte: 'Par paquet :'
+  testo: pour les douilles, les amorces et les ogives, le prix payé et le nombre de pièces dans la boîte ; pour la poudre, le prix, le poids du pot en livres, grammes ou kilos, et votre charge en grains. AIMONX calcule le coût de chaque composant par coup, et le total. Changez la charge et le coût de la poudre se met à jour aussitôt.
+- tipo: p
+  forte: 'Par coup :'
+  testo: vous avez déjà fait vos calculs ? Saisissez le coût par coup de chaque composant. Passer d'un mode à l'autre n'efface rien.
+- tipo: schermate
+  alt:
+  - Les composants d'une munition rechargée dans AIMONX, chacun avec le prix payé et la quantité, et en dessous le coût par coup calculé.
+- tipo: h2
+  testo: Des productions avec leur propre prix
+- tipo: p
+  testo: Enregistrez chaque production avec sa quantité, son numéro de lot et sa date. Chaque production garde les coûts de la recette du jour où vous l'avez chargée. Les prix ont augmenté ? Mettez à jour la recette, et les nouvelles productions prennent les nouveaux prix. Les anciennes restent comme elles étaient.
+- tipo: h2
+  testo: Facteur de puissance et énergie, calculés pour vous
+- tipo: p
+  testo: Saisissez la vitesse initiale en fps ou en m/s. AIMONX affiche le facteur de puissance (poids de l'ogive en grains multiplié par la vitesse en fps, divisé par 1 000, sans les décimales, comme en match) et l'énergie à la bouche, en joules ou en ft·lb. Fini les calculs sur la calculatrice.
+- tipo: schermate
+  alt:
+  - 'Une munition rechargée dans AIMONX : calibre, type et poids de l''ogive, coût par coup, puis sa vitesse, son facteur de puissance et son énergie.'
+- tipo: h2
+  testo: Votre stock, et quand recharger
+- tipo: p
+  testo: Les coups que vous tirez sortent de votre inventaire, en commençant par la production la plus ancienne. Fixez un seuil minimum et AIMONX vous prévient quand vous arrivez au bout, dès que vous enregistrez la séance.
+- tipo: h2
+  testo: Photos et statistiques
+- tipo: p
+  testo: 'Jusqu''à 3 photos pour chaque munition rechargée. Sa fiche vous montre les 12 derniers mois : coups tirés, dernière utilisation, l''arme qui l''a le plus utilisée, séances, matchs et dépenses.'
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: Les munitions rechargées font partie d'AIMONX Pro. Les munitions manufacturées, avec lots, coût par coup, facteur de puissance et énergie, sont gratuites et sans limites. Le premier mois de Pro est offert aux nouveaux abonnés.
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Vos recettes restent chiffrées sur votre iPhone. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

@@ -1,0 +1,58 @@
+# _data/es/maintenance.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Mantenimiento de armas por disparos o por tiempo | AIMONX
+  description: Reglas de limpieza y mantenimiento para cada arma por disparos, por tiempo o ambos. AIMONX te muestra en la app lo que se acerca o toca, y guarda el historial de cada intervención.
+titolo: El mantenimiento de tus armas, por disparos o por tiempo
+sommario: 'Limpiar cada 500 disparos, un muelle recuperador nuevo a los 5000, lubricar cada 3 meses: tus reglas ya te las sabes. Lo difícil es llevar la cuenta. AIMONX cuenta los disparos de tus sesiones en el campo de tiro, vigila el calendario y te dice cuándo toca.'
+blocchi:
+- tipo: h2
+  testo: Tus reglas, tus plazos
+- tipo: p
+  testo: 'Para cada arma, elige qué hay que hacer y cada cuánto: cada tantos disparos, cada tantos días o meses, o ambos, y manda lo que llegue primero, como «cada 5000 disparos o 12 meses». Limpieza, lubricación, un cambio de muelle, una revisión o cualquier cosa de tu propia lista. Ponle un título a cada regla y, si quieres, un par de líneas sobre cómo lo haces. AIMONX no te dice cada cuánto limpiar. Las reglas las pones tú, según el manual o tu experiencia.'
+- tipo: schermate
+  alt:
+  - La página de un arma en AIMONX, con sus disparos totales y las reglas de mantenimiento por disparos para la limpieza y el muelle recuperador.
+- tipo: h2
+  testo: Lo que toca, de un vistazo
+- tipo: p
+  testo: 'Cada arma muestra su estado por colores: verde cuando está bien, amarillo cuando se acerca el mantenimiento, naranja cuando toca. Lo ves en el arma, en Inicio y nada más guardar una sesión.'
+- tipo: p
+  testo: En Inicio y en tu lista de armas, debajo de cada arma, una barra se llena a medida que se acerca la próxima limpieza, en disparos o en días.
+- tipo: schermate
+  alt:
+  - Tus armas en AIMONX, cada una con sus disparos y el estado del mantenimiento por colores.
+- tipo: h2
+  testo: El aviso, con antelación
+- tipo: p
+  testo: Elige con cuántos disparos o días de antelación quieres saberlo, para planificar la limpieza en lugar de que te pille por sorpresa. El aviso previo ahora es gratis.
+- tipo: h2
+  testo: Márcalo como hecho, y la cuenta vuelve a empezar
+- tipo: p
+  testo: Abre una regla y toca Marcar como hecho. AIMONX rellena la fecha, los disparos del arma y los datos de la regla. Corrige lo que no cuadre, por ejemplo la fecha si lo hiciste hace dos días, y guarda. Los contadores de esa regla, disparos y tiempo, vuelven a empezar desde ahí.
+- tipo: schermate
+  alt:
+  - 'La edición de una regla de mantenimiento en AIMONX: arriba Marcar como hecho, después el tipo, el título, el procedimiento y un intervalo de 5000 disparos, con la opción de hacerlo por tiempo.'
+  - 'Una intervención de mantenimiento nueva en AIMONX, ya rellenada a partir de la regla: título, procedimiento y los disparos actuales del arma.'
+- tipo: h2
+  testo: Cada intervención, en el diario del arma
+- tipo: p
+  testo: 'Mantenimiento y diario del arma guarda la historia de cada arma: limpiezas, lubricaciones, revisiones, reparaciones. Apunta qué hiciste, los productos que usaste y cuánto costó.'
+- tipo: schermate
+  alt:
+  - 'Mantenimiento y diario del arma en AIMONX: dos limpiezas completas de la misma pistola, cada una con su fecha, sus disparos y su procedimiento.'
+- tipo: h2
+  testo: Sin notificaciones, a propósito
+- tipo: p
+  testo: 'AIMONX nunca te envía una notificación de mantenimiento, ni por disparos ni por tiempo. Abre la app y lo tienes ahí: en el arma, en Inicio y después de guardar una sesión.'
+- tipo: h2
+  testo: "¿La compraste de segunda mano?"
+- tipo: p
+  testo: Introduce los disparos con los que llegó y elige si cuentan para su mantenimiento.
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: Free da a cada arma una regla de limpieza, por disparos, por tiempo o ambos, con aviso previo. Pro añade reglas ilimitadas de cualquier tipo.
+badge: Descargar en el App Store

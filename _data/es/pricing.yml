@@ -1,0 +1,81 @@
+# _data/es/pricing.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Free y Pro: planes y precios | AIMONX'
+  description: AIMONX se descarga gratis, y Free es un diario de verdad. Pro cuesta 1,99 € al mes o 14,99 € al año, y los nuevos suscriptores tienen el primer mes gratis. Compara los dos planes.
+titolo: Free y Pro
+sommario: Empieza con un diario de verdad, no con una demo. Pásate a Pro cuando necesites más.
+confronto:
+  titolo: Comparar planes
+  sottotitolo: Todas las funciones de un vistazo.
+  nota: Fotos, la calculadora del factor de potencia y tus campos de tiro en el mapa están en los dos planes.
+  piani:
+  - nome: Free
+    motto: Ideal para empezar
+  - nome: Pro
+    motto: Sin límites. Todo desbloqueado.
+  incluso: Incluido
+  escluso: No incluido
+  righe:
+  - voce: Armas
+    free: 1 activa
+    pro: Ilimitadas
+  - voce: Munición comercial
+    free: Todo, sin límites
+    pro: Todo, sin límites
+  - voce: Munición recargada
+    free: false
+    pro: Receta, costes, producción, stock
+  - voce: Reglas de mantenimiento
+    free: 1 regla de limpieza por arma
+    pro: Ilimitadas
+  - voce: Renovaciones que seguir
+    free: Hasta 2
+    pro: Ilimitadas
+  - voce: Competiciones
+    free: false
+    pro: Resultados, puntuaciones y divisiones
+  - voce: Estadísticas
+    free: true
+    pro: true
+  - voce: Copia de seguridad de AIMONX
+    free: true
+    pro: true
+  - voce: Crear un archivo para exportar
+    free: false
+    pro: true
+  - voce: Importar un archivo
+    free: Siempre disponible
+    pro: Siempre disponible
+  - voce: Reactivar un arma por encima del límite
+    free: false
+    pro: true
+  - voce: Protección avanzada (contraseña)
+    free: false
+    pro: true
+vantaggi:
+  titolo: Ventajas Pro
+  sottotitolo: Todo lo que necesitas, sin concesiones.
+  voci:
+  - titolo: Armas ilimitadas
+    testo: Tu colección crece contigo.
+  - titolo: Munición recargada
+    testo: Recetas, costes, producción, stock.
+  - titolo: Mantenimiento ilimitado
+    testo: Más reglas para cada arma, todas las que necesites.
+  - titolo: Competiciones
+    testo: Resultados, puntuaciones y clasificaciones.
+blocchi:
+- titolo: Cuánto cuesta Pro
+  forte: Pro cuesta 1,99 € al mes o 14,99 € al año.
+  testo: Los nuevos suscriptores tienen el primer mes gratis, en el plan mensual o en el anual. Después, Pro se renueva al precio normal, salvo que canceles al menos 24 horas antes de que termine el mes.
+  poi: 'Pro es compatible con En familia, así que también vale para tu familia. Cancela cuando quieras. Los precios cambian según el país: el App Store te muestra el tuyo.'
+- titolo: Si Pro termina
+  forte: Si tu suscripción a Pro termina, no se pierde nada.
+  testo: Todo lo que supera los límites de Free sigue a la vista, solo que congelado, hasta que vuelvas.
+  link: Mira qué pasa cuando Pro termina
+- titolo: Hay más en camino
+  testo: Llegarán muchas funciones nuevas en próximas actualizaciones, pensadas para cómo entrenan de verdad los tiradores deportivos.
+badge: Descargar en el App Store

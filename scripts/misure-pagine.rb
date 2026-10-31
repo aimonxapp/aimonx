@@ -314,7 +314,9 @@ $da_controllare.each do |chi, dove, meta, frammento|
   ids = $ancore_per_pagina[meta]
   if ids.nil?
     $ancore_rotte << "#{chi} -> #{dove} (la pagina di arrivo non si e letta)"
-  elsif !ids.include?(frammento)
+  # ⭐ Giro W33: `relative_url` scrive gli accenti in `%C3%A9`, e il browser li rilegge:
+  # un'ancora francese o spagnola si confronta col suo testo, non con la codifica.
+  elsif !ids.include?(URI.decode_uri_component(frammento))
     $ancore_rotte << "#{chi} -> #{dove} (in quella pagina non c e nessun id \"#{frammento}\")"
   end
 end

@@ -1,0 +1,47 @@
+# _data/es/range-log.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Diario de tiro: sesiones, campos de tiro y mapas | AIMONX'
+  description: 'Registra cada sesión en el campo de tiro: arma, munición, disparos, distancia, condiciones e interrupciones. Pon tus campos de tiro en el mapa y llega con Mapas de Apple.'
+titolo: Un diario de tiro que se rellena solo
+sommario: Registras una sesión en unos pocos toques, y los disparos, la munición y el mantenimiento se actualizan solos. La próxima vez, empieza desde la última.
+blocchi:
+- tipo: h2
+  testo: Lo que lleva una sesión
+- tipo: p
+  testo: El arma, la fecha, el tipo de sesión, el campo de tiro y la distancia. La munición que has tirado, una línea por munición, cada una con sus disparos. El coste de la línea y otros gastos, las interrupciones si las hubo, las condiciones, las estrellas y las notas. Y hasta 5 fotos, por ejemplo de tus blancos.
+- tipo: schermate
+  alt:
+  - 'Una sesión en AIMONX: descripción, arma, fecha, tipo, campo de tiro, distancia y el mapa del campo.'
+- tipo: h2
+  testo: Copiar última sesión
+- tipo: p
+  testo: "¿Siempre tiras con la misma configuración? Toca Copiar última sesión y el arma, el tipo, el campo de tiro, la distancia y la munición ya están rellenados. Fecha de hoy, disparos por escribir, y listo."
+- tipo: h2
+  testo: Tus campos de tiro, en el mapa
+- tipo: p
+  testo: 'Guarda tus campos de tiro y armerías con su dirección y sus datos de contacto. Después pon el punto: con tu ubicación actual, tocando el mapa o dejando que AIMONX lo proponga a partir de la dirección. Cada sesión en ese campo muestra su mapa, y Cómo llegar abre Mapas de Apple para llevarte hasta allí.'
+- tipo: p
+  testo: Los mapas y la búsqueda de direcciones son de Apple y solo se activan cuando tocas. Tus puntos se quedan en tu diario cifrado y nunca nos llegan.
+- tipo: schermate
+  alt:
+  - Un campo de tiro en AIMONX con su dirección, el mapa con el punto y el botón Cómo llegar.
+- tipo: h2
+  testo: El dry fire es entrenamiento, no disparos
+- tipo: p
+  testo: Registra el dry fire como una sesión aparte, con tus repeticiones. Nunca toca el contador de disparos, la munición ni el mantenimiento.
+- tipo: h2
+  testo: También las competiciones
+- tipo: p
+  testo: Con Pro registras una competición con su disciplina, división y nivel, además del puesto, los puntos, el porcentaje y el tiempo. AIMONX guarda tus mejores resultados y te muestra cómo vas.
+- tipo: h2
+  testo: Free y Pro
+- tipo: p
+  testo: Las sesiones son ilimitadas en Free, y también los campos de tiro, los mapas y las fotos. Las competiciones forman parte de Pro.
+- tipo: h2
+  testo: Privada por diseño
+- tipo: p
+  testo: Tus sesiones y tus campos de tiro se quedan cifrados en tu iPhone. Sin cuenta. Sin servidores de AIMONX. Nunca vemos tus datos.
+badge: Descargar en el App Store

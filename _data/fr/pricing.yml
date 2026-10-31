@@ -1,0 +1,81 @@
+# _data/fr/pricing.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Free et Pro : formules et tarifs | AIMONX'
+  description: AIMONX se télécharge gratuitement, et Free est un vrai journal. Pro coûte 1,99 € par mois ou 14,99 € par an, et le premier mois est offert aux nouveaux abonnés. Comparez les deux formules.
+titolo: Free et Pro
+sommario: Commencez avec un vrai journal, pas une démo. Passez à Pro quand il vous en faut plus.
+confronto:
+  titolo: Comparer les formules
+  sottotitolo: Toutes les fonctionnalités en un coup d'œil.
+  nota: Photos, calcul du facteur de puissance et stands sur la carte sont inclus dans les deux formules.
+  piani:
+  - nome: Free
+    motto: Idéal pour débuter
+  - nome: Pro
+    motto: Aucune limite. Tout est débloqué.
+  incluso: Inclus
+  escluso: Non inclus
+  righe:
+  - voce: Armes
+    free: 1 active
+    pro: Illimitées
+  - voce: Munitions manufacturées
+    free: Tout, sans limites
+    pro: Tout, sans limites
+  - voce: Munitions rechargées
+    free: false
+    pro: Recette, coûts, productions, inventaire
+  - voce: Règles d'entretien
+    free: 1 règle de nettoyage par arme
+    pro: Illimitées
+  - voce: Renouvellements à suivre
+    free: Jusqu'à 2
+    pro: Illimitées
+  - voce: Matchs
+    free: false
+    pro: Classements, scores, divisions, résultats
+  - voce: Statistiques
+    free: true
+    pro: true
+  - voce: Sauvegarde AIMONX
+    free: true
+    pro: true
+  - voce: Créer une archive à exporter
+    free: false
+    pro: true
+  - voce: Importer une archive
+    free: Toujours disponible
+    pro: Toujours disponible
+  - voce: Réactiver une arme au-delà de la limite
+    free: false
+    pro: true
+  - voce: Protection avancée (mot de passe)
+    free: false
+    pro: true
+vantaggi:
+  titolo: Avantages Pro
+  sottotitolo: Tout ce qu'il vous faut, sans compromis.
+  voci:
+  - titolo: Armes illimitées
+    testo: Votre collection grandit avec vous.
+  - titolo: Munitions rechargées
+    testo: Recettes, coûts, productions, inventaire.
+  - titolo: Entretien illimité
+    testo: Plusieurs règles par arme, autant qu'il vous en faut.
+  - titolo: Matchs
+    testo: Classements, scores et résultats.
+blocchi:
+- titolo: Ce que coûte Pro
+  forte: Pro coûte 1,99 € par mois ou 14,99 € par an.
+  testo: Le premier mois est offert aux nouveaux abonnés, sur l'abonnement mensuel ou annuel. Ensuite, Pro se renouvelle au prix normal, sauf si vous l'annulez au moins 24 heures avant la fin du mois.
+  poi: 'Le partage familial est inclus : votre famille profite aussi de Pro. Résiliable à tout moment. Les prix varient selon les pays : l''App Store affiche le vôtre.'
+- titolo: Si Pro s'arrête
+  forte: Si votre abonnement Pro s'arrête, rien ne se perd.
+  testo: Tout ce qui dépasse les limites de Free reste lisible, simplement figé, jusqu'à votre retour.
+  link: Voir ce qui se passe quand Pro s'arrête
+- titolo: D'autres nouveautés arrivent
+  testo: De nombreuses fonctionnalités arrivent dans les prochaines mises à jour, pensées pour la façon dont les tireurs sportifs s'entraînent vraiment.
+badge: Télécharger dans l'App Store

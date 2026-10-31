@@ -74,7 +74,7 @@ blocchi:
 - tipo: h3
   testo: Can I customize the other lists in AIMONX?
 - tipo: p
-  testo: "Yes, all nine: calibers, firearm types, firearm categories, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Add your own items, remove the defaults you never use, and bring them back anytime."
+  testo: "Yes, all eleven: calibers, firearm types, firearm categories, action types, trigger types, session types, malfunctions, maintenance types, bullet types, match disciplines and renewal types. Add your own items, remove the defaults you never use, and bring them back anytime."
 - tipo: p
   testo: See how custom lists work
 - tipo: h3

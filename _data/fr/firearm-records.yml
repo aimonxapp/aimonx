@@ -1,0 +1,55 @@
+# _data/fr/firearm-records.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: 'Inventaire des armes : fiches, photos et PDF | AIMONX'
+  description: 'Gardez au même endroit les détails de chaque arme : caractéristiques, accessoires, achat et jusqu''à 5 photos. Créez un PDF d''une arme ou de tout votre inventaire.'
+titolo: Chaque arme, avec sa fiche
+sommario: Marque, modèle, calibre, caractéristiques, ce qui est monté dessus et ce que vous l'avez payée. AIMONX garde tout au même endroit, avec les photos, et en fait un PDF quand il vous en faut un.
+blocchi:
+- tipo: h2
+  testo: Les détails qui comptent
+- tipo: p
+  testo: Appelez-la comme vous l'appelez au stand. Ajoutez la marque, le modèle, le calibre, la catégorie et le type. Le numéro de série est facultatif, et vous pouvez utiliser un identifiant privé à la place. Ajoutez aussi les poinçons d'épreuve, l'année, les chargeurs et la capacité.
+- tipo: h2
+  testo: Caractéristiques techniques
+- tipo: p
+  testo: Fonctionnement, détente, finition, couleur, longueur du canon en millimètres ou en pouces, et notes sur le canon. Vous tirez avec une arme que les listes ne prévoient pas ? Ajoutez vos propres types de fonctionnement et de détente.
+- tipo: schermate
+  alt:
+  - 'Les caractéristiques techniques d''une arme dans AIMONX : fonctionnement, détente, finition, couleur et longueur du canon, puis ses accessoires.'
+- tipo: h2
+  testo: Accessoires
+- tipo: p
+  testo: 'Une ligne par accessoire : optique, organes de visée, plaquettes. Ajoutez-en un directement depuis la page de l''arme, sans ouvrir le formulaire.'
+- tipo: h2
+  testo: Jusqu'à 5 photos
+- tipo: p
+  testo: Ajoutez jusqu'à 5 photos à chaque arme, depuis Photos ou Fichiers, et classez-les comme vous voulez. Utilisez la première comme icône de l'arme pour la repérer tout de suite dans la liste.
+- tipo: p
+  testo: 'Les photos sont enregistrées sans leurs données de localisation : AIMONX retire la position GPS et les détails de prise de vue quand vous les ajoutez. Elles sont chiffrées comme le reste de votre journal.'
+- tipo: schermate
+  alt:
+  - Les photos d'une arme dans AIMONX, avec l'option d'utiliser la première comme icône.
+- tipo: h2
+  testo: Achat et valeur
+- tipo: p
+  testo: 'La date, le prix, l''endroit où vous l''avez achetée et l''adresse du vendeur, plus la valeur actuelle, que vous fixez vous-même. Vous l''avez vendue ? Touchez Marquer comme vendue : AIMONX vous propose d''effacer le numéro de série, et l''historique reste.'
+- tipo: h2
+  testo: Un PDF, pour une arme ou pour toutes
+- tipo: p
+  testo: Créez le PDF d'une seule arme, avec ses détails, ses caractéristiques, son achat, ses accessoires, ses notes et toutes ses photos, ou de tout votre inventaire, avec une ligne et une miniature par arme et les totaux. Ajoutez un mot de passe si vous voulez. Le PDF ne contient jamais votre nom ni votre identifiant privé.
+- tipo: schermate
+  forma: pdf
+  alt:
+  - L'inventaire des armes en PDF créé par AIMONX, avec une miniature, les détails d'achat et la valeur de chaque arme.
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: Free garde une arme active, avec photos et PDF. Pro garde toutes vos armes. Les armes vendues et inactives ne comptent pas dans la limite.
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Les fiches de vos armes restent chiffrées sur votre iPhone, et le numéro de série est facultatif. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

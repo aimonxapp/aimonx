@@ -1,0 +1,64 @@
+# _data/fr/round-count.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Compteur de coups automatique pour chaque arme | AIMONX
+  description: Enregistrez une séance et AIMONX ajoute tout seul les coups à l'arme, puis vous montre quand arrive le nettoyage ou le changement de ressort.
+titolo: Le compteur de coups qui fait le calcul à votre place
+sommario: La plupart des tireurs perdent le fil quelque part entre le sac de tir et le carnet. Avec AIMONX, vous enregistrez la séance et le nombre de coups de chaque arme se met à jour tout seul. Pas de calcul de tête, pas de tableur.
+blocchi:
+- tipo: h2
+  testo: Comment ça marche
+- tipo: p
+  forte: Enregistrez la séance.
+  testo: Choisissez l'arme, choisissez les munitions, indiquez combien de coups vous avez tirés. C'est tout.
+- tipo: p
+  forte: Le total se met à jour tout seul.
+  testo: Le compteur de l'arme monte. Si vous suivez ces munitions, votre stock baisse. Vos compteurs d'entretien avancent avec.
+- tipo: p
+  forte: Une erreur ? Corrigez-la.
+  testo: 'Modifiez ou supprimez une séance, et les totaux suivent. AIMONX ne garde pas un chiffre qui pourrait dériver : il refait la somme de vos séances à chaque fois.'
+- tipo: schermate
+  alt:
+  - 'Une séance de tir dans AIMONX : l''arme, la date, le stand, les munitions et les coups tirés.'
+- tipo: h2
+  testo: Partez d'où en est votre arme aujourd'hui
+- tipo: p
+  testo: Achetée d'occasion, ou déjà quelques milliers de coups au compteur ? Indiquez le nombre de coups avec lequel elle est arrivée, et choisissez s'ils comptent dans son total et son entretien.
+- tipo: h2
+  testo: Plusieurs munitions dans la même séance ?
+- tipo: p
+  testo: Ajoutez une ligne pour chacune. Une boîte de munitions d'entraînement et quelques coups de votre munition de match finissent dans la même séance, chacune comptée à part.
+- tipo: h2
+  testo: Le dry fire n'ajoute pas de coups
+- tipo: p
+  testo: Enregistrez votre dry fire comme une séance à part, avec vos répétitions. Il ne touche jamais au compteur de coups ni à vos munitions.
+- tipo: h2
+  testo: Les armes louées comptent aussi
+- tipo: p
+  testo: Vous avez tiré avec une arme de location au stand ? Enregistrez-la comme les autres. Ses coups comptent, et vous n'avez pas d'entretien à suivre.
+- tipo: h2
+  testo: Le compteur pilote votre entretien
+- tipo: p
+  testo: 'Fixez vos propres règles pour chaque arme, par coups, par temps ou les deux, comme un nettoyage tous les 500 coups ou un ressort neuf à 5 000, et choisissez à quel moment être prévenu. Chaque arme affiche un état en couleur : vert quand tout va bien, jaune quand l''entretien approche, orange quand il est à faire.'
+- tipo: schermate
+  alt:
+  - La page d'une arme dans AIMONX, avec son total de coups et ses règles d'entretien pour le nettoyage et le ressort.
+- tipo: h2
+  testo: Voyez où partent vos coups
+- tipo: p
+  testo: Les coups par arme, les coups dans le temps, et ce que chaque coup vous coûte vraiment.
+- tipo: schermate
+  alt:
+  - Les coups tirés par arme dans AIMONX, avec la part de chaque arme, les séances et le coût par coup.
+  - 'Les photos d''une arme et ses 30 derniers jours dans AIMONX : coups, séances, dépenses et coût par coup.'
+- tipo: h2
+  testo: Free et Pro
+- tipo: p
+  testo: Free suit le compteur d'une arme active, avec des séances illimitées. Pro suit toutes vos armes. Pro ajoute aussi des règles d'entretien de tous types.
+- tipo: h2
+  testo: Privé par conception
+- tipo: p
+  testo: Vos compteurs sont chiffrés sur votre iPhone. Pas de compte. Aucun serveur AIMONX. Nous ne voyons jamais vos données.
+badge: Télécharger dans l'App Store

@@ -1,0 +1,36 @@
+# _data/es/support.yml — le parole della pagina in spagnolo. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+meta:
+  title: Soporte y contacto | AIMONX
+  description: "¿Tienes una pregunta, has encontrado un fallo o tienes una idea para AIMONX? Escríbenos a support@aimonx.app. Puedes escribirnos en español o en inglés."
+titolo: Soporte
+blocchi:
+- tipo: p
+  testo: "¿Tienes una pregunta, has encontrado un fallo o tienes una idea para AIMONX? Escríbenos a support@aimonx.app. Puedes escribirnos en español o en inglés."
+- tipo: p
+  testo: Echa un vistazo a las FAQ para resolver rápido las dudas sobre iPhone nuevo, contraseñas y Free o Pro.
+- tipo: p
+  testo: AIMONX lo hace un único desarrollador independiente, así que cada correo lo lee la persona que construye la app.
+- tipo: h2
+  testo: Para que podamos ayudarte
+- tipo: p
+  testo: 'Dinos:'
+- tipo: ul
+  voci:
+  - el modelo de tu iPhone y la versión de iOS
+  - tu versión de AIMONX (la encuentras en los ajustes de la app)
+  - qué hiciste, qué esperabas y qué pasó en realidad
+- tipo: p
+  testo: Una captura de pantalla también ayuda.
+- tipo: h2
+  testo: Lo privado, mejor que siga privado
+- tipo: p
+  testo: Nunca necesitamos tus números de serie, fotos de tus armas ni tu diario para ayudarte. No los incluyas en el correo, y difumínalos si aparecen en una captura.
+- tipo: h2
+  testo: Privacidad y condiciones
+- tipo: ul
+  voci:
+  - Privacy Policy (en inglés)
+  - Terms of Use (en inglés)

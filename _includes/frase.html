@@ -39,6 +39,9 @@ _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W
       quale pagina di aimonx.app viene il lettore. Scelta di CC, giro W9.
       {%- endcomment -%}
       {%- capture frase_a -%}<a href="{{ c.href }}" rel="noreferrer">{{ c.frase }}</a>{%- endcapture -%}
+    {%- when 'radice' -%}
+      {%- comment -%} ⭐ Giro W33: Privacy e Terms esistono solo in inglese: niente prefisso della lingua. {%- endcomment -%}
+      {%- capture frase_a -%}<a href="{{ c.href | relative_url }}">{{ c.frase }}</a>{%- endcapture -%}
     {%- when 'posta' -%}
       {%- capture frase_a -%}<a href="{{ c.href }}">{{ c.frase }}</a>{%- endcapture -%}
     {%- else -%}

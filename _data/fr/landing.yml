@@ -1,0 +1,71 @@
+# _data/fr/landing.yml — le parole della pagina in francese. Giro W33.
+# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
+# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+
+brand: AIMONX
+meta:
+  title: 'AIMONX : journal de tir et compteur de coups'
+  description: 'AIMONX est le journal technique des tireurs sportifs : armes, coups, séances au stand, munitions, entretien et coûts, le tout sur votre iPhone.'
+hero:
+  sopratitolo: TRACK · MAINTAIN · SHOOT BETTER
+  titolo:
+  - Savez-vous vraiment
+  - combien de coups
+  - votre arme a tirés ?
+  lead: 'AIMONX est l''app journal technique des tireurs sportifs. Armes, coups, séances au stand, munitions, entretien et coûts : tout au même endroit, sur votre iPhone.'
+  punti:
+  - forte: Organisez
+    resto: vos armes
+  - forte: Suivez
+    resto: vos progrès
+  - forte: Planifiez
+    resto: l'entretien
+  - forte: Connaissez
+    resto: vos vrais coûts
+  badge: Télécharger dans l'App Store
+  schermata: 'L''écran d''accueil d''AIMONX : chaque arme avec son nombre de coups, vos 30 derniers jours en un coup d''œil et les renouvellements à venir.'
+  riga: VOS DONNÉES DE TIR. TOUJOURS AVEC VOUS.
+  garanzie:
+  - Pas de compte
+  - Aucun suivi
+  - Aucun serveur AIMONX
+  motto:
+  - Same passion.
+  - Every round counted.
+what:
+  title: Ce que suit AIMONX
+privacy:
+  title: Confidentialité
+  claim:
+  - Pas de compte. Aucun serveur AIMONX.
+  - Nous ne voyons jamais vos données.
+  items:
+  - lead: Fonctionne hors ligne.
+    body: Utilisez-la au stand même sans réseau. Votre copie chiffrée est enregistrée dans votre iCloud la prochaine fois que vous utilisez l'app avec une connexion.
+  - lead: Vos données ne parlent qu'à votre propre iCloud.
+    body: Aucun serveur AIMONX, aucun tiers, aucune analyse d'usage.
+  note: Votre journal vit chiffré sur votre iPhone. Une copie chiffrée est gardée dans votre propre iCloud (activée par défaut, et vous pouvez la désactiver), pour qu'un nouvel iPhone ne veuille pas dire tout recommencer. Le numéro de série est facultatif.
+  link: Voir comment AIMONX protège vos données
+security:
+  title: Sécurité
+  items:
+  - lead: Verrouillée avec Face ID.
+    body: AIMONX se verrouille quand vous la quittez et cache son contenu dans le sélecteur d'apps.
+  - lead: Une protection avancée, si vous le souhaitez.
+    body: 'Ajoutez un mot de passe que vous seul connaissez : au démarrage, même Face ID ne suffit plus pour ouvrir votre journal. Si vous l''oubliez, personne ne pourra récupérer vos données.'
+    tag: "(Pro)"
+piani:
+  title: Free et Pro
+  items:
+  - lead: Free est un vrai journal, pas une démo.
+    body: Une arme active, des séances illimitées, les munitions manufacturées avec inventaire, une règle de nettoyage par coups ou par temps avec le rappel anticipé, les renouvellements, les statistiques, les photos, les rapports PDF et votre copie chiffrée dans iCloud.
+  - lead: Pro supprime les limites.
+    body: Armes illimitées, munitions rechargées, règles d'entretien illimitées de tous types, renouvellements illimités, matchs et statistiques de match, archives chiffrées à exporter, et la protection avancée.
+  - lead: Pro coûte 1,99 € par mois ou 14,99 € par an.
+    body: Le premier mois est offert aux nouveaux abonnés.
+    poi: 'Le partage familial est inclus : votre famille profite aussi de Pro. Résiliable à tout moment. Les prix varient selon les pays : l''App Store affiche le vôtre.'
+  confronta: Comparer Free et Pro
+footer:
+  tagline: 'AIMONX : l''app journal technique des tireurs sportifs.'
+  copyright: "© 2026 Piermichele Fassio. Apple, le logo Apple, Face ID, iCloud, iPhone, Trousseau, Touch ID et App Store sont des marques d'Apple Inc., déposées aux États-Unis et dans d'autres pays et régions."
+  altri_marchi: Toutes les autres marques appartiennent à leurs propriétaires respectifs.

@@ -226,6 +226,9 @@
           {%- if f.aspetto.vetrina == false %}{% continue %}{% endif -%}
           {%- assign a = f.aspetto -%}
           {%- assign v = lin_t.funzioni[forloop.index0] -%}
+          {%- comment -%} ⭐ Giro W33: la schermata nella lingua della pagina, dove c'è (`schermata_<codice>`). {%- endcomment -%}
+          {%- assign car_k = 'schermata_' | append: lin.codice -%}
+          {%- assign car_s = a[car_k] | default: a.schermata -%}
           {%- assign tinta = a.tinta | default: 'verde' -%}
           {%- assign forma = a.forma | default: 'telefono' -%}
         <li class="voce tinta-{{ tinta }}{% if a.schermata and v.alt %} mostra-{{ forma }}{% endif %}">
@@ -261,7 +264,7 @@
             {%- if forma == 'foglio' %}
             {% include schermata.html nome=a.schermata alt=v.alt forma='foglio' sizes='(min-width: 880px) 540px, 86vw' %}
             {%- else %}
-            {% include schermata.html nome=a.schermata alt=v.alt forma='telefono' sizes='208px' %}
+            {% include schermata.html nome=car_s alt=v.alt forma='telefono' sizes='208px' %}
             {%- endif %}
             {%- endif %}
           </div>
