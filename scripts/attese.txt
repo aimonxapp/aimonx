@@ -168,7 +168,7 @@ testo_servito_fuori_bozza=0
 # ⛔ Deve restare 0, e questo controllo esiste perché un `#` rotto NON è un
 # errore per il browser: porta in cima alla pagina e basta. È il tipo di
 # rottura che nessuno segnala mai — le cinque voci della barra sono quattro `#`.
-ancore_rotte=2
+ancore_rotte=0
 
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che

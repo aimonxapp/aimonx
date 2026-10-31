@@ -13,6 +13,7 @@
 # Stampa righe `chiave=numero`, che scripts/controprova.sh confronta con
 # scripts/attese.txt. ⛔ Non decide niente: misura e basta.
 require "set"
+require "uri"
 require "json"
 
 radice = ARGV[0]
