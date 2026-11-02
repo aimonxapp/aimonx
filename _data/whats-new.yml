@@ -26,9 +26,8 @@ titolo: "What's new in AIMONX"
 sommario: "Every update to the app, newest first."
 
 blocchi:
-# ⛔ Giro W32: la data resta `[RELEASE DATE]` fino alla Fase B, poi si scrive quella vera.
 - tipo: h2
-  testo: "Version 1.1.0 — [RELEASE DATE]"
+  testo: "Version 1.1.0 — November 2, 2026"
 - tipo: ul
   voci:
   - "Photos for your firearms, sessions, and ammo. Make the first one the icon"

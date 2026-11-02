@@ -68,7 +68,7 @@ blocchi:
   testo: Antes de cambiar, abre Copia de seguridad de AIMONX en el iPhone antiguo y toca Hacer copia ahora, para que la copia tenga tus últimos cambios.
 - tipo: schermate
   alt:
-  - 'La página Copia de seguridad de AIMONX: copia activada, la hora de la última copia y el botón Hacer copia ahora.'
+  - "La página de copia de seguridad de AIMONX: copia activada, la hora de la última copia y el botón para hacer una copia al momento."
 - tipo: h3
   testo: "¿Cómo paso AIMONX a un iPhone nuevo con la protección avanzada activada?"
 - tipo: p

@@ -37,7 +37,7 @@ blocchi:
   - "¿No la quieres? Puedes desactivarla."
 - tipo: schermate
   alt:
-  - 'La página Copia de seguridad de AIMONX: copia activada, la hora de la última copia y el botón Hacer copia ahora.'
+  - "La página de copia de seguridad de AIMONX: copia activada, la hora de la última copia y el botón para hacer una copia al momento."
 - tipo: h2
   testo: Funciona sin conexión
 - tipo: p

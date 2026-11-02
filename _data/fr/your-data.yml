@@ -37,7 +37,7 @@ blocchi:
   - Vous n'en voulez pas ? Vous pouvez la désactiver.
 - tipo: schermate
   alt:
-  - 'La page Sauvegarde AIMONX : la sauvegarde activée, l''heure de la dernière sauvegarde et le bouton Sauvegarder maintenant.'
+  - "La page de sauvegarde d'AIMONX : la sauvegarde activée, l'heure de la dernière sauvegarde et le bouton pour sauvegarder tout de suite."
 - tipo: h2
   testo: Fonctionne hors ligne
 - tipo: p

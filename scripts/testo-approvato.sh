@@ -320,6 +320,14 @@ DICHIARATE = {
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
 TITOLI = [".what.title", ".privacy.title", ".security.title", ".piani.title"]
 
+# ⭐ Giro W33 fase B: LA DATA DEL RILASCIO DELLA 1.1.0, come `.data_pubblicazione`
+# per Privacy e Terms — l'unica differenza ammessa dal testo approvato. Le bozze
+# di «What's new» portano il segnaposto; in pagina c'è la data vera (bacheca,
+# CW-app, 02/11/2026). Si rimette il segnaposto al posto della data, e quel che
+# resta deve stare nella bozza. ⚠️ Stampata a ogni run, come le altre eccezioni.
+DATA_RILASCIO = { "en" => ["November 2, 2026", "[RELEASE DATE]"], "it" => ["2 novembre 2026", "[DATA DEL RILASCIO]"],
+                  "fr" => ["2 novembre 2026", "[DATE DE SORTIE]"], "es" => ["2 de noviembre de 2026", "[FECHA DE LANZAMIENTO]"] }
+
 # ⛔ STRUTTURA, NON PAROLE. `tipo: h2` dice al layout COME impaginare un
 # blocco: non compare in pagina e non ha nessun motivo di stare in una bozza.
 # ⚠️ Questa lista e volutamente CORTA e fatta di nomi di chiave, non di valori:
@@ -416,6 +424,13 @@ if modo == "sorgente"
     stringhe(YAML.load_file(percorso)) do |via, s|
       t = s.gsub(/[ \t\u00A0\u202F]+/, " ").strip
       next if (via.split(".").map { |x| x.sub(/\[\d+\]\z/, "") } & STRUTTURA).any?
+      dr = DATA_RILASCIO[p[:lingua]]
+      if p[:nome].include?("whats-new") && dr && t.include?("1.1.0 — #{dr[0]}")
+        dich += 1
+        puts "     ⚠️ #{p[:nome]}#{via}: «#{dr[0]}» al posto di «#{dr[1]}» della bozza — la data del rilascio della 1.1.0"
+        mancanti << [via, t] unless p[:testo_bozza].include?(t.sub(dr[0], dr[1]))
+        next
+      end
       if eccezioni.key?(via)
         dich += 1
         puts "     ⚠️ #{p[:nome]}#{via}: «#{t}» — #{eccezioni[via]}"
@@ -669,7 +684,11 @@ else
           senza_data = senza_data.sub(g, "").gsub(/[[:space:]]+/, " ").strip
         end
       end
-      if x.length < 3
+      dr = DATA_RILASCIO[p[:lingua]]
+      if p[:nome].include?("whats-new") && dr && x.include?("1.1.0 — #{dr[0]}") && consentito.include?(x.sub(dr[0], dr[1]))
+        dich += 1
+        puts "     ⚠️ #{p[:nome]}: «#{x}» — la data del rilascio della 1.1.0 è dichiarata; il resto sta nella bozza"
+      elsif x.length < 3
         brevi += 1
       elsif consentito.include?(x)
         ok += 1
