@@ -280,7 +280,7 @@ schermate_file=222
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
 badge_nel_sito=61
-link_allo_store=211
+link_allo_store=284
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:

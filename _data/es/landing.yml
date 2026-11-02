@@ -23,6 +23,8 @@ hero:
   - forte: Conoce
     resto: tus costes reales
   badge: Descargar en el App Store
+  # ⭐ Giro W35: il primo mese di Pro, sotto il badge e accanto al link allo Store in fondo. ⛔ Non nei dati strutturati.
+  mese: "Descarga gratis. ¿Nuevo en Pro? El primer mes corre de nuestra cuenta."
   schermata: 'La pantalla de inicio de AIMONX: cada arma con sus disparos, tus últimos 30 días de un vistazo y las próximas renovaciones.'
   riga: TUS DATOS DE TIRO. SIEMPRE CONTIGO.
   garanzie:

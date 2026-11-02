@@ -12,7 +12,10 @@ _includes/voce.html — UNA VOCE DI NAVIGAZIONE, scritta in un modo solo. Giro W
 {%- endcomment -%}
 {%- comment -%} ⭐ Giro W28: l'etichetta si cerca nella mappa della lingua della pagina (`lin_c`), e l'indirizzo prende il suo prefisso (`_includes/lingua.html`). {%- endcomment -%}
 {%- assign voce_dove = include.dove | default: lin_c.menu[include.v] -%}
-{%- if voce_dove == 'store' -%}
+{%- if voce_dove == 'recensione' -%}
+{%- comment -%} ⭐ Giro W35: lo Store della lingua con la sola richiesta di scrivere una recensione, come in Support. {%- endcomment -%}
+<a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ lin_store }}?action=write-review" rel="noreferrer">{{ include.v }}</a>
+{%- elsif voce_dove == 'store' -%}
 <a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ lin_store }}" rel="noreferrer">{{ include.v }}</a>
 {%- else -%}
 {%- comment -%} ⭐ Giro W33: le voci `radice` portano alle pagine rimaste in inglese, senza prefisso. {%- endcomment -%}

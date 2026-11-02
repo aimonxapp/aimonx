@@ -2,6 +2,9 @@
 # ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
 
 frasi:
+# ⭐ Giro W35: il link di «What's new» verso la recensione.
+- frase: "Deja una reseña en el App Store"
+  tipo: recensione
 # ⭐ Giro W34: «scrivi una recensione», verso lo Store della lingua con `?action=write-review`.
 - frase: "Escribir una reseña"
   tipo: recensione
@@ -49,6 +52,8 @@ radice:
 - Política de privacidad (en inglés)
 - Condiciones de uso (en inglés)
 menu:
+  # ⭐ Giro W35: la voce del piede verso la recensione (`_includes/voce.html`).
+  "Escribir una reseña": "recensione"
   Inicio: "/"
   Funciones: "/features/"
   Todas las funciones: "/features/"

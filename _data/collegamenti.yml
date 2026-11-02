@@ -42,6 +42,9 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W35: il link di «What's new» verso la recensione.
+  - frase: "Leave a review on the App Store"
+    tipo: recensione
   # ⭐ Giro W34: «scrivi una recensione», verso lo Store della lingua con `?action=write-review`.
   - frase: "Write a review"
     tipo: recensione
@@ -174,6 +177,8 @@ apre: "/features/"
 # «Privacy» e «Security» restano fuori: la privacy ha la sua pagina, «Your
 # data», nella tendina, e le due sezioni della landing restano.
 menu:
+  # ⭐ Giro W35: la voce del piede verso la recensione (`_includes/voce.html`).
+  "Write a review": "recensione"
   "Home":           "/"
   "Features":       "/features/"
   "All features":   "/features/"

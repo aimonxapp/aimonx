@@ -8,6 +8,9 @@ meta:
 titolo: Novedades de AIMONX
 sommario: Cada actualización de la app, de la más reciente a la más antigua.
 blocchi:
+# ⭐ Giro W35: la riga della recensione, in testa.
+- tipo: p
+  testo: "¿Te gustan las novedades? Deja una reseña en el App Store: ayuda a otros tiradores a encontrar AIMONX."
 - tipo: h2
   testo: Versión 1.1.0 — 2 de noviembre de 2026
 - tipo: ul

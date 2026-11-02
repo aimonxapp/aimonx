@@ -159,6 +159,9 @@
           </a>
         </p>
 
+        {%- comment -%} ⭐ Giro W35: il primo mese di Pro — testo piccolo, non un banner, FUORI dallo spazio libero del badge (`b.scss`, `scripts/badge.mjs`). {%- endcomment %}
+        <p class="mese">{{ d.hero.mese }}</p>
+
         <p class="riga-minuta">{{ d.hero.riga }}</p>
       </div>
 
@@ -416,6 +419,7 @@
       </svg>
     </p>
     <p class="allo-store"><a href="{{ lin_store }}" rel="noreferrer">{{ d.hero.badge }}</a></p>
+    <p class="mese mese-fondo">{{ d.hero.mese }}</p>
     </div>
   </div>
 

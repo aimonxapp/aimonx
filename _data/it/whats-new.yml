@@ -16,6 +16,9 @@ titolo: "Novità di AIMONX"
 sommario: "Ogni aggiornamento dell'app, dal più recente."
 
 blocchi:
+  # ⭐ Giro W35: la riga della recensione, in testa.
+  - tipo: p
+    testo: "Ti piacciono le novità? Lascia una recensione su App Store: aiuta altri tiratori a trovare AIMONX."
   - tipo: h2
     testo: "Versione 1.1.0 — 2 novembre 2026"
   - tipo: ul

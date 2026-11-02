@@ -228,6 +228,12 @@ body.v-b {
 .v-b .scarica a { display: inline-block; }
 .v-b .scarica img { height: var(--badge); width: auto; }
 .v-b .scarica + .riga-minuta { margin-top: #{"max(1rem, calc(var(--badge) / 4))"}; }
+// ⭐ Giro W35: la riga del primo mese di Pro. ⛔ Sopra ha lo spazio libero del badge
+// (un quarto della sua altezza, e almeno 1rem), e il colore delle righe chiare del verde.
+.v-b .scarica + .mese { margin-top: #{"max(1rem, calc(var(--badge) / 4))"}; }
+.v-b .mese { font-size: .95rem; line-height: 1.45; color: #CFE3D8; }
+.v-b .mese + .riga-minuta { margin-top: .9rem; }
+.v-b .mese-fondo { margin-top: .5rem; }
 
 // ⚠️ Il corpo scende sui telefoni per una ragione misurata: con la spaziatura
 // larga questa riga è 371 px, e dentro un telefono da 390 px ne restano 355.

@@ -8,6 +8,9 @@ meta:
 titolo: Nouveautés d'AIMONX
 sommario: Toutes les mises à jour de l'app, de la plus récente à la plus ancienne.
 blocchi:
+# ⭐ Giro W35: la riga della recensione, in testa.
+- tipo: p
+  testo: "Les nouveautés vous plaisent ? Laissez un avis sur l'App Store : cela aide d'autres tireurs à trouver AIMONX."
 - tipo: h2
   testo: Version 1.1.0 — 2 novembre 2026
 - tipo: ul

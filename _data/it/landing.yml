@@ -42,6 +42,8 @@ hero:
   # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge italiano di
   # Apple — e, scritto, il link di testo allo Store in fondo alla pagina.
   badge: "Scarica su App Store"
+  # ⭐ Giro W35: il primo mese di Pro, sotto il badge e accanto al link allo Store in fondo. ⛔ Non nei dati strutturati.
+  mese: "Si scarica gratis. Nuovo su Pro? Il primo mese te lo offriamo noi."
   schermata: "La schermata Home di AIMONX: ogni arma con i suoi colpi, gli ultimi 30 giorni a colpo d'occhio e le prossime scadenze."
   riga: "I TUOI DATI DI TIRO. SEMPRE CON TE."
   garanzie:

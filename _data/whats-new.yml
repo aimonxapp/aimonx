@@ -26,6 +26,9 @@ titolo: "What's new in AIMONX"
 sommario: "Every update to the app, newest first."
 
 blocchi:
+# ⭐ Giro W35: la riga della recensione, in testa.
+- tipo: p
+  testo: "Enjoying the updates? Leave a review on the App Store — it helps other shooters find AIMONX."
 - tipo: h2
   testo: "Version 1.1.0 — November 2, 2026"
 - tipo: ul
