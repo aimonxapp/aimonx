@@ -66,6 +66,11 @@ blocchi:
   testo: Keep your private stuff private
 - tipo: p
   testo: We never need your serial numbers, photos of your firearms, or your logbook to help you. Please leave them out of your email, and blur them out if they show up in a screenshot.
+# ⭐ Giro W34: la recensione, prima di «Privacy and terms». Il link lo fa `_includes/frase.html` (`recensione`).
+- tipo: h2
+  testo: "Like AIMONX? Leave a review"
+- tipo: p
+  testo: "A rating on the App Store helps other shooters find the app. Write a review — it takes a minute, and we read every one."
 - tipo: h2
   testo: Privacy and terms
 - tipo: ul

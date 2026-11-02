@@ -28,6 +28,11 @@ blocchi:
   testo: Gardez vos données privées pour vous
 - tipo: p
   testo: Pour vous aider, nous n'avons jamais besoin de vos numéros de série, des photos de vos armes ni de votre journal. Laissez-les en dehors de votre e-mail, et masquez-les s'ils apparaissent sur une capture d'écran.
+# ⭐ Giro W34: la recensione, prima di «Confidentialité et conditions». Il link lo fa `_includes/frase.html` (`recensione`).
+- tipo: h2
+  testo: "AIMONX vous plaît ? Laissez un avis"
+- tipo: p
+  testo: "Une note sur l'App Store aide d'autres tireurs à trouver l'app. Écrire un avis — une minute suffit, et nous les lisons tous."
 - tipo: h2
   testo: Confidentialité et conditions
 - tipo: ul

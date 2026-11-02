@@ -119,6 +119,13 @@ blocchi:
   - "Palle di forma diversa stanno ad altezze un po' diverse. Il coperchio lascia spazio alle cartucce 9×19 e 9×21 più lunghe ammesse dal C.I.P."
   - "È un progetto originale, disegnato da zero. Non è un remix."
   - "Gratis per uso personale. Per favore, non vendere le stampe e non pubblicare remix. Vuoi produrle e venderle? Scrivici e chiedi."
+# ⭐ Giro W34: il regalo, solo su questa pagina. ⛔ Fuori dai dati strutturati.
+- tipo: regalo
+  titolo: "L'hai stampata? AIMONX Pro te lo regaliamo noi"
+  testo: "Usa il codice RANGESYSTEM su App Store: 6 mesi di AIMONX Pro, gratis. Senza sorprese: finiti i sei mesi, Pro si ferma e basta — niente rinnovi. Se ti piace, ti abboni quando vuoi."
+  codice: "RANGESYSTEM"
+  link: "Riscatta il codice"
+  nota: "Valido fino al 1° maggio 2027. E ci farebbe piacere vedere la tua scatola: manda una foto a support@aimonx.app, magari la condividiamo."
 - tipo: h3
   testo: "Ti serve un altro calibro?"
 - tipo: p

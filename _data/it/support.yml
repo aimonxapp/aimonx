@@ -36,6 +36,11 @@ blocchi:
     testo: "Le tue cose private restano private"
   - tipo: p
     testo: "Per aiutarti non ci servono mai le tue matricole, le foto delle tue armi o il tuo diario. Lasciali fuori dall'email, e coprili se compaiono in uno screenshot."
+  # ⭐ Giro W34: la recensione, prima di «Privacy e termini». Il link lo fa `_includes/frase.html` (`recensione`).
+  - tipo: h2
+    testo: "Ti piace AIMONX? Lascia una recensione"
+  - tipo: p
+    testo: "Una valutazione su App Store aiuta altri tiratori a trovare l'app. Scrivi una recensione — ci vuole un minuto, e le leggiamo tutte."
   - tipo: h2
     testo: "Privacy e termini"
   - tipo: ul

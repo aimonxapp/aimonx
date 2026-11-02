@@ -12,6 +12,9 @@
 # GitHub non ha la sua Privacy Statement in italiano.
 
 frasi:
+  # ⭐ Giro W34: «scrivi una recensione», verso lo Store della lingua con `?action=write-review`.
+  - frase: "Scrivi una recensione"
+    tipo: recensione
   - frase: "Scopri come funzionano le munizioni"
     href: "/features/ammo-and-costs/"
     tipo: pagina

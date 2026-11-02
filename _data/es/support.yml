@@ -28,6 +28,11 @@ blocchi:
   testo: Lo privado, mejor que siga privado
 - tipo: p
   testo: Nunca necesitamos tus números de serie, fotos de tus armas ni tu diario para ayudarte. No los incluyas en el correo, y difumínalos si aparecen en una captura.
+# ⭐ Giro W34: la recensione, prima di «Privacidad y condiciones». Il link lo fa `_includes/frase.html` (`recensione`).
+- tipo: h2
+  testo: "¿Te gusta AIMONX? Deja una reseña"
+- tipo: p
+  testo: "Una valoración en el App Store ayuda a otros tiradores a encontrar la app. Escribir una reseña — lleva un minuto, y las leemos todas."
 - tipo: h2
   testo: Privacidad y condiciones
 - tipo: ul

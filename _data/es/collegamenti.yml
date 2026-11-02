@@ -2,6 +2,9 @@
 # ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
 
 frasi:
+# ⭐ Giro W34: «scrivi una recensione», verso lo Store della lingua con `?action=write-review`.
+- frase: "Escribir una reseña"
+  tipo: recensione
 - frase: Mira cómo funciona la munición
   href: "/features/ammo-and-costs/"
   tipo: pagina

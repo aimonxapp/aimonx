@@ -69,3 +69,27 @@
   color: var(--inchiostro);
 }
 .v-range .foglio .passi li + li { margin-top: .5rem; }
+
+// --- il riquadro del regalo (giro W34) ---------------------------------------
+// ⭐ L'unico riquadro «regalo» del sito: la fascia chiara della tinta, il filo
+// a sinistra come il foglio, e il codice grande, in un tassello tratteggiato.
+// ⛔ `user-select: all`: un tocco sul codice lo seleziona tutto, pronto da copiare.
+// ⚠️ Il codice non va mai a capo e non sborda: `max-width` e `overflow-wrap`.
+.v-range .foglio > .regalo {
+  margin-top: clamp(1.8rem, 4vw, 2.4rem);
+  padding: clamp(1.1rem, 3.5vw, 1.6rem);
+  background: var(--fascia-verde); border-radius: 16px;
+  border-left: 5px solid var(--sez);
+}
+.v-range .regalo > * { max-width: var(--riga); }
+.v-range .regalo > * + * { margin-top: .85rem; }
+.v-range .foglio .regalo h3 { margin-top: 0; }
+.v-range .regalo .codice {
+  display: inline-block; margin: .15rem .1rem; padding: .2rem .7rem;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.12em; font-weight: 700; letter-spacing: .08em;
+  color: var(--titolo); background: var(--bianco);
+  border: 2px dashed var(--sez); border-radius: 10px;
+  user-select: all; -webkit-user-select: all; max-width: 100%; overflow-wrap: anywhere;
+}
+.v-range .regalo .nota { font-size: .98rem; color: var(--inchiostro); }

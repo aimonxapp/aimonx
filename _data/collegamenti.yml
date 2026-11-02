@@ -42,6 +42,9 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W34: «scrivi una recensione», verso lo Store della lingua con `?action=write-review`.
+  - frase: "Write a review"
+    tipo: recensione
   # ⭐ Giro W32: le carte della landing verso le pagine nuove.
   - frase: "See how the range log works"
     href: "/features/range-log/"
@@ -134,6 +137,10 @@ store: "https://apps.apple.com/app/aimonx/id6794895643"
 # pagina. ⛔ NUDO: niente parametri né il `#profileId` del link dato da Pier. È un
 # link, non una risorsa: dalla pagina non si scarica niente da MakerWorld.
 makerworld: "https://makerworld.com/en/models/3524948-ammo-box-9mm-100-rounds-aimonx-range-system"
+
+# ⭐ Giro W34: il riscatto del codice Pro del Range System, il modello di App Store
+# Connect. ⛔ Solo su `/range-system/` (Pier: il regalo sta sul sito e solo lì).
+riscatta: "https://apps.apple.com/redeem?ctx=offercodes&id=6794895643&code=RANGESYSTEM"
 
 # ⭐ Giro W25: la voce del menu che SI APRE a tendina è quella che porta qui,
 # l'indice delle funzioni. ⚠️ Fino al W24 era «la prima voce», e con «Home»

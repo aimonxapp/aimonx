@@ -226,7 +226,13 @@ pagine.each do |percorso|
     $link_store << dove
     # ⭐ Giro W28: col paese davanti (`/it/`) per le lingue che ne hanno uno
     # (`_data/lingue.yml`, `store`) — ⛔ sempre senza `?`.
-    unless dove =~ %r{\Ahttps://apps\.apple\.com/(?:[a-z]{2}/)?app/[a-z0-9-]+/id\d+\z}
+    # ⭐ Giro W34: due forme in più, e SOLO queste — il link «scrivi una recensione»
+    # (lo Store con `?action=write-review`, nient'altro in coda) e il riscatto del
+    # codice Pro col modello di App Store Connect (`/redeem?ctx=offercodes&id=…&code=…`).
+    # ⛔ Ogni altro `?` resta un guasto: i parametri di campagna non passano.
+    nudo_store = %r{\Ahttps://apps\.apple\.com/(?:[a-z]{2}/)?app/[a-z0-9-]+/id\d+(?:\?action=write-review)?\z}
+    riscatto = %r{\Ahttps://apps\.apple\.com/redeem\?ctx=offercodes&(?:amp;)?id=\d+&(?:amp;)?code=[A-Z0-9]+\z}
+    unless dove =~ nudo_store || dove =~ riscatto
       $badge << "#{nome}: il link allo Store non e nudo -> #{dove[0, 90]}"
     end
   end
@@ -491,6 +497,13 @@ puts "faqpage_nel_sito=#{$faqpage}"
 $deadline.tally.each { |f, n| puts "  · «deadline» #{n} volte in #{f}" }
 $marchi.each { |l, m| m.each { |r, n| puts "  · marchi #{l} (#{n.size} pagine): #{r[0, 110]}" } if m.size > 1 }
 puts "badge_guasti=#{$badge.size}"
+# ⭐ Giro W34: il codice Pro del Range System sta SOLO su `/range-system/` (Pier: il
+# regalo sta sul sito e solo lì) e mai nei dati strutturati. Si contano le pagine che
+# lo nominano, e ogni pagina fuori posto si nomina.
+codice_dove = pagine.select { |f| File.read(f, encoding: "UTF-8").include?("RANGESYSTEM") }.map { |f| f.sub(radice.chomp("/") + "/", "") }
+codice_dove.reject { |f| f.match?(%r{\A(?:[a-z]{2}/)?range-system/index\.html\z}) }.each { |f| puts "  ⛔ codice Pro fuori da /range-system/ -> #{f}" }
+pagine.each { |f| File.read(f, encoding: "UTF-8").scan(/<script[^>]*ld\+json[^>]*>(.*?)<\/script>/m) { |(j)| puts "  ⛔ codice Pro nei dati strutturati -> #{f}" if j.include?("RANGESYSTEM") } }
+puts "codice_pro_pagine=#{codice_dove.size}"
 # ⚠️ Due conti e non uno, apposta: `immagini_guasti=0` passerebbe a vuoto il
 # giorno in cui le schermate sparissero dalla pagina — zero immagini sono anche
 # zero immagini sbagliate. I due conti dicono che ci sono ancora.

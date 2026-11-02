@@ -280,7 +280,7 @@ schermate_file=222
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
 badge_nel_sito=61
-link_allo_store=203
+link_allo_store=211
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -424,3 +424,4 @@ immagini_con_metadati=0
 # e …/black/es-es (scaricati il 31/10/2026, title interno `…_FR_RGB_blk_100517`, `…_ES_RGB_blk_100217`).
 badge_apple_impronta_fr=86b6a05f6c8ac9e9
 badge_apple_impronta_es=e4d7c2c160645453
+codice_pro_pagine=4

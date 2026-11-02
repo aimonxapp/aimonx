@@ -130,6 +130,13 @@ blocchi:
   - "Different bullet shapes sit at slightly different heights. The lid clears the longest 9×19 and 9×21 rounds C.I.P. allows."
   - "It's an original design, drawn from scratch. Not a remix."
   - "Free for personal use. Please don't sell prints or post remixes. Want to make and sell them? Email us and ask."
+# ⭐ Giro W34: il regalo, solo su questa pagina. ⛔ Fuori dai dati strutturati.
+- tipo: regalo
+  titolo: "Printed yours? AIMONX Pro is on us"
+  testo: "Use code RANGESYSTEM on the App Store and get 6 months of AIMONX Pro, free. No strings attached: when the six months are up, Pro simply ends — nothing renews. If you like it, you can subscribe then."
+  codice: "RANGESYSTEM"
+  link: "Redeem the code"
+  nota: "Good until May 1, 2027. We'd love to see your box, too: send a photo to support@aimonx.app and we might share it."
 - tipo: h3
   testo: "Want another caliber?"
 - tipo: p

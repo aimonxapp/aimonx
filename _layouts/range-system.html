@@ -66,6 +66,25 @@
       {% if rs_aperta %}</section>{% endif %}<section class="parte">
       {%- assign rs_aperta = true %}
       <h3 id="{{ rs_ultimo_h3 }}">{% include frase.html testo=b.testo %}</h3>
+      {%- when 'regalo' %}
+      {%- comment -%}
+        ⭐ Giro W34: IL RIQUADRO DEL REGALO — il codice Pro per chi ha stampato la
+        scatola. ⛔ Solo qui, e fuori dai dati strutturati: è un'offerta a tempo.
+        Il codice si legge grande e si seleziona con un tocco (`user-select: all`
+        in `range-system.scss`); ⛔ niente tasto «Copia», che sarebbe una parola
+        nuova e uno script. Il link di riscatto è quello di App Store Connect.
+      {%- endcomment %}
+      {% if rs_aperta %}</section>{% endif %}
+      {%- assign rs_aperta = false %}
+      {%- assign rs_id = b.titolo | slugify %}
+      {%- capture rs_c -%}<strong class="codice" translate="no">{{ b.codice }}</strong>{%- endcapture -%}
+      {%- capture rs_t -%}{% include frase.html testo=b.testo %}{%- endcapture %}
+      <section class="parte regalo" aria-labelledby="{{ rs_id }}">
+        <h3 id="{{ rs_id }}">{% include frase.html testo=b.titolo %}</h3>
+        <p>{{ rs_t | replace: b.codice, rs_c }}</p>
+        <p class="vai"><a class="pulsante" href="{{ site.data.collegamenti.riscatta | replace: '&', '&amp;' }}" rel="noreferrer">{% include frase.html testo=b.link %}</a></p>
+        <p class="nota">{% include frase.html testo=b.nota collega=true %}</p>
+      </section>
       {%- when 'pulsante' %}
       <p class="vai"><a class="pulsante" href="{{ lin_c.makerworld }}" rel="noreferrer">{% include frase.html testo=b.testo %}</a></p>
       {%- when 'foto' %}
