@@ -73,6 +73,8 @@ piede:
       - "Home"
       - "Free and Pro"
       - "What's new"
+      # ⭐ Giro W36: la pagina About (bozza «about», sezione «Piede»).
+      - "About"
     # ⭐ Giro W29: in fondo alla colonna, «Download» (`menu.scarica`, qui sopra).
     scarica: true
   - titolo: "Features"

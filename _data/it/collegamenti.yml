@@ -12,6 +12,10 @@
 # GitHub non ha la sua Privacy Statement in italiano.
 
 frasi:
+  # ⭐ Giro W36: da «Chi sono» al Range System.
+  - frase: "AIMONX Range System"
+    href: "/range-system/"
+    tipo: pagina
   # ⭐ Giro W35: il link di «What's new» verso la recensione.
   - frase: "Lascia una recensione su App Store"
     tipo: recensione
@@ -85,6 +89,7 @@ menu:
   "Free e Pro":           "/pricing/"
   "Confronta Free e Pro": "/pricing/"
   "Novità":               "/updates/"
+  "Chi sono":             "/about/"
   "Supporto":             "/support/"
   "Privacy Policy":       "/privacy-policy/"
   "Termini d'uso":        "/terms/"

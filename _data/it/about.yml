@@ -1,0 +1,26 @@
+# _data/it/about.yml — IL TESTO DELLA PAGINA ABOUT (IT). Giro W36.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 02/11/2026
+# (21:04), sezioni «Meta» e «Page» di …/2- Contenuti/about/about-it-bozza.md,
+# CONVERTITO per percorso e non ricopiato: `scripts/testo-approvato.sh` lo cerca
+# alla lettera. ⛔ CHI PUÒ CAMBIARLO: Cowork. I due link (la mail e il Range
+# System) li fa `_data/it/collegamenti.yml`; qui solo parole.
+# ⚠️ `firma` è la riga «— Pier» in fondo (`_layouts/pagina.html`).
+
+meta:
+  title: 'Chi sono: fatta da un tiratore, per i tiratori | AIMONX'
+  description: AIMONX la sviluppa Pier, ingegnere e tiratore sportivo che voleva un diario di tiro rispettoso dei tuoi dati. Ecco perché esiste.
+titolo: Fatta da un tiratore, per i tiratori
+blocchi:
+- tipo: p
+  testo: Sono un ingegnere appassionato di armi e tiro da sempre. Per anni ho usato fogli Excel per tenere in ordine i miei dati, finché non mi sono accorto che non mi bastavano più. Ho cercato un'app che rispondesse alle mie esigenze, ma quelle che ho provato non mi convincevano, soprattutto per il modo in cui trattavano i dati personali. Così ho deciso di svilupparne una per me, con tutto quello che serve davvero.
+- tipo: p
+  testo: 'All''inizio AIMONX era solo per me, poi l''ho fatta provare ad alcuni amici del poligono. È piaciuta e ha cominciato a girare: a un certo punto erano più le persone che volevano provarla di quelle a cui riuscivo a mandare la versione in sviluppo. È stato allora che ho deciso di pubblicarla, così che anche altri tiratori potessero usarla.'
+- tipo: p
+  testo: 'Sono uno sviluppatore indipendente e porto avanti AIMONX per passione. Continuerò a svilupparla e ad aggiornarla, per me, per i miei amici e per tutti i tiratori che vorranno usarla. Commenti e suggerimenti sono sempre benvenuti: scrivi a support@aimonx.app. Insieme al gruppo di amici che mi aiuta a provarla, valuterò quali idee possono essere più utili.'
+- tipo: p
+  testo: 'Ho in mente molte nuove funzioni e una linea di accessori per il tiro stampabili in 3D, che ognuno potrà realizzare gratis con la propria stampante. Il primo c''è già: l''AIMONX Range System.'
+- tipo: p
+  testo: Grazie a chi usa AIMONX e a chi vorrà condividere la propria esperienza e aiutarla a crescere.
+- tipo: firma
+  testo: "— Pier"

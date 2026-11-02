@@ -1,0 +1,26 @@
+# _data/fr/about.yml — IL TESTO DELLA PAGINA ABOUT (FR). Giro W36.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 02/11/2026
+# (21:04), sezioni «Meta» e «Page» di …/2- Contenuti/about/about-fr-bozza.md,
+# CONVERTITO per percorso e non ricopiato: `scripts/testo-approvato.sh` lo cerca
+# alla lettera. ⛔ CHI PUÒ CAMBIARLO: Cowork. I due link (la mail e il Range
+# System) li fa `_data/fr/collegamenti.yml`; qui solo parole.
+# ⚠️ `firma` è la riga «— Pier» in fondo (`_layouts/pagina.html`).
+
+meta:
+  title: 'À propos : conçue par un tireur, pour les tireurs | AIMONX'
+  description: AIMONX est développée par Pier, ingénieur et tireur sportif, qui voulait un journal de tir respectueux de vos données. Voici pourquoi elle existe.
+titolo: Conçue par un tireur, pour les tireurs
+blocchi:
+- tipo: p
+  testo: Je m'appelle Pier, je suis ingénieur et passionné d'armes et de tir depuis toujours. Pendant des années, j'ai tout noté dans des tableurs, jusqu'au jour où ça ne suffisait plus. J'ai cherché une app qui réponde à mes besoins, mais aucune de celles que j'ai essayées ne m'a convaincu, surtout à cause de la façon dont elles traitaient les données personnelles. Alors j'ai créé la mienne, avec tout ce qui compte vraiment.
+- tipo: p
+  testo: Au départ, AIMONX n'était que pour moi. Puis je l'ai fait essayer à quelques amis du stand. Elle leur a plu, le bouche-à-oreille a fait le reste, et très vite, plus de gens voulaient l'essayer que je ne pouvais en inviter à la version bêta. C'est là que j'ai décidé de la publier sur l'App Store, pour que d'autres tireurs puissent l'utiliser aussi.
+- tipo: p
+  testo: 'Je suis développeur indépendant et je développe AIMONX par passion. Je vais continuer à la faire évoluer et à publier des mises à jour, pour moi, pour mes amis et pour tous les tireurs qui voudront l''utiliser. Vos avis et vos idées sont les bienvenus : écrivez à support@aimonx.app. Avec les amis qui m''aident à la tester, nous verrons lesquelles seront les plus utiles.'
+- tipo: p
+  testo: 'J''ai plein de nouvelles fonctions en tête, et une gamme d''accessoires de tir imprimables en 3D, que chacun pourra imprimer gratuitement avec sa propre imprimante. Le premier est déjà disponible : l''AIMONX Range System.'
+- tipo: p
+  testo: Merci à tous ceux qui utilisent AIMONX, et à ceux qui partageront leur expérience pour la faire grandir.
+- tipo: firma
+  testo: "— Pier"

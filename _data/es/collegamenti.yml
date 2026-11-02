@@ -2,6 +2,10 @@
 # ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
 
 frasi:
+# ⭐ Giro W36: dalla pagina About al Range System.
+- frase: "AIMONX Range System"
+  href: "/range-system/"
+  tipo: pagina
 # ⭐ Giro W35: il link di «What's new» verso la recensione.
 - frase: "Deja una reseña en el App Store"
   tipo: recensione
@@ -62,6 +66,7 @@ menu:
   Free y Pro: "/pricing/"
   Compara Free y Pro: "/pricing/"
   Novedades: "/updates/"
+  Acerca de: "/about/"
   Soporte: "/support/"
   Política de privacidad (en inglés): "/privacy-policy/"
   Condiciones de uso (en inglés): "/terms/"

@@ -76,6 +76,9 @@
         <li>{% include frase.html testo=v collega=true %}</li>
         {%- endfor %}
       </ul>
+      {%- when 'firma' %}
+      {%- comment -%} ⭐ Giro W36: la firma in fondo alla pagina About, «— Pier». Un paragrafo con la classe sua (`testo.scss`). {%- endcomment %}
+      <p class="firma">{% include frase.html testo=b.testo %}</p>
       {%- else %}
       <p>{% include frase.html testo=b.testo collega=true %}</p>
       {%- endcase -%}

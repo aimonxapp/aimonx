@@ -1,0 +1,26 @@
+# _data/about.yml — IL TESTO DELLA PAGINA ABOUT (EN). Giro W36.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 02/11/2026
+# (21:04), sezioni «Meta» e «Page» di …/2- Contenuti/about/about-en-bozza.md,
+# CONVERTITO per percorso e non ricopiato: `scripts/testo-approvato.sh` lo cerca
+# alla lettera. ⛔ CHI PUÒ CAMBIARLO: Cowork. I due link (la mail e il Range
+# System) li fa `_data/collegamenti.yml`; qui solo parole.
+# ⚠️ `firma` è la riga «— Pier» in fondo (`_layouts/pagina.html`).
+
+meta:
+  title: 'About: Built by a Shooter, for Shooters | AIMONX'
+  description: AIMONX is built by Pier, an engineer and sport shooter who wanted a logbook app that respects your data. Here's why it exists.
+titolo: Built by a shooter, for shooters
+blocchi:
+- tipo: p
+  testo: I'm Pier, an engineer who's been into firearms and shooting for as long as I can remember. For years I kept track of everything in spreadsheets, until they just weren't cutting it anymore. I looked for an app that did what I needed, but none of the ones I tried sat right with me — mostly because of how they handled personal data. So I built my own, with everything that actually matters.
+- tipo: p
+  testo: At first, AIMONX was just for me. Then I let a few friends from the range try it. They liked it, word got around, and pretty soon more people wanted to try it than I could send the beta to. That's when I decided to put it on the App Store, so other shooters could use it too.
+- tipo: p
+  testo: 'I''m an independent developer, and AIMONX is a labor of love. I''ll keep working on it and shipping updates — for me, for my friends, and for every shooter who wants to use it. Feedback and ideas are always welcome: email support@aimonx.app. Together with the friends who help me test it, we''ll figure out which ones will help the most.'
+- tipo: p
+  testo: 'I''ve got plenty of new features in mind, plus a line of 3D-printable range accessories anyone can print for free on their own printer. The first one is already out: the AIMONX Range System.'
+- tipo: p
+  testo: Thanks to everyone who uses AIMONX, and to everyone who shares their experience and helps it grow.
+- tipo: firma
+  testo: "— Pier"

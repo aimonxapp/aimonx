@@ -1,0 +1,26 @@
+# _data/es/about.yml — IL TESTO DELLA PAGINA ABOUT (ES). Giro W36.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 02/11/2026
+# (21:04), sezioni «Meta» e «Page» di …/2- Contenuti/about/about-es-bozza.md,
+# CONVERTITO per percorso e non ricopiato: `scripts/testo-approvato.sh` lo cerca
+# alla lettera. ⛔ CHI PUÒ CAMBIARLO: Cowork. I due link (la mail e il Range
+# System) li fa `_data/es/collegamenti.yml`; qui solo parole.
+# ⚠️ `firma` è la riga «— Pier» in fondo (`_layouts/pagina.html`).
+
+meta:
+  title: 'Acerca de: hecha por un tirador, para tiradores | AIMONX'
+  description: AIMONX la desarrolla Pier, ingeniero y tirador deportivo que quería un diario de tiro que respete tus datos. Esta es su historia.
+titolo: Hecha por un tirador, para tiradores
+blocchi:
+- tipo: p
+  testo: Soy Pier, ingeniero y apasionado de las armas y el tiro desde siempre. Durante años lo apunté todo en hojas de cálculo, hasta que se me quedaron cortas. Busqué una app que hiciera lo que necesitaba, pero ninguna de las que probé me convenció, sobre todo por cómo trataban los datos personales. Así que hice la mía, con todo lo que de verdad hace falta.
+- tipo: p
+  testo: Al principio, AIMONX era solo para mí. Luego se la dejé probar a algunos amigos del campo de tiro. Les gustó, se fue corriendo la voz y, al poco tiempo, había más gente que quería probarla de la que yo podía meter en la beta. Fue entonces cuando decidí publicarla en el App Store, para que otros tiradores también pudieran usarla.
+- tipo: p
+  testo: 'Soy desarrollador independiente y hago AIMONX por pasión. Voy a seguir mejorándola y publicando actualizaciones, para mí, para mis amigos y para todos los tiradores que quieran usarla. Me encanta recibir opiniones e ideas: escríbeme a support@aimonx.app. Con los amigos que me ayudan a probarla, veremos cuáles pueden ser más útiles.'
+- tipo: p
+  testo: 'Tengo muchas funciones nuevas en mente, y una línea de accesorios de tiro imprimibles en 3D, para que cada uno pueda hacerlos gratis con su propia impresora. El primero ya está disponible: el AIMONX Range System.'
+- tipo: p
+  testo: Gracias a quienes usan AIMONX y a quienes compartan su experiencia y la ayuden a crecer.
+- tipo: firma
+  testo: "— Pier"

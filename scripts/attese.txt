@@ -132,7 +132,7 @@ testo_fuori_bozza=0
 # Quante pagine escono dalla build. ⚠️ Non è una soglia di qualità: è l'allarme
 # che suona quando una pagina sparisce senza che nessuno l'abbia decisa — un
 # permalink sbagliato, un front matter rotto, un file escluso per sbaglio.
-pagine_costruite=69
+pagine_costruite=73
 
 # Link interni che NON risolvono in una pagina costruita. Deve restare 0.
 # ⛔ Fino al W8 questo controllo non esisteva e la controprova lo DICHIARAVA:
@@ -173,11 +173,11 @@ ancore_rotte=0
 # Quanti indirizzi elenca sitemap.xml. ⚠️ Non è una soglia: è il numero delle
 # pagine del sito, e deve salire quando ne nasce una. ⛔ Se scende senza che
 # nessuno abbia tolto una pagina, la mappa ha smesso di vedere qualcosa.
-sitemap_indirizzi=68
+sitemap_indirizzi=72
 
 # Un blocco di dati strutturati per pagina. Se scende, una pagina ha smesso di
 # dire ai motori e alle AI che cos'è.
-blocchi_jsonld=69
+blocchi_jsonld=73
 
 # ⛔ Tutto quello che può rompersi in ciò che rende il sito trovabile, in un
 # numero solo: mappa (ogni indirizzo esiste ed è https, ogni pagina è nella
@@ -280,7 +280,7 @@ schermate_file=222
 # Oggi: un badge sulla landing, uno su Round count e uno su Your data; quattro
 # link, perché la landing ha anche il link di testo nella fascia di chiusura.
 badge_nel_sito=61
-link_allo_store=284
+link_allo_store=296
 
 # ⛔ Spostate a mano nel giro W15, e SOLO dopo aver guardato cosa è entrato — una
 # pagina nuova, voluta, `/features/round-count/`, con le sue schermate:
@@ -320,7 +320,7 @@ offerte_a_zero=1
 # VERSIONI diverse. ⛔ `marchi_varianti` deve restare 1: il piede è scritto una
 # volta sola, e questa è la prova che lo è ancora. `marchi_pagine` sale con le
 # pagine, come `pagine_costruite`.
-marchi_pagine=69
+marchi_pagine=73
 marchi_varianti=1
 
 # ⛔ Spostate a mano nel giro W18, e SOLO dopo aver guardato cosa è entrato — la
@@ -351,7 +351,7 @@ faqpage_nel_sito=0
 # soglia: deve essere uguale a `pagine_costruite`, e sale con lei. ⛔ La regola
 # — uno per pagina, solo `app-id`, lo stesso numero del link allo Store — è in
 # `badge_guasti`, che resta 0.
-banner_pagine=69
+banner_pagine=73
 
 # ⛔ Spostate a mano nel giro W23, e SOLO dopo aver guardato cosa è entrato — la
 # quarta pagina-funzione, `/features/custom-lists/`, con quattro schermate nuove:
@@ -399,8 +399,8 @@ pagine_noindex=1
 # ⭐ Provato su una copia rotta della build (una gemella che non rimanda, un
 # `<html lang>` sbagliato, una pagina senza gemelle): 5 guasti, 1 senza gemelle.
 lingue_nel_sito=4
-hreflang_pagine=68
-hreflang_coppie=98
+hreflang_pagine=72
+hreflang_coppie=104
 hreflang_senza_gemelle=0
 hreflang_guasti=0
 # ⛔⛔ IL BADGE ITALIANO È IL FILE DI APPLE, NON MODIFICATO, come l'inglese.
@@ -425,3 +425,11 @@ immagini_con_metadati=0
 badge_apple_impronta_fr=86b6a05f6c8ac9e9
 badge_apple_impronta_es=e4d7c2c160645453
 codice_pro_pagine=4
+# ⭐ Giro W36: l organizzazione AIMONX dichiara come suoi (`sameAs`) SOLO YouTube e
+# Instagram (Pier, 02/11/2026). `sameas_pagine` sale con `pagine_costruite`;
+# `sameas_guasti` conta ogni `sameAs` diverso da quei due o fuori dall organizzazione;
+# ⛔ `reddit_nel_sito` conta i file della build con «reddit.com»: l account è di Pier.
+# Provato su una copia rotta della build (reddit in `sameAs`): 1 guasto, 1 file.
+sameas_pagine=73
+sameas_guasti=0
+reddit_nel_sito=0

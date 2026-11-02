@@ -42,6 +42,10 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W36: dalla pagina About alla pagina del Range System (prefisso della lingua dal layout).
+  - frase: "AIMONX Range System"
+    href: "/range-system/"
+    tipo: pagina
   # ⭐ Giro W35: il link di «What's new» verso la recensione.
   - frase: "Leave a review on the App Store"
     tipo: recensione
@@ -187,6 +191,16 @@ menu:
   "Free and Pro":   "/pricing/"
   "Compare Free and Pro": "/pricing/"
   "What's new":     "/updates/"
+  # ⭐ Giro W36: la pagina About, dalla colonna App del piede.
+  "About":          "/about/"
   "Support":        "/support/"
   "Privacy Policy": "/privacy-policy/"
   "Terms of Use":   "/terms/"
+
+# ⭐ Giro W36: I CANALI DI AIMONX, per `sameAs` dell'organizzazione nei dati
+# strutturati (`_includes/dati-strutturati.html`). ⛔ Solo questi due (Pier,
+# 02/11/2026); ⛔ Reddit no: è l'account personale di Pier. Non sono link in
+# pagina: nessuna pagina li mostra, e il sito non scarica niente da lì.
+canali:
+  - "https://www.youtube.com/@AIMONXapp"
+  - "https://www.instagram.com/aimonx.app/"

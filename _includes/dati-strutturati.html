@@ -84,6 +84,24 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "@type": "Person",
       "@id": {{ '/#autore' | absolute_url | jsonify }},
       "name": "Piermichele Fassio"
+    },
+    {%- comment -%}
+      ⭐ L'ORGANIZZAZIONE AIMONX E I SUOI CANALI, dal giro W36. `sameAs` dichiara
+      che quegli indirizzi sono la STESSA entità: schema.org lo definisce «URL of
+      a reference Web page that unambiguously indicates the item's identity», e
+      Google lo usa così per `Organization`. ⛔ SOLO i due canali di AIMONX
+      (Pier, 02/11/2026): YouTube e Instagram. ⛔ Reddit NO: `u/Pier_AIMONX` è
+      l'account personale di Pier, non dell'app. Gli indirizzi stanno UNA volta in
+      `_data/collegamenti.yml` (`canali`), e che siano esattamente quei due — e
+      nessun reddit.com — lo misura `scripts/misure-pagine.rb` (`sameas_guasti`).
+      ⛔ Nient'altro: niente logo, niente fondatore, niente recapiti.
+    {%- endcomment %}
+    {
+      "@type": "Organization",
+      "@id": {{ '/#aimonx' | absolute_url | jsonify }},
+      "name": {{ site.data.landing.brand | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "sameAs": {{ site.data.collegamenti.canali | jsonify }}
     }{% if page.scheda_pagina %},
     {%- comment -%}
       ⭐ LA PAGINA, dal giro W15 — solo dove `page.scheda_pagina` lo accende,
@@ -116,7 +134,8 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       inglese, per la stessa ragione di sopra: scelta di CC, da guardare.
     {%- endcomment -%}
     {
-      "@type": "WebPage",
+      {%- comment -%} ⭐ Giro W36: `tipo_scheda` — la pagina About è un `AboutPage`, sottotipo di `WebPage` su schema.org. {%- endcomment %}
+      "@type": {{ page.tipo_scheda | default: 'WebPage' | jsonify }},
       "@id": {{ page.url | append: '#pagina' | absolute_url | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
       "name": {{ include.meta.title | jsonify }},
@@ -124,7 +143,8 @@ _includes/dati-strutturati.html — i DATI STRUTTURATI, JSON-LD. Giro W10.
       "isPartOf": { "@id": {{ '/#sito' | absolute_url | jsonify }} },
       {%- comment -%} ⭐ Giro W31: `senza_about` sulla pagina del Range System, che parla della scatola e non dell'app. {%- endcomment -%}
       {%- unless page.senza_about %}
-      "about": { "@id": {{ '/#app' | absolute_url | jsonify }} },
+      {%- comment -%} ⭐ Giro W36: `di_cosa` — la pagina About parla di chi fa AIMONX, l'organizzazione, non dell'app. {%- endcomment %}
+      "about": { "@id": {{ page.di_cosa | default: '/#app' | absolute_url | jsonify }} },
       {%- endunless %}
       "inLanguage": {{ lin.html | jsonify }}
     }{% endif %}{% if page.sezione %},

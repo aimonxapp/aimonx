@@ -44,6 +44,12 @@ $immagini = []
 $schermate = 0
 $foto = 0
 $schermate_jsonld = 0
+# ⭐ Giro W36: i canali di AIMONX in `sameAs` — ESATTAMENTE questi due (Pier, 02/11/2026).
+# ⚠️ Qui il valore si scrive, al contrario del MUST: sono indirizzi pubblici, e la
+# misura è proprio che siano quelli e solo quelli. ⛔ Reddit no: è l'account di Pier.
+CANALI = ["https://www.youtube.com/@AIMONXapp", "https://www.instagram.com/aimonx.app/"].freeze
+$sameas_giuste = 0
+$sameas = []
 
 # ---------------------------------------------------------------------------
 # ⛔⛔ IL MUST DI PIER, MISURATO: il suo indirizzo e il suo telefono non vanno
@@ -131,6 +137,15 @@ pagine.each do |percorso|
         # NON va nei dati strutturati (Pier, 14/10/2026): un `price` che non
         # sia 0, o un'offerta in piu, e un guasto. Le offerte giuste si
         # contano nel blocco dell'applicazione, qui sotto; tutte le altre no.
+        (d["@graph"] || [d]).each do |voce|
+          next unless voce.is_a?(Hash) && voce.key?("sameAs")
+          if voce["@type"] == "Organization" && Array(voce["sameAs"]).sort == CANALI.sort
+            $sameas_giuste += 1
+          else
+            $sameas << "#{nome}: sameAs che non è esattamente i due canali di AIMONX -> #{voce["@type"]} #{voce["sameAs"].to_json[0, 120]}"
+          end
+        end
+        $sameas << "#{nome}: «sameAs» fuori dal suo posto" if chiavi.count("sameAs") != (d["@graph"] || [d]).count { |v| v.is_a?(Hash) && v.key?("sameAs") }
         offerte_giuste = 0
         (d["@graph"] || [d]).each do |voce|
           next unless voce.is_a?(Hash) && voce["@type"].to_s.end_with?("Application")
@@ -494,6 +509,13 @@ puts "hreflang_senza_gemelle=#{senza.size}"
 puts "hreflang_guasti=#{$hreflang.size}"
 puts "deadline_nel_sito=#{$deadline.size}"
 puts "faqpage_nel_sito=#{$faqpage}"
+# ⭐ Giro W36: `sameAs` giusto su ogni pagina che ha i dati strutturati, e reddit.com in nessun file della build.
+reddit = Dir.glob(File.join(radice, "**", "*")).select { |x| File.file?(x) && File.binread(x).include?("reddit.com") }
+reddit.each { |x| puts "  ⛔ reddit.com nel sito -> #{x.sub(radice.chomp("/") + "/", "")}" }
+$sameas.each { |r| puts "  ⛔ #{r}" }
+puts "sameas_pagine=#{$sameas_giuste}"
+puts "sameas_guasti=#{$sameas.size}"
+puts "reddit_nel_sito=#{reddit.size}"
 $deadline.tally.each { |f, n| puts "  · «deadline» #{n} volte in #{f}" }
 $marchi.each { |l, m| m.each { |r, n| puts "  · marchi #{l} (#{n.size} pagine): #{r[0, 110]}" } if m.size > 1 }
 puts "badge_guasti=#{$badge.size}"

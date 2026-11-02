@@ -95,7 +95,7 @@ else
                navigazione/navigazione-en-bozza.md \
                range-system/range-system-en-bozza.md range-system/range-system-it-bozza.md \
                landing/landing-it-bozza.md navigazione/navigazione-it-bozza.md \
-               titoli/titoli-it-bozza.md; do
+               titoli/titoli-it-bozza.md about/about-en-bozza.md; do
     head -c 1 "$CONTENUTI/$BOZZA" >/dev/null 2>&1 || ILLEGGIBILI=$((ILLEGGIBILI + 1))
   done
 fi
@@ -206,6 +206,9 @@ PAGINE = [
   # | Unlimited |`): ogni cella si trova lo stesso, alla lettera.
   { nome: "pricing", dati: "_data/pricing.yml", bozza: "pricing/pricing-en-bozza.md",
     uscita: "pricing/index.html", sezioni: ["Meta", "Page"] },
+  # ⭐ Giro W36, LA PAGINA ABOUT: della bozza valgono «Meta» e «Page».
+  { nome: "about", dati: "_data/about.yml", bozza: "about/about-en-bozza.md",
+    uscita: "about/index.html", sezioni: ["Meta", "Page"] },
   { nome: "range-system", dati: "_data/range-system.yml", bozza: "range-system/range-system-en-bozza.md",
     uscita: "range-system/index.html", sezioni: SEZIONI_RANGE },
   # ⭐ Giro W32, le cinque pagine-funzione della 1.1.0, tutte in un file: `pezzo`.
@@ -220,7 +223,7 @@ PAGINE = [
   # schermata di «Your data», col testo alternativo approvato là.
   { nome: "navigazione", dati: "_data/navigazione.yml", bozza: "navigazione/navigazione-en-bozza.md",
     uscita: "features/index.html", sezioni: SEZIONI_NAVIGAZIONE,
-    anche: [["landing/landing-en-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-en-bozza.md", ["Page"]]],
+    anche: [["landing/landing-en-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-en-bozza.md", ["Page"]], ["about/about-en-bozza.md", ["Piede"]]],
     alt_da: "your-data/your-data-en-bozza.md" },
   # ⭐ Giro W27, LA PAGINA 404: il testo è nella bozza dei titoli, nella sua
   # sezione (i sottotitoli «Meta» e «Page» cadono come tutti i `###`); le
@@ -275,6 +278,8 @@ PAGINE_IT = [
     alt_da: "your-data/your-data-it-bozza.md" },
   { nome: "it/pricing", dati: "_data/it/pricing.yml", bozza: "pricing/pricing-it-bozza.md",
     uscita: "it/pricing/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
+  { nome: "it/about", dati: "_data/it/about.yml", bozza: "about/about-it-bozza.md",
+    uscita: "it/about/index.html", sezioni: ["Meta", "Page"], lingua: "it" },
   { nome: "it/range-system", dati: "_data/it/range-system.yml", bozza: "range-system/range-system-it-bozza.md",
     uscita: "it/range-system/index.html", sezioni: SEZIONI_RANGE_IT, lingua: "it" },
   *%w[handloads ammo-and-costs power-factor-calculator firearm-records range-log].each_with_index.map { |k, i|
@@ -282,7 +287,7 @@ PAGINE_IT = [
       uscita: "it/features/#{k}/index.html", sezioni: ["Meta", "Page"], lingua: "it" } },
   { nome: "it/navigazione", dati: "_data/it/navigazione.yml", bozza: "navigazione/navigazione-it-bozza.md",
     uscita: "it/features/index.html", sezioni: SEZIONI_NAVIGAZIONE_IT, lingua: "it",
-    anche: [["landing/landing-it-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", ["Page"]]],
+    anche: [["landing/landing-it-bozza.md", nil], ["funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", ["Page"]], ["about/about-it-bozza.md", ["Piede"]]],
     alt_da: "your-data/your-data-it-bozza.md" },
   { nome: "it/funzioni", dati: "_data/it/funzioni.yml", bozza: "landing/landing-it-bozza.md", lingua: "it",
     anche: [["navigazione/navigazione-it-bozza.md", SEZIONI_NAVIGAZIONE_IT], ["funzioni-1.1.0/funzioni-1.1.0-it-bozza.md", ["Page"]]],
@@ -409,6 +414,8 @@ BOZZA_NAVIGAZIONE = {
   "fr" => piano(File.join(contenuti, "navigazione/navigazione-fr-bozza.md"), SEZIONI_ALTRE["fr"][:nav]),
   "es" => piano(File.join(contenuti, "navigazione/navigazione-es-bozza.md"), SEZIONI_ALTRE["es"][:nav]),
 }
+# ⭐ Giro W36: la voce About del piede sta nella sezione «Piede» della bozza About di ogni lingua.
+BOZZA_NAVIGAZIONE.each_key { |l| BOZZA_NAVIGAZIONE[l] += "\n" + piano(File.join(contenuti, "about/about-#{l}-bozza.md"), ["Piede"]) }
 
 fuori = 0
 
@@ -571,7 +578,9 @@ else
     # nient altro, lo misura `misure-pagine.rb` (`offerte_a_zero`).
     # ⭐ Dal giro W24 anche `item`: nel `BreadcrumbList` è l indirizzo di ogni
     # briciola, come `url`. I NOMI delle briciole restano controllati.
-    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot", "priceCurrency", "item"]
+    # ⭐ Dal giro W36 anche `sameAs`: gli indirizzi dei due canali di AIMONX. ⛔ Che
+    # siano esattamente quei due, e nessun reddit.com, lo misura `misure-pagine.rb`.
+    tecniche = ["@context", "@type", "@id", "url", "image", "inLanguage", "installUrl", "applicationCategory", "screenshot", "priceCurrency", "item", "sameAs"]
     parole_jsonld = []
     html.scan(/<script[^>]*type=["\x27]application\/ld\+json["\x27][^>]*>(.*?)<\/script>/mi) do |(blocco)|
       begin

@@ -188,3 +188,13 @@ body.v-testo {
 }
 .v-non-trovato .scarica a { display: inline-block; }
 .v-non-trovato .scarica img { height: var(--badge); width: auto; }
+
+// --- la firma (giro W36) ----------------------------------------------------
+// ⭐ «— Pier» in fondo alla pagina About: un po' di respiro sopra e il titolo
+// come colore, in grassetto. ⚠️ Allineata a sinistra come il resto: la riga
+// del foglio è stretta, e a destra finirebbe lontana dal testo che firma.
+.v-testo .foglio .firma {
+  margin-top: 1.6rem;
+  font-weight: 700;
+  color: var(--titolo);
+}
