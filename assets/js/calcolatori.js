@@ -237,11 +237,6 @@
     let ultimo = null;
     function aggiorna() {
       const b = prezzoQuanti("b");
-      const volte = leggi(campo("b_volte"));
-      const eV = volte !== null && !(Number.isFinite(volte) && volte > 0) ? form.dataset.maggiore : "";
-      const maleV = errore(campo("b_volte"), eV);
-      if (b.valore !== null) b.valore = maleV ? null : b.valore / (volte === null ? 1 : volte);
-      b.male = b.male || maleV;
       const r = { bossoli: b, inneschi: prezzoQuanti("i"), palle: prezzoQuanti("p"), polvere: polvere() };
       Object.entries(r).forEach(([k, x]) => {
         form.querySelector(`[data-componente="${k}"] [data-costo]`).textContent = x.valore === null ? VUOTO : comp.format(x.valore);
@@ -276,14 +271,13 @@
       const val = {
         nome: testo("nome"), calibro: testo("calibro"),
         data: new Intl.DateTimeFormat(lingua, { dateStyle: "long" }).format(new Date()),
-        p_nome: testo("p_nome"), w_nome: testo("w_nome"),
+        b_nome: testo("b_nome"), i_nome: testo("i_nome"), p_nome: testo("p_nome"), w_nome: testo("w_nome"),
         w_dose: testo("w_dose") ? numero(6).format(Number(testo("w_dose"))) : "",
         p_peso: testo("p_peso") ? numero(6).format(Number(testo("p_peso"))) : "",
         col: conUnita("col", etichettaScelta("col_unita")),
         velocita: conUnita("velocita", etichettaScelta("unita_velocita")),
         pf: pf === null ? "" : intero.format(pf),
         note: testo("note"),
-        b_volte: testo("b_volte") ? numero(6).format(Number(testo("b_volte"))) : "",
         w_confezione: conUnita("w_confezione", etichettaScelta("w_unita")),
       };
       ["b", "i", "p", "w"].forEach((k) => {
@@ -295,7 +289,7 @@
       scheda.querySelectorAll("[data-campo]").forEach((e) => { e.textContent = val[e.dataset.campo] || ""; });
       // Solo i campi scritti: una riga senza niente non esce.
       const righe = {
-        bossoli: r.bossoli.scritto, bossoli_volte: Boolean(val.b_volte), inneschi: r.inneschi.scritto,
+        bossoli: r.bossoli.scritto || Boolean(val.b_nome), inneschi: r.inneschi.scritto || Boolean(val.i_nome),
         palle: r.palle.scritto || Boolean(val.p_nome), polvere: r.polvere.scritto || Boolean(val.w_nome),
       };
       scheda.querySelectorAll("[data-riga]").forEach((e) => {

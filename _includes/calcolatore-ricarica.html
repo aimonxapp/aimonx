@@ -6,8 +6,8 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   `assets/js/calcolatori.js`, gli stessi dell'app (`prodotto.md` §17.12):
   bossolo, innesco e palla = prezzo ÷ quantità; polvere = prezzo ÷ peso della
   confezione in grani × dose; componenti fino a tre decimali, totale a due.
-  ⭐ In più rispetto all'app, come vuole la bozza: quante volte si carica un
-  bossolo, che divide il suo costo (vuoto = 1).
+  ⛔ Niente più «quante volte si carica un bossolo» (era della bozza W38):
+  tolto da Pier il 09/11/2026, «non ha senso». Il bossolo costa come l'app.
   ⭐ LA VALUTA (giro W39, Pier, 09/11/2026): si parte da quella della regione
   del sistema, come nell'app, e la TENDINA in testa al modulo la cambia per
   tutta la pagina (`assets/js/calcolatori.js`). `data-valuta` è il ripiego: i
@@ -19,11 +19,11 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   `_includes/testa.html`), e la pagina si legge lo stesso.
   ⚠️ LA SCHEDA (`.scheda-carico`) è nascosta sullo schermo ed esce SOLO in
   stampa: lo script la riempie coi campi scritti e nasconde le righe vuote.
-  Sulla scheda le etichette perdono «(optional)», che sulla carta non dice niente.
+  ⭐ Giro W39 (Pier): niente più «(optional)»; i campi necessari hanno l'asterisco,
+  e ogni componente ha la sua casella di marca e tipo, che va anche sulla scheda.
 {%- endcomment -%}
 {%- assign c = include.c -%}
 {%- assign s = include.s -%}
-{%- capture opzionale %} (optional){% endcapture -%}
 <form class="calcolatore calc-ricarica" data-calcolatore="ricarica" novalidate
       data-valuta="USD" data-obbligatorio="{{ c.obbligatorio }}" data-maggiore="{{ c.maggiore }}">
   {%- if c.valuta %}
@@ -49,9 +49,9 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   <fieldset class="componente" data-componente="bossoli">
     <legend><span>{{ c.bossoli.titolo }}</span><output data-costo>—</output></legend>
     <div class="campi">
-      <div class="campo"><label class="etichetta" for="r-b-prezzo">{{ c.bossoli.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-b-prezzo" name="b_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="r-b-nota"></div><p class="errore" hidden></p></div>
-      <div class="campo"><label class="etichetta" for="r-b-quanti">{{ c.bossoli.quanti }}</label><input id="r-b-quanti" name="b_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
-      <div class="campo"><label class="etichetta" for="r-b-volte">{{ c.bossoli.volte }}</label><input id="r-b-volte" name="b_volte" data-ruolo="volte" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-b-nome">{{ c.bossoli.nome }}</label><input id="r-b-nome" name="b_nome" data-ruolo="nome" type="text" autocomplete="off" placeholder="{{ c.nome_fantasma }}"></div>
+      <div class="campo"><label class="etichetta" for="r-b-prezzo">{{ c.bossoli.prezzo }}<span class="obbl" aria-hidden="true">*</span></label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-b-prezzo" name="b_prezzo" aria-required="true" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="r-b-nota"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-b-quanti">{{ c.bossoli.quanti }}<span class="obbl" aria-hidden="true">*</span></label><input id="r-b-quanti" name="b_quanti" aria-required="true" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
     </div>
     <p class="nota" id="r-b-nota">{{ c.bossoli.nota }}</p>
   </fieldset>
@@ -59,30 +59,31 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   <fieldset class="componente" data-componente="inneschi">
     <legend><span>{{ c.inneschi.titolo }}</span><output data-costo>—</output></legend>
     <div class="campi">
-      <div class="campo"><label class="etichetta" for="r-i-prezzo">{{ c.inneschi.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-i-prezzo" name="i_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
-      <div class="campo"><label class="etichetta" for="r-i-quanti">{{ c.inneschi.quanti }}</label><input id="r-i-quanti" name="i_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-i-nome">{{ c.inneschi.nome }}</label><input id="r-i-nome" name="i_nome" data-ruolo="nome" type="text" autocomplete="off" placeholder="{{ c.nome_fantasma }}"></div>
+      <div class="campo"><label class="etichetta" for="r-i-prezzo">{{ c.inneschi.prezzo }}<span class="obbl" aria-hidden="true">*</span></label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-i-prezzo" name="i_prezzo" aria-required="true" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-i-quanti">{{ c.inneschi.quanti }}<span class="obbl" aria-hidden="true">*</span></label><input id="r-i-quanti" name="i_quanti" aria-required="true" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
     </div>
   </fieldset>
 
   <fieldset class="componente" data-componente="palle">
     <legend><span>{{ c.palle.titolo }}</span><output data-costo>—</output></legend>
     <div class="campi">
-      <div class="campo"><label class="etichetta" for="r-p-nome">{{ c.palle.nome }}</label><input id="r-p-nome" name="p_nome" data-ruolo="nome" type="text" autocomplete="off"></div>
+      <div class="campo"><label class="etichetta" for="r-p-nome">{{ c.palle.nome }}</label><input id="r-p-nome" name="p_nome" data-ruolo="nome" type="text" autocomplete="off" placeholder="{{ c.nome_fantasma }}"></div>
       <div class="campo"><label class="etichetta" for="r-p-peso">{{ c.palle.peso }}</label><input id="r-p-peso" name="p_peso" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div>
-      <div class="campo"><label class="etichetta" for="r-p-prezzo">{{ c.palle.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-p-prezzo" name="p_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
-      <div class="campo"><label class="etichetta" for="r-p-quanti">{{ c.palle.quanti }}</label><input id="r-p-quanti" name="p_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-p-prezzo">{{ c.palle.prezzo }}<span class="obbl" aria-hidden="true">*</span></label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-p-prezzo" name="p_prezzo" aria-required="true" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-p-quanti">{{ c.palle.quanti }}<span class="obbl" aria-hidden="true">*</span></label><input id="r-p-quanti" name="p_quanti" aria-required="true" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
     </div>
   </fieldset>
 
   <fieldset class="componente" data-componente="polvere">
     <legend><span>{{ c.polvere.titolo }}</span><output data-costo>—</output></legend>
     <div class="campi">
-      <div class="campo"><label class="etichetta" for="r-w-nome">{{ c.polvere.nome }}</label><input id="r-w-nome" name="w_nome" data-ruolo="nome" type="text" autocomplete="off"></div>
-      <div class="campo"><label class="etichetta" for="r-w-prezzo">{{ c.polvere.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-w-prezzo" name="w_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-w-nome">{{ c.polvere.nome }}</label><input id="r-w-nome" name="w_nome" data-ruolo="nome" type="text" autocomplete="off" placeholder="{{ c.nome_fantasma }}"></div>
+      <div class="campo"><label class="etichetta" for="r-w-prezzo">{{ c.polvere.prezzo }}<span class="obbl" aria-hidden="true">*</span></label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-w-prezzo" name="w_prezzo" aria-required="true" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
       <div class="campo">
-        <label class="etichetta" for="r-w-confezione">{{ c.polvere.confezione }}</label>
+        <label class="etichetta" for="r-w-confezione">{{ c.polvere.confezione }}<span class="obbl" aria-hidden="true">*</span></label>
         <div class="con-unita">
-          <input id="r-w-confezione" name="w_confezione" data-ruolo="confezione" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+          <input id="r-w-confezione" name="w_confezione" aria-required="true" data-ruolo="confezione" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
           <fieldset class="unita"><legend class="solo-lettori">{{ c.polvere.confezione }}</legend>
             {%- for u in c.polvere.unita %}
             <label><input type="radio" name="w_unita" value="{{ forloop.index0 }}"{% if forloop.first %} checked{% endif %}><span>{{ u }}</span></label>
@@ -91,7 +92,7 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
         </div>
         <p class="errore" hidden></p>
       </div>
-      <div class="campo"><label class="etichetta" for="r-w-dose">{{ c.polvere.dose }}</label><input id="r-w-dose" name="w_dose" data-ruolo="dose" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-w-dose">{{ c.polvere.dose }}<span class="obbl" aria-hidden="true">*</span></label><input id="r-w-dose" name="w_dose" aria-required="true" data-ruolo="dose" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
     </div>
   </fieldset>
 
@@ -125,6 +126,8 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
     </div>
   </fieldset>
 
+  {%- comment -%} ⭐ Giro W39 (Pier): la legenda dell'asterisco. Per chi ascolta l'asterisco è muto, e i campi necessari dicono `aria-required`. {%- endcomment %}
+  <p class="nota obbligatori" aria-hidden="true"><span class="obbl">*</span> {{ c.campi_obbligatori | remove_first: '*' | strip }}</p>
   <div class="totali" aria-live="polite">
     <div class="risultato grande"><span class="etichetta">{{ c.costo }}</span><output data-totale="1">—</output></div>
     <div class="risultato"><span class="etichetta">{{ c.per50 }}</span><output data-totale="50">—</output></div>
@@ -152,16 +155,15 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   <table class="scheda-componenti">
     <thead><tr><th scope="col"></th><th scope="col">{{ c.bossoli.prezzo }}</th><th scope="col">{{ c.bossoli.quanti }}</th><th scope="col">{{ c.costo }}</th></tr></thead>
     <tbody>
-      <tr data-riga="bossoli"><th scope="row">{{ c.bossoli.titolo }}</th><td data-campo="b_prezzo"></td><td data-campo="b_quanti"></td><td data-campo="c_bossoli"></td></tr>
-      <tr data-riga="bossoli_volte"><th scope="row" colspan="3">{{ c.bossoli.volte | remove: opzionale }}</th><td data-campo="b_volte"></td></tr>
-      <tr data-riga="inneschi"><th scope="row">{{ c.inneschi.titolo }}</th><td data-campo="i_prezzo"></td><td data-campo="i_quanti"></td><td data-campo="c_inneschi"></td></tr>
+      <tr data-riga="bossoli"><th scope="row">{{ c.bossoli.titolo }} <span class="scheda-nome" data-campo="b_nome"></span></th><td data-campo="b_prezzo"></td><td data-campo="b_quanti"></td><td data-campo="c_bossoli"></td></tr>
+      <tr data-riga="inneschi"><th scope="row">{{ c.inneschi.titolo }} <span class="scheda-nome" data-campo="i_nome"></span></th><td data-campo="i_prezzo"></td><td data-campo="i_quanti"></td><td data-campo="c_inneschi"></td></tr>
       <tr data-riga="palle"><th scope="row">{{ c.palle.titolo }} <span class="scheda-nome" data-campo="p_nome"></span></th><td data-campo="p_prezzo"></td><td data-campo="p_quanti"></td><td data-campo="c_palle"></td></tr>
       <tr data-riga="polvere"><th scope="row">{{ c.polvere.titolo }} <span class="scheda-nome" data-campo="w_nome"></span></th><td data-campo="w_prezzo"></td><td data-campo="w_confezione"></td><td data-campo="c_polvere"></td></tr>
     </tbody>
   </table>
   <dl class="scheda-dati">
     <div data-riga="w_dose"><dt>{{ c.polvere.dose }}</dt><dd data-campo="w_dose"></dd></div>
-    <div data-riga="p_peso"><dt>{{ c.palle.peso | remove: opzionale }}</dt><dd data-campo="p_peso"></dd></div>
+    <div data-riga="p_peso"><dt>{{ c.palle.peso }}</dt><dd data-campo="p_peso"></dd></div>
     <div data-riga="col"><dt>{{ c.facoltativi.col }}</dt><dd data-campo="col"></dd></div>
     <div data-riga="velocita"><dt>{{ c.facoltativi.velocita }}</dt><dd data-campo="velocita"></dd></div>
     <div data-riga="pf"><dt>{{ c.facoltativi.pf }}</dt><dd data-campo="pf"></dd></div>

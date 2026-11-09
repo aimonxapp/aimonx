@@ -53,6 +53,10 @@
 .calcolatore input[aria-invalid] { border-color: #B4531A; }
 .calcolatore .errore { margin: 0; font-size: .92rem; font-weight: 700; color: #9A4310; }
 .calcolatore .nota { margin-top: .6rem; font-size: .95rem; line-height: 1.5; color: var(--inchiostro-2); }
+// Giro W39 (Pier): l'asterisco dei campi necessari, e la sua legenda sotto i componenti.
+.calcolatore .obbl { margin-left: .15em; color: var(--arancio); font-weight: 800; }  // arancio AX, grassetto (Pier, 09/11/2026)
+.calc-ricarica .nota.obbligatori { margin-top: .8rem; }
+.calc-ricarica .nota.obbligatori .obbl { margin-left: 0; }
 
 // Il prezzo col suo simbolo davanti, dentro la casella.
 .calcolatore .con-valuta { position: relative; }

@@ -18,28 +18,30 @@ meta:
 titolo: Reloading cost calculator
 sommario: What does one round of your handload really cost? Enter what you paid for your components and your powder charge. You'll see the cost per round, per box of 50 and per 1,000, and you can print a load card or save it as a PDF.
 calcolatore:
-  nome: Load name (optional)
+  # ⭐ Giro W39 (Pier, 09/11/2026, guardando): i campi necessari hanno l'asterisco, gli altri non dicono più «(optional)»; marca e tipo per ogni componente, con «Text» come scrittina fantasma; tolto «Times you'll load each case», col paragrafo che lo spiegava («non ha senso»). Da dire a Cowork.
+  nome: Load name
   nome_esempio: Like "9mm 124 gr match load"
-  calibro: Caliber (optional)
+  calibro: Caliber
   bossoli:
     titolo: Brass
+    nome: Brass (brand/type)
     prezzo: Price paid
     quanti: How many
-    volte: Times you'll load each case (optional)
     nota: Range pickup? Enter 0 as the price.
   inneschi:
     titolo: Primers
+    nome: Primers (brand/type)
     prezzo: Price paid
     quanti: How many
   palle:
     titolo: Bullets
-    nome: Bullet (optional)
-    peso: Weight (grains) (optional)
+    nome: Bullets (brand/type)
+    peso: Weight (grains)
     prezzo: Price paid
     quanti: How many
   polvere:
     titolo: Powder
-    nome: Powder (optional)
+    nome: Powder (brand/type)
     prezzo: Price paid
     confezione: Container weight
     unita: [lb, g, kg]
@@ -52,6 +54,8 @@ calcolatore:
     unita_velocita: [fps, m/s]
     pf: Power Factor
     note: Notes
+  nome_fantasma: Text
+  campi_obbligatori: "* Required field"
   costo: Cost per round
   per50: Per box of 50
   per100: Per 100
@@ -77,8 +81,6 @@ blocchi:
   testo: How the math works
 - tipo: p
   testo: "Each component costs what you paid, divided by how many you got. Powder is the one that takes a step more: its price, divided by the container weight in grains, times your charge. A pound is 7,000 grains, so an 8 lb jug at $280 works out to half a cent a grain, and a 4.2-grain charge costs about two cents."
-- tipo: p
-  testo: "Loading the same brass more than once? Tell the calculator how many times, and it spreads the price out: a $30 bag of 100 cases you'll load five times comes to $0.06 a round."
 - tipo: h2
   testo: Keep it, batch after batch
 - tipo: p
