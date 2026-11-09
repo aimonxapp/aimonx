@@ -54,7 +54,12 @@
 .calcolatore .errore { margin: 0; font-size: .92rem; font-weight: 700; color: #9A4310; }
 .calcolatore .nota { margin-top: .6rem; font-size: .95rem; line-height: 1.5; color: var(--inchiostro-2); }
 // Giro W39 (Pier): l'asterisco dei campi necessari, e la sua legenda sotto i componenti.
-.calcolatore .obbl { margin-left: .15em; color: var(--arancio); font-weight: 800; }  // arancio AX, grassetto (Pier, 09/11/2026)
+// ⚠️ ECCEZIONE VOLUTA AL CONTRASTO: l'asterisco arancione AX misura 2,6–2,8:1 sul
+// verde del modulo (WCAG AA chiede 4,5), e `scripts/contrasto.mjs` lo conta, 10
+// per formato sulla pagina della ricarica. Pier, 09/11/2026, guardandolo: «va bene
+// e si vede» — proposto e rifiutato un arancio più scuro (#A84A0A, 4,8:1). Chi
+// ascolta non perde niente: i campi dicono `aria-required`.
+.calcolatore .obbl { margin-left: .15em; color: var(--arancio); font-weight: 800; }
 .calc-ricarica .nota.obbligatori { margin-top: .8rem; }
 .calc-ricarica .nota.obbligatori .obbl { margin-left: 0; }
 
