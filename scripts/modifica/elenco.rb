@@ -30,7 +30,8 @@ base = ARGV[0] || git("merge-base", "HEAD", "main").strip
 fino = ARGV[1]
 cambiati = git("diff", "--name-only", base, *[fino].compact, "--").lines.map(&:strip)
 cambiati |= git("ls-files", "--others", "--exclude-standard").lines.map(&:strip) unless fino
-dati = cambiati.select { |f| f.start_with?("_data/") && f.end_with?(".yml") }
+# ⛔ Fuori i file che non sono parole: indirizzi, impronte, nomi di file (come la sonda).
+dati = cambiati.select { |f| f.start_with?("_data/") && f.end_with?(".yml") && !%w[aspetto lingue collegamenti impronte].include?(File.basename(f, ".yml")) }
 altri = cambiati - dati - cambiati.select { |f| f.match?(%r{\A(scripts/|docs/|\.claude/|CLAUDE\.md|README\.md)}) }
 
 def foglie(x, p = [], out = {})
@@ -59,7 +60,7 @@ lingue = Testi.lingue
 n = 0
 puts "Cosa è cambiato da #{base} a #{fino || "i file sul disco"} (ramo #{git('rev-parse', '--abbrev-ref', 'HEAD').strip})"
 dati.each do |f|
-  prima_txt, = Open3.capture2("git", "-C", R, "show", "#{base}:#{f}")
+  prima_txt, = Open3.capture3("git", "-C", R, "show", "#{base}:#{f}") # un file nuovo non c era: vuoto
   prima = foglie(Psych.safe_load(prima_txt.to_s) || {})
   dopo_txt = if fino
                Open3.capture2("git", "-C", R, "show", "#{fino}:#{f}").first
@@ -67,15 +68,37 @@ dati.each do |f|
                File.read(File.join(R, f), encoding: "UTF-8")
              end
   dopo = foglie(Psych.safe_load(dopo_txt.to_s) || {})
-  (prima.keys | dopo.keys).each do |k|
-    next if prima[k] == dopo[k]
+  lin = lingue.find { |l| l["codice"] == Testi.lingua_del_file(f) }&.[]("nome")
+  # ⭐ Giro W38: una frase cambiata AL SUO POSTO esce come prima → dopo; le
+  # frasi nuove e quelle tolte escono come tali. Confrontare posizione per
+  # posizione non basta: un blocco inserito sposta tutti quelli dopo, e
+  # l'elenco diventerebbe centinaia di righe false.
+  testi_prima = prima.select { |_, v| v.is_a?(String) }
+  testi_dopo = dopo.select { |_, v| v.is_a?(String) }
+  tolte = testi_prima.values - testi_dopo.values
+  nuove = testi_dopo.values - testi_prima.values
+  voce = lambda do |titolo, k, righe|
     n += 1
-    lin = lingue.find { |l| l["codice"] == Testi.lingua_del_file(f) }&.[]("nome")
     puts
-    puts "#{n}. #{lin} · #{f} · #{k.join('.')}"
+    puts "#{n}. #{lin} · #{f} · #{k.join('.')} — #{titolo}"
     puts "   si vede in: #{dove.call(f, k)}"
-    puts "   prima: #{prima[k].inspect}"
-    puts "   dopo:  #{dopo[k].inspect}"
+    righe.each { |r| puts "   #{r}" }
+  end
+  testi_dopo.each do |k, v|
+    next unless nuove.include?(v)
+    if testi_prima.key?(k) && tolte.include?(testi_prima[k])
+      voce.call("cambiata", k, ["prima: #{testi_prima[k].inspect}", "dopo:  #{v.inspect}"])
+      tolte.delete(testi_prima[k])
+    else
+      voce.call("nuova", k, ["#{v.inspect}"])
+    end
+  end
+  testi_prima.each do |k, v|
+    next unless tolte.include?(v)
+    n += 1
+    puts
+    puts "#{n}. #{lin} · #{f} · #{k.join('.')} — tolta"
+    puts "   era: #{v.inspect}"
   end
 end
 puts "\nNessun testo cambiato." if n.zero?
