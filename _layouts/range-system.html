@@ -46,6 +46,8 @@
   {%- comment -%} ⭐ Giro W39: la barra FUORI da `.apertura`, perché resti ferma in alto per tutta la pagina (`_includes/barra.html`). {%- endcomment -%}
   {%- include barra.html %}
   <div class="apertura">
+    {%- comment -%} ⭐ Giro W39: il banner, in alto sotto il menu, su tutte le pagine tranne la home (`_includes/banner.html`). {%- endcomment %}
+    {% include banner.html %}
 
     <div class="titolone">
       {% include briciole.html %}
@@ -87,7 +89,8 @@
         <p class="nota">{% include frase.html testo=b.nota collega=true %}</p>
       </section>
       {%- when 'pulsante' %}
-      <p class="vai"><a class="pulsante" href="{{ lin_c.makerworld }}" rel="noreferrer">{% include frase.html testo=b.testo %}</a></p>
+      {%- comment -%} ⭐ Giro W39 (Pier, 09/11/2026): i link a MakerWorld si aprono in una NUOVA FINESTRA (`target="_blank"`); `noreferrer` vale anche da `noopener`. {%- endcomment %}
+      <p class="vai"><a class="pulsante" href="{{ lin_c.makerworld }}" target="_blank" rel="noreferrer">{% include frase.html testo=b.testo %}</a></p>
       {%- when 'foto' %}
       {%- assign rs_f = rs_foto[rs_quale] -%}
       {%- assign rs_quale = rs_quale | plus: 1 -%}
@@ -131,7 +134,7 @@
       {%- else %}
       {%- capture rs_t -%}{% include frase.html testo=b.testo %}{%- endcapture -%}
       {%- if b.link -%}
-      {%- capture rs_a -%}<a href="{{ lin_c.makerworld }}" rel="noreferrer">{{ b.link }}</a>{%- endcapture -%}
+      {%- capture rs_a -%}<a href="{{ lin_c.makerworld }}" target="_blank" rel="noreferrer">{{ b.link }}</a>{%- endcapture -%}
       {%- assign rs_t = rs_t | replace: b.link, rs_a -%}
       {%- endif %}
       <p>{% if b.forte %}<strong>{% include frase.html testo=b.forte %}</strong>{{ spazio }}{% endif %}{{ rs_t }}</p>
