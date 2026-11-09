@@ -56,3 +56,5 @@ assets/img/screenshots/*.webp
 
 # ⭐ Giro W31: le foto del Range System, senza metadati (`scripts/foto-pulite.rb`)
 assets/img/range-system/*.webp
+# Giro W39: il banner delle pagine interne, ritagliato da quello di YouTube (`scripts/schermate.mjs`, gruppo `banner`).
+assets/img/banner/*.webp

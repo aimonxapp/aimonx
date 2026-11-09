@@ -1,0 +1,22 @@
+{%- comment -%}
+_includes/banner.html — IL BANNER DELLE PAGINE INTERNE. Giro W39 (Pier,
+09/11/2026: «il banner che hai fatto per YouTube», in alto sotto il menu, su
+tutte le pagine TRANNE la home — lì c'è già la parte alta con la Home dell'app).
+  ⭐ Due tagli dello stesso banner (`scripts/schermate.mjs`, gruppo `banner`):
+  sotto i 600 px solo logo e scritte, sopra la fascia con le due schermate. Li
+  sceglie il browser (`<picture>`), e `width`/`height` su ciascuno tengono il
+  posto prima che l'immagine arrivi: la pagina non si sposta.
+  ⚠️ `alt=""`, DECORATIVO, e qui è una SCELTA DI CC da far guardare: il logo,
+  il nome e il motto ci sono già nella barra e nel piede, e un testo
+  alternativo li farebbe leggere un'altra volta a chi ascolta. Se Cowork
+  vuole che il banner si senta, scrive lei le parole.
+  ⛔ Nessuna parola qui: nell'immagine ci sono le scritte del banner di YouTube.
+  ⚠️ I file stanno in `assets/img/banner/` e NON fra le schermate: non è una
+  schermata dell'app, e la regola delle schermate (testo alternativo pieno,
+  `loading="lazy"`) non gli si applica — `scripts/misure-pagine.rb`.
+{%- endcomment -%}
+{%- assign ban_d = '/assets/img/banner/' | relative_url -%}
+<picture class="banner">
+  <source media="(max-width: 599.98px)" srcset="{{ ban_d }}aimonx-banner-stretto-480.webp 480w, {{ ban_d }}aimonx-banner-stretto-800.webp 800w, {{ ban_d }}aimonx-banner-stretto-1200.webp 1200w" sizes="calc(100vw - 2.2rem)" width="1540" height="380">
+  <img src="{{ ban_d }}aimonx-banner-1280.webp" srcset="{{ ban_d }}aimonx-banner-800.webp 800w, {{ ban_d }}aimonx-banner-1280.webp 1280w, {{ ban_d }}aimonx-banner-2000.webp 2000w" sizes="(min-width: 1140px) 1056px, calc(100vw - 5rem)" width="2560" height="630" alt="">
+</picture>

@@ -66,6 +66,8 @@
 //   · `liste`: quelle di «ScreenShot APP v1.0.1 liste» (W23); `liste-icone` è la
 //     sola `liste_7`, arrivata dopo e quindi in un gruppo suo;
 //   · `home` (W39): la Home della landing, da `schermate-1.1.0` del catalogo;
+//   · `banner` (W39): il banner delle pagine interne, dalla cartella `youtube` dei social,
+//     in `assets/img/banner/` — è decorazione, non una schermata;
 //   · `statistiche`: `stats_1.png` di «ScreenShot APP v1.0.0/2° giro» (W23), in
 //     un gruppo suo perché rifarla non deve rifare le altre di quella cartella.
 //   ⚠️ Il gruppo c'è perché le cartelle sono più d'una, e ⛔ perché rifare una
@@ -171,6 +173,17 @@ const LISTA = [
   // della v1.0.0 non aveva le icone delle armi). Cartella `schermate-1.1.0` del
   // catalogo, `US/`: una sola per tutte le lingue, com'era.
   ...(gruppo === 'home' ? [{ da: paese('US', 'home_1'), a: 'aimonx-home-screen', larghezze: TELEFONO, gruppo }] : []),
+  // --- giro W39, il BANNER delle pagine interne (Pier, 09/11/2026: «il banner
+  // che hai fatto per YouTube», in alto sotto il menu, tutte le pagine tranne
+  // la home). Sorgente: `banner-youtube-aimonx.png` (2560×1440) della cartella
+  // `youtube` dei social. ⚠️ Due TAGLI netti (`ritaglio` con angolo 0), nessun
+  // ritocco: una fascia larga, con le due schermate, per computer e tablet, e
+  // per il telefono solo il logo e le scritte, che a quella larghezza
+  // nella fascia intera non si leggerebbero.
+  ...(gruppo === 'banner' ? [
+    { da: 'banner-youtube-aimonx.png', a: 'banner/aimonx-banner',        larghezze: [800, 1280, 2000], gruppo, ritaglio: { x: 0, y: 270, larga: 2560, alta: 630, angolo: 0 } },
+    { da: 'banner-youtube-aimonx.png', a: 'banner/aimonx-banner-stretto', larghezze: [480, 800, 1200], gruppo, ritaglio: { x: 480, y: 520, larga: 1540, alta: 380, angolo: 0 } },
+  ] : []),
   // --- giro W31, la pagina del Range System ---
   // ⛔ Mai le foto con la scatola Geco (7733, 7735, 7737): la nota in testa alla bozza.
   { da: 'ars-9mm-100_7643.jpg', a: 'range-system/9mm-ammo-box-open-100-rounds',  larghezze: FOTO, gruppo: 'range-system' },
@@ -259,7 +272,9 @@ for (const voce of LISTA) {
       for (let i = 0; i < byte.length; i += 0x8000) s += String.fromCharCode(...byte.subarray(i, i + 0x8000));
       return { base64: btoa(s), l, a, da: [img.naturalWidth, img.naturalHeight], tolte, ritagliata: ritaglio ? [larga, alta] : null };
     }, { dati, l, q: QUALITA, accorcia: voce.da.endsWith('.pdf') || voce.togli != null, ritaglio: voce.ritaglio ?? null, togli: voce.togli ?? null });
-    const file = join(voce.gruppo === 'range-system' ? dirname(USCITA) : USCITA, `${voce.a}-${l}.webp`);
+    // ⚠️ Le foto del Range System e il banner (W39) NON sono schermate: stanno in una
+    // cartella loro sotto `assets/img/`, e la regola delle schermate non li tocca.
+    const file = join(['range-system', 'banner'].includes(voce.gruppo) ? dirname(USCITA) : USCITA, `${voce.a}-${l}.webp`);
     await mkdir(dirname(file), { recursive: true });
     const corpo = Buffer.from(esito.base64, 'base64');
     await writeFile(file, corpo);

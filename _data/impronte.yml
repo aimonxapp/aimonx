@@ -2,12 +2,12 @@
 # L'impronta (SHA-256, 10 caratteri) di ogni foglio e script costruito:
 # va in coda al suo indirizzo, `?v=…` (`_includes/testa.html`).
 "/assets/css/b.css": "6ea9901372"
-"/assets/css/comune.css": "97d4851452"
+"/assets/css/comune.css": "f9eab8ff5c"
 "/assets/css/funzione.css": "0f10e660a7"
 "/assets/css/indice.css": "0d96d11925"
 "/assets/css/prezzi.css": "a369dda90b"
 "/assets/css/range-system.css": "90cb74acd8"
-"/assets/css/strumenti.css": "0c5f23ec4c"
+"/assets/css/strumenti.css": "12e050d8f2"
 "/assets/css/testo.css": "7d1855d659"
-"/assets/js/calcolatori.js": "e01fec04c7"
+"/assets/js/calcolatori.js": "a11c2f90aa"
 "/assets/js/menu.js": "13ae88dd78"

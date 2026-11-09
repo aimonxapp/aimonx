@@ -41,6 +41,8 @@
   {%- comment -%} ⭐ Giro W39: la barra FUORI da `.apertura`, perché resti ferma in alto per tutta la pagina (`_includes/barra.html`). {%- endcomment -%}
   {%- include barra.html %}
   <div class="apertura">
+    {%- comment -%} ⭐ Giro W39: il banner, in alto sotto il menu, su tutte le pagine tranne la home (`_includes/banner.html`). {%- endcomment %}
+    {% include banner.html %}
     {%- comment -%}
       ⛔ LA TESTATA NON È PIÙ SCRITTA QUI, dal giro W10: è la stessa barra
       della landing, in `_includes/barra.html`. Era già scritta due volte e

@@ -356,6 +356,16 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
 // sono più nella barra, ma restano raggiungibili dagli indirizzi già scritti.
 #features, #privacy, #security, #free-and-pro { scroll-margin-top: 1.2rem; }
 
+// IL BANNER DELLE PAGINE INTERNE — giro W39 (`_includes/banner.html`): largo
+// quanto la colonna del sito, sotto la barra e prima del titolo, con gli angoli
+// tondi delle carte. ⚠️ `height: auto` con `width`/`height` nell'HTML: il posto
+// è tenuto prima che l'immagine arrivi.
+.banner { display: block; margin-block: clamp(.9rem, 2.6vw, 1.5rem) clamp(.6rem, 1.6vw, .9rem); }
+.banner img {
+  display: block; width: 100%; height: auto;
+  border-radius: clamp(12px, 2vw, 18px); border: 1px solid rgba(253, 253, 253, .08);
+}
+
 // ============================================================================
 // IL PIEDE — l'eccezione dichiarata in testa a questo file.
 // ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
