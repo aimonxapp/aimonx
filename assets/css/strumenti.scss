@@ -90,9 +90,13 @@
   display: grid; gap: .8rem; margin-top: 1.1rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
 }
-// Sul telefono i quattro totali stanno due per riga, non uno sotto l'altro.
-.calcolatore .totali { grid-template-columns: repeat(auto-fit, minmax(min(100%, 7.5rem), 1fr)); }
+// ⭐ Giro W39 (Pier, 09/11/2026: «sopra i 1000 euro i numeri non ci stanno»):
+// i tre totali sotto il costo a colpo sono TRE COLONNE UGUALI, larghe quanto il
+// modulo, e il numero sta su una riga sola; sul telefono stretto uno per riga.
+.calcolatore .totali { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .calcolatore .totali .risultato.grande { grid-column: 1 / -1; }
+.calcolatore .totali .risultato:not(.grande) output { white-space: nowrap; overflow-wrap: normal; font-size: clamp(1.2rem, 2.6vw, 1.6rem); }
+@media (max-width: 559.98px) { .calcolatore .totali { grid-template-columns: 1fr; } }
 .calcolatore .risultato {
   display: grid; gap: .15rem; padding: .8rem 1rem; border-radius: 14px;
   background: var(--bianco); min-width: 0;
