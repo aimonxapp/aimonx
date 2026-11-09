@@ -276,6 +276,23 @@ VOCI
       non_misurabile "file_non_dichiarati (manca scripts/pubblicati.txt)"
     fi
 
+    # ⭐ Giro W37 — L'ATTREZZO DI PIER NON VA ONLINE. La modalità modifica
+    # (`scripts/modifica/`) aggiunge il suo script alle pagine SOLO mentre le
+    # serve sul Mac di Pier, e la sua build sonda segna i testi con caratteri
+    # invisibili SOLO nella sua cartella temporanea. ⛔ Nel sito costruito non
+    # deve esserci né l'uno né l'altro: si contano i file che nominano
+    # l'attrezzo (`__modifica`) o portano uno dei suoi segni (U+2062–U+2064).
+    # La rete sotto `exclude` e `file_non_dichiarati` copre i FILE; questa copre
+    # ciò che sta DENTRO una pagina pubblicata.
+    N_ATTREZZO=$("$RUBY_BIN/ruby" -e '
+      n = Dir.glob(File.join(ARGV[0], "**/*"), File::FNM_DOTMATCH).count do |f|
+        next false unless File.file?(f)
+        t = File.binread(f)
+        t.include?("__modifica") || t.force_encoding("UTF-8").scrub.match?(/[⁢-⁤]/)
+      end
+      puts n' "$SITO_TMP")
+    confronta "file del sito costruito che contengono l'attrezzo di modifica" attrezzo_nel_sito "$N_ATTREZZO"
+
     # ⭐ Giro W26 — LE IMPRONTE DEI FOGLI E DEGLI SCRIPT (`scripts/impronte.sh`).
     # Ogni indirizzo di un foglio o di uno script nel sito costruito deve
     # portare `?v=` e, come valore, l'impronta del file a cui punta: se no, chi

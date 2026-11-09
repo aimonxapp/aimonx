@@ -1,0 +1,47 @@
+/* scripts/modifica/editore.css — l'aspetto dell'attrezzo, SOLO sul Mac di Pier. Giro W37.
+   ⛔ Non è un foglio del sito: lo aggiunge `server.rb` mentre serve le pagine. */
+.mod-barra {
+  position: fixed; left: 12px; bottom: 12px; z-index: 2147483000;
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  padding: 8px; border-radius: 12px; background: #1d1d1f; color: #fff;
+  font: 14px/1.3 -apple-system, system-ui, sans-serif; box-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+.mod-bottone {
+  font: 600 14px/1 -apple-system, system-ui, sans-serif; cursor: pointer;
+  border: 0; border-radius: 8px; padding: 9px 12px; background: #ff8a00; color: #1d1d1f;
+}
+.mod-secondario { background: #3a3a3c; color: #fff; }
+.mod-scritta { opacity: .8; padding: 0 4px; }
+.mod-fascia {
+  position: fixed; left: 0; right: 0; top: 0; z-index: 2147483000; display: none;
+  padding: 6px 12px; text-align: center; background: #ff8a00; color: #1d1d1f;
+  font: 700 13px/1.3 -apple-system, system-ui, sans-serif; letter-spacing: .02em;
+}
+.mod-fascia.mod-visibile { display: block; }
+.mod-avviso {
+  position: fixed; right: 12px; bottom: 12px; z-index: 2147483001; max-width: min(460px, calc(100vw - 24px));
+  padding: 12px 14px; border-radius: 12px; background: #1d1d1f; color: #fff;
+  font: 14px/1.4 -apple-system, system-ui, sans-serif; box-shadow: 0 6px 24px rgba(0,0,0,.35);
+  opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s; pointer-events: none;
+}
+.mod-avviso.mod-visibile { opacity: 1; transform: none; }
+.mod-ok { background: #1f6f3f; }
+.mod-errore { background: #9b1c1c; }
+.mod-attenzione { background: #6b4e00; }
+.mod-in-modifica .mod-si { outline: 1px dashed rgba(46, 160, 67, .9); outline-offset: 1px; cursor: text; border-radius: 2px; }
+.mod-in-modifica .mod-si:hover { background: rgba(46, 160, 67, .18); outline-style: solid; }
+.mod-in-modifica .mod-no:hover { outline: 1px dotted rgba(200, 60, 60, .8); cursor: help; }
+.mod-sto-scrivendo { outline: 2px solid #ff8a00 !important; background: rgba(255, 138, 0, .12) !important; }
+.mod-pannello {
+  position: fixed; top: 40px; right: 12px; bottom: 70px; z-index: 2147483000; overflow: auto;
+  width: min(480px, calc(100vw - 24px)); padding: 16px; border-radius: 12px; background: #fff; color: #1d1d1f;
+  font: 14px/1.4 -apple-system, system-ui, sans-serif; box-shadow: 0 6px 32px rgba(0,0,0,.4);
+}
+.mod-pannello[hidden] { display: none; }
+.mod-pannello h2 { font-size: 18px; margin: 0 0 4px; }
+.mod-riga { border-top: 1px solid #ddd; padding: 10px 0; display: grid; gap: 6px; }
+.mod-riga label { font-weight: 600; }
+.mod-riga textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 6px; border: 1px solid #aaa; border-radius: 6px; }
+.mod-mini { max-width: 120px; max-height: 80px; object-fit: contain; }
+.mod-dove, .mod-perche { font-size: 12px; color: #555; margin: 0; }
+.mod-fisso { margin: 0; color: #333; }
