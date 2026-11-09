@@ -174,8 +174,8 @@ riscatta: "https://apps.apple.com/redeem?ctx=offercodes&id=6794895643&code=RANGE
 # inglese), e una sezione che resta senza voci non si apre — sparisce.
 #   · `dove`: la sezione è un link e basta, niente pannello (Range System,
 #     Pricing): «pronta ad avere sottovoci» vuol dire scriverle qui, in `gruppi`;
-#   · `gruppi`: il pannello. Il PRIMO gruppo a caratteri grandi, gli altri
-#     piccoli, com'è da Apple;
+#   · `gruppi`: il pannello, un gruppo per colonna; tutte le voci alla stessa
+#     misura (Pier, 09/11/2026), il primo gruppo solo più chiaro;
 #   · `piede`: nel piede le voci in fila (ogni sezione con un pannello ce l'ha:
 #     Liquid non sa appiattire i gruppi); `colonna`: in
 #     quale colonna del piede sta la sezione (più sezioni si impilano).

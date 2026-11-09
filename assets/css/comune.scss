@@ -236,7 +236,7 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
   .barra .tendina[open] ~ .pannello { display: block; padding: 0 0 .9rem .2rem; }
   .barra .gruppo-voci + .gruppo-voci { margin-top: .5rem; padding-top: .5rem; border-top: 1px solid rgba(253, 253, 253, .07); }
   .barra .gruppo-voci a { padding: .55rem 0; font-size: 1rem; }
-  .barra .gruppo-voci.grande a { font-size: 1.1rem; color: var(--bianco); }
+  .barra .gruppo-voci.grande a { color: var(--bianco); }
   .barra .lingue-voce { padding: .4rem 0; }
   .barra .scarica-voce { border-bottom: 0 !important; padding-top: 1.6rem; }
   .barra .voci-barra .pulsante { display: flex; justify-content: center; padding: .8rem 1rem; font-size: 1.1rem; }
@@ -277,9 +277,11 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
     max-width: var(--sito); margin: 0 auto;
     padding: 1.6rem var(--margine) 2.4rem calc(var(--margine) + 36px + 2.4rem);
   }
-  // Il primo gruppo a caratteri grandi, gli altri piccoli (da Apple).
+  // ⭐ Giro W39 (Pier, 09/11/2026, guardando): TUTTE le voci dei pannelli alla
+  // stessa misura, la più piccola — non più il primo gruppo a caratteri grandi
+  // come da Apple. Il primo gruppo resta solo più chiaro.
   .barra .gruppo-voci a { padding: .32rem 0; font-size: .92rem; }
-  .barra .gruppo-voci.grande a { padding: .28rem 0; font-size: 1.45rem; font-weight: 700; letter-spacing: -.01em; color: var(--bianco); }
+  .barra .gruppo-voci.grande a { color: var(--bianco); }
   .barra .gruppo-voci.grande a:hover { color: var(--verde-chiaro); }
   .barra .gruppo-voci.grande [aria-current="page"] { color: var(--verde-chiaro); }
   // ⭐ La pagina dietro si scurisce e si sfoca mentre un pannello è aperto: un
