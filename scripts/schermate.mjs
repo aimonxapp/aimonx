@@ -65,6 +65,7 @@
 //   · `manutenzione`: le tre di «ScreenShot APP v1.0.1 maintenance» (W17).
 //   · `liste`: quelle di «ScreenShot APP v1.0.1 liste» (W23); `liste-icone` è la
 //     sola `liste_7`, arrivata dopo e quindi in un gruppo suo;
+//   · `home` (W39): la Home della landing, da `schermate-1.1.0` del catalogo;
 //   · `statistiche`: `stats_1.png` di «ScreenShot APP v1.0.0/2° giro» (W23), in
 //     un gruppo suo perché rifarla non deve rifare le altre di quella cartella.
 //   ⚠️ Il gruppo c'è perché le cartelle sono più d'una, e ⛔ perché rifare una
@@ -103,7 +104,8 @@ const FOGLIO = [600, 900, 1200];
 const FOTO = [480, 800, 1200];
 const paese = (p, nome) => `${p}/${readdirSync(join(sorgenti, p)).find((f) => f.endsWith(`_${nome}.png`))}`;
 const LISTA = [
-  { da: 'home_1.png',          a: 'aimonx-home-screen',          larghezze: TELEFONO },
+  // ⛔ Giro W39: `home_1.png` della v1.0.0 NON si rifà più — era la Home senza le
+  // icone delle armi (Pier, 09/11/2026). La Home viene dal gruppo `home`, qui sotto.
   { da: 'firearms_1.png',      a: 'aimonx-firearms-round-count', larghezze: TELEFONO },
   { da: 'sessions_1.png',      a: 'aimonx-range-sessions',       larghezze: TELEFONO },
   { da: 'ammo_1.png',          a: 'aimonx-ammo-inventory',       larghezze: TELEFONO },
@@ -165,6 +167,10 @@ const LISTA = [
     ].map(([n, a]) => ({ da: paese(p, n), a: `${a}-${p.toLowerCase()}`, larghezze: TELEFONO, gruppo })).concat(
       [{ da: paese(p, 'pdf_inventory_p1'), a: `aimonx-inventory-pdf-${p.toLowerCase()}`, larghezze: FOGLIO, gruppo, togli: 200 }])),
   ] : []),
+  // --- giro W39, la Home della landing, dalla 1.1.0 (Pier, 09/11/2026: quella
+  // della v1.0.0 non aveva le icone delle armi). Cartella `schermate-1.1.0` del
+  // catalogo, `US/`: una sola per tutte le lingue, com'era.
+  ...(gruppo === 'home' ? [{ da: paese('US', 'home_1'), a: 'aimonx-home-screen', larghezze: TELEFONO, gruppo }] : []),
   // --- giro W31, la pagina del Range System ---
   // ⛔ Mai le foto con la scatola Geco (7733, 7735, 7737): la nota in testa alla bozza.
   { da: 'ars-9mm-100_7643.jpg', a: 'range-system/9mm-ammo-box-open-100-rounds',  larghezze: FOTO, gruppo: 'range-system' },
