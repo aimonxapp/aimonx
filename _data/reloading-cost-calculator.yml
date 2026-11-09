@@ -1,0 +1,90 @@
+# _data/reloading-cost-calculator.yml — IL TESTO DELLA PAGINA «Reloading cost calculator». Giro W38.
+#
+# ⏳ BOZZA NON ANCORA APPROVATA: …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md
+# (§2), che Pier ripassa nel suo sito locale. Fino alla sua approvazione
+# `scripts/testo-approvato.sh` segna queste righe fuori dall'approvato, ed è ATTESO.
+# ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
+# copiate alla lettera. Le note fra quadre della bozza non sono qui.
+# ⭐ `calcolatore` e `scheda`: le etichette del calcolatore e della scheda da
+# stampare. I conti li fa `assets/js/calcolatori.js`, come l'app (§17.12).
+# ⚠️ `obbligatorio` e `maggiore` non sono della bozza: sono le parole dell'app
+# per gli stessi errori, prese dal catalogo testi come chiede la bozza.
+# ⚠️ SCELTA DI CC: il badge dello Store in fondo, come sulle pagine-funzione,
+# con il suo testo di sempre — Pier guarda.
+
+meta:
+  title: Reloading Cost Calculator, with a Printable Load Card | AIMONX
+  description: What does one round of your handload really cost? Enter what you paid for brass, primers, bullets and powder, see your cost per round, and print a load card for your bench. Free, no sign-up.
+titolo: Reloading cost calculator
+sommario: What does one round of your handload really cost? Enter what you paid for your components and your powder charge. You'll see the cost per round, per box of 50 and per 1,000, and you can print a load card or save it as a PDF.
+calcolatore:
+  nome: Load name (optional)
+  nome_esempio: Like "9mm 124 gr match load"
+  calibro: Caliber (optional)
+  bossoli:
+    titolo: Brass
+    prezzo: Price paid
+    quanti: How many
+    volte: Times you'll load each case (optional)
+    nota: Range pickup? Enter 0 as the price.
+  inneschi:
+    titolo: Primers
+    prezzo: Price paid
+    quanti: How many
+  palle:
+    titolo: Bullets
+    nome: Bullet (optional)
+    peso: Weight (grains) (optional)
+    prezzo: Price paid
+    quanti: How many
+  polvere:
+    titolo: Powder
+    nome: Powder (optional)
+    prezzo: Price paid
+    confezione: Container weight
+    unita: [lb, g, kg]
+    dose: Charge (grains)
+  facoltativi:
+    titolo: Optional
+    col: COL/OAL
+    unita_col: [in, mm]
+    velocita: Muzzle velocity
+    unita_velocita: [fps, m/s]
+    pf: Power Factor
+    note: Notes
+  costo: Cost per round
+  per50: Per box of 50
+  per100: Per 100
+  per1000: Per 1,000
+  stampa: Print load card
+  pdf: Want a PDF? Choose "Save as PDF" in the print window.
+  privato: Nothing you type here leaves this page, and nothing gets saved. Close the page and it's gone.
+  obbligatorio: Required.
+  maggiore: Must be greater than 0.
+scheda:
+  titolo: Load card
+  stampata: Printed on
+  piede:
+  - Your numbers, entered by you. Always start from the load data published by your powder and bullet makers.
+  - Made with the free reloading cost calculator at aimonx.app
+blocchi:
+- tipo: p
+  testo: This calculator works out costs, not loads. Always start from the load data published by your powder and bullet makers.
+- tipo: calcolatore-ricarica
+- tipo: h2
+  testo: How the math works
+- tipo: p
+  testo: "Each component costs what you paid, divided by how many you got. Powder is the one that takes a step more: its price, divided by the container weight in grains, times your charge. A pound is 7,000 grains, so an 8 lb jug at $280 works out to half a cent a grain, and a 4.2-grain charge costs about two cents."
+- tipo: p
+  testo: "Loading the same brass more than once? Tell the calculator how many times, and it spreads the price out: a $30 bag of 100 cases you'll load five times comes to $0.06 a round."
+- tipo: h2
+  testo: Keep it, batch after batch
+- tipo: p
+  testo: This page does the math once. AIMONX keeps your recipes on your iPhone, gives every batch you load its own cost, and adds what you shoot to each range session, so you always know what a day at the range really cost you.
+- tipo: p
+  testo: The printable load card is a website tool. In the app, your recipes live on your iPhone, along with every batch you load.
+- tipo: h2
+  testo: Free and Pro
+- tipo: p
+  testo: The calculator on this page is free for everyone. In the app, handload recipes, component costs and batches are part of Pro. The Power Factor calculator is free in both.
+badge: Download on the App Store

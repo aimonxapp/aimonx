@@ -1,0 +1,165 @@
+{%- comment -%}
+_includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA, e
+  la scheda da stampare. Giro W38.
+  ⛔ Nessuna parola qui: le etichette arrivano in `include.c` e `include.s`
+  (`_data/reloading-cost-calculator.yml`), di Cowork. I conti li fa
+  `assets/js/calcolatori.js`, gli stessi dell'app (`prodotto.md` §17.12):
+  bossolo, innesco e palla = prezzo ÷ quantità; polvere = prezzo ÷ peso della
+  confezione in grani × dose; componenti fino a tre decimali, totale a due.
+  ⭐ In più rispetto all'app, come vuole la bozza: quante volte si carica un
+  bossolo, che divide il suo costo (vuoto = 1).
+  ⛔ La valuta è quella della pagina (`data-valuta`): dollari sulla pagina inglese.
+  ⛔ Non salva niente e non manda niente: nessun `action`, nessuna memoria del
+  browser. La stampa è quella del browser.
+  ⭐ SENZA JAVASCRIPT il modulo non si vede (la regola sta in `<noscript>`, in
+  `_includes/testa.html`), e la pagina si legge lo stesso.
+  ⚠️ LA SCHEDA (`.scheda-carico`) è nascosta sullo schermo ed esce SOLO in
+  stampa: lo script la riempie coi campi scritti e nasconde le righe vuote.
+  Sulla scheda le etichette perdono «(optional)», che sulla carta non dice niente.
+{%- endcomment -%}
+{%- assign c = include.c -%}
+{%- assign s = include.s -%}
+{%- capture opzionale %} (optional){% endcapture -%}
+<form class="calcolatore calc-ricarica" data-calcolatore="ricarica" novalidate
+      data-valuta="USD" data-obbligatorio="{{ c.obbligatorio }}" data-maggiore="{{ c.maggiore }}">
+  <div class="campi">
+    <div class="campo largo">
+      <label class="etichetta" for="r-nome">{{ c.nome }}</label>
+      <input id="r-nome" name="nome" type="text" autocomplete="off" placeholder="{{ c.nome_esempio | replace: '"', '&quot;' }}">
+    </div>
+    <div class="campo">
+      <label class="etichetta" for="r-calibro">{{ c.calibro }}</label>
+      <input id="r-calibro" name="calibro" type="text" autocomplete="off">
+    </div>
+  </div>
+
+  {%- comment -%} I quattro componenti. `data-componente` lega i campi al loro costo, a destra del titolo. {%- endcomment %}
+  <fieldset class="componente" data-componente="bossoli">
+    <legend><span>{{ c.bossoli.titolo }}</span><output data-costo>—</output></legend>
+    <div class="campi">
+      <div class="campo"><label class="etichetta" for="r-b-prezzo">{{ c.bossoli.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-b-prezzo" name="b_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="r-b-nota"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-b-quanti">{{ c.bossoli.quanti }}</label><input id="r-b-quanti" name="b_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-b-volte">{{ c.bossoli.volte }}</label><input id="r-b-volte" name="b_volte" data-ruolo="volte" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+    </div>
+    <p class="nota" id="r-b-nota">{{ c.bossoli.nota }}</p>
+  </fieldset>
+
+  <fieldset class="componente" data-componente="inneschi">
+    <legend><span>{{ c.inneschi.titolo }}</span><output data-costo>—</output></legend>
+    <div class="campi">
+      <div class="campo"><label class="etichetta" for="r-i-prezzo">{{ c.inneschi.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-i-prezzo" name="i_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-i-quanti">{{ c.inneschi.quanti }}</label><input id="r-i-quanti" name="i_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+    </div>
+  </fieldset>
+
+  <fieldset class="componente" data-componente="palle">
+    <legend><span>{{ c.palle.titolo }}</span><output data-costo>—</output></legend>
+    <div class="campi">
+      <div class="campo"><label class="etichetta" for="r-p-nome">{{ c.palle.nome }}</label><input id="r-p-nome" name="p_nome" data-ruolo="nome" type="text" autocomplete="off"></div>
+      <div class="campo"><label class="etichetta" for="r-p-peso">{{ c.palle.peso }}</label><input id="r-p-peso" name="p_peso" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div>
+      <div class="campo"><label class="etichetta" for="r-p-prezzo">{{ c.palle.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-p-prezzo" name="p_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo"><label class="etichetta" for="r-p-quanti">{{ c.palle.quanti }}</label><input id="r-p-quanti" name="p_quanti" data-ruolo="quanti" type="number" inputmode="numeric" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+    </div>
+  </fieldset>
+
+  <fieldset class="componente" data-componente="polvere">
+    <legend><span>{{ c.polvere.titolo }}</span><output data-costo>—</output></legend>
+    <div class="campi">
+      <div class="campo"><label class="etichetta" for="r-w-nome">{{ c.polvere.nome }}</label><input id="r-w-nome" name="w_nome" data-ruolo="nome" type="text" autocomplete="off"></div>
+      <div class="campo"><label class="etichetta" for="r-w-prezzo">{{ c.polvere.prezzo }}</label><div class="con-valuta"><span class="valuta" aria-hidden="true"></span><input id="r-w-prezzo" name="w_prezzo" data-ruolo="prezzo" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"></div><p class="errore" hidden></p></div>
+      <div class="campo">
+        <label class="etichetta" for="r-w-confezione">{{ c.polvere.confezione }}</label>
+        <div class="con-unita">
+          <input id="r-w-confezione" name="w_confezione" data-ruolo="confezione" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+          <fieldset class="unita"><legend class="solo-lettori">{{ c.polvere.confezione }}</legend>
+            {%- for u in c.polvere.unita %}
+            <label><input type="radio" name="w_unita" value="{{ forloop.index0 }}"{% if forloop.first %} checked{% endif %}><span>{{ u }}</span></label>
+            {%- endfor %}
+          </fieldset>
+        </div>
+        <p class="errore" hidden></p>
+      </div>
+      <div class="campo"><label class="etichetta" for="r-w-dose">{{ c.polvere.dose }}</label><input id="r-w-dose" name="w_dose" data-ruolo="dose" type="number" inputmode="decimal" min="0" step="any" autocomplete="off"><p class="errore" hidden></p></div>
+    </div>
+  </fieldset>
+
+  <fieldset class="componente facoltativi">
+    <legend><span>{{ c.facoltativi.titolo }}</span></legend>
+    <div class="campi">
+      <div class="campo">
+        <label class="etichetta" for="r-col">{{ c.facoltativi.col }}</label>
+        <div class="con-unita">
+          <input id="r-col" name="col" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+          <fieldset class="unita"><legend class="solo-lettori">{{ c.facoltativi.col }}</legend>
+            {%- for u in c.facoltativi.unita_col %}
+            <label><input type="radio" name="col_unita" value="{{ u }}"{% if forloop.first %} checked{% endif %}><span>{{ u }}</span></label>
+            {%- endfor %}
+          </fieldset>
+        </div>
+      </div>
+      <div class="campo">
+        <label class="etichetta" for="r-velocita">{{ c.facoltativi.velocita }}</label>
+        <div class="con-unita">
+          <input id="r-velocita" name="velocita" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+          <fieldset class="unita"><legend class="solo-lettori">{{ c.facoltativi.velocita }}</legend>
+            {%- for u in c.facoltativi.unita_velocita %}
+            <label><input type="radio" name="unita_velocita" value="{% if forloop.first %}fps{% else %}ms{% endif %}"{% if forloop.first %} checked{% endif %}><span>{{ u }}</span></label>
+            {%- endfor %}
+          </fieldset>
+        </div>
+      </div>
+      <div class="campo"><span class="etichetta">{{ c.facoltativi.pf }}</span><output class="pf" data-pf>—</output></div>
+      <div class="campo largo"><label class="etichetta" for="r-note">{{ c.facoltativi.note }}</label><textarea id="r-note" name="note" rows="3"></textarea></div>
+    </div>
+  </fieldset>
+
+  <div class="totali" aria-live="polite">
+    <div class="risultato grande"><span class="etichetta">{{ c.costo }}</span><output data-totale="1">—</output></div>
+    <div class="risultato"><span class="etichetta">{{ c.per50 }}</span><output data-totale="50">—</output></div>
+    <div class="risultato"><span class="etichetta">{{ c.per100 }}</span><output data-totale="100">—</output></div>
+    <div class="risultato"><span class="etichetta">{{ c.per1000 }}</span><output data-totale="1000">—</output></div>
+  </div>
+  <p class="stampa"><button type="button" class="pulsante" data-stampa>{{ c.stampa }}</button></p>
+  <p class="nota">{{ c.pdf }}</p>
+  <p class="nota privato">{{ c.privato }}</p>
+</form>
+
+{%- comment -%} LA SCHEDA DA STAMPARE. Ogni riga porta `data-campo`: lo script la riempie, o la nasconde se il campo è vuoto. {%- endcomment %}
+<section class="scheda-carico" aria-hidden="true">
+  <header class="scheda-testa">
+    <img src="{{ '/assets/img/aimonx-192.png' | relative_url }}" alt="" width="40" height="40">
+    <span class="scheda-marchio">{{ lin_t.landing.brand }}</span>
+    <span class="scheda-titolo">{{ s.titolo }}</span>
+  </header>
+  <h2 data-campo="nome"></h2>
+  <p class="scheda-sotto"><span data-campo="calibro"></span><span>{{ s.stampata }} <span data-campo="data"></span></span></p>
+  <table class="scheda-componenti">
+    <thead><tr><th scope="col"></th><th scope="col">{{ c.bossoli.prezzo }}</th><th scope="col">{{ c.bossoli.quanti }}</th><th scope="col">{{ c.costo }}</th></tr></thead>
+    <tbody>
+      <tr data-riga="bossoli"><th scope="row">{{ c.bossoli.titolo }}</th><td data-campo="b_prezzo"></td><td data-campo="b_quanti"></td><td data-campo="c_bossoli"></td></tr>
+      <tr data-riga="bossoli_volte"><th scope="row" colspan="3">{{ c.bossoli.volte | remove: opzionale }}</th><td data-campo="b_volte"></td></tr>
+      <tr data-riga="inneschi"><th scope="row">{{ c.inneschi.titolo }}</th><td data-campo="i_prezzo"></td><td data-campo="i_quanti"></td><td data-campo="c_inneschi"></td></tr>
+      <tr data-riga="palle"><th scope="row">{{ c.palle.titolo }} <span class="scheda-nome" data-campo="p_nome"></span></th><td data-campo="p_prezzo"></td><td data-campo="p_quanti"></td><td data-campo="c_palle"></td></tr>
+      <tr data-riga="polvere"><th scope="row">{{ c.polvere.titolo }} <span class="scheda-nome" data-campo="w_nome"></span></th><td data-campo="w_prezzo"></td><td data-campo="w_confezione"></td><td data-campo="c_polvere"></td></tr>
+    </tbody>
+  </table>
+  <dl class="scheda-dati">
+    <div data-riga="w_dose"><dt>{{ c.polvere.dose }}</dt><dd data-campo="w_dose"></dd></div>
+    <div data-riga="p_peso"><dt>{{ c.palle.peso | remove: opzionale }}</dt><dd data-campo="p_peso"></dd></div>
+    <div data-riga="col"><dt>{{ c.facoltativi.col }}</dt><dd data-campo="col"></dd></div>
+    <div data-riga="velocita"><dt>{{ c.facoltativi.velocita }}</dt><dd data-campo="velocita"></dd></div>
+    <div data-riga="pf"><dt>{{ c.facoltativi.pf }}</dt><dd data-campo="pf"></dd></div>
+    <div data-riga="note" class="scheda-note"><dt>{{ c.facoltativi.note }}</dt><dd data-campo="note"></dd></div>
+  </dl>
+  <table class="scheda-totali">
+    <tr><th scope="row">{{ c.costo }}</th><td data-campo="t1"></td></tr>
+    <tr><th scope="row">{{ c.per50 }}</th><td data-campo="t50"></td></tr>
+    <tr><th scope="row">{{ c.per100 }}</th><td data-campo="t100"></td></tr>
+    <tr><th scope="row">{{ c.per1000 }}</th><td data-campo="t1000"></td></tr>
+  </table>
+  <footer class="scheda-piede">
+    {%- for r in s.piede %}
+    <p>{{ r }}</p>
+    {%- endfor %}
+  </footer>
+</section>

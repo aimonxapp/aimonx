@@ -9,7 +9,11 @@
 meta:
   title: 'Ammo Tracker: Inventory, Cost per Round and Low-Stock Alerts | AIMONX'
   description: Track every box of ammo you buy. AIMONX uses up the oldest lot first, shows the real cost per round and tells you when you're running low.
-titolo: Know what's on the shelf, and what it costs
+# ⏳ GIRO W38: il titolo in pagina dalla bozza NON ANCORA APPROVATA
+# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), che Pier
+# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
+# segna questa riga come fuori dall'approvato, ed è ATTESO.
+titolo: "Ammo tracker: what's on the shelf, and what it costs"
 sommario: Log the ammo you buy once. From then on, every range session takes the rounds off your inventory and adds their cost to the session, with nothing to count by hand.
 blocchi:
 - tipo: h2

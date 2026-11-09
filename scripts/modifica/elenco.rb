@@ -1,6 +1,10 @@
 # scripts/modifica/elenco.rb — COSA HA CAMBIATO PIER, quando dice «ho finito». Giro W37.
-# Uso:  bundle exec ruby scripts/modifica/elenco.rb [base]
+# Uso:  bundle exec ruby scripts/modifica/elenco.rb [base] [fino]
 #       base = da dove si confronta; senza, `git merge-base HEAD main`.
+#       fino = fin dove: un commit; senza, i file come sono adesso sul disco.
+# ⭐ Giro W38: due elenchi diversi quando il lavoro di un giro sta sotto le
+# modifiche di Pier — `elenco.rb main <commit del giro>` dice cosa ha portato il
+# giro; `elenco.rb <commit del giro>` dice cosa ha cambiato Pier sopra.
 #
 # ⭐ Per ogni testo cambiato: lingua, file, chiave, DOVE SI VEDE (le pagine che
 # lo mostrano, prese dalla build sonda) e prima → dopo. È l'elenco che va a
@@ -23,8 +27,9 @@ def git(*a)
 end
 
 base = ARGV[0] || git("merge-base", "HEAD", "main").strip
-cambiati = git("diff", "--name-only", base, "--").lines.map(&:strip)
-cambiati |= git("ls-files", "--others", "--exclude-standard").lines.map(&:strip)
+fino = ARGV[1]
+cambiati = git("diff", "--name-only", base, *[fino].compact, "--").lines.map(&:strip)
+cambiati |= git("ls-files", "--others", "--exclude-standard").lines.map(&:strip) unless fino
 dati = cambiati.select { |f| f.start_with?("_data/") && f.end_with?(".yml") }
 altri = cambiati - dati - cambiati.select { |f| f.match?(%r{\A(scripts/|docs/|\.claude/|CLAUDE\.md|README\.md)}) }
 
@@ -52,11 +57,16 @@ end
 
 lingue = Testi.lingue
 n = 0
-puts "Cosa è cambiato rispetto a #{base[0, 7]} (ramo #{git('rev-parse', '--abbrev-ref', 'HEAD').strip})"
+puts "Cosa è cambiato da #{base} a #{fino || "i file sul disco"} (ramo #{git('rev-parse', '--abbrev-ref', 'HEAD').strip})"
 dati.each do |f|
   prima_txt, = Open3.capture2("git", "-C", R, "show", "#{base}:#{f}")
   prima = foglie(Psych.safe_load(prima_txt.to_s) || {})
-  dopo = File.file?(File.join(R, f)) ? foglie(Psych.safe_load(File.read(File.join(R, f), encoding: "UTF-8")) || {}) : {}
+  dopo_txt = if fino
+               Open3.capture2("git", "-C", R, "show", "#{fino}:#{f}").first
+             elsif File.file?(File.join(R, f))
+               File.read(File.join(R, f), encoding: "UTF-8")
+             end
+  dopo = foglie(Psych.safe_load(dopo_txt.to_s) || {})
   (prima.keys | dopo.keys).each do |k|
     next if prima[k] == dopo[k]
     n += 1

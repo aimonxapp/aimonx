@@ -42,6 +42,13 @@
 #   · `esterno` → un altro sito, scritto tale e quale, con `rel="noreferrer"`.
 
 frasi:
+  # ⭐ Giro W38: dalla pagina del Power Factor al calcolatore del costo della
+  # ricarica (bozza §1). ⚠️ La pagina esiste solo in inglese: nessun testo
+  # delle altre lingue contiene questa frase (misurato), quindi il prefisso
+  # della lingua qui non entra mai.
+  - frase: "reloading cost calculator"
+    href: "/reloading-cost-calculator/"
+    tipo: pagina
   # ⭐ Giro W36: dalla pagina About alla pagina del Range System (prefisso della lingua dal layout).
   - frase: "AIMONX Range System"
     href: "/range-system/"
@@ -188,6 +195,10 @@ menu:
   "All features":   "/features/"
   "FAQ":            "/faq/"
   "Range System":   "/range-system/"
+  # ⭐ Giro W38: le due pagine nuove, dalla colonna «Learn» del piede — per ora
+  # solo nel piede inglese, perché esistono solo in inglese.
+  "Reloading cost calculator":   "/reloading-cost-calculator/"
+  "How to choose a gun log app": "/guides/how-to-choose-a-gun-log-app/"
   "Free and Pro":   "/pricing/"
   "Compare Free and Pro": "/pricing/"
   "What's new":     "/updates/"

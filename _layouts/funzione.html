@@ -125,6 +125,42 @@
         {%- endif %}
         {%- endfor %}
       </ul>
+      {%- comment -%}
+        ⭐ Giro W38: i due calcolatori e le tabelle. ⛔ Nessuna parola qui: le
+        etichette vengono da `d.calcolatore` (e `d.scheda`), i conti da
+        `assets/js/calcolatori.js`. Le pagine che non hanno questi blocchi
+        escono identiche al byte a prima.
+      {%- endcomment %}
+      {%- when 'calcolatore-pf' %}
+      {% include calcolatore-pf.html c=d.calcolatore %}
+      {%- when 'calcolatore-ricarica' %}
+      {% include calcolatore-ricarica.html c=d.calcolatore s=d.scheda %}
+      {%- when 'soglie' %}
+      {%- comment -%} Le soglie di una gara, divisione per divisione: il calcolatore ci legge le divisioni e ci accende le soglie superate (`data-soglia`). {%- endcomment %}
+      <div class="tabella-scorre">
+      <table class="tabella soglie" data-gara="{{ b.gara }}">
+        <thead><tr>{% for x in b.intestazione %}<th scope="col">{{ x }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {%- for r in b.righe %}
+          <tr data-divisione="{{ r[0] }}"><th scope="row">{{ r[0] }}</th>{% for x in r offset:1 %}<td{% unless x == '—' %} data-soglia="{{ x }}"{% endunless %}>{{ x }}</td>{% endfor %}</tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      </div>
+      {%- when 'tabella' %}
+      {%- comment -%} Una tabella qualunque: la prima colonna è l'intestazione della riga. Le celle passano da `frase.html`, quindi un «What's new» diventa il suo link. {%- endcomment %}
+      <div class="tabella-scorre">
+      <table class="tabella">
+        <thead><tr>{% for x in b.intestazione %}<th scope="col">{{ x }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {%- for r in b.righe %}
+          {%- comment -%} ⚠️ Un include non accetta `r[0]` come parametro: si passa per un nome. {%- endcomment -%}
+          {%- assign tab_prima = r[0] %}
+          <tr><th scope="row">{% include frase.html testo=tab_prima %}</th>{% for x in r offset:1 %}<td>{% include frase.html testo=x collega=true %}</td>{% endfor %}</tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      </div>
       {%- else %}
       <p>{% if b.forte %}<strong>{% include frase.html testo=b.forte %}</strong> {% endif %}{% include frase.html testo=b.testo collega=true %}</p>
       {%- endcase -%}

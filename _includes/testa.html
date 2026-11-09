@@ -118,3 +118,9 @@ l'immagine è l'icona dell'app, copiata nel repo e servita da noi. {%- endcommen
 {%- comment -%} Giro W31: il foglio di una pagina sola, con la stessa regola del foglio qui sopra. {%- endcomment %}
 <link rel="stylesheet" href="{{ page.foglio_pagina | relative_url }}?v={{ testa_v[page.foglio_pagina] }}">
 {%- endif %}
+{%- if page.script_pagina %}
+{%- comment -%} ⭐ Giro W38: lo script di una pagina sola — i calcolatori. ⛔ Servito da noi, `defer`, nessuna libreria; chi non lo chiede non riceve nemmeno uno spazio. {%- endcomment %}
+<script src="{{ page.script_pagina | relative_url }}?v={{ testa_v[page.script_pagina] }}" defer></script>
+{%- comment -%} Senza JavaScript i calcolatori non funzionerebbero: non si mostrano, e la pagina resta da leggere. ⚠️ Una regola qui e non `hidden` tolto dallo script: con lo script, il modulo c'è dal primo istante e la pagina non si sposta. {%- endcomment %}
+<noscript><style>.calcolatore { display: none !important; }</style></noscript>
+{%- endif %}

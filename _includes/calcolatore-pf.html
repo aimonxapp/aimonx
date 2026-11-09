@@ -1,0 +1,55 @@
+{%- comment -%}
+_includes/calcolatore-pf.html — IL CALCOLATORE DEL POWER FACTOR, in pagina. Giro W38.
+  ⛔ Nessuna parola qui: le etichette arrivano in `include.c` (`_data/<pagina>.yml`,
+  `calcolatore`), di Cowork. I conti li fa `assets/js/calcolatori.js`, gli stessi
+  dell'app (`prodotto.md` §17.11 e §17.13). Le parole degli esiti stanno negli
+  attributi `data-` del modulo: lo script non ne scrive nessuna di suo.
+  ⚠️ `ft·lb` e `J` sono simboli, come nell'app (§17.11), uguali in ogni lingua.
+  ⭐ SENZA JAVASCRIPT il modulo non si vede (la regola sta in `<noscript>`, in
+  `_includes/testa.html`): la pagina si legge lo stesso, tabelle comprese.
+  ⚠️ Non `hidden` tolto dallo script: misurato nel W38, la pagina si spostava
+  quando il modulo compariva (fino a 0,33 di layout-shift).
+  ⛔ Non salva niente e non manda niente: nessun `action`, nessuna memoria del browser.
+{%- endcomment -%}
+{%- assign c = include.c -%}
+<form class="calcolatore calc-pf" data-calcolatore="pf" novalidate
+      data-major="{{ c.major }}" data-minor="{{ c.minor }}" data-sotto="{{ c.sotto }}"
+      data-ftlb="ft·lb" data-joule="J">
+  <div class="campi">
+    <div class="campo">
+      <label class="etichetta" for="pf-peso">{{ c.peso }}</label>
+      <input id="pf-peso" name="peso" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+    </div>
+    <div class="campo">
+      <label class="etichetta" for="pf-velocita">{{ c.velocita }}</label>
+      <div class="con-unita">
+        <input id="pf-velocita" name="velocita" type="number" inputmode="decimal" min="0" step="any" autocomplete="off">
+        <fieldset class="unita">
+          <legend class="solo-lettori">{{ c.velocita }}</legend>
+          {%- for u in c.unita %}
+          <label><input type="radio" name="unita_velocita" value="{% if forloop.first %}fps{% else %}ms{% endif %}"{% if forloop.first %} checked{% endif %}><span>{{ u }}</span></label>
+          {%- endfor %}
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <div class="risultati" aria-live="polite">
+    <div class="risultato grande"><span class="etichetta">{{ c.pf }}</span><output data-pf>—</output></div>
+    <div class="risultato"><span class="etichetta">{{ c.energia }}</span><output data-energia>—</output></div>
+  </div>
+  <p class="manca" data-manca>{{ c.manca }}</p>
+  <div class="divisione" data-divisione hidden>
+    <fieldset class="unita">
+      <legend class="etichetta">{{ c.gara }}</legend>
+      {%- for g in c.gare %}
+      <label><input type="radio" name="gara" value="{{ g }}"{% if forloop.first %} checked{% endif %}><span>{{ g }}</span></label>
+      {%- endfor %}
+    </fieldset>
+    <div class="campo">
+      <label class="etichetta" for="pf-divisione">{{ c.divisione }}</label>
+      <select id="pf-divisione" name="divisione"></select>
+    </div>
+    <p class="esito" data-esito aria-live="polite"></p>
+    <p class="solo-minor" data-solo-minor hidden>{{ c.solo_minor }}</p>
+  </div>
+</form>

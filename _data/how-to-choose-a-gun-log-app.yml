@@ -1,0 +1,78 @@
+# _data/how-to-choose-a-gun-log-app.yml — LA PRIMA GUIDA DEL SITO, «How to choose a gun log app». Giro W38.
+#
+# ⏳ BOZZA NON ANCORA APPROVATA: …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md
+# (§4), che Pier ripassa nel suo sito locale. Fino alla sua approvazione
+# `scripts/testo-approvato.sh` segna queste righe fuori dall'approvato, ed è ATTESO.
+# ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
+# copiate alla lettera. ⛔ Vale la 1.1.0: se esce la 1.2.0 prima della
+# pubblicazione, la tabella si rifà (lo dice la bozza).
+# ⭐ La forma delle prossime guide: il layout delle pagine-funzione, senza
+# sezione, più il blocco `tabella`. ⚠️ SCELTA DI CC: il badge dello Store in
+# fondo, col suo testo di sempre — Pier guarda.
+
+meta:
+  title: "How to Choose a Gun Log App: 9 Things to Check | AIMONX"
+  description: Round counts, maintenance, ammo, privacy, backups and what's really free. What to check in a gun log app before you trust it with years of records.
+titolo: How to choose a gun log app
+sommario: There are dozens of apps for logging firearms, ammo and range trips, and a lot of them look the same in the App Store. Here's what we'd check before trusting one with years of records. We make one of these apps, so at the end we'll tell you where AIMONX stands, including where it falls short.
+blocchi:
+- tipo: h2
+  testo: 1. Does it count rounds for you?
+- tipo: p
+  testo: "Some apps make you type in a running total. Better ones add up your range sessions: you log what you shot, and the firearm's round count follows. Check what happens when you fix a typo in an old session. The total should fix itself too."
+- tipo: h2
+  testo: 2. Maintenance by rounds, by time, or both
+- tipo: p
+  testo: Cleaning every 500 rounds, a new recoil spring at 5,000, a lube every three months. A good app lets you set your own rules, per firearm, by round count or by the calendar, and gives you a heads-up before something is due.
+- tipo: h2
+  testo: 3. Does it track ammo, and what it costs?
+- tipo: p
+  testo: Look for ammo you can log by the box, an inventory that goes down as you shoot, a warning when you're running low, and a real cost per round. If you reload, check whether it handles recipes and component costs, or only factory ammo.
+- tipo: h2
+  testo: 4. Where does your data live?
+- tipo: p
+  testo: "This is the big one. Does the app need an account? Does your data go to the developer's servers, or stay on your phone? Is it encrypted? The App Store shows a privacy label on every app's page: read it before you download."
+- tipo: h2
+  testo: 5. Can you get your data out?
+- tipo: p
+  testo: "Phones get lost, and people switch apps. Check how backups work, whether you can move everything to a new phone, and what you can export: a PDF for your records or your insurance, a spreadsheet, a full archive."
+- tipo: h2
+  testo: 6. What happens if you stop paying?
+- tipo: p
+  testo: Some apps lock your records, some delete them, and some keep them readable. Find out before you've logged three years of range trips.
+- tipo: h2
+  testo: 7. Which devices?
+- tipo: p
+  testo: iPhone only, or iPad and Mac too? Android? Does it sync between devices, or live on one?
+- tipo: h2
+  testo: 8. What's free, really?
+- tipo: p
+  testo: "Free plans vary a lot: some cap how many firearms you can log, some lock features like maintenance or statistics. Look at the limits, and at whether there's a free trial of the paid plan."
+- tipo: h2
+  testo: 9. Is anyone still working on it?
+- tipo: p
+  testo: Open the app's Version History in the App Store and check when it was last updated. Then read a few reviews, and look at whether the developer answers them.
+- tipo: h2
+  testo: Where AIMONX stands
+- tipo: tabella
+  intestazione: ["What to check", "AIMONX"]
+  righe:
+  - - "Counts rounds for you"
+    - "Yes. Log a session and the firearm's total updates. Edit or delete a session and the totals follow."
+  - - "Maintenance"
+    - "Your own rules by rounds, by time or both, with an early heads-up you set. You see what's due in the app; there are no maintenance notifications."
+  - - "Ammo and costs"
+    - "Every box you buy, oldest lot used first, cost per round, low-stock warning. Handload recipes and component costs are Pro."
+  - - "Where your data lives"
+    - "Encrypted on your iPhone, with an encrypted copy in your own iCloud that you can turn off. No account. No AIMONX servers."
+  - - "Getting your data out"
+    - "PDF of one firearm or your whole inventory, free. A full archive you can move to a new phone is Pro. No spreadsheet export."
+  - - "If you stop paying"
+    - "Nothing gets deleted. Anything over the free limits becomes read-only, and comes back when you renew."
+  - - "Devices"
+    - "iPhone only. No iPad, Mac or Android app, and no sync between devices."
+  - - "What's free"
+    - "One active firearm with unlimited range sessions, commercial ammo, one cleaning rule per firearm, all the statistics and the Power Factor calculator. Pro's first month is free for new subscribers."
+  - - "Still being worked on"
+    - "Version 1.1.0 came out in November 2026. Every update is on our What's new page."
+badge: Download on the App Store

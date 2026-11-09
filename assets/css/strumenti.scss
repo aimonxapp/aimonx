@@ -1,0 +1,182 @@
+---
+---
+// assets/css/strumenti.scss — I CALCOLATORI, LE TABELLE E LA SCHEDA DA STAMPARE. Giro W38.
+//
+// ⛔ È UN FOGLIO DI PAGINA (`page.foglio_pagina`): lo scaricano solo il Power
+// Factor, il costo della ricarica e la guida. Le altre pagine non ricevono
+// nemmeno uno spazio (`_includes/testa.html`).
+// ⛔ `.scss` e commenti con `//`, per la ragione scritta in `comune.scss`.
+// ⭐ L'aspetto è quello del sito: il foglio bianco, la tinta della pagina
+// (`--sez`, `--fascia`, `--titolo`), i numeri grandi come le cifre della
+// landing. Campi alti almeno 44 px, la misura di un dito (Apple, HIG).
+
+// --- chi legge con un lettore di schermo sente, chi guarda no ----------------
+.solo-lettori {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+// --- il modulo --------------------------------------------------------------
+.v-funzione .foglio > .calcolatore {
+  margin-top: clamp(1.4rem, 3.5vw, 2rem);
+  padding: clamp(1rem, 3.5vw, 1.6rem);
+  background: var(--fascia-verde); border-radius: 18px;
+  border-left: 5px solid var(--sez);
+  color: var(--inchiostro);
+}
+.calcolatore[hidden] { display: none; }
+.calcolatore .campi {
+  display: grid; gap: .9rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+}
+.calcolatore .campo { display: grid; gap: .35rem; align-content: start; min-width: 0; }
+.calcolatore .campo.largo { grid-column: 1 / -1; }
+.calcolatore .etichetta { font-size: .95rem; font-weight: 700; color: var(--inchiostro); }
+.calcolatore input[type="number"],
+.calcolatore input[type="text"],
+.calcolatore select,
+.calcolatore textarea {
+  width: 100%; min-height: 44px; box-sizing: border-box; min-width: 0;
+  padding: .5rem .7rem; border: 2px solid #B7CFC1; border-radius: 10px;
+  background: var(--bianco); color: var(--inchiostro);
+  font: inherit; font-size: 1.05rem; font-variant-numeric: tabular-nums;
+}
+.calcolatore textarea { resize: vertical; }
+.calcolatore input:focus-visible,
+.calcolatore select:focus-visible,
+.calcolatore textarea:focus-visible { outline: 3px solid var(--titolo); outline-offset: 1px; border-color: var(--titolo); }
+.calcolatore input[aria-invalid] { border-color: #B4531A; }
+.calcolatore .errore { margin: 0; font-size: .92rem; font-weight: 700; color: #9A4310; }
+.calcolatore .nota { margin-top: .6rem; font-size: .95rem; line-height: 1.5; color: var(--inchiostro-2); }
+
+// Il prezzo col suo simbolo davanti, dentro la casella.
+.calcolatore .con-valuta { position: relative; }
+.calcolatore .con-valuta .valuta {
+  position: absolute; left: .75rem; top: 50%; transform: translateY(-50%);
+  color: var(--inchiostro-2); font-weight: 700; pointer-events: none;
+}
+.calcolatore .con-valuta input { padding-left: 1.7rem; }
+
+// La casella e la sua unità, sulla stessa riga; l'unità è una scelta a pillole.
+.calcolatore .con-unita { display: flex; gap: .5rem; align-items: stretch; min-width: 0; }
+.calcolatore .con-unita input { flex: 1 1 auto; }
+.calcolatore fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.calcolatore .unita { display: inline-flex; flex: 0 0 auto; padding: 3px; border-radius: 12px; background: var(--bianco); border: 2px solid #B7CFC1; }
+.calcolatore .unita legend.etichetta { float: left; width: 100%; margin-bottom: .35rem; }
+.calcolatore .divisione > .unita { flex-wrap: wrap; }
+.calcolatore .unita label { position: relative; display: inline-flex; }
+.calcolatore .unita input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.calcolatore .unita span {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 36px; min-width: 2.8rem; padding: 0 .7rem; border-radius: 9px;
+  font-weight: 700; font-size: .95rem; color: var(--inchiostro-2); cursor: pointer;
+}
+.calcolatore .unita input:checked + span { background: var(--titolo); color: var(--bianco); }
+.calcolatore .unita input:focus-visible + span { outline: 3px solid var(--titolo); outline-offset: 2px; }
+
+// --- i risultati ------------------------------------------------------------
+.calcolatore .risultati,
+.calcolatore .totali {
+  display: grid; gap: .8rem; margin-top: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+}
+// Sul telefono i quattro totali stanno due per riga, non uno sotto l'altro.
+.calcolatore .totali { grid-template-columns: repeat(auto-fit, minmax(min(100%, 7.5rem), 1fr)); }
+.calcolatore .totali .risultato.grande { grid-column: 1 / -1; }
+.calcolatore .risultato {
+  display: grid; gap: .15rem; padding: .8rem 1rem; border-radius: 14px;
+  background: var(--bianco); min-width: 0;
+}
+.calcolatore .risultato output {
+  font-size: clamp(1.35rem, 3.6vw, 1.6rem); font-weight: 800; line-height: 1.15;
+  color: var(--titolo); font-variant-numeric: tabular-nums; overflow-wrap: anywhere;
+}
+.calcolatore .risultato.grande output { font-size: clamp(2rem, 6vw, 2.6rem); }
+.calcolatore .manca { margin-top: .8rem; font-size: .98rem; color: var(--inchiostro-2); }
+.calcolatore .manca[hidden],
+.calcolatore .divisione[hidden],
+.calcolatore .solo-minor[hidden],
+.calcolatore .errore[hidden] { display: none; }
+
+// La gara e la divisione, sotto i risultati.
+.calcolatore .divisione {
+  display: grid; gap: .8rem 1rem; margin-top: 1.1rem; padding-top: 1.1rem;
+  border-top: 1px solid #B7CFC1;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr)); align-items: end;
+}
+.calcolatore .esito, .calcolatore .solo-minor { grid-column: 1 / -1; margin: 0; }
+.calcolatore .esito { font-size: 1.15rem; font-weight: 800; color: var(--titolo); }
+.calcolatore .esito[data-livello="sotto"] { color: #9A4310; }
+.calcolatore .solo-minor { font-size: .98rem; color: var(--inchiostro-2); }
+
+// --- il costo della ricarica: i componenti -----------------------------------
+.calc-ricarica .componente {
+  margin-top: 1.1rem; padding: .9rem 1rem 1rem; border-radius: 14px;
+  background: rgba(253, 253, 253, .55); border: 1px solid #C9DDD1;
+}
+.calc-ricarica .componente > legend {
+  display: flex; width: 100%; justify-content: space-between; align-items: baseline; gap: 1rem;
+  float: left; margin-bottom: .7rem; font-size: 1.1rem; font-weight: 800; color: var(--titolo);
+}
+.calc-ricarica .componente > legend + * { clear: both; }
+.calc-ricarica .componente > legend output { font-variant-numeric: tabular-nums; color: var(--inchiostro); }
+.calc-ricarica .campo .pf {
+  display: flex; align-items: center; min-height: 44px; font-size: 1.35rem; font-weight: 800; color: var(--titolo);
+}
+.calc-ricarica .stampa { margin-top: 1.2rem; }
+.calc-ricarica .pulsante {
+  display: inline-flex; align-items: center; min-height: 44px; padding: .6rem 1.4rem;
+  border: 0; border-radius: 999px; background: var(--titolo); color: var(--bianco);
+  font: inherit; font-weight: 700; cursor: pointer;
+}
+.calc-ricarica .pulsante:hover { background: var(--inchiostro); }
+.calc-ricarica .pulsante:focus-visible { outline: 3px solid var(--inchiostro); outline-offset: 3px; }
+.calc-ricarica .privato { font-weight: 700; color: var(--inchiostro); }
+
+// --- le tabelle (soglie e guida) ---------------------------------------------
+// ⛔ La tabella non fa sbordare la pagina: se non ci sta, scorre lei dentro la sua scatola.
+.v-funzione .foglio > .tabella-scorre { margin-top: 1rem; max-width: var(--riga); overflow-x: auto; }
+.tabella { width: 100%; border-collapse: collapse; color: var(--inchiostro); font-size: 1rem; line-height: 1.5; }
+.tabella th, .tabella td { padding: .55rem .6rem; text-align: left; vertical-align: top; border-bottom: 1px solid #E4EAEE; }
+.tabella thead th { font-size: .9rem; color: var(--inchiostro-2); border-bottom: 2px solid #C9DDD1; }
+.tabella tbody th { font-weight: 700; }
+.soglie td, .soglie thead th + th { text-align: right; font-variant-numeric: tabular-nums; width: 5.5rem; }
+.soglie td.superata { background: var(--fascia-verde); color: var(--titolo); font-weight: 800; }
+.soglie td.superata::after { content: " ✓"; }
+.soglie tr.scelta th { box-shadow: inset 4px 0 0 var(--sez); }
+.tabella td a { color: var(--titolo); }
+
+// --- la scheda da stampare ----------------------------------------------------
+// ⛔ Sullo schermo non c'è; in stampa c'è SOLO lei, in bianco e nero, su A4 o
+// Letter (nessuna misura imposta: decide la stampante).
+.scheda-carico { display: none; }
+@media print {
+  @page { margin: 14mm; }
+  body.ha-scheda { background: #fff !important; color: #000; }
+  body.ha-scheda > :not(.scheda-carico) { display: none !important; }
+  body.ha-scheda .scheda-carico { display: block; font: 11pt/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; color: #000; }
+  .scheda-carico [hidden] { display: none !important; }
+  .scheda-testa { display: flex; align-items: center; gap: 8pt; padding-bottom: 6pt; border-bottom: 2pt solid #000; }
+  .scheda-testa img { width: 28pt; height: 28pt; }
+  .scheda-marchio { font-weight: 800; font-size: 15pt; letter-spacing: .04em; }
+  .scheda-titolo { margin-left: auto; font-size: 12pt; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .scheda-carico h2 { margin: 12pt 0 2pt; font-size: 17pt; }
+  .scheda-sotto { display: flex; justify-content: space-between; gap: 12pt; margin: 4pt 0 10pt; font-size: 10.5pt; }
+  .scheda-componenti, .scheda-totali { width: 100%; border-collapse: collapse; margin-top: 6pt; }
+  .scheda-componenti th, .scheda-componenti td { padding: 4pt 5pt; border-bottom: .75pt solid #555; text-align: right; vertical-align: top; }
+  .scheda-componenti th[scope="row"] { text-align: left; }
+  .scheda-componenti thead th { font-size: 9.5pt; border-bottom: 1.5pt solid #000; }
+  .scheda-nome { font-weight: 400; }
+  .scheda-dati { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 16pt; margin: 10pt 0 0; }
+  .scheda-dati > div { display: flex; justify-content: space-between; gap: 8pt; border-bottom: .5pt dotted #777; padding: 2pt 0; }
+  .scheda-dati dt { font-weight: 700; }
+  .scheda-dati dd { margin: 0; text-align: right; }
+  .scheda-dati .scheda-note { grid-column: 1 / -1; display: block; }
+  .scheda-dati .scheda-note dd { text-align: left; white-space: pre-wrap; }
+  .scheda-totali { margin-top: 12pt; border: 1.5pt solid #000; }
+  .scheda-totali th, .scheda-totali td { padding: 4pt 8pt; text-align: left; }
+  .scheda-totali td { text-align: right; font-weight: 800; font-size: 12pt; }
+  .scheda-totali tr:first-child td { font-size: 15pt; }
+  .scheda-piede { margin-top: 16pt; padding-top: 6pt; border-top: .75pt solid #000; font-size: 9pt; }
+  .scheda-piede p { margin: 0 0 2pt; }
+}

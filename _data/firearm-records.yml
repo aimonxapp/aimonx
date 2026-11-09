@@ -9,7 +9,11 @@
 meta:
   title: 'Gun Inventory App: Firearm Records, Photos and PDF | AIMONX'
   description: 'Keep every firearm''s details in one place: specs, accessories, purchase info and up to 5 photos. Create a PDF of one firearm or your whole inventory.'
-titolo: Every firearm, on record
+# ⏳ GIRO W38: il titolo in pagina dalla bozza NON ANCORA APPROVATA
+# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), che Pier
+# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
+# segna questa riga come fuori dall'approvato, ed è ATTESO.
+titolo: Your gun inventory, with every firearm on record
 sommario: Make, model, caliber, specs, what's mounted on it and what you paid. AIMONX keeps it all in one place, with photos, and turns it into a PDF when you need one.
 blocchi:
 - tipo: h2

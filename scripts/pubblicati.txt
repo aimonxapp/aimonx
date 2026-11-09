@@ -23,6 +23,8 @@
 index.html
 */index.html
 features/*/index.html
+# ⭐ Giro W38: le guide, una cartella per guida sotto `guides/` (per ora solo in inglese).
+guides/*/index.html
 # ⭐ Giro W28: le lingue, ognuna nella sua cartella con lo stesso albero
 # (`_data/lingue.yml`). ⚠️ Per forma, non per nome: una lingua nuova di due
 # lettere ci entra da sola; un'altra cartella di due livelli no, e si nomina.

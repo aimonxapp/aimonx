@@ -80,9 +80,15 @@ piede:
   - titolo: "Features"
     dalla_fonte: true
   - titolo: "Learn"
+    # ⏳ Giro W38: le due voci nuove sono i titoli delle pagine nuove, dalla
+    # bozza non ancora approvata (…/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md).
+    # ⚠️ SCELTA DI CC: stanno qui e non nella barra — Pier guarda. Solo in
+    # inglese: le altre lingue le avranno con le loro pagine.
     voci:
       - "FAQ"
       - "Range System"
+      - "Reloading cost calculator"
+      - "How to choose a gun log app"
   - titolo: "Support"
     voci:
       - "Support"

@@ -5,22 +5,87 @@
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
 # `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
 # in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+#
+# ⏳ GIRO W38: META, TITOLO, SOMMARIO, IL CALCOLATORE, LE SOGLIE E TRE SEZIONI
+# NUOVE vengono dalla bozza NON ANCORA APPROVATA
+# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§1), che Pier
+# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
+# le segna fuori dall'approvato, ed è ATTESO.
+# ⭐ `calcolatore`: le etichette del calcolatore, alla lettera; i conti li fa
+# `assets/js/calcolatori.js`, come l'app. `soglie`: le due tabelle, e da lì
+# vengono anche le divisioni fra cui si sceglie — una fonte sola.
+# ⚠️ SCELTA DI CC: la schermata (testo alternativo di oggi) scende sopra «Save
+# your setups», la sezione che parla del calcolatore dell'app.
 
 meta:
   title: Power Factor Calculator for USPSA and IPSC | AIMONX
-  description: Enter bullet weight and muzzle velocity, get your Power Factor and muzzle energy. Free in the AIMONX app for iPhone, with a history of your last 50 setups.
-titolo: Power Factor calculator, right on your iPhone
-sommario: Making major or minor? Enter the bullet weight and the muzzle velocity, and AIMONX shows the Power Factor and the muzzle energy as you type. It's free, and it's one tap from the Home screen.
+  description: Enter bullet weight and muzzle velocity and see your Power Factor right here, then check it against the major and minor floors for your division. Free in the AIMONX app, too.
+titolo: USPSA and IPSC Power Factor calculator
+sommario: Making major or minor? Enter your bullet weight and muzzle velocity, and you'll see your Power Factor and muzzle energy as you type. Then check the number against your division below. The same calculator is free in the AIMONX app, one tap from the Home screen.
+calcolatore:
+  peso: Bullet weight (grains)
+  velocita: Muzzle velocity
+  unita: [fps, m/s]
+  pf: Power Factor
+  energia: Muzzle energy
+  manca: Enter a bullet weight and a muzzle velocity to see your Power Factor.
+  gara: Match
+  gare: [USPSA, IPSC]
+  divisione: Division
+  major: Clears the major floor
+  minor: Clears the minor floor
+  sotto: Below the minor floor
+  solo_minor: This division is minor only.
 blocchi:
-- tipo: schermate
-  alt:
-  - 'The Power Factor calculator in AIMONX: a 147-grain bullet at 880 fps gives a Power Factor of 129 and the muzzle energy.'
+- tipo: calcolatore-pf
+- tipo: h2
+  testo: Major and minor, division by division
+- tipo: soglie
+  gara: USPSA
+  intestazione: [USPSA division, Major, Minor]
+  righe:
+  - [Open, "165", "125"]
+  - [Limited, "165", "125"]
+  - [Limited 10, "165", "125"]
+  - [Single Stack, "165", "125"]
+  - [Revolver, "165", "125"]
+  - [Production, "—", "125"]
+  - [Carry Optics, "—", "125"]
+  - [Limited Optics, "—", "125"]
+  - [Pistol Caliber Carbine, "—", "125"]
+- tipo: p
+  testo: In Limited, Limited 10 and Single Stack, major also takes a bullet of at least .40 caliber (.40 S&W, 10mm or .357 SIG).
+- tipo: soglie
+  gara: IPSC
+  intestazione: [IPSC division, Major, Minor]
+  righe:
+  - [Open, "160", "125"]
+  - [Standard, "170", "125"]
+  - [Classic, "170", "125"]
+  - [Revolver, "170", "125"]
+  - [Production, "—", "125"]
+  - [Production Optics, "—", "125"]
+- tipo: p
+  testo: In IPSC Revolver, a revolver that holds seven rounds or more scores minor, whatever the chrono says.
+- tipo: p
+  testo: Rulebooks change, and yours has the final word. These floors come from the USPSA Competition Rules (September 2026) and IPSC's handgun division rules.
 - tipo: h2
   testo: How it's calculated
 - tipo: p
-  testo: Power Factor is bullet weight in grains times muzzle velocity in feet per second, divided by 1,000. AIMONX drops the decimals instead of rounding up, the way it's done at a match. A 124-grain bullet at 1,050 fps comes out at 130.
+  testo: "Power Factor is bullet weight in grains times muzzle velocity in feet per second, divided by 1,000. The decimals get dropped, not rounded up: 124.9 is 124, not 125. A 124-grain bullet at 1,050 fps comes out at 130."
 - tipo: p
   testo: Muzzle energy shows in foot-pounds when you enter fps, and in joules when you enter m/s.
+- tipo: h2
+  testo: Your number on paper, and at the chrono
+- tipo: p
+  testo: "The calculator gives you your number on paper. At a USPSA match, the chrono decides: you fire three rounds, the average velocity counts, and your bullet gets weighed on the match scale. If you come up short, you get a few more rounds to make it. Miss the major floor and your match is scored minor. Miss the minor floor and you can keep shooting, but not for score."
+- tipo: h2
+  testo: What does each round cost you?
+- tipo: p
+  testo: Loading for major? Work out what your recipe costs per round, and print a load card for your bench, with our reloading cost calculator.
+- tipo: schermate
+  alt:
+  - 'The Power Factor calculator in AIMONX: a 147-grain bullet at 880 fps gives a Power Factor of 129 and the muzzle energy.'
 - tipo: h2
   testo: Save your setups
 - tipo: p
@@ -34,5 +99,5 @@ blocchi:
 - tipo: h2
   testo: Free
 - tipo: p
-  testo: The calculator and the ballistics on your ammo cards are free, with no limits.
+  testo: The calculator on this page is free for everyone, and so is the one in the app, along with the ballistics on your ammo cards. No limits.
 badge: Download on the App Store
