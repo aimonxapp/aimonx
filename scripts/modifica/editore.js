@@ -10,6 +10,8 @@
 //     (un testo o uno stile salvato), la ricarica, e torna dov'era;
 //   · col pulsante «Modifica» segna i testi che si possono cambiare: un clic,
 //     si scrive, Invio salva — nel file della lingua della pagina;
+//   · ⭐ Option+Invio (Pier, 09/11/2026) va A CAPO: nel file diventa `<br>`, e
+//     il server lo rifiuta dove un `<br>` non si leggerebbe (`testi.rb`);
 //   · «Testi nascosti» apre il titolo e la descrizione per Google e i testi
 //     alternativi delle immagini.
 (() => {
@@ -171,7 +173,7 @@
     span.focus();
     const sel = getSelection();
     sel.selectAllChildren(span);
-    avvisa("Scrivi. Invio = salva · Esc = annulla.", "info", 0);
+    avvisa("Scrivi. Invio = salva · Option+Invio = a capo · Esc = annulla.", "info", 0);
     const fine = () => {
       span.removeEventListener("keydown", tasti);
       span.removeEventListener("blur", via);
@@ -180,7 +182,8 @@
     };
     const annulla = () => { fine(); span.textContent = vecchio; avvisa("Annullato: niente è cambiato.", "info", 3000); };
     const salva = async () => {
-      const nuovo = span.textContent.replace(/\s+/g, " ").trim();
+      // Ogni riga ripulita dagli spazi doppi; fra una riga e l'altra resta l'a capo (`\n`).
+      const nuovo = span.textContent.split("\n").map((r) => r.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
       fine();
       if (nuovo === vecchio.trim()) { span.textContent = vecchio; avvisa("Niente da salvare.", "info", 2500); return; }
       avvisa("Salvo…", "info", 0);
@@ -194,6 +197,7 @@
       }
     };
     function tasti(ev) {
+      if (ev.key === "Enter" && ev.altKey) { ev.preventDefault(); document.execCommand("insertText", false, "\n"); return; }
       if (ev.key === "Enter") { ev.preventDefault(); salva(); }
       if (ev.key === "Escape") { ev.preventDefault(); annulla(); }
     }
@@ -269,7 +273,12 @@
     const y = memo.get("mod-scorri");
     if (y !== null) { memo.del("mod-scorri"); requestAnimationFrame(() => scrollTo(0, Number(y))); }
     await guarda();
-    if (memo.get("mod-dopo")) { memo.del("mod-dopo"); avvisa("Fatto: la pagina mostra il testo nuovo.", "ok", 4000); }
+    if (memo.get("mod-dopo")) {
+      memo.del("mod-dopo");
+      // ⚠️ Un a capo che la pagina scrive come segni («<br>») invece di andare a capo.
+      if (/<br\s*\/?>/i.test(document.body.textContent)) avvisa("⚠️ Su questa pagina l'a capo si vede come «<br>»: chiedi a CC.", "errore", 0);
+      else avvisa("Fatto: la pagina mostra il testo nuovo.", "ok", 4000);
+    }
     if (memo.get("mod-attiva")) await accendi();
     if (memo.get("mod-nascosti")) { memo.del("mod-nascosti"); apriNascosti(); }
   })();

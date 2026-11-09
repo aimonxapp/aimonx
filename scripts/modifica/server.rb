@@ -174,7 +174,9 @@ server.mount_proc "/__modifica/" do |req, res|
           parte = trovato[:parte]
           raise Testi::Rifiuto, "Il testo è cambiato: ricarica la pagina." unless Testi.norm(parte) == Testi.norm(vecchio)
         end
-        esito = $scrittura.synchronize { Testi.scrivi(st[:file], st[:percorso], st[:scarto], vecchio, d["nuovo"]) }
+        # ⭐ L'a capo (Option+Invio) solo nel testo del corpo, e solo se il valore non finisce anche altrove.
+        a_capo = d["tipo"] == "testo" && d["nuovo"].to_s.include?("\n") && sonda.solo_nel_corpo?(st[:id])
+        esito = $scrittura.synchronize { Testi.scrivi(st[:file], st[:percorso], st[:scarto], vecchio, d["nuovo"], a_capo: a_capo) }
         $stdout.puts "  ✏️  #{esito[:file]} · #{esito[:chiave]}\n      prima: #{esito[:prima]}\n      dopo:  #{esito[:dopo]}"
         json(res, esito)
       end

@@ -1,7 +1,7 @@
 {%- comment -%}
 _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W9.
 
-  ⛔ FA DUE COSE SOLE, ed è tutto quello che sta fra il testo approvato e la
+  ⛔ FA TRE COSE SOLE, ed è tutto quello che sta fra il testo approvato e la
   pagina:
     ① mette al sicuro i due caratteri che in HTML vogliono dire altro — `&` e
        `<`. ⚠️ NON è pignoleria: il testo approvato dice «Settings > Privacy &
@@ -10,6 +10,9 @@ _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W
        inserisce contengono `/` e `:` ma non `&`, quindi non vengono toccati —
        invertire i due passi rovinerebbe i link appena messi.
     ② sostituisce ogni frase di `_data/collegamenti.yml` col suo link.
+    ③ ⭐ Giro W39 (Pier, 09/11/2026): lascia passare L'A CAPO, `<br>` scritto
+       esattamente così e nient'altro — lo mette la modalità modifica con
+       Option+Invio (`scripts/modifica/`). Ogni altro `<` resta testo.
 
   ⛔ QUI NON SI SCEGLIE NIENTE E NON SI SCRIVE NESSUNA PAROLA: le parole
   arrivano da `include.testo`, cioè da un file di Cowork, e gli indirizzi da
@@ -29,7 +32,7 @@ _includes/frase.html — una frase di Cowork, pronta per l'HTML. Nato nel giro W
   tiene, e sta scritta anche in `_data/collegamenti.yml`.
 {%- endcomment -%}
 {%- comment -%} ⛔ `frase_t`/`frase_a`, non `t`/`a`: vedi la nota in `_includes/barra.html`. Questo include gira DENTRO i cicli dei layout, quindi qui il rischio è il più alto di tutti. {%- endcomment -%}
-{%- assign frase_t = include.testo | replace: '&', '&amp;' | replace: '<', '&lt;' -%}
+{%- assign frase_t = include.testo | replace: '&', '&amp;' | replace: '<', '&lt;' | replace: '&lt;br>', '<br>' -%}
 {%- if include.collega -%}
   {%- comment -%} ⭐ Giro W28: le frasi della lingua della pagina (`lin_c`), e gli indirizzi del sito col suo prefisso. {%- endcomment -%}
   {%- for c in lin_c.frasi -%}

@@ -78,6 +78,31 @@ module Testi
     [testo, ids, pila, inizi]
   end
 
+  # Il segno che apre un valore, col suo numero (lo stesso di `sonda.rb`).
+  def self.segno(id)
+    APRI + id.to_s(4).each_char.map { |c| CIFRE[c.to_i] }.join + NUMERO
+  end
+
+  # ⭐ L'A CAPO (Option+Invio, Pier 09/11/2026): nel file è `<br>`, e nella
+  # pagina non è testo. Da un punto del testo VISIBILE di un valore al punto
+  # del valore vero, saltando i `<br>` (un pezzo cliccato non comincia mai con uno).
+  BR = "<br>"
+  def self.visibile(s) = s.gsub(BR, "")
+
+  def self.a_grezzo(valore, k)
+    raw = 0
+    vis = 0
+    while vis < k && raw < valore.length
+      if valore[raw, BR.length] == BR then raw += BR.length
+      else
+        raw += 1
+        vis += 1
+      end
+    end
+    raw += BR.length while valore[raw, BR.length] == BR
+    raw
+  end
+
   def self.togli_segni(s) = s.gsub(/#{APRI}[#{CIFRE.join}]*#{NUMERO}|#{CHIUDI}/o, "")
 
   class Sonda
@@ -88,6 +113,25 @@ module Testi
     end
 
     def voce(id) = @mappa[id]
+
+    # ⭐ Un valore va a capo SOLO se in ogni pagina sta nel testo del corpo: nel
+    # titolo, nella descrizione per Google, in un testo alternativo o nei dati
+    # strutturati un `<br>` si leggerebbe come segni.
+    def solo_nel_corpo?(id)
+      return false if voce(id)["senza_a_capo"]
+      segno = Testi.segno(id)
+      Dir[File.join(@cartella, "sito", "**", "*.html")].all? do |f|
+        grezzo = File.read(f, encoding: "UTF-8")
+        tutte = grezzo.scan(segno).size
+        next true if tutte.zero?
+        corpo = 0
+        Nokogiri::HTML5(grezzo).at("body")&.traverse do |n|
+          next unless n.text? && n.ancestors.none? { |a| ESCLUSI.include?(a.name) }
+          corpo += n.content.scan(segno).size
+        end
+        corpo == tutte
+      end
+    end
 
     # ⛔ LA SONDA SI CONTROLLA DA SÉ, a ogni build: tolti i segni, ogni sua
     # pagina deve essere IDENTICA al byte a quella del sito vero. Una pagina
@@ -266,24 +310,31 @@ module Testi
 
   # Cambia `vecchio` → `nuovo` nel valore `percorso` del file, a partire dal
   # carattere `scarto` del valore. Restituisce prima e dopo del valore intero.
-  def self.scrivi(file_rel, percorso, scarto, vecchio, nuovo)
+  def self.scrivi(file_rel, percorso, scarto, vecchio, nuovo, a_capo: false)
     vecchio = norm(vecchio)
     nuovo = norm(nuovo).strip.empty? ? "" : norm(nuovo)
     raise Rifiuto, "Il testo nuovo è vuoto: per togliere una frase intera chiedi a CC." if nuovo.empty?
     raise Rifiuto, "Non è cambiato niente." if nuovo == vecchio
-    raise Rifiuto, "Una frase va su una riga sola: niente a capo." if nuovo.include?("\n")
+    if nuovo.include?("\n")
+      raise Rifiuto, "Qui non si va a capo: questo testo serve anche altrove (il titolo per Google, una descrizione, un testo alternativo o l'ancora di una domanda). Chiedilo a CC." unless a_capo
+      nuovo = nuovo.split("\n").map(&:strip).reject(&:empty?).join(BR)
+    end
 
     file = File.join(RADICE, file_rel)
     testo = File.read(file, encoding: "UTF-8")
     v = Raccolta.new.tap { |r| Psych::Parser.new(r).parse(testo) }.valori.find { |x| x.percorso == percorso }
     raise Rifiuto, "Non ritrovo il testo nel file #{file_rel}: forse è cambiato. Ricarica la pagina." unless v
 
-    i = norm(v.valore)[scarto, vecchio.length] == vecchio ? scarto : nil
-    if i.nil?
-      tutte = norm(v.valore).scan(vecchio).size
+    # Il pezzo si cerca nel testo VISIBILE (senza i `<br>`), poi si riporta al valore vero.
+    vis = visibile(norm(v.valore))
+    k = vis[scarto, vecchio.length] == vecchio ? scarto : nil
+    if k.nil?
+      tutte = vis.scan(vecchio).size
       raise Rifiuto, "Il testo nel file #{file_rel} non è più quello della pagina: ricaricala e riprova." unless tutte == 1
-      i = norm(v.valore).index(vecchio)
+      k = vis.index(vecchio)
     end
+    i = a_grezzo(v.valore, k)
+    raise Rifiuto, "Il testo nel file #{file_rel} non è più quello della pagina: ricaricala e riprova." unless norm(v.valore)[i, vecchio.length] == vecchio
     # Si cambia il valore VERO: gli eventuali spazi fissi fuori dal pezzo restano dov'erano.
     valore_nuovo = v.valore[0...i] + nuovo + v.valore[(i + vecchio.length)..]
 

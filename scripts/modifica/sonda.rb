@@ -85,7 +85,20 @@ module SondaFiltri
   def slice(input, offset, length = nil)
     super(piano(input), offset, length)
   end
+
+  # ⭐ L'A CAPO (Option+Invio): un valore che passa per uno di questi filtri
+  # non diventa HTML, o non resta com'è (un indirizzo, un dato strutturato, una
+  # parola in minuscolo), e lì un `<br>` si leggerebbe come segni. Si annota il
+  # suo numero, e la modalità modifica non lo fa andare a capo.
+  %i[jsonify slugify strip_newlines downcase upcase capitalize escape escape_once xml_escape
+     strip_html cgi_escape uri_escape url_encode truncate truncatewords normalize_whitespace].each do |f|
+    define_method(f) do |input, *resto|
+      input.to_s.scan(/#{APRI}([#{CIFRE.join}]*)#{NUMERO}/o) { |(c)| $senza_a_capo << c.each_char.map { |d| CIFRE.index(d) }.join.to_i(4) }
+      super(input, *resto)
+    end
+  end
 end
+$senza_a_capo = []
 Liquid::Template.register_filter(SondaFiltri)
 
 $mappa = []
@@ -123,4 +136,5 @@ Jekyll::Commands::Build.process(
   "source" => RADICE, "destination" => File.join(USCITA, "sito"),
   "safe" => true, "quiet" => true
 )
+$senza_a_capo.uniq.each { |id| $mappa[id]["senza_a_capo"] = true if $mappa[id] }
 File.write(File.join(USCITA, "mappa.json"), JSON.generate($mappa))

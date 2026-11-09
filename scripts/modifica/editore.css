@@ -31,7 +31,7 @@
 .mod-in-modifica .mod-si { outline: 1px dashed rgba(46, 160, 67, .9); outline-offset: 1px; cursor: text; border-radius: 2px; }
 .mod-in-modifica .mod-si:hover { background: rgba(46, 160, 67, .18); outline-style: solid; }
 .mod-in-modifica .mod-no:hover { outline: 1px dotted rgba(200, 60, 60, .8); cursor: help; }
-.mod-sto-scrivendo { outline: 2px solid #ff8a00 !important; background: rgba(255, 138, 0, .12) !important; }
+.mod-sto-scrivendo { outline: 2px solid #ff8a00 !important; background: rgba(255, 138, 0, .12) !important; white-space: pre-wrap !important; }
 .mod-pannello {
   position: fixed; top: 40px; right: 12px; bottom: 70px; z-index: 2147483000; overflow: auto;
   width: min(480px, calc(100vw - 24px)); padding: 16px; border-radius: 12px; background: #fff; color: #1d1d1f;
