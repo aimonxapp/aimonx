@@ -20,85 +20,50 @@
 # qui perché la barra non è della landing, è di tutto il sito.
 
 menu:
-  voci:
-    - "Home"
-    - "Features"
-    - "FAQ"
-    # ⭐ Giro W31 (Pier, 31/10/2026): fra FAQ e Free and Pro, come nel piede dopo FAQ.
-    - "Range System"
-    - "Free and Pro"
+  # ⏳ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, da
+  # ripassare da Pier): le cinque sezioni della barra in alto e del piede.
+  # Dove porta ciascuna, e cosa c'è dentro, lo dice `_data/collegamenti.yml`
+  # (`sezioni`), che è di CC: qui solo le parole.
+  sezioni:
+    funzioni: "App features"
+    range: "Range System"
+    strumenti: "AX Tools & Guides"
+    prezzi: "Pricing"
+    assistenza: "Support"
   # ⭐ Giro W29 (Pier, 17/10/2026 17:18): «Download» in TUTTE le lingue, ed è
-  # scritto QUI e basta — il pulsante in fondo alla barra e l'ultima voce della
-  # colonna «App» del piede lo prendono da questo file su ogni versione del
-  # sito, e i file delle altre lingue non lo ripetono. ⛔ Il badge di Apple
-  # resta nella sua lingua: è un'altra cosa (`hero.badge`, `badge`).
+  # scritto QUI e basta: i file delle altre lingue non lo ripetono. ⛔ Il badge
+  # di Apple resta nella sua lingua: è un'altra cosa (`hero.badge`, `badge`).
   scarica: "Download"
-  # ⚠️ La voce che si apre è quella che porta all'indice delle funzioni
-  # (`_data/collegamenti.yml`, `apre`), e sotto di lei vanno le funzioni con
-  # una pagina e, in fondo, questa.
   tutte: "All features"
   # Il pulsante del telefono, chiuso e aperto.
   apri: "Menu"
   chiudi: "Close"
 
-# Le briciole di pane: «Home › Features › <nome breve>», «Home › Free and Pro».
-# ⚠️ Le voci di mezzo sono quelle del menu qui sopra, cercate per indirizzo, e
-# il nome breve viene da `_data/funzioni.yml`: qui c'è solo la parola della
-# casa. Il «›» lo mette il layout: è un segno.
+# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ `voci` è la barra
+# di PRIMA del W39, con le parole già approvate: le briciole la usano per
+# trovare il nome della voce di mezzo dal suo indirizzo (`_includes/briciole-calcola.html`).
+# Il «›» lo mette il layout: è un segno.
 briciole:
   casa: "Home"
+  voci:
+    - "Home"
+    - "Features"
+    - "FAQ"
+    - "Range System"
+    - "Free and Pro"
 
-# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo: il nome delle
-# due regioni di navigazione (sezione «Etichette per i lettori di schermo»
-# della bozza, 16/10/2026 21:37). ⚠️ Le colonne del piede non ne hanno una
-# loro: si etichettano coi titoli già in pagina (`piede`, qui sotto).
+# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo. `lingua` è
+# anche il titolo delle lingue nel piede; ⏳ `casa` (W39) è il nome del logo, che
+# da solo porta alla home.
 etichette:
   menu: "Main menu"
   briciole: "Breadcrumb"
-  # ⭐ Giro W28: il selettore di lingua in alto (sezione «Language selector and
-  # footer column» della bozza, approvata da Pier il 17/10/2026 14:34).
   lingua: "Language"
+  casa: "AIMONX home"
 
 # Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
 sorelle: "More features"
 
-# Il piede a colonne. ⚠️ Le etichette dei link sono quelle già approvate.
-# ⭐ Giro W25 (Pier, 16/10/2026 22:07): quattro colonne, e «Home» torna.
-# ⚠️ La colonna «Features» NON ha `voci`: le sue sono le funzioni con una
-# pagina, dalla fonte unica (`_data/funzioni.yml`), più «All features» — una
-# pagina nuova ci compare da sola (`_includes/piede.html`).
-piede:
-  - titolo: "App"
-    voci:
-      - "Home"
-      - "Free and Pro"
-      - "What's new"
-      # ⭐ Giro W36: la pagina About (bozza «about», sezione «Piede»).
-      - "About"
-    # ⭐ Giro W29: in fondo alla colonna, «Download» (`menu.scarica`, qui sopra).
-    scarica: true
-  - titolo: "Features"
-    dalla_fonte: true
-  - titolo: "Learn"
-    # ⏳ Giro W38: le due voci nuove sono i titoli delle pagine nuove, dalla
-    # bozza non ancora approvata (…/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md).
-    # ⚠️ SCELTA DI CC: stanno qui e non nella barra — Pier guarda. Solo in
-    # inglese: le altre lingue le avranno con le loro pagine.
-    voci:
-      - "FAQ"
-      - "Range System"
-      - "Reloading cost calculator"
-      - "How to choose a gun log app"
-  - titolo: "Support"
-    voci:
-      - "Support"
-      - "Write a review"
-      - "Privacy Policy"
-      - "Terms of Use"
-  # ⭐ Giro W28: la quinta colonna, le lingue. ⚠️ Non ha `voci`: sono quelle del
-  # selettore in alto, una per lingua, coi nomi di `_data/lingue.yml`.
-  - titolo: "Language"
-    lingue: true
 
 # La pagina indice `/features/` — sezioni «Meta» e «Page» della bozza.
 indice:

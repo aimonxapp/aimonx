@@ -53,6 +53,8 @@
   {%- endcomment -%}
   {%- capture motto_lang -%}{%- unless lin.codice == lin_prima.codice %} lang="{{ lin_prima.html }}"{% endunless -%}{%- endcapture -%}
 
+  {%- comment -%} ⭐ Giro W39: la barra FUORI da `.apertura`, perché resti ferma in alto per tutta la pagina (`_includes/barra.html`). {%- endcomment -%}
+  {%- include barra.html %}
   <div class="apertura">
     {%- comment -%}
       ⛔ LA TESTATA NON È PIÙ SCRITTA QUI, dal giro W10: sta in
@@ -64,7 +66,6 @@
       W6 in Safari e ha tolto l'etichetta piccola. ⭐ Dal W12 la regola ha una
       ragione in più, e non è nostra: Apple vuole UN SOLO badge per pagina.
     {%- endcomment -%}
-    {%- include barra.html -%}
 
     <div class="eroe">
       <div class="parole">

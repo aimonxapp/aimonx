@@ -20,8 +20,9 @@
   {%- include testa.html meta=d.meta -%}
 </head>
 <body class="v-testo v-non-trovato tinta-{{ page.tinta | default: 'verde' }}">
+  {%- comment -%} ⭐ Giro W39: la barra FUORI da `.apertura`, perché resti ferma in alto per tutta la pagina (`_includes/barra.html`). {%- endcomment -%}
+  {%- include barra.html %}
   <div class="apertura">
-    {%- include barra.html -%}
     <div class="titolone">
       <h1>{{ d.titolo }}</h1>
     </div>

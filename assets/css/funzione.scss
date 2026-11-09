@@ -89,7 +89,7 @@
   .v-sezione .due-colonne {
     display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2.5rem; align-items: start;
   }
-  .v-sezione .sorelle { margin-top: 0; position: sticky; top: 1.5rem; }
+  .v-sezione .sorelle { margin-top: 0; position: sticky; top: calc(var(--testata) + 1.5rem); } // W39: sotto la barra ferma
   // Sotto la colonna del foglio: la larghezza meno la colonna di lato e lo spazio.
   .v-sezione .scarica { max-width: #{"calc(100% - 17.5rem)"}; }
 }

@@ -1,145 +1,88 @@
 {%- comment -%}
 _includes/barra.html — LA BARRA IN ALTO, su tutte le pagine.
-Giro W10, decisa e approvata da Pier il 22/09/2026. ⭐ RIFATTA NEL GIRO W24
-(Pier, 16/10/2026: il sito diventa un sito a sezioni): cinque voci dal W25 —
-Home · Features · FAQ · Free and Pro · Download — e «Features» SI APRE.
+Giro W10, rifatta nel W24 e ⭐ RIFATTA DI NUOVO NEL GIRO W39 (Pier, 09/11/2026:
+«non trovo le cose»; il riferimento è il FUNZIONAMENTO di apple.com, non la
+sua grafica — colori, font, logo e parole restano i nostri).
 
-  ⭐ COSA C'È ADESSO, e perché è fatto così:
-    · sul COMPUTER «Features» è una tendina: un `<details>` il cui `<summary>`
-      è il pulsante, e le voci stanno nella `<ul class="sotto">` SUBITO DOPO,
-      fuori da lui — la stessa forma del «Menu» del telefono, per la stessa
-      ragione scritta qui sotto. ⛔ Chiusa, le sue voci sono `display: none`:
-      NON si raggiungono col Tab. Si apre e si chiude col clic, con Invio e con
-      lo spazio, perché `<summary>` è un pulsante nativo.
-      ⭐ Dalla fase A del W24 (Pier, 16/10/2026) un clic FUORI la richiude, ed
-      Esc richiude lei e il pannello del telefono: lo fa `assets/js/menu.js`,
-      poche righe. ⛔ Senza lo script tutto il resto funziona come prima.
-    · sul TELEFONO il pulsante «Menu» apre un PANNELLO A TUTTO SCHERMO, e
-      dentro «Features» non è una tendina: è un titolo con le sue pagine già
-      in elenco (niente da toccare due volte). Il pulsante, aperto, dice
-      «Close». ⭐ Mentre il pannello è aperto il resto della pagina è
-      `visibility: hidden` (`comune.scss`, con `:has`): non si vede e non si
-      raggiunge col Tab, che è quel che fa una finestra modale — senza script.
-    · «Download» è un PULSANTE DI TESTO verso lo Store, ⛔ non un badge: il
-      badge di Apple resta uno per pagina.
-    · il logo porta alla landing, e dal W25 anche «Home», tornata nel menu
-      (Pier, 16/10/2026 22:07: decisa il 22/09, tolta per errore nel W24).
-  ⛔ SENZA JAVASCRIPT IL MENU È INTERO: lo script aggiunge solo Esc e il clic
-  fuori, e se non arriva si perde quello e basta.
-
-  ⛔ PRIMA DEL W10 LA TESTATA ERA SCRITTA DUE VOLTE — una in
-  `_layouts/landing.html`, una in `_layouts/pagina.html` — e già divergevano:
-  sulla landing il marchio NON era un link, sulle altre sì. Con una barra che
-  porta cinque voci, due copie sarebbero diventate due barre diverse alla
-  prima correzione. È la stessa lezione di `_includes/piede.html`, arrivata al
-  capo opposto della pagina.
-
-  ⛔⛔ IL PULSANTE DEL TELEFONO NON USA JAVASCRIPT, e non è un vezzo: senza JS
-  il menu funziona anche se uno script non arriva, e soprattutto funziona da
-  tastiera e con VoiceOver senza che sia CC a doverlo implementare — il
-  browser lo fa già, perché `<summary>` È un pulsante di apertura, nativo, con
-  il suo stato «aperto/chiuso» già annunciato.
-
-  ⚠️ LA COSA DA GUARDARE, ed è una scelta di CC, non un fatto: il `<details>`
-  è VUOTO, e le voci stanno nella `<ul>` SUBITO DOPO, fuori da lui. Il CSS le
-  mostra con `details[open] ~ .voci`. ⛔ Perché non dentro, che sarebbe la
-  forma ovvia: perché sul computer il menu deve essere SEMPRE aperto, e un
-  `<details>` chiuso non si può forzare ad aprirsi da CSS in modo che regga
-  anche sui Safari di qualche versione fa (`::details-content` è recente).
-  Tenendo le voci fuori, il computer le mostra e basta e il `<details>`
-  sparisce. ⭐ L'ordine di lettura resta giusto: si sente «Menu, chiuso» e
-  subito dopo vengono le voci, che è esattamente quello che dice.
-  ⚠️ Se a Cowork questa forma non va, l'alternativa è JS: si dica, e si fa.
-
-  ⛔ QUI NON C'È NESSUNA PAROLA: le etichette vengono da
-  `_data/navigazione.yml` (di Cowork, dalla bozza), le funzioni della tendina
-  da `_data/funzioni.yml`, gli indirizzi da `_data/collegamenti.yml` (di CC).
-{%- endcomment -%}
-{%- comment -%}
-  ⛔ `barra_m`, non `m`: un include condivide la scatola delle variabili col
-  layout che lo chiama, quindi un nome corto qui può cancellare un nome corto
-  là. Misurato nel W10 su `d`, e costato il corpo di tre pagine.
-{%- endcomment -%}
-{%- comment -%}
-  ⭐ Giro W28: le parole vengono dalla lingua della pagina (`lin_t`,
-  `_includes/lingua.html`), gli indirizzi portano il suo prefisso, e sopra la
-  barra c'è il selettore di lingua (`_includes/selettore.html`).
-  ⚠️ Le funzioni della tendina: segno e indirizzo dal file inglese
-  (`site.data.funzioni`, `aspetto`), il nome dalla stessa voce nella lingua
-  della pagina — stessa posizione.
+  ⭐ COSA C'È ADESSO:
+    · a sinistra il LOGO, che da solo porta alla home (la voce «Home» non c'è
+      più): il suo nome per chi ascolta è il testo alternativo, «AIMONX home»;
+    · le CINQUE SEZIONI, dalla struttura in `_data/collegamenti.yml`
+      (`sezioni`) e coi nomi della lingua della pagina. Una sezione con
+      sottovoci SI APRE in un PANNELLO largo quanto la pagina, coi gruppi come
+      da Apple (il primo a caratteri grandi); una senza (Range System,
+      Pricing) è un link e basta — niente pannello vuoto;
+    · a destra la LINGUA (`_includes/selettore.html`) e «Download», un
+      pulsante di testo con l'ICONA DELL'APP. ⛔ Mai la mela di Apple, e nessun
+      badge quassù: Apple vuole un badge solo per pagina, e non vuole il suo
+      logo da solo.
+    · ⭐ LA BARRA RESTA FERMA IN ALTO mentre la pagina scorre (`position:
+      sticky` su `.testata`, in `comune.scss`): per questo dal W39 sta FUORI da
+      `.apertura`, direttamente nel `<body>` — uno `sticky` resta fermo solo
+      dentro il suo contenitore.
+  ⭐ COME SI APRE UNA SEZIONE, e perché così: il pulsante è il `<summary>` di
+  un `<details>` VUOTO, e il pannello è il `<div>` SUBITO DOPO (la stessa forma
+  di prima del W39, e la stessa ragione: il CSS lo mostra con
+  `details[open] ~ .pannello`). Quindi SENZA JAVASCRIPT si apre e si chiude
+  col clic, col tocco, con Invio e con lo spazio, e chi ascolta sente «App
+  features, chiuso». ⛔ Chiuso, il pannello è `display: none`: le sue voci non
+  si raggiungono col Tab (`scripts/tastiera.mjs`). `assets/js/menu.js`
+  aggiunge solo il PASSAGGIO DEL MOUSE, Esc e il clic fuori.
+  ⭐ SUL TELEFONO il pulsante «Menu» apre UN pannello a tutto schermo con le
+  stesse sezioni: lì ogni sezione si apre sotto di sé con un tocco.
+  ⛔ QUI NON C'È NESSUNA PAROLA: i nomi da `_data/<lingua>/navigazione.yml`,
+  gli indirizzi da `_data/collegamenti.yml`, le voci da `_includes/voci-dove.html`.
+  ⛔ Variabili col prefisso `barra_`: un include condivide la scatola delle
+  variabili col layout che lo chiama, e nel W10 un nome corto (`d`) è costato
+  il corpo di tre pagine.
 {%- endcomment -%}
 {%- assign barra_m = lin_t.navigazione.menu -%}
-{%- include selettore.html dove='alto' -%}
+<header class="testata">
 <nav class="barra" aria-label="{{ lin_t.navigazione.etichette.menu }}">
-  {%- comment -%}
-    ⚠️ alt="" — l'icona è DECORATIVA anche qui: «AIMONX» è scritto in lettere
-    dentro lo stesso link, quindi il link ha già il suo nome e un testo
-    alternativo lo farebbe leggere due volte.
-  {%- endcomment -%}
+  {%- comment -%} TRE FILE, UNO PER DENSITÀ (giro W14): gli stessi pixel dell'icona dell'app. {%- endcomment %}
   <a class="acasa" href="{{ lin_pre | append: '/' | relative_url }}">
-    {%- comment -%}
-      ⭐ TRE FILE, UNO PER DENSITÀ, dal giro W14. Il marchio è largo 48 px: con
-      il solo file da 96 un telefono a 3× doveva riempirne 144 e lo
-      ingrandiva — sgranato, su tutte le pagine (misurato da
-      `scripts/peso.mjs`). Sono file che c'erano già, gli stessi pixel
-      dell'icona dell'app: non è stato disegnato niente.
-    {%- endcomment -%}
     <img class="marchio" src="{{ '/assets/img/aimonx-96.png' | relative_url }}"
          srcset="{{ '/assets/img/aimonx-48.png' | relative_url }} 1x, {{ '/assets/img/aimonx-96.png' | relative_url }} 2x, {{ '/assets/img/aimonx-192.png' | relative_url }} 3x"
-         alt="" width="48" height="48">
-    <span class="nome">{{ lin_t.landing.brand }}</span>
+         alt="{{ lin_t.navigazione.etichette.casa }}" width="36" height="36">
   </a>
 
-  {%- comment -%}
-    ⚠️ Le due parole del pulsante sono tutte e due nell'HTML, e il CSS ne
-    mostra UNA: `display: none` toglie l'altra anche a chi ascolta, che sente
-    «Menu» o «Close» — mai tutte e due. ⛔ Non con `content:` nel CSS: una
-    parola scritta nel foglio di stile non la vedrebbe nessun controllo.
-  {%- endcomment -%}
+  {%- comment -%} ⚠️ Le due parole del pulsante del telefono sono tutte e due nell'HTML, e il CSS ne mostra UNA (`display: none` toglie l'altra anche a chi ascolta). {%- endcomment %}
   <details class="apri">
     <summary><span class="se-chiuso">{{ barra_m.apri }}</span><span class="se-aperto">{{ barra_m.chiudi }}</span></summary>
   </details>
 
-  {%- comment -%}
-    ⛔ `voci-barra` E NON `voci`: `.voci` è la classe delle CARTE della landing
-    in `assets/css/b.scss`, e nel W10 la collisione lasciava le voci del menu
-    chiuso raggiungibili col Tab sulla landing. Trovato da
-    `scripts/tastiera.mjs`, non a occhio.
-  {%- endcomment -%}
+  {%- comment -%} ⛔ `voci-barra` E NON `voci`: `.voci` è delle carte della landing (W10, trovato da `scripts/tastiera.mjs`). {%- endcomment %}
   <ul class="voci-barra">
-    {%- for v in barra_m.voci -%}
-    {%- if lin_c.menu[v] == site.data.collegamenti.apre %}
-    {%- comment -%}
-      LA VOCE CHE SI APRE — quella che porta all'indice delle funzioni
-      (`_data/collegamenti.yml`, `apre`; fino al W24 era «la prima»). Sul computer la tendina (`details.tendina`), sul
-      telefono il titolo `gruppo` con l'elenco già aperto: il CSS mostra l'uno
-      o l'altro, e quello nascosto è `display: none` — fuori dalla vista, dal
-      Tab e dal lettore di schermo, quindi la voce non si sente due volte.
-    {%- endcomment %}
-    <li class="con-tendina">
-      <details class="tendina">
-        <summary>{{ v }}</summary>
-      </details>
-      <span class="gruppo">{{ v }}</span>
-      <ul class="sotto">
-        {%- comment -%} ⭐ Giro W32: l'ordine è quello della navigazione (`menu_funzioni`), non delle carte. {%- endcomment -%}
-        {%- for barra_p in site.data.aspetto.menu_funzioni %}
-        {%- for f in site.data.funzioni %}
-        {%- if f.aspetto.pagina == barra_p %}
-        {%- assign barra_nome = lin_t.funzioni[forloop.index0].nome %}
-        {%- comment -%} ⭐ Giro W26 (Pier, sì alla proposta): il segno della funzione davanti al nome — lo stesso cerchietto colorato di «More features» e dell'indice. Decorativo: l'icona è `aria-hidden` (`_includes/segno.html`). {%- endcomment %}
-        <li class="sez-{{ f.aspetto.tinta | default: 'verde' }} con-segno">{% include segno.html a=f.aspetto involucro='cerchietto' %}{% include voce.html v=barra_nome dove=f.aspetto.pagina %}</li>
-        {%- endif %}
-        {%- endfor %}
-        {%- endfor %}
-        <li class="tutte">{% include voce.html v=barra_m.tutte %}</li>
-      </ul>
-    </li>
+    {%- for barra_s in site.data.collegamenti.sezioni %}
+    {%- assign barra_nome = barra_m.sezioni[barra_s.nome] %}
+    {%- if barra_s.dove %}
+    <li class="sezione-link">{% include voce.html v=barra_nome dove=barra_s.dove %}</li>
     {%- else %}
-    <li>{% include voce.html v=v %}</li>
-    {%- endif -%}
+    {%- capture barra_gruppi -%}
+      {%- for barra_g in barra_s.gruppi -%}
+      {%- capture barra_voci -%}{%- include voci-dove.html voci=barra_g segni=true -%}{%- endcapture -%}
+      {%- if barra_voci contains '<li' %}
+        <ul class="gruppo-voci{% if forloop.first %} grande{% endif %}">{{ barra_voci }}
+        </ul>
+      {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture %}
+    {%- if barra_gruppi contains '<li' %}
+    <li class="sezione">
+      <details class="tendina"><summary>{{ barra_nome }}</summary></details>
+      <div class="pannello"><div class="pannello-dentro">{{ barra_gruppi }}
+      </div></div>
+    </li>
+    {%- endif %}
+    {%- endif %}
     {%- endfor %}
-    {%- comment -%} ⭐ Giro W29: «Download» in fondo, uguale in ogni lingua — scritto una volta sola in `_data/navigazione.yml` (`menu.scarica`), verso il link allo Store della lingua della pagina. {%- endcomment %}
-    <li class="scarica-voce">{% include voce.html v=site.data.navigazione.menu.scarica dove='store' classe='pulsante' %}</li>
+    <li class="lingue-voce">{% include selettore.html dove='alto' %}</li>
+    {%- comment -%}
+      «Download» (W29: uguale in ogni lingua, `menu.scarica`). ⭐ Giro W39:
+      con davanti l'ICONA DELL'APP AIMONX, il quadrato arrotondato dello Store.
+      Decorativa (`alt=""`): il nome del link è la parola.
+    {%- endcomment %}
+    <li class="scarica-voce"><a class="pulsante" href="{{ lin_store }}" rel="noreferrer"><img class="icona-app" src="{{ '/assets/img/aimonx-48.png' | relative_url }}" srcset="{{ '/assets/img/aimonx-32.png' | relative_url }} 1x, {{ '/assets/img/aimonx-48.png' | relative_url }} 2x, {{ '/assets/img/aimonx-96.png' | relative_url }} 3x" alt="" width="22" height="22">{{ site.data.navigazione.menu.scarica }}</a></li>
   </ul>
 </nav>
+</header>

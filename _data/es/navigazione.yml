@@ -3,44 +3,46 @@
 # ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
 
 menu:
-  voci:
-  - Inicio
-  - Funciones
-  - FAQ
-  - Range System
-  - Free y Pro
-  tutte: Todas las funciones
-  apri: Menú
-  chiudi: Cerrar
+  # ⏳ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, da
+  # ripassare da Pier): le cinque sezioni della barra in alto e del piede.
+  # Dove porta ciascuna, e cosa c'è dentro, lo dice `_data/collegamenti.yml`
+  # (`sezioni`), che è di CC: qui solo le parole.
+  sezioni:
+    funzioni: "Funciones de la app"
+    range: "Range System"
+    strumenti: "AX Herramientas y guías"
+    prezzi: "Precios"
+    assistenza: "Soporte"
+  tutte: "Todas las funciones"
+  # Il pulsante del telefono, chiuso e aperto.
+  apri: "Menú"
+  chiudi: "Cerrar"
+
+# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ `voci` è la barra
+# di PRIMA del W39, con le parole già approvate: le briciole la usano per
+# trovare il nome della voce di mezzo dal suo indirizzo (`_includes/briciole-calcola.html`).
+# Il «›» lo mette il layout: è un segno.
 briciole:
-  casa: Inicio
+  casa: "Inicio"
+  voci:
+    - "Inicio"
+    - "Funciones"
+    - "FAQ"
+    - "Range System"
+    - "Free y Pro"
+
+# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo. `lingua` è
+# anche il titolo delle lingue nel piede; ⏳ `casa` (W39) è il nome del logo, che
+# da solo porta alla home.
 etichette:
-  menu: Menú principal
-  briciole: Ruta de navegación
-  lingua: Idioma
-sorelle: Más funciones
-piede:
-- titolo: App
-  voci:
-  - Inicio
-  - Free y Pro
-  - Novedades
-  - Acerca de
-  scarica: true
-- titolo: Funciones
-  dalla_fonte: true
-- titolo: Más información
-  voci:
-  - FAQ
-  - Range System
-- titolo: Soporte
-  voci:
-  - Soporte
-  - "Escribir una reseña"
-  - Política de privacidad (en inglés)
-  - Condiciones de uso (en inglés)
-- titolo: Idioma
-  lingue: true
+  menu: "Menú principal"
+  briciole: "Ruta de navegación"
+  lingua: "Idioma"
+  casa: "Inicio de AIMONX"
+
+# Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
+sorelle: "Más funciones"
+
 indice:
   meta:
     title: 'Funciones: contador de disparos, mantenimiento | AIMONX'

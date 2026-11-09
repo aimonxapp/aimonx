@@ -1,85 +1,83 @@
 {%- comment -%}
 _includes/piede.html — IL PIEDE DI OGNI PAGINA, scritto una volta sola.
-Nato nel giro W9, che ha portato il sito da una pagina a quattro.
+Nato nel giro W9, a colonne dal W24, ⭐ RIFATTO NEL GIRO W39 sull'impianto del
+piede di apple.com (Pier, 09/11/2026: «copia l'idea, non tutto»).
 
-  ⭐ DAL GIRO W24 È A COLONNE (architettura del 16/10/2026, §4): dal W25 sono quattro,
-  App · Features · Learn · Support (Pier, 16/10/2026 22:07): sul computer una
-  accanto all'altra, due per riga in mezzo, sul telefono una sotto l'altra.
-  ⭐ «Features» non ha voci scritte: sono le funzioni con una pagina, dalla
-  fonte unica, più «All features» — una pagina nuova ci compare da sola. Titoli ed etichette vengono da `_data/navigazione.yml`, gli
-  indirizzi da `_data/collegamenti.yml` (`menu`) — gli stessi della barra.
-  ⚠️ I titoli delle colonne sono PARAGRAFI e non `h2`: non sono capitoli
-  della pagina, e un titolo vero nel piede entrerebbe nell'ordine dei titoli
-  di ogni pagina. ⭐ Ogni elenco è legato al suo titolo con
-  `aria-labelledby`, quindi chi ascolta sente «App, elenco» senza una parola
-  in più. La quinta colonna, «Languages», arriva con la seconda lingua.
-  ⚠️ La storia qui sotto racconta la riga di link che c'era fino al W23.
-
-  ⛔ PRIMA DEL W9 IL PIEDE STAVA DENTRO `_layouts/landing.html`, e andava bene
-  finché la pagina era una. Con quattro pagine un piede scritto in due posti
-  diverge alla prima correzione: la riga dei marchi Apple cambierebbe sulla
-  landing e non sulle altre, e nessuno se ne accorgerebbe.
-
-  ⛔ LA VECCHIA NOTA QUI DICEVA che i tre link NON si mostrano «finché le
-  pagine non esistono (WA1, WA2, WA3)» — giro W4 §3③. ⭐ Da questo giro
-  esistono, e la riga è nella bozza approvata della landing. La condizione è
-  soddisfatta, non aggirata: i link puntano a pagine vere, e che risolvano lo
-  misura `scripts/controprova.sh`.
-
-  ⛔ IL TESTO VIENE DA `_data/landing.yml`, che è di Cowork — anche quando la
-  pagina è Privacy, Support o Terms. ⚠️ Sta lì e non altrove perché è nella
-  BOZZA della landing che Cowork ha scritto il piede: una copia in ogni file di
-  testo sarebbe la stessa divergenza di un attimo fa, travestita da dati.
-
-  ⚠️ IL «·» FRA I TRE LINK LO METTE QUESTO FILE, non i dati. È nella bozza —
-  la riga è «Privacy Policy · Support · Terms of Use» — ma è un SEGNO, non una
-  parola: `aria-hidden` lo toglie a chi ascolta la pagina, che sente tre link e
-  non tre link e due puntini. ⛔ Nei dati ci sono solo le tre etichette, e sono
-  quelle che `scripts/testo-approvato.sh` cerca alla lettera nella bozza.
-
-  ⭐ `aria-current="page"` sul link della pagina che si sta già leggendo: chi
-  usa un lettore di schermo sente che quel link porta dove è già. Non aggiunge
-  nessuna parola — è lo stesso testo, con un'informazione in più.
+  ⭐ COSA C'È ADESSO, dall'alto:
+    · il LOGO, che porta alla home (era la voce «Home» della colonna App), e il
+      motto;
+    · le STESSE SEZIONI della barra in alto, con gli stessi nomi e le stesse
+      pagine (`_data/collegamenti.yml`, `sezioni`), in tre colonne dove una
+      colonna IMPILA più sezioni (`colonna`), come da Apple. Una sezione senza
+      voci (Range System) è il suo titolo, che è un link;
+    · la riga sui marchi degli altri (W14), se c'è;
+    · LA RIGA IN FONDO: il copyright a sinistra, Privacy Policy · Terms of Use
+      (`legali`), e la LINGUA a destra.
+  ⭐ SUL TELEFONO ogni sezione è una RIGA CHE SI APRE col tocco (il segno «+»
+  diventa «−»): è lo stesso `<details>` vuoto della barra, col suo titolo come
+  pulsante, e l'elenco subito dopo. Sul computer quel pulsante sparisce e al
+  suo posto c'è il titolo, con l'elenco sempre aperto — il CSS mostra l'uno o
+  l'altro, e quello nascosto è `display: none`: non si sente due volte.
+  ⚠️ I titoli sono PARAGRAFI e non `h2`: un titolo vero nel piede entrerebbe
+  nell'ordine dei titoli di ogni pagina. Ogni elenco è legato al suo titolo
+  con `aria-labelledby`.
+  ⛔ NIENTE SI PERDE da quel che c'era fino al W38: Home (il logo), Free and
+  Pro, What's new, About, Download, le funzioni, All features, FAQ, Range
+  System, le pagine nuove del W38, Support, Write a review, Privacy Policy,
+  Terms of Use e le lingue.
+  ⛔ Nessuna parola qui: il motto, il copyright e i marchi da
+  `_data/landing.yml` (`footer`), i nomi da `_data/<lingua>/navigazione.yml`.
+  ⛔ Variabili col prefisso `piede_` (la nota in `_includes/barra.html`).
 {%- endcomment -%}
-{%- comment -%} ⛔ `piede_f`, non `f`: vedi la nota in `_includes/barra.html`. {%- endcomment -%}
 {%- assign piede_f = lin_t.landing.footer -%}
+{%- assign piede_m = lin_t.navigazione.menu -%}
 <footer class="chiusa">
-  <p class="motto">{{ piede_f.tagline }}</p>
+  <div class="piede-testa">
+    <a class="acasa-piede" href="{{ lin_pre | append: '/' | relative_url }}"><img src="{{ '/assets/img/aimonx-48.png' | relative_url }}" srcset="{{ '/assets/img/aimonx-48.png' | relative_url }} 1x, {{ '/assets/img/aimonx-96.png' | relative_url }} 2x" alt="{{ lin_t.navigazione.etichette.casa }}" width="32" height="32"></a>
+    <p class="motto">{{ piede_f.tagline }}</p>
+  </div>
   <div class="colonne">
-    {%- for piede_c in lin_t.navigazione.piede %}
+    {%- for piede_n in (1..3) %}
     <div class="colonna">
-      <p class="intesta" id="piede-{{ piede_c.titolo | slugify }}">{{ piede_c.titolo }}</p>
-      <ul aria-labelledby="piede-{{ piede_c.titolo | slugify }}">
-        {%- if piede_c.lingue %}
-        {%- comment -%} ⭐ Giro W28: la colonna delle lingue — le stesse voci del selettore in alto. {%- endcomment %}
-        {% include selettore.html %}
-        {%- elsif piede_c.dalla_fonte %}
-        {%- comment -%} La colonna delle funzioni (giro W25): quelle con una pagina, dalla fonte unica, più «All features». ⭐ Giro W28: l'indirizzo dal file inglese, il nome dalla stessa voce nella lingua della pagina. {%- endcomment %}
-        {%- for piede_p in site.data.aspetto.menu_funzioni %}
-        {%- for piede_a in site.data.funzioni %}
-        {%- if piede_a.aspetto.pagina == piede_p %}
-        {%- assign piede_nome = lin_t.funzioni[forloop.index0].nome %}
-        <li>{% include voce.html v=piede_nome dove=piede_a.aspetto.pagina %}</li>
-        {%- endif %}
-        {%- endfor %}
-        {%- endfor %}
-        <li>{% include voce.html v=lin_t.navigazione.menu.tutte %}</li>
-        {%- else %}
-        {%- for piede_v in piede_c.voci %}
-        <li>{% include voce.html v=piede_v %}</li>
-        {%- endfor %}
-        {%- if piede_c.scarica %}
-        {%- comment -%} ⭐ Giro W29: «Download», uguale in ogni lingua (`_data/navigazione.yml`, `menu.scarica`). {%- endcomment %}
-        <li>{% include voce.html v=site.data.navigazione.menu.scarica dove='store' %}</li>
-        {%- endif %}
-        {%- endif %}
-      </ul>
+      {%- for piede_s in site.data.collegamenti.sezioni %}
+      {%- if piede_s.colonna == piede_n %}
+      {%- assign piede_nome = piede_m.sezioni[piede_s.nome] %}
+      {%- assign piede_id = 'piede-' | append: piede_s.nome %}
+      {%- comment -%} ⚠️ Nel piede le voci sono quelle di `piede`, in fila: Liquid non sa appiattire i `gruppi` del pannello. {%- endcomment %}
+      {%- if piede_s.piede %}
+      {%- capture piede_voci -%}{%- include voci-dove.html voci=piede_s.piede -%}{%- endcapture %}
+      {%- if piede_voci contains '<li' %}
+      <div class="gruppo-piede">
+        <details class="apri-gruppo"><summary>{{ piede_nome }}</summary></details>
+        <p class="intesta" id="{{ piede_id }}">{{ piede_nome }}</p>
+        <ul aria-labelledby="{{ piede_id }}">{{ piede_voci }}
+        </ul>
+      </div>
+      {%- endif %}
+      {%- else %}
+      <div class="gruppo-piede solo-titolo">
+        <p class="intesta">{% include voce.html v=piede_nome dove=piede_s.dove %}</p>
+      </div>
+      {%- endif %}
+      {%- endif %}
+      {%- endfor %}
     </div>
     {%- endfor %}
   </div>
-  <p class="minuta">{{ piede_f.copyright }}</p>
   {%- comment -%} Giro W14: la riga sui marchi degli altri, un paragrafo suo come nella bozza. {%- endcomment -%}
   {%- if piede_f.altri_marchi %}
   <p class="minuta">{{ piede_f.altri_marchi }}</p>
   {%- endif %}
+  <div class="piede-fondo">
+    <p class="minuta copyright">{{ piede_f.copyright }}</p>
+    {%- comment -%} ⚠️ Le barrette fra le due voci le disegna il CSS: sono un segno, non una parola. {%- endcomment %}
+    <ul class="legali">{%- include voci-dove.html voci=site.data.collegamenti.legali -%}
+    </ul>
+    {%- comment -%} ⭐ Le lingue, a destra: le stesse voci del selettore in alto (W28), col titolo «Language». {%- endcomment %}
+    <div class="lingue-piede">
+      <p class="intesta" id="piede-lingue">{{ lin_t.navigazione.etichette.lingua }}</p>
+      <ul aria-labelledby="piede-lingue">{% include selettore.html %}
+      </ul>
+    </div>
+  </div>
 </footer>

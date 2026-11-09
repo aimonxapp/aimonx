@@ -9,51 +9,45 @@
 # ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
 
 menu:
+  # ⏳ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, da
+  # ripassare da Pier): le cinque sezioni della barra in alto e del piede.
+  # Dove porta ciascuna, e cosa c'è dentro, lo dice `_data/collegamenti.yml`
+  # (`sezioni`), che è di CC: qui solo le parole.
+  sezioni:
+    funzioni: "Funzioni dell'app"
+    range: "Range System"
+    strumenti: "AX Strumenti e guide"
+    prezzi: "Prezzi"
+    assistenza: "Assistenza"
+  tutte: "Tutte le funzioni"
+  # Il pulsante del telefono, chiuso e aperto.
+  apri: "Menu"
+  chiudi: "Chiudi"
+
+# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ `voci` è la barra
+# di PRIMA del W39, con le parole già approvate: le briciole la usano per
+# trovare il nome della voce di mezzo dal suo indirizzo (`_includes/briciole-calcola.html`).
+# Il «›» lo mette il layout: è un segno.
+briciole:
+  casa: "Home"
   voci:
     - "Home"
     - "Funzioni"
     - "FAQ"
     - "Range System"
     - "Free e Pro"
-# ⭐ Giro W29: «Download» non sta qui — è uguale in ogni lingua, e lo scrive una
-# volta sola `_data/navigazione.yml` (`menu.scarica`).
-  tutte: "Tutte le funzioni"
-  apri: "Menu"
-  chiudi: "Chiudi"
 
-briciole:
-  casa: "Home"
-
-# Le etichette per i lettori di schermo, invisibili a schermo.
+# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo. `lingua` è
+# anche il titolo delle lingue nel piede; ⏳ `casa` (W39) è il nome del logo, che
+# da solo porta alla home.
 etichette:
   menu: "Menu principale"
   briciole: "Percorso"
   lingua: "Lingua"
+  casa: "Home di AIMONX"
 
+# Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
 sorelle: "Altre funzioni"
-
-piede:
-  - titolo: "App"
-    voci:
-      - "Home"
-      - "Free e Pro"
-      - "Novità"
-      - "Chi sono"
-    scarica: true
-  - titolo: "Funzioni"
-    dalla_fonte: true
-  - titolo: "Approfondisci"
-    voci:
-      - "FAQ"
-      - "Range System"
-  - titolo: "Supporto"
-    voci:
-      - "Supporto"
-      - "Scrivi una recensione"
-      - "Privacy Policy"
-      - "Termini d'uso"
-  - titolo: "Lingua"
-    lingue: true
 
 indice:
   meta:

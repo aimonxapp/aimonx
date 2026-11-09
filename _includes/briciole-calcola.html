@@ -15,6 +15,9 @@ _includes/briciole-calcola.html — DOVE SI È, in tre variabili. Giro W25.
   ⚠️ Fino al W24 «Features» era scritto qui dentro come «la prima voce del
   menu»: con «Home» tornata in testa sarebbe diventato «Home › Home».
   ⛔ Nessuna parola: vengono tutte da `_data/navigazione.yml` e dalla fonte.
+  ⭐ Giro W39: le voci in cui cercare sono `briciole.voci`, la barra di prima
+  del W39 con le sue parole già approvate («Features», «Free and Pro»): la
+  barra nuova ha sezioni che non sono pagine.
   ⛔ Variabili col prefisso `bri_` (la nota in `_includes/barra.html`).
 {%- endcomment -%}
 {%- assign bri_su = nil -%}
@@ -27,7 +30,7 @@ _includes/briciole-calcola.html — DOVE SI È, in tre variabili. Giro W25.
   resta senza prefisso: lo mettono le briciole e il `BreadcrumbList`.
 {%- endcomment -%}
 {%- if lin_base != bri_sezione -%}{%- assign bri_su = bri_sezione -%}{%- endif -%}
-{%- for bri_v in lin_t.navigazione.menu.voci -%}
+{%- for bri_v in lin_t.navigazione.briciole.voci -%}
   {%- assign bri_d = lin_c.menu[bri_v] -%}
   {%- if bri_su and bri_d == bri_su and bri_su_v == nil -%}{%- assign bri_su_v = bri_v -%}{%- endif -%}
   {%- if bri_d == lin_base and bri_qui == nil -%}{%- assign bri_qui = bri_v -%}{%- endif -%}

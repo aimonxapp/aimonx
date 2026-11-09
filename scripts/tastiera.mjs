@@ -76,11 +76,12 @@ for (const url of urls) {
     // quelle della tendina «Features» (computer, tendina chiusa) — e il conto
     // si stampa accanto a quante voci ci sono, così uno 0 su 0 si vede.
     const chiuse = await page.evaluate((telefono) => {
-      const sel = telefono ? '.barra .voci-barra a' : '.barra .sotto a';
+      // ⭐ Giro W39: sul computer le voci stanno nei PANNELLI delle sezioni.
+      const sel = telefono ? '.barra .voci-barra a' : '.barra .pannello a';
       const tutte = [...document.querySelectorAll(sel)];
       return { tutte: tutte.length, visibili: tutte.filter((a) => a.offsetParent !== null).length };
     }, Boolean(pulsante));
-    const cosa = pulsante ? 'menu CHIUSO, voci della barra' : 'tendina CHIUSA, voci della tendina';
+    const cosa = pulsante ? 'menu CHIUSO, voci della barra' : 'pannelli CHIUSI, voci dei pannelli';
     console.log(`  --- ${nome}: ${cosa} raggiungibili col Tab: ${chiuse.visibili} su ${chiuse.tutte}` +
                 (chiuse.visibili === 0 && chiuse.tutte > 0 ? '  ✅' : '  ⛔ dovrebbero essere 0 su più di 0'));
     if (chiuse.visibili !== 0 || chiuse.tutte === 0) guasti++;
@@ -139,7 +140,10 @@ for (const url of urls) {
       await page.keyboard.press('Enter');
       richiusi++;
     }
-    const ancoraAperti = await page.evaluate(() => document.querySelectorAll(':is(.barra, .lingue) details[open]').length);
+    // ⚠️ Giro W39: si contano quelli che SI VEDONO. Senza script, chiuso «Menu»,
+    // una sezione aperta dentro resta `open` ma è sparita col pannello: non si
+    // vede, non si raggiunge, e alla riapertura è ancora lì — non è un guasto.
+    const ancoraAperti = await page.evaluate(() => [...document.querySelectorAll(':is(.barra, .lingue) details[open] > summary')].filter((s) => s.getClientRects().length).length);
     console.log(`   Invio sul pulsante aperto → ${ancoraAperti === 0 ? `richiuso (${richiusi})  ✅` : `⛔ ancora aperti: ${ancoraAperti}`}`);
     if (ancoraAperti !== 0) guasti++;
 
@@ -152,7 +156,7 @@ for (const url of urls) {
       // Un Tab DENTRO, sulla prima voce: Esc si preme da lì, ed è da lì che il
       // fuoco deve tornare al pulsante.
       await page.keyboard.press('Tab');
-      const dentro = await page.evaluate(() => document.activeElement.closest('.voci-barra, .sotto, .lingue-voci') ? document.activeElement.innerText.trim() : null);
+      const dentro = await page.evaluate(() => document.activeElement.closest('.voci-barra, .pannello, .lingue-voci') ? document.activeElement.innerText.trim() : null);
       await page.keyboard.press('Escape');
       const dopo = await page.evaluate((c) => {
         const d = document.querySelector(`:is(.barra, .lingue) details.${c}`);
@@ -188,12 +192,17 @@ for (const url of urls) {
       }
     }
     // ⭐ Giro W29: il clic fuori anche sulla tendina delle lingue, a ogni larghezza.
+    // ⭐ Giro W39: sul telefono la lingua sta DENTRO il pannello «Menu» — si apre
+    // prima quello, come farebbe chi la cerca.
     await page.evaluate(() => { document.querySelector('.lingue details.tendina-lingue').open = false; });
+    if (pulsante) await page.evaluate(() => { document.querySelector('.barra details.apri').open = true; });
     await page.focus('.lingue details.tendina-lingue > summary');
     await page.keyboard.press('Enter');
     if (!await page.evaluate(() => document.querySelector('.lingue details.tendina-lingue').open)) { console.log('   ⛔ la tendina delle lingue non si è aperta'); guasti++; }
     // ⚠️ Nel margine laterale, dove non c'è niente: in mezzo, al telefono, il
     // clic cadeva su un link e cambiava pagina (misurato su `/features/`).
+    // ⚠️ Sul telefono, col pannello «Menu» aperto, il margine è del pannello:
+    // fuori dalla tendina, ma dentro il menu.
     await page.mouse.click(4, 600);
     const lingueAperta = await page.evaluate(() => document.querySelector('.lingue details.tendina-lingue').open);
     if (script) {

@@ -1,0 +1,52 @@
+{%- comment -%}
+_includes/voci-dove.html — LE VOCI DI UN ELENCO, DAGLI INDIRIZZI. Giro W39.
+  `include.voci` è un elenco di indirizzi da `_data/collegamenti.yml`
+  (`sezioni`, `legali`); ne escono i `<li>` con il link e il nome della lingua
+  della pagina. La usano la barra in alto e il piede: stesse voci, stessi nomi.
+  ⭐ IL NOME DI OGNI VOCE:
+    · `funzioni` → le nove pagine-funzione, nell'ordine della navigazione
+      (`_data/aspetto.yml`, `menu_funzioni`), col nome breve della lingua e,
+      se `include.segni`, il loro cerchietto colorato (`_includes/segno.html`);
+    · `/features/` → «All features» (`menu.tutte`); `store` → «Download»;
+    · una pagina-funzione → il suo nome breve;
+    · ogni altro indirizzo → la PRIMA voce che porta lì nella mappa `menu` della
+      lingua della pagina (`lin_c.menu`).
+  ⛔ NIENTE LINK MORTI: se nella lingua della pagina nessuna voce porta a quel
+  indirizzo, la pagina in quella lingua non c'è, e la voce non si scrive.
+  ⛔ Nessuna parola qui. Variabili col prefisso `vd_` (la nota in `_includes/barra.html`).
+{%- endcomment -%}
+{%- for vd_d in include.voci -%}
+{%- if vd_d == 'funzioni' -%}
+  {%- for vd_p in site.data.aspetto.menu_funzioni -%}
+  {%- for vd_f in site.data.funzioni -%}
+  {%- if vd_f.aspetto.pagina == vd_p -%}
+  {%- assign vd_nome = lin_t.funzioni[forloop.index0].nome -%}
+  {%- if include.segni %}
+  <li class="sez-{{ vd_f.aspetto.tinta | default: 'verde' }} con-segno">{% include segno.html a=vd_f.aspetto involucro='cerchietto' %}{% include voce.html v=vd_nome dove=vd_p %}</li>
+  {%- else %}
+  <li>{% include voce.html v=vd_nome dove=vd_p %}</li>
+  {%- endif -%}
+  {%- endif -%}
+  {%- endfor -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign vd_nome = nil -%}
+  {%- if vd_d == 'store' -%}
+    {%- assign vd_nome = site.data.navigazione.menu.scarica -%}
+  {%- elsif vd_d == '/features/' -%}
+    {%- assign vd_nome = lin_t.navigazione.menu.tutte -%}
+  {%- else -%}
+    {%- for vd_f in site.data.funzioni -%}
+      {%- if vd_f.aspetto.pagina == vd_d -%}{%- assign vd_nome = lin_t.funzioni[forloop.index0].nome -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if vd_nome == nil -%}
+      {%- for vd_c in lin_c.menu -%}
+        {%- if vd_c[1] == vd_d and vd_nome == nil -%}{%- assign vd_nome = vd_c[0] -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if vd_nome %}
+  <li>{% include voce.html v=vd_nome dove=vd_d %}</li>
+  {%- endif -%}
+{%- endif -%}
+{%- endfor -%}

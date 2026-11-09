@@ -3,44 +3,46 @@
 # ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
 
 menu:
-  voci:
-  - Accueil
-  - Fonctionnalités
-  - FAQ
-  - Range System
-  - Free et Pro
-  tutte: Toutes les fonctionnalités
-  apri: Menu
-  chiudi: Fermer
+  # ⏳ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, da
+  # ripassare da Pier): le cinque sezioni della barra in alto e del piede.
+  # Dove porta ciascuna, e cosa c'è dentro, lo dice `_data/collegamenti.yml`
+  # (`sezioni`), che è di CC: qui solo le parole.
+  sezioni:
+    funzioni: "Fonctionnalités de l'app"
+    range: "Range System"
+    strumenti: "AX Outils et guides"
+    prezzi: "Tarifs"
+    assistenza: "Assistance"
+  tutte: "Toutes les fonctionnalités"
+  # Il pulsante del telefono, chiuso e aperto.
+  apri: "Menu"
+  chiudi: "Fermer"
+
+# Le briciole di pane: «Home › Features › <nome breve>». ⚠️ `voci` è la barra
+# di PRIMA del W39, con le parole già approvate: le briciole la usano per
+# trovare il nome della voce di mezzo dal suo indirizzo (`_includes/briciole-calcola.html`).
+# Il «›» lo mette il layout: è un segno.
 briciole:
-  casa: Accueil
+  casa: "Accueil"
+  voci:
+    - "Accueil"
+    - "Fonctionnalités"
+    - "FAQ"
+    - "Range System"
+    - "Free et Pro"
+
+# ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo. `lingua` è
+# anche il titolo delle lingue nel piede; ⏳ `casa` (W39) è il nome del logo, che
+# da solo porta alla home.
 etichette:
-  menu: Menu principal
-  briciole: Fil d'Ariane
-  lingua: Langue
-sorelle: Autres fonctionnalités
-piede:
-- titolo: App
-  voci:
-  - Accueil
-  - Free et Pro
-  - Nouveautés
-  - À propos
-  scarica: true
-- titolo: Fonctionnalités
-  dalla_fonte: true
-- titolo: En savoir plus
-  voci:
-  - FAQ
-  - Range System
-- titolo: Assistance
-  voci:
-  - Assistance
-  - "Écrire un avis"
-  - Politique de confidentialité (en anglais)
-  - Conditions d'utilisation (en anglais)
-- titolo: Langue
-  lingue: true
+  menu: "Menu principal"
+  briciole: "Fil d'Ariane"
+  lingua: "Langue"
+  casa: "Accueil AIMONX"
+
+# Il titolo dell'elenco delle pagine sorelle, nelle pagine-funzione.
+sorelle: "Autres fonctionnalités"
+
 indice:
   meta:
     title: 'Fonctionnalités : compteur de coups, entretien, listes | AIMONX'
