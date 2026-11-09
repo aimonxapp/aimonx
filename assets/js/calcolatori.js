@@ -21,6 +21,8 @@
 //     arrotondata come l'app (al pari più vicino);
 //   · bossolo, innesco, palla = prezzo ÷ quantità; polvere = prezzo ÷ grani
 //     della confezione × dose; 1 lb = 7000 gr, 1 gr = 64,79891 mg;
+//   · la valuta di partenza è quella della regione del sistema, come nell'app,
+//     e la tendina in testa al modulo la cambia (W39);
 //   · i componenti fino a tre decimali, e così il costo per colpo totale
 //     ($0.246); per 50, 100 e 1.000 a due. ⚠️ Nell'app il totale è a due: è
 //     una scelta del sito (Pier, 09/11/2026, W39 — $0.25 accanto a $12.30 stonava).
@@ -134,13 +136,62 @@
     aggiorna();
   }
 
+  // ---- la valuta: dal sistema, e la tendina per cambiarla --------------------
+  // ⭐ Giro W39 (Pier, 09/11/2026): come l'app (`Valuta.swift`), la valuta di
+  // partenza è quella della REGIONE del sistema; la tendina in testa al modulo
+  // la cambia per tutta la pagina, scheda stampata compresa. ⛔ Non si ricorda
+  // niente: alla prossima apertura si riparte dal sistema.
+  // ⚠️ Il browser non dice quale valuta usa un paese: la tabella è qui, per i
+  // paesi principali; un paese che non c'è, o un browser senza regione, resta
+  // sulla valuta scritta nella pagina (`data-valuta`, i dollari).
+  const EURO = "AD AT BE BG CY DE EE ES FI FR GR HR IE IT LT LU LV MC ME MT NL PT SI SK SM VA XK";
+  const PAESI = Object.assign(Object.fromEntries(EURO.split(" ").map((p) => [p, "EUR"])), {
+    US: "USD", PR: "USD", GB: "GBP", CH: "CHF", LI: "CHF", CA: "CAD", AU: "AUD", NZ: "NZD", JP: "JPY",
+    SE: "SEK", NO: "NOK", DK: "DKK", IS: "ISK", PL: "PLN", CZ: "CZK", HU: "HUF", RO: "RON", RS: "RSD",
+    TR: "TRY", IL: "ILS", ZA: "ZAR", MX: "MXN", BR: "BRL", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
+    IN: "INR", SG: "SGD", HK: "HKD", CN: "CNY", KR: "KRW", TW: "TWD", PH: "PHP", TH: "THB", MY: "MYR",
+    ID: "IDR", AE: "AED", SA: "SAR", UA: "UAH",
+  });
+  function valutaDelSistema() {
+    for (const l of navigator.languages || [navigator.language]) {
+      try {
+        const regione = new Intl.Locale(l).maximize().region;
+        if (regione && PAESI[regione]) return PAESI[regione];
+      } catch (e) { /* una lingua scritta male: si passa alla prossima */ }
+    }
+    return null;
+  }
+  // Le voci della tendina: TUTTE le valute che il browser conosce, col nome che
+  // il browser scrive nella lingua della pagina («Euro (EUR)»). ⛔ Nessuna
+  // parola nostra: nomi e codici li dà `Intl`.
+  function riempiValute(select, scelta) {
+    let codici = [];
+    try { codici = Intl.supportedValuesOf("currency"); } catch (e) { codici = [...new Set(Object.values(PAESI))]; }
+    if (!codici.includes(scelta)) codici.push(scelta);
+    let nomi = null;
+    try { nomi = new Intl.DisplayNames([lingua], { type: "currency" }); } catch (e) { /* senza nomi: i codici */ }
+    const voci = codici.map((c) => ({ c, n: (nomi && nomi.of(c)) || c }));
+    voci.sort((a, b) => a.n.localeCompare(b.n, lingua));
+    select.replaceChildren(...voci.map(({ c, n }) => new Option(n === c ? c : `${n} (${c})`, c, false, c === scelta)));
+  }
+
   // ---- il costo della ricarica ---------------------------------------------
   function calcolatoreRicarica(form) {
-    const codice = form.dataset.valuta;
-    const comp = valuta(codice, 2, 3);
-    const tot = valuta(codice, 2, 2);
-    const simbolo = (comp.formatToParts(0).find((p) => p.type === "currency") || {}).value || "";
-    form.querySelectorAll(".valuta").forEach((s) => { s.textContent = simbolo; });
+    let comp, tot;
+    function impostaValuta(codice) {
+      comp = valuta(codice, 2, 3);
+      tot = valuta(codice, 2, 2);
+      const simbolo = (comp.formatToParts(0).find((p) => p.type === "currency") || {}).value || "";
+      form.querySelectorAll(".valuta").forEach((s) => { s.textContent = simbolo; });
+    }
+    let codice = valutaDelSistema() || form.dataset.valuta;
+    try { valuta(codice, 2, 3); } catch (e) { codice = form.dataset.valuta; }
+    impostaValuta(codice);
+    const sceltaValuta = form.querySelector("[data-scelta-valuta]");
+    if (sceltaValuta) {
+      riempiValute(sceltaValuta, codice);
+      sceltaValuta.addEventListener("change", () => { impostaValuta(sceltaValuta.value); aggiorna(); });
+    }
     const toccati = new Set();
     let mostraTutto = false;
 

@@ -8,7 +8,11 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   confezione in grani × dose; componenti fino a tre decimali, totale a due.
   ⭐ In più rispetto all'app, come vuole la bozza: quante volte si carica un
   bossolo, che divide il suo costo (vuoto = 1).
-  ⛔ La valuta è quella della pagina (`data-valuta`): dollari sulla pagina inglese.
+  ⭐ LA VALUTA (giro W39, Pier, 09/11/2026): si parte da quella della regione
+  del sistema, come nell'app, e la TENDINA in testa al modulo la cambia per
+  tutta la pagina (`assets/js/calcolatori.js`). `data-valuta` è il ripiego: i
+  dollari, se il sistema non dice una valuta. ⏳ La tendina esce solo quando
+  c'è la sua etichetta (`c.valuta`), che è testo di Cowork.
   ⛔ Non salva niente e non manda niente: nessun `action`, nessuna memoria del
   browser. La stampa è quella del browser.
   ⭐ SENZA JAVASCRIPT il modulo non si vede (la regola sta in `<noscript>`, in
@@ -22,6 +26,14 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
 {%- capture opzionale %} (optional){% endcapture -%}
 <form class="calcolatore calc-ricarica" data-calcolatore="ricarica" novalidate
       data-valuta="USD" data-obbligatorio="{{ c.obbligatorio }}" data-maggiore="{{ c.maggiore }}">
+  {%- if c.valuta %}
+  <div class="campi scelta-valuta">
+    <div class="campo">
+      <label class="etichetta" for="r-valuta">{{ c.valuta }}</label>
+      <select id="r-valuta" name="valuta" data-scelta-valuta autocomplete="off"></select>
+    </div>
+  </div>
+  {%- endif %}
   <div class="campi">
     <div class="campo largo">
       <label class="etichetta" for="r-nome">{{ c.nome }}</label>

@@ -185,3 +185,7 @@
   .scheda-piede { margin-top: 16pt; padding-top: 6pt; border-top: .75pt solid #000; font-size: 9pt; }
   .scheda-piede p { margin: 0 0 2pt; }
 }
+
+// ⭐ Giro W39: la tendina della valuta, in testa al modulo e separata dai campi
+// del carico: vale per tutta la pagina.
+.calc-ricarica .scelta-valuta { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #B7CFC1; }
