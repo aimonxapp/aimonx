@@ -35,9 +35,10 @@ calcolatore:
   gara: Match
   gare: [USPSA, IPSC]
   divisione: Division
-  major: Clears the major floor
-  minor: Clears the minor floor
-  sotto: Below the minor floor
+  # ⭐ Le parole dei tiratori, «makes major / makes minor» (Pier, 09/11/2026: era «Clears the … floor»; da dire a Cowork, la bozza resta così).
+  major: Makes major
+  minor: Makes minor
+  sotto: Doesn't make minor
   solo_minor: This division is minor only.
 blocchi:
 - tipo: calcolatore-pf
