@@ -261,6 +261,9 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
   .barra .voci-barra > li > a,
   .barra .tendina > summary { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem 0; font-size: .9rem; white-space: nowrap; }
   .barra .lingue-voce { margin-left: auto; }
+  // La tendina delle lingue si appende al bordo basso della barra, come i pannelli.
+  .barra .lingue-voce .lingue { display: flex; align-items: center; height: 100%; }
+  .barra .lingue .tendina-lingue[open] ~ .lingue-voci { top: 100%; }
   .barra .voci-barra .pulsante { padding: .3rem .95rem .3rem .4rem; font-size: .88rem; }
   // IL PANNELLO: largo quanto la pagina, appeso sotto la barra (`.testata` è
   // il suo riferimento: `.sezione` resta `static`). ⛔ Chiuso è `display:
@@ -286,7 +289,7 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
   .barra .gruppo-voci.grande [aria-current="page"] { color: var(--verde-chiaro); }
   // ⭐ La pagina dietro si scurisce e si sfoca mentre un pannello è aperto: un
   // clic lì lo chiude (`assets/js/menu.js`, il clic fuori).
-  .testata:has(.tendina[open])::after {
+  .testata:has(:is(.tendina, .tendina-lingue)[open])::after {
     content: ""; position: fixed; inset: 0; z-index: -2;
     background: rgba(6, 24, 16, .32);
     -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
@@ -315,26 +318,31 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
 }
 .lingue .tendina-lingue[open] > summary::after { transform: rotate(-135deg); margin-top: .1rem; }
 .lingue .lingue-voci { display: none; }
+// ⭐ Giro W39 (Pier, 09/11/2026, guardando): aperta ha l'ASPETTO DEI PANNELLI
+// delle sezioni — il verde della barra, voci chiare alla stessa misura — e non
+// più il foglio bianco. Appesa sotto la barra, allineata a destra.
 .lingue .tendina-lingue[open] ~ .lingue-voci {
   display: block; position: absolute; z-index: 40;
-  top: calc(100% + .5rem); right: 0; min-width: 10rem;
-  padding: .45rem; border-radius: 14px;
-  background: var(--bianco);
-  box-shadow: 0 14px 34px rgba(6, 24, 16, .38);
+  top: calc(100% + .55rem); right: -1rem; min-width: 11rem;
+  padding: .7rem 1rem .9rem; border-radius: 0 0 14px 14px;
+  background: var(--alto); border: 1px solid rgba(253, 253, 253, .08); border-top: 0;
+  box-shadow: 0 24px 40px rgba(6, 24, 16, .28);
+  animation: pannello-cala .22s ease-out;
 }
 .lingue .lingue-voci a {
-  display: block; padding: .55rem .8rem; border-radius: 9px;
-  color: var(--inchiostro); font-size: .95rem; text-decoration: none;
+  display: block; padding: .32rem 0;
+  color: #CFE3D8; font-size: .92rem; font-weight: 600; text-decoration: none;
 }
-.lingue .lingue-voci a:hover { background: var(--fascia-verde); }
-// ⭐ La lingua della pagina: verde scuro E sottolineata (WCAG «Use of Color»).
+.lingue .lingue-voci a:hover { color: var(--bianco); }
+// ⭐ La lingua della pagina: bianca E sottolineata (WCAG «Use of Color»), come
+// la voce corrente nei pannelli.
 .lingue .lingue-voci [aria-current="true"] {
-  color: var(--titolo-verde); font-weight: 700; text-decoration: underline; text-underline-offset: .25em;
+  color: var(--bianco); text-decoration: underline; text-underline-offset: .25em;
 }
 // Sul telefono, dentro il pannello, la tendina delle lingue si apre sotto di sé.
 @media (max-width: 1059.98px) {
   .barra .lingue .tendina-lingue > summary { font-size: 1rem; }
-  .barra .lingue .tendina-lingue[open] ~ .lingue-voci { position: static; display: block; margin-top: .3rem; padding: 0; background: none; box-shadow: none; }
+  .barra .lingue .tendina-lingue[open] ~ .lingue-voci { position: static; display: block; margin-top: .3rem; padding: 0; background: none; border: 0; box-shadow: none; animation: none; }
   .barra .lingue .lingue-voci a { color: #CFE3D8; padding: .5rem .2rem; }
   .barra .lingue .lingue-voci a:hover { background: none; color: var(--bianco); }
   .barra .lingue .lingue-voci [aria-current="true"] { color: var(--bianco); }
@@ -350,8 +358,8 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
 // ⚠️ Le regole qui NON sono prefissate da `.v-b` o `.v-testo`, ed è voluto: il
 // piede è lo stesso su tutte le pagine. ⛔ Quel che resta ai fogli è la
 // LARGHEZZA della colonna.
-// ⭐ GIRO W39, sull'impianto del piede di apple.com: il logo e il motto, tre
-// colonne dove una colonna impila più sezioni, la riga in fondo col
+// ⭐ GIRO W39, sull'impianto del piede di apple.com: il logo e il motto, le
+// sezioni in fila (una colonna ciascuna), la riga in fondo col
 // copyright, le pagine legali e la lingua. Sul telefono ogni sezione è una
 // riga che si apre col «+».
 // ============================================================================
@@ -409,15 +417,17 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
   .apri-gruppo:not([open]) ~ ul { display: none; }
   .gruppo-piede ul { padding-bottom: .7rem; }
 }
-// Sul computer: tre colonne, i titoli e gli elenchi sempre aperti.
+// Sul computer: le sezioni IN FILA da sinistra a destra, una colonna ciascuna
+// (Pier, 09/11/2026), coi titoli e gli elenchi sempre aperti; l'ultima è la
+// lingua. Tutte e sei su una riga da 1024 px; sotto, tre per riga.
 @media (min-width: 760px) {
-  .colonne { grid-template-columns: repeat(3, minmax(0, 14rem)); gap: 1.5rem clamp(2rem, 5vw, 4rem); }
+  .colonne { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem clamp(1.4rem, 3vw, 2.4rem); }
   .apri-gruppo { display: none; }
   .colonne ul { margin-top: .55rem; }
-  .gruppo-piede + .gruppo-piede { margin-top: 1.6rem; }
 }
+@media (min-width: 1024px) { .colonne { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
 
-// LA RIGA IN FONDO: il copyright, le pagine legali, la lingua a destra.
+// LA RIGA IN FONDO: il copyright a sinistra, le pagine legali a destra.
 // ⚠️ Le barrette fra le voci sono un BORDO, non un carattere: chi ascolta
 // sente le voci di un elenco, e basta.
 .piede-fondo {
@@ -428,13 +438,11 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
 .piede-fondo ul { display: flex; flex-wrap: wrap; }
 .piede-fondo li + li { margin-left: .7rem; padding-left: .7rem; border-left: 1px solid rgba(157, 182, 170, .45); }
 .piede-fondo a { font-size: .85rem; padding: .2rem 0; }
-.lingue-piede { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .8rem; margin-left: auto; }
-.lingue-piede .intesta { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #9DB6AA; }
+.piede-fondo .legali { margin-left: auto; }   // allineate a destra (Pier, 09/11/2026)
 // Sul telefono le due pagine legali una sotto l'altra: una barretta in testa a
 // una riga andata a capo sembrerebbe un errore.
 @media (max-width: 759.98px) {
-  .lingue-piede { margin-left: 0; }
-  .piede-fondo .legali { flex-direction: column; }
+  .piede-fondo .legali { flex-direction: column; margin-left: 0; }
   .piede-fondo .legali li + li { margin-left: 0; padding-left: 0; border-left: 0; }
 }
 

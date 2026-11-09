@@ -7,12 +7,14 @@ piede di apple.com (Pier, 09/11/2026: «copia l'idea, non tutto»).
     · il LOGO, che porta alla home (era la voce «Home» della colonna App), e il
       motto;
     · le STESSE SEZIONI della barra in alto, con gli stessi nomi e le stesse
-      pagine (`_data/collegamenti.yml`, `sezioni`), in tre colonne dove una
-      colonna IMPILA più sezioni (`colonna`), come da Apple. Una sezione senza
-      voci (Range System) è il suo titolo, che è un link;
+      pagine (`_data/collegamenti.yml`, `sezioni`), ⭐ IN FILA da sinistra a
+      destra, una colonna per sezione e nell'ordine del menu (Pier, 09/11/2026,
+      guardando: non impilate come da Apple). Una sezione senza voci (Range
+      System) è il suo titolo, che è un link;
     · la riga sui marchi degli altri (W14), se c'è;
+    · l'ultima colonna, LA LINGUA (Pier, 09/11/2026);
     · LA RIGA IN FONDO: il copyright a sinistra, Privacy Policy · Terms of Use
-      (`legali`), e la LINGUA a destra.
+      (`legali`) a destra.
   ⭐ SUL TELEFONO ogni sezione è una RIGA CHE SI APRE col tocco (il segno «+»
   diventa «−»): è lo stesso `<details>` vuoto della barra, col suo titolo come
   pulsante, e l'elenco subito dopo. Sul computer quel pulsante sparisce e al
@@ -37,10 +39,7 @@ piede di apple.com (Pier, 09/11/2026: «copia l'idea, non tutto»).
     <p class="motto">{{ piede_f.tagline }}</p>
   </div>
   <div class="colonne">
-    {%- for piede_n in (1..3) %}
-    <div class="colonna">
       {%- for piede_s in site.data.collegamenti.sezioni %}
-      {%- if piede_s.colonna == piede_n %}
       {%- assign piede_nome = piede_m.sezioni[piede_s.nome] %}
       {%- assign piede_id = 'piede-' | append: piede_s.nome %}
       {%- comment -%} ⚠️ Nel piede le voci sono quelle di `piede`, in fila: Liquid non sa appiattire i `gruppi` del pannello. {%- endcomment %}
@@ -59,10 +58,14 @@ piede di apple.com (Pier, 09/11/2026: «copia l'idea, non tutto»).
         <p class="intesta">{% include voce.html v=piede_nome dove=piede_s.dove %}</p>
       </div>
       {%- endif %}
-      {%- endif %}
       {%- endfor %}
-    </div>
-    {%- endfor %}
+      {%- comment -%} ⭐ L'ultima colonna, «Language» (bozza della navigazione, «Piede, l'ultima colonna»; Pier, 09/11/2026): le stesse voci del selettore in alto (W28). {%- endcomment %}
+      <div class="gruppo-piede">
+        <details class="apri-gruppo"><summary>{{ lin_t.navigazione.etichette.lingua }}</summary></details>
+        <p class="intesta" id="piede-lingue">{{ lin_t.navigazione.etichette.lingua }}</p>
+        <ul aria-labelledby="piede-lingue">{% include selettore.html %}
+        </ul>
+      </div>
   </div>
   {%- comment -%} Giro W14: la riga sui marchi degli altri, un paragrafo suo come nella bozza. {%- endcomment -%}
   {%- if piede_f.altri_marchi %}
@@ -73,11 +76,5 @@ piede di apple.com (Pier, 09/11/2026: «copia l'idea, non tutto»).
     {%- comment -%} ⚠️ Le barrette fra le due voci le disegna il CSS: sono un segno, non una parola. {%- endcomment %}
     <ul class="legali">{%- include voci-dove.html voci=site.data.collegamenti.legali -%}
     </ul>
-    {%- comment -%} ⭐ Le lingue, a destra: le stesse voci del selettore in alto (W28), col titolo «Language». {%- endcomment %}
-    <div class="lingue-piede">
-      <p class="intesta" id="piede-lingue">{{ lin_t.navigazione.etichette.lingua }}</p>
-      <ul aria-labelledby="piede-lingue">{% include selettore.html %}
-      </ul>
-    </div>
   </div>
 </footer>
