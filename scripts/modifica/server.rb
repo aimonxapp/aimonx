@@ -29,7 +29,8 @@ require_relative "testi"
 PORTA = (ARGV[0] || ENV["MODIFICA_PORTA"] || 4100).to_i
 QUI = __dir__
 RADICE = Testi::RADICE
-LAVORO = File.join(Dir.tmpdir, "aimonx-modifica")
+# Una cartella per porta: due attrezzi accesi insieme non si pestano i piedi.
+LAVORO = File.join(Dir.tmpdir, "aimonx-modifica-#{PORTA}")
 SITO = File.join(LAVORO, "sito")
 SONDA = File.join(LAVORO, "sonda")
 FileUtils.mkdir_p(LAVORO)

@@ -283,10 +283,12 @@ VOCI
     # deve esserci né l'uno né l'altro: si contano i file che nominano
     # l'attrezzo (`__modifica`) o portano uno dei suoi segni (U+2062–U+2064).
     # La rete sotto `exclude` e `file_non_dichiarati` copre i FILE; questa copre
-    # ciò che sta DENTRO una pagina pubblicata.
+    # ciò che sta DENTRO una pagina pubblicata. ⚠️ Solo i file di TESTO: in
+    # un'immagine quei byte possono capitare per caso (misurato: due `.webp`).
     N_ATTREZZO=$("$RUBY_BIN/ruby" -e '
+      testo = %w[.html .css .js .xml .txt .json .svg .webmanifest]
       n = Dir.glob(File.join(ARGV[0], "**/*"), File::FNM_DOTMATCH).count do |f|
-        next false unless File.file?(f)
+        next false unless File.file?(f) && testo.include?(File.extname(f))
         t = File.binread(f)
         t.include?("__modifica") || t.force_encoding("UTF-8").scrub.match?(/[⁢-⁤]/)
       end

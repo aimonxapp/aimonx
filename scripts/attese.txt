@@ -56,7 +56,12 @@ promesse_scadute=0
 # entrati DENTRO la riga dell'anteprima invece di prendersene una a testa.
 # ⛔ Qui il tetto resta un FRENO, non un muro: questo file deve restare stabile,
 # e 190 è uno spazio da spendere guardando, non da riempire.
-tetto_righe_CLAUDE_md=190
+# ⛔ Alzato a mano nel giro W37, da 190 a 191, dopo aver guardato cosa è
+# entrato: UNA riga nell'indice degli attrezzi, quella della modalità modifica
+# (`scripts/modifica/`) — una regola su dove sta l'attrezzo, nessun verbale. Le
+# due correzioni della nota d'appoggio (i social, il riquadro del codice Pro)
+# sono riscritture in posto, a righe invariate.
+tetto_righe_CLAUDE_md=191
 # ⛔ Alzato a mano nel giro W2, da 50 a 70, dopo aver guardato COSA è entrato:
 # quattro voci di registro (WD25 chiusa, WD26, WD27, WD28), nessun verbale.
 # ⚠️ Il registro è append-only per la sua regola 2 — le voci chiuse restano in
@@ -433,3 +438,9 @@ codice_pro_pagine=4
 sameas_pagine=73
 sameas_guasti=0
 reddit_nel_sito=0
+# ⭐ Giro W37: la modalità modifica (`scripts/modifica/`) non va online.
+# `attrezzo_nel_sito` conta i file di testo della build che nominano l attrezzo
+# (`__modifica`) o portano un suo segno invisibile (U+2062–U+2064). Provato su
+# una copia rotta della build (un segno in /about/): 1. ⚠️ Al primo tentativo
+# contava anche le immagini — due `.webp` con quei byte per caso: solo testo.
+attrezzo_nel_sito=0
