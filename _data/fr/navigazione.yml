@@ -17,6 +17,19 @@ menu:
   # Il pulsante del telefono, chiuso e aperto.
   apri: "Menu"
   chiudi: "Fermer"
+  # ⭐ Giro W39: i NOMI DELLE PAGINE nei pannelli del menu e nel piede, per
+  # chiave (dove porta ciascuna: `_data/collegamenti.yml`, `pagine`). Parole
+  # già approvate, spostate qui dalla mappa dei link perché la modalità
+  # modifica le veda; una pagina che in questa lingua non c'è non ha la riga.
+  pagine:
+    novita: "Nouveautés"
+    prezzi: "Free et Pro"
+    faq: "FAQ"
+    assistenza: "Assistance"
+    recensione: "Écrire un avis"
+    chi: "À propos"
+    privacy: "Politique de confidentialité (en anglais)"
+    termini: "Conditions d'utilisation (en anglais)"
 
 # Le briciole di pane: «Home › Features › <nome breve>». ⚠️ `voci` è la barra
 # di PRIMA del W39, con le parole già approvate: le briciole la usano per

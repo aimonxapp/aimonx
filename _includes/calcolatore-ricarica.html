@@ -126,8 +126,8 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
     </div>
   </fieldset>
 
-  {%- comment -%} ⭐ Giro W39 (Pier): la legenda dell'asterisco. Per chi ascolta l'asterisco è muto, e i campi necessari dicono `aria-required`. {%- endcomment %}
-  <p class="nota obbligatori" aria-hidden="true"><span class="obbl">*</span> {{ c.campi_obbligatori | remove_first: '*' | strip }}</p>
+  {%- comment -%} ⭐ Giro W39 (Pier): la legenda dell'asterisco. Per chi ascolta l'asterisco è muto, e i campi necessari dicono `aria-required`. ⛔ L'asterisco sta qui e le parole nel file, SENZA filtri: un `strip` sul testo rompeva la sonda della modalità modifica (`scripts/modifica/sonda.rb`). {%- endcomment %}
+  <p class="nota obbligatori" aria-hidden="true"><span class="obbl">*</span> {{ c.campi_obbligatori }}</p>
   <div class="totali" aria-live="polite">
     <div class="risultato grande"><span class="etichetta">{{ c.costo }}</span><output data-totale="1">—</output></div>
     <div class="risultato"><span class="etichetta">{{ c.per50 }}</span><output data-totale="50">—</output></div>

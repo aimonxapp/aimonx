@@ -39,14 +39,18 @@ _includes/voci-dove.html — LE VOCI DI UN ELENCO, DAGLI INDIRIZZI. Giro W39.
     {%- for vd_f in site.data.funzioni -%}
       {%- if vd_f.aspetto.pagina == vd_d -%}{%- assign vd_nome = lin_t.funzioni[forloop.index0].nome -%}{%- endif -%}
     {%- endfor -%}
+    {%- assign vd_chiave = nil -%}
     {%- if vd_nome == nil -%}
       {%- for vd_c in lin_c.menu -%}
-        {%- if vd_c[1] == vd_d and vd_nome == nil -%}{%- assign vd_nome = vd_c[0] -%}{%- endif -%}
+        {%- if vd_c[1] == vd_d and vd_nome == nil -%}{%- assign vd_nome = vd_c[0] -%}{%- assign vd_chiave = vd_c[0] -%}{%- endif -%}
       {%- endfor -%}
+      {%- comment -%} ⭐ Il nome dal file delle parole (`menu.pagine`), se c'è: lì la modalità modifica lo vede. La voce della mappa resta la prova che la pagina esiste in questa lingua. {%- endcomment -%}
+      {%- assign vd_id = site.data.collegamenti.pagine[vd_d] -%}
+      {%- if vd_nome and vd_id and lin_t.navigazione.menu.pagine[vd_id] -%}{%- assign vd_nome = lin_t.navigazione.menu.pagine[vd_id] -%}{%- endif -%}
     {%- endif -%}
   {%- endif -%}
   {%- if vd_nome %}
-  <li>{% include voce.html v=vd_nome dove=vd_d %}</li>
+  <li>{% include voce.html v=vd_nome dove=vd_d chiave=vd_chiave %}</li>
   {%- endif -%}
 {%- endif -%}
 {%- endfor -%}

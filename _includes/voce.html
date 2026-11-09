@@ -19,7 +19,7 @@ _includes/voce.html — UNA VOCE DI NAVIGAZIONE, scritta in un modo solo. Giro W
 <a{% if include.classe %} class="{{ include.classe }}"{% endif %} href="{{ lin_store }}" rel="noreferrer">{{ include.v }}</a>
 {%- else -%}
 {%- comment -%} ⭐ Giro W33: le voci `radice` portano alle pagine rimaste in inglese, senza prefisso. {%- endcomment -%}
-{%- if lin_c.radice contains include.v -%}
+{%- if lin_c.radice contains include.chiave or lin_c.radice contains include.v -%}
 {%- assign voce_dove = voce_dove | relative_url -%}
 {%- else -%}
 {%- assign voce_dove = lin_pre | append: voce_dove | relative_url -%}

@@ -206,6 +206,21 @@ sezioni:
 # ⭐ Giro W39: la riga in fondo al piede, dopo il copyright.
 legali: ["/privacy-policy/", "/terms/"]
 
+# ⭐ Giro W39: da indirizzo a CHIAVE del nome, per i pannelli e il piede
+# (`_includes/voci-dove.html`): il nome sta in `_data/<lingua>/navigazione.yml`,
+# `menu.pagine`, dove la modalità modifica lo vede. ⛔ Qui nessuna parola.
+pagine:
+  "/updates/": novita
+  "/reloading-cost-calculator/": ricarica
+  "/guides/how-to-choose-a-gun-log-app/": guida
+  "/pricing/": prezzi
+  "/faq/": faq
+  "/support/": assistenza
+  recensione: recensione
+  "/about/": chi
+  "/privacy-policy/": privacy
+  "/terms/": termini
+
 # --- LA NAVIGAZIONE: barra, tendina e piede (giro W10, rifatta nel W24) ----
 #
 # ⚠️ È UNA MAPPA A PARTE da `frasi` qui sopra, e la ragione è che le due cose

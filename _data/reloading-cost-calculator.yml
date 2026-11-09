@@ -55,7 +55,7 @@ calcolatore:
     pf: Power Factor
     note: Notes
   nome_fantasma: Text
-  campi_obbligatori: "* Required field"
+  campi_obbligatori: Required field
   costo: Cost per round
   per50: Per box of 50
   per100: Per 100
