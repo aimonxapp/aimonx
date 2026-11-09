@@ -285,6 +285,9 @@ html { scroll-padding-top: calc(var(--testata) + .6rem); }
   // come da Apple. Il primo gruppo resta solo più chiaro.
   .barra .gruppo-voci a { padding: .32rem 0; font-size: .92rem; }
   .barra .gruppo-voci.grande a { color: var(--bianco); }
+  // ⭐ Al massimo CINQUE righe per colonna, poi una colonna nuova accanto
+  // (Pier, 09/11/2026, guardando App features: nove funzioni → 5 + 4).
+  .barra .gruppo-voci { display: grid; grid-auto-flow: column; grid-template-rows: repeat(5, auto); column-gap: clamp(1.6rem, 3vw, 2.6rem); align-content: start; }
   .barra .gruppo-voci.grande a:hover { color: var(--verde-chiaro); }
   .barra .gruppo-voci.grande [aria-current="page"] { color: var(--verde-chiaro); }
   // ⭐ La pagina dietro si scurisce e si sfoca mentre un pannello è aperto: un
