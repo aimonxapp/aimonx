@@ -124,6 +124,33 @@ body.v-testo {
   color: var(--inchiostro);
 }
 
+// --- l'elenco delle domande in cima (giro W39, Pier) --------------------------
+// Un riquadro chiaro con i link alle domande; nelle FAQ i titoli delle sezioni
+// fanno da gruppi, e sul computer i gruppi stanno su due colonne.
+.v-testo .indice-domande {
+  margin-bottom: clamp(1.6rem, 4vw, 2.2rem);
+  padding: 1rem 1.2rem 1.1rem; border-radius: 14px;
+  background: var(--fascia); border: 1px solid rgba(15, 54, 37, .1);
+}
+.v-testo .indice-domande > ul { display: grid; gap: .35rem 2rem; }
+.v-testo .indice-domande li { line-height: 1.4; }
+.v-testo .indice-domande a {
+  display: inline-block; padding: .2rem 0;
+  font-size: .98rem; font-weight: 600; color: var(--titolo);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.v-testo .indice-domande a:hover { text-decoration-thickness: 2px; }
+.v-testo .indice-gruppo { margin-bottom: .5rem; break-inside: avoid; }
+.v-testo .indice-gruppo > ul { display: grid; gap: .1rem; margin-top: .2rem; }
+.v-testo .indice-titolo {
+  display: block; margin-top: .3rem;
+  font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--inchiostro-2);
+}
+@media (min-width: 760px) {
+  .v-testo .indice-domande > ul:has(> .indice-gruppo) { display: block; columns: 2; column-gap: 2rem; }
+}
+
 // --- gli elenchi puntati ----------------------------------------------------
 // ⚠️ Il pallino lo disegna il CSS: `comune.scss` toglie i segni di lista a
 // tutte le `ul` del sito (la landing ne è piena e non ne vuole nessuno), e qui

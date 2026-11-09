@@ -47,6 +47,15 @@
   vuol dire «le altre», e dove si è lo dicono già le briciole e il titolo.
   ⚠️ Le FAQ usano questo scheletro ma NON sono della sezione: niente briciole,
   niente colonna, e la pagina esce come prima.
+
+  ⭐ L'ELENCO DELLE DOMANDE IN CIMA (giro W39, Pier, 09/11/2026: «se le clicchi
+  ti manda sotto alla sezione corretta»), con `page.indice_domande`:
+    · `h3` (le FAQ): le domande, raggruppate sotto il titolo della loro sezione;
+    · `h2` (la guida): i titoli che cominciano con una CIFRA, cioè le domande
+      numerate — «Where AIMONX stands», che chiude la guida, non è una domanda.
+  ⛔ Nessuna parola nuova: le voci sono le domande stesse, e il nome
+  dell'elenco per chi ascolta è il titolo della pagina (`aria-labelledby`).
+  L'ancora è il testo della domanda in forma d'indirizzo, la stessa delle h3 dal W25.
 {%- endcomment -%}
 {%- assign d = lin_t[page.dati] -%}
 {%- comment -%} ⭐ Giro W32: dove ci sono schermate nella lingua della pagina (`funzioni_it`), quelle. {%- endcomment -%}
@@ -68,7 +77,7 @@
       {%- if page.sezione %}
       {% include briciole.html %}
       {%- endif %}
-      <h1>{{ d.titolo }}</h1>
+      <h1{% if page.indice_domande %} id="titolo-pagina"{% endif %}>{{ d.titolo }}</h1>
       {%- if d.sommario %}
       <p class="sommario">{% include frase.html testo=d.sommario %}</p>
       {%- endif %}
@@ -80,10 +89,36 @@
     <div class="due-colonne">
     {%- endif %}
     <article class="foglio">
+      {%- if page.indice_domande %}
+      {%- comment -%} L'elenco delle domande: la nota in testa a questo file. {%- endcomment %}
+      <nav class="indice-domande" aria-labelledby="titolo-pagina">
+        <ul>
+        {%- assign id_aperto = false -%}
+        {%- for b in d.blocchi -%}
+        {%- if page.indice_domande == 'h3' -%}
+          {%- if b.tipo == 'h2' -%}
+          {%- if id_aperto %}</ul></li>{% endif %}
+          <li class="indice-gruppo"><span class="indice-titolo">{% include frase.html testo=b.testo %}</span><ul>
+          {%- assign id_aperto = true -%}
+          {%- elsif b.tipo == 'h3' %}
+            <li><a href="#{{ b.testo | slugify }}">{% include frase.html testo=b.testo %}</a></li>
+          {%- endif -%}
+        {%- elsif b.tipo == 'h2' -%}
+          {%- assign id_prima = b.testo | slice: 0 -%}
+          {%- if '0123456789' contains id_prima %}
+          <li><a href="#{{ b.testo | slugify }}">{% include frase.html testo=b.testo %}</a></li>
+          {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+        {%- if id_aperto %}</ul></li>{% endif %}
+        </ul>
+      </nav>
+      {%- endif %}
       {%- for b in d.blocchi -%}
       {%- case b.tipo -%}
       {%- when 'h2' %}
-      <h2>{% include frase.html testo=b.testo %}</h2>
+      {%- assign id_prima = b.testo | slice: 0 -%}
+      <h2{% if page.indice_domande == 'h2' and '0123456789' contains id_prima %} id="{{ b.testo | slugify }}"{% endif %}>{% include frase.html testo=b.testo %}</h2>
       {%- comment -%} ⭐ Giro W18: le domande delle FAQ. Lo stile è quello delle pagine da leggere (`testo.scss`). {%- endcomment %}
       {%- when 'h3' %}
       {%- comment -%} ⭐ Giro W25: ogni domanda ha un'ancora, il suo testo in forma d'indirizzo — ci porta «See what happens when Pro ends» dalla pagina «Free and Pro». {%- endcomment %}
