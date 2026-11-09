@@ -49,6 +49,10 @@ frasi:
   - frase: "reloading cost calculator"
     href: "/reloading-cost-calculator/"
     tipo: pagina
+  # ⏳ Giro W39: la risposta nuova della FAQ porta alla guida (bozza W38 §5).
+  - frase: "How to choose a gun log app"
+    href: "/guides/how-to-choose-a-gun-log-app/"
+    tipo: pagina
   # ⭐ Giro W36: dalla pagina About alla pagina del Range System (prefisso della lingua dal layout).
   - frase: "AIMONX Range System"
     href: "/range-system/"

@@ -53,3 +53,7 @@ _includes/calcolatore-pf.html — IL CALCOLATORE DEL POWER FACTOR, in pagina. Gi
     <p class="solo-minor" data-solo-minor hidden>{{ c.solo_minor }}</p>
   </div>
 </form>
+{%- comment -%} ⭐ Giro W39: senza JavaScript il modulo non si vede (`_includes/testa.html`), e al suo posto si legge questa frase (bozza W38 §5). {%- endcomment %}
+{%- if c.senza_js %}
+<noscript><p class="senza-js">{{ c.senza_js }}</p></noscript>
+{%- endif %}

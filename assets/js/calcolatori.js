@@ -21,7 +21,9 @@
 //     arrotondata come l'app (al pari più vicino);
 //   · bossolo, innesco, palla = prezzo ÷ quantità; polvere = prezzo ÷ grani
 //     della confezione × dose; 1 lb = 7000 gr, 1 gr = 64,79891 mg;
-//   · i componenti fino a tre decimali, il totale a due.
+//   · i componenti fino a tre decimali, e così il costo per colpo totale
+//     ($0.246); per 50, 100 e 1.000 a due. ⚠️ Nell'app il totale è a due: è
+//     una scelta del sito (Pier, 09/11/2026, W39 — $0.25 accanto a $12.30 stonava).
 (() => {
   "use strict";
 
@@ -196,7 +198,8 @@
       const calcolati = Object.values(r).filter((x) => x.valore !== null);
       const somma = calcolati.reduce((s, x) => s + x.valore, 0);
       form.querySelectorAll("[data-totale]").forEach((o) => {
-        o.textContent = calcolati.length ? tot.format(somma * Number(o.dataset.totale)) : VUOTO;
+        const n = Number(o.dataset.totale);
+        o.textContent = calcolati.length ? (n === 1 ? comp : tot).format(somma * n) : VUOTO;
       });
       const ms = (() => { const v = leggi(campo("velocita")); return v === null ? null : inMs(v, scelta(form, "unita_velocita")); })();
       const pf = powerFactor(leggi(campo("p_peso")), ms);
@@ -237,7 +240,7 @@
         if (k !== "w") val[`${k}_quanti`] = testo(`${k}_quanti`) ? numero(6).format(Number(testo(`${k}_quanti`))) : "";
       });
       Object.entries(r).forEach(([k, x]) => { val[`c_${k}`] = x.valore === null ? "" : comp.format(x.valore); });
-      [1, 50, 100, 1000].forEach((n) => { val[`t${n}`] = calcolati ? tot.format(somma * n) : ""; });
+      [1, 50, 100, 1000].forEach((n) => { val[`t${n}`] = calcolati ? (n === 1 ? comp : tot).format(somma * n) : ""; });
       scheda.querySelectorAll("[data-campo]").forEach((e) => { e.textContent = val[e.dataset.campo] || ""; });
       // Solo i campi scritti: una riga senza niente non esce.
       const righe = {

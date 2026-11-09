@@ -29,6 +29,10 @@ blocchi:
 - tipo: schermate
   alt:
   - The components of a handload in AIMONX, each with the price paid and the quantity, and the cost per round worked out below.
+# ⏳ Giro W39: bozza W38 §5 (09/11/2026), da ripassare da Pier. Il link lo mette
+# `_data/collegamenti.yml` (frase «reloading cost calculator»).
+- tipo: p
+  testo: Just want a quick number? Our free reloading cost calculator works out the cost per round from your components, and prints a load card for your bench.
 - tipo: h2
   testo: Batches with their own price tag
 - tipo: p

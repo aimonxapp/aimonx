@@ -29,6 +29,9 @@ calcolatore:
   pf: Power Factor
   energia: Muzzle energy
   manca: Enter a bullet weight and a muzzle velocity to see your Power Factor.
+  # ⏳ Giro W39 (bozza W38 §5, «Senza JavaScript»): si legge solo se il browser
+  # non esegue lo script, al posto del calcolatore.
+  senza_js: "The calculator needs JavaScript. Turn it on in your browser, or do the math by hand: bullet weight in grains times velocity in fps, divided by 1,000."
   gara: Match
   gare: [USPSA, IPSC]
   divisione: Division

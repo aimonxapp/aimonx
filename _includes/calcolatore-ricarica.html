@@ -123,6 +123,10 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   <p class="nota">{{ c.pdf }}</p>
   <p class="nota privato">{{ c.privato }}</p>
 </form>
+{%- comment -%} ⭐ Giro W39: senza JavaScript il modulo non si vede (`_includes/testa.html`), e al suo posto si legge questa frase (bozza W38 §5). {%- endcomment %}
+{%- if c.senza_js %}
+<noscript><p class="senza-js">{{ c.senza_js }}</p></noscript>
+{%- endif %}
 
 {%- comment -%} LA SCHEDA DA STAMPARE. Ogni riga porta `data-campo`: lo script la riempie, o la nasconde se il campo è vuoto. {%- endcomment %}
 <section class="scheda-carico" aria-hidden="true">

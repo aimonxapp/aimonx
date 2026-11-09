@@ -44,8 +44,8 @@
 |---|---|
 | **i contenuti scritti e approvati** | `…/8- AIMONX web/2- Contenuti/` |
 | **le risorse grafiche del sito** | `…/8- AIMONX web/4- risorse/` — ⭐ **dal 28/09/2026 non è più vuota:** dentro c'è `ScreenShot APP v1.0.0/`, le schermate dell'app in due giri (`WD21` ✅). ⛔ **Nel repo entrano solo quelle che una pagina usa**, rimpicciolite da `scripts/schermate.mjs` in `assets/img/screenshots/` — ⛔ **quante, non si scrive qui:** lo dice la controprova (`schermate_immagini`). Dal giro W16 le sorgenti stanno anche in `ScreenShot APP v1.0.1 privacy/` e `ScreenShot APP v1.0.1 maintenance/`. I colori e le misure decise per l'app: `…/7- App AIMONX/1- Specifiche/tavolozza-aimonx.md` |
-| **il piano marketing: le tre strade, il posizionamento, cosa si fa e cosa no** | ⭐ `…/8- AIMONX web/1- Specifiche/piano-marketing.md` — **la regola**, di Cowork: ⛔ **si legge, non si copia.** Il materiale di luglio (`…/7- App AIMONX/3- note/_archivio/v1.0.0/marketing-aimonx.md` · `marketing-strategia-aimonx-budget-50.md`) è ⚠️ **archivio della 1.0 dell'app dal 12/10/2026**: materiale di allora, non autorità |
-| **la misura dell'infrastruttura** — Pages, dominio, certificato, posta | `…/7- App AIMONX/3- note/_archivio/v1.0.0/nota-infrastruttura-sito-mail-10-08.md` |
+| **il piano marketing: le tre strade, il posizionamento, cosa si fa e cosa no** | ⭐ `…/8- AIMONX web/1- Specifiche/piano-marketing.md` — **la regola**, di Cowork: ⛔ **si legge, non si copia.** Il materiale di marketing di luglio è ⚠️ **archivio della 1.0 dell'app, non più su questo Mac** (dal 04/11/2026): materiale di allora, non autorità |
+| **la misura dell'infrastruttura** — Pages, dominio, certificato, posta | `…/8- AIMONX web/1- Specifiche/memory.md`: la sezione «Misurato, e utile» (Pages, dominio, certificato) e la tabella «Gli indirizzi di AIMONX» (posta). ⚠️ La nota del 10/08 è storia della 1.0 dell'app, non più su questo Mac |
 | **le lezioni dell'app** — si aprono quando si scrive un giro | `…/7- App AIMONX/1- Specifiche/lezioni-aimonx.md` |
 | **i social** | ⭐ **il loro file vivo è `…/9- AIMONX social/strategia-social.md`** (dal 01/11/2026), che discende da `…/8- AIMONX web/1- Specifiche/piano-marketing.md`; la scaletta che si segue è `…/9- AIMONX social/da-fare-social.md`. ⛔ **Si leggono, non si copiano** |
 
@@ -124,7 +124,7 @@ npm --prefix ~/.aimonx-web-tools install playwright && \
 
 ⛔ **Gli scartati NON si reinstallano senza chiederlo a Pier** — sono stati valutati, non dimenticati:
 
-- **`typescript-lsp`** — il sito ha JS minimo. Si riprende **se arriva JavaScript vero.**
+- **`typescript-lsp`** — il JavaScript vero è arrivato coi calcolatori (W38), ed è stato valutato: ⛔ **resta fuori** (Pier, 09/11/2026). I conti dei calcolatori si provano col browser vero, caso per caso, contro quelli dell'app.
 - **`Context7`** — dà la documentazione **più recente**, cioè Jekyll 4, ⛔ **mentre Pages costruisce con Jekyll 3.10**: la fonte giusta è la toolchain locale, che ha le versioni vere.
 - **`code-review` + `security-guidance`** — i rischi veri del sito li coprono controprova, Playwright, Cowork e Pier. ⚠️ **Cowork aggiunge che su un repo pubblico le revisioni sarebbero pubbliche: è una sua ipotesi, non verificata qui.** Si riprendono quando ci sarà codice vero.
 - **`SearchFit SEO`** — scartato da Pier il 15/10/2026 (`WD35` ✅): la SEO si fa sulle fonti ufficiali (Google, Bing) e con le misure della controprova; uno strumento in più chiederebbe la misura dell'ambiente (`WD36`) e non ha mostrato cosa aggiungerebbe. Si riprende **se la SEO a mano non basta più** (decine di pagine).

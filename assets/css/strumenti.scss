@@ -25,6 +25,11 @@
   color: var(--inchiostro);
 }
 .calcolatore[hidden] { display: none; }
+// ⭐ Giro W39: senza JavaScript, la frase che sta al posto del modulo — lo stesso riquadro.
+.v-funzione .foglio > noscript > .senza-js {
+  margin-top: clamp(1.4rem, 3.5vw, 2rem); padding: 1rem 1.2rem; border-radius: 18px;
+  background: var(--fascia-verde); border-left: 5px solid var(--sez); color: var(--inchiostro);
+}
 .calcolatore .campi {
   display: grid; gap: .9rem 1rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));

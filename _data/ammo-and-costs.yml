@@ -45,6 +45,9 @@ blocchi:
   testo: What you shoot, and what it costs
 - tipo: p
   testo: 'Each load''s card shows its last 12 months: rounds, last used, the firearm that shot it most, sessions, matches and money spent. In Stats you see your costs by category and by session type.'
+# ⏳ Giro W39: bozza W38 §5 (09/11/2026), da ripassare da Pier.
+- tipo: p
+  testo: Load your own? See what a round really costs you with our free reloading cost calculator.
 - tipo: h2
   testo: Photos and your own icon
 - tipo: p

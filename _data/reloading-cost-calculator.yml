@@ -59,6 +59,8 @@ calcolatore:
   stampa: Print load card
   pdf: Want a PDF? Choose "Save as PDF" in the print window.
   privato: Nothing you type here leaves this page, and nothing gets saved. Close the page and it's gone.
+  # ⏳ Giro W39 (bozza W38 §5, «Senza JavaScript»): al posto del calcolatore, senza script.
+  senza_js: The calculator needs JavaScript. Turn it on in your browser to use it.
   obbligatorio: Required.
   maggiore: Must be greater than 0.
 scheda:
