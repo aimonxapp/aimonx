@@ -68,7 +68,8 @@
 .calcolatore fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
 .calcolatore .unita { display: inline-flex; flex: 0 0 auto; padding: 3px; border-radius: 12px; background: var(--bianco); border: 2px solid #B7CFC1; }
 .calcolatore .unita legend.etichetta { float: left; width: 100%; margin-bottom: .35rem; }
-.calcolatore .divisione > .unita { flex-wrap: wrap; }
+.calcolatore .divisione .unita { flex-wrap: wrap; justify-self: start; }
+.calcolatore fieldset.campo > legend.etichetta { float: left; width: 100%; margin-bottom: .35rem; }
 .calcolatore .unita label { position: relative; display: inline-flex; }
 .calcolatore .unita input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .calcolatore .unita span {

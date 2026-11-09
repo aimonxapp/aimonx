@@ -39,11 +39,14 @@ _includes/calcolatore-pf.html — IL CALCOLATORE DEL POWER FACTOR, in pagina. Gi
   </div>
   <p class="manca" data-manca>{{ c.manca }}</p>
   <div class="divisione" data-divisione hidden>
-    <fieldset class="unita">
+    {%- comment -%} ⚠️ La parola «Match» sta SOPRA il riquadro delle pillole, come «Division» sopra la sua tendina: dentro il riquadro sembrava una pillola in più (Pier, 09/11/2026, guardando). {%- endcomment %}
+    <fieldset class="campo">
       <legend class="etichetta">{{ c.gara }}</legend>
+      <div class="unita">
       {%- for g in c.gare %}
       <label><input type="radio" name="gara" value="{{ g }}"{% if forloop.first %} checked{% endif %}><span>{{ g }}</span></label>
       {%- endfor %}
+      </div>
     </fieldset>
     <div class="campo">
       <label class="etichetta" for="pf-divisione">{{ c.divisione }}</label>
