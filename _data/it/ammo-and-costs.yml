@@ -9,7 +9,8 @@
 meta:
   title: 'App per le munizioni: scorte, costo per colpo e avviso di scorta bassa | AIMONX'
   description: Registra ogni scatola che compri. AIMONX consuma prima il lotto più vecchio, ti mostra il costo vero per colpo e ti avvisa quando stai finendo.
-titolo: Sai cosa hai sullo scaffale, e quanto ti costa
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3).
+titolo: "Le tue munizioni: cosa c'è sullo scaffale, e quanto costa"
 sommario: Registri una volta le munizioni che compri. Da lì in poi ogni sessione al poligono toglie i colpi dall'inventario e aggiunge il loro costo alla sessione, senza contare niente a mano.
 blocchi:
 - tipo: h2
@@ -41,6 +42,9 @@ blocchi:
   testo: Cosa spari, e quanto ti costa
 - tipo: p
   testo: 'La scheda di ogni munizione ti mostra gli ultimi 12 mesi: colpi, ultimo utilizzo, l''arma che l''ha usata di più, sessioni, gare e spesa. Nelle Statistiche vedi i costi per voce e per tipo di sessione.'
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3). Il link lo mette `_data/it/collegamenti.yml`.
+- tipo: p
+  testo: "Ricarichi da te? Scopri quanto ti costa davvero un colpo col nostro calcolatore gratuito del costo della ricarica."
 - tipo: h2
   testo: Foto e un'icona tua
 - tipo: p

@@ -34,10 +34,8 @@ titolo: "The round count tracker that does the math for you"
 sommario: "Most shooters lose track somewhere between the range bag and the notebook. With AIMONX, you log the session and every firearm's round count updates on its own. No mental math, no spreadsheet."
 
 blocchi:
-# ⏳ GIRO W38: la sezione qui sotto, prima di «How it works», dalla bozza NON ANCORA APPROVATA
-# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), che Pier
-# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
-# segna questa riga come fuori dall'approvato, ed è ATTESO.
+# ⭐ GIRO W38: la sezione qui sotto, prima di «How it works», dalla bozza
+# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), ✅ approvata da Pier l'11/11/2026.
 - tipo: h2
   testo: How do you keep track of rounds fired?
 - tipo: p

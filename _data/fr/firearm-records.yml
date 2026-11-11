@@ -5,7 +5,8 @@
 meta:
   title: 'Inventaire des armes : fiches, photos et PDF | AIMONX'
   description: 'Gardez au même endroit les détails de chaque arme : caractéristiques, accessoires, achat et jusqu''à 5 photos. Créez un PDF d''une arme ou de tout votre inventaire.'
-titolo: Chaque arme, avec sa fiche
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§3).
+titolo: "Votre inventaire d'armes, chaque arme sur fiche"
 sommario: Marque, modèle, calibre, caractéristiques, ce qui est monté dessus et ce que vous l'avez payée. AIMONX garde tout au même endroit, avec les photos, et en fait un PDF quand il vous en faut un.
 blocchi:
 - tipo: h2

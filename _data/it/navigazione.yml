@@ -29,6 +29,9 @@ menu:
   # modifica le veda; una pagina che in questa lingua non c'è non ha la riga.
   pagine:
     novita: "Novità"
+    # ⭐ Giro W40: le due pagine nuove, ora anche in italiano (bozza W38 IT, §3).
+    ricarica: "Calcolo del costo della ricarica"
+    guida: "Come scegliere un'app per il diario di tiro"
     prezzi: "Free e Pro"
     faq: "FAQ"
     assistenza: "Supporto"

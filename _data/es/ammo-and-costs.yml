@@ -5,7 +5,8 @@
 meta:
   title: 'Control de munición: stock y coste por disparo | AIMONX'
   description: Registra cada caja que compras. AIMONX gasta primero el lote más antiguo, te muestra el coste real por disparo y te avisa cuando te queda poca.
-titolo: Sabes lo que tienes en la estantería, y lo que te cuesta
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§3).
+titolo: "Tu munición: lo que hay en la estantería, y lo que cuesta"
 sommario: Registras una vez la munición que compras. A partir de ahí, cada sesión en el campo de tiro descuenta los disparos del stock y suma su coste a la sesión, sin contar nada a mano.
 blocchi:
 - tipo: h2
@@ -37,6 +38,9 @@ blocchi:
   testo: Lo que tiras, y lo que te cuesta
 - tipo: p
   testo: 'La ficha de cada munición te muestra los últimos 12 meses: disparos, último uso, el arma que más la ha usado, sesiones, competiciones y gasto. En Estadísticas ves tus costes por categoría y por tipo de sesión.'
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§3). Il link lo mette `_data/es/collegamenti.yml`.
+- tipo: p
+  testo: "¿Recargas tú mismo? Mira lo que te cuesta de verdad un disparo con nuestra calculadora gratuita del coste de recarga."
 - tipo: h2
   testo: Fotos y tu propio icono
 - tipo: p

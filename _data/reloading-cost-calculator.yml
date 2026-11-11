@@ -1,8 +1,7 @@
 # _data/reloading-cost-calculator.yml — IL TESTO DELLA PAGINA «Reloading cost calculator». Giro W38.
 #
-# ⏳ BOZZA NON ANCORA APPROVATA: …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md
-# (§2), che Pier ripassa nel suo sito locale. Fino alla sua approvazione
-# `scripts/testo-approvato.sh` segna queste righe fuori dall'approvato, ed è ATTESO.
+# ⭐ BOZZA: …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§2),
+# ✅ approvata da Pier l'11/11/2026 (W40).
 # ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
 # copiate alla lettera. Le note fra quadre della bozza non sono qui.
 # ⭐ `calcolatore` e `scheda`: le etichette del calcolatore e della scheda da
@@ -54,7 +53,7 @@ calcolatore:
     unita_velocita: [fps, m/s]
     pf: Power Factor
     note: Notes
-  nome_fantasma: Text
+  nome_fantasma: Description
   campi_obbligatori: Required field
   costo: Cost per round
   per50: Per box of 50
@@ -63,7 +62,7 @@ calcolatore:
   stampa: Print load card
   pdf: Want a PDF? Choose "Save as PDF" in the print window.
   privato: Nothing you type here leaves this page, and nothing gets saved. Close the page and it's gone.
-  # ⏳ Giro W39 (bozza W38 §5, «Senza JavaScript»): al posto del calcolatore, senza script.
+  # ⭐ Giro W39 (bozza W38 §5, «Senza JavaScript»): al posto del calcolatore, senza script.
   senza_js: The calculator needs JavaScript. Turn it on in your browser to use it.
   obbligatorio: Required.
   maggiore: Must be greater than 0.

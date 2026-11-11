@@ -164,7 +164,7 @@ blocchi:
   testo: "Is there a free trial of AIMONX Pro?"
 - tipo: p
   testo: "Yes. If you've never subscribed, your first month of Pro is free, on the monthly or the yearly plan. After that, Pro renews at the regular price unless you cancel at least 24 hours before the month is up. You can cancel anytime in your App Store subscriptions."
-# ⏳ Giro W39: la domanda nuova verso la guida (bozza W38 §5, 09/11/2026). ⚠️ DOVE:
+# ⭐ Giro W39 (✅ approvata da Pier l'11/11/2026): la domanda nuova verso la guida (bozza W38 §5, 09/11/2026). ⚠️ DOVE:
 # scelta di CC, in fondo a «Free and Pro» — la guida finisce su «what's really
 # free». Pier guarda. Il link lo mette `_data/collegamenti.yml`.
 - tipo: h3

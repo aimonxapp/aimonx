@@ -1,0 +1,90 @@
+# _data/it/reloading-cost-calculator.yml — IL TESTO DELLA PAGINA «Calcolo del costo della ricarica». Giro W40.
+#
+# ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
+# copiate alla lettera dalla bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§2).
+# ⛔ STESSA FORMA DEL FILE INGLESE (`_data/reloading-cost-calculator.yml`): il layout
+# accoppia per chiave, e `scripts/testo-approvato.sh` lo controlla.
+# ⚠️ `obbligatorio` e `maggiore` sono le parole dell'app in italiano, dal catalogo testi.
+# ⚠️ La bozza nomina «Prezzo pagato» e «Quantità» una volta: «si ripetono per ogni
+# componente, come in inglese».
+
+meta:
+  title: "Calcolo del costo della ricarica, con la scheda da stampare | AIMONX"
+  description: "Quanto ti costa davvero un colpo ricaricato? Inserisci quanto hai pagato bossoli, inneschi, palle e polvere, vedi il costo per colpo e stampa la scheda della tua ricetta. Gratis, senza registrarti."
+titolo: "Calcolo del costo della ricarica"
+sommario: "Quanto ti costa davvero un colpo della tua ricarica? Inserisci quanto hai pagato i componenti e la dose di polvere. Vedi il costo per colpo, per scatola da 50 e per 1.000, e puoi stampare la scheda della ricetta o salvarla in PDF."
+calcolatore:
+  nome: "Nome della ricetta"
+  nome_esempio: "Per esempio «9×21 124 gr gara»"
+  calibro: "Calibro"
+  bossoli:
+    titolo: "Bossoli"
+    nome: "Bossoli (marca/tipo)"
+    prezzo: "Prezzo pagato"
+    quanti: "Quantità"
+    nota: "Bossoli recuperati al poligono? Scrivi 0 come prezzo."
+  inneschi:
+    titolo: "Inneschi"
+    nome: "Inneschi (marca/tipo)"
+    prezzo: "Prezzo pagato"
+    quanti: "Quantità"
+  palle:
+    titolo: "Palle"
+    nome: "Palle (marca/tipo)"
+    peso: "Peso (grani)"
+    prezzo: "Prezzo pagato"
+    quanti: "Quantità"
+  polvere:
+    titolo: "Polvere"
+    nome: "Polvere (marca/tipo)"
+    prezzo: "Prezzo pagato"
+    confezione: "Peso della confezione"
+    unita: ["lb", "g", "kg"]
+    dose: "Dose polvere (grani)"
+  facoltativi:
+    titolo: "Facoltativi"
+    col: "COL/OAL"
+    unita_col: ["in", "mm"]
+    velocita: "Velocità alla volata"
+    unita_velocita: ["fps", "m/s"]
+    pf: "Power Factor"
+    note: "Note"
+  nome_fantasma: "Descrizione"
+  campi_obbligatori: "Campo obbligatorio"
+  costo: "Costo per colpo"
+  per50: "Per scatola da 50"
+  per100: "Per 100"
+  per1000: "Per 1.000"
+  stampa: "Stampa la scheda"
+  pdf: "Vuoi un PDF? Nella finestra di stampa scegli «Salva come PDF»."
+  privato: "Quello che scrivi qui non esce da questa pagina, e non viene salvato. Chiudi la pagina e non c'è più."
+  senza_js: "Il calcolatore ha bisogno di JavaScript. Attivalo nel browser per usarlo."
+  obbligatorio: "Obbligatorio."
+  maggiore: "Deve essere maggiore di 0."
+scheda:
+  marchio: "AIMONX.app"
+  visita: "Visita AIMONX.app"
+  titolo: "Scheda della ricetta"
+  stampata: "Stampata il"
+  piede:
+  - "I tuoi numeri, scritti da te. Parti sempre dai dati di ricarica pubblicati dai produttori di polvere e di palle."
+  - "Fatta col calcolatore gratuito del costo della ricarica su aimonx.app"
+blocchi:
+- tipo: "p"
+  testo: "Questo calcolatore fa i conti dei costi, non delle cariche. Parti sempre dai dati di ricarica pubblicati dai produttori di polvere e di palle."
+- tipo: "calcolatore-ricarica"
+- tipo: "h2"
+  testo: "Come si fanno i conti"
+- tipo: "p"
+  testo: "Ogni componente costa quello che l'hai pagato, diviso per quanti pezzi hai preso. La polvere chiede un passaggio in più: il prezzo, diviso per il peso della confezione in grani, per la tua dose. 500 grammi sono circa 7.716 grani: una confezione da 500 g a 40 € fa poco più di mezzo centesimo al grano, e una dose da 4,2 grani costa circa 2 centesimi."
+- tipo: "h2"
+  testo: "Tienila, una produzione dopo l'altra"
+- tipo: "p"
+  testo: "Questa pagina fa il conto una volta. AIMONX tiene le tue ricette sul tuo iPhone, dà a ogni produzione il suo costo, e aggiunge quello che spari a ogni sessione al poligono: così sai sempre quanto ti è costata davvero una giornata di tiro."
+- tipo: "p"
+  testo: "La scheda da stampare è uno strumento del sito. Nell'app le tue ricette vivono sul tuo iPhone, insieme a ogni produzione che ricarichi."
+- tipo: "h2"
+  testo: "Free e Pro"
+- tipo: "p"
+  testo: "Il calcolatore di questa pagina è gratis per tutti. Nell'app, ricette, costi dei componenti e produzioni sono di Pro. Il calcolo del Power Factor è gratis in tutti e due."
+badge: "Scarica su App Store"

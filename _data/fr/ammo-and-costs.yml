@@ -5,7 +5,8 @@
 meta:
   title: 'Suivi des munitions : stock, coût par coup, alertes | AIMONX'
   description: Enregistrez chaque boîte achetée. AIMONX consomme d'abord le lot le plus ancien, montre le vrai coût par coup et vous prévient quand le stock baisse.
-titolo: Ce que vous avez sur l'étagère, et ce que ça coûte
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§3).
+titolo: "Vos munitions : ce qu'il y a sur l'étagère, et ce que ça coûte"
 sommario: Enregistrez une fois les munitions que vous achetez. Ensuite, chaque séance au stand retire les coups de votre inventaire et ajoute leur coût à la séance, sans rien compter à la main.
 blocchi:
 - tipo: h2
@@ -37,6 +38,9 @@ blocchi:
   testo: Ce que vous tirez, et ce que ça coûte
 - tipo: p
   testo: 'La fiche de chaque munition montre ses 12 derniers mois : coups, dernière utilisation, l''arme qui l''a le plus utilisée, séances, matchs et dépenses. Dans les statistiques, vous voyez vos coûts par catégorie et par type de séance.'
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§3). Il link lo mette `_data/fr/collegamenti.yml`.
+- tipo: p
+  testo: "Vous rechargez vous-même ? Voyez ce que vous coûte vraiment une cartouche avec notre calculateur gratuit du coût du rechargement."
 - tipo: h2
   testo: Des photos et votre icône
 - tipo: p

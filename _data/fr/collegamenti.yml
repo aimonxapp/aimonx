@@ -2,6 +2,22 @@
 # ⭐ `radice`: le voci che portano alle pagine rimaste in inglese, SENZA il prefisso della lingua.
 
 frasi:
+# ⭐ Giro W40: le due pagine nuove, ora anche in questa lingua (bozza W38). La più
+# lunga in testa: la frase «gratuita» prima di quella breve, che non è un suo pezzo.
+- frase: "calculateur gratuit du coût du rechargement"
+  href: "/reloading-cost-calculator/"
+  tipo: pagina
+- frase: "Comment choisir une app de journal de tir"
+  href: "/guides/how-to-choose-a-gun-log-app/"
+  tipo: pagina
+- frase: "calculateur du coût du rechargement"
+  href: "/reloading-cost-calculator/"
+  tipo: pagina
+# ⭐ Giro W40: dalla tabella della guida alla pagina delle novità; oggi la parola sta
+# solo nei titoli, che restano testo.
+- frase: "Nouveautés"
+  href: "/updates/"
+  tipo: pagina
 # ⭐ Giro W36: dalla pagina About al Range System.
 - frase: "AIMONX Range System"
   href: "/range-system/"
@@ -66,6 +82,9 @@ menu:
   Free et Pro: "/pricing/"
   Comparer Free et Pro: "/pricing/"
   Nouveautés: "/updates/"
+  # ⭐ Giro W40: le due pagine nuove esistono anche in questa lingua.
+  "Calcul du coût du rechargement": "/reloading-cost-calculator/"
+  "Comment choisir une app de journal de tir": "/guides/how-to-choose-a-gun-log-app/"
   "À propos": "/about/"
   Assistance: "/support/"
   Politique de confidentialité (en anglais): "/privacy-policy/"

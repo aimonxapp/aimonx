@@ -9,10 +9,8 @@
 meta:
   title: 'Ammo Tracker: Inventory, Cost per Round and Low-Stock Alerts | AIMONX'
   description: Track every box of ammo you buy. AIMONX uses up the oldest lot first, shows the real cost per round and tells you when you're running low.
-# ⏳ GIRO W38: il titolo in pagina dalla bozza NON ANCORA APPROVATA
-# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), che Pier
-# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
-# segna questa riga come fuori dall'approvato, ed è ATTESO.
+# ⭐ GIRO W38: il titolo in pagina dalla bozza
+# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§3), ✅ approvata da Pier l'11/11/2026.
 titolo: "Ammo tracker: what's on the shelf, and what it costs"
 sommario: Log the ammo you buy once. From then on, every range session takes the rounds off your inventory and adds their cost to the session, with nothing to count by hand.
 blocchi:
@@ -45,7 +43,7 @@ blocchi:
   testo: What you shoot, and what it costs
 - tipo: p
   testo: 'Each load''s card shows its last 12 months: rounds, last used, the firearm that shot it most, sessions, matches and money spent. In Stats you see your costs by category and by session type.'
-# ⏳ Giro W39: bozza W38 §5 (09/11/2026), da ripassare da Pier.
+# ⭐ Giro W39: bozza W38 §5 (09/11/2026), ✅ approvata da Pier l'11/11/2026.
 - tipo: p
   testo: Load your own? See what a round really costs you with our free reloading cost calculator.
 - tipo: h2

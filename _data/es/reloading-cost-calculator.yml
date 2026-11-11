@@ -1,0 +1,87 @@
+# _data/es/reloading-cost-calculator.yml — IL TESTO DEL CALCOLATORE DEL COSTO DELLA RICARICA. Giro W40.
+#
+# ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
+# copiate alla lettera dalla bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§2).
+# ⛔ STESSA FORMA DEL FILE INGLESE. ⚠️ `obbligatorio` e `maggiore` sono le parole
+# dell'app in questa lingua, dal catalogo testi.
+
+meta:
+  title: "Calculadora del coste de recarga, con ficha para imprimir | AIMONX"
+  description: "¿Cuánto te cuesta de verdad un cartucho recargado? Introduce lo que pagaste por vainas, pistones, puntas y pólvora, mira el coste por disparo e imprime la ficha de tu receta. Gratis y sin registrarte."
+titolo: "Calculadora del coste de recarga"
+sommario: "¿Cuánto te cuesta de verdad un cartucho de tu receta? Introduce lo que pagaste por los componentes y tu carga de pólvora. Verás el coste por disparo, por caja de 50 y por 1000, y podrás imprimir la ficha de recarga o guardarla en PDF."
+calcolatore:
+  nome: "Nombre de la receta"
+  nome_esempio: "Por ejemplo «9 mm 124 gr competición»"
+  calibro: "Calibre"
+  bossoli:
+    titolo: "Vainas"
+    nome: "Vainas (marca/tipo)"
+    prezzo: "Precio pagado"
+    quanti: "Cantidad"
+    nota: "¿Vainas recogidas en el campo de tiro? Pon 0 como precio."
+  inneschi:
+    titolo: "Pistones"
+    nome: "Pistones (marca/tipo)"
+    prezzo: "Precio pagado"
+    quanti: "Cantidad"
+  palle:
+    titolo: "Puntas"
+    nome: "Puntas (marca/tipo)"
+    peso: "Peso (grains)"
+    prezzo: "Precio pagado"
+    quanti: "Cantidad"
+  polvere:
+    titolo: "Pólvora"
+    nome: "Pólvora (marca/tipo)"
+    prezzo: "Precio pagado"
+    confezione: "Peso del envase"
+    unita: ["lb", "g", "kg"]
+    dose: "Carga (grains)"
+  facoltativi:
+    titolo: "Opcional"
+    col: "COL/OAL"
+    unita_col: ["in", "mm"]
+    velocita: "Velocidad en boca"
+    unita_velocita: ["fps", "m/s"]
+    pf: "Factor de potencia"
+    note: "Notas"
+  nome_fantasma: "Descripción"
+  campi_obbligatori: "Campo obligatorio"
+  costo: "Coste por disparo"
+  per50: "Por caja de 50"
+  per100: "Por 100"
+  per1000: "Por 1000"
+  stampa: "Imprimir ficha"
+  pdf: "¿Quieres un PDF? En la ventana de impresión, elige «Guardar como PDF»."
+  privato: "Lo que escribes aquí no sale de esta página y no se guarda nada. Cierra la página y desaparece."
+  senza_js: "La calculadora necesita JavaScript. Actívalo en tu navegador para usarla."
+  obbligatorio: "Obligatorio."
+  maggiore: "Debe ser mayor que 0."
+scheda:
+  marchio: "AIMONX.app"
+  visita: "Visita AIMONX.app"
+  titolo: "Ficha de recarga"
+  stampata: "Impresa el"
+  piede:
+  - "Tus números, escritos por ti. Parte siempre de los datos de recarga publicados por los fabricantes de pólvora y de puntas."
+  - "Hecha con la calculadora gratuita del coste de recarga de aimonx.app"
+blocchi:
+- tipo: "p"
+  testo: "Esta calculadora calcula costes, no cargas. Parte siempre de los datos de recarga publicados por los fabricantes de pólvora y de puntas."
+- tipo: "calcolatore-ricarica"
+- tipo: "h2"
+  testo: "Cómo se hacen las cuentas"
+- tipo: "p"
+  testo: "Cada componente cuesta lo que pagaste, dividido entre las piezas que te llevaste. La pólvora pide un paso más: su precio, dividido entre el peso del envase en grains, por tu carga. 500 gramos son unos 7716 grains: un bote de 500 g a 40 € sale a algo más de medio céntimo el grain, y una carga de 4,2 grains cuesta unos 2 céntimos."
+- tipo: "h2"
+  testo: "Guárdala, producción tras producción"
+- tipo: "p"
+  testo: "Esta página hace la cuenta una vez. AIMONX guarda tus recetas en tu iPhone, da a cada producción su propio coste y suma lo que disparas a cada sesión en el campo de tiro, así que siempre sabes lo que te ha costado de verdad un día de tiro."
+- tipo: "p"
+  testo: "La ficha para imprimir es una herramienta de la web. En la app, tus recetas viven en tu iPhone, junto a cada producción que recargas."
+- tipo: "h2"
+  testo: "Free y Pro"
+- tipo: "p"
+  testo: "La calculadora de esta página es gratis para todos. En la app, las recetas, el coste de los componentes y las producciones son de Pro. La calculadora del factor de potencia es gratis en los dos sitios."
+badge: "Descargar en el App Store"

@@ -25,6 +25,9 @@ blocchi:
 - tipo: schermate
   alt:
   - Los componentes de una recarga en AIMONX, cada uno con el precio pagado y la cantidad, y debajo el coste por disparo calculado.
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§3). Il link lo mette `_data/es/collegamenti.yml`.
+- tipo: p
+  testo: "¿Solo quieres un número rápido? Nuestra calculadora gratuita del coste de recarga saca el coste por disparo de tus componentes e imprime una ficha para tu banco de recarga."
 - tipo: h2
   testo: Producciones con su propio precio
 - tipo: p

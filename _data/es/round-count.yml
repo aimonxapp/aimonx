@@ -8,6 +8,13 @@ meta:
 titolo: El contador de disparos que hace las cuentas por ti
 sommario: Casi todos los tiradores pierden la cuenta en algún punto entre la bolsa de tiro y la libreta. Con AIMONX, registras la sesión y los disparos de cada arma se actualizan solos. Sin cuentas de cabeza, sin hojas de cálculo.
 blocchi:
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§3).
+- tipo: h2
+  testo: "¿Cómo llevas la cuenta de los disparos?"
+- tipo: p
+  testo: "Casi todos empiezan con una libreta en la bolsa de tiro, rayitas en la caja de munición o una hoja de cálculo en casa. Todo funciona, hasta el día que se te olvida apuntar una sesión. A partir de ahí el número está mal, y no sabes por cuánto."
+- tipo: p
+  testo: "La solución es contar donde se disparan los cartuchos: en el campo de tiro, al registrar la sesión. Es todo lo que te pide AIMONX. El total del arma, la munición que tienes y los contadores de mantenimiento se actualizan solos."
 - tipo: h2
   testo: Cómo funciona
 - tipo: p

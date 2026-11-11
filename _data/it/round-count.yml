@@ -15,6 +15,13 @@ titolo: "Il contacolpi che fa i conti al posto tuo"
 sommario: "Quasi tutti i tiratori perdono il conto da qualche parte fra la borsa del poligono e il quaderno. Con AIMONX registri la sessione e i colpi di ogni arma si aggiornano da soli. Niente conti a mente, niente fogli di calcolo."
 
 blocchi:
+  # ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3).
+  - tipo: h2
+    testo: "Come tieni il conto dei colpi sparati?"
+  - tipo: p
+    testo: "Quasi tutti cominciano con un quaderno nella borsa, i segni sulla scatola delle munizioni o un foglio di calcolo a casa. Funzionano tutti, finché non ti dimentichi di segnare una giornata. Da lì il numero è sbagliato, e non sai di quanto."
+  - tipo: p
+    testo: "La soluzione è contare dove i colpi si sparano: al poligono, quando registri la sessione. È tutto quello che AIMONX ti chiede. Il totale dell'arma, le munizioni che hai e i contatori della manutenzione si aggiornano da soli."
   - tipo: h2
     testo: "Come funziona"
   - tipo: p

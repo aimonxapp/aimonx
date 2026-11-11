@@ -25,6 +25,9 @@ blocchi:
 - tipo: schermate
   alt:
   - Les composants d'une munition rechargée dans AIMONX, chacun avec le prix payé et la quantité, et en dessous le coût par coup calculé.
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§3). Il link lo mette `_data/fr/collegamenti.yml`.
+- tipo: p
+  testo: "Juste besoin d'un chiffre rapide ? Notre calculateur gratuit du coût du rechargement donne le coût par cartouche à partir de vos composants, et imprime une fiche pour votre établi."
 - tipo: h2
   testo: Des productions avec leur propre prix
 - tipo: p

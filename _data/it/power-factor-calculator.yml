@@ -1,38 +1,98 @@
-# _data/it/power-factor-calculator.yml — IL TESTO DELLA PAGINA «Il calcolo del Power Factor, sul tuo iPhone». Giro W32.
+# _data/it/power-factor-calculator.yml — IL TESTO DELLA PAGINA «Calcolo Power Factor per IPSC e USPSA». Giro W32, rifatta nel W40.
 #
-# ⛔ QUESTO FILE NON È CODICE: è il testo approvato da Pier il 31/10/2026, nella sua
-# cartella dei contenuti: …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md
-# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code. Le schermate stanno in
-# `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
-# in fondo alla bozza, accoppiati a ciò che la schermata mostra.
+# ⛔ QUESTO FILE NON È CODICE: è il testo di Cowork, nella cartella dei contenuti di Pier.
+# Dal giro W40 meta, titolo, sommario, il calcolatore, le soglie e le sezioni nuove
+# vengono da …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§1);
+# «Salva i tuoi setup», «Anche su ogni munizione» e il testo alternativo restano quelli
+# di …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-it-bozza.md («invariato», dice la bozza).
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+# ⭐ STESSA FORMA DEL FILE INGLESE, con UNA differenza voluta dalla bozza: per il
+# pubblico europeo IPSC viene PRIMA di USPSA, nelle tabelle e nella scelta del
+# regolamento. Il calcolatore trova la tabella dal nome della gara (`gara`), non
+# dalla posizione: l'ordine qui non sposta niente.
 
 meta:
-  title: Calcolo Power Factor per IPSC e USPSA | AIMONX
-  description: Inserisci peso palla e velocità alla volata, ottieni Power Factor ed energia. Gratis nell'app AIMONX per iPhone, con lo storico degli ultimi 50 setup.
-titolo: Il calcolo del Power Factor, sul tuo iPhone
-sommario: Major o minor? Inserisci peso palla e velocità alla volata, e AIMONX ti mostra Power Factor ed energia mentre scrivi. È gratis, ed è a un tocco dalla Home.
+  title: "Calcolo Power Factor per IPSC e USPSA | AIMONX"
+  description: "Inserisci peso palla e velocità alla volata e vedi subito il tuo Power Factor, poi confrontalo con le soglie major e minor della tua divisione. Gratis anche nell'app AIMONX."
+titolo: "Calcolo Power Factor per IPSC e USPSA"
+sommario: "Major o minor? Inserisci peso palla e velocità alla volata, e vedi Power Factor ed energia mentre scrivi. Poi confronta il numero con la tua divisione, qui sotto. Lo stesso calcolo è gratis nell'app AIMONX, a un tocco dalla Home."
+calcolatore:
+  peso: "Peso palla (grani)"
+  velocita: "Velocità alla volata"
+  unita: ["fps", "m/s"]
+  pf: "Power Factor"
+  energia: "Energia alla volata"
+  manca: "Inserisci peso palla e velocità alla volata per vedere il tuo Power Factor."
+  senza_js: "Il calcolatore ha bisogno di JavaScript. Attivalo nel browser, oppure fai il conto a mano: peso palla in grani per velocità in fps, diviso 1.000."
+  gara: "Regolamento"
+  gare: ["IPSC", "USPSA"]
+  divisione: "Divisione"
+  major: "Fa major"
+  minor: "Fa minor"
+  sotto: "Non fa minor"
+  solo_minor: "In questa divisione si spara solo minor."
 blocchi:
-- tipo: schermate
+- tipo: "calcolatore-pf"
+- tipo: "h2"
+  testo: "Major e minor, divisione per divisione"
+- tipo: "soglie"
+  gara: "IPSC"
+  intestazione: ["Divisione IPSC", "Major", "Minor"]
+  righe:
+  - ["Open", "160", "125"]
+  - ["Standard", "170", "125"]
+  - ["Classic", "170", "125"]
+  - ["Revolver", "170", "125"]
+  - ["Production", "—", "125"]
+  - ["Production Optics", "—", "125"]
+- tipo: "p"
+  testo: "In IPSC Revolver, un revolver da sette colpi o più fa minor, qualunque cosa dica il cronografo."
+- tipo: "soglie"
+  gara: "USPSA"
+  intestazione: ["Divisione USPSA", "Major", "Minor"]
+  righe:
+  - ["Open", "165", "125"]
+  - ["Limited", "165", "125"]
+  - ["Limited 10", "165", "125"]
+  - ["Single Stack", "165", "125"]
+  - ["Revolver", "165", "125"]
+  - ["Production", "—", "125"]
+  - ["Carry Optics", "—", "125"]
+  - ["Limited Optics", "—", "125"]
+  - ["Pistol Caliber Carbine", "—", "125"]
+- tipo: "p"
+  testo: "In Limited, Limited 10 e Single Stack il major chiede anche una palla di calibro almeno .40 (.40 S&W, 10mm o .357 SIG)."
+- tipo: "p"
+  testo: "I regolamenti cambiano, e l'ultima parola spetta al tuo. Queste soglie vengono dalle regole delle divisioni handgun di IPSC e dal regolamento USPSA (settembre 2026)."
+- tipo: "h2"
+  testo: "Come si calcola"
+- tipo: "p"
+  testo: "Il Power Factor è il peso palla in grani per la velocità alla volata in piedi al secondo, diviso 1.000. I decimali si scartano, non si arrotondano: 124,9 fa 124, non 125. Una palla da 124 grani a 1.050 fps fa 130."
+- tipo: "p"
+  testo: "L'energia alla volata si legge in ft·lb se inserisci fps, in joule se inserisci m/s."
+- tipo: "h2"
+  testo: "Il numero sulla carta, e quello al cronografo"
+- tipo: "p"
+  testo: "Il calcolo ti dà il numero sulla carta. In una gara USPSA decide il cronografo: spari tre colpi, conta la velocità media, e la tua palla viene pesata sulla bilancia di gara. Se non ci arrivi, hai qualche colpo in più per farcela. Se manchi il major, la gara ti viene contata minor. Se manchi il minor, puoi continuare a sparare, ma senza punteggio."
+- tipo: "h2"
+  testo: "Quanto ti costa ogni colpo?"
+- tipo: "p"
+  testo: "Ricarichi per il major? Calcola quanto ti costa a colpo la tua ricetta, e stampa la scheda da tenere sul banco, col nostro calcolatore del costo della ricarica."
+- tipo: "schermate"
   alt:
-  - 'Il Calcolo Power Factor in AIMONX: una palla da 124 grani a 350 m/s dà un Power Factor di 142 e l''energia alla volata.'
-- tipo: h2
-  testo: Come si calcola
-- tipo: p
-  testo: Il Power Factor è il peso palla in grani per la velocità alla volata in piedi al secondo, diviso 1.000. AIMONX scarta i decimali invece di arrotondare per eccesso, come si fa in gara. Una palla da 124 grani a 1.050 fps fa 130.
-- tipo: p
-  testo: L'energia alla volata si legge in ft·lb se inserisci fps, in joule se inserisci m/s.
-- tipo: h2
-  testo: Salva i tuoi setup
-- tipo: p
-  testo: Dai un nome al setup, per esempio «124 gr gara, canna 5 pollici», e salvalo nello storico. AIMONX tiene gli ultimi 50, dal più recente, con peso, velocità, Power Factor, energia, data e ora.
-- tipo: p
-  testo: 'Lo storico è un blocco appunti: non fa parte del diario, del backup né dell''archivio. Se lo cancelli, non torna.'
-- tipo: h2
-  testo: Anche su ogni munizione
-- tipo: p
-  testo: Aggiungi la velocità alla volata a qualsiasi munizione che registri, commerciale o ricaricata, e Power Factor ed energia restano sulla sua scheda.
-- tipo: h2
-  testo: Gratis
-- tipo: p
-  testo: Il calcolo e la balistica sulle schede delle munizioni sono gratis, senza limiti.
-badge: Scarica su App Store
+  - "Il Calcolo Power Factor in AIMONX: una palla da 124 grani a 350 m/s dà un Power Factor di 142 e l'energia alla volata."
+- tipo: "h2"
+  testo: "Salva i tuoi setup"
+- tipo: "p"
+  testo: "Dai un nome al setup, per esempio «124 gr gara, canna 5 pollici», e salvalo nello storico. AIMONX tiene gli ultimi 50, dal più recente, con peso, velocità, Power Factor, energia, data e ora."
+- tipo: "p"
+  testo: "Lo storico è un blocco appunti: non fa parte del diario, del backup né dell'archivio. Se lo cancelli, non torna."
+- tipo: "h2"
+  testo: "Anche su ogni munizione"
+- tipo: "p"
+  testo: "Aggiungi la velocità alla volata a qualsiasi munizione che registri, commerciale o ricaricata, e Power Factor ed energia restano sulla sua scheda."
+- tipo: "h2"
+  testo: "Gratis"
+- tipo: "p"
+  testo: "Il calcolatore di questa pagina è gratis per tutti, e lo è anche quello dell'app, insieme alla balistica sulle schede delle munizioni. Senza limiti."
+badge: "Scarica su App Store"

@@ -4,17 +4,17 @@
 
 - nome: Compteur de coups
   lead: Chaque arme, chaque coup.
-  body: 'Saisissez chaque arme une seule fois. Les coups s''additionnent tout seuls à partir de vos séances au stand : pas de calcul de tête, pas de carnet.'
+  body: "Chaque arme, avec ses accessoires et ses détails, au même endroit.<br>Les coups s'additionnent tout seuls à partir de vos séances au stand : pas de calcul de tête, pas de carnet."
   alt: Vos armes dans AIMONX, chacune avec son nombre de coups et l'état de son entretien en couleur.
   link: Voir comment marche le compteur de coups
 - nome: Journal de tir
   lead: Séances et matchs.
-  body: Notez où vous avez tiré, avec quoi et comment ça s'est passé, incidents compris. Placez vos stands sur la carte. Pour les matchs, aussi le classement, les points et la division.
+  body: "Notez où vous avez tiré, avec quoi et comment ça s'est passé, incidents compris.<br>Placez vos stands sur la carte. Pour les matchs, aussi le classement, les points et la division."
   alt: 'La liste des séances dans AIMONX : entraînements et séances de dry fire, chacune avec l''arme, le lieu et les coups tirés.'
   link: Découvrir le journal de tir
 - nome: Munitions et coûts
   lead: Des munitions sous contrôle.
-  body: Munitions manufacturées avec numéros de lot et inventaire. Munitions rechargées avec recettes, coût des composants et productions. Vitesse initiale, facteur de puissance et énergie pour chaque munition.
+  body: "Munitions manufacturées avec numéros de lot et inventaire. Munitions rechargées avec recettes, coût des composants et productions.<br>Vitesse initiale, facteur de puissance et énergie pour chaque munition."
   alt: Les munitions manufacturées dans AIMONX, avec les coups disponibles et les alertes de stock faible.
   link: Voir comment marche le suivi des munitions
 - nome: Rechargement

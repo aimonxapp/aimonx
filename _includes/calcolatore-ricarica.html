@@ -10,8 +10,9 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   tolto da Pier il 09/11/2026, «non ha senso». Il bossolo costa come l'app.
   ⭐ LA VALUTA (giro W39, Pier, 09/11/2026): si parte da quella della regione
   del sistema, come nell'app, e la TENDINA in testa al modulo la cambia per
-  tutta la pagina (`assets/js/calcolatori.js`). `data-valuta` è il ripiego: i
-  dollari, se il sistema non dice una valuta. ⏳ La tendina esce solo quando
+  tutta la pagina (`assets/js/calcolatori.js`). `data-valuta` è il ripiego, se il
+  sistema non dice una valuta: i dollari sull'inglese, ⭐ dal giro W40 l'euro su
+  italiano, francese e spagnolo (Cowork: «nelle tre lingue usa l'euro»). ⏳ La tendina esce solo quando
   c'è la sua etichetta (`c.valuta`), che è testo di Cowork.
   ⛔ Non salva niente e non manda niente: nessun `action`, nessuna memoria del
   browser. La stampa è quella del browser.
@@ -26,7 +27,7 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
 {%- assign c = include.c -%}
 {%- assign s = include.s -%}
 <form class="calcolatore calc-ricarica" data-calcolatore="ricarica" novalidate
-      data-valuta="USD" data-obbligatorio="{{ c.obbligatorio }}" data-maggiore="{{ c.maggiore }}">
+      data-valuta="{% if lin.codice == 'en' %}USD{% else %}EUR{% endif %}" data-obbligatorio="{{ c.obbligatorio }}" data-maggiore="{{ c.maggiore }}">
   {%- if c.valuta %}
   <div class="campi scelta-valuta">
     <div class="campo">

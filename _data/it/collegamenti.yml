@@ -12,6 +12,23 @@
 # GitHub non ha la sua Privacy Statement in italiano.
 
 frasi:
+  # ⭐ Giro W40: le due pagine nuove, ora anche in italiano (bozza W38 IT). La più
+  # lunga in testa: «calcolatore gratuito…» (Ricarica, Munizioni e costi) prima di
+  # «calcolatore del costo…» (Power Factor), che non è un suo pezzo.
+  - frase: "calcolatore gratuito del costo della ricarica"
+    href: "/reloading-cost-calculator/"
+    tipo: pagina
+  - frase: "Come scegliere un'app per il diario di tiro"
+    href: "/guides/how-to-choose-a-gun-log-app/"
+    tipo: pagina
+  - frase: "calcolatore del costo della ricarica"
+    href: "/reloading-cost-calculator/"
+    tipo: pagina
+  # ⭐ Giro W40: dalla tabella della guida alla pagina delle novità. ⚠️ Diventa un link
+  # ovunque compaia in un paragrafo; oggi «Novità» sta solo nei titoli, che restano testo.
+  - frase: "Novità"
+    href: "/updates/"
+    tipo: pagina
   # ⭐ Giro W36: da «Chi sono» al Range System.
   - frase: "AIMONX Range System"
     href: "/range-system/"
@@ -89,6 +106,9 @@ menu:
   "Free e Pro":           "/pricing/"
   "Confronta Free e Pro": "/pricing/"
   "Novità":               "/updates/"
+  # ⭐ Giro W40: le due pagine nuove esistono anche in italiano, quindi la barra e il piede le scrivono.
+  "Calcolo del costo della ricarica": "/reloading-cost-calculator/"
+  "Come scegliere un'app per il diario di tiro": "/guides/how-to-choose-a-gun-log-app/"
   "Chi sono":             "/about/"
   "Supporto":             "/support/"
   "Privacy Policy":       "/privacy-policy/"

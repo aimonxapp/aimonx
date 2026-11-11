@@ -8,6 +8,13 @@ meta:
 titolo: Le compteur de coups qui fait le calcul à votre place
 sommario: La plupart des tireurs perdent le fil quelque part entre le sac de tir et le carnet. Avec AIMONX, vous enregistrez la séance et le nombre de coups de chaque arme se met à jour tout seul. Pas de calcul de tête, pas de tableur.
 blocchi:
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§3).
+- tipo: h2
+  testo: "Comment tenir le compte des coups tirés ?"
+- tipo: p
+  testo: "La plupart des tireurs commencent avec un carnet dans le sac de tir, des traits sur la boîte de munitions ou un tableur à la maison. Tout ça marche, jusqu'au jour où vous oubliez de noter une séance. À partir de là, le chiffre est faux, et vous ne savez pas de combien."
+- tipo: p
+  testo: "La solution, c'est de compter là où les coups partent : au stand, quand vous enregistrez la séance. C'est tout ce qu'AIMONX vous demande. Le total de l'arme, vos munitions en stock et vos compteurs d'entretien suivent tout seuls."
 - tipo: h2
   testo: Comment ça marche
 - tipo: p

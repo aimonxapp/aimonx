@@ -29,6 +29,9 @@ blocchi:
 - tipo: schermate
   alt:
   - I componenti di una ricaricata in AIMONX, ognuno con il prezzo pagato e la quantità, e sotto il costo per colpo calcolato.
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3). Il link lo mette `_data/it/collegamenti.yml`.
+- tipo: p
+  testo: "Ti basta un numero al volo? Il nostro calcolatore gratuito del costo della ricarica fa il costo per colpo dai tuoi componenti, e stampa la scheda da tenere sul banco."
 - tipo: h2
   testo: Produzioni con il loro prezzo
 - tipo: p

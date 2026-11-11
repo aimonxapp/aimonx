@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# scripts/modifica/accendi.sh — ACCENDE IL SITO IN LOCALE per Pier. Giro W37.
+# scripts/modifica/accendi.sh — IL BANCO AIMONX: accende il sito in locale per Pier. Giro W37;
+# il nome è di Pier (W40), e il Banco è PERMANENTE (CLAUDE.md, «Gli attrezzi»).
 # Lo lancia l'icona sulla Scrivania (la scrive `scripts/modifica/icona.sh`);
 # si spegne chiudendo la finestra del Terminale che apre.
 #
@@ -29,8 +30,8 @@ fermati() {
 }
 
 clear
-echo "AIMONX · il sito su questo Mac"
-echo "──────────────────────────────"
+echo "Banco AIMONX · il sito su questo Mac"
+echo "────────────────────────────────────"
 
 # Già acceso? Allora si apre solo il browser.
 if curl -s -m 2 "${INDIRIZZO}__modifica/stato" | grep -q '"versione"'; then

@@ -125,13 +125,13 @@ SEZIONI_NAVIGAZIONE = ["Menu in alto", "Briciole di pane (pagine di sezione)",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/features/`",
   "Piede, i titoli delle colonne", "Language selector and footer column (with the Italian site)",
-  "Range System (31/10/2026)"]
+  "Range System (31/10/2026)", "W39 — il menu in alto e il piede rifatti (09/11/2026)"]
 # ⭐ Giro W28: le stesse sezioni, nella bozza italiana — dove i titoli hanno parole loro.
 SEZIONI_NAVIGAZIONE_IT = ["Menu in alto", "Briciole di pane",
   "Etichette per i lettori di schermo (invisibili a schermo)",
   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/it/features/`",
   "Piede, i titoli delle colonne", "Il selettore di lingua (anche sul sito inglese) — menu a tendina",
-  "Range System (31/10/2026)"]
+  "Range System (31/10/2026)", "W39 — il menu in alto e il piede rifatti (09/11/2026)"]
 # ⭐ Giro W31: il testo della scatola sta in una sezione `## ` sua, sotto «Page»;
 # «Note» e «Controllo» restano fuori. ⚠️ Il riquadro del regalo Pro sta DENTRO
 # quella sezione: che non esca in pagina lo dice il giro, non questa misura.
@@ -141,11 +141,13 @@ SEZIONI_ALTRE = {
   # ⭐ Giro W33: le sezioni della navigazione e del Range System in francese e spagnolo.
   "fr" => { nav: ["Menu in alto", "Briciole di pane", "Etichette per i lettori di schermo (invisibili a schermo)",
                   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/fr/features/`",
-                  "Piede, i titoli delle colonne", "Liens vers les pages restées en anglais (31/10/2026)", "Range System", "Il selettore di lingua"],
+                  "Piede, i titoli delle colonne", "Liens vers les pages restées en anglais (31/10/2026)", "Range System", "Il selettore di lingua",
+                  "W39 — il menu in alto e il piede rifatti (09/11/2026)"],
             range: ["Meta", "Page", "Boîte à munitions 9 mm, 100 cartouches"] },
   "es" => { nav: ["Menu in alto", "Briciole di pane", "Etichette per i lettori di schermo (invisibili a schermo)",
                   "Colonna laterale (computer) / in fondo (telefono)", "La pagina indice `/es/features/`",
-                  "Piede, i titoli delle colonne", "Enlaces a las páginas que siguen en inglés (31/10/2026)", "Il selettore di lingua — menu a tendina"],
+                  "Piede, i titoli delle colonne", "Enlaces a las páginas que siguen en inglés (31/10/2026)", "Il selettore di lingua — menu a tendina",
+                  "W39 — il menu in alto e il piede rifatti (09/11/2026)"],
             range: ["Meta", "Page", "Caja de munición 9×19, 100 cartuchos"] },
 }
 TITOLI_IN_PAGINA = [SEZIONI_RANGE.last, SEZIONI_RANGE_IT.last, SEZIONI_ALTRE["fr"][:range].last, SEZIONI_ALTRE["es"][:range].last]
@@ -304,12 +306,45 @@ PAGINE_ALTRE = %w[fr es].flat_map do |l|
     q[:uscita] = p[:uscita].sub(%r{\Ait/}, "#{l}/") if p[:uscita]
     q[:sezioni] = s[:nav] if p[:sezioni].equal?(SEZIONI_NAVIGAZIONE_IT)
     q[:sezioni] = s[:range] if p[:sezioni].equal?(SEZIONI_RANGE_IT)
-    q[:anche] = (p[:anche] || []).map { |b, x| [b.sub("-it-", "-#{l}-"), x.equal?(SEZIONI_NAVIGAZIONE_IT) ? s[:nav] : x] } + [["titoli/titoli-#{l}-bozza.md", ["Titoli e indirizzi"]], ["navigazione/navigazione-#{l}-bozza.md", s[:nav]]]
+    q[:anche] = (p[:anche] || []).map { |b, x, z| [b.sub("-it-", "-#{l}-"), x.equal?(SEZIONI_NAVIGAZIONE_IT) ? s[:nav] : x, z] } + [["titoli/titoli-#{l}-bozza.md", ["Titoli e indirizzi"]], ["navigazione/navigazione-#{l}-bozza.md", s[:nav]]]
     q[:alt_da] = p[:alt_da].sub("-it-", "-#{l}-") if p[:alt_da]
     q
   end
 end
 PAGINE.concat(PAGINE_IT).concat(PAGINE_ALTRE)
+
+# ⭐ GIRO W40: LA BOZZA W38 (calcolatori, parole cercate, guida) È APPROVATA —
+# l'inglese da Pier l'11/11/2026, le altre lingue col W40 (`strumenti-e-guida-<l>-bozza.md`).
+# Un file solo per lingua, coi pezzi `# N —`: 1 il Power Factor, 2 il costo della
+# ricarica, 3 le pagine che cambiano poco, 4 la guida. ⚠️ L'inglese ha in più i
+# pezzi 5 (le frasi aggiunte il 09/11) e 6 (le parole decise da Pier guardando):
+# nelle altre lingue quelle frasi stanno già dentro 1–3.
+# ⛔ I pezzi 3, 5 e 6 entrano INTERI: le loro sezioni `## ` hanno per nome la pagina
+# a cui vanno, e sono tutte testo in pagina.
+W38 = "strumenti-e-guida-W38/strumenti-e-guida-%s-bozza.md"
+W38_PEZZI = {
+  "en" => { "power-factor-calculator" => [[["Meta", "Page"], 1], [nil, 5]], "round-count" => [[nil, 3]],
+            "firearm-records" => [[nil, 3]], "ammo-and-costs" => [[nil, 3], [nil, 5]], "handloads" => [[nil, 5]], "faq" => [[nil, 5]] },
+}
+%w[it fr es].each do |l|
+  W38_PEZZI[l] = { "power-factor-calculator" => [[["Meta", "Page"], 1]] }
+  %w[round-count firearm-records ammo-and-costs handloads faq].each { |k| W38_PEZZI[l][k] = [[nil, 3]] }
+end
+PAGINE.each do |p|
+  k = p[:nome].sub(%r{\A[a-z]{2}/}, "")
+  (W38_PEZZI[p[:lingua]] || {}).fetch(k, []).each { |sez, z| (p[:anche] ||= []) << [W38 % p[:lingua], sez, z] }
+end
+# Le due pagine nuove, in tutte e quattro le lingue, agli indirizzi della lingua.
+%w[en it fr es].each do |l|
+  pre = l == "en" ? "" : "#{l}/"
+  # ⚠️ Il testo alternativo del badge sta nella bozza della landing della lingua.
+  extra = [["landing/landing-#{l}-bozza.md", nil]] + (l == "en" ? [[W38 % l, nil, 5], [W38 % l, nil, 6]] : [])
+  PAGINE << { nome: "#{pre}reloading-cost-calculator", dati: "_data/#{pre}reloading-cost-calculator.yml", bozza: W38 % l, pezzo: 2,
+              uscita: "#{pre}reloading-cost-calculator/index.html", sezioni: ["Meta", "Page"], lingua: l, anche: extra }
+  PAGINE << { nome: "#{pre}how-to-choose-a-gun-log-app", dati: "_data/#{pre}how-to-choose-a-gun-log-app.yml", bozza: W38 % l, pezzo: 4,
+              uscita: "#{pre}guides/how-to-choose-a-gun-log-app/index.html", sezioni: ["Meta", "Page"], lingua: l,
+              anche: [["landing/landing-#{l}-bozza.md", nil]] }
+end
 
 DICHIARATE = {
   "landing" => {},
@@ -321,6 +356,14 @@ DICHIARATE = {
   "it/privacy" => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza" },
   "it/terms"   => { ".data_pubblicazione" => "sostituisce «[data di pubblicazione]» della bozza" },
 }
+# ⭐ Giro W38/W40: gli avvisi d'errore del calcolatore della ricarica sono le parole
+# DELL'APP per gli stessi errori, prese dal catalogo testi come chiede la bozza (che
+# le nomina solo in una nota fra quadre). ⚠️ Dichiarate, e stampate a ogni run.
+%w[en it fr es].each do |l|
+  DICHIARATE["#{l == "en" ? "" : "#{l}/"}reloading-cost-calculator"] = {
+    ".calcolatore.obbligatorio" => "parola dell'app (catalogo testi), non della bozza",
+    ".calcolatore.maggiore" => "parola dell'app (catalogo testi), non della bozza" }
+end
 
 # I titoli di sezione: nella bozza della landing sono etichette in maiuscolo.
 TITOLI = [".what.title", ".privacy.title", ".security.title", ".piani.title"]
@@ -367,6 +410,9 @@ def piano(percorso, sezioni = nil, pezzo = nil)
     # PAROLE approvate: quelle restano, e cade solo l'indirizzo.
     t = t.gsub(/^\[pulsante: (.*?) → \S+\]$/) { $1 }
     pezzi = t.split(/^## /).drop(1).select { |s| sezioni.include?(s.lines.first.to_s.strip) }
+    # ⭐ Giro W40: dentro una sezione, la «### Rilettura…» da madrelingua è per Cowork e
+    # Pier, non per la pagina (la sezione W39 della navigazione ne ha una): si taglia lì.
+    pezzi = pezzi.map { |s| s.split(/^### Rilettura/).first }
     # ⚠️ Il titolo di una sezione non va in pagina: «Meta» e «Page» sono etichette. ⭐ Giro
     # W31: quello della scatola sì, ed è l unico caso (`SEZIONI_RANGE`, ultima voce).
     t = pezzi.map { |s| (TITOLI_IN_PAGINA.include?(s.lines.first.to_s.strip) ? s.lines : s.lines.drop(1)).reject { |r| r.strip.start_with?("[") && r.strip.end_with?("]") }.join }.join("\n")
@@ -392,7 +438,8 @@ end
 PAGINE.each do |p|
   p[:testo_bozza] = piano(File.join(contenuti, p[:bozza]), p[:sezioni], p[:pezzo])
   # ⭐ Giro W24: le bozze in più da cui una voce prende testo (`anche`).
-  (p[:anche] || []).each { |b, s| p[:testo_bozza] += "\n" + piano(File.join(contenuti, b), s) }
+  # ⭐ Giro W40: una voce di `anche` può portare un terzo pezzo, il numero del `# N —`.
+  (p[:anche] || []).each { |b, s, z| p[:testo_bozza] += "\n" + piano(File.join(contenuti, b), s, z) }
   # Le righe intere della bozza da cui una pagina prende in prestito i testi
   # alternativi (giro W18, `alt_da`). Vuoto per tutte le altre.
   p[:alt_prestati] = p[:alt_da] ? piano(File.join(contenuti, p[:alt_da]), ["Page"]).split("\n").map(&:strip) : []
@@ -416,6 +463,20 @@ BOZZA_NAVIGAZIONE = {
 }
 # ⭐ Giro W36: la voce About del piede sta nella sezione «Piede» della bozza About di ogni lingua.
 BOZZA_NAVIGAZIONE.each_key { |l| BOZZA_NAVIGAZIONE[l] += "\n" + piano(File.join(contenuti, "about/about-#{l}-bozza.md"), ["Piede"]) }
+# ⭐ Giro W40: nel menu e nel piede le due pagine W38 si chiamano col loro titolo in
+# pagina — la PRIMA riga di «Page» dei pezzi 2 e 4, e solo quella.
+BOZZA_NAVIGAZIONE.each_key do |l|
+  [2, 4].each do |z|
+    titolo = piano(File.join(contenuti, W38 % l), ["Page"], z).lines.map(&:strip).reject(&:empty?).first.to_s
+    BOZZA_NAVIGAZIONE[l] += "\n" + titolo
+    # …e la stessa riga vale per la misura ① dei file della navigazione.
+    PAGINE.select { |p| p[:lingua] == l && p[:nome].end_with?("navigazione") }.each { |p| p[:testo_bozza] += "\n" + titolo }
+  end
+end
+
+# ⚠️ Giro W40: vedi `consentito` nella misura ②.
+NOME_PF = "Power Factor calculator"
+puts "     ⚠️ «#{NOME_PF}» nel menu, nel piede e nelle carte inglesi: correzione di Cowork (nota del 09/11, punto 1); la bozza della navigazione dice ancora «Calculator»"
 
 fuori = 0
 
@@ -534,7 +595,25 @@ if modo == "sorgente"
     next unless File.readable?(en_file) && File.readable?(al_file)
     diff = []
     $solo_inglese = SOLO_INGLESE[File.basename(en_file, ".yml")] || []
-    confronta_forma.call(YAML.load_file(en_file), YAML.load_file(al_file), "", IN_PIU[File.basename(en_file, ".yml")] || [], diff)
+    en_d = YAML.load_file(en_file); al_d = YAML.load_file(al_file)
+    # ⭐ Giro W40: LE TABELLE DELLE SOGLIE SI CONFRONTANO PER GARA, non per posizione.
+    # Le bozze IT/FR/ES mettono IPSC prima di USPSA (il pubblico europeo); il
+    # calcolatore trova la tabella dal suo `gara`, quindi l'ordine non sposta niente.
+    # Qui la lingua si rimette nell'ordine inglese prima del confronto — ⚠️ solo i
+    # blocchi `soglie`, e solo se le gare sono le stesse. Stampato a ogni run.
+    if al_d.is_a?(Hash) && en_d.is_a?(Hash) && al_d["blocchi"].is_a?(Array) && en_d["blocchi"].is_a?(Array)
+      pos = al_d["blocchi"].each_index.select { |i| al_d["blocchi"][i].is_a?(Hash) && al_d["blocchi"][i]["tipo"] == "soglie" }
+      gare_en = en_d["blocchi"].select { |b| b.is_a?(Hash) && b["tipo"] == "soglie" }.map { |b| b["gara"] }
+      gare_al = pos.map { |i| al_d["blocchi"][i]["gara"] }
+      if gare_al != gare_en && gare_al.sort == gare_en.sort
+        tab = pos.map { |i| al_d["blocchi"][i] }
+        pos.zip(gare_en).each { |i, g| al_d["blocchi"][i] = tab.find { |b| b["gara"] == g } }
+        # E le gare fra cui si sceglie, nello stesso ordine.
+        al_d["calcolatore"]["gare"] = gare_en if al_d.dig("calcolatore", "gare").is_a?(Array) && al_d["calcolatore"]["gare"].sort == gare_en.sort
+        puts "     ⚠️ #{p[:nome]}: soglie in ordine #{gare_al.join(", ")} (l'inglese #{gare_en.join(", ")}) — voluto dalla bozza, confrontate per gara"
+      end
+    end
+    confronta_forma.call(en_d, al_d, "", IN_PIU[File.basename(en_file, ".yml")] || [], diff)
     fuori += diff.size
     puts "  #{p[:nome]}: forma uguale all'inglese" + (diff.empty? ? "" : " — NO, #{diff.size} scarti")
     diff.each { |x| puts "     ⛔ #{p[:nome]}#{x}" }
@@ -644,6 +723,10 @@ else
     # ⭐ Giro W33: i motti restano in inglese in ogni lingua, e il piede inglese delle
     # pagine legali non c'entra: si consente solo la riga inglese del motto.
     consentito += "\nTRACK · MAINTAIN · SHOOT BETTER\nSame passion. Every round counted.\n"
+    # ⚠️ Giro W40: il nome breve «Power Factor calculator», c minuscola, è la correzione
+    # di Cowork (nota per CC del 09/11, punto 1), mentre la bozza della navigazione
+    # dice ancora «Calculator». Dichiarato finché la bozza non si allinea.
+    consentito += "\n#{NOME_PF}\n" if p[:lingua] == "en"
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,

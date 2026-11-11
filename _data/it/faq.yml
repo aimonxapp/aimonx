@@ -143,6 +143,11 @@ blocchi:
     testo: "C'è una prova gratuita di AIMONX Pro?"
   - tipo: p
     testo: "Sì. Se non ti sei mai abbonato, il primo mese di Pro è gratis, sul piano mensile o annuale. Poi Pro si rinnova al prezzo normale, a meno che tu non disdica almeno 24 ore prima della fine del mese. Puoi disdire quando vuoi dagli abbonamenti di App Store."
+  # ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3). Dove sta in inglese.
+  - tipo: h3
+    testo: "Come scelgo un'app per il diario di tiro?"
+  - tipo: p
+    testo: "Abbiamo scritto una guida con nove cose da controllare, dal conteggio dei colpi alla privacy a cosa è gratis davvero: Come scegliere un'app per il diario di tiro."
 
 # ⛔ NON SI SCRIVE IN PAGINA: è il testo alternativo del badge di Apple.
 badge: "Scarica su App Store"

@@ -1,4 +1,4 @@
-# scripts/modifica/server.rb — IL SITO IN LOCALE, con la modalità modifica. Giro W37.
+# scripts/modifica/server.rb — IL BANCO AIMONX: il sito in locale, con la modalità modifica. Giro W37.
 #
 # Lo accende `scripts/modifica/accendi.sh` (l'icona sulla Scrivania di Pier);
 # a mano:  bundle exec ruby scripts/modifica/server.rb [porta]

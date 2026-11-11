@@ -43,13 +43,12 @@
 
 frasi:
   # ⭐ Giro W38: dalla pagina del Power Factor al calcolatore del costo della
-  # ricarica (bozza §1). ⚠️ La pagina esiste solo in inglese: nessun testo
-  # delle altre lingue contiene questa frase (misurato), quindi il prefisso
-  # della lingua qui non entra mai.
+  # ricarica (bozza §1). ⭐ Dal giro W40 la pagina c'è in ogni lingua, e le
+  # frasi delle altre lingue stanno nei loro `collegamenti.yml`.
   - frase: "reloading cost calculator"
     href: "/reloading-cost-calculator/"
     tipo: pagina
-  # ⏳ Giro W39: la risposta nuova della FAQ porta alla guida (bozza W38 §5).
+  # ⭐ Giro W39: la risposta nuova della FAQ porta alla guida (bozza W38 §5).
   - frase: "How to choose a gun log app"
     href: "/guides/how-to-choose-a-gun-log-app/"
     tipo: pagina
@@ -170,8 +169,8 @@ riscatta: "https://apps.apple.com/redeem?ctx=offercodes&id=6794895643&code=RANGE
 #   · ogni altro indirizzo prende il nome della PRIMA voce che porta lì in
 #     `menu`, qui sotto, nella lingua della pagina.
 # ⛔ NIENTE LINK MORTI: un indirizzo che nella lingua della pagina non ha una voce
-# in `menu` non si scrive (oggi il calcolatore della ricarica e la guida, solo in
-# inglese), e una sezione che resta senza voci non si apre — sparisce.
+# in `menu` non si scrive (fino al W39 il calcolatore della ricarica e la guida,
+# solo in inglese), e una sezione che resta senza voci non si apre — sparisce.
 #   · `dove`: la sezione è un link e basta, niente pannello (Range System,
 #     Pricing): «pronta ad avere sottovoci» vuol dire scriverle qui, in `gruppi`;
 #   · `gruppi`: il pannello, un gruppo per colonna; tutte le voci alla stessa
@@ -255,8 +254,8 @@ menu:
   "All features":   "/features/"
   "FAQ":            "/faq/"
   "Range System":   "/range-system/"
-  # ⭐ Giro W38: le due pagine nuove, dalla colonna «Learn» del piede — per ora
-  # solo nel piede inglese, perché esistono solo in inglese.
+  # ⭐ Giro W38: le due pagine nuove (dal giro W40 in ogni lingua, ciascuna nel
+  # suo `collegamenti.yml`).
   "Reloading cost calculator":   "/reloading-cost-calculator/"
   "How to choose a gun log app": "/guides/how-to-choose-a-gun-log-app/"
   "Free and Pro":   "/pricing/"

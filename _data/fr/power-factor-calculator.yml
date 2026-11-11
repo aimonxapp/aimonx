@@ -1,34 +1,96 @@
-# _data/fr/power-factor-calculator.yml — le parole della pagina in francese. Giro W33.
-# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-fr-bozza.md`.
-# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+# _data/fr/power-factor-calculator.yml — IL TESTO DELLA PAGINA DEL POWER FACTOR. Giro W33, rifatta nel W40.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo di Cowork, nella cartella dei contenuti di Pier.
+# Dal giro W40 meta, titolo, sommario, il calcolatore, le soglie e le sezioni nuove
+# vengono da …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§1);
+# le due sezioni «inchangé/sin cambios» e il testo alternativo restano quelli di
+# …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-fr-bozza.md.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+# ⭐ STESSA FORMA DEL FILE INGLESE, con UNA differenza voluta dalla bozza: IPSC
+# prima di USPSA (vedi `_data/it/power-factor-calculator.yml`).
 
 meta:
-  title: Calcul du facteur de puissance pour l'IPSC | AIMONX
-  description: Saisissez le poids de l'ogive et la vitesse initiale, obtenez le facteur de puissance et l'énergie. Gratuit dans l'app AIMONX pour iPhone, avec l'historique de vos 50 derniers réglages.
-titolo: Le calcul du facteur de puissance, sur votre iPhone
-sommario: Major ou minor ? Saisissez le poids de l'ogive et la vitesse initiale, et AIMONX affiche le facteur de puissance et l'énergie pendant que vous tapez. C'est gratuit, et c'est à un toucher de l'accueil.
+  title: "Calcul du facteur de puissance pour l'IPSC et l'USPSA | AIMONX"
+  description: "Saisissez le poids de l'ogive et la vitesse initiale, voyez tout de suite votre facteur de puissance, puis comparez-le aux seuils major et minor de votre division. Gratuit aussi dans l'app AIMONX."
+titolo: "Calcul du facteur de puissance pour l'IPSC et l'USPSA"
+sommario: "Major ou minor ? Saisissez le poids de l'ogive et la vitesse initiale, et vous voyez le facteur de puissance et l'énergie pendant que vous tapez. Comparez ensuite le chiffre à votre division, plus bas. Le même calcul est gratuit dans l'app AIMONX, à un toucher de l'accueil."
+calcolatore:
+  peso: "Poids de l'ogive (grains)"
+  velocita: "Vitesse initiale"
+  unita: ["fps", "m/s"]
+  pf: "Facteur de puissance"
+  energia: "Énergie à la bouche"
+  manca: "Saisissez le poids de l'ogive et la vitesse initiale pour voir votre facteur de puissance."
+  senza_js: "Le calculateur a besoin de JavaScript. Activez-le dans votre navigateur, ou faites le calcul à la main : poids de l'ogive en grains multiplié par la vitesse en fps, divisé par 1 000."
+  gara: "Règlement"
+  gare: ["IPSC", "USPSA"]
+  divisione: "Division"
+  major: "Atteint le major"
+  minor: "Atteint le minor"
+  sotto: "N'atteint pas le minor"
+  solo_minor: "Cette division se tire uniquement en minor."
 blocchi:
-- tipo: schermate
+- tipo: "calcolatore-pf"
+- tipo: "h2"
+  testo: "Major et minor, division par division"
+- tipo: "soglie"
+  gara: "IPSC"
+  intestazione: ["Division IPSC", "Major", "Minor"]
+  righe:
+  - ["Open", "160", "125"]
+  - ["Standard", "170", "125"]
+  - ["Classic", "170", "125"]
+  - ["Revolver", "170", "125"]
+  - ["Production", "—", "125"]
+  - ["Production Optics", "—", "125"]
+- tipo: "p"
+  testo: "En IPSC Revolver, un revolver de sept coups ou plus est compté minor, quoi que dise le chronographe."
+- tipo: "soglie"
+  gara: "USPSA"
+  intestazione: ["Division USPSA", "Major", "Minor"]
+  righe:
+  - ["Open", "165", "125"]
+  - ["Limited", "165", "125"]
+  - ["Limited 10", "165", "125"]
+  - ["Single Stack", "165", "125"]
+  - ["Revolver", "165", "125"]
+  - ["Production", "—", "125"]
+  - ["Carry Optics", "—", "125"]
+  - ["Limited Optics", "—", "125"]
+  - ["Pistol Caliber Carbine", "—", "125"]
+- tipo: "p"
+  testo: "En Limited, Limited 10 et Single Stack, le major demande aussi une ogive d'au moins .40 (.40 S&W, 10 mm ou .357 SIG)."
+- tipo: "p"
+  testo: "Les règlements changent, et c'est le vôtre qui a le dernier mot. Ces seuils viennent des règles des divisions handgun de l'IPSC et du règlement USPSA (septembre 2026)."
+- tipo: "h2"
+  testo: "Comment il se calcule"
+- tipo: "p"
+  testo: "Le facteur de puissance, c'est le poids de l'ogive en grains multiplié par la vitesse initiale en pieds par seconde, divisé par 1 000. Les décimales sont supprimées, pas arrondies : 124,9 donne 124, pas 125. Une ogive de 124 grains à 1 050 fps donne 130."
+- tipo: "p"
+  testo: "L'énergie à la bouche s'affiche en ft·lb si vous saisissez des fps, et en joules si vous saisissez des m/s."
+- tipo: "h2"
+  testo: "Le chiffre sur le papier, et celui du chrono"
+- tipo: "p"
+  testo: "Le calcul vous donne votre chiffre sur le papier. En match USPSA, c'est le chronographe qui tranche : vous tirez trois cartouches, la vitesse moyenne compte, et votre ogive est pesée sur la balance du match. S'il vous manque un peu, vous avez quelques cartouches de plus pour y arriver. Si vous ratez le major, votre match est compté en minor. Si vous ratez le minor, vous pouvez continuer à tirer, mais sans score."
+- tipo: "h2"
+  testo: "Combien vous coûte chaque cartouche ?"
+- tipo: "p"
+  testo: "Vous rechargez pour le major ? Calculez ce que votre recette vous coûte par cartouche, et imprimez la fiche à garder sur l'établi, avec notre calculateur du coût du rechargement."
+- tipo: "schermate"
   alt:
-  - 'Le calcul du facteur de puissance dans AIMONX : une ogive de 124 grains à 350 m/s donne un facteur de puissance de 142 et une énergie de 492 joules.'
-- tipo: h2
-  testo: Comment il se calcule
-- tipo: p
-  testo: Le facteur de puissance, c'est le poids de l'ogive en grains multiplié par la vitesse initiale en pieds par seconde, divisé par 1 000. AIMONX supprime les décimales au lieu d'arrondir au-dessus, comme en match. Une ogive de 124 grains à 1 050 fps donne 130.
-- tipo: p
-  testo: L'énergie à la bouche s'affiche en ft·lb si vous saisissez des fps, et en joules si vous saisissez des m/s.
-- tipo: h2
-  testo: Enregistrez vos réglages
-- tipo: p
-  testo: Donnez un nom au réglage, par exemple « 124 gr match, canon 5 pouces », et enregistrez-le dans l'historique. AIMONX garde les 50 derniers, du plus récent au plus ancien, avec poids, vitesse, facteur de puissance, énergie, date et heure.
-- tipo: p
-  testo: 'L''historique est un bloc-notes : il ne fait partie ni de votre journal, ni de votre sauvegarde, ni de vos archives. Une fois effacé, il ne revient pas.'
-- tipo: h2
-  testo: Aussi sur chaque munition
-- tipo: p
-  testo: Ajoutez la vitesse initiale à n'importe quelle munition que vous suivez, manufacturée ou rechargée, et son facteur de puissance et son énergie restent sur sa fiche.
-- tipo: h2
-  testo: Gratuit
-- tipo: p
-  testo: Le calcul et la balistique sur les fiches de vos munitions sont gratuits, sans limites.
-badge: Télécharger dans l'App Store
+  - "Le calcul du facteur de puissance dans AIMONX : une ogive de 124 grains à 350 m/s donne un facteur de puissance de 142 et une énergie de 492 joules."
+- tipo: "h2"
+  testo: "Enregistrez vos réglages"
+- tipo: "p"
+  testo: "Donnez un nom au réglage, par exemple « 124 gr match, canon 5 pouces », et enregistrez-le dans l'historique. AIMONX garde les 50 derniers, du plus récent au plus ancien, avec poids, vitesse, facteur de puissance, énergie, date et heure."
+- tipo: "p"
+  testo: "L'historique est un bloc-notes : il ne fait partie ni de votre journal, ni de votre sauvegarde, ni de vos archives. Une fois effacé, il ne revient pas."
+- tipo: "h2"
+  testo: "Aussi sur chaque munition"
+- tipo: "p"
+  testo: "Ajoutez la vitesse initiale à n'importe quelle munition que vous suivez, manufacturée ou rechargée, et son facteur de puissance et son énergie restent sur sa fiche."
+- tipo: "h2"
+  testo: "Gratuit"
+- tipo: "p"
+  testo: "Le calculateur de cette page est gratuit pour tout le monde, tout comme celui de l'app et la balistique sur les fiches de vos munitions. Sans limites."
+badge: "Télécharger dans l'App Store"

@@ -20,8 +20,8 @@
 # qui perché la barra non è della landing, è di tutto il sito.
 
 menu:
-  # ⏳ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, da
-  # ripassare da Pier): le cinque sezioni della barra in alto e del piede.
+  # ⭐ GIRO W39 (bozza della navigazione, sezione «W39», 09/11/2026, ✅
+  # approvata da Pier l'11/11): le cinque sezioni della barra in alto e del piede.
   # Dove porta ciascuna, e cosa c'è dentro, lo dice `_data/collegamenti.yml`
   # (`sezioni`), che è di CC: qui solo le parole.
   sezioni:
@@ -68,7 +68,7 @@ briciole:
     - "Free and Pro"
 
 # ⭐ Le etichette per i lettori di schermo, INVISIBILI a schermo. `lingua` è
-# anche il titolo delle lingue nel piede; ⏳ `casa` (W39) è il nome del logo, che
+# anche il titolo delle lingue nel piede; ⭐ `casa` (W39) è il nome del logo, che
 # da solo porta alla home.
 etichette:
   menu: "Main menu"

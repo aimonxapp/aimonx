@@ -6,11 +6,8 @@
 # `_data/aspetto.yml`, per ordine di comparsa; i testi alternativi qui sono quelli
 # in fondo alla bozza, accoppiati a ciò che la schermata mostra.
 #
-# ⏳ GIRO W38: META, TITOLO, SOMMARIO, IL CALCOLATORE, LE SOGLIE E TRE SEZIONI
-# NUOVE vengono dalla bozza NON ANCORA APPROVATA
-# …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§1), che Pier
-# ripassa nel suo sito locale. Fino alla sua approvazione `scripts/testo-approvato.sh`
-# le segna fuori dall'approvato, ed è ATTESO.
+# ⭐ GIRO W38: META, TITOLO, SOMMARIO, IL CALCOLATORE, LE SOGLIE E TRE SEZIONI
+# NUOVE vengono dalla bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-en-bozza.md (§1), ✅ approvata da Pier l'11/11/2026.
 # ⭐ `calcolatore`: le etichette del calcolatore, alla lettera; i conti li fa
 # `assets/js/calcolatori.js`, come l'app. `soglie`: le due tabelle, e da lì
 # vengono anche le divisioni fra cui si sceglie — una fonte sola.
@@ -29,7 +26,7 @@ calcolatore:
   pf: Power Factor
   energia: Muzzle energy
   manca: Enter a bullet weight and a muzzle velocity to see your Power Factor.
-  # ⏳ Giro W39 (bozza W38 §5, «Senza JavaScript»): si legge solo se il browser
+  # ⭐ Giro W39 (bozza W38 §5, «Senza JavaScript»): si legge solo se il browser
   # non esegue lo script, al posto del calcolatore.
   senza_js: "The calculator needs JavaScript. Turn it on in your browser, or do the math by hand: bullet weight in grains times velocity in fps, divided by 1,000."
   gara: Match

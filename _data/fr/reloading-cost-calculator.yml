@@ -1,0 +1,87 @@
+# _data/fr/reloading-cost-calculator.yml — IL TESTO DEL CALCOLATORE DEL COSTO DELLA RICARICA. Giro W40.
+#
+# ⛔ QUESTO FILE NON È CODICE e non lo scrive Claude Code: le parole sono di Cowork,
+# copiate alla lettera dalla bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-fr-bozza.md (§2).
+# ⛔ STESSA FORMA DEL FILE INGLESE. ⚠️ `obbligatorio` e `maggiore` sono le parole
+# dell'app in questa lingua, dal catalogo testi.
+
+meta:
+  title: "Calcul du coût du rechargement, avec une fiche à imprimer | AIMONX"
+  description: "Combien vous coûte vraiment une cartouche rechargée ? Saisissez le prix de vos étuis, amorces, ogives et poudre, voyez le coût par cartouche et imprimez la fiche de votre recette. Gratuit, sans inscription."
+titolo: "Calcul du coût du rechargement"
+sommario: "Combien vous coûte vraiment une cartouche de votre recette ? Saisissez ce que vous avez payé vos composants et votre charge de poudre. Vous voyez le coût par cartouche, par boîte de 50 et pour 1 000, et vous pouvez imprimer la fiche de rechargement ou l'enregistrer en PDF."
+calcolatore:
+  nome: "Nom de la recette"
+  nome_esempio: "Par exemple « 9×19 124 gr match »"
+  calibro: "Calibre"
+  bossoli:
+    titolo: "Étuis"
+    nome: "Étuis (marque/type)"
+    prezzo: "Prix payé"
+    quanti: "Quantité"
+    nota: "Étuis ramassés au stand ? Indiquez 0 comme prix."
+  inneschi:
+    titolo: "Amorces"
+    nome: "Amorces (marque/type)"
+    prezzo: "Prix payé"
+    quanti: "Quantité"
+  palle:
+    titolo: "Ogives"
+    nome: "Ogives (marque/type)"
+    peso: "Poids (grains)"
+    prezzo: "Prix payé"
+    quanti: "Quantité"
+  polvere:
+    titolo: "Poudre"
+    nome: "Poudre (marque/type)"
+    prezzo: "Prix payé"
+    confezione: "Poids du conditionnement"
+    unita: ["lb", "g", "kg"]
+    dose: "Charge (grains)"
+  facoltativi:
+    titolo: "Facultatif"
+    col: "COL/OAL"
+    unita_col: ["in", "mm"]
+    velocita: "Vitesse initiale"
+    unita_velocita: ["fps", "m/s"]
+    pf: "Facteur de puissance"
+    note: "Notes"
+  nome_fantasma: "Description"
+  campi_obbligatori: "Champ obligatoire"
+  costo: "Coût par cartouche"
+  per50: "Par boîte de 50"
+  per100: "Pour 100"
+  per1000: "Pour 1 000"
+  stampa: "Imprimer la fiche"
+  pdf: "Vous voulez un PDF ? Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF »."
+  privato: "Ce que vous saisissez ici ne quitte pas cette page, et rien n'est enregistré. Fermez la page, et tout disparaît."
+  senza_js: "Le calculateur a besoin de JavaScript. Activez-le dans votre navigateur pour l'utiliser."
+  obbligatorio: "Obligatoire."
+  maggiore: "Doit être supérieur à 0."
+scheda:
+  marchio: "AIMONX.app"
+  visita: "Rendez-vous sur AIMONX.app"
+  titolo: "Fiche de rechargement"
+  stampata: "Imprimée le"
+  piede:
+  - "Vos chiffres, saisis par vous. Partez toujours des données de rechargement publiées par les fabricants de poudre et d'ogives."
+  - "Faite avec le calculateur gratuit du coût du rechargement sur aimonx.app"
+blocchi:
+- tipo: "p"
+  testo: "Ce calculateur calcule des coûts, pas des charges. Partez toujours des données de rechargement publiées par les fabricants de poudre et d'ogives."
+- tipo: "calcolatore-ricarica"
+- tipo: "h2"
+  testo: "Comment se font les calculs"
+- tipo: "p"
+  testo: "Chaque composant coûte ce que vous l'avez payé, divisé par le nombre de pièces. La poudre demande une étape de plus : son prix, divisé par le poids du conditionnement en grains, multiplié par votre charge. 500 grammes font environ 7 716 grains : un pot de 500 g à 40 € revient à un peu plus d'un demi-centime le grain, et une charge de 4,2 grains coûte environ 2 centimes."
+- tipo: "h2"
+  testo: "Gardez-la, production après production"
+- tipo: "p"
+  testo: "Cette page fait le calcul une fois. AIMONX garde vos recettes sur votre iPhone, donne à chaque production son propre coût, et ajoute ce que vous tirez à chaque séance au stand : vous savez toujours ce que vous a vraiment coûté une journée de tir."
+- tipo: "p"
+  testo: "La fiche à imprimer est un outil du site. Dans l'app, vos recettes restent sur votre iPhone, avec chaque production que vous rechargez."
+- tipo: "h2"
+  testo: "Free et Pro"
+- tipo: "p"
+  testo: "Le calculateur de cette page est gratuit pour tout le monde. Dans l'app, les recettes, le coût des composants et les productions font partie de Pro. Le calcul du facteur de puissance est gratuit des deux côtés."
+badge: "Télécharger dans l'App Store"

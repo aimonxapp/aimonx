@@ -44,7 +44,7 @@
 
 - nome: "Round count"
   lead: "Every firearm, every round."
-  body: "Log and track all your firearms, accessories and data.<br>Rounds add up on their own from your range sessions — no mental math, no notebook."
+  body: "Every firearm, with its accessories and details, in one place.<br>Rounds add up on their own from your range sessions — no mental math, no notebook."
   alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
   link: "See how round count works"
   aspetto:
@@ -90,7 +90,7 @@
     schermata_fr: aimonx-handload-card-fr
     schermata_es: aimonx-handload-card-es
 
-- nome: "Power Factor Calculator"
+- nome: "Power Factor calculator"
   lead: "Power Factor calculator, right on your iPhone"
   body: "Making major or minor? Enter the bullet weight and the muzzle velocity, and AIMONX shows the Power Factor and the muzzle energy as you type. It's free, and it's one tap from the Home screen."
   alt: "The Power Factor calculator in AIMONX: a 147-grain bullet at 880 fps gives a Power Factor of 129 and the muzzle energy."

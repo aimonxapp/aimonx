@@ -9,7 +9,8 @@
 meta:
   title: 'App per l''inventario delle armi: schede, foto e PDF | AIMONX'
   description: 'Tieni in un posto solo i dati di ogni arma: specifiche, accessori, acquisto e fino a 5 foto. Crea un PDF di una singola arma o di tutto l''inventario.'
-titolo: Ogni arma, con la sua scheda
+# ⭐ Giro W40: bozza …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-it-bozza.md (§3).
+titolo: "Il tuo inventario armi, con ogni arma in archivio"
 sommario: Marca, modello, calibro, specifiche, cosa ci hai montato e quanto l'hai pagata. AIMONX tiene tutto in un posto solo, con le foto, e quando serve ne fa un PDF.
 blocchi:
 - tipo: h2

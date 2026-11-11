@@ -1,34 +1,96 @@
-# _data/es/power-factor-calculator.yml — le parole della pagina in spagnolo. Giro W33.
-# ⛔ NON È CODICE: testo approvato da Pier il 31/10/2026, nelle bozze `*-es-bozza.md`.
-# ⛔ STESSE CHIAVI dell'inglese. Chi può cambiarlo: Cowork, non Claude Code.
+# _data/es/power-factor-calculator.yml — IL TESTO DELLA PAGINA DEL POWER FACTOR. Giro W33, rifatta nel W40.
+#
+# ⛔ QUESTO FILE NON È CODICE: è il testo di Cowork, nella cartella dei contenuti di Pier.
+# Dal giro W40 meta, titolo, sommario, il calcolatore, le soglie e le sezioni nuove
+# vengono da …/2- Contenuti/strumenti-e-guida-W38/strumenti-e-guida-es-bozza.md (§1);
+# le due sezioni «inchangé/sin cambios» e il testo alternativo restano quelli di
+# …/2- Contenuti/funzioni-1.1.0/funzioni-1.1.0-es-bozza.md.
+# ⛔ CHI PUÒ CAMBIARLO: Cowork, non Claude Code.
+# ⭐ STESSA FORMA DEL FILE INGLESE, con UNA differenza voluta dalla bozza: IPSC
+# prima di USPSA (vedi `_data/it/power-factor-calculator.yml`).
 
 meta:
-  title: Calculadora del factor de potencia para IPSC | AIMONX
-  description: Introduce el peso de la punta y la velocidad en boca, y obtén el factor de potencia y la energía. Gratis en la app AIMONX para iPhone, con un historial de tus últimas 50 configuraciones.
-titolo: La calculadora del factor de potencia, en tu iPhone
-sommario: "¿Major o minor? Introduce el peso de la punta y la velocidad en boca, y AIMONX te muestra el factor de potencia y la energía mientras escribes. Es gratis, y está a un toque desde Inicio."
+  title: "Calculadora del factor de potencia para IPSC y USPSA | AIMONX"
+  description: "Introduce el peso de la punta y la velocidad en boca, mira al momento tu factor de potencia y compáralo con los mínimos de major y minor de tu división. Gratis también en la app AIMONX."
+titolo: "Calculadora del factor de potencia para IPSC y USPSA"
+sommario: "¿Major o minor? Introduce el peso de la punta y la velocidad en boca, y verás el factor de potencia y la energía mientras escribes. Luego compara el número con tu división, aquí abajo. La misma calculadora es gratis en la app AIMONX, a un toque desde Inicio."
+calcolatore:
+  peso: "Peso de la punta (grains)"
+  velocita: "Velocidad en boca"
+  unita: ["fps", "m/s"]
+  pf: "Factor de potencia"
+  energia: "Energía en boca"
+  manca: "Introduce el peso de la punta y la velocidad en boca para ver tu factor de potencia."
+  senza_js: "La calculadora necesita JavaScript. Actívalo en tu navegador, o haz la cuenta a mano: peso de la punta en grains por la velocidad en fps, dividido entre 1000."
+  gara: "Reglamento"
+  gare: ["IPSC", "USPSA"]
+  divisione: "División"
+  major: "Llega a major"
+  minor: "Llega a minor"
+  sotto: "No llega a minor"
+  solo_minor: "En esta división solo se compite en minor."
 blocchi:
-- tipo: schermate
+- tipo: "calcolatore-pf"
+- tipo: "h2"
+  testo: "Major y minor, división por división"
+- tipo: "soglie"
+  gara: "IPSC"
+  intestazione: ["División IPSC", "Major", "Minor"]
+  righe:
+  - ["Open", "160", "125"]
+  - ["Standard", "170", "125"]
+  - ["Classic", "170", "125"]
+  - ["Revolver", "170", "125"]
+  - ["Production", "—", "125"]
+  - ["Production Optics", "—", "125"]
+- tipo: "p"
+  testo: "En IPSC Revolver, un revólver de siete disparos o más puntúa en minor, diga lo que diga el cronógrafo."
+- tipo: "soglie"
+  gara: "USPSA"
+  intestazione: ["División USPSA", "Major", "Minor"]
+  righe:
+  - ["Open", "165", "125"]
+  - ["Limited", "165", "125"]
+  - ["Limited 10", "165", "125"]
+  - ["Single Stack", "165", "125"]
+  - ["Revolver", "165", "125"]
+  - ["Production", "—", "125"]
+  - ["Carry Optics", "—", "125"]
+  - ["Limited Optics", "—", "125"]
+  - ["Pistol Caliber Carbine", "—", "125"]
+- tipo: "p"
+  testo: "En Limited, Limited 10 y Single Stack, el major exige además una punta de calibre .40 como mínimo (.40 S&W, 10 mm o .357 SIG)."
+- tipo: "p"
+  testo: "Los reglamentos cambian, y la última palabra la tiene el tuyo. Estos mínimos vienen de las normas de las divisiones de arma corta de IPSC y del reglamento USPSA (septiembre de 2026)."
+- tipo: "h2"
+  testo: "Cómo se calcula"
+- tipo: "p"
+  testo: "El factor de potencia es el peso de la punta en grains por la velocidad en boca en pies por segundo, dividido entre 1000. Los decimales se descartan, no se redondean: 124,9 es 124, no 125. Una punta de 124 grains a 1050 fps da 130."
+- tipo: "p"
+  testo: "La energía en boca se lee en ft·lb si introduces fps, y en julios si introduces m/s."
+- tipo: "h2"
+  testo: "Tu número sobre el papel, y en el cronógrafo"
+- tipo: "p"
+  testo: "La calculadora te da tu número sobre el papel. En una competición USPSA decide el cronógrafo: disparas tres cartuchos, cuenta la velocidad media y tu punta se pesa en la báscula de la competición. Si te quedas corto, tienes unos cuantos disparos más para conseguirlo. Si no llegas a major, toda tu competición puntúa en minor. Si no llegas a minor, puedes seguir tirando, pero sin puntuar."
+- tipo: "h2"
+  testo: "¿Cuánto te cuesta cada disparo?"
+- tipo: "p"
+  testo: "¿Recargas para major? Calcula cuánto te cuesta por disparo tu receta e imprime una ficha para tu banco de recarga con nuestra calculadora del coste de recarga."
+- tipo: "schermate"
   alt:
-  - 'La calculadora del factor de potencia en AIMONX: el peso de la punta y la velocidad en boca dan el factor de potencia y la energía en boca.'
-- tipo: h2
-  testo: Cómo se calcula
-- tipo: p
-  testo: El factor de potencia es el peso de la punta en grains por la velocidad en boca en pies por segundo, dividido entre 1000. AIMONX descarta los decimales en lugar de redondear hacia arriba, como se hace en competición. Una punta de 124 grains a 1050 fps da 130.
-- tipo: p
-  testo: La energía en boca se lee en ft·lb si introduces fps, y en julios si introduces m/s.
-- tipo: h2
-  testo: Guarda tus configuraciones
-- tipo: p
-  testo: Ponle nombre a una configuración, por ejemplo «124 gr competición, cañón de 5 pulgadas», y guárdala en el historial. AIMONX guarda las últimas 50, de la más reciente a la más antigua, con peso, velocidad, factor de potencia, energía, fecha y hora.
-- tipo: p
-  testo: 'El historial es un bloc de notas: no forma parte de tu diario, de tu copia de seguridad ni de tu archivo. Si lo borras, no vuelve.'
-- tipo: h2
-  testo: También en cada munición
-- tipo: p
-  testo: Añade la velocidad en boca a cualquier munición que registres, comercial o recargada, y su factor de potencia y su energía se quedan en su ficha.
-- tipo: h2
-  testo: Gratis
-- tipo: p
-  testo: La calculadora y la balística de tus fichas de munición son gratis, sin límites.
-badge: Descargar en el App Store
+  - "La calculadora del factor de potencia en AIMONX: el peso de la punta y la velocidad en boca dan el factor de potencia y la energía en boca."
+- tipo: "h2"
+  testo: "Guarda tus configuraciones"
+- tipo: "p"
+  testo: "Ponle nombre a una configuración, por ejemplo «124 gr competición, cañón de 5 pulgadas», y guárdala en el historial. AIMONX guarda las últimas 50, de la más reciente a la más antigua, con peso, velocidad, factor de potencia, energía, fecha y hora."
+- tipo: "p"
+  testo: "El historial es un bloc de notas: no forma parte de tu diario, de tu copia de seguridad ni de tu archivo. Si lo borras, no vuelve."
+- tipo: "h2"
+  testo: "También en cada munición"
+- tipo: "p"
+  testo: "Añade la velocidad en boca a cualquier munición que registres, comercial o recargada, y su factor de potencia y su energía se quedan en su ficha."
+- tipo: "h2"
+  testo: "Gratis"
+- tipo: "p"
+  testo: "La calculadora de esta página es gratis para todos, igual que la de la app y la balística de tus fichas de munición. Sin límites."
+badge: "Descargar en el App Store"

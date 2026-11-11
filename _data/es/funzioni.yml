@@ -4,17 +4,17 @@
 
 - nome: Contador de disparos
   lead: Cada arma, cada disparo.
-  body: 'Registra cada arma una sola vez. Los disparos se suman solos a partir de tus sesiones en el campo de tiro: sin cuentas de cabeza, sin libreta.'
+  body: "Cada arma, con sus accesorios y sus datos, en un solo sitio.<br>Los disparos se suman solos a partir de tus sesiones en el campo de tiro: sin cuentas de cabeza, sin libreta."
   alt: Tus armas en AIMONX, cada una con sus disparos y el estado del mantenimiento por colores.
   link: Mira cómo funciona el contador de disparos
 - nome: Diario de tiro
   lead: Sesiones y competiciones.
-  body: Apunta dónde has tirado, con qué y cómo ha ido, interrupciones incluidas. Pon tus campos de tiro en el mapa. En las competiciones, también el puesto, la puntuación y la división.
+  body: "Apunta dónde has tirado, con qué y cómo ha ido, interrupciones incluidas.<br>Pon tus campos de tiro en el mapa. En las competiciones, también el puesto, la puntuación y la división."
   alt: 'La lista de sesiones en AIMONX: entrenamientos y sesiones de dry fire, cada una con el arma, el lugar y los disparos.'
   link: Descubre el diario de tiro
 - nome: Munición y costes
   lead: Munición bajo control.
-  body: Munición comercial con lotes y stock. Recargas con receta, coste de los componentes y producciones. Velocidad en boca, factor de potencia y energía para cada munición.
+  body: "Munición comercial con lotes y stock. Recargas con receta, coste de los componentes y producciones.<br>Velocidad en boca, factor de potencia y energía para cada munición."
   alt: La munición comercial en AIMONX, con los disparos disponibles y los avisos de stock bajo.
   link: Mira cómo funciona la munición
 - nome: Recarga
