@@ -68,6 +68,9 @@ calcolatore:
   obbligatorio: Required.
   maggiore: Must be greater than 0.
 scheda:
+  # ⭐ Giro W39: parole di Pier, in testa alla scheda stampata (da portare a Cowork).
+  marchio: AIMONX.app
+  visita: Visit AIMONX.app
   titolo: Load card
   stampata: Printed on
   piede:

@@ -177,15 +177,20 @@
   .scheda-carico [hidden] { display: none !important; }
   .scheda-testa { display: flex; align-items: center; gap: 8pt; padding-bottom: 6pt; border-bottom: 2pt solid #000; }
   .scheda-testa img { width: 28pt; height: 28pt; }
-  .scheda-marchio { font-weight: 800; font-size: 15pt; letter-spacing: .04em; }
+  .scheda-marchio { display: flex; flex-direction: column; line-height: 1.15; }
+  .scheda-marchio > span { font-weight: 800; font-size: 15pt; letter-spacing: .04em; }
+  .scheda-marchio a { font-size: 9.5pt; color: #000; text-decoration: none; }
   .scheda-titolo { margin-left: auto; font-size: 12pt; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
-  .scheda-carico h2 { margin: 12pt 0 2pt; font-size: 17pt; }
+  .scheda-carico h2 { margin: 12pt 0 2pt; font-size: 17pt; min-height: 1.2em; }
+  // ⭐ Giro W39: un campo vuoto esce vuoto, con lo spazio per scriverlo a mano.
+  .scheda-dati .scheda-note dd:empty { min-height: 3em; }
   .scheda-sotto { display: flex; justify-content: space-between; gap: 12pt; margin: 4pt 0 10pt; font-size: 10.5pt; }
   .scheda-componenti, .scheda-totali { width: 100%; border-collapse: collapse; margin-top: 6pt; }
   .scheda-componenti th, .scheda-componenti td { padding: 4pt 5pt; border-bottom: .75pt solid #555; text-align: right; vertical-align: top; }
   .scheda-componenti th[scope="row"] { text-align: left; }
   .scheda-componenti thead th { font-size: 9.5pt; border-bottom: 1.5pt solid #000; }
-  .scheda-nome { font-weight: 400; }
+  // ⭐ Giro W39 (Pier): la descrizione va a capo sotto il nome del componente.
+  .scheda-nome { display: block; font-weight: 400; }
   .scheda-dati { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 16pt; margin: 10pt 0 0; }
   .scheda-dati > div { display: flex; justify-content: space-between; gap: 8pt; border-bottom: .5pt dotted #777; padding: 2pt 0; }
   .scheda-dati dt { font-weight: 700; }

@@ -18,7 +18,8 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
   ⭐ SENZA JAVASCRIPT il modulo non si vede (la regola sta in `<noscript>`, in
   `_includes/testa.html`), e la pagina si legge lo stesso.
   ⚠️ LA SCHEDA (`.scheda-carico`) è nascosta sullo schermo ed esce SOLO in
-  stampa: lo script la riempie coi campi scritti e nasconde le righe vuote.
+  stampa: lo script la riempie coi campi scritti, e ⭐ dal giro W39 (Pier) le
+  righe vuote escono lo stesso, vuote: non si salta niente.
   ⭐ Giro W39 (Pier): niente più «(optional)»; i campi necessari hanno l'asterisco,
   e ogni componente ha la sua casella di marca e tipo, che va anche sulla scheda.
 {%- endcomment -%}
@@ -143,11 +144,12 @@ _includes/calcolatore-ricarica.html — IL CALCOLATORE DEL COSTO DELLA RICARICA,
 <noscript><p class="senza-js">{{ c.senza_js }}</p></noscript>
 {%- endif %}
 
-{%- comment -%} LA SCHEDA DA STAMPARE. Ogni riga porta `data-campo`: lo script la riempie, o la nasconde se il campo è vuoto. {%- endcomment %}
+{%- comment -%} LA SCHEDA DA STAMPARE. Ogni riga porta `data-campo`: lo script la riempie, e se il campo è vuoto la lascia vuota. {%- endcomment %}
 <section class="scheda-carico" aria-hidden="true">
   <header class="scheda-testa">
     <img src="{{ '/assets/img/aimonx-192.png' | relative_url }}" alt="" width="40" height="40">
-    <span class="scheda-marchio">{{ lin_t.landing.brand }}</span>
+    {%- comment -%} ⭐ Giro W39 (Pier, guardando il PDF): il sito si legge in testa, non solo nel piede — il nome col dominio e sotto l'invito, link vero anche nel PDF. {%- endcomment %}
+    <span class="scheda-marchio"><span>{{ s.marchio }}</span><a href="{{ site.url }}/">{{ s.visita }}</a></span>
     <span class="scheda-titolo">{{ s.titolo }}</span>
   </header>
   <h2 data-campo="nome"></h2>

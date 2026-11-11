@@ -287,19 +287,9 @@
       Object.entries(r).forEach(([k, x]) => { val[`c_${k}`] = x.valore === null ? "" : comp.format(x.valore); });
       [1, 50, 100, 1000].forEach((n) => { val[`t${n}`] = calcolati ? (n === 1 ? comp : tot).format(somma * n) : ""; });
       scheda.querySelectorAll("[data-campo]").forEach((e) => { e.textContent = val[e.dataset.campo] || ""; });
-      // Solo i campi scritti: una riga senza niente non esce.
-      const righe = {
-        bossoli: r.bossoli.scritto || Boolean(val.b_nome), inneschi: r.inneschi.scritto || Boolean(val.i_nome),
-        palle: r.palle.scritto || Boolean(val.p_nome), polvere: r.polvere.scritto || Boolean(val.w_nome),
-      };
-      scheda.querySelectorAll("[data-riga]").forEach((e) => {
-        const k = e.dataset.riga;
-        e.hidden = k in righe ? !righe[k] : !val[k];
-      });
-      scheda.querySelector(".scheda-componenti").hidden = !Object.values(righe).some(Boolean);
-      scheda.querySelector(".scheda-totali").hidden = !calcolati;
-      scheda.querySelector("[data-campo='nome']").hidden = !val.nome;
-      scheda.querySelector("[data-campo='calibro']").hidden = !val.calibro;
+      // ⭐ Giro W39 (Pier): OGNI riga esce, anche se il campo è vuoto — resta
+      // lo spazio, da scrivere a mano. Niente si salta.
+      scheda.querySelectorAll("[hidden]").forEach((e) => { e.hidden = false; });
     }
     window.addEventListener("beforeprint", riempiScheda);
 

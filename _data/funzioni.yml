@@ -44,7 +44,7 @@
 
 - nome: "Round count"
   lead: "Every firearm, every round."
-  body: "Log each firearm once. Rounds add up on their own from your range sessions — no mental math, no notebook."
+  body: "Log and track all your firearms, accessories and data.<br>Rounds add up on their own from your range sessions — no mental math, no notebook."
   alt: "Your firearms in AIMONX, each with its round count and a color-coded maintenance status."
   link: "See how round count works"
   aspetto:
@@ -55,7 +55,7 @@
 
 - nome: "Range log"
   lead: "Range sessions and matches."
-  body: "Record where you shot, what you shot and how it went — including malfunctions. Pin your ranges on the map. Matches also record your placement, points and division."
+  body: "Record where you shot, what you shot and how it went — including malfunctions.<br>Pin your ranges on the map. Matches also record your placement, points and division."
   alt: "The Sessions list in AIMONX: practice and dry fire sessions, each with the firearm, the range and the rounds fired."
   link: "See how the range log works"
   aspetto:
@@ -66,7 +66,7 @@
 
 - nome: "Ammo and costs"
   lead: "Ammo you can count on."
-  body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches. Muzzle velocity, Power Factor and energy for every load."
+  body: "Factory ammo with lot numbers and inventory. Handloads with recipes, component costs and batches.<br>Muzzle velocity, Power Factor and energy for every load."
   alt: "Factory ammo in AIMONX, with rounds on hand and low-stock alerts."
   link: "See how ammo tracking works"
   aspetto:
