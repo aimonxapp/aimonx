@@ -474,10 +474,6 @@ BOZZA_NAVIGAZIONE.each_key do |l|
   end
 end
 
-# ⚠️ Giro W40: vedi `consentito` nella misura ②.
-NOME_PF = "Power Factor calculator"
-puts "     ⚠️ «#{NOME_PF}» nel menu, nel piede e nelle carte inglesi: correzione di Cowork (nota del 09/11, punto 1); la bozza della navigazione dice ancora «Calculator»"
-
 fuori = 0
 
 if modo == "sorgente"
@@ -723,10 +719,6 @@ else
     # ⭐ Giro W33: i motti restano in inglese in ogni lingua, e il piede inglese delle
     # pagine legali non c'entra: si consente solo la riga inglese del motto.
     consentito += "\nTRACK · MAINTAIN · SHOOT BETTER\nSame passion. Every round counted.\n"
-    # ⚠️ Giro W40: il nome breve «Power Factor calculator», c minuscola, è la correzione
-    # di Cowork (nota per CC del 09/11, punto 1), mentre la bozza della navigazione
-    # dice ancora «Calculator». Dichiarato finché la bozza non si allinea.
-    consentito += "\n#{NOME_PF}\n" if p[:lingua] == "en"
     # ⚠️ IL JSON-LD HA UN CONSENTITO PIÙ LARGO, ed è dichiarato invece che
     # nascosto: TUTTE E QUATTRO le bozze. ⛔ Non è una maglia larga per comodo:
     # quel blocco non descrive UNA pagina, descrive il sito e l app — e «iOS»,
