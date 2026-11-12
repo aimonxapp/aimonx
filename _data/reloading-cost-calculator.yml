@@ -18,6 +18,8 @@ titolo: Reloading cost calculator
 sommario: What does one round of your handload really cost? Enter what you paid for your components and your powder charge. You'll see the cost per round, per box of 50 and per 1,000, and you can print a load card or save it as a PDF.
 calcolatore:
   # ⭐ Giro W39 (Pier, 09/11/2026, guardando): i campi necessari hanno l'asterisco, gli altri non dicono più «(optional)»; marca e tipo per ogni componente, con «Text» come scrittina fantasma; tolto «Times you'll load each case», col paragrafo che lo spiegava («non ha senso»). Da dire a Cowork.
+  # ⭐ Giro W41: l’etichetta della tendina della valuta (bozza W38 §7, Cowork 12/11/2026).
+  valuta: Currency
   nome: Load name
   nome_esempio: Like "9mm 124 gr match load"
   calibro: Caliber

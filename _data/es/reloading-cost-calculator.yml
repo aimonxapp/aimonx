@@ -11,6 +11,7 @@ meta:
 titolo: "Calculadora del coste de recarga"
 sommario: "¿Cuánto te cuesta de verdad un cartucho de tu receta? Introduce lo que pagaste por los componentes y tu carga de pólvora. Verás el coste por disparo, por caja de 50 y por 1000, y podrás imprimir la ficha de recarga o guardarla en PDF."
 calcolatore:
+  valuta: "Moneda"
   nome: "Nombre de la receta"
   nome_esempio: "Por ejemplo «9 mm 124 gr competición»"
   calibro: "Calibre"

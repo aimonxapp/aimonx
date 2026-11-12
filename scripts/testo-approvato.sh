@@ -56,17 +56,18 @@
 #
 # Uso:  scripts/testo-approvato.sh                  → misura ①
 #       scripts/testo-approvato.sh --servito DIR    → misura ②
-#       usate tutte e due da scripts/controprova.sh
+#       scripts/testo-approvato.sh --inverso DIR    → misura ③ (giro W41, WD41)
+#       usate tutte e tre da scripts/controprova.sh
 set -u
 REPO="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 cd "$REPO" || exit 1
 
 MODO="sorgente"
 COSTRUITO=""
-if [ "${1:-}" = "--servito" ]; then
-  MODO="servito"
-  COSTRUITO="${2:-}"
-fi
+case "${1:-}" in
+  --servito) MODO="servito"; COSTRUITO="${2:-}" ;;
+  --inverso) MODO="inverso"; COSTRUITO="${2:-}" ;;
+esac
 
 PIER_DIR=""
 # shellcheck source=/dev/null
@@ -88,7 +89,7 @@ fi
 ILLEGGIBILI=0
 if [ -z "$PIER_DIR" ]; then
   ILLEGGIBILI=1
-else
+elsif modo == "servito"
   for BOZZA in landing/landing-en-bozza.md privacy-policy/privacy-policy-en-1.1.0-bozza.md \
                support/support-en-bozza.md terms/terms-en-bozza.md \
                round-count/round-count-en-bozza.md your-data/your-data-en-bozza.md \
@@ -106,7 +107,7 @@ if [ "$ILLEGGIBILI" != 0 ]; then
   echo "        questo terminale (Impostazioni › Privacy e sicurezza › File e cartelle)."
   exit 4
 fi
-if [ "$MODO" = "servito" ] && { [ -z "$COSTRUITO" ] || [ ! -d "$COSTRUITO" ]; }; then
+if [ "$MODO" != "sorgente" ] && { [ -z "$COSTRUITO" ] || [ ! -d "$COSTRUITO" ]; }; then
   echo "  ⛔ NON MISURABILE: nessun sito costruito da guardare."
   echo "     Il controllo del testo SERVITO ha bisogno di una build (WD25)."
   exit 0
@@ -338,7 +339,8 @@ end
 %w[en it fr es].each do |l|
   pre = l == "en" ? "" : "#{l}/"
   # ⚠️ Il testo alternativo del badge sta nella bozza della landing della lingua.
-  extra = [["landing/landing-#{l}-bozza.md", nil]] + (l == "en" ? [[W38 % l, nil, 5], [W38 % l, nil, 6]] : [])
+  # ⭐ Giro W41: il pezzo 7, in ogni lingua, è l'etichetta della tendina della valuta.
+  extra = [["landing/landing-#{l}-bozza.md", nil], [W38 % l, nil, 7]] + (l == "en" ? [[W38 % l, nil, 5], [W38 % l, nil, 6]] : [])
   PAGINE << { nome: "#{pre}reloading-cost-calculator", dati: "_data/#{pre}reloading-cost-calculator.yml", bozza: W38 % l, pezzo: 2,
               uscita: "#{pre}reloading-cost-calculator/index.html", sezioni: ["Meta", "Page"], lingua: l, anche: extra }
   PAGINE << { nome: "#{pre}how-to-choose-a-gun-log-app", dati: "_data/#{pre}how-to-choose-a-gun-log-app.yml", bozza: W38 % l, pezzo: 4,
@@ -404,7 +406,12 @@ def piano(percorso, sezioni = nil, pezzo = nil)
   # per il confronto è uno spazio, come fa già la misura del testo servito.
   t = File.read(percorso, encoding: "UTF-8").gsub(/🆕[ \t]*/, "").gsub(/[\u00A0\u202F]/, " ")
   # ⭐ Giro W32: un file solo per cinque pagine, ognuna sotto `# N — …`: `pezzo` è N.
-  t = t.split(/^# \d — .*$/)[pezzo] if pezzo
+  # ⭐ Giro W41: per NUMERO, non per posizione — le bozze IT/FR/ES del W38 saltano
+  # da 4 a 7, e il settimo pezzo è il quinto della fila. Un numero che non c'è si dice.
+  if pezzo
+    pezzi_n = t.split(/^# (\d+) — .*$/).drop(1).each_slice(2).to_h { |n, corpo| [n.to_i, corpo] }
+    t = pezzi_n.fetch(pezzo) { abort "  ⛔ #{File.basename(percorso)}: il pezzo «# #{pezzo} —» non c'è" }
+  end
   if sezioni
     # ⭐ Giro W31: la nota «[pulsante: parole → indirizzo]» è l'unica che porta
     # PAROLE approvate: quelle restano, e cade solo l'indirizzo.
@@ -614,7 +621,7 @@ if modo == "sorgente"
     puts "  #{p[:nome]}: forma uguale all'inglese" + (diff.empty? ? "" : " — NO, #{diff.size} scarti")
     diff.each { |x| puts "     ⛔ #{p[:nome]}#{x}" }
   end
-else
+elsif modo == "servito"
   # ② IL SERVITO. Si prende il testo che esce dai tag e si cerca nella bozza.
   # ⛔ Niente parser HTML: nessuna libreria esterna entra in questo repo. Si
   # tolgono i commenti, gli script e gli stili, poi si guarda quel che resta
@@ -823,6 +830,61 @@ else
   end
 end
 
-puts "  fuori_bozza=#{fuori}"
+# ③ L'INVERSO (giro W41, `WD41`): ogni riga della bozza che va in pagina deve
+# USCIRE nel sito costruito. ⛔ È il verso che mancava: nel W33 quattro paragrafi
+# FR/ES sono stati sovrascritti con un altro testo, anch'esso approvato, e ① e ②
+# erano verdi — ogni pezzo in pagina stava in una bozza. ⭐ Rifatto a mano nel
+# W41 su `fr/round-count`: ① e ② verdi, questa misura lo trova.
+# ⭐ Le righe si leggono con le STESSE sezioni e lo stesso `piano` delle altre due
+# misure, poi si tolgono per regola, una volta, quel che per regola delle bozze
+# non va in pagina: le righe che cominciano con «>» (le note in testa al file) e
+# le note fra quadre, anche quando vanno a capo. Si scioglie la forma che la
+# pagina impagina in pezzi: celle di tabella, «<br>», elenchi con «·» o «›», i
+# segnaposto fra quadre dentro una riga («Last updated: [date of publication]»
+# cerca «Last updated»). I pezzi più corti di tre caratteri (✓, ✗) non si contano.
+# ⚠️ Si cerca nel testo della pagina, nei testi alternativi, nelle etichette, nei
+# `content` dei meta, nei `placeholder` e nel JSON-LD. La NAVIGAZIONE è su ogni
+# pagina, quindi la sua bozza si cerca in tutte le pagine della sua lingua.
+# ⛔ Le bozze in più (`anche`) NON si controllano in questo verso: da lì una pagina
+# può prendere, non deve prendere tutto.
+# ⛔ NESSUNA ECCEZIONE PER NOME, voluto: quel che resta fuori oggi sono etichette
+# di struttura delle bozze («Screenshots — alt text», «Hero»), note scritte senza
+# quadre e righe superate da una bozza più nuova. Le prime due le distingue un
+# segno nella bozza (le quadre, la regola che le bozze già dichiarano), la terza
+# si toglie dalla bozza: lavoro di Cowork, non una lista qui che invecchia.
+# Fino ad allora il numero si tiene in `scripts/attese.txt` e scatta quando cambia.
+if modo == "inverso"
+  servito_di = lambda do |uscita|
+    html = File.read(File.join(costruito, uscita), encoding: "UTF-8").gsub(/<!--.*?-->/m, " ")
+    attr = html.scan(/\b(?:alt|aria-label|content|abbr|placeholder)="([^"]*)"/mi).flatten
+    jsonld = html.scan(/<script[^>]*ld\+json[^>]*>(.*?)<\/script>/mi).flatten
+    corpo = html.gsub(/<(script|style)\b.*?<\/\1>/mi, " ").gsub(/<[^>]*>/, "")
+    t = ([corpo] + attr + jsonld).join("\n")
+    t = t.gsub("&nbsp;", " ").gsub("&amp;", "&").gsub("&lt;", "<").gsub("&gt;", ">").gsub("&#39;", "'").gsub("&quot;", "\"")
+    t.gsub(/[[:space:]]+/, " ")
+  end
+  per_lingua = Hash.new { |h, l| h[l] = PAGINE.select { |q| q[:lingua] == l && q[:uscita] && File.readable?(File.join(costruito, q[:uscita])) }.map { |q| servito_di.call(q[:uscita]) }.join("\n") }
+  PAGINE.each do |p|
+    next unless p[:uscita]
+    next puts("  #{p[:nome]}: ⛔ NON MISURABILE — la pagina non e nel sito costruito") unless File.readable?(File.join(costruito, p[:uscita]))
+    servito = p[:nome].end_with?("navigazione") ? per_lingua[p[:lingua]] : servito_di.call(p[:uscita])
+    testo = piano(File.join(contenuti, p[:bozza]), p[:sezioni], p[:pezzo])
+    # Le note fra quadre che vanno a capo: dall'inizio riga «[» fino al «]» che chiude una riga.
+    testo = testo.gsub(/^\[[^\]\n]*\n(?:[^\n]*\n)*?[^\n]*\]\s*$/, "")
+    righe = testo.split("\n")
+    righe = righe.reject { |r| r.strip.start_with?(">") || (r.strip.start_with?("[") && r.strip.end_with?("]")) }
+    righe = righe.map { |r| r.sub(/\A\s*\#{1,6}\s+/, "").sub(/\A\s*(?:[-•]|\d+\.)\s+/, "") }
+    righe = righe.flat_map { |r| r.split(/\|/) }.flat_map { |r| r.split(/<br>/) }
+    righe = righe.flat_map { |r| r =~ /\A([^:·]{1,24}): (.+ · .+)\z/ ? [$1] + $2.split(" · ") : (r.include?(" · ") || r.include?(" › ") ? r.split(/ [·›] /) : [r]) }
+    righe = righe.flat_map { |r| r.split(/\[[^\]]*\]/) }
+    righe = righe.map { |r| r.gsub(/[[:space:]]+/, " ").strip.sub(/\A[—–:,.]\s*/, "").sub(/\s*[—–:]\z/, "") }.reject { |r| r.length < 3 || r.match?(/\A[-:\s]+\z/) }
+    mancano = righe.reject { |r| servito.include?(r) }
+    fuori += mancano.size
+    puts "  #{p[:nome]}: #{righe.size - mancano.size} righe della bozza in pagina, #{mancano.size} no"
+    mancano.each { |r| puts "     ⛔ #{p[:nome]}: nella bozza ma NON in pagina -> «#{r[0, 110]}»" }
+  end
+end
+
+puts(modo == "inverso" ? "  non_in_pagina=#{fuori}" : "  fuori_bozza=#{fuori}")
 exit(fuori.zero? ? 0 : 1)
 PROGRAMMA

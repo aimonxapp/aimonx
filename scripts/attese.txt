@@ -166,6 +166,13 @@ indirizzi_o_telefoni=0
 # nel giro W9 mettendone una a mano.
 testo_servito_fuori_bozza=0
 
+# ⭐ Giro W41 (WD41): righe delle bozze, nelle sezioni che vanno in pagina, che
+# NON escono nel sito costruito. ⚠️ Non è 0 e non è un errore del sito: sono
+# etichette di struttura delle bozze, note senza quadre e righe superate da una
+# bozza più nuova — si tolgono nelle bozze (Cowork), e il numero scende. Scatta
+# quando cambia: un paragrafo sovrascritto lo fa salire (provato nel W41).
+testo_bozza_non_in_pagina=180
+
 # ⛔ NATI NEL GIRO W10, quando il sito ha smesso di essere solo leggibile ed è
 # diventato anche trovabile. Li misura scripts/misure-pagine.rb sul COSTRUITO.
 

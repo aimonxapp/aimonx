@@ -426,6 +426,22 @@ VOCI
     else
       non_misurabile "il testo SERVITO contro le bozze approvate"
     fi
+
+    # --- ③ l'inverso: ogni riga della bozza esce in pagina? (giro W41, WD41) --
+    # ⛔ Il verso che ① e ② non vedono: un paragrafo sovrascritto con un ALTRO
+    # testo approvato (il caso del W33). ⚠️ L'attesa non è 0: oggi conta anche le
+    # etichette di struttura delle bozze e le righe superate, che si tolgono nelle
+    # bozze (Cowork). Il numero si tiene fermo e scatta quando cambia.
+    echo
+    echo "--- ogni riga delle bozze esce davvero in pagina? ---"
+    USCITA_INVERSO=$("$REPO/scripts/testo-approvato.sh" --inverso "$SITO_TMP" 2>&1)
+    printf '%s\n' "$USCITA_INVERSO"
+    N_INV=$(printf '%s' "$USCITA_INVERSO" | sed -n 's/.*non_in_pagina=\([0-9]*\).*/\1/p' | head -1)
+    if [ -n "$N_INV" ]; then
+      confronta "righe delle bozze che NON escono in pagina" testo_bozza_non_in_pagina "$N_INV"
+    else
+      non_misurabile "le righe delle bozze contro il sito costruito"
+    fi
   else
     # ⛔ Una build fallita NON è «zero file di lavoro»: è una misura che non
     # c'è stata. Dirla ✅ sarebbe il via libera che non ha guardato niente.

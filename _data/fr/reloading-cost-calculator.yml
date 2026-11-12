@@ -11,6 +11,7 @@ meta:
 titolo: "Calcul du coût du rechargement"
 sommario: "Combien vous coûte vraiment une cartouche de votre recette ? Saisissez ce que vous avez payé vos composants et votre charge de poudre. Vous voyez le coût par cartouche, par boîte de 50 et pour 1 000, et vous pouvez imprimer la fiche de rechargement ou l'enregistrer en PDF."
 calcolatore:
+  valuta: "Devise"
   nome: "Nom de la recette"
   nome_esempio: "Par exemple « 9×19 124 gr match »"
   calibro: "Calibre"

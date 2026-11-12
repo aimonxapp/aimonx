@@ -14,6 +14,7 @@ meta:
 titolo: "Calcolo del costo della ricarica"
 sommario: "Quanto ti costa davvero un colpo della tua ricarica? Inserisci quanto hai pagato i componenti e la dose di polvere. Vedi il costo per colpo, per scatola da 50 e per 1.000, e puoi stampare la scheda della ricetta o salvarla in PDF."
 calcolatore:
+  valuta: "Valuta"
   nome: "Nome della ricetta"
   nome_esempio: "Per esempio «9×21 124 gr gara»"
   calibro: "Calibro"
